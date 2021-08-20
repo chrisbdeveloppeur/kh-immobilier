@@ -5,8 +5,8 @@
 {% block body %}
     <section class="hero is-info is-fullheight">
         <div class="hero-body">
-            <div class="column has-text-centered is-flex is-justify-content-center is-white">
-                {{ form_start(form, {'attr': {'class': 'is-half column'}}) }}
+            <div class="column py-0 px-0 has-text-centered is-flex is-justify-content-center is-white">
+                {{ form_start(form, {'attr': {'class': 'is-half column py-0 px-0'}}) }}
                 <div class="field">
                     <div class="control has-icons-left has-icons-right">
                         {{ form_widget(form.client_name, {'attr': {'class':'input has-text-centered', 'placeholder': 'Nom du client'}}) }}

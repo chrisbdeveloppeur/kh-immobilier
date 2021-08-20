@@ -18,6 +18,21 @@ class HomeController extends AbstractController
         $form = $this->createForm(DevisType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+            $date = new \DateTime();
+            $date->setTimezone(new \DateTimeZone("Europe/Paris"));
+            $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/DEVIS_CHRISBDEV_TEMPLATE.docx");
+            $template->setValue("client_name",$form->get("client_name")->getData());
+            $template->setValue("phone",$form->get("phone")->getData());
+            $template->setValue("email",$form->get("email")->getData());
+            $template->setValue("adresse",$form->get("adresse")->getData());
+            $template->setValue("description_1",$form->get("description_1")->getData());
+            $template->setValue("quantity_1",$form->get("quantity_1")->getData());
+            $template->setValue("price_unit_ht_1",$form->get("price_unit_ht_1")->getData());
+            $template->setValue("total_ht_1",$form->get("total_ht_1")->getData());
+            $template->setValue("date",$date->format('d/m/Y - H:i:s'));
+            $template->saveAs("../assets/files/edited_files/word_" . uniqid() . ".docx");
+
+            $this->addFlash('success',"Le devis à bien été édité !");
 
             return $this->redirectToRoute('home');
         }
