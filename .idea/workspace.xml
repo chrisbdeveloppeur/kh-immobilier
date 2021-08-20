@@ -2,261 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/edit_word.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/controllers/hello_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/files/word.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/files/word.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/files/word_fichiers/colorschememapping.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/files/word_fichiers/filelist.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/files/word_fichiers/themedata.thmx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/bootstrap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/assets.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/cache.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/dev/debug.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/deprecations.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/routing.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/sensio_framework_extra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/framework.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/monolog.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/twig.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/webpack_encore.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/preload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes/dev/framework.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/word_file_template.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.babelrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.env.prod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.env.test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.env.test_cached" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.github/CODEOWNERS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.github/workflows/auto-merge.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.github/workflows/build.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/assets/admin/entry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/assets/shop/entry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/behat.yml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/bin/console" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/api_platform/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/bundles.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/jwt/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/jwt/private-test.pem" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/jwt/public-test.pem" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/_sylius.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/api_platform.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/dev/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/dev/jms_serializer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/dev/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/dev/nelmio_alice.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/dev/routing.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/dev/swiftmailer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/dev/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/doctrine_migrations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/fos_rest.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/jms_serializer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/liip_imagine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/prod/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/prod/jms_serializer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/prod/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/routing.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/security.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/staging/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/staging/swiftmailer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/stof_doctrine_extensions.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/swiftmailer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/sylius_labs_doctrine_migrations_extra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/fidry_alice_data_fixtures.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/nelmio_alice.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/security.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/swiftmailer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/sylius_theme.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/sylius_uploader.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/fidry_alice_data_fixtures.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/fos_rest.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/security.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/swiftmailer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/sylius_channel.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/sylius_theme.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/sylius_uploader.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/test_cached/twig.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/translation.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/twig.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/packages/validator.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes/dev/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes/liip_imagine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes/sylius_admin.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes/sylius_api.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes/sylius_shop.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes/test/sylius_test_plugin.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/routes/test_cached/sylius_test_plugin.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/serialization/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/services.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/services_test.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/config/services_test_cached.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/docker-compose.prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/docker/nginx/conf.d/default.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/docker/nodejs/docker-entrypoint.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/docker/php/docker-entrypoint.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/docker/php/php-cli.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/docker/php/php.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/ecs.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/etc/build/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/features/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/gulpfile.babel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/phpspec.yaml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/phpstan.neon" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/phpunit.xml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/public/.htaccess" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/public/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Controller/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Addressing/Address.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Addressing/Country.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Addressing/Province.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Addressing/Zone.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Addressing/ZoneMember.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Channel/Channel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Channel/ChannelPricing.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Currency/Currency.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Currency/ExchangeRate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Customer/Customer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Customer/CustomerGroup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Locale/Locale.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Order/Adjustment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Order/Order.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Order/OrderItem.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Order/OrderItemUnit.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Order/OrderSequence.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Payment/GatewayConfig.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Payment/Payment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Payment/PaymentMethod.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Payment/PaymentMethodTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Payment/PaymentSecurityToken.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/Product.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductAssociation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductAssociationType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductAssociationTypeTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductAttribute.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductAttributeTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductAttributeValue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductImage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductOption.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductOptionTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductOptionValue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductOptionValueTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductReview.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductTaxon.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductVariant.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Product/ProductVariantTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Promotion/Promotion.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Promotion/PromotionAction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Promotion/PromotionCoupon.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Promotion/PromotionRule.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Shipping/Shipment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Shipping/ShippingCategory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Shipping/ShippingMethod.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Shipping/ShippingMethodTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Taxation/TaxCategory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Taxation/TaxRate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Taxonomy/Taxon.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Taxonomy/TaxonImage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/Taxonomy/TaxonTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/User/AdminUser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/User/ShopUser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Entity/User/UserOAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Kernel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/src/Migrations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/symfony.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/SyliusAdminBundle/Order/Show/_payment.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/SyliusAdminBundle/PaymentMethod/Gateways/paymentGateways.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/SyliusShopBundle/Checkout/SelectPayment/_choice.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/SyliusShopBundle/Common/Order/_addresses.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/SyliusShopBundle/Common/Order/_payments.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/SyliusShopBundle/Order/thankYou.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/TwigBundle/Exception/error.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/TwigBundle/Exception/error404.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/templates/bundles/TwigBundle/Exception/error500.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/tests/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/themes/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/translations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/webpack.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../acme/yarn.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../galerie_pere_jeff/.idea/galerie_pere_jeff.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../galerie_pere_jeff/.idea/galerie_pere_jeff.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../galerie_pere_jeff/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../galerie_pere_jeff/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../galerie_pere_jeff/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../galerie_pere_jeff/.idea/symfony2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../galerie_pere_jeff/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/.idea/composerJson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../poly-elec/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/.idea/poly-elec.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../poly-elec/.idea/poly-elec.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../poly-elec/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../poly-elec/.idea/watcherTasks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../poly-elec/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/templates/test_bulma_template.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../poly-elec/templates/test_template_bulma.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../poly-elec/templates/test_template_bulma.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/edit_word.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/edit_word.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/files/word.docx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/files/word.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/files/word.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/files/word_fichiers/colorschememapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/files/word_fichiers/filelist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/files/word_fichiers/themedata.thmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -264,23 +22,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="334">
+              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
               <folding>
-                <element signature="e#367#383#0#PHP" expanded="true" />
-                <element signature="e#920#926#1#PHP" expanded="true" />
-                <element signature="e#1029#1059#0#PHP" expanded="true" />
+                <element signature="e#34#99#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -291,10 +47,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-              <folding>
-                <element signature="e#12#26#0#Twig" expanded="true" />
-                <element signature="e#273#282#0#Twig" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -302,21 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/word_file_template.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
+            <state relative-caret-position="14093">
               <caret line="829" column="44" selection-start-line="829" selection-start-column="44" selection-end-line="829" selection-end-column="44" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#51686#51692#1#HTML" expanded="true" />
-                <element signature="e#51732#51738#1#HTML" expanded="true" />
-                <element signature="e#51778#51784#1#HTML" expanded="true" />
-                <element signature="e#51826#51832#0#HTML" expanded="true" />
-                <element signature="e#51872#51878#0#HTML" expanded="true" />
-                <element signature="e#51914#51920#1#HTML" expanded="true" />
-                <element signature="e#51960#51966#1#HTML" expanded="true" />
-                <element signature="e#52006#52012#1#HTML" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -396,6 +135,9 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-escaper" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpword" />
     </include_path>
   </component>
   <component name="ProjectConfigurationFiles">
@@ -407,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="949" />
     <option name="width" value="980" />
     <option name="height" value="1031" />
@@ -447,12 +189,6 @@
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -468,7 +204,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ADC_V2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -498,24 +235,21 @@
       <option name="presentableId" value="Default" />
       <updated>1629448277031</updated>
       <workItem from="1629448280635" duration="6949000" />
+      <workItem from="1629474953468" duration="1168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6949000" />
+    <option name="totallyTimeSpent" value="8117000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="npm" side_tool="true" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24939272" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3285968" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -523,10 +257,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32827735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,9 +299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -577,59 +313,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611fa7136f694.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611fa71a530e8.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611faba25c541.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13916" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/word_file_template.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="829" column="44" selection-start-line="829" selection-start-column="44" selection-end-line="829" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#51686#51692#1#HTML" expanded="true" />
-            <element signature="e#51732#51738#1#HTML" expanded="true" />
-            <element signature="e#51778#51784#1#HTML" expanded="true" />
-            <element signature="e#51826#51832#0#HTML" expanded="true" />
-            <element signature="e#51872#51878#0#HTML" expanded="true" />
-            <element signature="e#51914#51920#1#HTML" expanded="true" />
-            <element signature="e#51960#51966#1#HTML" expanded="true" />
-            <element signature="e#52006#52012#1#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611fa7136f694.html" />
+    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611fa71a530e8.html" />
+    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611faba25c541.html" />
+    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611fac92e345e.htm" />
     <entry file="file://$PROJECT_DIR$/templates/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-            <element signature="e#273#282#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/files/edited_word_611fac92e345e.htm">
+    <entry file="file://$PROJECT_DIR$/templates/word_file_template.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14093">
+          <caret line="829" column="44" selection-start-line="829" selection-start-column="44" selection-end-line="829" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="334">
+          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
           <folding>
-            <element signature="e#367#383#0#PHP" expanded="true" />
-            <element signature="e#920#926#1#PHP" expanded="true" />
-            <element signature="e#1029#1059#0#PHP" expanded="true" />
+            <element signature="e#34#99#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

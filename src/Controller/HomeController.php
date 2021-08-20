@@ -23,20 +23,18 @@ class HomeController extends AbstractController
      */
     public function editWord(): Response
     {
+
         $first_name = "Christian";
         $last_name = "BOUNGOU";
-        $data_edited = $this->editWordTemplate($last_name, $first_name);
-        //$edited_file_name = "edited_word_" . uniqid() . ".htm";
-        $edited_file_name = "word.htm";
-        file_put_contents("../assets/files/" . $edited_file_name, $data_edited);
+        $date_time = new \DateTime();
+        $date_time->setTimezone(new \DateTimeZone("Europe/Paris"));
+        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/word.docx");
+        $template->setValue("last_name",$last_name);
+        $template->setValue("first_name",$first_name);
+        $template->setValue("date_time",$date_time->format('d/m/Y - H:i:s'));
+        $template->saveAs("../assets/files/edited_word_" . uniqid() . ".docx");
+
         return $this->redirectToRoute("home");
     }
 
-    public function editWordTemplate($last_name, $first_name){
-        return $this->render("word_file_template.html.twig", [
-            "last_name" => $last_name,
-            "first_name" => $first_name
-
-        ]);
-    }
 }
