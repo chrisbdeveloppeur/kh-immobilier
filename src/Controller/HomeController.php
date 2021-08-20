@@ -28,11 +28,11 @@ class HomeController extends AbstractController
         $last_name = "BOUNGOU";
         $date_time = new \DateTime();
         $date_time->setTimezone(new \DateTimeZone("Europe/Paris"));
-        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/word.docx");
+        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/template.docx");
         $template->setValue("last_name",$last_name);
         $template->setValue("first_name",$first_name);
         $template->setValue("date_time",$date_time->format('d/m/Y - H:i:s'));
-        $template->saveAs("../assets/files/edited_word_" . uniqid() . ".docx");
+        $template->saveAs("../assets/files/edited_files/word_" . uniqid() . ".docx");
 
         return $this->redirectToRoute("home");
     }
