@@ -65,9 +65,7 @@ class HomeController extends AbstractController
     {
 //        $chemin = '"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\edited_files\\';
 //        $cmd = $chemin . $file_name . " --outdir D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis";
-        $cmd = '"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf assets/files/edited_files/devis_20-08-2021_21-31-03.docx --outdir D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis';
-
-//        dd($cmd);
+        $cmd = '"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf assets/files/edited_files/' . $file_name . " --outdir D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis";
         shell_exec($cmd);
         return $this->redirectToRoute("home");
     }
