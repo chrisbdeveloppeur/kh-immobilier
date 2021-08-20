@@ -52,17 +52,23 @@ class HomeController extends AbstractController
         $template->setValue("total_ht",$total);
         $template->setValue("account",$account);
         $template->setValue("date",$date->format('d/m/Y'));
-        $path_to_devis = "../assets/files/edited_files/devis_" . $date->format('d-m-Y_H-i-s') . ".docx";
+        $file_name = "devis_" . $date->format('d-m-Y_H-i-s') . ".docx";
+        $path_to_devis = "../assets/files/edited_files/" . $file_name;
         $template->saveAs($path_to_devis);
 
-        $this->convertWordToPdf($path_to_devis);
+        $this->convertWordToPdf($file_name);
 
         return $this->redirectToRoute("home");
     }
 
-    public function convertWordToPdf($path_to_devis): Response
+    public function convertWordToPdf($file_name): Response
     {
-        shell_exec('C:\Program Files\LibreOffice\program\soffice --headless --convert-to pdf ' . $path_to_devis . ' --outdir ../assets/files/devis');
+//        $chemin = '"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\edited_files\\';
+//        $cmd = $chemin . $file_name . " --outdir D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis";
+        $cmd = '"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf assets/files/edited_files/devis_20-08-2021_21-31-03.docx --outdir D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis';
+
+//        dd($cmd);
+        shell_exec($cmd);
         return $this->redirectToRoute("home");
     }
 
