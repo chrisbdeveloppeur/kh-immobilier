@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\DevisType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,10 +13,16 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function home(Request $request): Response
     {
+        $form = $this->createForm(DevisType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+
+            return $this->redirectToRoute('home');
+        }
         return $this->render('home.html.twig', [
-            'controller_name' => 'HomeController',
+            'form' => $form->createView(),
         ]);
     }
 
