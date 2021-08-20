@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <section class="hero is-large is-info">
+        <div class="hero-body">
+            <div class="column has-text-centered is-white">
+                <a href="{{ path('edit_word') }}" class="button">Editer le fichier word</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
