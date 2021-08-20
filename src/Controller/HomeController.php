@@ -20,6 +20,8 @@ class HomeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $date = new \DateTime();
             $date->setTimezone(new \DateTimeZone("Europe/Paris"));
+            $total = $form->get("total_ht_1")->getData();
+            $account = (30/100)*$total;
             $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/DEVIS_CHRISBDEV_TEMPLATE.docx");
             $template->setValue("client_name",$form->get("client_name")->getData());
             $template->setValue("phone",$form->get("phone")->getData());
@@ -29,8 +31,10 @@ class HomeController extends AbstractController
             $template->setValue("quantity_1",$form->get("quantity_1")->getData());
             $template->setValue("price_unit_ht_1",$form->get("price_unit_ht_1")->getData());
             $template->setValue("total_ht_1",$form->get("total_ht_1")->getData());
-            $template->setValue("date",$date->format('d/m/Y - H:i:s'));
-            $template->saveAs("../assets/files/edited_files/word_" . uniqid() . ".docx");
+            $template->setValue("total_ht",$total);
+            $template->setValue("account",$account);
+            $template->setValue("date",$date->format('d/m/Y'));
+            $template->saveAs("../assets/files/edited_files/devis_" . uniqid() . $date->format('_d-m-Y_H-i-s') . ".docx");
 
             $this->addFlash('success',"Le devis à bien été édité !");
 
