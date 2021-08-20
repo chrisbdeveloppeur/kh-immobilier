@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +25,7 @@ class DevisType extends AbstractType
                     'required' => false,
                 ])
 
-            ->add('email', TextType::class,[
+            ->add('email', EmailType::class,[
                     'label' => false,
                     'required' => false,
                 ])
@@ -45,11 +46,6 @@ class DevisType extends AbstractType
                 ])
 
             ->add('price_unit_ht_1', NumberType::class,[
-                    'label' => false,
-                    'required' => false,
-                ])
-
-            ->add('total_ht_1', NumberType::class,[
                     'label' => false,
                     'required' => false,
                 ])

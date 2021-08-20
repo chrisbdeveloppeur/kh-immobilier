@@ -18,23 +18,8 @@ class HomeController extends AbstractController
         $form = $this->createForm(DevisType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-            $date = new \DateTime();
-            $date->setTimezone(new \DateTimeZone("Europe/Paris"));
-            $total = $form->get("total_ht_1")->getData();
-            $account = (30/100)*$total;
-            $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/DEVIS_CHRISBDEV_TEMPLATE.docx");
-            $template->setValue("client_name",$form->get("client_name")->getData());
-            $template->setValue("phone",$form->get("phone")->getData());
-            $template->setValue("email",$form->get("email")->getData());
-            $template->setValue("adresse",$form->get("adresse")->getData());
-            $template->setValue("description_1",$form->get("description_1")->getData());
-            $template->setValue("quantity_1",$form->get("quantity_1")->getData());
-            $template->setValue("price_unit_ht_1",$form->get("price_unit_ht_1")->getData());
-            $template->setValue("total_ht_1",$form->get("total_ht_1")->getData());
-            $template->setValue("total_ht",$total);
-            $template->setValue("account",$account);
-            $template->setValue("date",$date->format('d/m/Y'));
-            $template->saveAs("../assets/files/edited_files/devis_" . uniqid() . $date->format('_d-m-Y_H-i-s') . ".docx");
+
+            $this->editWord($form);
 
             $this->addFlash('success',"Le devis à bien été édité !");
 
@@ -45,22 +30,39 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/edit-word", name="edit_word")
-     */
-    public function editWord(): Response
+
+    public function editWord($form): Response
     {
+        $date = new \DateTime();
+        $date->setTimezone(new \DateTimeZone("Europe/Paris"));
+        $quantity_1 = $form->get('quantity_1')->getData();
+        $price_unit_ht_1 = $form->get("price_unit_ht_1")->getData();
+        $total_ht_1 = $quantity_1 * $price_unit_ht_1;
+        $total = $total_ht_1;
+        $account = (30/100)*$total;
+        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/DEVIS_CHRISBDEV_TEMPLATE.docx");
+        $template->setValue("client_name",$form->get("client_name")->getData());
+        $template->setValue("phone",$form->get("phone")->getData());
+        $template->setValue("email",$form->get("email")->getData());
+        $template->setValue("adresse",$form->get("adresse")->getData());
+        $template->setValue("description_1",$form->get("description_1")->getData());
+        $template->setValue("quantity_1",$form->get("quantity_1")->getData());
+        $template->setValue("price_unit_ht_1",$form->get("price_unit_ht_1")->getData());
+        $template->setValue("total_ht_1",$total_ht_1);
+        $template->setValue("total_ht",$total);
+        $template->setValue("account",$account);
+        $template->setValue("date",$date->format('d/m/Y'));
+        $path_to_devis = "../assets/files/edited_files/devis_" . $date->format('d-m-Y_H-i-s') . ".docx";
+        $template->saveAs($path_to_devis);
 
-        $first_name = "Christian";
-        $last_name = "BOUNGOU";
-        $date_time = new \DateTime();
-        $date_time->setTimezone(new \DateTimeZone("Europe/Paris"));
-        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/template.docx");
-        $template->setValue("last_name",$last_name);
-        $template->setValue("first_name",$first_name);
-        $template->setValue("date_time",$date_time->format('d/m/Y - H:i:s'));
-        $template->saveAs("../assets/files/edited_files/word_" . uniqid() . ".docx");
+        $this->convertWordToPdf($path_to_devis);
 
+        return $this->redirectToRoute("home");
+    }
+
+    public function convertWordToPdf($path_to_devis): Response
+    {
+        shell_exec('C:\Program Files\LibreOffice\program\soffice --headless --convert-to pdf ' . $path_to_devis . ' --outdir ../assets/files/devis');
         return $this->redirectToRoute("home");
     }
 
