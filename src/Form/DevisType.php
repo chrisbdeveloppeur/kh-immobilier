@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class DevisType extends AbstractType
 {
@@ -36,8 +37,9 @@ class DevisType extends AbstractType
                 ])
 
             ->add('description_1', TextareaType::class,[
-                'label' => false,
-                'required' => false,
+                    'label' => false,
+                    'required' => false,
+                    'constraints' => new Length(['max' => 100]),
                 ])
 
             ->add('quantity_1', NumberType::class,[

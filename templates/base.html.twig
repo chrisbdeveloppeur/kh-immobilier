@@ -17,5 +17,25 @@
 <body>
     {% block body %}{% endblock %}
     {{ include('includes/flash_message.html.twig') }}
+
+
+
+    <script>
+        function ajaxEditFile(event){
+            event.preventDefault();
+            const url = this.href;
+
+            axios.get(url).then(function (response) {
+            })
+        }
+
+        // let onOffInviteBtns = document.querySelectorAll('a.on-off-invite-ajax');
+        //
+        // onOffInviteBtns.forEach(function (element){
+        //     element.addEventListener('click' || 'touchstart', onOffInvite);
+        // });
+    </script>
+
+
 </body>
 </html>

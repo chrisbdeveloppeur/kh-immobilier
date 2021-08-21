@@ -6,64 +6,54 @@
     <section class="hero is-info is-fullheight">
         <div class="hero-body">
             <div class="column py-0 px-0 has-text-centered is-flex is-justify-content-center is-white">
+                {% form_theme form 'themes/form/form_errors.html.twig' %}
                 {{ form_start(form, {'attr': {'class': 'is-half column py-0 px-0'}}) }}
                 <div class="field">
-                    <div class="control has-icons-left has-icons-right">
+                    <div class="control">
                         {{ form_widget(form.client_name, {'attr': {'class':'input has-text-centered', 'placeholder': 'Nom du client'}}) }}
-                        <span class="icon is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
+                        {{ form_errors(form.client_name) }}
                     </div>
                 </div>
 
                 <div class="field">
-                    <div class="control has-icons-left has-icons-right">
+                    <div class="control">
                         {{ form_widget(form.phone, {'attr': {'class':'input has-text-centered', 'placeholder': 'Numéro de telephone'}}) }}
-                        <span class="icon is-left">
-                            <i class="fas fa-phone"></i>
-                        </span>
+                        {{ form_errors(form.phone) }}
                     </div>
                 </div>
 
                 <div class="field">
-                    <div class="control has-icons-left has-icons-right">
+                    <div class="control">
                         {{ form_widget(form.email, {'attr': {'class':'input has-text-centered', 'placeholder': 'Adresse email'}}) }}
-                        <span class="icon is-left">
-                            <i class="fas fa-mail-bulk"></i>
-                        </span>
+                        {{ form_errors(form.email) }}
                     </div>
                 </div>
 
                 <div class="field">
-                    <div class="control has-icons-left has-icons-right">
+                    <div class="control">
                         {{ form_widget(form.adresse, {'attr': {'class':'input has-text-centered', 'placeholder': 'Adresse postale'}}) }}
-                        <span class="icon is-left">
-                            <i class="fas fa-location-arrow"></i>
-                        </span>
+                        {{ form_errors(form.adresse) }}
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
                         {{ form_widget(form.description_1, {'attr': {'class':'textarea has-text-centered', 'placeholder': 'Description du produit / service', 'style':'resize:none;'}}) }}
+                        {{ form_errors(form.description_1) }}
                     </div>
                 </div>
 
                 <div class="field">
-                    <div class="control has-icons-left has-icons-right">
+                    <div class="control">
                         {{ form_widget(form.quantity_1, {'attr': {'class':'input has-text-centered', 'placeholder': 'Quantité'}}) }}
-                        <span class="icon is-left">
-                            <i class="fas fa-sort-numeric-asc"></i>
-                        </span>
+                        {{ form_errors(form.quantity_1) }}
                     </div>
                 </div>
 
                 <div class="field">
-                    <div class="control has-icons-left has-icons-right">
+                    <div class="control">
                         {{ form_widget(form.price_unit_ht_1, {'attr': {'class':'input has-text-centered', 'placeholder': 'Prix unitaire HT'}}) }}
-                        <span class="icon is-left">
-                            <i class="fas fa-money"></i>
-                        </span>
+                        {{ form_errors(form.price_unit_ht_1) }}
                     </div>
                 </div>
 
