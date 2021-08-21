@@ -13,7 +13,7 @@ class QuittancesController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('quittances/index.html.twig', [
+        return $this->render('quittances/homepage.html.twig', [
             'controller_name' => 'QuittancesController',
         ]);
     }

@@ -3,12 +3,10 @@
 {% block title %}Télécharger du devis{% endblock %}
 
 {% block body %}
-    <section class="hero is-info is-fullheight">
         <a href="{{ asset('build/devis/') }}{{ file_name }}.pdf" class="button" target="_blank">
             <span class="icon">
                 <i class="fa fa-download"></i>
             </span>
             <span>{{ file_name }}</span>
         </a>
-    </section>
 {% endblock %}

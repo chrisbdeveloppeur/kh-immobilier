@@ -15,9 +15,38 @@
     {% endblock %}
 </head>
 <body>
-    {% block body %}{% endblock %}
-    {{ include('includes/flash_message.html.twig') }}
 
+<section class="hero is-dark is-bold is-fullheight">
+
+    <div class="hero-head">
+        <header class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroC" onclick="this.classList.toggle('is-active');document.getElementById('navbarMenuHeroC').classList.toggle('is-active')">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroC" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a href="{{ path('quittances') }}" class="navbar-item">
+                            Quittances
+                        </a>
+                        <a href="{{ path('devis') }}" class="navbar-item">
+                            Devis
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    {% block body %}{% endblock %}
+
+</section>
+
+    {{ include('includes/flash_message.html.twig') }}
 
 
     <script>
