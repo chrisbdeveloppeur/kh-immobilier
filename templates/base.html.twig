@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}Editer un fichier word{% endblock %}</title>
+    <title>{% block title %}Documents{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -16,5 +16,6 @@
 </head>
 <body>
     {% block body %}{% endblock %}
+    {{ include('includes/flash_message.html.twig') }}
 </body>
 </html>

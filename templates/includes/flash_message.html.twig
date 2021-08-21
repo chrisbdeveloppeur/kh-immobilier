@@ -1,0 +1,17 @@
+{# Affichage des messages flash #}
+{% for type, message_list in app.flashes %}
+    {% for message in message_list %}
+
+        <article class="message is-{{ type }} has-text-centered flash-msg">
+            <div class="message-header">
+                <span class="icon has-text-light">
+                    <i class="fas fa-lg fa-info-circle"></i>
+                </span>
+                <button class="delete" aria-label="delete" onclick="this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);" ></button>
+            </div>
+            <div class="message-body">
+                {{ message }}
+            </div>
+        </article>
+    {% endfor %}
+{% endfor %}
