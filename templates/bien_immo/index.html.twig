@@ -1,19 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}BienImmo index{% endblock %}
+{% block title %}Biens immobiliers{% endblock %}
 
 {% block body %}
-    <h1>BienImmo index</h1>
+    <h1 class="title is-1">Listes des Biens immobiliers</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Building</th>
-                <th>Street</th>
-                <th>Cp</th>
-                <th>City</th>
-                <th>Loyer_hc</th>
+                <th>Complément d'adresse</th>
+                <th>Rue</th>
+                <th>CP</th>
+                <th>Ville</th>
+                <th>Loyer HC</th>
                 <th>Charges</th>
                 <th>Loyer TTC</th>
                 <th>actions</th>
@@ -28,7 +27,6 @@
             {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
             {% set total_charges =  total_charges + bien_immo.charges %}
             <tr>
-                <td>{{ bien_immo.id }}</td>
                 <td>{{ bien_immo.building }}</td>
                 <td>{{ bien_immo.street }}</td>
                 <td>{{ bien_immo.cp }}</td>
@@ -37,19 +35,18 @@
                 <td>{{ bien_immo.charges }} €</td>
                 <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
                 <td>
-                    <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">show</a>
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">edit</a>
+                    <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Vous n'avez aucun Biens immobiliers enreggistrés</td>
             </tr>
         {% endfor %}
         </tbody>
         <tfoot>
         <tr>
-            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -71,5 +68,7 @@
         </tfoot>
     </table>
 
-    <a href="{{ path('bien_immo_new') }}">Create new</a>
+    <div class="column">
+        <a href="{{ path('bien_immo_new') }}" class="button is-light">Ajouter un Bien</a>
+    </div>
 {% endblock %}

@@ -1,34 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}BienImmo{% endblock %}
+{% block title %}{{ bien_immo.building }}{% endblock %}
 
 {% block body %}
-    <h1>BienImmo</h1>
+    <h1 class="title is-1">{{ bien_immo.building }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ bien_immo.id }}</td>
-            </tr>
-            <tr>
-                <th>Building</th>
+                <th>Complément d'adresse</th>
                 <td>{{ bien_immo.building }}</td>
             </tr>
             <tr>
-                <th>Street</th>
+                <th>Rue</th>
                 <td>{{ bien_immo.street }}</td>
             </tr>
             <tr>
-                <th>Cp</th>
+                <th>CP</th>
                 <td>{{ bien_immo.cp }}</td>
             </tr>
             <tr>
-                <th>City</th>
+                <th>Ville</th>
                 <td>{{ bien_immo.city }}</td>
             </tr>
             <tr>
-                <th>Loyer_hc</th>
+                <th>Loyer HC</th>
                 <td>{{ bien_immo.loyerHc }} €</td>
             </tr>
             <tr>
@@ -47,11 +43,10 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>First_name</th>
-            <th>Last_name</th>
-            <th>Gender</th>
-            <th>Mode</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Sexe</th>
+            <th>Moyend de paiement</th>
             <th>Logement</th>
             <th>actions</th>
         </tr>
@@ -59,15 +54,14 @@
         <tbody>
         {% for locataire in locataires %}
             <tr>
-                <td>{{ locataire.id }}</td>
                 <td>{{ locataire.firstName }}</td>
                 <td>{{ locataire.lastName }}</td>
                 <td>{{ locataire.gender }}</td>
                 <td>{{ locataire.mode }}</td>
                 <td><a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}"> {{ locataire.logement }}, {{ locataire.logement.street }}, {{ locataire.logement.cp }} {{ locataire.logement.city }}</a></td>
                 <td>
-                    <a href="{{ path('locataire_show', {'id': locataire.id}) }}">show</a>
-                    <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">edit</a>
+                    <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
+                    <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -78,9 +72,15 @@
         </tbody>
     </table>
 
-    <a href="{{ path('bien_immo_index') }}">back to list</a>
+    <div class="column">
+        <div class="buttons">
+            <a class="button is-light" href="{{ path('bien_immo_index') }}">Retour à la liste des Biens immobiliers</a>
 
-    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">edit</a>
+            <a class="button is-light" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier ce bien</a>
+        </div>
+
+    </div>
+
 
     {{ include('bien_immo/_delete_form.html.twig') }}
 {% endblock %}
