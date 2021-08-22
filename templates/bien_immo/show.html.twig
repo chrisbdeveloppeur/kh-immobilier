@@ -29,11 +29,15 @@
             </tr>
             <tr>
                 <th>Loyer_hc</th>
-                <td>{{ bien_immo.loyerHc }}</td>
+                <td>{{ bien_immo.loyerHc }} €</td>
             </tr>
             <tr>
                 <th>Charges</th>
-                <td>{{ bien_immo.charges }}</td>
+                <td>{{ bien_immo.charges }} €</td>
+            </tr>
+            <tr>
+                <th>Loyer TTC</th>
+                <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
             </tr>
         </tbody>
     </table>
@@ -68,7 +72,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">Aucun locataire n'est attribué à ce logement</td>
             </tr>
         {% endfor %}
         </tbody>

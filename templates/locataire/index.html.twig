@@ -25,7 +25,13 @@
                 <td>{{ locataire.lastName }}</td>
                 <td>{{ locataire.gender }}</td>
                 <td>{{ locataire.mode }}</td>
-                <td><a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}"> {{ locataire.logement }}, {{ locataire.logement.street }}, {{ locataire.logement.cp }} {{ locataire.logement.city }}</a></td>
+                <td>
+                    {% if locataire.logement %}
+                        <a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}"> {{ locataire.logement }}, {{ locataire.logement.street }}, {{ locataire.logement.cp }} {{ locataire.logement.city }}</a>
+                    {% else %}
+                        <i>N/A</i>
+                    {% endif %}
+                </td>
                 <td>
                     <a href="{{ path('locataire_show', {'id': locataire.id}) }}">show</a>
                     <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">edit</a>

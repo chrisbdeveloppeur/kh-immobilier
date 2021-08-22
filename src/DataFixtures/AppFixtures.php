@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
             $locataire->setMode($faker->randomElement(['virement_banquaire', 'especes', 'cheque']));
 
             $bien = new BienImmo();
-            $bien->setBuilding($faker->streetSuffix);
+            $bien->setBuilding($faker->streetName);
             $bien->setStreet($faker->streetAddress);
             $bien->setCp($faker->postcode);
             $bien->setCity($faker->city);
@@ -42,6 +42,7 @@ class AppFixtures extends Fixture
 
             $locataire->setLogement($bien);
 
+            $manager->persist($bien);
             $manager->persist($locataire);
         }
 

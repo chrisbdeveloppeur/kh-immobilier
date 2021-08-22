@@ -39,6 +39,7 @@ class Locataire
 
     /**
      * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="locataires")
+     * @ORM\JoinColumn(onDelete="SET NULL");
      */
     private $logement;
 

@@ -15,6 +15,7 @@
                 <th>City</th>
                 <th>Loyer_hc</th>
                 <th>Charges</th>
+                <th>Loyer TTC</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,8 +27,9 @@
                 <td>{{ bien_immo.street }}</td>
                 <td>{{ bien_immo.cp }}</td>
                 <td>{{ bien_immo.city }}</td>
-                <td>{{ bien_immo.loyerHc }}</td>
-                <td>{{ bien_immo.charges }}</td>
+                <td>{{ bien_immo.loyerHc }} €</td>
+                <td>{{ bien_immo.charges }} €</td>
+                <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
                 <td>
                     <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">show</a>
                     <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">edit</a>
