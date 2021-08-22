@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter un bien{% endblock %}
+
+{% block body %}
+    <div class="hero-body">
+
+        <div class="column">
+            {% form_theme form 'themes/form/form_errors.html.twig' %}
+            {{ form_start(form) }}
+
+            <div class="control">
+                <button class="button is-success">Ajouter le bien</button>
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+{% endblock %}

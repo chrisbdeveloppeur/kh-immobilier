@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locataire index{% endblock %}
+
+{% block body %}
+    <h1>Locataire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+                <th>Gender</th>
+                <th>Mode</th>
+                <th>Logement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for locataire in locataires %}
+            <tr>
+                <td>{{ locataire.id }}</td>
+                <td>{{ locataire.firstName }}</td>
+                <td>{{ locataire.lastName }}</td>
+                <td>{{ locataire.gender }}</td>
+                <td>{{ locataire.mode }}</td>
+                <td><a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}"> {{ locataire.logement }}, {{ locataire.logement.street }}, {{ locataire.logement.cp }} {{ locataire.logement.city }}</a></td>
+                <td>
+                    <a href="{{ path('locataire_show', {'id': locataire.id}) }}">show</a>
+                    <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('locataire_new') }}">Create new</a>
+{% endblock %}

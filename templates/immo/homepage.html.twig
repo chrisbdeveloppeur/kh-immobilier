@@ -4,13 +4,26 @@
 
 {% block body %}
     <div class="hero-body">
-        <div class="column is-flex-desktop">
-            <a href="{{ path('quittances') }}" class="column has-background-light is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
-                <span class="has-text-black has-text-centered">Quittance de loyer</span>
-            </a>
-            <a href="#" class="column has-background-light is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
-                <span class="has-text-black has-text-centered">Autre</span>
-            </a>
+        <div class="column">
+
+            <div class="is-flex-desktop is-justify-content-space-between">
+                <div class="column has-text-centered-touch">
+                    <a href="{{ path('bien_immo_new') }}" class="button is-light is-outlined">Ajouter un bien</a>
+                    <a href="{{ path('locataire_new') }}" class="button is-light is-outlined">Ajouter un locataire</a>
+                </div>
+                <div class="column has-text-right-desktop has-text-centered-touch">
+                    <a href="{{ path('bien_immo_index') }}" class="button is-light is-outlined">Vos biens</a>
+                    <a href="{{ path('locataire_index') }}" class="button is-light is-outlined">Vos locataires</a>
+                </div>
+            </div>
+            <div class="column is-flex-desktop">
+                <a href="{{ path('quittances') }}" class="column has-background-light is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
+                    <span class="has-text-black has-text-centered">Quittance de loyer</span>
+                </a>
+                <a href="#" class="column has-background-light is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
+                    <span class="has-text-black has-text-centered">Autre</span>
+                </a>
+            </div>
         </div>
 
     </div>

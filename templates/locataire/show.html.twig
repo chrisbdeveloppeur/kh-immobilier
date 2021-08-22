@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locataire{% endblock %}
+
+{% block body %}
+    <h1>Locataire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ locataire.id }}</td>
+            </tr>
+            <tr>
+                <th>First_name</th>
+                <td>{{ locataire.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Last_name</th>
+                <td>{{ locataire.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ locataire.gender }}</td>
+            </tr>
+            <tr>
+                <th>Mode</th>
+                <td>{{ locataire.mode }}</td>
+            </tr>
+            <tr>
+                <th>Logement</th>
+                <td>{{ locataire.logement }}, {{ locataire.logement.street }}, {{ locataire.logement.cp }} {{ locataire.logement.city }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('locataire_index') }}">back to list</a>
+
+    <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">edit</a>
+
+    {{ include('locataire/_delete_form.html.twig') }}
+{% endblock %}
