@@ -20,7 +20,13 @@
             </tr>
         </thead>
         <tbody>
+        {% set total_loyer_ttc = 0 %}
+        {% set total_loyer_hc = 0 %}
+        {% set total_charges = 0 %}
         {% for bien_immo in bien_immos %}
+            {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
+            {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
+            {% set total_charges =  total_charges + bien_immo.charges %}
             <tr>
                 <td>{{ bien_immo.id }}</td>
                 <td>{{ bien_immo.building }}</td>
@@ -41,6 +47,28 @@
             </tr>
         {% endfor %}
         </tbody>
+        <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                <span>Total</span><br>
+                {{ total_loyer_hc }} €
+            </th>
+            <th>
+                <span>Total</span><br>
+                {{ total_charges }} €
+            </th>
+            <th>
+                <span>Total</span><br>
+                {{ total_loyer_ttc }} €
+            </th>
+            <th></th>
+        </tr>
+        </tfoot>
     </table>
 
     <a href="{{ path('bien_immo_new') }}">Create new</a>
