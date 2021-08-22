@@ -23,6 +23,7 @@
                 </div>
 
                 <div class="field">
+
                     <div class="control">
                         {{ form_widget(form.email, {'attr': {'class':'input has-text-centered', 'placeholder': 'Adresse email'}}) }}
                         {{ form_errors(form.email) }}
@@ -36,26 +37,40 @@
                     </div>
                 </div>
 
-                <div class="field">
-                    <div class="control">
-                        {{ form_widget(form.description_1, {'attr': {'class':'textarea has-text-centered', 'placeholder': 'Description du produit / service', 'style':'resize:none;'}}) }}
-                        {{ form_errors(form.description_1) }}
+                <div class="is-flex-desktop field">
+
+                    <div class="column">
+                        <label class="label is-size-7">Quantité</label>
+                        <div class="field">
+                            <div class="control">
+                                {{ form_widget(form.quantity_1, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Quantité'}}) }}
+                                {{ form_errors(form.quantity_1) }}
+                            </div>
+                        </div>
+
+                        <label class="label is-size-7">Prix unitaire HT</label>
+                        <div class="field has-addons">
+                            <p class="control is-expanded">
+                                {{ form_widget(form.price_unit_ht_1, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Prix unitaire HT'}}) }}
+                                {{ form_errors(form.price_unit_ht_1) }}
+                            </p>
+                            <p class="control" title="Devis en Euros">
+                                <a class="button is-small is-static">
+                                    €
+                                </a>
+                            </p>
+                        </div>
                     </div>
+
+                    <div class="field column is-three-quarters-desktop">
+                        <div class="control">
+                            {{ form_widget(form.description_1, {'attr': {'class':'textarea has-text-centered', 'placeholder': 'Description du produit / service', 'style':'resize:none;'}}) }}
+                            {{ form_errors(form.description_1) }}
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="field">
-                    <div class="control">
-                        {{ form_widget(form.quantity_1, {'attr': {'class':'input has-text-centered', 'placeholder': 'Quantité'}}) }}
-                        {{ form_errors(form.quantity_1) }}
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="control">
-                        {{ form_widget(form.price_unit_ht_1, {'attr': {'class':'input has-text-centered', 'placeholder': 'Prix unitaire HT'}}) }}
-                        {{ form_errors(form.price_unit_ht_1) }}
-                    </div>
-                </div>
 
 
                 <div class="control">
