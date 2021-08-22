@@ -6,6 +6,7 @@ use App\Entity\BienImmo;
 use App\Form\BienImmo1Type;
 use App\Form\BienImmoType;
 use App\Repository\BienImmoRepository;
+use App\Repository\LocataireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,10 +53,12 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}", name="bien_immo_show", methods={"GET"})
      */
-    public function show(BienImmo $bienImmo): Response
+    public function show(BienImmo $bienImmo, LocataireRepository $locataireRepository, $id): Response
     {
+        $locataires = $locataireRepository->findBy(['logement' => $id],['last_name' => 'ASC']);
         return $this->render('bien_immo/show.html.twig', [
             'bien_immo' => $bienImmo,
+            'locataires' => $locataires
         ]);
     }
 
