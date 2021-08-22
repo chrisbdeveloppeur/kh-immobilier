@@ -14,23 +14,36 @@ class AppFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        $bien = new BienImmo();
-        $bien->setBuilding($faker->streetSuffix);
-        $bien->setStreet($faker->streetAddress);
-        $bien->setCp($faker->postcode);
-        $bien->setCity($faker->city);
-        $bien->setLoyerHc($faker->numberBetween(300,1200));
-        $bien->s
+//        for ($i = 0; $i<= 10; $i++){
+//            $bien = new BienImmo();
+//            $bien->setBuilding($faker->streetSuffix);
+//            $bien->setStreet($faker->streetAddress);
+//            $bien->setCp($faker->postcode);
+//            $bien->setCity($faker->city);
+//            $bien->setLoyerHc($faker->numberBetween(300,1200));
+//            $bien->setCharges($faker->numberBetween(50,300));
+//        }
 
 
-        $locataire = new Locataire();
-        $locataire->setFirstName($faker->firstName);
-        $locataire->setLastName($faker->lastName);
-        $locataire->setGender($faker->randomElement(['M','F']));
-        $locataire->setMode($faker->randomElement(['virement_banquaire','especes','cheque']));
-        $locataire->setLogement();
+        for ($i = 0; $i<= 10; $i++) {
+            $locataire = new Locataire();
+            $locataire->setFirstName($faker->firstName);
+            $locataire->setLastName($faker->lastName);
+            $locataire->setGender($faker->randomElement(['M', 'F']));
+            $locataire->setMode($faker->randomElement(['virement_banquaire', 'especes', 'cheque']));
 
-        $manager->persist($locataire);
+            $bien = new BienImmo();
+            $bien->setBuilding($faker->streetSuffix);
+            $bien->setStreet($faker->streetAddress);
+            $bien->setCp($faker->postcode);
+            $bien->setCity($faker->city);
+            $bien->setLoyerHc($faker->numberBetween(300,1200));
+            $bien->setCharges($faker->numberBetween(50,300));
+
+            $locataire->setLogement($bien);
+
+            $manager->persist($locataire);
+        }
 
         $manager->flush();
     }
