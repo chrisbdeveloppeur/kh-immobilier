@@ -40,19 +40,18 @@
                 <div class="is-flex-desktop field">
 
                     <div class="column">
-                        <label class="label is-size-7">Quantité</label>
+                        <label class="label has-text-light is-size-7">Quantité</label>
                         <div class="field">
                             <div class="control">
                                 {{ form_widget(form.quantity_1, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Quantité'}}) }}
-                                {{ form_errors(form.quantity_1) }}
                             </div>
+                            {{ form_errors(form.quantity_1) }}
                         </div>
 
-                        <label class="label is-size-7">Prix unitaire HT</label>
+                        <label class="label has-text-light is-size-7">Prix unitaire HT</label>
                         <div class="field has-addons">
                             <p class="control is-expanded">
                                 {{ form_widget(form.price_unit_ht_1, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Prix unitaire HT'}}) }}
-                                {{ form_errors(form.price_unit_ht_1) }}
                             </p>
                             <p class="control" title="Devis en Euros">
                                 <a class="button is-small is-static">
@@ -60,6 +59,7 @@
                                 </a>
                             </p>
                         </div>
+                        {{ form_errors(form.price_unit_ht_1) }}
                     </div>
 
                     <div class="field column is-three-quarters-desktop">

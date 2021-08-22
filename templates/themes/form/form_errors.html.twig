@@ -3,12 +3,12 @@
             <ul>
                 {% for error in errors %}
                     <li>
-                        <span class="icon-text">
-                            <span class="icon has-text-warning">
-                                <i class="fas fa-exclamation-triangle"></i>
-                            </span>
-                            <span>{{ error.message }}</span>
-                        </span>
+{#                        <span class="icon-text">#}
+{#                            <span class="icon has-text-warning">#}
+{#                                <i class="fas fa-exclamation-triangle"></i>#}
+{#                            </span>#}
+                            <p class="help is-warning">{{ error.message }}</p>
+{#                        </span>#}
                     </li>
                 {% endfor %}
             </ul>
