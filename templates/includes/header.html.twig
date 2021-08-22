@@ -1,0 +1,28 @@
+<div class="hero-head">
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroC" onclick="this.classList.toggle('is-active');document.getElementById('navbarMenuHeroC').classList.toggle('is-active')">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+            </div>
+
+            <div id="navbarMenuHeroC" class="navbar-menu">
+                <div class="navbar-end">
+
+                    <a href="{{ path('immo') }}" class="navbar-item is-light is-outlined">
+                        Immobilier
+                    </a>
+
+                    <a href="{{ path('job') }}" class="navbar-item is-light is-outlined">
+                        Job
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

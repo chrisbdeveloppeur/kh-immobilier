@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Job{% endblock %}
+
+{% block body %}
+    <div class="hero-body">
+        <div class="column is-flex-desktop">
+            <a href="{{ path('devis') }}" class="column has-background-light is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
+                <span class="has-text-black has-text-centered">Devis</span>
+            </a>
+            <a href="fac" class="column has-background-light is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
+                <span class="has-text-black has-text-centered">Factures</span>
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

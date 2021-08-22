@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Devis;
 use App\Form\DevisType;
-use App\Repository\DevisRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,13 +14,11 @@ class DevisController extends AbstractController
     /**
      * @Route("/devis", name="devis")
      */
-    public function home(Request $request, DevisRepository $devisRepository): Response
+    public function home(Request $request): Response
     {
         $form = $this->createForm(DevisType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-
-//            $this->editWord($form);
 
             $date = new \DateTime();
             $date->setTimezone(new \DateTimeZone("Europe/Paris"));
@@ -65,7 +61,7 @@ class DevisController extends AbstractController
             ]);
 
         }
-        return $this->render('devis/edit_devis.html.twig', [
+        return $this->render('job/devis/edit_devis.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -88,7 +84,7 @@ class DevisController extends AbstractController
     public function downloadPdf($file_name): Response
     {
 
-        return $this->render("devis/download_file.html.twig",[
+        return $this->render("job/devis/download_file.html.twig",[
             "file_name" => $file_name,
         ]);
     }

@@ -18,37 +18,8 @@
 
 <section class="hero is-info is-fullheight">
 
-    <div class="hero-head">
-        <header class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
-                    <span class="navbar-burger" data-target="navbarMenuHeroC">
-{#                    <span class="navbar-burger" data-target="navbarMenuHeroC" onclick="this.classList.toggle('is-active');document.getElementById('navbarMenuHeroC').classList.toggle('is-active')">#}
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </div>
+    {{ include('includes/header.html.twig') }}
 
-                <div id="navbarMenuHeroC" class="navbar-menu">
-                    <div class="navbar-end">
-{#                        <span class="navbar-item">#}
-                            <a href="{{ path('quittances') }}" class="navbar-item is-light is-outlined">
-                                Quittances
-                            </a>
-
-{#                        </span>#}
-{#                        <span class="navbar-item">#}
-                            <a href="{{ path('devis') }}" class="navbar-item is-light is-outlined">
-                                Devis
-                            </a>
-{#                        </span>#}
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
     {% block body %}{% endblock %}
 
 </section>
