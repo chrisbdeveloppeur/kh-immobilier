@@ -33,8 +33,11 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{{ path('locataire_show', {'id': locataire.id}) }}">show</a>
-                    <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">edit</a>
+                    <div class="column">
+                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
+                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
+                        <a href="{{ path('quittances', {'loc_id': locataire.id }) }}">Quittance</a>
+                    </div>
                 </td>
             </tr>
         {% else %}

@@ -20,8 +20,8 @@ class LocataireType extends AbstractType
             ->add('last_name')
             ->add('gender', ChoiceType::class,[
                 'choices' => [
-                    'Homme' => 'M',
-                    'Femme' => 'F'
+                    'Homme' => 'Monsieur',
+                    'Femme' => 'Madame'
                 ]
             ])
             ->add('mode', ChoiceType::class,[

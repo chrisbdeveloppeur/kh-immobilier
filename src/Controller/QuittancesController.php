@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Quittance;
 use App\Form\QuittancesType;
 use App\Repository\LocataireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,21 +21,31 @@ class QuittancesController extends AbstractController
         $locataire = $locataireRepository->find($loc_id);
         $date = new \DateTime();
         $loyer_ttc = $locataire->getLogement()->getLoyerHc() + $locataire->getLogement()->getCharges();
+        $mode = "N/A";
+        if ($locataire->getMode() == "virement_banquaire"){
+            $mode = "Virement bancaire";
+        }elseif ($locataire->getMode() == "especes"){
+            $mode = "Espèces";
+        }elseif ($locataire->getMode() == "cheque"){
+            $mode = "Chèque";
+        }
         $date->setTimezone(new \DateTimeZone("Europe/Paris"));
         $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
         $template->setValue("last_name",$locataire->getLastName());
-        $template->setValue("first_nam",$locataire->getFirstName());
+        $template->setValue("first_name",$locataire->getFirstName());
+        $template->setValue("gender",$locataire->getGender());
         $template->setValue("building",$locataire->getLogement()->getBuilding());
         $template->setValue("street",$locataire->getLogement()->getStreet());
         $template->setValue("cp",$locataire->getLogement()->getCp());
         $template->setValue("city",$locataire->getLogement()->getCity());
         $template->setValue("date",$date->format('d/m/Y'));
+        $template->setValue("mode",$mode);
         $template->setValue("loyer_ttc",$loyer_ttc);
         $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
         $template->setValue("charges",$locataire->getLogement()->getCharges());
         $file = "quittance_" . $date->format('d-m-Y_H-i-s');
 
-        $new_quittance = "";
+        $new_quittance = new Quittance();
         $new_quittance->setFileName($file);
         $new_quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
         $em = $this->getDoctrine()->getManager();
@@ -42,27 +53,25 @@ class QuittancesController extends AbstractController
         $em->flush();
 
         $file_name = $file . ".docx";
-        $path_to_devis = "../assets/files/edited_files/" . $file_name;
-        $template->saveAs($path_to_devis);
+        //$path_to_file = "../assets/files/edited_files/" . $file_name;
+        $path_to_file = "../public/build/quittances/" . $file_name;
+        $template->saveAs($path_to_file);
 
         $this->convertWordToPdf($file_name);
 
-        $this->addFlash('success',"Le devis à bien été édité !");
+        $this->addFlash('success',"La quittance à bien été édité !");
 
-        return $this->redirectToRoute('ddl-devis-pdf', [
-            'file_name' => $file,
+        return $this->render("immo/quittances/download_file.html.twig",[
+            "file_name" => $file,
         ]);
 
-        return $this->render('job/devis/edit_devis.html.twig', [
-            'form' => $form->createView(),
-        ]);
     }
 
 
     public function convertWordToPdf($file_name): Response
     {
         $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\edited_files\\';
-        $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\devis';
+        $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\quittances';
         shell_exec($cmd);
         return $this->redirectToRoute("devis");
     }
