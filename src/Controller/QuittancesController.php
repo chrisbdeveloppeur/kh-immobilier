@@ -52,12 +52,11 @@ class QuittancesController extends AbstractController
         $em->persist($new_quittance);
         $em->flush();
 
-        $file_name = $file . ".docx";
-        //$path_to_file = "../assets/files/edited_files/" . $file_name;
-        $path_to_file = "../public/build/quittances/" . $file_name;
-        $template->saveAs($path_to_file);
+//        $path_to_file = "../assets/files/edited_files/" . $file . ".pdf";
+        $template->saveAs("../assets/files/edited_files/" . $file . ".docx");
+//        $template->saveAs("../public/build/quittances/" . $file . ".docx");
 
-        $this->convertWordToPdf($file_name);
+        $this->convertWordToPdf($file . ".docx");
 
         $this->addFlash('success',"La quittance à bien été édité !");
 

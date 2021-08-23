@@ -71,6 +71,7 @@ class DevisController extends AbstractController
     {
         $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\edited_files\\';
         $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\devis';
+        dd($cmd);
         shell_exec($cmd);
         return $this->redirectToRoute("devis");
     }
