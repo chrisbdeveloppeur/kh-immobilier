@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\QuittancesType;
+use App\Repository\LocataireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,55 +12,47 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuittancesController extends AbstractController
 {
     /**
-     * @Route("/quittances", name="quittances")
+     * @Route("/quittances-{loc_id}", name="quittances")
      */
-    public function home(Request $request): Response
+    public function home(Request $request, $loc_id, LocataireRepository $locataireRepository): Response
     {
-        $form = $this->createForm(QuittancesType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
 
-            $date = new \DateTime();
-            $date->setTimezone(new \DateTimeZone("Europe/Paris"));
-            $quantity_1 = $form->get('quantity_1')->getData();
-            $price_unit_ht_1 = $form->get("price_unit_ht_1")->getData();
-            $total_ht_1 = $quantity_1 * $price_unit_ht_1;
-            $total = $total_ht_1;
-            $account = (30/100)*$total;
-            $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/DEVIS_CHRISBDEV_TEMPLATE.docx");
-            $template->setValue("client_name",$form->get("client_name")->getData());
-            $template->setValue("phone",$form->get("phone")->getData());
-            $template->setValue("email",$form->get("email")->getData());
-            $template->setValue("adresse",$form->get("adresse")->getData());
-            $template->setValue("description_1",$form->get("description_1")->getData());
-            $template->setValue("quantity_1",$form->get("quantity_1")->getData());
-            $template->setValue("price_unit_ht_1",$form->get("price_unit_ht_1")->getData());
-            $template->setValue("total_ht_1",$total_ht_1);
-            $template->setValue("total_ht",$total);
-            $template->setValue("account",$account);
-            $template->setValue("date",$date->format('d/m/Y'));
-            $file = "devis_" . $date->format('d-m-Y_H-i-s');
+        $locataire = $locataireRepository->find($loc_id);
+        $date = new \DateTime();
+        $loyer_ttc = $locataire->getLogement()->getLoyerHc() + $locataire->getLogement()->getCharges();
+        $date->setTimezone(new \DateTimeZone("Europe/Paris"));
+        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
+        $template->setValue("last_name",$locataire->getLastName());
+        $template->setValue("first_nam",$locataire->getFirstName());
+        $template->setValue("building",$locataire->getLogement()->getBuilding());
+        $template->setValue("street",$locataire->getLogement()->getStreet());
+        $template->setValue("cp",$locataire->getLogement()->getCp());
+        $template->setValue("city",$locataire->getLogement()->getCity());
+        $template->setValue("date",$date->format('d/m/Y'));
+        $template->setValue("loyer_ttc",$loyer_ttc);
+        $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
+        $template->setValue("charges",$locataire->getLogement()->getCharges());
+        $file = "quittance_" . $date->format('d-m-Y_H-i-s');
 
-            $new_devis = new Devis();
-            $new_devis->setFileName($file);
-            $new_devis->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($new_devis);
-            $em->flush();
+        $new_quittance = "";
+        $new_quittance->setFileName($file);
+        $new_quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($new_quittance);
+        $em->flush();
 
-            $file_name = $file . ".docx";
-            $path_to_devis = "../assets/files/edited_files/" . $file_name;
-            $template->saveAs($path_to_devis);
+        $file_name = $file . ".docx";
+        $path_to_devis = "../assets/files/edited_files/" . $file_name;
+        $template->saveAs($path_to_devis);
 
-            $this->convertWordToPdf($file_name);
+        $this->convertWordToPdf($file_name);
 
-            $this->addFlash('success',"Le devis à bien été édité !");
+        $this->addFlash('success',"Le devis à bien été édité !");
 
-            return $this->redirectToRoute('ddl-devis-pdf', [
-                'file_name' => $file,
-            ]);
+        return $this->redirectToRoute('ddl-devis-pdf', [
+            'file_name' => $file,
+        ]);
 
-        }
         return $this->render('job/devis/edit_devis.html.twig', [
             'form' => $form->createView(),
         ]);
