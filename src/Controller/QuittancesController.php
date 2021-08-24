@@ -53,12 +53,12 @@ class QuittancesController extends AbstractController
         $em->flush();
 
 //        $path_to_file = "../assets/files/edited_files/" . $file . ".pdf";
-        $template->saveAs("../assets/files/qiuttances/" . $file . ".docx");
+        $template->saveAs("../assets/files/quittances/" . $file . ".docx");
 //        $template->saveAs("../public/build/quittances/" . $file . ".docx");
 
         $this->convertWordToPdf($file . ".docx");
 
-        $this->addFlash('success',"La quittance à bien été édité !");
+        //$this->addFlash('success',"La quittance à bien été édité !");
 
         return $this->render("immo/quittances/download_file.html.twig",[
             "file_name" => $file,

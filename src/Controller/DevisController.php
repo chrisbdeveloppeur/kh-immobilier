@@ -54,7 +54,7 @@ class DevisController extends AbstractController
 
             $this->convertWordToPdf($file_name);
 
-            $this->addFlash('success',"Le devis à bien été édité !");
+            //$this->addFlash('success',"Le devis à bien été édité !");
 
             return $this->redirectToRoute('ddl-devis-pdf', [
                 'file_name' => $file,
