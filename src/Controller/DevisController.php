@@ -49,7 +49,7 @@ class DevisController extends AbstractController
             $em->flush();
 
             $file_name = $file . ".docx";
-            $path_to_devis = "../assets/files/edited_files/" . $file_name;
+            $path_to_devis = "../assets/files/devis/" . $file_name;
             $template->saveAs($path_to_devis);
 
             $this->convertWordToPdf($file_name);
@@ -69,7 +69,7 @@ class DevisController extends AbstractController
 
     public function convertWordToPdf($file_name): Response
     {
-        $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\edited_files\\';
+        $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis\\';
         $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\devis';
         dd($cmd);
         shell_exec($cmd);

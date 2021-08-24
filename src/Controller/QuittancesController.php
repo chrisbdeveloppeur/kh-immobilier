@@ -53,7 +53,7 @@ class QuittancesController extends AbstractController
         $em->flush();
 
 //        $path_to_file = "../assets/files/edited_files/" . $file . ".pdf";
-        $template->saveAs("../assets/files/edited_files/" . $file . ".docx");
+        $template->saveAs("../assets/files/qiuttances/" . $file . ".docx");
 //        $template->saveAs("../public/build/quittances/" . $file . ".docx");
 
         $this->convertWordToPdf($file . ".docx");
@@ -69,7 +69,7 @@ class QuittancesController extends AbstractController
 
     public function convertWordToPdf($file_name): Response
     {
-        $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\edited_files\\';
+        $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\quittances\\';
         $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\quittances';
         shell_exec($cmd);
         return $this->redirectToRoute("devis");
