@@ -54,8 +54,6 @@ class DevisController extends AbstractController
 
             $this->convertWordToPdf($file_name);
 
-            //$this->addFlash('success',"Le devis à bien été édité !");
-
             return $this->redirectToRoute('ddl-devis-pdf', [
                 'file_name' => $file,
             ]);
@@ -71,7 +69,6 @@ class DevisController extends AbstractController
     {
         $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis\\';
         $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\devis';
-        dd($cmd);
         shell_exec($cmd);
         return $this->redirectToRoute("devis");
     }
