@@ -16,13 +16,44 @@
                     <a href="{{ path('locataire_index') }}" class="button is-light is-outlined">Vos locataires</a>
                 </div>
             </div>
-            <div class="column is-flex-desktop">
-                <a href="#" class="column button is-light is-outlined is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
-                    <span class="has-text-centered">Quittance de loyer</span>
-                </a>
-                <a href="#" class="column button is-light is-outlined is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
-                    <span class="has-text-centered">Autre</span>
-                </a>
+            <div class="column">
+
+                    {% set total_loyer_ttc = 0 %}
+                    {% set total_loyer_hc = 0 %}
+                    {% set total_charges = 0 %}
+                    {% for bien_immo in bien_immos %}
+                        {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
+                        {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
+                        {% set total_charges =  total_charges + bien_immo.charges %}
+                            <div class="column">
+                                {{ include('immo/biens_card.html.twig') }}
+                            </div>
+
+{#                        <tr>#}
+{#                            <td>{{ bien_immo.building }}</td>#}
+{#                            <td>{{ bien_immo.street }}</td>#}
+{#                            <td>{{ bien_immo.cp }}</td>#}
+{#                            <td>{{ bien_immo.city }}</td>#}
+{#                            <td>{{ bien_immo.loyerHc }} €</td>#}
+{#                            <td>{{ bien_immo.charges }} €</td>#}
+{#                            <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>#}
+{#                            <td>#}
+{#                                <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>#}
+{#                                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>#}
+{#                            </td>#}
+{#                        </tr>#}
+                    {% else %}
+
+                        <span>Vous n'avez aucun Biens immobiliers enreggistrés</span>
+
+                    {% endfor %}
+
+{#                            {{ total_loyer_hc }} €#}
+
+{#                            {{ total_charges }} €#}
+
+{#                            {{ total_loyer_ttc }} €#}
+
             </div>
         </div>
 

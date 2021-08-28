@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\BienImmoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,35 +15,12 @@ class ImmoController extends AbstractController
     /**
      * @Route("/accueil", name="accueil")
      */
-    public function index(): Response
+    public function index(BienImmoRepository $bienImmoRepository): Response
     {
+        $bien_immos = $bienImmoRepository->findAll();
         return $this->render('immo/homepage.html.twig', [
-
+            "bien_immos" => $bien_immos,
         ]);
     }
-
-//    /**
-//     * @Route("/ajouter-un-bien", name="add_bien")
-//     */
-//    public function addBienImmo(Request $request, EntityManagerInterface $em): Response
-//    {
-//        $form = $this->createForm(BienImmoType::class);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()){
-//
-//            $bien = $form->getData();
-//            $em->persist($bien);
-//            $em->flush();
-//
-//            $this->addFlash('success', "Le bien : ". $form->get("building")->getData() . " a bien été ajouté !");
-//
-//            return $this->redirectToRoute("immo_add_bien");
-//        }
-//
-//        return $this->render('immo/add_bien_form.html.twig', [
-//            'form' => $form->createView(),
-//        ]);
-//    }
 
 }
