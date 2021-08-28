@@ -67,7 +67,7 @@ class Locataire
 
     public function setLastName(string $last_name): self
     {
-        $this->last_name = $last_name;
+        $this->last_name = strtoupper($last_name);
 
         return $this;
     }

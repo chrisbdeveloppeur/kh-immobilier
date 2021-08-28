@@ -3,8 +3,6 @@
 {% block title %}Immobilier{% endblock %}
 
 {% block body %}
-{#    <div class="hero-body">#}
-{#        <div class="column">#}
 
             <div class="is-flex-desktop is-justify-content-space-between">
                 <div class="column has-text-centered-touch">
@@ -28,20 +26,6 @@
                             <div class="column is-two-fifths-widescreen">
                                 {{ include('immo/biens_card.html.twig') }}
                             </div>
-
-{#                        <tr>#}
-{#                            <td>{{ bien_immo.building }}</td>#}
-{#                            <td>{{ bien_immo.street }}</td>#}
-{#                            <td>{{ bien_immo.cp }}</td>#}
-{#                            <td>{{ bien_immo.city }}</td>#}
-{#                            <td>{{ bien_immo.loyerHc }} €</td>#}
-{#                            <td>{{ bien_immo.charges }} €</td>#}
-{#                            <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>#}
-{#                            <td>#}
-{#                                <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>#}
-{#                                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>#}
-{#                            </td>#}
-{#                        </tr>#}
                     {% else %}
 
                         <span>Vous n'avez aucun Biens immobiliers enreggistrés</span>
@@ -55,7 +39,5 @@
 {#                            {{ total_loyer_ttc }} €#}
 
             </div>
-{#        </div>#}
 
-{#    </div>#}
 {% endblock %}

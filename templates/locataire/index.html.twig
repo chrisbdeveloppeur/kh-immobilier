@@ -9,12 +9,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>First_name</th>
-                <th>Last_name</th>
-                <th>Gender</th>
-                <th>Mode</th>
+                    <th>Prénom</th>
+                <th>Nom</th>
+                <th>Sexe</th>
+                <th>Moyen de paiement</th>
                 <th>Logement</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -48,5 +48,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('locataire_new') }}">Create new</a>
+    <div class="buttons my-3 mx-3">
+        <a href="{{ path('locataire_new') }}" class="is-light button">Ajouter un locataire</a>
+    </div>
 {% endblock %}

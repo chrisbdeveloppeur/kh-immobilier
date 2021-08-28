@@ -10,12 +10,16 @@
             Loyer : <b>{{ bien_immo.loyerHc }} €</b><br>
             Charges : <b>{{ bien_immo.charges }} €</b><br>
             Loyer TTC : <b>{{ bien_immo.loyerHc + bien_immo.charges }} €</b><br>
-            Locataire : <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" class="tag is-dark">{{ bien_immo.locataires.current.firstName }} {{ bien_immo.locataires.current.lastName }}</a>
+            Locataire :
+            {% if bien_immo.locataires.current %}
+                <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" class="tag is-dark">{{ bien_immo.locataires.current.firstName }} {{ bien_immo.locataires.current.lastName }}</a>
+            {% else %}
+                Sans locataire
+            {% endif %}
         </div>
     </div>
     <footer class="card-footer has-background-dark">
         <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="card-footer-item has-text-light">Détails</a>
         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-text-light">Gérer ce logement</a>
-{#        <a href="#" class="card-footer-item">Delete</a>#}
     </footer>
 </div>
