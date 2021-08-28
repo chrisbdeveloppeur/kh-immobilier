@@ -3,8 +3,8 @@
 {% block title %}Immobilier{% endblock %}
 
 {% block body %}
-    <div class="hero-body">
-        <div class="column">
+{#    <div class="hero-body">#}
+{#        <div class="column">#}
 
             <div class="is-flex-desktop is-justify-content-space-between">
                 <div class="column has-text-centered-touch">
@@ -16,7 +16,7 @@
                     <a href="{{ path('locataire_index') }}" class="button is-light is-outlined">Vos locataires</a>
                 </div>
             </div>
-            <div class="column">
+            <div class="column is-flex-desktop is-align-items-center is-flex-direction-column">
 
                     {% set total_loyer_ttc = 0 %}
                     {% set total_loyer_hc = 0 %}
@@ -25,7 +25,7 @@
                         {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
                         {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                         {% set total_charges =  total_charges + bien_immo.charges %}
-                            <div class="column">
+                            <div class="column is-two-fifths-widescreen">
                                 {{ include('immo/biens_card.html.twig') }}
                             </div>
 
@@ -55,7 +55,7 @@
 {#                            {{ total_loyer_ttc }} €#}
 
             </div>
-        </div>
+{#        </div>#}
 
-    </div>
+{#    </div>#}
 {% endblock %}
