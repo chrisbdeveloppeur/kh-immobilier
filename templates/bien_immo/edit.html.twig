@@ -2,8 +2,9 @@
 
 {% block title %}Modification du bien {{ bien_immo.building }}{% endblock %}
 
+{% block title_main %}Modification du bien {{ bien_immo.building }}{% endblock %}
+
 {% block body %}
-    <h1>Modification du bien {{ bien_immo.building }}</h1>
 
     {{ include('bien_immo/_form.html.twig', {'button_label': 'Valider'}) }}
 

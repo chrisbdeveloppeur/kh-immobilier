@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Locataire{% endblock %}
+{% block title %}Modifier un locataire{% endblock %}
+
+{% block title_main %}Modifier le locataire {{ locataire.firstName }} {{ locataire.lastName }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Locataire</h1>
 
-    {{ include('locataire/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('locataire/_form.html.twig', {'button_label': 'Valider'}) }}
 
-    <a href="{{ path('locataire_index') }}">back to list</a>
+    <a href="{{ path('locataire_index') }}" class="button is-dark">Retour à la liste des locataires</a>
 
     {{ include('locataire/_delete_form.html.twig') }}
+
 {% endblock %}

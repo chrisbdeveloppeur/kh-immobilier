@@ -1,8 +1,8 @@
-<div class="hero-head has-background-black-bis has-text-light">
-    <header class="navbar">
+{#<div class="has-background-black-bis has-text-light">#}
+    <header class="navbar is-dark">
         <div class="container">
             <div class="navbar-brand">
-                <a href="{{ path('home') }}" class="navbar-item text-black-onhover">Menue principal</a>
+                <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
                     <span class="navbar-burger" data-target="navbarMenuHeroC" onclick="this.classList.toggle('is-active');document.getElementById('navbarMenuHeroC').classList.toggle('is-active')">
                         <span></span>
                         <span></span>
@@ -13,11 +13,11 @@
             <div id="navbarMenuHeroC" class="navbar-menu">
                 <div class="navbar-end">
 
-                    <a href="{{ path('immo_accueil') }}" class="navbar-item is-light is-outlined text-black-onhover">
+                    <a href="{{ path('immo_accueil') }}" class="navbar-item is-light is-outlined">
                         Immobilier
                     </a>
 
-                    <a href="{{ path('job') }}" class="navbar-item is-light is-outlined text-black-onhover">
+                    <a href="{{ path('job') }}" class="navbar-item is-light is-outlined">
                         Job
                     </a>
 
@@ -25,4 +25,4 @@
             </div>
         </div>
     </header>
-</div>
+{#</div>#}

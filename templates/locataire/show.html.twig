@@ -2,9 +2,9 @@
 
 {% block title %}Locataire{% endblock %}
 
-{% block body %}
+{% block title_main %}Locataire : {{ locataire.firstName }} {{ locataire.lastName }}{% endblock %}
 
-    <h1 class="title"><b>{{ locataire.firstName }} {{ locataire.lastName }}</b></h1>
+{% block body %}
 
     <div class="my-3 mx-3">
         <div class="buttons">

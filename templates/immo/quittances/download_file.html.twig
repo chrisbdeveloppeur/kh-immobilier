@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Télécharger de la quittance{% endblock %}
+{% block title %}Télécharger la quittance{% endblock %}
 
 {% block body %}
-
 
     <div class="column is-flex is-justify-content-center is-align-items-center">
        <iframe src="{{ asset('build/quittances/') }}{{ file_name }}.pdf" width="450" height="700" align="middle"></iframe>

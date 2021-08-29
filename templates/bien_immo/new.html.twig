@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New BienImmo{% endblock %}
+{% block title %}Ajouter un bien immobilier{% endblock %}
+
+{% block title_main %}Ajouter un Bien immobilier{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un Bien immobilier</h1>
 
     {{ include('bien_immo/_form.html.twig') }}
 
-    <a href="{{ path('bien_immo_index') }}">Retour à la liste des Biens immobiliers</a>
+    <div class="buttons mx-3 my-3">
+        <a href="{{ path('bien_immo_index') }}" class="button is-dark">Retour à la liste des Biens immobiliers</a>
+    </div>
+
 {% endblock %}

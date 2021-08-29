@@ -16,9 +16,17 @@
 </head>
 <body>
 
-<section class="hero is-light is-fullheight">
+<section class="">
 
     {{ include('includes/header.html.twig') }}
+
+    <div class="hero is-small is-dark is-bold">
+        <div class="hero-body">
+            <h1 class="title has-text-centered">
+                {% block title_main %}Outil d'aministration de vos documents{% endblock %}
+            </h1>
+        </div>
+    </div>
 
     {% block body %}{% endblock %}
 
