@@ -12,6 +12,12 @@ a.navbar-item:focus, a.navbar-item:focus-within{
 .bg-info-onhover:hover{
     background-color: $info !important;
 }
+.text-white-onhover:hover{
+   color: white !important;
+}
+.text-black-onhover:hover{
+    color: black !important;
+}
 
 @import "~bulma";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
