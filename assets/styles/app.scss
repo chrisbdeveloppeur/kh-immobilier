@@ -1,3 +1,4 @@
+$info : #3488CE;
 
 .button, a{
     //border-radius: 0 !important;
@@ -8,6 +9,9 @@ a.navbar-item:focus, a.navbar-item:focus-within{
     background-color: rgba(0,0,0,0) !important;
 }
 
+.bg-info-onhover:hover{
+    background-color: $info !important;
+}
 
 @import "~bulma";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";

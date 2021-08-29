@@ -1,6 +1,6 @@
 <div class="card">
-    <header class="card-header">
-        <p class="card-header-title">
+    <header class="card-header has-background-dark">
+        <p class="card-header-title has-text-light is-justify-content-center">
             {{ bien_immo.building }}
         </p>
     </header>
@@ -18,8 +18,8 @@
             {% endif %}
         </div>
     </div>
-    <footer class="card-footer has-background-dark">
-        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="card-footer-item has-text-light">Détails</a>
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-text-light">Gérer ce logement</a>
+    <footer class="card-footer">
+        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover">Détails</a>
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover">Gérer ce logement</a>
     </footer>
 </div>
