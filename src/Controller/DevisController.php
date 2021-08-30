@@ -48,6 +48,10 @@ class DevisController extends AbstractController
             $em->persist($new_devis);
             $em->flush();
 
+            if (!file_exists('../assets/files/devis/')) {
+                mkdir('../assets/files/devis/', 0777, true);
+            }
+
             $file_name = $file . ".docx";
             $path_to_devis = "../assets/files/devis/" . $file_name;
             $template->saveAs($path_to_devis);

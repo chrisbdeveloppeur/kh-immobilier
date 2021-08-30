@@ -52,6 +52,9 @@ class QuittancesController extends AbstractController
         $em->persist($new_quittance);
         $em->flush();
 
+        if (!file_exists('../assets/files/quittances/')) {
+            mkdir('../assets/files/quittances/', 0777, true);
+        }
 //        $path_to_file = "../assets/files/edited_files/" . $file . ".pdf";
         $template->saveAs("../assets/files/quittances/" . $file . ".docx");
 //        $template->saveAs("../public/build/quittances/" . $file . ".docx");

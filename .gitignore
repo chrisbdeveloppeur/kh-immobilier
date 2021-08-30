@@ -19,4 +19,6 @@ yarn-error.log
 ###> Files ###
 /assets/files/devis/*
 /assets/files/quittances/*
+!/assets/files/devis/.gitkeep
+!/assets/files/quittances/.gitkeep
 ###< Files ###
