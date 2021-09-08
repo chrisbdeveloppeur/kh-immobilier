@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Télécharger la quittance{% endblock %}
+{% block title_main %}Quittance de loyer pour {{ locataire.gender }} {{ locataire.lastName|upper }} {{ locataire.firstName }}{% endblock %}
 
 {% block body %}
 
@@ -10,12 +11,20 @@
 
 
     <div class="column is-flex is-justify-content-center is-align-items-center">
-        <a href="{{ asset('build/quittances/') }}{{ file_name }}.pdf" class="button" download="{{ file_name }}">
+        <div class="buttons">
+            <a href="{{ asset('build/quittances/') }}{{ file_name }}.pdf" class="button" download="{{ file_name }}">
             <span class="icon">
                 <i class="fa fa-download"></i>
             </span>
-            <span>{{ file_name }}</span>
-        </a>
+                <span>{{ file_name }} (.pdf)</span>
+            </a>
+            <a href="../assets/files/quittances/{{ file_name }}.docx" class="button" download="{{ file_name }}">
+            <span class="icon">
+                <i class="fa fa-download"></i>
+            </span>
+                <span>{{ file_name }} (.docx)</span>
+            </a>
+        </div>
     </div>
 
 

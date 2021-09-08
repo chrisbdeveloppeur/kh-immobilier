@@ -65,6 +65,7 @@ class QuittancesController extends AbstractController
 
         return $this->render("immo/quittances/download_file.html.twig",[
             "file_name" => $file,
+            "locataire" => $locataire,
         ]);
 
     }
@@ -82,13 +83,14 @@ class QuittancesController extends AbstractController
      * @param $file_name
      * @param $file_name_pdf
      * @return Response
-     * @Route("/ddl-{file_name}", name="ddl-devis-pdf")
+     * @Route("/ddl-{file_name}-{loc_id}", name="ddl-quittance-pdf")
      */
-    public function downloadPdf($file_name): Response
+    public function downloadPdf($file_name, $loc_id, LocataireRepository $locataireRepository): Response
     {
-
-        return $this->render("job/devis/download_file.html.twig",[
+        $locataire = $locataireRepository->find($loc_id);
+        return $this->render("immo/quittances/download_file.html.twig",[
             "file_name" => $file_name,
+            "locataire" => $locataire,
         ]);
     }
 }
