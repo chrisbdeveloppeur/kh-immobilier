@@ -55,6 +55,9 @@ class QuittancesController extends AbstractController
         if (!file_exists('../assets/files/quittances/')) {
             mkdir('../assets/files/quittances/', 0777, true);
         }
+        if (!file_exists('../public/build/quittances/')) {
+            mkdir('../public/build/quittances/', 0777, true);
+        }
 //        $path_to_file = "../assets/files/edited_files/" . $file . ".pdf";
         $template->saveAs("../assets/files/quittances/" . $file . ".docx");
         $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
