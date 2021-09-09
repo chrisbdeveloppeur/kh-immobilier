@@ -6,6 +6,7 @@ use App\Repository\BienImmoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=BienImmoRepository::class)
@@ -66,17 +67,17 @@ class BienImmo
     private $payment_date;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $first_day;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $last_day;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $month;
 
@@ -84,6 +85,9 @@ class BienImmo
     {
         $this->locataires = new ArrayCollection();
         $this->solde = 0;
+        $this->first_day = '1';
+        $this->month = \Date('F');
+        $this->last_day = \Date('t');
     }
 
     public function __toString()
