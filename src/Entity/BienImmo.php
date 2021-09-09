@@ -60,6 +60,26 @@ class BienImmo
      */
     private $solde;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $payment_date;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $first_day;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $last_day;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $month;
+
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
@@ -187,6 +207,54 @@ class BienImmo
     public function setSolde(?int $solde): self
     {
         $this->solde = $solde;
+
+        return $this;
+    }
+
+    public function getPaymentDate(): ?\DateTimeInterface
+    {
+        return $this->payment_date;
+    }
+
+    public function setPaymentDate(?\DateTimeInterface $payment_date): self
+    {
+        $this->payment_date = $payment_date;
+
+        return $this;
+    }
+
+    public function getFirstDay(): ?\DateTimeInterface
+    {
+        return $this->first_day;
+    }
+
+    public function setFirstDay(?\DateTimeInterface $first_day): self
+    {
+        $this->first_day = $first_day;
+
+        return $this;
+    }
+
+    public function getLastDay(): ?\DateTimeInterface
+    {
+        return $this->last_day;
+    }
+
+    public function setLastDay(?\DateTimeInterface $last_day): self
+    {
+        $this->last_day = $last_day;
+
+        return $this;
+    }
+
+    public function getMonth(): ?\DateTimeInterface
+    {
+        return $this->month;
+    }
+
+    public function setMonth(?\DateTimeInterface $month): self
+    {
+        $this->month = $month;
 
         return $this;
     }
