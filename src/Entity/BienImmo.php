@@ -55,9 +55,15 @@ class BienImmo
      */
     private $locataires;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $solde;
+
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
+        $this->solde = 0;
     }
 
     public function __toString()
@@ -169,6 +175,18 @@ class BienImmo
                 $locataire->setLogement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSolde(): ?int
+    {
+        return $this->solde;
+    }
+
+    public function setSolde(?int $solde): self
+    {
+        $this->solde = $solde;
 
         return $this;
     }
