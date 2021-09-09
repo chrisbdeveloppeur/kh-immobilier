@@ -44,10 +44,10 @@ class QuittancesController extends AbstractController
         $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
         $template->setValue("charges",$locataire->getLogement()->getCharges());
         $template->setValue("solde",$locataire->getLogement()->getSolde());
-        $template->setValue("payement_date",$locataire->getLogement()->getPaymentDate());
-        $template->setValue("first_day",$locataire->getLogement()->getFirstDay());
-        $template->setValue("last_day",$locataire->getLogement()->getLastDay());
-        $template->setValue("month",$locataire->getLogement()->getMonth());
+        $template->setValue("payement_date",$locataire->getLogement()->getPaymentDate()->format('d-m-Y'));
+        $template->setValue("first_day",$locataire->getLogement()->getFirstDay()->format('d'));
+        $template->setValue("last_day",$locataire->getLogement()->getLastDay()->format('d'));
+        $template->setValue("month",$locataire->getLogement()->getMonth()->format('m'));
         $file = "quittance_" . $date->format('d-m-Y_H-i-s');
 
         $new_quittance = new Quittance();
