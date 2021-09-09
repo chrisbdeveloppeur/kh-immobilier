@@ -10,14 +10,16 @@
     </div>
 
 
-    <div class="column is-flex is-justify-content-center is-align-items-center">
-        <div class="buttons">
+    <div class="column">
+        <div class="my-2 mx-2 has-text-centered">
             <a href="{{ asset('build/quittances/') }}{{ file_name }}.pdf" class="button" download="{{ file_name }}">
             <span class="icon">
                 <i class="fa fa-download"></i>
             </span>
                 <span>{{ file_name }} (.pdf)</span>
             </a>
+        </div>
+        <div class="my-2 mx-2 has-text-centered">
             <a href="{{ asset('build/quittances/') }}{{ file_name }}.docx" class="button" download="{{ file_name }}">
             <span class="icon">
                 <i class="fa fa-download"></i>
@@ -25,6 +27,7 @@
                 <span>{{ file_name }} (.docx)</span>
             </a>
         </div>
+
     </div>
 
 
