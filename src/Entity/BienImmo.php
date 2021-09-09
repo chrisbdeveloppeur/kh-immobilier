@@ -62,7 +62,7 @@ class BienImmo
     private $solde;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $payment_date;
 
@@ -85,6 +85,8 @@ class BienImmo
     {
         $this->locataires = new ArrayCollection();
         $this->solde = 0;
+        $current_date = new \DateTime('now');
+        $this->payment_date = $current_date->format('d/m/Y');
         $this->first_day = '1';
         $this->month = \Date('F');
         $this->last_day = \Date('t');
@@ -215,48 +217,48 @@ class BienImmo
         return $this;
     }
 
-    public function getPaymentDate(): ?\DateTimeInterface
+    public function getPaymentDate(): ?string
     {
         return $this->payment_date;
     }
 
-    public function setPaymentDate(?\DateTimeInterface $payment_date): self
+    public function setPaymentDate($payment_date): ?string
     {
         $this->payment_date = $payment_date;
 
         return $this;
     }
 
-    public function getFirstDay(): ?\DateTimeInterface
+    public function getFirstDay(): ?string
     {
         return $this->first_day;
     }
 
-    public function setFirstDay(?\DateTimeInterface $first_day): self
+    public function setFirstDay($first_day): ?string
     {
         $this->first_day = $first_day;
 
         return $this;
     }
 
-    public function getLastDay(): ?\DateTimeInterface
+    public function getLastDay(): ?string
     {
         return $this->last_day;
     }
 
-    public function setLastDay(?\DateTimeInterface $last_day): self
+    public function setLastDay($last_day): ?string
     {
         $this->last_day = $last_day;
 
         return $this;
     }
 
-    public function getMonth(): ?\DateTimeInterface
+    public function getMonth(): ?string
     {
         return $this->month;
     }
 
-    public function setMonth(?\DateTimeInterface $month): self
+    public function setMonth($month): ?string
     {
         $this->month = $month;
 
