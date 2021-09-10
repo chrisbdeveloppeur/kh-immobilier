@@ -68,7 +68,9 @@ class QuittancesController extends AbstractController
         $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
         $word->saveAs("../public/build/quittances/" . $file . ".docx");
 
-        $this->convertWordToPdf($file . ".docx");
+        $this->convertWordToPdf($file . ".docx", $loc_id);
+
+        //dd($this->convertWordToPdf($file . ".docx", $loc_id));
 
         //$this->addFlash('success',"La quittance à bien été édité !");
 
@@ -80,12 +82,18 @@ class QuittancesController extends AbstractController
     }
 
 
-    public function convertWordToPdf($file_name): Response
+    public function convertWordToPdf($file_name, $loc_id): Response
     {
         $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\quittances\\';
         $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\quittances';
-        shell_exec($cmd);
-        return $this->redirectToRoute("devis");
+
+        if (!shell_exec($cmd) == null){
+            shell_exec($cmd);
+        }
+
+        return $this->redirectToRoute("quittances",[
+            'loc_id' => $loc_id,
+        ]);
     }
 
     /**
