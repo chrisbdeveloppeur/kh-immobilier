@@ -36,6 +36,10 @@
                 <th>Loyer TTC</th>
                 <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
             </tr>
+            <tr>
+                <th>Solde</th>
+                <td>{{ bien_immo.solde }} €</td>
+            </tr>
         </tbody>
     </table>
 
@@ -47,7 +51,7 @@
             <th>Prénom</th>
             <th>Nom</th>
             <th>Sexe</th>
-            <th>Moyend de paiement</th>
+            <th>Moyen de paiement</th>
             <th>actions</th>
         </tr>
         </thead>
@@ -72,7 +76,7 @@
     </table>
 
     <div class="column">
-        <div class="buttons">
+        <div class="buttons is-justify-content-space-between has-text-centered">
             <a class="button is-light" href="{{ path('bien_immo_index') }}">Retour à la liste des Biens immobiliers</a>
 
             <a class="button is-light" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier ce bien</a>
