@@ -18,6 +18,8 @@
 
 <section class="">
 
+{#    {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}#}
+
     {{ include('includes/header.html.twig') }}
 
     <div class="hero is-small is-dark is-bold">
@@ -43,12 +45,6 @@
             axios.get(url).then(function (response) {
             })
         }
-
-        // let onOffInviteBtns = document.querySelectorAll('a.on-off-invite-ajax');
-        //
-        // onOffInviteBtns.forEach(function (element){
-        //     element.addEventListener('click' || 'touchstart', onOffInvite);
-        // });
     </script>
 
 

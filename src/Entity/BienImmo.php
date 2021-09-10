@@ -88,7 +88,11 @@ class BienImmo
         $current_date = new \DateTime('now');
         $this->payment_date = $current_date->format('d/m/Y');
         $this->first_day = '1';
-        $this->month = \Date('F');
+//        $this->month = \Date('F');
+//        setlocale(LC_TIME, 'fr_FR');
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
+        date_default_timezone_set('Europe/Paris');
+        $this->month = strftime("%B");
         $this->last_day = \Date('t');
     }
 
