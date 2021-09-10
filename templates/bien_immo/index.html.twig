@@ -16,6 +16,7 @@
                 <th>Loyer HC</th>
                 <th>Charges</th>
                 <th>Loyer TTC</th>
+                <th>Solde</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,10 +24,12 @@
         {% set total_loyer_ttc = 0 %}
         {% set total_loyer_hc = 0 %}
         {% set total_charges = 0 %}
+        {% set total_solde = 0 %}
         {% for bien_immo in bien_immos %}
             {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
             {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
             {% set total_charges =  total_charges + bien_immo.charges %}
+            {% set total_solde = total_solde + bien_immo.solde %}
             <tr>
                 <td>{{ bien_immo.building }}</td>
                 <td>{{ bien_immo.street }}</td>
@@ -35,6 +38,7 @@
                 <td>{{ bien_immo.loyerHc }} €</td>
                 <td>{{ bien_immo.charges }} €</td>
                 <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
+                <td>{{ bien_immo.solde }} €</td>
                 <td>
                     <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>
                     <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>
@@ -63,6 +67,11 @@
             <th>
                 <span>Total</span><br>
                 {{ total_loyer_ttc }} €
+            </th>
+            </th>
+            <th>
+                <span>Total soldes</span><br>
+                {{ total_solde }} €
             </th>
             <th></th>
         </tr>
