@@ -70,13 +70,18 @@ class QuittancesController extends AbstractController
 
         $this->convertWordToPdf($file . ".docx", $loc_id);
 
-        //dd($this->convertWordToPdf($file . ".docx", $loc_id));
+        if (file_exists('../public/build/quittances/' . $file . '.pdf')){
+            $pdf_exist = true;
+        }else{
+            $pdf_exist = false;
+        }
 
         //$this->addFlash('success',"La quittance à bien été édité !");
 
         return $this->render("immo/quittances/download_file.html.twig",[
             "file_name" => $file,
             "locataire" => $locataire,
+            "pdf_exist" => $pdf_exist,
         ]);
 
     }

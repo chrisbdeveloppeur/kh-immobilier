@@ -5,13 +5,15 @@
 
 {% block body %}
 
-    {% if asset('build/quittances/') %}
+    {% if pdf_exist %}
     <div class="column is-flex is-justify-content-center is-align-items-center">
        <iframe src="{{ asset('build/quittances/') }}{{ file_name }}.pdf" width="450" height="700" align="middle"></iframe>
     </div>
+    {% endif %}
 
 
     <div class="column">
+        {% if pdf_exist %}
         <div class="my-2 mx-2 has-text-centered">
             <a href="{{ asset('build/quittances/') }}{{ file_name }}.pdf" class="button" download="{{ file_name }}">
             <span class="icon">
@@ -20,6 +22,7 @@
                 <span>{{ file_name }} (.pdf)</span>
             </a>
         </div>
+        {% endif %}
         <div class="my-2 mx-2 has-text-centered">
             <a href="{{ asset('build/quittances/') }}{{ file_name }}.docx" class="button" download="{{ file_name }}">
             <span class="icon">
