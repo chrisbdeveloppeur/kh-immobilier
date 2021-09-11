@@ -33,7 +33,7 @@
     {% block nav_secondaire %}
         {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') %}
             <div class="is-flex-desktop is-justify-content-space-between">
-                <div class="column has-text-centered-touch">
+                <div class="column buttons has-text-centered-touch">
                     <a href="{{ path('immo_accueil') }}" class="button is-dark bg-info-onhover">Vue d'ensemble</a>
                     <a href="{{ path('bien_immo_index') }}" class="button is-dark bg-info-onhover">Vos biens</a>
                     <a href="{{ path('locataire_index') }}" class="button is-dark bg-info-onhover">Vos locataires</a>
