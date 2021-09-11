@@ -6,16 +6,8 @@
 
 {% block body %}
 
-            <div class="is-flex-desktop is-justify-content-space-between">
-                <div class="column has-text-centered-touch">
-                    <a href="{{ path('bien_immo_index') }}" class="button is-dark bg-info-onhover">Vos biens</a>
-                    <a href="{{ path('locataire_index') }}" class="button is-dark bg-info-onhover">Vos locataires</a>
-                </div>
-                <div class="column has-text-centered-touch has-text-right-desktop">
-                    <a href="{{ path('bien_immo_new') }}" class="button is-dark bg-info-onhover">Ajouter un bien</a>
-                    <a href="{{ path('locataire_new') }}" class="button is-dark bg-info-onhover">Ajouter un locataire</a>
-                </div>
-            </div>
+
+
             <div class="column is-flex-desktop is-align-items-center is-flex-direction-column">
 
                     {% set total_loyer_ttc = 0 %}

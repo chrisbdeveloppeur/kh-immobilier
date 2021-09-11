@@ -56,6 +56,7 @@ class QuittancesController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($new_quittance);
         $em->flush();
+        $template->setValue("quittance_id", $new_quittance->getId());
 
         if (!file_exists('../assets/files/quittances/')) {
             mkdir('../assets/files/quittances/', 0777, true);

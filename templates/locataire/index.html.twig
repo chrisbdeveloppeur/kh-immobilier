@@ -5,51 +5,54 @@
 {% block title_main %}Vos locataires{% endblock %}
 
 {% block body %}
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                    <th>Prénom</th>
-                <th>Nom</th>
-                <th>Sexe</th>
-                <th>Moyen de paiement</th>
-                <th>Logement</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for locataire in locataires %}
-            <tr>
-                <td>{{ locataire.id }}</td>
-                <td>{{ locataire.firstName }}</td>
-                <td>{{ locataire.lastName }}</td>
-                <td>{{ locataire.gender }}</td>
-                <td>{{ locataire.mode }}</td>
-                <td>
-                    {% if locataire.logement %}
-                        <a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}"> {{ locataire.logement }}, {{ locataire.logement.street }}, {{ locataire.logement.cp }} {{ locataire.logement.city }}</a>
-                    {% else %}
-                        <i>N/A</i>
-                    {% endif %}
-                </td>
-                <td>
-                    <div class="column">
-                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
-                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
-                        <a href="{{ path('quittances', {'loc_id': locataire.id }) }}" >Quittance</a>
-                    </div>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
+    <div class="field" style="max-width: 100vw;overflow-y: auto">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                        <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Sexe</th>
+                    <th>Moyen de paiement</th>
+                    <th>Logement</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for locataire in locataires %}
+                <tr>
+                    <td>{{ locataire.id }}</td>
+                    <td>{{ locataire.firstName }}</td>
+                    <td>{{ locataire.lastName }}</td>
+                    <td>{{ locataire.gender }}</td>
+                    <td>{{ locataire.mode }}</td>
+                    <td>
+                        {% if locataire.logement %}
+                            <a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}"> {{ locataire.logement }}</a>
+                        {% else %}
+                            <i>N/A</i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="column">
+                            <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
+                            <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
+                            <a href="{{ path('quittances', {'loc_id': locataire.id }) }}" >Quittance</a>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     <div class="buttons my-3 mx-3">
         <a href="{{ path('locataire_new') }}" class="is-light button">Ajouter un locataire</a>
     </div>
+</section>
 {% endblock %}

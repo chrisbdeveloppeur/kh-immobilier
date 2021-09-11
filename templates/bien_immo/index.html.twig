@@ -5,80 +5,88 @@
 {% block title_main %}Listes des Biens immobiliers{% endblock %}
 
 {% block body %}
-
-    <table class="table">
-        <thead>
+<section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
+    <div class="field" style="max-width: 100vw;overflow-y: auto">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Complément d'adresse</th>
+                    <th>Rue</th>
+                    <th>CP</th>
+                    <th>Ville</th>
+                    <th>Loyer HC</th>
+                    <th>Charges</th>
+                    <th>Loyer TTC</th>
+                    <th>Solde</th>
+                    <th>Locataire</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set total_loyer_ttc = 0 %}
+            {% set total_loyer_hc = 0 %}
+            {% set total_charges = 0 %}
+            {% set total_solde = 0 %}
+            {% for bien_immo in bien_immos %}
+                {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
+                {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
+                {% set total_charges =  total_charges + bien_immo.charges %}
+                {% set total_solde = total_solde + bien_immo.solde %}
+                <tr>
+                    <td>{{ bien_immo.building }}</td>
+                    <td>{{ bien_immo.street }}</td>
+                    <td>{{ bien_immo.cp }}</td>
+                    <td>{{ bien_immo.city }}</td>
+                    <td>{{ bien_immo.loyerHc }} €</td>
+                    <td>{{ bien_immo.charges }} €</td>
+                    <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
+                    <td>{{ bien_immo.solde }} €</td>
+                    <td>
+                        <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">{{ bien_immo.locataires.current.firstName }} {{ bien_immo.locataires.current.lastName }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>
+                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">Vous n'avez aucun Biens immobiliers enreggistrés</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
             <tr>
-                <th>Complément d'adresse</th>
-                <th>Rue</th>
-                <th>CP</th>
-                <th>Ville</th>
-                <th>Loyer HC</th>
-                <th>Charges</th>
-                <th>Loyer TTC</th>
-                <th>Solde</th>
-                <th>actions</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                    <span>Total</span><br>
+                    {{ total_loyer_hc }} €
+                </th>
+                <th>
+                    <span>Total</span><br>
+                    {{ total_charges }} €
+                </th>
+                <th>
+                    <span>Total</span><br>
+                    {{ total_loyer_ttc }} €
+                </th>
+                </th>
+                <th>
+                    <span>Total soldes</span><br>
+                    {{ total_solde }} €
+                </th>
+                <th></th>
+                <th></th>
             </tr>
-        </thead>
-        <tbody>
-        {% set total_loyer_ttc = 0 %}
-        {% set total_loyer_hc = 0 %}
-        {% set total_charges = 0 %}
-        {% set total_solde = 0 %}
-        {% for bien_immo in bien_immos %}
-            {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
-            {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
-            {% set total_charges =  total_charges + bien_immo.charges %}
-            {% set total_solde = total_solde + bien_immo.solde %}
-            <tr>
-                <td>{{ bien_immo.building }}</td>
-                <td>{{ bien_immo.street }}</td>
-                <td>{{ bien_immo.cp }}</td>
-                <td>{{ bien_immo.city }}</td>
-                <td>{{ bien_immo.loyerHc }} €</td>
-                <td>{{ bien_immo.charges }} €</td>
-                <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
-                <td>{{ bien_immo.solde }} €</td>
-                <td>
-                    <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">Vous n'avez aucun Biens immobiliers enreggistrés</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>
-                <span>Total</span><br>
-                {{ total_loyer_hc }} €
-            </th>
-            <th>
-                <span>Total</span><br>
-                {{ total_charges }} €
-            </th>
-            <th>
-                <span>Total</span><br>
-                {{ total_loyer_ttc }} €
-            </th>
-            </th>
-            <th>
-                <span>Total soldes</span><br>
-                {{ total_solde }} €
-            </th>
-            <th></th>
-        </tr>
-        </tfoot>
-    </table>
+            </tfoot>
+        </table>
+    </div>
 
     <div class="column">
         <a href="{{ path('bien_immo_new') }}" class="button is-light">Ajouter un Bien</a>
     </div>
+</section>
 {% endblock %}

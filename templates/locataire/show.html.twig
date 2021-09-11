@@ -5,16 +5,15 @@
 {% block title_main %}Locataire : {{ locataire.firstName }} {{ locataire.lastName }}{% endblock %}
 
 {% block body %}
-
+<section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
     <div class="my-3 mx-3">
         <div class="buttons">
             <a href="{{ path('locataire_index') }}" class="button is-light">Retour à la liste des locataires</a>
-
             <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="button is-light">Modifier ce locataire</a>
         </div>
     </div>
 
-    <div class="column">
+    <div class="field" style="max-width: 100vw;overflow-y: auto">
         <table class="table">
             <tbody>
             <tr>
@@ -39,17 +38,18 @@
             </tr>
             <tr>
                 <th>Logement</th>
-                <td>{{ locataire.logement }}, {{ locataire.logement.street }}, {{ locataire.logement.cp }} {{ locataire.logement.city }}</td>
+                <td>
+                    <a href="{{ path('bien_immo_show', {'id': locataire.id }) }}">{{ locataire.logement }}</a>
+                </td>
             </tr>
             <tr>
-                <th>Quittance</th>
                 <td><a href="{{ path('quittances', {'loc_id': locataire.id }) }}" class="tag is-dark">Editer une quittance</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-
-
-
     {{ include('locataire/_delete_form.html.twig') }}
+</section>
+
+
 {% endblock %}

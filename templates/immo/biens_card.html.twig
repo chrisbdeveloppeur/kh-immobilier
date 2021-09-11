@@ -19,8 +19,7 @@
         </div>
     </div>
     <footer class="card-footer">
-        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Détails</a>
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
-        <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-size-7">Editer une quittance</a>
+        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
+        <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Editer une quittance</a>
     </footer>
 </div>

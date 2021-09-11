@@ -5,9 +5,17 @@
 {% block title_main %}Votre bien : {{ bien_immo.building }}{% endblock %}
 
 {% block body %}
+<section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
+    <div class="column">
+        <div class="buttons is-justify-content-space-between has-text-centered">
+            <a class="button is-light" href="{{ path('bien_immo_index') }}">Retour à la liste des Biens immobiliers</a>
+            <a class="button is-light" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier ce bien</a>
+        </div>
+    </div>
 
-    <table class="table">
-        <tbody>
+    <div class="field" style="max-width: 100vw;overflow-y: auto">
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Complément d'adresse</th>
                 <td>{{ bien_immo.building }}</td>
@@ -40,50 +48,45 @@
                 <th>Solde</th>
                 <td>{{ bien_immo.solde }} €</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 
     <h2 class="title has-text-centered">Locataire(s)</h2>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Sexe</th>
-            <th>Moyen de paiement</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for locataire in locataires %}
+    <div class="field" style="max-width: 100vw;overflow-y: auto">
+        <table class="table">
+            <thead>
             <tr>
-                <td>{{ locataire.firstName }}</td>
-                <td>{{ locataire.lastName }}</td>
-                <td>{{ locataire.gender }}</td>
-                <td>{{ locataire.mode }}</td>
-                <td>
-                    <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
-                    <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
-                </td>
+                <th>Sexe</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Moyen de paiement</th>
+                <th>actions</th>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">Aucun locataire n'est attribué à ce logement</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <div class="column">
-        <div class="buttons is-justify-content-space-between has-text-centered">
-            <a class="button is-light" href="{{ path('bien_immo_index') }}">Retour à la liste des Biens immobiliers</a>
-
-            <a class="button is-light" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier ce bien</a>
-        </div>
-
+            </thead>
+            <tbody>
+            {% for locataire in locataires %}
+                <tr>
+                    <td>{{ locataire.gender }}</td>
+                    <td>{{ locataire.firstName }}</td>
+                    <td>{{ locataire.lastName }}</td>
+                    <td>{{ locataire.mode }}</td>
+                    <td>
+                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
+                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">Aucun locataire n'est attribué à ce logement</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 
-
     {{ include('bien_immo/_delete_form.html.twig') }}
+</section>
+
 {% endblock %}
