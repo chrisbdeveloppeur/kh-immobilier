@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LocataireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,16 @@ class Locataire
      * @ORM\JoinColumn(onDelete="SET NULL");
      */
     private $logement;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Quittance::class, mappedBy="locataire")
+     */
+    private $Quittances;
+
+    public function __construct()
+    {
+        $this->Quittances = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +116,36 @@ class Locataire
     public function setLogement(?BienImmo $logement): self
     {
         $this->logement = $logement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quittance[]
+     */
+    public function getQuittances(): Collection
+    {
+        return $this->Quittances;
+    }
+
+    public function addQuittance(Quittance $quittance): self
+    {
+        if (!$this->Quittances->contains($quittance)) {
+            $this->Quittances[] = $quittance;
+            $quittance->setLocataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuittance(Quittance $quittance): self
+    {
+        if ($this->Quittances->removeElement($quittance)) {
+            // set the owning side to null (unless already changed)
+            if ($quittance->getLocataire() === $this) {
+                $quittance->setLocataire(null);
+            }
+        }
 
         return $this;
     }

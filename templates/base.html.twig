@@ -14,7 +14,7 @@
 {#        {{ encore_entry_script_tags('app') }}#}
 {#    {% endblock %}#}
 </head>
-<body>
+<body class="has-navbar-fixed-top">
 
 <section class="">
 
@@ -31,7 +31,7 @@
     </div>
 
     {% block nav_secondaire %}
-        {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') %}
+        {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') %}
             <div class="is-flex-desktop is-justify-content-space-between">
                 <div class="column buttons has-text-centered-touch">
                     <a href="{{ path('immo_accueil') }}" class="button is-dark bg-info-onhover">Vue d'ensemble</a>

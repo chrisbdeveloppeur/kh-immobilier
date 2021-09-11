@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Quittance;
 use App\Form\QuittancesType;
 use App\Repository\LocataireRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ class QuittancesController extends AbstractController
     /**
      * @Route("/quittances-{loc_id}", name="quittances")
      */
-    public function home(Request $request, $loc_id, LocataireRepository $locataireRepository): Response
+    public function home(Request $request, $loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em): Response
     {
 
         $locataire = $locataireRepository->find($loc_id);
@@ -52,11 +53,11 @@ class QuittancesController extends AbstractController
 
         $new_quittance = new Quittance();
         $new_quittance->setFileName($file);
+        $new_quittance->setLocataire($locataire);
         $new_quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
-        $em = $this->getDoctrine()->getManager();
         $em->persist($new_quittance);
         $em->flush();
-        $template->setValue("quittance_id", $new_quittance->getId());
+        $template->setValue("quittance_id", $locataire->getQuittances()->count());
 
         if (!file_exists('../assets/files/quittances/')) {
             mkdir('../assets/files/quittances/', 0777, true);

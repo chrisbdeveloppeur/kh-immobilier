@@ -27,6 +27,11 @@ class Quittance
      */
     private $created_date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Locataire::class, inversedBy="Quittances")
+     */
+    private $locataire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Quittance
     public function setCreatedDate(\DateTimeInterface $created_date): self
     {
         $this->created_date = $created_date;
+
+        return $this;
+    }
+
+    public function getLocataire(): ?Locataire
+    {
+        return $this->locataire;
+    }
+
+    public function setLocataire(?Locataire $locataire): self
+    {
+        $this->locataire = $locataire;
 
         return $this;
     }
