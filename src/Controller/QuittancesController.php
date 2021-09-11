@@ -49,7 +49,7 @@ class QuittancesController extends AbstractController
         $template->setValue("first_day",$locataire->getLogement()->getFirstDay());
         $template->setValue("last_day",$locataire->getLogement()->getLastDay());
         $template->setValue("month",$locataire->getLogement()->getMonth());
-        $file = "quittance_" . $date->format('d-m-Y_H-i-s');
+        $file = "quittance_" . $date->format('F') . $locataire->getLastName();
 
         $new_quittance = new Quittance();
         $new_quittance->setFileName($file);
