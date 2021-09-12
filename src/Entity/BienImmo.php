@@ -82,6 +82,11 @@ class BienImmo
      */
     private $month;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Quittance::class, mappedBy="bien_immo")
+     */
+    private $quittances;
+
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
@@ -95,6 +100,7 @@ class BienImmo
         date_default_timezone_set('Europe/Paris');
         $this->month = strftime("%B");
         $this->last_day = \Date('t');
+        $this->quittances = new ArrayCollection();
     }
 
     public function __toString()
@@ -266,6 +272,36 @@ class BienImmo
     public function setMonth($month): ?string
     {
         $this->month = $month;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quittance[]
+     */
+    public function getQuittances(): Collection
+    {
+        return $this->quittances;
+    }
+
+    public function addQuittance(Quittance $quittance): self
+    {
+        if (!$this->quittances->contains($quittance)) {
+            $this->quittances[] = $quittance;
+            $quittance->setBienImmo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuittance(Quittance $quittance): self
+    {
+        if ($this->quittances->removeElement($quittance)) {
+            // set the owning side to null (unless already changed)
+            if ($quittance->getBienImmo() === $this) {
+                $quittance->setBienImmo(null);
+            }
+        }
 
         return $this;
     }

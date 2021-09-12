@@ -34,6 +34,11 @@ class Quittance
      */
     private $locataire;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="quittances")
+     */
+    private $bien_immo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +76,18 @@ class Quittance
     public function setLocataire(?Locataire $locataire): self
     {
         $this->locataire = $locataire;
+
+        return $this;
+    }
+
+    public function getBienImmo(): ?BienImmo
+    {
+        return $this->bien_immo;
+    }
+
+    public function setBienImmo(?BienImmo $bien_immo): self
+    {
+        $this->bien_immo = $bien_immo;
 
         return $this;
     }

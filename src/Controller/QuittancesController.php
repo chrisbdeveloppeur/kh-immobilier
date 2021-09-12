@@ -54,14 +54,12 @@ class QuittancesController extends AbstractController
         $file = "quittance_" . strftime("%B_") . $locataire->getLastName();
 
         $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
-//        dd($quittance);
-//        dump($quittance);
-//        dd($locataire->getQuittances()->contains($quittance));
 
         if (!$locataire->getQuittances()->contains($quittance)){
             $new_quittance = new Quittance();
             $new_quittance->setFileName($file);
             $new_quittance->setLocataire($locataire);
+            $new_quittance->setBienImmo($locataire->getLogement());
             $new_quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
             $em->persist($new_quittance);
             $em->flush();
