@@ -51,6 +51,9 @@
                     <td>
                         <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>
                         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>
+                        {% if bien_immo.locataires is not empty %}
+                            <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id }) }}">Quittance</a>
+                        {% endif %}
                     </td>
                 </tr>
             {% else %}

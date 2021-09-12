@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Quittance;
 use App\Form\QuittancesType;
 use App\Repository\LocataireRepository;
+use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +17,10 @@ class QuittancesController extends AbstractController
     /**
      * @Route("/quittances-{loc_id}", name="quittances")
      */
-    public function home(Request $request, $loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em): Response
+    public function home(Request $request, $loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
     {
-
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
+        date_default_timezone_set('Europe/Paris');
         $locataire = $locataireRepository->find($loc_id);
         $date = new \DateTime();
         $loyer_ttc = $locataire->getLogement()->getLoyerHc() + $locataire->getLogement()->getCharges();
@@ -49,28 +51,37 @@ class QuittancesController extends AbstractController
         $template->setValue("first_day",$locataire->getLogement()->getFirstDay());
         $template->setValue("last_day",$locataire->getLogement()->getLastDay());
         $template->setValue("month",$locataire->getLogement()->getMonth());
-        $file = "quittance_" . $date->format('F') . $locataire->getLastName();
+        $file = "quittance_" . strftime("%B_") . $locataire->getLastName();
 
-        $new_quittance = new Quittance();
-        $new_quittance->setFileName($file);
-        $new_quittance->setLocataire($locataire);
-        $new_quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
-        $em->persist($new_quittance);
-        $em->flush();
-        $template->setValue("quittance_id", $locataire->getQuittances()->count());
+        $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
+//        dd($quittance);
+//        dump($quittance);
+//        dd($locataire->getQuittances()->contains($quittance));
 
-        if (!file_exists('../assets/files/quittances/')) {
-            mkdir('../assets/files/quittances/', 0777, true);
-        }
-        if (!file_exists('../public/build/quittances/')) {
-            mkdir('../public/build/quittances/', 0777, true);
-        }
+        if (!$locataire->getQuittances()->contains($quittance)){
+            $new_quittance = new Quittance();
+            $new_quittance->setFileName($file);
+            $new_quittance->setLocataire($locataire);
+            $new_quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
+            $em->persist($new_quittance);
+            $em->flush();
+
+            $template->setValue("quittance_id", $locataire->getQuittances()->count());
+
+            if (!file_exists('../assets/files/quittances/')) {
+                mkdir('../assets/files/quittances/', 0777, true);
+            }
+            if (!file_exists('../public/build/quittances/')) {
+                mkdir('../public/build/quittances/', 0777, true);
+            }
 //        $path_to_file = "../assets/files/edited_files/" . $file . ".pdf";
-        $template->saveAs("../assets/files/quittances/" . $file . ".docx");
-        $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
-        $word->saveAs("../public/build/quittances/" . $file . ".docx");
+            $template->saveAs("../assets/files/quittances/" . $file . ".docx");
+            $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
+            $word->saveAs("../public/build/quittances/" . $file . ".docx");
 
-        $this->convertWordToPdf($file . ".docx", $loc_id);
+            $this->convertWordToPdf($file . ".docx", $loc_id);
+
+        }
 
         if (file_exists('../public/build/quittances/' . $file . '.pdf')){
             $pdf_exist = true;
