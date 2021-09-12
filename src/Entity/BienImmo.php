@@ -87,8 +87,31 @@ class BienImmo
      */
     private $quittances;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $echeance;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $pasted_echeance;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $current_month_paid;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $malus_solde;
+
     public function __construct()
     {
+        $this->pasted_echeance = false;
+        $this->current_month_paid = false;
+        $this->malus_solde = false;
         $this->locataires = new ArrayCollection();
         $this->solde = 0;
         $current_date = new \DateTime('now');
@@ -302,6 +325,54 @@ class BienImmo
                 $quittance->setBienImmo(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEcheance(): ?int
+    {
+        return $this->echeance;
+    }
+
+    public function setEcheance(?int $echeance): self
+    {
+        $this->echeance = $echeance;
+
+        return $this;
+    }
+
+    public function getPastedEcheance(): ?bool
+    {
+        return $this->pasted_echeance;
+    }
+
+    public function setPastedEcheance(bool $pasted_echeance): self
+    {
+        $this->pasted_echeance = $pasted_echeance;
+
+        return $this;
+    }
+
+    public function getCurrentMonthPaid(): ?bool
+    {
+        return $this->current_month_paid;
+    }
+
+    public function setCurrentMonthPaid(bool $current_month_paid): self
+    {
+        $this->current_month_paid = $current_month_paid;
+
+        return $this;
+    }
+
+    public function getMalusSolde(): ?bool
+    {
+        return $this->malus_solde;
+    }
+
+    public function setMalusSolde(bool $malus_solde): self
+    {
+        $this->malus_solde = $malus_solde;
 
         return $this;
     }

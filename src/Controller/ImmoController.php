@@ -17,6 +17,15 @@ class ImmoController extends AbstractController
      */
     public function index(BienImmoRepository $bienImmoRepository): Response
     {
+
+        $biensImmos = $bienImmoRepository->findAll();
+        foreach ($biensImmos as $date){
+            $echeance = $date->getEcheance();
+            $current_day = date('d');
+            dump(strval($current_day));
+        }
+        die();
+
         $bien_immos = $bienImmoRepository->findAll();
         return $this->render('immo/homepage.html.twig', [
             "bien_immos" => $bien_immos,

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\BienImmoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,9 +13,8 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(Request $request): Response
+    public function home(): Response
     {
-
         return $this->render('accueil.html.twig', [
 
         ]);
