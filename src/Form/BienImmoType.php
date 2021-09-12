@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\BienImmo;
+use App\Entity\Locataire;
+use App\Repository\LocataireRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -45,6 +48,13 @@ class BienImmoType extends AbstractType
             ->add('solde', NumberType::class, [
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
+            ])
+            ->add('locataires', EntityType::class,[
+                'class' => Locataire::class,
+                'query_builder' => function (LocataireRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.last_name', 'ASC');
+                },
             ])
         ;
     }

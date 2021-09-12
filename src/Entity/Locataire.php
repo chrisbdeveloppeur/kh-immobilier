@@ -55,6 +55,12 @@ class Locataire
         $this->Quittances = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        $name = $this->getLastName() . $this->getFirstName();
+        return $name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
