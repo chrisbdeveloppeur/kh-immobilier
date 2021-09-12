@@ -1,7 +1,21 @@
 <div class="card">
     <header class="card-header has-background-dark">
         <p class="card-header-title has-text-light is-justify-content-center">
-            {{ bien_immo.building }}
+            {% if bien_immo.locataires is empty %}
+                <span class="icon-text has-text-light">
+                    <span class="icon">
+                      <i class="fas fa-lg fa-home"></i>
+                    </span>
+                    <span>{{ bien_immo.building }}</span>
+                </span>
+            {% else %}
+                <span class="icon-text has-text-success">
+                    <span class="icon">
+                      <i class="fas fa-lg fa-house-user"></i>
+                    </span>
+                    <span>{{ bien_immo.building }}</span>
+                </span>
+            {% endif %}
         </p>
     </header>
     <div class="card-content has-background-light">

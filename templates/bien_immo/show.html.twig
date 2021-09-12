@@ -62,7 +62,7 @@
                 <th>Prénom</th>
                 <th>Nom</th>
                 <th>Moyen de paiement</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -73,9 +73,23 @@
                     <td>{{ locataire.lastName }}</td>
                     <td>{{ locataire.mode }}</td>
                     <td>
-                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
-                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
-                        <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': locataire.id}) }}">Retrait locataire</a>
+                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}" title="Voir les détails">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-search"></i>
+                            </span>
+                        </a>
+
+                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier les informations du locataire">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-pen-square"></i>
+                            </span>
+                        </a>
+
+                        <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': locataire.id}) }}" title="Retirer le locataire">
+                            <span class="icon">
+                                <i class="fas fa-user-minus"></i>
+                            </span>
+                        </a>
                     </td>
                 </tr>
             {% else %}
