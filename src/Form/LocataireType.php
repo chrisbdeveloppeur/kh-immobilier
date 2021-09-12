@@ -20,15 +20,15 @@ class LocataireType extends AbstractType
             ->add('last_name')
             ->add('gender', ChoiceType::class,[
                 'choices' => [
-                    'Homme' => 'Monsieur',
-                    'Femme' => 'Madame'
+                    'Homme' => 'M.',
+                    'Femme' => 'Mme.'
                 ]
             ])
             ->add('mode', ChoiceType::class,[
                 'choices' => [
-                    'Virement banquaire' => 'virement_banquaire',
-                    'Espèces' => 'especes',
-                    'Chèque' => 'cheque',
+                    'Virement banquaire' => 'Virement banquaire',
+                    'Espèces' => 'Espèces',
+                    'Chèque' => 'Chèque',
                 ]
             ])
             ->add('logement', EntityType::class,[

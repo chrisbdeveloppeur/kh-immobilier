@@ -39,7 +39,14 @@
             <tr>
                 <th>Logement</th>
                 <td>
-                    <a href="{{ path('bien_immo_show', {'id': locataire.id }) }}">{{ locataire.logement }}</a>
+                    <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.id }) }}">
+                        <span class="icon-text has-text-info">
+                            <span>{{ locataire.logement }}</span>
+                            <span class="icon">
+                                <i class="fas fa-search fa-search-js"></i>
+                            </span>
+                        </span>
+                    </a>
                 </td>
             </tr>
             <tr>
