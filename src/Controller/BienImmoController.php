@@ -68,7 +68,9 @@ class BienImmoController extends AbstractController
      */
     public function edit(Request $request, BienImmo $bienImmo): Response
     {
+        $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
+        $form->get('locataires')->setData($locataire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
