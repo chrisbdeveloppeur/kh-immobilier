@@ -7,6 +7,7 @@ use App\Form\BienImmo1Type;
 use App\Form\BienImmoType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -92,6 +93,21 @@ class BienImmoController extends AbstractController
             $entityManager->remove($bienImmo);
             $entityManager->flush();
         }
+
+        return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/{id}/remove-locataire-{loc_id}", name="remove_loctataire", methods={"GET","POST"})
+     */
+    public function removeLocataire(Request $request, $id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
+    {
+        $locataire = $locataireRepository->find($loc_id);
+        $bienImmo = $bienImmoRepository->find($id);
+        $bienImmo->removeLocataire($locataire);
+        $em->flush();
+
+        $this->addFlash('warning', 'le locataire à été retiré');
 
         return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
     }
