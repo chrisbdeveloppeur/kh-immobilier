@@ -8,11 +8,20 @@
             </div>
 
             {{ form_widget(child, {'attr': {'class': 'input'} }) }}
-            {{ form_help(child) }}
-            {{ form_errors(child) }}
+
+            <span class="help">
+                {{ form_help(child) }}
+            </span>
+
+            {% if form_errors(child) %}
+                <span class="tag is-danger">
+                    {{ form_errors(child) }}
+                </span>
+            {% endif %}
+
         </div>
     {% endfor %}
-        <div class="field">
+        <div class="field has-text-centered">
             <button class="button is-success">{{ button_label|default('Valider') }}</button>
         </div>
     {{ form_end(form) }}

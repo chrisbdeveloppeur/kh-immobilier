@@ -42,7 +42,11 @@
                     <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
                     <td>{{ bien_immo.solde }} €</td>
                     <td>
-                        <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">{{ bien_immo.locataires.current.firstName }} {{ bien_immo.locataires.current.lastName }}</a>
+                        {% if bien_immo.locataires is not empty %}
+                            <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">{{ bien_immo.locataires.current.firstName }} {{ bien_immo.locataires.current.lastName }}</a>
+                        {% else %}
+                            Sans locataire
+                        {% endif %}
                     </td>
                     <td>
                         <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>
