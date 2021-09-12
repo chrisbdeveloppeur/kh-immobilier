@@ -10,16 +10,36 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Complément d'adresse</th>
-                    <th>Rue</th>
-                    <th>CP</th>
-                    <th>Ville</th>
-                    <th>Loyer HC</th>
-                    <th>Charges</th>
-                    <th>Loyer TTC</th>
-                    <th>Solde</th>
-                    <th>Locataire</th>
-                    <th>actions</th>
+                    <th>
+                        <span>Complément d'adresse</span>
+                    </th>
+                    <th>
+                        <span>Rue</span>
+                    </th>
+                    <th>
+                        <span>CP</span>
+                    </th>
+                    <th>
+                        <span>Ville</span>
+                    </th>
+                    <th>
+                        <span>Loyer HC</span>
+                    </th>
+                    <th>
+                        <span>Charges</span>
+                    </th>
+                    <th>
+                        <span>Loyer TTC</span>
+                    </th>
+                    <th>
+                        <span>Solde</span>
+                    </th>
+                    <th>
+                        <span>Locataire</span>
+                    </th>
+                    <th>
+                        <span>actions</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -49,11 +69,28 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>
-                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>
+                        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-search"></i>
+                            </span>
+                        </a>
+                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-pen-square"></i>
+                            </span>
+                        </a>
                         {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id }) }}">Quittance</a>
+                            <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">
+                                <span class="icon">
+                                    <i class="fas fa-lg fa-file-contract"></i>
+                                </span>
+                            </a>
                         {% endif %}
+{#                        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>#}
+{#                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>#}
+{#                        {% if bien_immo.locataires is not empty %}#}
+{#                            <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id }) }}">Quittance</a>#}
+{#                        {% endif %}#}
                     </td>
                 </tr>
             {% else %}
@@ -69,21 +106,16 @@
                 <th></th>
                 <th></th>
                 <th>
-                    <span>Total</span><br>
-                    {{ total_loyer_hc }} €
+                    <span>{{ total_loyer_hc }} €</span>
                 </th>
                 <th>
-                    <span>Total</span><br>
-                    {{ total_charges }} €
+                    <span>{{ total_charges }} €</span>
                 </th>
                 <th>
-                    <span>Total</span><br>
-                    {{ total_loyer_ttc }} €
-                </th>
+                    <span>{{ total_loyer_ttc }} €</span>
                 </th>
                 <th>
-                    <span>Total soldes</span><br>
-                    {{ total_solde }} €
+                    <span>{{ total_solde }} €</span>
                 </th>
                 <th></th>
                 <th></th>

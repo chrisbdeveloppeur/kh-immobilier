@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/QuittancesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuittancesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Quittance.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Quittance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/bien_immo/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bien_immo/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,22 +58,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/bien_immo/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="54" column="74" selection-start-line="54" selection-start-column="74" selection-end-line="54" selection-end-column="74" />
+            <state relative-caret-position="329">
+              <caret line="82" column="122" selection-start-line="82" selection-start-column="122" selection-end-line="82" selection-end-column="122" />
               <folding>
-                <element signature="e#2469#2479#0#Twig" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="e#3457#3467#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="1377">
               <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
             </state>
           </provider>
@@ -110,7 +119,6 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/Form/LocataireType.php" />
         <option value="$PROJECT_DIR$/src/Controller/ImmoController.php" />
-        <option value="$PROJECT_DIR$/assets/styles/app.scss" />
         <option value="$PROJECT_DIR$/templates/job/devis/edit_devis.html.twig" />
         <option value="$PROJECT_DIR$/templates/job/factures/edit_facture.html.twig" />
         <option value="$PROJECT_DIR$/templates/job/devis/download_file.html.twig" />
@@ -145,9 +153,10 @@
         <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
         <option value="$PROJECT_DIR$/src/Form/BienImmoType.php" />
         <option value="$PROJECT_DIR$/src/Controller/BienImmoController.php" />
-        <option value="$PROJECT_DIR$/templates/bien_immo/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Quittance.php" />
         <option value="$PROJECT_DIR$/src/Controller/QuittancesController.php" />
+        <option value="$PROJECT_DIR$/assets/styles/app.scss" />
+        <option value="$PROJECT_DIR$/templates/bien_immo/index.html.twig" />
       </list>
     </option>
   </component>
@@ -295,6 +304,12 @@
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="files" type="462c0819:PsiDirectoryNode" />
               <item name="quittances" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
@@ -448,18 +463,18 @@
       <workItem from="1631380964803" duration="4893000" />
       <workItem from="1631428757364" duration="5797000" />
       <workItem from="1631438998163" duration="2087000" />
-      <workItem from="1631451835211" duration="3483000" />
+      <workItem from="1631451835211" duration="6104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115725000" />
+    <option name="totallyTimeSpent" value="118346000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24040511" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24040511" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -474,7 +489,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50040483" side_tool="true" weight="0.3339254" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" visible="true" weight="0.3336945" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49959514" visible="true" weight="0.3336945" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -668,13 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/immo/homepage.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -864,16 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/bien_immo/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="54" column="74" selection-start-line="54" selection-start-column="74" selection-end-line="54" selection-end-column="74" />
-          <folding>
-            <element signature="e#2469#2479#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -893,8 +891,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="1377">
           <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/bien_immo/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="82" column="122" selection-start-line="82" selection-start-column="122" selection-end-line="82" selection-end-column="122" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#3457#3467#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

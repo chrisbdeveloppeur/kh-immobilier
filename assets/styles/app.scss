@@ -1,8 +1,20 @@
 $info : #3488CE;
+$table-head-background-color : #363636;
+$table-head-cell-color : white;
+$table-foot-background-color : #363636;
+$table-foot-cell-color : white;
 
 .button, a{
     //border-radius: 0 !important;
     transition: .25s;
+}
+
+th>span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 }
 
 a.navbar-item:focus, a.navbar-item:focus-within{

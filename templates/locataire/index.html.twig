@@ -35,11 +35,23 @@
                         {% endif %}
                     </td>
                     <td>
-                        <div class="column">
-                            <a href="{{ path('locataire_show', {'id': locataire.id}) }}">Détails</a>
-                            <a href="{{ path('locataire_edit', {'id': locataire.id}) }}">Modifier</a>
-                            <a href="{{ path('quittances', {'loc_id': locataire.id }) }}" >Quittance</a>
-                        </div>
+                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}" title="Voir les détails">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-search"></i>
+                            </span>
+                        </a>
+
+                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier les informations du locataire">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-pen-square"></i>
+                            </span>
+                        </a>
+
+                        <a href="{{ path('quittances', {'loc_id': locataire.id }) }}" title="Editer une quittance de loyer">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-file-contract"></i>
+                            </span>
+                        </a>
                     </td>
                 </tr>
             {% else %}
