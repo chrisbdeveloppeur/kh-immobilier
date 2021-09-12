@@ -21,8 +21,7 @@ class ImmoController extends AbstractController
         $biensImmos = $bienImmoRepository->findAll();
         foreach ($biensImmos as $date){
             $echeance = $date->getEcheance();
-            $current_day = date('d');
-            dump(strval($current_day));
+            $current_day = (int)date('d');
         }
         die();
 
