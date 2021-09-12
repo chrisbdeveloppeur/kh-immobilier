@@ -72,8 +72,10 @@ class BienImmoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $bienImmo->addLocataire($form->get('locataires')->getData());
             $this->getDoctrine()->getManager()->flush();
 
+//            dd($bienImmo->getLocataires()->current());
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 
