@@ -22,7 +22,7 @@ class BienImmoType extends AbstractType
                 'label' => "Nom de la rue",
                 'attr' => [],
             ])
-            ->add('cp', NumberType::class,[
+            ->add('cp', TextType::class,[
                 'label' => "Code postal",
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => [],
