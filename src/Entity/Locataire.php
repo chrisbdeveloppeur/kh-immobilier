@@ -6,6 +6,7 @@ use App\Repository\LocataireRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=LocataireRepository::class)
@@ -57,7 +58,7 @@ class Locataire
 
     public function __toString()
     {
-        $name = $this->getLastName() . $this->getFirstName();
+        $name = $this->getLastName() ." ". $this->getFirstName();
         return $name;
     }
 
