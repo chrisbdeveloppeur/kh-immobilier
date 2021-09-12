@@ -25,6 +25,10 @@ class ImmoController extends AbstractController
             $current_day = (int)date('d');
             $current_solde = $bienImmo->getSolde();
 
+//            $current_date = date('now');
+//            dump($current_date);
+//            dd(date('d/m/Y - h:i:s'));
+
             if ($bienImmo->getCurrentMonthPaid() == false){
                 if ($current_day >= $echeance){
                     if ($bienImmo->getMalusSolde() == false){
