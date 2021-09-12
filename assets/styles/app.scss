@@ -31,5 +31,19 @@ a.navbar-item:focus, a.navbar-item:focus-within{
     color: black !important;
 }
 
+i.fa-search-js{
+  width: 0;
+  opacity: 0;
+  overflow: hidden !important;
+  transition: .3s
+}
+
+a.fa-search-js:hover{
+  i.fa-search-js{
+    width: auto;
+    opacity: 1;
+  }
+}
+
 @import "~bulma";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";

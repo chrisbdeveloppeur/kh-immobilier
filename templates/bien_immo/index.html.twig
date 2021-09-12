@@ -63,7 +63,14 @@
                     <td>{{ bien_immo.solde }} €</td>
                     <td>
                         {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">{{ bien_immo.locataires.current }}</a>
+                            <a class="fa-search-js" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">
+                                <span class="icon-text has-text-info">
+                                    <span>{{ bien_immo.locataires.current }}</span>
+                                    <span class="icon">
+                                        <i class="fas fa-search fa-search-js"></i>
+                                    </span>
+                                </span>
+                            </a>
                         {% else %}
                             Sans locataire
                         {% endif %}
@@ -86,11 +93,6 @@
                                 </span>
                             </a>
                         {% endif %}
-{#                        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}">Détails</a>#}
-{#                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier</a>#}
-{#                        {% if bien_immo.locataires is not empty %}#}
-{#                            <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id }) }}">Quittance</a>#}
-{#                        {% endif %}#}
                     </td>
                 </tr>
             {% else %}
