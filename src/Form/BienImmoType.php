@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\BienImmo;
 use App\Entity\Locataire;
+use App\Entity\Solde;
 use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -45,10 +46,11 @@ class BienImmoType extends AbstractType
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => [],
             ])
-            ->add('solde', NumberType::class, [
+            /*->add('solde', EntityType::class, [
+                'class' => Solde::class,
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
-            ])
+            ])*/
             ->add('locataires', EntityType::class,[
                 'class' => Locataire::class,
                 'mapped' => false,

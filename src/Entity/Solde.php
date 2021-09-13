@@ -50,6 +50,11 @@ class Solde
         $this->malus_quantity = 0;
     }
 
+    public function __toString()
+    {
+        return (string)$this->getMalusQuantity();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
