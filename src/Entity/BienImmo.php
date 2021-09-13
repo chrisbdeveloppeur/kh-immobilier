@@ -92,10 +92,6 @@ class BienImmo
      */
     private $solde;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $oqp;
 
     public function __construct()
     {
@@ -113,7 +109,6 @@ class BienImmo
         $solde = new Solde();
         $solde->setBienImmo($this);
         $this->solde = $solde;
-        $this->oqp = false;
     }
 
     public function __toString()
@@ -336,18 +331,6 @@ class BienImmo
         }
 
         $this->solde = $solde;
-
-        return $this;
-    }
-
-    public function getOqp(): ?bool
-    {
-        return $this->oqp;
-    }
-
-    public function setOqp(bool $oqp): self
-    {
-        $this->oqp = $oqp;
 
         return $this;
     }

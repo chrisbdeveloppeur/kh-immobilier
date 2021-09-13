@@ -22,19 +22,18 @@ class BienImmoRepository extends ServiceEntityRepository
     // /**
     //  * @return BienImmo[] Returns an array of BienImmo objects
     //  */
-    /*
-    public function findWithoutLocataire($value)
+
+    public function findWithoutLocataires()
     {
         return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('b.locataires = :val')
+            ->setParameter('val', null)
             ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?BienImmo

@@ -37,6 +37,7 @@ class LocataireType extends AbstractType
                 'required' => false,
                 'placeholder' => 'Sans logement',
                 'query_builder' => function (BienImmoRepository $er) {
+                    $er = $er->findWithoutLocataires();
                     return $er->createQueryBuilder('u')
                         //->setParameter('value', false)
                         //->where('u.oqp = :value')
