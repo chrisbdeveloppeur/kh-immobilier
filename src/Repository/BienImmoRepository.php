@@ -23,6 +23,7 @@ class BienImmoRepository extends ServiceEntityRepository
     //  * @return BienImmo[] Returns an array of BienImmo objects
     //  */
 
+    /*
     public function findWithoutLocataires()
     {
         return $this->createQueryBuilder('b')
@@ -33,7 +34,7 @@ class BienImmoRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
+    */
 
     /*
     public function findOneBySomeField($value): ?BienImmo

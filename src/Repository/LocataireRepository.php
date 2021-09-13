@@ -22,19 +22,19 @@ class LocataireRepository extends ServiceEntityRepository
     // /**
     //  * @return Locataire[] Returns an array of Locataire objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+
+    public function findWithoutLogement()
     {
         return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
+            //->setParameter('value', null)
+            ->where('l.logement')
             ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Locataire
