@@ -59,8 +59,8 @@
                     <td>{{ bien_immo.city }}</td>
                     <td>{{ bien_immo.loyerHc }} €</td>
                     <td>{{ bien_immo.charges }} €</td>
-                    <td>{{ bien_immo.loyerHc + bien_immo.charges }} €</td>
-                    <td>{{ bien_immo.solde }} €</td>
+                    <td>{{ (bien_immo.loyerHc + bien_immo.charges)|number_format(2) }} €</td>
+                    <td>{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td>
                         {% if bien_immo.locataires is not empty %}
                             <a class="fa-search-js" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">
