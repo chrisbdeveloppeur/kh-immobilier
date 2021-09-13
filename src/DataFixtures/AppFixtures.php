@@ -48,6 +48,7 @@ class AppFixtures extends Fixture
 
             $locataire->setLogement($bien);
 
+            $manager->persist($solde);
             $manager->persist($bien);
             $manager->persist($locataire);
         }
