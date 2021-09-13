@@ -44,11 +44,11 @@ class AppFixtures extends Fixture
 
             $solde = new Solde();
             $solde->setBienImmo($bien);
-            $solde->setMalusQuantity($faker->randomElement([0,50,100,300,500]));
+            //$solde->setMalusQuantity($faker->randomElement([0,50,100,300,500]));
 
             $locataire->setLogement($bien);
 
-            $manager->persist($solde);
+            //$manager->persist($solde);
             $manager->persist($bien);
             $manager->persist($locataire);
         }

@@ -47,6 +47,7 @@ class Solde
         $this->echeance_pasted = false;
         $this->month_paid = false;
         $this->malus_added = false;
+        $this->malus_quantity = 0;
     }
 
     public function getId(): ?int

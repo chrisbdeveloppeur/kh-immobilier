@@ -105,6 +105,9 @@ class BienImmo
         $this->month = strftime("%B");
         $this->last_day = \Date('t');
         $this->quittances = new ArrayCollection();
+        $solde = new Solde();
+        $solde->setBienImmo($this);
+        $this->solde = $solde;
     }
 
     public function __toString()
