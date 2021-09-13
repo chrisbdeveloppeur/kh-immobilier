@@ -92,6 +92,11 @@ class BienImmo
      */
     private $solde;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $oqp;
+
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
@@ -108,6 +113,7 @@ class BienImmo
         $solde = new Solde();
         $solde->setBienImmo($this);
         $this->solde = $solde;
+        $this->oqp = false;
     }
 
     public function __toString()
@@ -214,7 +220,6 @@ class BienImmo
     public function removeLocataire(Locataire $locataire): self
     {
         if ($this->locataires->removeElement($locataire)) {
-            // set the owning side to null (unless already changed)
             if ($locataire->getLogement() === $this) {
                 $locataire->setLogement(null);
             }
@@ -331,6 +336,18 @@ class BienImmo
         }
 
         $this->solde = $solde;
+
+        return $this;
+    }
+
+    public function getOqp(): ?bool
+    {
+        return $this->oqp;
+    }
+
+    public function setOqp(bool $oqp): self
+    {
+        $this->oqp = $oqp;
 
         return $this;
     }

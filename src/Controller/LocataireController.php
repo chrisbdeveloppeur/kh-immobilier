@@ -64,6 +64,7 @@ class LocataireController extends AbstractController
     public function edit(Request $request, Locataire $locataire): Response
     {
         $form = $this->createForm(LocataireType::class, $locataire);
+        $form->get('logement')->setData($locataire->getLogement());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

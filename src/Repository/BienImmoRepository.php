@@ -23,7 +23,7 @@ class BienImmoRepository extends ServiceEntityRepository
     //  * @return BienImmo[] Returns an array of BienImmo objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findWithoutLocataire($value)
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')

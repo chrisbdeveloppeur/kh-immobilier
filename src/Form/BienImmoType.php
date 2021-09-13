@@ -58,8 +58,8 @@ class BienImmoType extends AbstractType
                 'placeholder' => 'Sans locataire',
                 'query_builder' => function (LocataireRepository $er) {
                     return $er->createQueryBuilder('u')
-                        ->setParameter('value', null)
-                        ->where('u.logement = :value')
+                        //->setParameter('value', false)
+                        //->where('u.oqp = :value')
                         ->orderBy('u.last_name', 'ASC');
                 },
             ])
