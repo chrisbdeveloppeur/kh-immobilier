@@ -58,11 +58,6 @@ class BienImmo
     private $locataires;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $solde;
-
-    /**
      * @ORM\Column(type="string", nullable=true)
      */
     private $payment_date;
@@ -93,27 +88,13 @@ class BienImmo
     private $echeance;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\OneToOne(targetEntity=Solde::class, mappedBy="BienImmo", cascade={"persist", "remove"})
      */
-    private $pasted_echeance;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $current_month_paid;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $malus_solde;
+    private $solde;
 
     public function __construct()
     {
-        $this->pasted_echeance = false;
-        $this->current_month_paid = false;
-        $this->malus_solde = false;
         $this->locataires = new ArrayCollection();
-        $this->solde = 0;
         $current_date = new \DateTime('now');
         $this->payment_date = $current_date->format('d/m/Y');
         $this->first_day = '1';
@@ -239,18 +220,6 @@ class BienImmo
         return $this;
     }
 
-    public function getSolde(): ?int
-    {
-        return $this->solde;
-    }
-
-    public function setSolde(?int $solde): self
-    {
-        $this->solde = $solde;
-
-        return $this;
-    }
-
     public function getPaymentDate(): ?string
     {
         return $this->payment_date;
@@ -341,38 +310,24 @@ class BienImmo
         return $this;
     }
 
-    public function getPastedEcheance(): ?bool
+    public function getSolde(): ?Solde
     {
-        return $this->pasted_echeance;
+        return $this->solde;
     }
 
-    public function setPastedEcheance(bool $pasted_echeance): self
+    public function setSolde(?Solde $solde): self
     {
-        $this->pasted_echeance = $pasted_echeance;
+        // unset the owning side of the relation if necessary
+        if ($solde === null && $this->solde !== null) {
+            $this->solde->setBienImmo(null);
+        }
 
-        return $this;
-    }
+        // set the owning side of the relation if necessary
+        if ($solde !== null && $solde->getBienImmo() !== $this) {
+            $solde->setBienImmo($this);
+        }
 
-    public function getCurrentMonthPaid(): ?bool
-    {
-        return $this->current_month_paid;
-    }
-
-    public function setCurrentMonthPaid(bool $current_month_paid): self
-    {
-        $this->current_month_paid = $current_month_paid;
-
-        return $this;
-    }
-
-    public function getMalusSolde(): ?bool
-    {
-        return $this->malus_solde;
-    }
-
-    public function setMalusSolde(bool $malus_solde): self
-    {
-        $this->malus_solde = $malus_solde;
+        $this->solde = $solde;
 
         return $this;
     }
