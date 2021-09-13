@@ -40,6 +40,8 @@ class BienImmoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bienImmo);
+            $solde = $form->get('solde')->getData();
+            $bienImmo->getSolde()->setMalusQuantity($solde);
             $entityManager->flush();
 
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
@@ -70,10 +72,13 @@ class BienImmoController extends AbstractController
     {
         $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
+        $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
         $form->get('locataires')->setData($locataire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $solde = $form->get('solde')->getData();
+            $bienImmo->getSolde()->setMalusQuantity($solde);
             if ($form->get('locataires')->getData() == null){
                 if ($bienImmo->getLocataires()->first()){
                     $bienImmo->removeLocataire($bienImmo->getLocataires()->first());

@@ -46,11 +46,11 @@ class BienImmoType extends AbstractType
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => [],
             ])
-            /*->add('solde', EntityType::class, [
-                'class' => Solde::class,
+            ->add('solde', NumberType::class, [
+                'mapped' => false,
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
-            ])*/
+            ])
             ->add('locataires', EntityType::class,[
                 'class' => Locataire::class,
                 'mapped' => false,
