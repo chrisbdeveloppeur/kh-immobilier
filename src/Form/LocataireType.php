@@ -33,6 +33,9 @@ class LocataireType extends AbstractType
             ])
             ->add('logement', EntityType::class,[
                 'class' => BienImmo::class,
+                'mapped' => false,
+                'required' => false,
+                'placeholder' => 'Sans logement',
                 'query_builder' => function (BienImmoRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.building', 'ASC');

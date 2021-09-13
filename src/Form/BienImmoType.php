@@ -56,11 +56,12 @@ class BienImmoType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans locataire',
-//                'empty_data' =>[],
-//                'query_builder' => function (LocataireRepository $er) {
-//                    return $er->createQueryBuilder('u')
-//                        ->orderBy('u.last_name', 'ASC');
-//                },
+                'query_builder' => function (LocataireRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->setParameter('value', null)
+                        ->where('u.logement = :value')
+                        ->orderBy('u.last_name', 'ASC');
+                },
             ])
         ;
     }
