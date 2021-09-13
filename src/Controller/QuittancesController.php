@@ -3,12 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Quittance;
-use App\Form\QuittancesType;
 use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,7 +15,7 @@ class QuittancesController extends AbstractController
     /**
      * @Route("/quittances-{loc_id}", name="quittances")
      */
-    public function home(Request $request, $loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
+    public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
