@@ -42,6 +42,11 @@ class BienImmoController extends AbstractController
             $entityManager->persist($bienImmo);
             $solde = $form->get('solde')->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
+
+            if ($form->get('locataires')->getData() !== null){
+                $bienImmo->addLocataire($form->get('locataires')->getData());
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
