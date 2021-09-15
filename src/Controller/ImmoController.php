@@ -6,6 +6,8 @@ use App\Repository\BienImmoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -53,6 +55,15 @@ class ImmoController extends AbstractController
         return $this->render('immo/homepage.html.twig', [
             "bien_immos" => $bien_immos,
         ]);
+    }
+
+
+    /**
+     * @Route("/mail", name="mail")
+     */
+    public function mail(MailController $mailController){
+        $mailController->sendMessage();
+        return $this->redirectToRoute('immo_accueil');
     }
 
 }
