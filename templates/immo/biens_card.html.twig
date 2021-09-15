@@ -39,6 +39,6 @@
         {% else %}
             <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-text-dark has-text-centered">Ajouter un locataire</a>
         {% endif %}
-        <a href="" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Envoyer la quittance</a>
+        <a href="{{ path('immo_mail') }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Envoyer la quittance</a>
     </footer>
 </div>
