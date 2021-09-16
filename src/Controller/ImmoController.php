@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\BienImmoRepository;
+use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,10 +60,12 @@ class ImmoController extends AbstractController
 
 
     /**
-     * @Route("/mail", name="mail")
+     * @Route("/send-quittance-{id}", name="send_quittance")
      */
-    public function mail(MailController $mailController){
-        $mailController->sendMessage();
+    public function mail(MailController $mailController, QuittanceRepository $quittanceRepository, $id){
+        $quittance = $quittanceRepository->find($id);
+        $quittance_file_path = '../assets/files/quittances/' . $quittance . '.docx';
+        $mailController->sendMessage($quittance_file_path);
         return $this->redirectToRoute('immo_accueil');
     }
 

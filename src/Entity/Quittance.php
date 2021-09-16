@@ -39,6 +39,11 @@ class Quittance
      */
     private $bien_immo;
 
+    public function __toString()
+    {
+        return $this->getFileName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

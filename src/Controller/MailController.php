@@ -23,7 +23,7 @@ class MailController
     }
 
 
-    public function sendMessage()
+    public function sendMessage($file_path)
     {
         $mail = (new \Swift_Message('Gestion immo'))
             ->setFrom('admin@immo.com')
@@ -32,6 +32,7 @@ class MailController
              */
             ->setTo(['kenshin91cb@gmail.com'])
             ->setBody($this->renderer->render('emails/message.html.twig',[]), 'text/html' );
+        $mail->attach(\Swift_Attachment::fromPath($file_path));
         $this->mailer->send($mail);
     }
 
