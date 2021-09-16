@@ -29,6 +29,16 @@
                 <td>{{ locataire.lastName }}</td>
             </tr>
             <tr>
+                <th>Email</th>
+                <td>
+                    {% if locataire.email %}
+                        <a href="mailto:{{ locataire.email }}">{{ locataire.email }}</a>
+                    {% else %}
+                        <i>Non renseigné</i>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
                 <th>Gender</th>
                 <td>{{ locataire.gender }}</td>
             </tr>

@@ -13,6 +13,7 @@
                     <th>Id</th>
                         <th>Prénom</th>
                     <th>Nom</th>
+                    <th>Email</th>
                     <th>Sexe</th>
                     <th>Moyen de paiement</th>
                     <th>Logement</th>
@@ -25,6 +26,13 @@
                     <td>{{ locataire.id }}</td>
                     <td>{{ locataire.firstName }}</td>
                     <td>{{ locataire.lastName }}</td>
+                    <td>
+                        {% if locataire.email %}
+                            <a href="mailto:{{ locataire.email }}">{{ locataire.email }}</a>
+                        {% else %}
+                            <i>Non renseigné</i>
+                        {% endif %}
+                    </td>
                     <td>{{ locataire.gender }}</td>
                     <td>{{ locataire.mode }}</td>
                     <td>
