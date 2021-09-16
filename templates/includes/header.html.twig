@@ -4,7 +4,7 @@
             <div class="navbar-brand">
                 <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
                 {% if app.user %}
-                    <div class="mb-3">
+                    <div class="navbar-item">
                         Connecté : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecté</a>
                     </div>
                 {% else %}

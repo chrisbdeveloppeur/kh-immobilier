@@ -73,6 +73,10 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
             throw new UsernameNotFoundException('Email could not be found.');
         }
 
+        /*if ( !$user->isVerified() ){
+            throw new \ErrorException('Votre compte n\'a pas été vérifié par mail);
+        }*/
+
         return $user;
     }
 
