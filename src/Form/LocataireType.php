@@ -8,6 +8,7 @@ use App\Repository\BienImmoRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,6 +19,7 @@ class LocataireType extends AbstractType
         $builder
             ->add('first_name')
             ->add('last_name')
+            ->add('email', EmailType::class)
             ->add('gender', ChoiceType::class,[
                 'choices' => [
                     'Homme' => 'M.',
