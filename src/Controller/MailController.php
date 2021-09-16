@@ -23,14 +23,14 @@ class MailController
     }
 
 
-    public function sendMessage($file_path)
+    public function sendMessage($file_path, $locataire)
     {
         $mail = (new \Swift_Message('Gestion immo'))
             ->setFrom('admin@immo.com')
             /**
              * Ci dessous entrez l'adresse de l'utilisateur concerné : $message->getEmail()
              */
-            ->setTo(['kenshin91cb@gmail.com'])
+            ->setTo([$locataire->getEmail()])
             ->setBody($this->renderer->render('emails/message.html.twig',[]), 'text/html' );
         $mail->attach(\Swift_Attachment::fromPath($file_path));
         $this->mailer->send($mail);

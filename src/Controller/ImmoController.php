@@ -66,7 +66,7 @@ class ImmoController extends AbstractController
         $quittance = $quittanceRepository->find($id);
         $locataire = $quittance->getLocataire();
         $quittance_file_path = '../assets/files/quittances/' . $quittance . '.docx';
-        $mailController->sendMessage($quittance_file_path);
+        $mailController->sendMessage($quittance_file_path, $locataire);
         $this->addFlash('success', 'La quittance de loyer à bien été envoyer pour : ' . $locataire );
         return $this->redirectToRoute('immo_accueil');
     }
