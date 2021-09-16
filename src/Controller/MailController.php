@@ -30,7 +30,7 @@ class MailController
             /**
              * Ci dessous entrez l'adresse de l'utilisateur concerné : $message->getEmail()
              */
-            ->setTo(['chrisbdeveloppeur@gmail.com'])
+            ->setTo(['kenshin91cb@gmail.com'])
             ->setBody($this->renderer->render('emails/message.html.twig',[]), 'text/html' );
         $this->mailer->send($mail);
     }
