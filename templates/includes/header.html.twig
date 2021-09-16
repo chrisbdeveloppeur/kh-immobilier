@@ -3,8 +3,14 @@
         <div class="container">
             <div class="navbar-brand">
                 <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
-                <a href="{{ path('app_login') }}" class="navbar-item">Connexion</a>
-                <a href="{{ path('app_register') }}" class="navbar-item">S'enregistrer</a>
+                {% if app.user %}
+                    <div class="mb-3">
+                        Connecté : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecté</a>
+                    </div>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="navbar-item">Connexion</a>
+                    <a href="{{ path('app_register') }}" class="navbar-item">S'enregistrer</a>
+                {% endif %}
                     <span class="navbar-burger" data-target="navbarMenuHeroC" onclick="this.classList.toggle('is-active');document.getElementById('navbarMenuHeroC').classList.toggle('is-active')">
                         <span></span>
                         <span></span>
