@@ -6,6 +6,7 @@ use App\Entity\Quittance;
 use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +15,7 @@ class QuittancesController extends AbstractController
 {
     /**
      * @Route("/quittances-{loc_id}", name="quittances")
+     * @IsGranted("ROLE_USER")
      */
     public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
     {

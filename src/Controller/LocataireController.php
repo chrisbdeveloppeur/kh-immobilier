@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Locataire;
 use App\Form\LocataireType;
 use App\Repository\LocataireRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/locataire")
+ * @IsGranted("ROLE_USER")
  */
 class LocataireController extends AbstractController
 {

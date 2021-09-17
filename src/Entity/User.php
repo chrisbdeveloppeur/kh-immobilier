@@ -41,6 +41,26 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firs_name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $last_name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone_number;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,6 +150,54 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getFirsName(): ?string
+    {
+        return $this->firs_name;
+    }
+
+    public function setFirsName(string $firs_name): self
+    {
+        $this->firs_name = $firs_name;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->last_name;
+    }
+
+    public function setLastName(string $last_name): self
+    {
+        $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phone_number;
+    }
+
+    public function setPhoneNumber(?string $phone_number): self
+    {
+        $this->phone_number = $phone_number;
 
         return $this;
     }
