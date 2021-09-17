@@ -1,20 +1,91 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Création de compte{% endblock %}
+
+{% block title_main %}Création de votre compte{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+<div class="is-flex is-justify-content-center is-align-items-center">
+    {{ form_start(registrationForm, {'attr' : {'class': 'column is-half has-text-centered'}}) }}
+    <div class="field">
+        <label class="label">{{ form_label(registrationForm.email) }}</label>
+        <p class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.email, {'attr' : {'class': 'form-control input'}}) }}
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+    </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+    <div class="field">
+        <label class="label">{{ form_label(registrationForm.gender) }}</label>
+        <div class="control has-icons-left">
+            <div class="select is-fullwidth">
+                {{ form_widget(registrationForm.gender, {'attr' : {'class': 'form-control select'}}) }}
+            </div>
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+    </div>
 
-        <button type="submit" class="btn">Register</button>
+    <div class="field">
+        <label class="label">{{ form_label(registrationForm.lastName) }}</label>
+        <p class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.lastName, {'attr' : {'class': 'form-control input'}}) }}
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">{{ form_label(registrationForm.firsName) }}</label>
+        <p class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.firsName, {'attr' : {'class': 'form-control input'}}) }}
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">{{ form_label(registrationForm.phoneNumber) }}</label>
+        <p class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.phoneNumber, {'attr' : {'class': 'form-control input'}}) }}
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">{{ form_label(registrationForm.plainPassword.first) }}</label>
+        <p class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.plainPassword.first, {'attr' : {'class': 'form-control input'}}) }}
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">{{ form_label(registrationForm.plainPassword.second) }}</label>
+        <p class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.plainPassword.second, {'attr' : {'class': 'form-control input'}}) }}
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+    </div>
+
+    <div class="field has-text-centered">
+        <button type="submit" class="button is-success">Valider</button>
+    </div>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}

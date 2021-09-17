@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,11 +23,11 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class,[
-                'label' => 'Adresse Email',
+                'label' => 'Adresse Email*',
                 'required' => true,
             ])
             ->add('gender', ChoiceType::class,[
-                'label' => 'Genre',
+                'label' => 'Sexe*',
                 'required' => true,
                 'choices' => [
                     'Monsieur' => 'Monsieur',
@@ -34,32 +35,39 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('lastName', TextType::class,[
-                'label' => 'Nom',
+                'label' => 'Nom*',
                 'required' => true,
             ])
             ->add('firsName', TextType::class,[
-                'label' => 'Prénom',
+                'label' => 'Prénom*',
                 'required' => true,
             ])
             ->add('phoneNumber', NumberType::class,[
                 'label' => 'Tel',
                 'required' => false,
             ])
-            ->add('plainPassword', PasswordType::class, [
-                'label' => 'Mot de passe',
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe ne correspondent pas',
+                'required' => true,
+                'label' => 'Mot de passe*',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
+                'first_options'  => [
+                    'label' => 'Mot de passe*',
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Veuillez indiquer un mot de passe',
+                        ]),
+                        new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} charactères',
                         'max' => 4096,
-                    ]),
+                        ]),
+                    ],
                 ],
+                'second_options' => ['label' => 'Confirmer votre mot de passe*'],
+
             ])
         ;
     }
