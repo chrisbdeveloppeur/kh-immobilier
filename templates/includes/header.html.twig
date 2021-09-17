@@ -5,7 +5,10 @@
                 <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
                 {% if app.user %}
                     <div class="navbar-item">
-                        Connecté : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecté</a>
+                        <div class="tags has-addons">
+                            <span class="tag">Connecté : {{ app.user.username }}</span>
+                            <a class="tag is-danger" href="{{ path('app_logout') }}">Se déconnecté</a>
+                        </div>
                     </div>
                 {% else %}
                     <a href="{{ path('app_login') }}" class="navbar-item">Connexion</a>
