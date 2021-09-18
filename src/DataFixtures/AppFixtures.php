@@ -32,6 +32,7 @@ class AppFixtures extends Fixture
             $locataire->setLastName($faker->lastName);
             $locataire->setGender($faker->randomElement(['M.', 'Mme.']));
             $locataire->setMode($faker->randomElement(['Virement banquaire', 'Espèces', 'Chèque']));
+            $locataire->setEmail($faker->email);
 
             $bien = new BienImmo();
             $bien->setBuilding($faker->streetName);
