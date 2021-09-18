@@ -51,7 +51,7 @@ class QuittancesController extends AbstractController
         $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
         $template->setValue("charges",$locataire->getLogement()->getCharges());
         $template->setValue("solde",$locataire->getLogement()->getSolde());
-        $template->setValue("payment_date",$locataire->getLogement()->getPaymentDate());
+        $template->setValue("payment_date",$date->format('d/m/Y'));
         $template->setValue("first_day",'1');
         $template->setValue("last_day",\Date('t'));
         $template->setValue("month",strftime("%B"));
