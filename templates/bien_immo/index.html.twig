@@ -63,7 +63,7 @@
                     <td>{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td>
                         {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}">
+                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement">
                                 <span class="icon">
                                     <i class="fas fa-user-minus"></i>
                                 </span>
@@ -77,7 +77,7 @@
                                 </span>
                             </a>
                         {% else %}
-                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement">
                                 <span class="icon">
                                     <i class="fas fa-user-plus"></i>
                                 </span>

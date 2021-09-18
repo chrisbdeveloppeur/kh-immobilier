@@ -24,16 +24,16 @@ class LocataireRepository extends ServiceEntityRepository
     //  */
 
 
-    public function findWithoutLogement()
+    public function findWithoutLogement($loc_id)
     {
         return $this->createQueryBuilder('l')
             ->setParameter('value', true)
             ->where('l.sans_logement = :value')
+            ->andWhere('l.id = ' . $loc_id)
             ->orderBy('l.id', 'ASC')
             ->getQuery()
             ->getResult()
         ;
-
     }
 
 

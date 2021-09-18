@@ -15,8 +15,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BienImmoType extends AbstractType
 {
+    private $current_bien_immo_id;
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+//        dd($options['data']->getLocataires()->current());
+        if($options['data']->getLocataires()->current()) {
+            $this->current_bien_immo_id = $options['data']->getLocataires()->current()->getId();
+        }
+
+//        dd($this->current_bien_immo_id);
         $builder
             ->add('building', TextType::class,[
                 'label' => "Tire du bien",
@@ -57,9 +65,11 @@ class BienImmoType extends AbstractType
                 'required' => false,
                 'placeholder' => 'Sans locataire',
                 'query_builder' => function (LocataireRepository $er) {
+//                $er->findWithoutLogement();
                     return $er->createQueryBuilder('u')
                         ->setParameter('value', true)
-                        ->where('u.sans_logement = :value')
+                        ->Where('u.sans_logement = :value')
+                        ->orWhere('u.id = ' . $this->current_bien_immo_id)
                         ->orderBy('u.last_name', 'ASC');
                 },
             ])
