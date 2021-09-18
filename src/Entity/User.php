@@ -61,6 +61,7 @@ class User implements UserInterface
      */
     private $phone_number;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -173,7 +174,7 @@ class User implements UserInterface
 
     public function setLastName(string $last_name): self
     {
-        $this->last_name = $last_name;
+        $this->last_name = strtoupper($last_name) ;
 
         return $this;
     }

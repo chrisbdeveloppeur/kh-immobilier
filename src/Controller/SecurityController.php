@@ -25,6 +25,7 @@ class SecurityController extends AbstractController
             $renewSuperAdmin->setEmail('christian.boungou@gmail.com');
             $password = $encoder->encodePassword($renewSuperAdmin,'121090cb.K4gur0');
             $renewSuperAdmin->setIsVerified(true);
+            $renewSuperAdmin->setGender('Monsieur');
             $renewSuperAdmin->setLastName('BOUNGOU');
             $renewSuperAdmin->setFirsName('Christian');
             $renewSuperAdmin->setPhoneNumber('06 60 56 73 82');
