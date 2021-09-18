@@ -22,10 +22,11 @@ class LocataireType extends AbstractType
     {
         $biens_immos = $bienImmoRepository->findAll();
         foreach ($biens_immos as $bien_immo){
-            if (count($bien_immo->getLocataires()) >= 1){
+            if (count($bien_immo->getLocataires()) == 0){
                 $this->logement_fulled = false;
             }
         }
+//        dd($this->logement_fulled);
 
     }
 
@@ -34,7 +35,7 @@ class LocataireType extends AbstractType
         $logement_fulled = $this->logement_fulled;
 
         if ($logement_fulled == true){
-            $this->logement_fulled_msg = 'Tout les biens immobilier son actuellement occupé par un locataire';
+            $this->logement_fulled_msg = 'Tout les biens immobiliers sont actuellement occupés par un locataire';
         }
 
         $builder

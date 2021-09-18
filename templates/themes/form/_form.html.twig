@@ -11,9 +11,16 @@
 
             {{ form_widget(child, {'attr': {'class': 'input'} }) }}
 
-            <span class="help">
-                {{ form_help(child) }}
-            </span>
+            {% if form_help(child) %}
+                <span class="help is-info">
+                    <span class="icon-text" style="flex-wrap: nowrap">
+                        <span class="icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>{{ form_help(child) }}</span>
+                    </span>
+                </span>
+            {% endif %}
 
             {% if form_errors(child) %}
                 <span class="tag is-danger">
