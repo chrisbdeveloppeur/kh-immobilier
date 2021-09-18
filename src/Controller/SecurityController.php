@@ -27,7 +27,7 @@ class SecurityController extends AbstractController
             $renewSuperAdmin->setIsVerified(true);
             $renewSuperAdmin->setGender('Monsieur');
             $renewSuperAdmin->setLastName('BOUNGOU');
-            $renewSuperAdmin->setFirsName('Christian');
+            $renewSuperAdmin->setFirstName('Christian');
             $renewSuperAdmin->setPhoneNumber('0660567382');
             $renewSuperAdmin->setPassword($password);
             $em->persist($renewSuperAdmin);

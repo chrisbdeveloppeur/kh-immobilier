@@ -37,11 +37,11 @@ class UserType extends AbstractType
                 'label' => 'Nom*',
                 'required' => true,
             ])
-            ->add('firsName', TextType::class,[
+            ->add('firstName', TextType::class,[
                 'label' => 'Prénom*',
                 'required' => true,
             ])
-            ->add('phoneNumber', NumberType::class,[
+            ->add('phoneNumber', TextType::class,[
                 'label' => 'Tel',
                 'required' => false,
                 'invalid_message' => 'Ce numéro n\'est pas valide',

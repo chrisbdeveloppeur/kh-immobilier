@@ -35,7 +35,11 @@
     <footer class="card-footer">
         <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
         {% if bien_immo.locataires is not empty %}
-            <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Editer une quittance</a>
+            {% if bien_immo.locataires.current.quittances.current %}
+                <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Telecharger la quittance</a>
+            {% else %}
+                <a href="{{ path('quittances', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Editer une quittance</a>
+            {% endif %}
         {% else %}
             <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-text-dark has-text-centered">Ajouter un locataire</a>
         {% endif %}
