@@ -31,8 +31,8 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Sexe*',
                 'required' => true,
                 'choices' => [
-                    'Monsieur' => 'Monsieur',
-                    'Madame' => 'Madame'
+                    'Monsieur' => 'M.',
+                    'Madame' => 'Mme.'
                 ]
             ])
             ->add('lastName', TextType::class,[
