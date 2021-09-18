@@ -6,7 +6,9 @@
                 {% if app.user %}
                     <div class="navbar-item">
                         <div class="tags has-addons">
-                            <span class="tag">Connecté : {{ app.user.username }}</span>
+                            <a href="{{ path('user_edit', {'id': app.user.id}) }}">
+                                <span class="tag">Connecté : {{ app.user.username }}</span>
+                            </a>
                             <a class="tag is-danger" href="{{ path('app_logout') }}">Se déconnecté</a>
                         </div>
                     </div>
