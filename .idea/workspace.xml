@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210823094617.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210823101122.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909060920.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909062023.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909101256.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909151831.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909151926.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909151954.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909152113.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909152752.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909153059.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909153234.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909153357.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210909153510.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210911185822.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210912161737.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210912190052.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210912191333.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210912191756.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210912192147.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210913121730.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210913141256.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210913144748.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210916095513.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210916125900.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210916134616.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210917131139.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210918161344.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Locataire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BienImmoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BienImmoType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LocataireRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LocataireRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,11 +27,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Form/BienImmoType.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="287">
               <caret line="58" column="71" selection-start-line="58" selection-start-column="71" selection-end-line="58" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
+              <folding>
+                <element signature="e#36#60#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,7 +89,6 @@
         <option value="$PROJECT_DIR$/templates/bien_immo/show.html.twig" />
         <option value="$PROJECT_DIR$/assets/styles/app.scss" />
         <option value="$PROJECT_DIR$/src/Controller/HomeController.php" />
-        <option value="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" />
         <option value="$PROJECT_DIR$/src/Entity/Solde.php" />
         <option value="$PROJECT_DIR$/templates/bien_immo/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
@@ -147,6 +127,7 @@
         <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
         <option value="$PROJECT_DIR$/src/Repository/LocataireRepository.php" />
         <option value="$PROJECT_DIR$/src/Form/BienImmoType.php" />
+        <option value="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" />
       </list>
     </option>
   </component>
@@ -334,6 +315,12 @@
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DataFixtures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -434,16 +421,15 @@
       <workItem from="1631774436318" duration="11525000" />
       <workItem from="1631815010441" duration="1013000" />
       <workItem from="1631866870434" duration="8812000" />
-      <workItem from="1631977962351" duration="9512000" />
+      <workItem from="1631977962351" duration="9860000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176082000" />
+    <option name="totallyTimeSpent" value="176430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26279318" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -498,16 +484,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#36#60#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/bien_immo/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-748">
@@ -869,6 +845,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="58" column="71" selection-start-line="58" selection-start-column="71" selection-end-line="58" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="39" column="51" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
+          <folding>
+            <element signature="e#36#60#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
