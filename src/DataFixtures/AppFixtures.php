@@ -28,12 +28,17 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i<= 10; $i++) {
             $locataire = new Locataire();
-            $first_name = $faker->firstName;
+            $sexe = $faker->randomElement(['M.', 'Mme.']);
+            if ($sexe == 'M.'){
+                $first_name = $faker->firstNameMale;
+            }else{
+                $first_name = $faker->firstNameFemale;
+            }
             $last_name = $faker->lastName;
             $mail = $faker->randomElement(['@gmail.com','@yahoo.com','@free.fr']);
             $locataire->setFirstName($first_name);
             $locataire->setLastName($last_name);
-            $locataire->setGender($faker->randomElement(['M.', 'Mme.']));
+            $locataire->setGender($sexe);
             $locataire->setMode($faker->randomElement(['Virement banquaire', 'Espèces', 'Chèque']));
             $locataire->setEmail(mb_strtolower($first_name)  . '.' . mb_strtolower($last_name) . $mail);
 
