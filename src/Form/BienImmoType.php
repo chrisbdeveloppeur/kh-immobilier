@@ -37,7 +37,7 @@ class BienImmoType extends AbstractType
             ])
             ->add('loyer_hc', NumberType::class,[
                 'label' => "Loyer HC*",
-                'help' => '* Loyer sans les charges',
+                'help' => 'Loyer sans les charges',
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => [],
             ])
