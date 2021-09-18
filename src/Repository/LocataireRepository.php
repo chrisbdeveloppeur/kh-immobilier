@@ -27,12 +27,13 @@ class LocataireRepository extends ServiceEntityRepository
     public function findWithoutLogement()
     {
         return $this->createQueryBuilder('l')
-            //->setParameter('value', null)
-            ->where('l.logement')
+            ->setParameter('value', true)
+            ->where('l.sans_logement = :value')
             ->orderBy('l.id', 'ASC')
             ->getQuery()
             ->getResult()
         ;
+
     }
 
 

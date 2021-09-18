@@ -56,6 +56,12 @@ class Locataire
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $sans_logement;
+
+
     public function __construct()
     {
         $this->Quittances = new ArrayCollection();
@@ -128,6 +134,11 @@ class Locataire
     public function setLogement(?BienImmo $logement): self
     {
         $this->logement = $logement;
+        if ($logement == null){
+            $this->setSansLogement(true);
+        }else{
+            $this->setSansLogement(false);
+        }
 
         return $this;
     }
@@ -173,4 +184,17 @@ class Locataire
 
         return $this;
     }
+
+    public function getSansLogement(): ?bool
+    {
+        return $this->sans_logement;
+    }
+
+    public function setSansLogement(bool $sans_logement): self
+    {
+        $this->sans_logement = $sans_logement;
+
+        return $this;
+    }
+
 }
