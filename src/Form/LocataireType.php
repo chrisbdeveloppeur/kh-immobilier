@@ -14,8 +14,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LocataireType extends AbstractType
 {
+
+    private $logement_fulled = true;
+    private $logement_fulled_msg;
+
+    public function __construct(BienImmoRepository $bienImmoRepository)
+    {
+        $biens_immos = $bienImmoRepository->findAll();
+        foreach ($biens_immos as $bien_immo){
+            if (count($bien_immo->getLocataires()) >= 1){
+                $this->logement_fulled = false;
+            }
+        }
+
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $logement_fulled = $this->logement_fulled;
+
+        if ($logement_fulled == true){
+            $this->logement_fulled_msg = 'Tout les biens immobilier son actuellement occupé par un locataire';
+        }
+
         $builder
             ->add('first_name')
             ->add('last_name')
@@ -38,6 +59,8 @@ class LocataireType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans logement',
+//                'help' => $this->logement_fulled_msg,
+                'help' => $this->logement_fulled_msg,
                 'query_builder' => function (BienImmoRepository $er) {
                     //$er = $er->findWithoutLocataires();
                     return $er->createQueryBuilder('u')
