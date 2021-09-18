@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BienImmoType extends AbstractType
 {
-    private $current_bien_immo_id;
+    private $current_bien_immo_id = 0;
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
