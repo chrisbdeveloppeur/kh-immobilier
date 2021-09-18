@@ -19,6 +19,11 @@
                 <i class="fas fa-envelope"></i>
             </span>
         </p>
+        {% if form_errors(registrationForm.email) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.email) }}
+            </span>
+        {% endif %}
     </div>
 
     <div class="field">
@@ -30,7 +35,12 @@
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
-        </p>
+        </div>
+        {% if form_errors(registrationForm.gender) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.gender) }}
+            </span>
+        {% endif %}
     </div>
 
     <div class="field">
@@ -41,6 +51,11 @@
                 <i class="fas fa-envelope"></i>
             </span>
         </p>
+        {% if form_errors(registrationForm.lastName) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.lastName) }}
+            </span>
+        {% endif %}
     </div>
 
     <div class="field">
@@ -51,6 +66,11 @@
                 <i class="fas fa-envelope"></i>
             </span>
         </p>
+        {% if form_errors(registrationForm.firsName) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.firsName) }}
+            </span>
+        {% endif %}
     </div>
 
     <div class="field">
@@ -61,6 +81,11 @@
                 <i class="fas fa-envelope"></i>
             </span>
         </p>
+        {% if form_errors(registrationForm.phoneNumber) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.phoneNumber) }}
+            </span>
+        {% endif %}
     </div>
 
     <div class="field">
@@ -71,6 +96,11 @@
                 <i class="fas fa-envelope"></i>
             </span>
         </p>
+        {% if form_errors(registrationForm.plainPassword.first) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.plainPassword.first) }}
+            </span>
+        {% endif %}
     </div>
 
     <div class="field">
@@ -81,6 +111,12 @@
                 <i class="fas fa-envelope"></i>
             </span>
         </p>
+        {% if form_errors(registrationForm.plainPassword.second) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.plainPassword.second) }}
+            </span>
+        {% endif %}
+
     </div>
 
     <div class="field has-text-centered">

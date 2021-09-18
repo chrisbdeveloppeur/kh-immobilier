@@ -71,7 +71,7 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
-            throw new UsernameNotFoundException('Email could not be found.');
+            throw new UsernameNotFoundException('Email introuvable.');
         }
 
         return $user;

@@ -25,6 +25,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class,[
                 'label' => 'Adresse Email*',
                 'required' => true,
+                'invalid_message' => 'Adresse Email invalide',
             ])
             ->add('gender', ChoiceType::class,[
                 'label' => 'Sexe*',
@@ -45,6 +46,7 @@ class RegistrationFormType extends AbstractType
             ->add('phoneNumber', NumberType::class,[
                 'label' => 'Tel',
                 'required' => false,
+                'invalid_message' => 'Ce numéro n\'est pas valide',
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
