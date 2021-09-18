@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -39,16 +40,24 @@ class LocataireType extends AbstractType
         }
 
         $builder
-            ->add('first_name')
-            ->add('last_name')
-            ->add('email', EmailType::class)
+            ->add('first_name', TextType::class,[
+                'label' => 'Prénom',
+            ])
+            ->add('last_name', TextType::class,[
+                'label' => 'Nom',
+            ])
+            ->add('email', EmailType::class,[
+                'label' => 'Email',
+            ])
             ->add('gender', ChoiceType::class,[
+                'label' => 'Sexe',
                 'choices' => [
                     'Homme' => 'M.',
                     'Femme' => 'Mme.'
                 ]
             ])
             ->add('mode', ChoiceType::class,[
+                'label' => 'Moyen de paiement',
                 'choices' => [
                     'Virement banquaire' => 'Virement banquaire',
                     'Espèces' => 'Espèces',
