@@ -55,7 +55,7 @@ class QuittancesController extends AbstractController
         $template->setValue("first_day",$locataire->getLogement()->getFirstDay());
         $template->setValue("last_day",$locataire->getLogement()->getLastDay());
         $template->setValue("month",strftime("%B_"));
-        $file = "quittance_" . strftime("%B_") . $locataire->getLastName();
+        $file = "quittance_" . strftime("%B_") . $locataire->getLastName() . '_' . $locataire->getLogement()->getId();
 
         $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
 
