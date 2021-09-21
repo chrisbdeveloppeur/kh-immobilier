@@ -11,7 +11,7 @@
                     <button class="delete" aria-label="delete" onclick="this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);" ></button>
                 </div>
                 <div class="message-body">
-                    {{ message }}
+                    {{ message|raw }}
                 </div>
             </article>
         </div>
