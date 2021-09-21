@@ -46,9 +46,16 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $mailSociety =  explode('@', $user->getEmail()) ;
+            $linkMail = "";
+            if (end($mailSociety) == "gmail.com"){
+                $linkMail = "https://mail.google.com/";
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -59,14 +66,16 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-            $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="mailto:' . $user->getEmail() . '">' . $user->getEmail() . '</a>');
+            $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="'.$linkMail.'" target="_blank">' . $user->getEmail() . '</a>');
 
-            return $guardHandler->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $authenticator,
-                'main' // firewall name in security.yaml
-            );
+            return $this->redirectToRoute('app_login');
+
+            //return $guardHandler->authenticateUserAndHandleSuccess(
+            //    $user,
+            //    $request,
+            //    $authenticator,
+            //    'main' // firewall name in security.yaml
+            //);
         }
 
         return $this->render('registration/register.html.twig', [
