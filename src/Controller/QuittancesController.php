@@ -47,7 +47,7 @@ class QuittancesController extends AbstractController
         $template->setValue("cp",$locataire->getLogement()->getCp());
         $template->setValue("city",$locataire->getLogement()->getCity());
         $template->setValue("date",$date->format('d/m/Y'));
-        $template->setValue("mode",$mode);
+        $template->setValue("mode",$locataire->getMode());
         $template->setValue("loyer_ttc",$loyer_ttc);
         $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
         $template->setValue("charges",$locataire->getLogement()->getCharges());
