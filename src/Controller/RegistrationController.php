@@ -7,6 +7,7 @@ use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\BackOfficeAuthenticator;
 use App\Security\EmailVerifier;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +29,7 @@ class RegistrationController extends AbstractController
 
     /**
      * @Route("/register", name="app_register")
+     * @IsGranted("ROLE_SUPER_ADMIN")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, BackOfficeAuthenticator $authenticator): Response
     {
