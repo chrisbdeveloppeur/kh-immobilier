@@ -25,7 +25,7 @@ class QuittancesController extends AbstractController
         $locataire = $locataireRepository->find($loc_id);
         $date = new \DateTime();
         $loyer_ttc = $locataire->getLogement()->getLoyerHc() + $locataire->getLogement()->getCharges();
-        $mode = "N/A";
+        /*$mode = "N/A";
         if ($locataire->getMode() == "virement_banquaire"){
             $mode = "Virement bancaire";
         }elseif ($locataire->getMode() == "especes"){
@@ -33,6 +33,7 @@ class QuittancesController extends AbstractController
         }elseif ($locataire->getMode() == "cheque"){
             $mode = "Chèque";
         }
+        */
         $date->setTimezone(new \DateTimeZone("Europe/Paris"));
         $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
         $template->setValue('p_gender', $user->getGender());
