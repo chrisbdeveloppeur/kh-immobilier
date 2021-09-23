@@ -17,7 +17,7 @@
                         {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
                         {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                         {% set total_charges =  total_charges + bien_immo.charges %}
-                            <div class="column is-two-fifths-widescreen">
+                            <div class="column is-two-fifths-widescreen is-two-thirds">
                                 {{ include('immo/biens_card.html.twig') }}
                             </div>
                     {% else %}
