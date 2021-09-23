@@ -45,5 +45,28 @@ a.fa-search-js:hover{
   }
 }
 
+.is-absolute{
+  position: absolute !important;
+}
+
+.is-blurred{
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  transition: ease .5s;
+}
+
+.remove-blurred-onhover:hover{
+  filter: none;
+  -webkit-filter: none;
+}
+
+.is-bottom{
+  bottom: 0 !important;
+}
+
+.is-top{
+  top: 0 !important;
+}
+
 @import "~bulma";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";

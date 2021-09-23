@@ -9,6 +9,7 @@
 import './styles/app.scss';
 
 const immo_illustration = require('./img/png/immo_illustration.png');
+const entreprenariat_illustration = require('./img/png/job_illustration.png');
 
 // start the Stimulus application
 import './bootstrap';
