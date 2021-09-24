@@ -9,9 +9,9 @@ $table-foot-cell-color : white;
     transition: .25s;
 }
 
-td,th{
+th, td{
   white-space: nowrap;
-  text-overflow: ellipsis;
+  //text-overflow: ellipsis;
   //overflow: hidden;
 }
 
