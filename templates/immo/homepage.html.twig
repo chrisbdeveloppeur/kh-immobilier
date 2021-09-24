@@ -8,7 +8,7 @@
 
 
 
-            <div class="column is-flex-desktop is-align-items-center is-flex-direction-column">
+            <div class="column is-flex is-align-items-center is-flex-direction-column px-0 py-0">
 
                     {% set total_loyer_ttc = 0 %}
                     {% set total_loyer_hc = 0 %}
@@ -17,7 +17,7 @@
                         {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
                         {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                         {% set total_charges =  total_charges + bien_immo.charges %}
-                            <div class="column is-two-fifths-widescreen is-two-thirds">
+                            <div class="column is-two-thirds is-full-mobile is-two-fifths-widescreen">
                                 {{ include('immo/biens_card.html.twig') }}
                             </div>
                     {% else %}
