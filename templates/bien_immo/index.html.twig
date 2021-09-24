@@ -7,7 +7,7 @@
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
     <div class="field" style="max-width: 100vw;overflow-y: auto">
-        <table class="table">
+        <table class="table" style="width: 100%;">
             <thead>
                 <tr>
                     <th>
@@ -69,7 +69,7 @@
                                 </span>
                             </a>
                             <a class="fa-search-js" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">
-                                <span class="icon-text has-text-info">
+                                <span class="has-text-info">
                                     <span>{{ bien_immo.locataires.current }}</span>
                                     <span class="icon">
                                         <i class="fas fa-search fa-search-js"></i>

@@ -7,7 +7,7 @@
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
     <div class="field" style="max-width: 100vw;overflow-y: auto">
-        <table class="table">
+        <table class="table" style="width: 100%;">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -38,7 +38,7 @@
                     <td class="is-size-7">
                         {% if locataire.logement %}
                             <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}">
-                                <span class="icon-text has-text-info">
+                                <span class="has-text-info">
                                     <span>{{ locataire.logement }}</span>
                                     <span class="icon">
                                         <i class="fas fa-search fa-search-js"></i>
