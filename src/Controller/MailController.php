@@ -25,7 +25,7 @@ class MailController
 
     public function sendMessage($file_path, $locataire)
     {
-        $mail = (new \Swift_Message('Gestion immo'))
+        $mail = (new \Swift_Message('Quittance de loyer'))
             ->setFrom('admin@immo.com')
             ->setTo('kenshin91cb@gmail.com')
 //            ->setTo($locataire->getEmail())
