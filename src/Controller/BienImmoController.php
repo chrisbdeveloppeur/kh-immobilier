@@ -122,14 +122,15 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/remove-locataire-{loc_id}", name="remove_loctataire", methods={"GET","POST"})
      */
-    public function removeLocataire(Request $request, $id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
+    public function removeLocataire($id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
         $locataire = $locataireRepository->find($loc_id);
+        $name = $locataire->getLastName() . ' ' . $locataire->getFirstName();
         $bienImmo = $bienImmoRepository->find($id);
         $bienImmo->removeLocataire($locataire);
         $em->flush();
 
-        $this->addFlash('warning', 'le locataire à été retiré');
+        $this->addFlash('warning', 'le locataire : '.$name.' à été retiré');
 
         return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
     }
