@@ -128,7 +128,7 @@ class BienImmo
 
     public function setBuilding(string $building): self
     {
-        $this->building = $building;
+        $this->building = mb_strtoupper($building);
 
         return $this;
     }
