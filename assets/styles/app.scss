@@ -9,6 +9,11 @@ $table-foot-cell-color : white;
     transition: .25s;
 }
 
+td,th{
+  white-space: nowrap;
+  word-break: break-all;
+}
+
 th>span{
   display: flex;
   justify-content: center;
