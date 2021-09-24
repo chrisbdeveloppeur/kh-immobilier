@@ -11,7 +11,8 @@ $table-foot-cell-color : white;
 
 td,th{
   white-space: nowrap;
-  word-break: break-all;
+  text-overflow: ellipsis;
+  //overflow: hidden;
 }
 
 th>span{
