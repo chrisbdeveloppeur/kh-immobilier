@@ -23,19 +23,19 @@
             <tbody>
             {% for locataire in locataires %}
                 <tr>
-                    <td>{{ locataire.id }}</td>
-                    <td>{{ locataire.firstName }}</td>
-                    <td>{{ locataire.lastName }}</td>
-                    <td>
+                    <td class="is-size-7">{{ locataire.id }}</td>
+                    <td class="is-size-7">{{ locataire.firstName }}</td>
+                    <td class="is-size-7">{{ locataire.lastName }}</td>
+                    <td class="is-size-7">
                         {% if locataire.email %}
                             <a href="mailto:{{ locataire.email }}">{{ locataire.email }}</a>
                         {% else %}
                             <i>Non renseigné</i>
                         {% endif %}
                     </td>
-                    <td>{{ locataire.gender }}</td>
-                    <td>{{ locataire.mode }}</td>
-                    <td>
+                    <td class="is-size-7">{{ locataire.gender }}</td>
+                    <td class="is-size-7">{{ locataire.mode }}</td>
+                    <td class="is-size-7">
                         {% if locataire.logement %}
                             <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}">
                                 <span class="icon-text has-text-info">
@@ -49,7 +49,7 @@
                             <i>N/A</i>
                         {% endif %}
                     </td>
-                    <td>
+                    <td class="is-size-7">
                         <a href="{{ path('locataire_show', {'id': locataire.id}) }}" title="Voir les détails">
                             <span class="icon">
                                 <i class="fas fa-lg fa-search"></i>
@@ -71,7 +71,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="11">no records found</td>
+                    <td colspan="11">Aucun locataires enregistrés</td>
                 </tr>
             {% endfor %}
             </tbody>
