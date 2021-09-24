@@ -131,7 +131,7 @@ class BienImmoController extends AbstractController
         $bienImmo->removeLocataire($locataire);
         $em->flush();
 
-        $this->addFlash('warning', 'Le locataire : <b>'.$name.'</b> à été retiré du logement : <b>'.$logement.'</b>');
+        $this->addFlash('warning', 'Le locataire <b>'.$name.'</b> à été retiré du logement <b>'.$logement.'</b>');
 
         return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
     }
