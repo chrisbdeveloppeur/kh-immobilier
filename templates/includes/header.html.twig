@@ -1,47 +1,52 @@
 {#<div class="has-background-black-bis has-text-light">#}
     <header class="navbar is-dark is-fixed-top">
-        <div class="container">
+        <div class="container has-text-centered">
             <div class="navbar-brand">
                 <a href="{{ path('home') }}" class="navbar-item">Menue principal</a>
-                {% if is_granted("ROLE_SUPER_ADMIN") %}
-                    <a href="{{ path('app_register') }}" class="navbar-item"><span class="help">Enregistrer un compte</span></a>
-                {% endif %}
-                {% if app.user %}
-                    <div class="navbar-item">
-                        <div class="tags has-addons">
-
-                            <span class="tag" title="modifier mon compte">
-                                <a href="{{ path('user_edit', {'id': app.user.id}) }}">Connecté : {{ app.user.username }}</a>
-                            </span>
-                            <a class="tag is-danger" href="{{ path('app_logout') }}">Se déconnecté</a>
-
-                        </div>
-                    </div>
-
-                {% else %}
-                    <a href="{{ path('app_login') }}" class="navbar-item">Connexion</a>
-                {% endif %}
-
-                    <span class="navbar-burger" data-target="navbarMenuHeroC" onclick="this.classList.toggle('is-active');document.getElementById('navbarMenuHeroC').classList.toggle('is-active')">
+                    <span class="navbar-burger" data-target="navbarMenuHeroC" onclick="this.classList.toggle('is-active');document.getElementById('navbarMenu').classList.toggle('is-active')">
                         <span></span>
                         <span></span>
                         <span></span>
                     </span>
             </div>
 
-            <div id="navbarMenuHeroC" class="navbar-menu">
-                <div class="navbar-end">
+            <div id="navbarMenu" class="navbar-menu">
+
+                <div class="navbar-start">
 
                     <a href="{{ path('immo_accueil') }}" class="navbar-item is-light is-outlined">
                         Immobilier
                     </a>
 
                     <a href="{{ path('job') }}" class="navbar-item is-light is-outlined">
-                        Job
+                        Entreprenariat
                     </a>
 
                 </div>
+
+                <div class="navbar-end">
+                    {% if is_granted("ROLE_SUPER_ADMIN") %}
+                        <a href="{{ path('app_register') }}" class="navbar-item">Enregistrer un compte</a>
+                    {% endif %}
+                    {% if app.user %}
+                        <div class="navbar-item">
+                            <div class="tags has-addons">
+
+                            <span class="tag" title="modifier mon compte">
+                                <a href="{{ path('user_edit', {'id': app.user.id}) }}">Connecté : {{ app.user.username }}</a>
+                            </span>
+                                <a class="tag is-danger" href="{{ path('app_logout') }}">Se déconnecté</a>
+
+                            </div>
+                        </div>
+
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="navbar-item">Connexion</a>
+                    {% endif %}
+                </div>
+
             </div>
+
         </div>
     </header>
 {#</div>#}
