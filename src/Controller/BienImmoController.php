@@ -95,7 +95,6 @@ class BienImmoController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-//            dd($bienImmo->getLocataires()->current());
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 

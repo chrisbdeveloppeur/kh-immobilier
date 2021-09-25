@@ -2,14 +2,14 @@
     {{ form_start(form, {'attr': {'class': 'column is-one-third'} }) }}
 {#        {{ form_widget(form, {'attr': {'class': 'field has-text-centered'} } ) }}#}
     {% for child in form %}
-        <div class="field has-text-centered">
+        <div class="field">
             {% if 'token' not in form_label(child) %}
-                <div class="label">
+                <div class="label is-size-7">
                     {{ form_label(child) }}
                 </div>
             {% endif %}
 
-            {{ form_widget(child, {'attr': {'class': 'input'} }) }}
+            {{ form_widget(child, {'attr': {'class': 'input is-small has-text-centered'} }) }}
 
             {% if form_help(child) %}
                 <span class="help is-info">
