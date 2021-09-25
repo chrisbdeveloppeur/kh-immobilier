@@ -9,13 +9,26 @@
                 </div>
             {% endif %}
 
-            {% if child.vars.choices is defined %}
+
+            {% if child.vars.block_prefixes[1] == 'choice' %}
                 <div class="select is-small is-fullwidth">
                     {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
+                </div>
+            {% elseif child.vars.block_prefixes[1] == 'number' %}
+                <div class="field has-addons">
+                    <p class="control is-expanded">
+                        {{ form_widget(child, {'attr': {'class': 'input has-text-centered is-small'} }) }}
+                    </p>
+                    <p class="control">
+                        <a class="button is-static is-small">
+                            €
+                        </a>
+                    </p>
                 </div>
             {% else %}
                 {{ form_widget(child, {'attr': {'class': 'input is-small has-text-centered'} }) }}
             {% endif %}
+
 
             {% if form_help(child) %}
                 <span class="help is-info">
