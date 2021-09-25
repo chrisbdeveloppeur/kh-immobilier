@@ -6,10 +6,10 @@
 
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
-    <div class="field" style="max-width: 100vw;overflow-y: auto">
-        <table class="table" style="width: 100%;">
+    <div class="table-container">
+        <table class="table is-narrow" style="width: 100%;">
             <thead>
-                <tr>
+                <tr class="has-text-centered">
                     <th>
                         <span>Complément d'adresse</span>
                     </th>
@@ -52,7 +52,7 @@
                 {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                 {% set total_charges =  total_charges + bien_immo.charges %}
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
-                <tr>
+                <tr class="has-text-centered">
                     <td class="is-size-7 has-text-weight-bold">{{ bien_immo.building }}</td>
                     <td class="is-size-7">{{ bien_immo.street }}</td>
                     <td class="is-size-7">{{ bien_immo.cp }}</td>
@@ -63,7 +63,7 @@
                     <td class="is-size-7">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td class="is-size-7">
                         {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement">
+                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer la locataire du logement');">
                                 <span class="icon">
                                     <i class="fas fa-user-minus"></i>
                                 </span>
@@ -118,16 +118,16 @@
                 <th></th>
                 <th></th>
                 <th>
-                    <span>{{ total_loyer_hc }} €</span>
+                    <span>{{ total_loyer_hc|number_format(2) }} €</span>
                 </th>
                 <th>
-                    <span>{{ total_charges }} €</span>
+                    <span>{{ total_charges|number_format(2) }} €</span>
                 </th>
                 <th>
-                    <span>{{ total_loyer_ttc }} €</span>
+                    <span>{{ total_loyer_ttc|number_format(2) }} €</span>
                 </th>
                 <th>
-                    <span>{{ total_solde }} €</span>
+                    <span>{{ total_solde|number_format(2) }} €</span>
                 </th>
                 <th></th>
                 <th></th>

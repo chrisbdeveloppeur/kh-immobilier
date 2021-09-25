@@ -23,6 +23,10 @@ th>span{
   height: 100%;
 }
 
+option{
+  text-align: center;
+}
+
 a.navbar-item:focus, a.navbar-item:focus-within{
     background-color: rgba(0,0,0,0) !important;
 }

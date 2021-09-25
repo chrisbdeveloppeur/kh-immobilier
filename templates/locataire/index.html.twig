@@ -6,11 +6,10 @@
 
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
-    <div class="field" style="max-width: 100vw;overflow-y: auto">
-        <table class="table" style="width: 100%;">
+    <div class="table-container">
+        <table class="table is-narrow" style="width: 100%;">
             <thead>
-                <tr>
-                    <th>Id</th>
+                <tr class="has-text-centered">
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>Email</th>
@@ -22,8 +21,7 @@
             </thead>
             <tbody>
             {% for locataire in locataires %}
-                <tr>
-                    <td class="is-size-7">{{ locataire.id }}</td>
+                <tr class="has-text-centered">
                     <td class="is-size-7">{{ locataire.firstName }}</td>
                     <td class="is-size-7">{{ locataire.lastName }}</td>
                     <td class="is-size-7">
