@@ -77,9 +77,9 @@
                                 </span>
                             </a>
                         {% else %}
-                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement">
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
                                 <span class="icon">
-                                    <i class="fas fa-user-plus"></i>
+                                    <i class="fas fa-user-slash"></i>
                                 </span>
                             </a>
                             Sans locataire
