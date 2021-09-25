@@ -65,6 +65,14 @@ a.fa-search-js:hover{
   transition: ease .5s;
 }
 
+@media (min-width: 1023px) {
+  .is-blurred-desktop{
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    transition: ease .5s;
+  }
+}
+
 .remove-blurred-onhover:hover{
   filter: none;
   -webkit-filter: none;
