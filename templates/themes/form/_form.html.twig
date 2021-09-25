@@ -9,7 +9,13 @@
                 </div>
             {% endif %}
 
-            {{ form_widget(child, {'attr': {'class': 'input is-small has-text-centered'} }) }}
+            {% if child.vars.choices is defined %}
+                <div class="select is-small is-fullwidth">
+                    {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
+                </div>
+            {% else %}
+                {{ form_widget(child, {'attr': {'class': 'input is-small has-text-centered'} }) }}
+            {% endif %}
 
             {% if form_help(child) %}
                 <span class="help is-info">
