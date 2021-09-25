@@ -43,15 +43,15 @@ a.navbar-item:focus, a.navbar-item:focus-within{
 
 i.fa-search-js{
   width: 0;
-  //opacity: 0;
+  opacity: 0;
   overflow: hidden !important;
-  transition: .3s
+  transition: .2s
 }
 
 a.fa-search-js:hover{
   i.fa-search-js{
-    width: 50px;
-    //opacity: 1;
+    width: auto;
+    opacity: 1;
   }
 }
 

@@ -49,14 +49,26 @@
             <tr>
                 <th>Logement</th>
                 <td>
-                    <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.id }) }}">
-                        <span class="icon-text has-text-info">
-                            <span>{{ locataire.logement }}</span>
-                            <span class="icon">
-                                <i class="fas fa-search fa-search-js"></i>
+                    {% if locataire.logement %}
+                        <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.id }) }}">
+                            <span class="icon-text has-text-info">
+                                <span>{{ locataire.logement }}</span>
+                                <span class="icon">
+                                    <i class="fas fa-search fa-search-js"></i>
+                                </span>
                             </span>
-                        </span>
-                    </a>
+                        </a>
+                    {% else %}
+                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Ajouter un logement à ce locataire" onmouseover="this.querySelector('i.add-loc').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i.add-loc').classList.replace('fa-user-plus','fa-user-slash')">
+                            <span class="tag is-warning" onmouseover="this.classList.replace('is-warning','is-info')" onmouseleave="this.classList.replace('is-info','is-warning')">
+                                <i class="fas fa-user-slash add-loc"></i>
+                                <span class="icon">
+                                    <i class="fas fa-home"></i>
+                                </span>
+                            </span>
+                        </a>
+
+                    {% endif %}
                 </td>
             </tr>
             <tr>

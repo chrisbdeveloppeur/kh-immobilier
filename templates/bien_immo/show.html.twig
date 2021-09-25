@@ -85,7 +85,7 @@
                             </span>
                         </a>
 
-                        <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': locataire.id}) }}" title="Retirer le locataire">
+                        <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': locataire.id}) }}" title="Retirer le locataire" onclick="return confirm('Etes-vous sur de vouloir retirer la locataire du logement')">
                             <span class="icon">
                                 <i class="fas fa-user-minus"></i>
                             </span>

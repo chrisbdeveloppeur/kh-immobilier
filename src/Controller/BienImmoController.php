@@ -50,6 +50,8 @@ class BienImmoController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Le logement <b>'.$bienImmo->getBuilding().'</b> à bien été ajouté');
+
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -95,7 +97,11 @@ class BienImmoController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Les modifications ont bien étés appliquées');
+
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+//            return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('bien_immo/edit.html.twig', [
@@ -109,11 +115,14 @@ class BienImmoController extends AbstractController
      */
     public function delete(Request $request, BienImmo $bienImmo): Response
     {
+        $immoName = $bienImmo->getBuilding();
         if ($this->isCsrfTokenValid('delete'.$bienImmo->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($bienImmo);
             $entityManager->flush();
         }
+
+        $this->addFlash('danger', 'Le logement <b>' . $immoName . '</b> à été supprimé définitivement');
 
         return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -121,7 +130,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/remove-locataire-{loc_id}", name="remove_loctataire", methods={"GET","POST"})
      */
-    public function removeLocataire($id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
+    public function removeLocataire(Request $request,$id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
         $locataire = $locataireRepository->find($loc_id);
         $name = $locataire->getLastName() . ' ' . $locataire->getFirstName();
@@ -132,6 +141,8 @@ class BienImmoController extends AbstractController
 
         $this->addFlash('warning', 'Le locataire <b>'.$name.'</b> à été retiré du logement <b>'.$logement.'</b>');
 
-        return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
+//        return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
     }
 }
