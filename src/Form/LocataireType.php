@@ -27,7 +27,6 @@ class LocataireType extends AbstractType
                 $this->logement_fulled = false;
             }
         }
-//        dd($this->logement_fulled);
 
     }
 
@@ -69,7 +68,6 @@ class LocataireType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans logement',
-//                'help' => $this->logement_fulled_msg,
                 'help' => $this->logement_fulled_msg,
                 'query_builder' => function (BienImmoRepository $er) {
                     //$er = $er->findWithoutLocataires();
