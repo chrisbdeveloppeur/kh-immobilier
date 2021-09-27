@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Repository\BienImmoRepository;
 use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\MailerInterface;
@@ -21,10 +23,16 @@ class ImmoController extends AbstractController
     /**
      * @Route("/accueil", name="accueil")
      */
-    public function index(BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
+    public function index(Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PaginatorInterface $paginator): Response
     {
 
-        $biens_immos = $bienImmoRepository->findAll();
+        $all_biens_immos = $bienImmoRepository->findAll();
+
+        $biens_immos = $paginator->paginate(
+            $all_biens_immos,
+            $request->query->getInt('page',1),
+            5
+        );
 
         return $this->render('immo/homepage.html.twig', [
             "biens_immos" => $biens_immos,
