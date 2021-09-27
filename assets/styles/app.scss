@@ -35,6 +35,10 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   border-radius: 0px !important;
 }
 
+.help-mouse-hover:hover{
+  cursor: help;
+}
+
 .bg-info-onhover:hover{
     background-color: $info !important;
 }

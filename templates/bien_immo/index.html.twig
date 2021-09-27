@@ -53,22 +53,22 @@
                 {% set total_charges =  total_charges + bien_immo.charges %}
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7 has-text-weight-bold">{{ bien_immo.building }}</td>
-                    <td class="is-size-7">{{ bien_immo.street }}</td>
-                    <td class="is-size-7">{{ bien_immo.cp }}</td>
-                    <td class="is-size-7">{{ bien_immo.city }}</td>
-                    <td class="is-size-7">{{ bien_immo.loyerHc }} €</td>
-                    <td class="is-size-7">{{ bien_immo.charges }} €</td>
-                    <td class="is-size-7">{{ (bien_immo.loyerHc + bien_immo.charges)|number_format(2) }} €</td>
-                    <td class="is-size-7">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
-                    <td class="is-size-7">
+                    <td class="is-size-7 has-text-weight-bold help-mouse-hover" title="{{ bien_immo.building }}">{{ bien_immo.building }}</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.street }}">{{ bien_immo.street }}</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ (bien_immo.loyerHc + bien_immo.charges)|number_format(2) }} €">{{ (bien_immo.loyerHc + bien_immo.charges)|number_format(2) }} €</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
+                    <td class="is-size-7 help-mouse-hover">
                         {% if bien_immo.locataires is not empty %}
                             <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer la locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
                                 <span class="icon">
                                     <i class="fas fa-user"></i>
                                 </span>
                             </a>
-                            <a class="fa-search-js" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">
+                            <a class="fa-search-js" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="{{ bien_immo.locataires.current }}">
                                 <span class="has-text-info">
                                     <span>{{ bien_immo.locataires.current }}</span>
                                     <span class="icon">
@@ -85,7 +85,7 @@
                             Sans locataire
                         {% endif %}
                     </td>
-                    <td class="is-size-7">
+                    <td class="is-size-7 help-mouse-hover">
                         <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails">
                             <span class="icon">
                                 <i class="fas fa-lg fa-search"></i>
