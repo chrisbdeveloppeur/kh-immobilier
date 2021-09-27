@@ -63,9 +63,9 @@
                     <td class="is-size-7">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td class="is-size-7">
                         {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer la locataire du logement');">
+                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer la locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
                                 <span class="icon">
-                                    <i class="fas fa-user-minus"></i>
+                                    <i class="fas fa-user"></i>
                                 </span>
                             </a>
                             <a class="fa-search-js" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}">
