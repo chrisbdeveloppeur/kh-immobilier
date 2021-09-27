@@ -16,6 +16,13 @@
                 </div>
 
                 {{ knp_pagination_render(biens_immos) }}
+                <div>
+                    {{ knp_pagination_sortable(biens_immos, 'A-Z', 'building') }}
+                    {{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}
+                    {{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}
+                    {{ knp_pagination_sortable(biens_immos, 'Loyer TTC',) }}
+                </div>
+
 
                     {% set total_loyer_ttc = 0 %}
                     {% set total_loyer_hc = 0 %}

@@ -23,6 +23,7 @@ class BienImmoRepository extends ServiceEntityRepository
     //  * @return BienImmo[] Returns an array of BienImmo objects
     //  */
 
+
     /*
     public function findWithoutLocataires()
     {
