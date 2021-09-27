@@ -10,19 +10,18 @@
 
             <div class="column is-flex is-align-items-center is-flex-direction-column px-0 py-0">
 
-                <div class="tags has-addons">
+                <div class="tags has-addons mb-0">
                     <span class="tag has-text-weight-bold">Nombre total de biens immobiliers</span>
                     <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
                 </div>
 
-                {{ knp_pagination_render(biens_immos) }}
-                <div>
-                    {{ knp_pagination_sortable(biens_immos, 'A-Z', 'building') }}
-                    {{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}
-                    {{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}
-                    {{ knp_pagination_sortable(biens_immos, 'Loyer TTC',) }}
+                <div class="tabs mb-2">
+                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'A-Z', 'building') }}</span>
+                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>
+                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}</span>
                 </div>
 
+                {{ knp_pagination_render(biens_immos) }}
 
                     {% set total_loyer_ttc = 0 %}
                     {% set total_loyer_hc = 0 %}
