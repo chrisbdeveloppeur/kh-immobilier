@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Locataire;
 use App\Form\LocataireType;
 use App\Repository\LocataireRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,10 +21,16 @@ class LocataireController extends AbstractController
     /**
      * @Route("/", name="locataire_index", methods={"GET"})
      */
-    public function index(LocataireRepository $locataireRepository): Response
+    public function index(LocataireRepository $locataireRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $all_locataires = $locataireRepository->findAll();
+
+        $locataires = $paginator->paginate(
+            $all_locataires,
+            $request->query->getInt('page',1),
+        );
         return $this->render('locataire/index.html.twig', [
-            'locataires' => $locataireRepository->findAll(),
+            'locataires' => $locataires,
         ]);
     }
 

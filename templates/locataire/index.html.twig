@@ -10,13 +10,13 @@
         <table class="table is-narrow" style="width: 100%;">
             <thead>
                 <tr class="has-text-centered">
-                    <th>Prénom</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Sexe</th>
-                    <th>Moyen de paiement</th>
-                    <th>Logement</th>
-                    <th>Actions</th>
+                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}</span></th>
+                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}</span></th>
+                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Email', 'email') }}</span></th>
+                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Sexe', 'gender') }}</span></th>
+                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Moyent de paiement', 'email') }}</span></th>
+                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Logement', 'logement.building') }}</span></th>
+                    <th><span class="is-size-7">Actions</span></th>
                 </tr>
             </thead>
             <tbody>
