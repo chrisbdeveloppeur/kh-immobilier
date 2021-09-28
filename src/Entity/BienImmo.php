@@ -92,7 +92,6 @@ class BienImmo
      */
     private $solde;
 
-
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
@@ -334,4 +333,19 @@ class BienImmo
 
         return $this;
     }
+
+    public function getLoyerTtc(): ?float
+    {
+        $loyer_ttc = $this->getCharges() + $this->getLoyerHc();
+        return $loyer_ttc;
+    }
+
+/*
+    public function setLoyerTtc(?float $loyer_ttc): self
+    {
+        $this->loyer_ttc = $loyer_ttc;
+
+        return $this;
+    }
+    */
 }
