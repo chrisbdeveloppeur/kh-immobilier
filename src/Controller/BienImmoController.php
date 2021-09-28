@@ -7,6 +7,7 @@ use App\Form\BienImmoType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,10 +23,17 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/", name="bien_immo_index", methods={"GET"})
      */
-    public function index(BienImmoRepository $bienImmoRepository): Response
+    public function index(BienImmoRepository $bienImmoRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $all_biens_immos = $bienImmoRepository->findAll();
+
+        $biens_immos = $paginator->paginate(
+            $all_biens_immos,
+            $request->query->getInt('page',1)
+        );
+
         return $this->render('bien_immo/index.html.twig', [
-            'bien_immos' => $bienImmoRepository->findAll(),
+            'biens_immos' => $biens_immos,
         ]);
     }
 

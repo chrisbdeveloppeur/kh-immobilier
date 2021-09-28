@@ -11,31 +11,31 @@
             <thead>
                 <tr class="has-text-centered">
                     <th>
-                        <span>Complément d'adresse</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Titre', 'building') }}</span>
                     </th>
                     <th>
-                        <span>Rue</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
                     </th>
                     <th>
-                        <span>CP</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'CP', 'cp') }}</span>
                     </th>
                     <th>
-                        <span>Ville</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Ville', 'city') }}</span>
                     </th>
                     <th>
-                        <span>Loyer HC</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>
                     </th>
                     <th>
-                        <span>Charges</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}</span>
                     </th>
                     <th>
-                        <span>Loyer TTC</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Loyer TTC', 'loyer_ttc') }}</span>
                     </th>
                     <th>
-                        <span>Solde</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Solde', 'solde') }}</span>
                     </th>
                     <th>
-                        <span>Locataire</span>
+                        <span class="has-text-light">{{ knp_pagination_sortable(biens_immos, 'Locataire', 'locataires.current') }}</span>
                     </th>
                     <th>
                         <span>Actions</span>
@@ -47,7 +47,7 @@
             {% set total_loyer_hc = 0 %}
             {% set total_charges = 0 %}
             {% set total_solde = 0 %}
-            {% for bien_immo in bien_immos %}
+            {% for bien_immo in biens_immos %}
                 {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
                 {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                 {% set total_charges =  total_charges + bien_immo.charges %}
@@ -59,7 +59,7 @@
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ (bien_immo.loyerHc + bien_immo.charges)|number_format(2) }} €">{{ (bien_immo.loyerHc + bien_immo.charges)|number_format(2) }} €</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerTtc }} €">{{ bien_immo.loyerTtc }} €</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td class="is-size-7 help-mouse-hover">
                         {% if bien_immo.locataires is not empty %}
