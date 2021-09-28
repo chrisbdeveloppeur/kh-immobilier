@@ -1,32 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Job{% endblock %}
+{% block title %}Entreprenariat{% endblock %}
+{% block title_main %}Gestion de votre entreprise{% endblock %}
 
 {% block body %}
 
-        <div class="column is-flex is-justify-content-center">
-                <div class="buttons">
-                        {% for entreprise in entreprises %}
-                                <div class="button is-dark bg-info-onhover">
-                                        {{ entreprise.name }}
-                                </div>
-                        {% endfor %}
-                </div>
-        </div>
-
-
-
-    {#
-    <div class="hero-body">
-        <div class="column is-flex-desktop">
-            <a href="{{ path('devis') }}" class="column button is-light is-outlined is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
-                <span class="has-text-centered">Devis</span>
+    <div class="column is-flex-desktop">
+        {% for entreprise in entreprises %}
+            <a href="{{ path('entreprenariat_entreprise', {'id': entreprise.id}) }}" class="column mx-1 my-1 is-dark bg-info-onhover text-white-onhover is-flex is-justify-content-center is-align-items-center" style="height: 200px;">
+                {{ entreprise.name }}
             </a>
-            <a href="fac" class="column button is-light is-outlined is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1" style="height: 50vh">
-                <span class="has-text-centered">Factures</span>
-            </a>
-        </div>
-
+        {% endfor %}
     </div>
-    #}
+
 {% endblock %}

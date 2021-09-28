@@ -25,4 +25,16 @@ class JobController extends AbstractController
             'entreprises' => $entreprises,
         ]);
     }
+
+    /**
+     * @Route("/entreprise-{id}", name="entreprise")
+     */
+    public function selectDocumentType(EntrepriseRepository $entrepriseRepository, $id): Response
+    {
+        $entreprise = $entrepriseRepository->find($id);
+
+        return $this->render('entreprenariat/select_document_type.html.twig', [
+            'entreprise' => $entreprise,
+        ]);
+    }
 }
