@@ -64,6 +64,7 @@ class AppFixtures extends Fixture
         }
 
         for ($j = 0; $j<=2 ; $j++){
+            $entreprise = new Entreprise();
             $name = '';
             switch ($j){
                 case 0:
@@ -76,8 +77,8 @@ class AppFixtures extends Fixture
                     $name = 'Kingdom Immobilier';
                     break;
             }
-            $entreprise = new Entreprise();
             $entreprise->setName($name);
+            $manager->persist($entreprise);
         }
 
         $manager->flush();
