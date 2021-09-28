@@ -22,7 +22,7 @@
                         </span>
                     </a>
 
-                    <a href="{{ path('job') }}" class="navbar-item is-light">
+                    <a href="{{ path('entreprenariat_home') }}" class="navbar-item is-light">
                         <span class="icon-text">
                             <span class="icon">
                               <i class="fas fa-user-tie"></i>
@@ -36,12 +36,9 @@
                 <div class="navbar-end">
                     {% if is_granted("ROLE_SUPER_ADMIN") %}
                         <a href="{{ path('app_register') }}" class="navbar-item" title="Ajouter un gestionnaire">
-                            {#<span class="icon-text">#}
-                                <span class="icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </span>
-                            {#<span>Entreprenariat</span>#}
-                        </span>
+                            <span class="icon">
+                                <i class="fas fa-user-plus"></i>
+                            </span>
                         </a>
                     {% endif %}
                     {% if app.user %}

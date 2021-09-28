@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\BienImmo;
+use App\Entity\Entreprise;
 use App\Entity\Locataire;
 use App\Entity\Solde;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -60,6 +61,23 @@ class AppFixtures extends Fixture
             //$manager->persist($solde);
             $manager->persist($bien);
             $manager->persist($locataire);
+        }
+
+        for ($j = 0; $j<=2 ; $j++){
+            $name = '';
+            switch ($j){
+                case 0:
+                    $name = 'chrisBdev';
+                    break;
+                case 1:
+                    $name = 'Steadiness';
+                    break;
+                case 2:
+                    $name = 'Kingdom Immobilier';
+                    break;
+            }
+            $entreprise = new Entreprise();
+            $entreprise->setName($name);
         }
 
         $manager->flush();
