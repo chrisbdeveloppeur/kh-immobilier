@@ -31,18 +31,10 @@
     </div>
 
     {% block nav_secondaire %}
-        {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') %}
-            <div class="is-flex-desktop is-justify-content-space-between">
-                <div class="column buttons has-text-centered-touch">
-                    <a href="{{ path('immo_accueil') }}" class="button is-dark bg-info-onhover">Vue d'ensemble</a>
-                    <a href="{{ path('bien_immo_index') }}" class="button is-dark bg-info-onhover">Vos biens</a>
-                    <a href="{{ path('locataire_index') }}" class="button is-dark bg-info-onhover">Vos locataires</a>
-                </div>
-                <div class="column buttons has-text-centered-touch has-text-right-desktop">
-                    <a href="{{ path('bien_immo_new') }}" class="button is-dark bg-info-onhover">Ajouter un bien</a>
-                    <a href="{{ path('locataire_new') }}" class="button is-dark bg-info-onhover">Ajouter un locataire</a>
-                </div>
-            </div>
+        {% if 'immo' or 'locataire' or 'quittance' or 'loyer' in app.request.get('_route') %}
+            {{ include('includes/sub_header_immo.html.twig') }}
+        {% elseif 'entreprenariat' or 'entreprise' in app.request.get('_route')  %}
+            {{ include('includes/sub_header_entreprenariat.html.twig') }}
         {% endif %}
     {% endblock %}
 

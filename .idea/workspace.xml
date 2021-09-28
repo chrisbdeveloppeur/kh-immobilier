@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/files/templates/~$VIS_CHRISBDEV_TEMPLATE.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accueil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accueil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/job/devis/download_file.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/devis/download_file.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/job/devis/edit_devis.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/devis/edit_devis.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/job/factures/download_file.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/factures/download_file.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/job/factures/edit_facture.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/factures/edit_facture.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/job/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,19 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/JobController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
+            <state relative-caret-position="272">
+              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
               <folding>
                 <element signature="e#34#74#0#PHP" expanded="true" />
                 <element signature="e#427#462#0#PHP" expanded="true" />
@@ -49,11 +35,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+            <state relative-caret-position="205">
+              <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
               <folding>
                 <element signature="e#36#60#0#PHP" expanded="true" />
               </folding>
@@ -64,7 +62,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/includes/header.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="-221">
               <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
               <folding>
                 <element signature="e#1102#1121#0#Twig" expanded="true" />
@@ -81,6 +79,29 @@
               <folding>
                 <element signature="e#205#217#0#Twig" expanded="true" />
                 <element signature="e#735#754#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/includes/sub_header_entreprenariat.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+              <folding>
+                <element signature="e#146#165#0#Twig" expanded="true" />
+                <element signature="e#256#272#0#Twig" expanded="true" />
+                <element signature="e#557#571#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,9 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/packages/security.yaml" />
-        <option value="$PROJECT_DIR$/src/Controller/LocataireController.php" />
-        <option value="$PROJECT_DIR$/templates/security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/Security/BackOfficeAuthenticator.php" />
         <option value="$PROJECT_DIR$/templates/user/new.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
@@ -124,7 +142,6 @@
         <option value="$PROJECT_DIR$/src/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/src/Controller/QuittancesController.php" />
         <option value="$PROJECT_DIR$/assets/app.js" />
-        <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/MailController.php" />
         <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
         <option value="$PROJECT_DIR$/templates/locataire/index.html.twig" />
@@ -152,8 +169,12 @@
         <option value="$PROJECT_DIR$/templates/themes/form/_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/accueil.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/header.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/JobController.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" />
+        <option value="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" />
+        <option value="$PROJECT_DIR$/templates/includes/sub_header_immo.html.twig" />
+        <option value="$PROJECT_DIR$/templates/includes/sub_header_entreprenariat.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/JobController.php" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
       </list>
     </option>
   </component>
@@ -268,7 +289,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-12" />
     <option name="y" value="-12" />
     <option name="width" value="984" />
@@ -400,26 +421,26 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/includes" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word" />
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\immo\quittances" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\src\Controller" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job\factures" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\includes" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\assets" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\immo" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\assets\files\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\immo\quittances" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\src\Controller" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job\factures" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -477,15 +498,15 @@
       <workItem from="1632417764147" duration="2279000" />
       <workItem from="1632481483274" duration="11771000" />
       <workItem from="1632581158509" duration="9592000" />
-      <workItem from="1632737546210" duration="13524000" />
+      <workItem from="1632737546210" duration="16356000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229776000" />
+    <option name="totallyTimeSpent" value="232608000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2" />
@@ -541,30 +562,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Security/EmailVerifier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="45" column="34" lean-forward="true" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Solde.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="e#30#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Security/BackOfficeAuthenticator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/immo/quittances/download_file.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -800,13 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/BienImmoRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -914,6 +904,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+          <folding>
+            <element signature="e#36#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -925,20 +925,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/includes/header.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/includes/sub_header_immo.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
+        <state relative-caret-position="170">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
           <folding>
-            <element signature="e#1102#1121#0#Twig" expanded="true" />
+            <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/JobController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
+        <state relative-caret-position="272">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding>
             <element signature="e#34#74#0#PHP" expanded="true" />
             <element signature="e#427#462#0#PHP" expanded="true" />
@@ -946,13 +953,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
+    <entry file="file://$PROJECT_DIR$/templates/includes/header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+        <state relative-caret-position="-221">
+          <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
           <folding>
-            <element signature="e#36#60#0#PHP" expanded="true" />
+            <element signature="e#1102#1121#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/includes/sub_header_entreprenariat.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <element signature="e#146#165#0#Twig" expanded="true" />
+            <element signature="e#256#272#0#Twig" expanded="true" />
+            <element signature="e#557#571#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
         </state>
       </provider>
     </entry>
