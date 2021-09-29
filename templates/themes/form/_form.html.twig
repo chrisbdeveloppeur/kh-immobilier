@@ -22,7 +22,7 @@
                     {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
                 </div>
             {% elseif child.vars.block_prefixes[1] == 'number' %}
-                <div class="field has-addons">
+                <div class="field has-addons mb-0">
                     <p class="control is-expanded">
                         {{ form_widget(child, {'attr': {'class': 'input has-text-centered is-small'} }) }}
                     </p>
@@ -38,7 +38,7 @@
 
 
             {% if form_help(child) %}
-                <span class="help is-info">
+                <span class="help is-info mt-0">
                     <span class="icon-text" style="flex-wrap: nowrap">
                         <span class="icon">
                             <i class="fas fa-exclamation-circle"></i>

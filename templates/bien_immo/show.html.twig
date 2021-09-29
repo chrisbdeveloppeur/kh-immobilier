@@ -7,7 +7,7 @@
 {% block body %}
 <section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
     <div class="column">
-        <div class="buttons is-justify-content-space-between has-text-centered">
+        <div class="buttons are-small is-justify-content-space-between has-text-centered">
             <a class="button is-light" href="{{ path('bien_immo_index') }}">Retour à la liste des Biens immobiliers</a>
             <a class="button is-light" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier ce bien</a>
         </div>
@@ -17,7 +17,7 @@
         <table class="table">
             <tbody>
             <tr>
-                <th>Complément d'adresse</th>
+                <th>Titre</th>
                 <td>{{ bien_immo.building }}</td>
             </tr>
             <tr>
@@ -85,7 +85,7 @@
                             </span>
                         </a>
 
-                        <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': locataire.id}) }}" title="Retirer le locataire" onclick="return confirm('Etes-vous sur de vouloir retirer la locataire du logement')">
+                        <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': locataire.id}) }}" title="Retirer le locataire" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement?')">
                             <span class="icon">
                                 <i class="fas fa-user-minus"></i>
                             </span>

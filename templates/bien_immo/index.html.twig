@@ -63,8 +63,8 @@
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td class="is-size-7 help-mouse-hover">
                         {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer la locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
-                                <span class="icon">
+                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
+                                <span class="icon has-text-info text-black-onhover">
                                     <i class="fas fa-user"></i>
                                 </span>
                             </a>
@@ -78,7 +78,7 @@
                             </a>
                         {% else %}
                             <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
-                                <span class="icon">
+                                <span class="icon has-text-dark text-info-onhover">
                                     <i class="fas fa-user-slash"></i>
                                 </span>
                             </a>
