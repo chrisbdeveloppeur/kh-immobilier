@@ -1,38 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des entreprises{% endblock %}
+{% block title %}Entreprises{% endblock %}
 
 {% block title_main %}Liste des entreprises{% endblock %}
 
 {% block body %}
+<section class="section is-flex-direction-column is-align-items-center">
+    <div class="table-container">
+        <table class="table is-narrow" style="width: 100%;">
+            <thead>
+            <tr class="has-text-centered">
+                <th class="is-size-7">Titre</th>
+                <th class="is-size-7">Siret</th>
+                <th class="is-size-7">Tva_number</th>
+                <th class="is-size-7">actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entreprise in entreprises %}
+                <tr class="has-text-centered">
+                    <td class="is-size-7">{{ entreprise.name }}</td>
+                    <td class="is-size-7">{{ entreprise.siret }}</td>
+                    <td class="is-size-7">{{ entreprise.tvaNumber }}</td>
+                    <td class="is-size-7">
+                        <a href="{{ path('entreprise_show', {'id': entreprise.id}) }}" title="Voir les détails">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-search"></i>
+                            </span>
+                        </a>
+                        <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}" title="Modifier l'entreprise">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-pen-square"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune entreprises trouvées</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Siret</th>
-                <th>Tva_number</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entreprise in entreprises %}
-            <tr>
-                <td>{{ entreprise.name }}</td>
-                <td>{{ entreprise.siret }}</td>
-                <td>{{ entreprise.tvaNumber }}</td>
-                <td>
-                    <a href="{{ path('entreprise_show', {'id': entreprise.id}) }}">show</a>
-                    <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucune entreprises trouvées</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="column has-text-centered">
+        <a class="button" href="{{ path('entreprise_new') }}">Ajouter une entreprise</a>
+    </div>
 
-    <a class="button" href="{{ path('entreprise_new') }}">Ajouter une entreprise</a>
 {% endblock %}
