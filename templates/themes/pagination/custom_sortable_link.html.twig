@@ -1,0 +1,32 @@
+<a{% for attr, value  in options %}
+    {% if attr == 'class' %}
+        {% if sorted %}
+{{ attr }}="has-text-info"
+{% else %}
+    {{ attr }}="has-text-dark"
+        {% endif %}
+    {% elseif attr == 'title' %}
+        {% if value == 'A-Z' %}
+            {{ attr }}="Trier par Nom"
+        {% else %}
+            {{ attr }}="Trier par {{ value }}"
+        {% endif %}
+    {% else %}
+        {{ attr }}="{{ value }}"
+    {% endif %}
+{% endfor %}>
+<span class="float-right">
+        {% if sorted %}
+            {% if direction == 'desc' %}
+                <i class="fa fa-sort-down mx-1"></i>
+            {% else %}
+                <i class="fa fa-sort-up mx-1"></i>
+            {% endif %}
+        {% else %}
+            <i class="fa fa-sort mx-1"></i>
+        {% endif %}
+    </span>
+<span class="{% if sorted %}{% endif %}">
+        {{ title }}
+    </span>
+</a>
