@@ -65,6 +65,7 @@ class Locataire
     public function __construct()
     {
         $this->Quittances = new ArrayCollection();
+        $this->setSansLogement();
     }
 
     public function __toString()
@@ -134,11 +135,12 @@ class Locataire
     public function setLogement(?BienImmo $logement): self
     {
         $this->logement = $logement;
-        if ($logement == null){
-            $this->setSansLogement(true);
-        }else{
-            $this->setSansLogement(false);
-        }
+        $this->setSansLogement();
+//        if ($logement == null){
+//            $this->setSansLogement(true);
+//        }else{
+//            $this->setSansLogement(false);
+//        }
 
         return $this;
     }
@@ -190,9 +192,13 @@ class Locataire
         return $this->sans_logement;
     }
 
-    public function setSansLogement(bool $sans_logement): self
+    public function setSansLogement(): self
     {
-        $this->sans_logement = $sans_logement;
+        if (!$this->logement){
+            $this->sans_logement = true;
+        }else{
+            $this->sans_logement = false;
+        }
 
         return $this;
     }
