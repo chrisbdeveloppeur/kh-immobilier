@@ -45,9 +45,12 @@ class LocataireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $name = $locataire->getLastName() . " " . $locataire->getFirstName();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($locataire);
             $entityManager->flush();
+
+            $this->addFlash('success','Le locataire <b>'. $name .'</b> a été créer avec succès');
 
             return $this->redirectToRoute('locataire_index', [], Response::HTTP_SEE_OTHER);
         }

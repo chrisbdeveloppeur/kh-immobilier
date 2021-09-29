@@ -58,7 +58,7 @@ class BienImmoController extends AbstractController
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'Le logement <b>'.$bienImmo->getBuilding().'</b> à bien été ajouté');
+            $this->addFlash('success', 'Le logement <b>'.$bienImmo->getBuilding().'</b> a été créé avec succès');
 
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
