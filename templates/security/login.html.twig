@@ -12,36 +12,36 @@
 
             {% if app.user %}
                 <div class="mb-3">
-                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                    Vous êtes déjà connecté sous <b>{{ app.user.username }}</b>, <a href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
-            {% endif %}
-
-            <div class="field">
-                <label class="label is-size-7">Adresse mail</label>
-                <p class="control has-icons-left has-icons-right">
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control input is-small has-text-centered" autocomplete="email" required autofocus>
-                    <span class="icon is-small is-left">
+            {% else %}
+                <div class="field">
+                    <label class="label is-size-7">Adresse mail</label>
+                    <p class="control has-icons-left has-icons-right">
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control input is-small has-text-centered" autocomplete="email" required autofocus>
+                        <span class="icon is-small is-left">
                         <i class="fas fa-at"></i>
                     </span>
-                </p>
-            </div>
-            <div class="field">
-                <label class="label is-size-7">Mot de passe</label>
-                <p class="control has-icons-left">
-                    <input type="password" name="password" id="inputPassword" class="form-control input is-small has-text-centered" autocomplete="current-password" required>
-                    <span class="icon is-small is-left">
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label is-size-7">Mot de passe</label>
+                    <p class="control has-icons-left">
+                        <input type="password" name="password" id="inputPassword" class="form-control input is-small has-text-centered" autocomplete="current-password" required>
+                        <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
-                </p>
-            </div>
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-            <div class="field has-text-centered">
-                <p class="control">
-                    <button class="button is-success is-small">
-                        Se connecter
-                    </button>
-                </p>
-            </div>
+                    </p>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="field has-text-centered">
+                    <p class="control">
+                        <button class="button is-success is-small">
+                            Se connecter
+                        </button>
+                    </p>
+                </div>
+            {% endif %}
 
 
 
