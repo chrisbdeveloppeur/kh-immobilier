@@ -10,11 +10,11 @@
     {% endfor %}
 
 <div class="is-flex is-justify-content-center is-align-items-center">
-    {{ form_start(registrationForm, {'attr' : {'class': 'column is-half has-text-centered'}}) }}
+    {{ form_start(registrationForm, {'attr' : {'class': 'column is-one-third'}}) }}
     <div class="field">
-        <label class="label">{{ form_label(registrationForm.email) }}</label>
+        <label class="label is-size-7">{{ form_label(registrationForm.email) }}</label>
         <p class="control has-icons-left has-icons-right">
-            {{ form_widget(registrationForm.email, {'attr' : {'class': 'form-control input'}}) }}
+            {{ form_widget(registrationForm.email, {'attr' : {'class': 'form-control input is-small'}}) }}
             <span class="icon is-small is-left">
                 <i class="fas fa-at"></i>
             </span>
@@ -27,9 +27,9 @@
     </div>
 
     <div class="field">
-        <label class="label">{{ form_label(registrationForm.gender) }}</label>
+        <label class="label is-size-7">{{ form_label(registrationForm.gender) }}</label>
         <div class="control has-icons-left">
-            <div class="select is-fullwidth">
+            <div class="select is-fullwidth is-small">
                 {{ form_widget(registrationForm.gender, {'attr' : {'class': 'form-control select'}}) }}
             </div>
             <span class="icon is-small is-left">
@@ -44,9 +44,9 @@
     </div>
 
     <div class="field">
-        <label class="label">{{ form_label(registrationForm.lastName) }}</label>
+        <label class="label is-size-7">{{ form_label(registrationForm.lastName) }}</label>
         <p class="control has-icons-left has-icons-right">
-            {{ form_widget(registrationForm.lastName, {'attr' : {'class': 'form-control input'}}) }}
+            {{ form_widget(registrationForm.lastName, {'attr' : {'class': 'form-control input is-small'}}) }}
             <span class="icon is-small is-left">
                 <i class="fas fa-id-card"></i>
             </span>
@@ -59,9 +59,9 @@
     </div>
 
     <div class="field">
-        <label class="label">{{ form_label(registrationForm.firstName) }}</label>
+        <label class="label is-size-7">{{ form_label(registrationForm.firstName) }}</label>
         <p class="control has-icons-left has-icons-right">
-            {{ form_widget(registrationForm.firstName, {'attr' : {'class': 'form-control input'}}) }}
+            {{ form_widget(registrationForm.firstName, {'attr' : {'class': 'form-control input is-small'}}) }}
             <span class="icon is-small is-left">
                 <i class="far fa-id-card"></i>
             </span>
@@ -74,9 +74,9 @@
     </div>
 
     <div class="field">
-        <label class="label">{{ form_label(registrationForm.phoneNumber) }}</label>
+        <label class="label is-size-7">{{ form_label(registrationForm.phoneNumber) }}</label>
         <p class="control has-icons-left has-icons-right">
-            {{ form_widget(registrationForm.phoneNumber, {'attr' : {'class': 'form-control input'}}) }}
+            {{ form_widget(registrationForm.phoneNumber, {'attr' : {'class': 'form-control input is-small'}}) }}
             <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
             </span>
@@ -89,9 +89,9 @@
     </div>
 
     <div class="field">
-        <label class="label">{{ form_label(registrationForm.plainPassword.first) }}</label>
+        <label class="label is-size-7">{{ form_label(registrationForm.plainPassword.first) }}</label>
         <p class="control has-icons-left has-icons-right">
-            {{ form_widget(registrationForm.plainPassword.first, {'attr' : {'class': 'form-control input'}}) }}
+            {{ form_widget(registrationForm.plainPassword.first, {'attr' : {'class': 'form-control input is-small'}}) }}
             <span class="icon is-small is-left">
                 <i class="fas fa-key"></i>
             </span>
@@ -104,9 +104,9 @@
     </div>
 
     <div class="field">
-        <label class="label">{{ form_label(registrationForm.plainPassword.second) }}</label>
+        <label class="label is-size-7">{{ form_label(registrationForm.plainPassword.second) }}</label>
         <p class="control has-icons-left has-icons-right">
-            {{ form_widget(registrationForm.plainPassword.second, {'attr' : {'class': 'form-control input'}}) }}
+            {{ form_widget(registrationForm.plainPassword.second, {'attr' : {'class': 'form-control input is-small'}}) }}
             <span class="icon is-small is-left">
                 <i class="fas fa-key"></i>
             </span>
@@ -120,7 +120,7 @@
     </div>
 
     <div class="field has-text-centered">
-        <button type="submit" class="button is-success">Valider</button>
+        <button type="submit" class="button is-success is-small">Valider</button>
     </div>
     {{ form_end(registrationForm) }}
 </div>
