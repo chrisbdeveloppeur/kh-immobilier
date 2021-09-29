@@ -48,6 +48,9 @@ a.navbar-item:focus, a.navbar-item:focus-within{
 .text-black-onhover:hover{
     color: black !important;
 }
+.text-info-onhover:hover{
+  color: $info !important;
+}
 
 i.fa-search-js{
   width: 0;
@@ -56,7 +59,7 @@ i.fa-search-js{
   transition: .2s
 }
 
-a.fa-search-js:hover{
+.fa-search-js:hover{
   i.fa-search-js{
     width: auto;
     opacity: 1;

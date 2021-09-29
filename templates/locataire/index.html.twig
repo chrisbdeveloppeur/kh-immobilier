@@ -26,7 +26,14 @@
                     <td class="is-size-7">{{ locataire.firstName }}</td>
                     <td class="is-size-7">
                         {% if locataire.email %}
-                            <a href="mailto:{{ locataire.email }}">{{ locataire.email }}</a>
+                            <a href="mailto:{{ locataire.email }}" class="fa-search-js">
+                                <span class="text-info-onhover has-text-dark">
+                                    <span>{{ locataire.email }}</span>
+                                    <span class="icon">
+                                        <i class="fas fa-envelope fa-search-js"></i>
+                                    </span>
+                                </span>
+                            </a>
                         {% else %}
                             <i>Non renseigné</i>
                         {% endif %}
@@ -36,7 +43,7 @@
                     <td class="is-size-7">
                         {% if locataire.logement %}
                             <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}">
-                                <span class="has-text-info">
+                                <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.logement }}</span>
                                     <span class="icon">
                                         <i class="fas fa-search fa-search-js"></i>
