@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprise index{% endblock %}
+{% block title %}Liste des entreprises{% endblock %}
+
+{% block title_main %}Liste des entreprises{% endblock %}
 
 {% block body %}
-    <h1>Entreprise index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
+                <th>Titre</th>
                 <th>Siret</th>
                 <th>Tva_number</th>
                 <th>actions</th>
@@ -18,7 +18,6 @@
         <tbody>
         {% for entreprise in entreprises %}
             <tr>
-                <td>{{ entreprise.id }}</td>
                 <td>{{ entreprise.name }}</td>
                 <td>{{ entreprise.siret }}</td>
                 <td>{{ entreprise.tvaNumber }}</td>
@@ -29,11 +28,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucune entreprises trouvées</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('entreprise_new') }}">Create new</a>
+    <a class="button" href="{{ path('entreprise_new') }}">Ajouter une entreprise</a>
 {% endblock %}

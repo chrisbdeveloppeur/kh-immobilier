@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Entreprise{% endblock %}
+{% block title %}Nouvelle Entreprise{% endblock %}
+{% block title_main %}Ajouter une entrerise{% endblock %}
 
 {% block body %}
-    <h1>Create new Entreprise</h1>
 
     {{ include('themes/form/_form.html.twig') }}
 
-    <a href="{{ path('entreprise_index') }}">back to list</a>
+    <a class="button" href="{{ path('entreprise_index') }}">Retour à la liste des entreprises</a>
 {% endblock %}
