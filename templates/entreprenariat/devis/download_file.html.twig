@@ -3,16 +3,55 @@
 {% block title %}Télécharger le devis{% endblock %}
 
 {% block body %}
-    <div class="column is-flex is-justify-content-center is-align-items-center">
-        <iframe src="{{ asset('build/devis/') }}{{ file_name }}.pdf" width="450" height="700" align="middle"></iframe>
+
+    {% if pdf_exist %}
+        <div class="column is-flex is-justify-content-center is-align-items-center">
+            <iframe src="{{ asset('build/devis/') }}{{ file_name }}.pdf" width="450" height="700" align="middle"></iframe>
+        </div>
+    {% endif %}
+
+    <div class="column">
+        {% if pdf_exist %}
+
+            <div class="my-2 mx-2 has-text-centered">
+                <a class="file has-name is-boxed" href="{{ asset('build/devis/') }}{{ file_name }}.pdf" download="{{ file_name }}">
+                    <label class="file-label">
+                        <span class="file-input">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <span class="icon">
+                                        <i class="fas fa-2x fa-file-pdf"></i>
+                                    </span>
+                                </span>
+                            </span>
+                        </span>
+                        <span class="file-name has-text-dark">
+                            {{ file_name }}.pdf
+                        </span>
+                    </label>
+                </a>
+            </div>
+
+        {% endif %}
+
+        <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
+            <a class="file has-name is-boxed" href="{{ asset('build/devis/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">
+                <label class="file-label">
+                    <span class="file-input"></span>
+                    <span class="file-cta">
+                            <span class="file-icon">
+                                <span class="icon">
+                                    <i class="fas fa-2x fa-file-word"></i>
+                                </span>
+                            </span>
+                        </span>
+                    <span class="file-name has-text-dark">
+                            {{ file_name }}.docx
+                        </span>
+                </label>
+            </a>
+        </div>
+
     </div>
 
-    <div class="column is-flex is-justify-content-center is-align-items-center">
-        <a href="{{ asset('build/devis/') }}{{ file_name }}.pdf" class="button" download="{{ file_name }}">
-            <span class="icon">
-                <i class="fa fa-download"></i>
-            </span>
-            <span>{{ file_name }}</span>
-        </a>
-    </div>
 {% endblock %}

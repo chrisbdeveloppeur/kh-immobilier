@@ -51,19 +51,32 @@ class DevisController extends AbstractController
             if (!file_exists('../assets/files/devis/')) {
                 mkdir('../assets/files/devis/', 0777, true);
             }
+            if (!file_exists('../public/build/devis/')) {
+                mkdir('../public/build/devis/', 0777, true);
+            }
 
             $file_name = $file . ".docx";
             $path_to_devis = "../assets/files/devis/" . $file_name;
             $template->saveAs($path_to_devis);
+            $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/devis/".$file.".docx");
+            $word->saveAs("../public/build/devis/" . $file . ".docx");
 
             $this->convertWordToPdf($file_name);
 
-            return $this->redirectToRoute('ddl-devis-pdf', [
+            if (file_exists('../public/build/devis/' . $file . '.pdf')){
+                $pdf_exist = true;
+            }else{
+                $pdf_exist = false;
+            }
+
+            return $this->render('entreprenariat/devis/download_file.html.twig', [
                 'file_name' => $file,
+                'pdf_exist' => $pdf_exist,
             ]);
 
         }
-        return $this->render('job/devis/edit_devis.html.twig', [
+
+        return $this->render('entreprenariat/devis/edit_devis.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -86,7 +99,7 @@ class DevisController extends AbstractController
     public function downloadPdf($file_name): Response
     {
 
-        return $this->render("job/devis/download_file.html.twig",[
+        return $this->render("entreprenariat/devis/download_file.html.twig",[
             "file_name" => $file_name,
         ]);
     }

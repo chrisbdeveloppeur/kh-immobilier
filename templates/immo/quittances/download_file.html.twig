@@ -6,9 +6,9 @@
 {% block body %}
 
     {% if pdf_exist %}
-    <div class="column is-flex is-justify-content-center is-align-items-center">
-       <iframe src="{{ asset('build/quittances/') }}{{ file_name }}.pdf" width="450" height="700" align="middle"></iframe>
-    </div>
+        <div class="column is-flex is-justify-content-center is-align-items-center">
+           <iframe src="{{ asset('build/quittances/') }}{{ file_name }}.pdf" width="450" height="700" align="middle"></iframe>
+        </div>
     {% endif %}
 
 
