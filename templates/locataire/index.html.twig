@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Locataire index{% endblock %}
+{% block title %}Liste des licataires{% endblock %}
 
-{% block title_main %}Vos locataires{% endblock %}
+{% block title_main %}Liste des locataires{% endblock %}
 
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
@@ -80,7 +80,7 @@
     </div>
 
     <div class="column has-text-centered">
-        <a href="{{ path('locataire_new') }}" class="is-light button">Ajouter un locataire</a>
+        <a href="{{ path('locataire_new') }}" class="is-light button is-small">Ajouter un locataire</a>
     </div>
 </section>
 {% endblock %}

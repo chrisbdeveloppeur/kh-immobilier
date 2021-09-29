@@ -8,7 +8,7 @@
 
     {{ include('themes/form/_form.html.twig', {'button_label': 'Valider'}) }}
 
-    <a class="button" href="{{ path('entreprise_index') }}">Retour à la liste des entreprises</a>
+    <a class="button is-small is-light" href="{{ path('entreprise_index') }}">Retour à la liste des entreprises</a>
 
     {{ include('entreprise/_delete_form.html.twig') }}
 {% endblock %}

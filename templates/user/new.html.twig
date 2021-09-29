@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %}Ajouter un gestionnaire{% endblock %}
+
+{% block title_main %}Ajouter un gestionnaire{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
 
     {{ include('themes/form/_form.html.twig') }}
 
-    <a href="{{ path('user_index') }}">back to list</a>
+    <a class="button is-light is-small" href="{{ path('user_index') }}">Retour à la liste des gestionnaires</a>
 {% endblock %}

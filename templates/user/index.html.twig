@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
-
+{% block title %}Liste des gestionnaires{% endblock %}
+{% block title_main %}Liste des gestionnaires{% endblock %}
 {% block body %}
-    <h1>User index</h1>
 
     <table class="table">
         <thead>
@@ -29,11 +28,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Il n'y à aucun profile enregistrés</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('user_new') }}">Create new</a>
+    <a class="button is-light is-small" href="{{ path('user_new') }}">Créer un nouveau compte</a>
 {% endblock %}
