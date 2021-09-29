@@ -4,6 +4,13 @@
 {% block title_main %}{{ entreprise.name }}{% endblock %}
 
 {% block body %}
+<section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
+    <div class="my-3 mx-3">
+        <div class="buttons">
+            <a class="button is-small is-light" href="{{ path('entreprise_index') }}">Retour à la liste des entreprises</a>
+            <a class="button is-small is-light" href="{{ path('entreprise_edit', {'id': entreprise.id}) }}">Modifier cette entreprise</a>
+        </div>
+    </div>
 
     <div class="table-container">
         <table class="table">
@@ -22,12 +29,8 @@
             </tr>
             </tbody>
         </table>
-
     </div>
-
-    <a class="button is-small is-light" href="{{ path('entreprise_index') }}">Retour à la lise des entreprises</a>
-
-    <a class="button is-small is-success" href="{{ path('entreprise_edit', {'id': entreprise.id}) }}">Modifier</a>
+</section>
 
     {{ include('entreprise/_delete_form.html.twig') }}
 {% endblock %}

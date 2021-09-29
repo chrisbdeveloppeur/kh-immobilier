@@ -7,13 +7,13 @@
 {% block body %}
 <section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
     <div class="my-3 mx-3">
-        <div class="buttons">
+        <div class="buttons are-small">
             <a href="{{ path('locataire_index') }}" class="button is-light">Retour à la liste des locataires</a>
             <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="button is-light">Modifier ce locataire</a>
         </div>
     </div>
 
-    <div class="field" style="max-width: 100vw;overflow-y: auto">
+    <div class="table-container">
         <table class="table">
             <tbody>
             <tr>
