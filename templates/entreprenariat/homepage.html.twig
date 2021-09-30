@@ -7,13 +7,15 @@
 
     <div class="column is-flex-desktop">
         {% for entreprise in entreprises %}
-            <a href="{{ path('entreprenariat_entreprise', {'id': entreprise.id}) }}" class="column mx-1 my-1 has-text-info is-flex is-justify-content-center is-align-items-center" style="height: 200px;position: relative;overflow: hidden">
+            <a href="{{ path('entreprenariat_entreprise', {'id': entreprise.id}) }}" class="column mx-1 my-1 has-text-dark text-info-onhover is-flex is-justify-content-center is-align-items-center is-blurred remove-blurred-onhover" style="height: 200px;position: relative;overflow: hidden;">
                 {% if entreprise.imageName %}
-                    <img src="{{ vich_uploader_asset(entreprise, 'imageFile') }}" alt="{{ entreprise.imageName }}" style="position: absolute;z-index: -1">
+                    <img class="" src="{{ vich_uploader_asset(entreprise, 'imageFile') }}" alt="{{ entreprise.imageName }}" style="position: absolute;z-index: -1;border-radius: 5px;">
                 {% else %}
-                    <img src="{{ asset('build/images/Startup.072310c3.png') }}" alt="illustration entreprise" style="position: absolute;z-index: -1">
+                    <img class="" src="{{ asset('build/images/Startup.072310c3.png') }}" alt="illustration entreprise" style="position: absolute;z-index: -1">
                 {% endif %}
-                {{ entreprise.name }}
+                <span class="has-text-weight-bold is-size-3 has-text-centered">
+                    {{ entreprise.name }}
+                </span>
             </a>
         {% endfor %}
     </div>
