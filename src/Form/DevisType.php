@@ -19,37 +19,58 @@ class DevisType extends AbstractType
             ->add('client_name', TextType::class,[
                     'label' => 'Nom du client',
                     'required' => false,
+                    'attr' => [
+                        'placeholder' => 'Jean DUPONT',
+                    ],
                 ])
 
             ->add('phone', TextType::class,[
                     'label' => 'Numéro de téléphone',
                     'required' => false,
+                    'attr' => [
+                        'placeholder' => '01 02 03 04 05',
+                    ],
                 ])
 
             ->add('email', EmailType::class,[
                     'label' => 'Adresse email',
                     'required' => false,
+                    'attr' => [
+                        'placeholder' => 'jean.dupont@mail.com',
+                    ],
                 ])
 
             ->add('adresse', TextType::class,[
                     'label' => 'Adresse postale',
                     'required' => false,
+                    'attr' => [
+                        'placeholder' => '1 Rue de mon adresse, 00 000, Ma ville',
+                    ],
                 ])
 
             ->add('description_1', TextareaType::class,[
-                    'label' => 'Description de la prestation',
+                    'label' => 'Description du produit / service',
                     'required' => false,
                     'constraints' => new Length(['max' => 100]),
+                    'attr' => [
+                        'placeholder' => 'Indiquez brièvement le produit ou la prestation (100 chars max)',
+                    ],
                 ])
 
             ->add('quantity_1', NumberType::class,[
                     'label' => 'Quantité',
                     'required' => false,
+                    'attr' => [
+                        'placeholder' => '',
+                    ],
                 ])
 
             ->add('price_unit_ht_1', NumberType::class,[
                     'label' => 'Prix unitaire (HT)',
                     'required' => false,
+                    'attr' => [
+                        'placeholder' => '',
+                    ],
                 ])
         ;
     }

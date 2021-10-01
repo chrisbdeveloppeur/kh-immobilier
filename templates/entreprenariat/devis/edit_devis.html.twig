@@ -16,7 +16,7 @@
                     <div class="field">
                         <label class="label is-size-7">{{ form_label(form.client_name) }}</label>
                         <div class="control">
-                            {{ form_widget(form.client_name, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Nom du client'}}) }}
+                            {{ form_widget(form.client_name, {'attr': {'class':'input is-small has-text-centered'}}) }}
                             {{ form_errors(form.client_name) }}
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="field">
                         <label class="label is-size-7">{{ form_label(form.phone) }}</label>
                         <div class="control">
-                            {{ form_widget(form.phone, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Numéro de telephone'}}) }}
+                            {{ form_widget(form.phone, {'attr': {'class':'input is-small has-text-centered'}}) }}
                             {{ form_errors(form.phone) }}
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="field">
                         <label class="label is-size-7">{{ form_label(form.email) }}</label>
                         <div class="control">
-                            {{ form_widget(form.email, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Adresse email'}}) }}
+                            {{ form_widget(form.email, {'attr': {'class':'input is-small has-text-centered'}}) }}
                             {{ form_errors(form.email) }}
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="field">
                         <label class="label is-size-7">{{ form_label(form.adresse) }}</label>
                         <div class="control">
-                            {{ form_widget(form.adresse, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Adresse postale'}}) }}
+                            {{ form_widget(form.adresse, {'attr': {'class':'input is-small has-text-centered'}}) }}
                             {{ form_errors(form.adresse) }}
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                             <label class="label is-size-7">{{ form_label(form.quantity_1) }}</label>
                             <div class="field">
                                 <div class="control">
-                                    {{ form_widget(form.quantity_1, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Quantité'}}) }}
+                                    {{ form_widget(form.quantity_1, {'attr': {'class':'input is-small has-text-centered'}}) }}
                                 </div>
                                 {{ form_errors(form.quantity_1) }}
                             </div>
@@ -63,7 +63,7 @@
                             <label class="label is-size-7">{{ form_label(form.price_unit_ht_1) }}</label>
                             <div class="field has-addons">
                                 <p class="control is-expanded">
-                                    {{ form_widget(form.price_unit_ht_1, {'attr': {'class':'input is-small has-text-centered', 'placeholder': 'Prix unitaire HT'}}) }}
+                                    {{ form_widget(form.price_unit_ht_1, {'attr': {'class':'input is-small has-text-centered'}}) }}
                                 </p>
                                 <p class="control" title="Devis en Euros">
                                     <a class="button is-small is-static">
@@ -74,10 +74,10 @@
                             {{ form_errors(form.price_unit_ht_1) }}
                         </div>
 
-                        <div class="field column is-three-quarters-desktop">
+                        <div class="field column is-half-desktop is-three-quarters-widescreen">
                             <label class="label is-size-7">{{ form_label(form.description_1) }}</label>
                             <div class="control">
-                                {{ form_widget(form.description_1, {'attr': {'class':'textarea has-text-centered', 'placeholder': 'Description du produit / service', 'style':'resize:none;'}}) }}
+                                {{ form_widget(form.description_1, {'attr': {'class':'textarea has-text-centered is-small', 'style':'resize:none;'}}) }}
                                 {{ form_errors(form.description_1) }}
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="control">
-                    <button class="button is-success">Editer le devis</button>
+                    <button class="button is-small is-success">Editer le devis</button>
                 </div>
 
                 {{ form_end(form) }}
