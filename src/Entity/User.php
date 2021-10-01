@@ -63,6 +63,7 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="users")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $Entreprise;
 

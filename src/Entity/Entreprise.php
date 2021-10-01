@@ -8,12 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Serializable;
 
 /**
  * @ORM\Entity(repositoryClass=EntrepriseRepository::class)
  * @Vich\Uploadable()
  */
-class Entreprise
+class Entreprise implements Serializable
 {
     /**
      * @ORM\Id
@@ -64,6 +65,11 @@ class Entreprise
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="Entreprise")
      */
     private $users;
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     public function __construct()
     {
@@ -174,5 +180,15 @@ class Entreprise
         }
 
         return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize($this->getId());
+    }
+
+    public function unserialize($serialized)
+    {
+        $this->id = unserialize($serialized);
     }
 }

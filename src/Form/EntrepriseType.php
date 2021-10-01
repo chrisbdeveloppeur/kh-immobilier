@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Entreprise;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +24,7 @@ class EntrepriseType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Entreprise::class,
+//            'data_class' => Entreprise::class,
         ]);
     }
 }
