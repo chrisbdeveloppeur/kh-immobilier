@@ -6,7 +6,7 @@
     <div class="hero-body">
 
         <div class="column is-flex-desktop">
-            <a href="{{ path('devis') }}" class="column is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1 is-relative is-blurred-desktop remove-blurred-onhover" style="height: 50vh;background: center / contain no-repeat url({{ asset('build/images/Files_And_Folder.005b40c0.png') }})">
+            <a href="{{ path('devis', {'entreprise_name': entreprise.name|replace({' ': ''}) }) }}" class="column is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1 is-relative is-blurred-desktop remove-blurred-onhover" style="height: 50vh;background: center / contain no-repeat url({{ asset('build/images/Files_And_Folder.005b40c0.png') }})">
                 <span class="has-text-centered is-absolute is-top is-size-3 is-bold px-3 has-text-info" style="background: rgba(255,255,255,.5);border-radius: 5px">Devis</span>
             </a>
             <a href="#" class="column is-flex is-justify-content-center is-align-items-center px-0 py-0 mx-1 my-1 is-relative is-blurred-desktop remove-blurred-onhover" style="height: 50vh;background: center / contain no-repeat url({{ asset('build/images/facture.c6224d11.png') }})">

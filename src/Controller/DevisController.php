@@ -12,13 +12,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class DevisController extends AbstractController
 {
     /**
-     * @Route("/devis", name="devis")
+     * @Route("/devis/{entreprise_name}", name="devis")
      */
-    public function home(Request $request): Response
+    public function home(Request $request, $entreprise_name): Response
     {
+        $entreprise_name_lower = mb_strtolower($entreprise_name);
         $form = $this->createForm(DevisType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+
+            if (!file_exists("../assets/files/templates/devis_".$entreprise_name."_template.docx")){
+                $this->addFlash('warning', 'Le template pour cette entreprise n\'existe pas');
+                return $this->redirectToRoute('devis',[
+                    'entreprise_name' => $entreprise_name
+                ]);
+            }
 
             $date = new \DateTime();
             $date->setTimezone(new \DateTimeZone("Europe/Paris"));
@@ -27,7 +35,7 @@ class DevisController extends AbstractController
             $total_ht_1 = $quantity_1 * $price_unit_ht_1;
             $total = $total_ht_1;
             $account = (30/100)*$total;
-            $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/DEVIS_CHRISBDEV_TEMPLATE.docx");
+            $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/devis_".$entreprise_name."_template.docx");
             $template->setValue("client_name",$form->get("client_name")->getData());
             $template->setValue("phone",$form->get("phone")->getData());
             $template->setValue("email",$form->get("email")->getData());
