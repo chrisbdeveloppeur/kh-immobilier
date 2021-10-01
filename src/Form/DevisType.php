@@ -72,6 +72,78 @@ class DevisType extends AbstractType
                         'placeholder' => '',
                     ],
                 ])
+            ->add('description_2', TextareaType::class,[
+                'label' => 'Description du produit / service',
+                'required' => false,
+                'constraints' => new Length(['max' => 100]),
+                'attr' => [
+                    'placeholder' => 'Indiquez brièvement le produit ou la prestation (100 chars max)',
+                ],
+            ])
+
+            ->add('quantity_2', NumberType::class,[
+                'label' => 'Quantité',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => '',
+                ],
+            ])
+
+            ->add('price_unit_ht_2', NumberType::class,[
+                'label' => 'Prix unitaire (HT)',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => '',
+                ],
+            ])
+            ->add('description_3', TextareaType::class,[
+                'label' => 'Description du produit / service',
+                'required' => false,
+                'constraints' => new Length(['max' => 100]),
+                'attr' => [
+                    'placeholder' => 'Indiquez brièvement le produit ou la prestation (100 chars max)',
+                ],
+            ])
+
+            ->add('quantity_3', NumberType::class,[
+                'label' => 'Quantité',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => '',
+                ],
+            ])
+
+            ->add('price_unit_ht_3', NumberType::class,[
+                'label' => 'Prix unitaire (HT)',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => '',
+                ],
+            ])
+            ->add('description_4', TextareaType::class,[
+                'label' => 'Description du produit / service',
+                'required' => false,
+                'constraints' => new Length(['max' => 100]),
+                'attr' => [
+                    'placeholder' => 'Indiquez brièvement le produit ou la prestation (100 chars max)',
+                ],
+            ])
+
+            ->add('quantity_4', NumberType::class,[
+                'label' => 'Quantité',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => '',
+                ],
+            ])
+
+            ->add('price_unit_ht_4', NumberType::class,[
+                'label' => 'Prix unitaire (HT)',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => '',
+                ],
+            ])
         ;
     }
 

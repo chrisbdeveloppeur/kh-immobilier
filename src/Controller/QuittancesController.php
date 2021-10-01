@@ -106,7 +106,8 @@ class QuittancesController extends AbstractController
     public function convertWordToPdf($file_name, $loc_id): Response
     {
         $project_dir = $this->getParameter('kernel.project_dir');
-        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
+//        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
+        $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
         $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
 
         if (!shell_exec($cmd) == null){
