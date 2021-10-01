@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/files/templates/devs_chrisbdev_templace.docx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/files/templates/devis_chrisbdev_template.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DevisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DevisController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -98,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/DevisController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="97" column="47" lean-forward="true" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
+            <state relative-caret-position="331">
+              <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
               <folding>
                 <element signature="e#885#892#0#PHP" expanded="true" />
                 <element signature="e#4255#4262#1#PHP" expanded="true" />
@@ -343,6 +341,13 @@
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="devis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -355,6 +360,24 @@
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
               <item name="packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="devis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
@@ -479,19 +502,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form\pagination" />
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes" />
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word" />
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\immo\quittances" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\src\Controller" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\assets" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\immo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form\pagination" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\immo\quittances" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\src\Controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -554,15 +577,15 @@
       <workItem from="1632938393438" duration="8857000" />
       <workItem from="1632995771535" duration="3243000" />
       <workItem from="1633021723434" duration="2981000" />
-      <workItem from="1633073536642" duration="5564000" />
+      <workItem from="1633073536642" duration="6966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270031000" />
+    <option name="totallyTimeSpent" value="271433000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1785235" />
@@ -1032,8 +1055,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DevisController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="97" column="47" lean-forward="true" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
+        <state relative-caret-position="331">
+          <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
           <folding>
             <element signature="e#885#892#0#PHP" expanded="true" />
             <element signature="e#4255#4262#1#PHP" expanded="true" />

@@ -92,10 +92,10 @@ class DevisController extends AbstractController
 
     public function convertWordToPdf($file_name, $entreprise_name): Response
     {
-        //$chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis\\';
-        //$cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\devis';
-        $chemin = 'C:\Program Files\program\soffice --headless --convert-to pdf \%kernel.project_dir%\assets\files\devis\\';
-        $cmd = $chemin . $file_name . ' --outdir \%kernel.project_dir%\\public\build\devis';
+        $project_dir = $this->getParameter('kernel.project_dir');;
+        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\devis\\';
+        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\build\devis';
+        //dd($cmd);
         shell_exec($cmd);
         return $this->redirectToRoute("devis",[
             'entreprise_name' => $entreprise_name,
