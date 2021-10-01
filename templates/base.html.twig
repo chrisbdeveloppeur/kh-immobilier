@@ -74,5 +74,53 @@
 </script>
 
 
+
+{#     SCRIPT POUR AJOUT INFORMATION PRESTATIONS DEVIS     #}
+<script>
+    function addInfosPresta(elem) {
+        let infosPrestaForms = document.getElementById('infos-prestations');
+
+        for (i=0 ; i < infosPrestaForms.children.length ; i++){
+            if (infosPrestaForms.children[i].classList.contains('is-hidden')){
+                if (i === infosPrestaForms.children.length - 1){
+                    elem.classList.add('is-hidden')
+                } else {
+                    elem.classList.remove('is-hidden')
+                }
+                if (i > 0){
+                    elem.nextElementSibling.classList.remove('is-hidden')
+                } else {
+                    elem.nextElementSibling.classList.add('is-hidden')
+                }
+                infosPrestaForms.children[i].classList.toggle('is-hidden');
+                break
+            }
+        }
+    }
+
+    function removeInfosPresta(elem) {
+        let infosPrestaForms = document.getElementById('infos-prestations');
+
+        for ( j=1 ; j <= infosPrestaForms.children.length ; j++){
+
+            if (!infosPrestaForms.children[j].classList.contains('is-hidden')){
+
+                if (j === infosPrestaForms.children.length - 1){
+                    elem.classList.add('is-hidden')
+                } else {
+                    elem.classList.remove('is-hidden')
+                }
+                if (j >= 0){
+                    elem.previousElementSibling.classList.remove('is-hidden')
+                } else {
+                    elem.previousElementSibling.classList.add('is-hidden')
+                }
+                infosPrestaForms.children[j].classList.toggle('is-hidden');
+                break
+            }
+        }
+    }
+</script>
+
 </body>
 </html>
