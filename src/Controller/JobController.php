@@ -33,13 +33,6 @@ class JobController extends AbstractController
     {
         $entreprise = $entrepriseRepository->find($id);
 
-        if (!file_exists("../assets/files/templates/devis_".$entreprise_name."_template.docx")){
-            $this->addFlash('warning', 'Le template pour cette entreprise n\'existe pas');
-            return $this->redirectToRoute('devis',[
-                'entreprise_name' => $entreprise_name
-            ]);
-        }
-
         return $this->render('entreprenariat/select_document_type.html.twig', [
             'entreprise' => $entreprise,
         ]);

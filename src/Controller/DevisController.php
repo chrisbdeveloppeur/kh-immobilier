@@ -21,14 +21,14 @@ class DevisController extends AbstractController
         $entreprise_name_lower = mb_strtolower($entreprise_name);
         $form = $this->createForm(DevisType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
 
-            if (!file_exists("../assets/files/templates/devis_".$entreprise_name."_template.docx")){
-                $this->addFlash('warning', 'Le template pour cette entreprise n\'existe pas');
-                return $this->redirectToRoute('devis',[
-                    'entreprise_name' => $entreprise_name
-                ]);
-            }
+        if (!file_exists("../assets/files/templates/devis_".$entreprise_name."_template.docx")){
+            $this->addFlash('warning', 'Le template de base pour le devis de cette entreprise n\'existe pas');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }
+
+        if ($form->isSubmitted() && $form->isValid()){
 
             $date = new \DateTime();
             $date->setTimezone(new \DateTimeZone("Europe/Paris"));
