@@ -17,38 +17,38 @@ class DevisType extends AbstractType
     {
         $builder
             ->add('client_name', TextType::class,[
-                    'label' => false,
+                    'label' => 'Nom du client',
                     'required' => false,
                 ])
 
             ->add('phone', TextType::class,[
-                    'label' => false,
+                    'label' => 'Numéro de téléphone',
                     'required' => false,
                 ])
 
             ->add('email', EmailType::class,[
-                    'label' => false,
+                    'label' => 'Adresse email',
                     'required' => false,
                 ])
 
             ->add('adresse', TextType::class,[
-                    'label' => false,
+                    'label' => 'Adresse postale',
                     'required' => false,
                 ])
 
             ->add('description_1', TextareaType::class,[
-                    'label' => false,
+                    'label' => 'Description de la prestation',
                     'required' => false,
                     'constraints' => new Length(['max' => 100]),
                 ])
 
             ->add('quantity_1', NumberType::class,[
-                    'label' => false,
+                    'label' => 'Quantité',
                     'required' => false,
                 ])
 
             ->add('price_unit_ht_1', NumberType::class,[
-                    'label' => false,
+                    'label' => 'Prix unitaire (HT)',
                     'required' => false,
                 ])
         ;
