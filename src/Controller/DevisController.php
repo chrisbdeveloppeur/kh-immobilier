@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Devis;
 use App\Form\DevisType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ class DevisController extends AbstractController
 {
     /**
      * @Route("/devis/{entreprise_name}", name="devis")
+     * @IsGranted("ROLE_USER")
      */
     public function home(Request $request, $entreprise_name): Response
     {

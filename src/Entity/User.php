@@ -61,6 +61,11 @@ class User implements UserInterface
      */
     private $phone_number;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="users")
+     */
+    private $Entreprise;
+
 
     public function getId(): ?int
     {
@@ -199,6 +204,18 @@ class User implements UserInterface
     public function setPhoneNumber(?string $phone_number): self
     {
         $this->phone_number = $phone_number;
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?Entreprise
+    {
+        return $this->Entreprise;
+    }
+
+    public function setEntreprise(?Entreprise $Entreprise): self
+    {
+        $this->Entreprise = $Entreprise;
 
         return $this;
     }

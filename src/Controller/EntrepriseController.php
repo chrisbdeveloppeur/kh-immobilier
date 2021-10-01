@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/entreprise")
+ * @IsGranted("ROLE_USER")
  */
 class EntrepriseController extends AbstractController
 {
@@ -36,7 +38,9 @@ class EntrepriseController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $this->getUser()->setEntreprise($entreprise);
             $entityManager->persist($entreprise);
+            $entityManager->persist($this->getUser());
             $entityManager->flush();
 
             return $this->redirectToRoute('entreprise_index', [], Response::HTTP_SEE_OTHER);
