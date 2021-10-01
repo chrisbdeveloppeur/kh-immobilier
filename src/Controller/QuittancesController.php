@@ -105,8 +105,9 @@ class QuittancesController extends AbstractController
 
     public function convertWordToPdf($file_name, $loc_id): Response
     {
-        $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\quittances\\';
-        $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\quittances';
+        $project_dir = $this->getParameter('kernel.project_dir');
+        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
+        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\build\quittances';
 
         if (!shell_exec($cmd) == null){
             shell_exec($cmd);
