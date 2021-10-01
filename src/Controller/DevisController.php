@@ -47,7 +47,7 @@ class DevisController extends AbstractController
             $template->setValue("total_ht",$total);
             $template->setValue("account",$account);
             $template->setValue("date",$date->format('d/m/Y'));
-            $file = "devis_" . $date->format('d-m-Y_H-i-s');
+            $file = "devis_" . $entreprise_name_lower . "_" . $date->format('d-m-Y_H-i-s');
 
             $new_devis = new Devis();
             $new_devis->setFileName($file);
@@ -69,7 +69,7 @@ class DevisController extends AbstractController
             $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/devis/".$file.".docx");
             $word->saveAs("../public/build/devis/" . $file . ".docx");
 
-            $this->convertWordToPdf($file_name);
+            $this->convertWordToPdf($file_name, $entreprise_name);
 
             if (file_exists('../public/build/devis/' . $file . '.pdf')){
                 $pdf_exist = true;
@@ -90,12 +90,16 @@ class DevisController extends AbstractController
     }
 
 
-    public function convertWordToPdf($file_name): Response
+    public function convertWordToPdf($file_name, $entreprise_name): Response
     {
-        $chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis\\';
-        $cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\devis';
+        //$chemin = 'D:\LibreOffice\program\soffice --headless --convert-to pdf D:\JetBrains\PhpstormProjects\edit_word\assets\files\devis\\';
+        //$cmd = $chemin . $file_name . ' --outdir D:\JetBrains\PhpstormProjects\edit_word\public\build\devis';
+        $chemin = 'C:\Program Files\program\soffice --headless --convert-to pdf \%kernel.project_dir%\assets\files\devis\\';
+        $cmd = $chemin . $file_name . ' --outdir \%kernel.project_dir%\\public\build\devis';
         shell_exec($cmd);
-        return $this->redirectToRoute("devis");
+        return $this->redirectToRoute("devis",[
+            'entreprise_name' => $entreprise_name,
+        ]);
     }
 
     /**
