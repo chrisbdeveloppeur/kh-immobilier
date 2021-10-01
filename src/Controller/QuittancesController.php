@@ -74,19 +74,19 @@ class QuittancesController extends AbstractController
             if (!file_exists('../assets/files/quittances/')) {
                 mkdir('../assets/files/quittances/', 0777, true);
             }
-            if (!file_exists('../public/build/quittances/')) {
-                mkdir('../public/build/quittances/', 0777, true);
+            if (!file_exists('../public/documents/quittances/')) {
+                mkdir('../public/documents/quittances/', 0777, true);
             }
 
             $template->saveAs("../assets/files/quittances/" . $file . ".docx");
             $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
-            $word->saveAs("../public/build/quittances/" . $file . ".docx");
+            $word->saveAs("../public/documents/quittances/" . $file . ".docx");
 
             $this->convertWordToPdf($file . ".docx", $loc_id);
 
         }
 
-        if (file_exists('../public/build/quittances/' . $file . '.pdf')){
+        if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
             $pdf_exist = true;
         }else{
             $pdf_exist = false;
@@ -107,7 +107,7 @@ class QuittancesController extends AbstractController
     {
         $project_dir = $this->getParameter('kernel.project_dir');
         $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
-        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\build\quittances';
+        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
 
         if (!shell_exec($cmd) == null){
             shell_exec($cmd);

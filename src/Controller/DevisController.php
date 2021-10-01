@@ -59,19 +59,19 @@ class DevisController extends AbstractController
             if (!file_exists('../assets/files/devis/')) {
                 mkdir('../assets/files/devis/', 0777, true);
             }
-            if (!file_exists('../public/build/devis/')) {
-                mkdir('../public/build/devis/', 0777, true);
+            if (!file_exists('../public/documents/devis/')) {
+                mkdir('../public/documents/devis/', 0777, true);
             }
 
             $file_name = $file . ".docx";
             $path_to_devis = "../assets/files/devis/" . $file_name;
             $template->saveAs($path_to_devis);
             $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/devis/".$file.".docx");
-            $word->saveAs("../public/build/devis/" . $file . ".docx");
+            $word->saveAs("../public/documents/devis/" . $file . ".docx");
 
             $this->convertWordToPdf($file_name, $entreprise_name);
 
-            if (file_exists('../public/build/devis/' . $file . '.pdf')){
+            if (file_exists('../public/documents/devis/' . $file . '.pdf')){
                 $pdf_exist = true;
             }else{
                 $pdf_exist = false;
@@ -94,7 +94,7 @@ class DevisController extends AbstractController
     {
         $project_dir = $this->getParameter('kernel.project_dir');
         $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\devis\\';
-        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\build\devis';
+        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\devis';
         shell_exec($cmd);
         return $this->redirectToRoute("devis",[
             'entreprise_name' => $entreprise_name,

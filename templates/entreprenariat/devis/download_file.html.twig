@@ -6,7 +6,7 @@
 
     {% if pdf_exist %}
         <div class="column is-flex is-justify-content-center is-align-items-center">
-            <iframe src="{{ asset('build/devis/') }}{{ file_name }}.pdf" width="650" height="900" align="middle"></iframe>
+            <iframe src="{{ asset('documents/devis/') }}{{ file_name }}.pdf" width="650" height="900" align="middle"></iframe>
         </div>
     {% endif %}
 
@@ -34,7 +34,7 @@
         {% endif %}
 
         <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
-            <a class="file has-name is-boxed" href="{{ asset('build/devis/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">
+            <a class="file has-name is-boxed" href="{{ asset('documents/devis/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">
                 <label class="file-label">
                     <span class="file-input"></span>
                     <span class="file-cta">
