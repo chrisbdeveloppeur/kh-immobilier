@@ -9,7 +9,7 @@
         <div class="hero-body">
             <div class="column py-0 px-0 has-text-centered is-flex is-justify-content-center is-white">
                 {% form_theme form 'themes/form/form_errors.html.twig' %}
-                {{ form_start(form, {'attr': {'class': 'is-half column py-0 px-0'}}) }}
+                {{ form_start(form, {'attr': {'class': 'is-half is-one-third-widescreen column py-0 px-0'}}) }}
 
                 <div class="field">
                     <label class="label">Informations du client :</label>
@@ -74,7 +74,7 @@
                             {{ form_errors(form.price_unit_ht_1) }}
                         </div>
 
-                        <div class="field column is-half-desktop is-three-quarters-widescreen">
+                        <div class="field column is-three-fifths-desktop is-three-quarters-widescreen">
                             <label class="label is-size-7">{{ form_label(form.description_1) }}</label>
                             <div class="control">
                                 {{ form_widget(form.description_1, {'attr': {'class':'textarea has-text-centered is-small', 'style':'resize:none;'}}) }}
