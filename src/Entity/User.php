@@ -66,6 +66,11 @@ class User implements UserInterface
      */
     private $Entreprise;
 
+    public function __toString()
+    {
+        $name = $this->getFirstName() .' '. $this->getLastName();
+        return $name;
+    }
 
     public function getId(): ?int
     {

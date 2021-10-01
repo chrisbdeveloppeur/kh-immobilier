@@ -11,6 +11,7 @@
             <thead>
             <tr class="has-text-centered">
                 <th class="is-size-7">Titre</th>
+                <th class="is-size-7">Gérant</th>
                 <th class="is-size-7">Siret</th>
                 <th class="is-size-7">Tva_number</th>
                 <th class="is-size-7">actions</th>
@@ -20,6 +21,7 @@
             {% for entreprise in entreprises %}
                 <tr class="has-text-centered">
                     <td class="is-size-7">{{ entreprise.name }}</td>
+                    <td class="is-size-7">{{ entreprise.users.current }}</td>
                     <td class="is-size-7">{{ entreprise.siret }}</td>
                     <td class="is-size-7">{{ entreprise.tvaNumber }}</td>
                     <td class="is-size-7">
