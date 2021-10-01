@@ -27,7 +27,7 @@ class JobController extends AbstractController
     }
 
     /**
-     * @Route("/entreprise-{id}", name="entreprise")
+     * @Route("/{id}/{entreprise_name}", name="entreprise")
      */
     public function selectDocumentType(EntrepriseRepository $entrepriseRepository, $id): Response
     {

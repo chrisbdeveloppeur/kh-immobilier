@@ -10,20 +10,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/entreprenariat", name="entreprenariat_")
+ * @IsGranted("ROLE_USER")
+ */
+
 class DevisController extends AbstractController
 {
     /**
-     * @Route("/devis/{entreprise_name}", name="devis")
+     * @Route("/{id}/{entreprise_name}/devis", name="devis")
      * @IsGranted("ROLE_USER")
      */
-    public function home(Request $request, $entreprise_name): Response
+    public function home(Request $request, $entreprise_name, $id): Response
     {
         $entreprise_name_lower = mb_strtolower($entreprise_name);
         $form = $this->createForm(DevisType::class);
         $form->handleRequest($request);
 
         if (!file_exists("../assets/files/templates/devis_".$entreprise_name."_template.docx")){
-            $this->addFlash('warning', 'Le template de base pour le devis de cette entreprise n\'existe pas');
+            $this->addFlash('warning', 'Le template de base pour le devis de '.$entreprise_name.' n\'existe pas');
             $referer = $request->headers->get('referer');
             return $this->redirect($referer);
         }
@@ -107,7 +112,7 @@ class DevisController extends AbstractController
      * @param $file_name
      * @param $file_name_pdf
      * @return Response
-     * @Route("/ddl-{file_name}", name="ddl-devis-pdf")
+     * @Route("/{id}/{entreprise_name}/ddl-{file_name}", name="ddl-devis-pdf")
      */
     public function downloadPdf($file_name): Response
     {
