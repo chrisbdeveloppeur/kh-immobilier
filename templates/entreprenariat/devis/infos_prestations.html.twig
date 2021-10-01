@@ -1,0 +1,140 @@
+<div class="field">
+    <label class="label">Informations des prestations :</label>
+
+    <div class="is-flex-desktop field">
+        <div class="column">
+            <label class="label is-size-7">{{ form_label(form.quantity_1) }}</label>
+            <div class="field">
+                <div class="control">
+                    {{ form_widget(form.quantity_1, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </div>
+                {{ form_errors(form.quantity_1) }}
+            </div>
+
+            <label class="label is-size-7">{{ form_label(form.price_unit_ht_1) }}</label>
+            <div class="field has-addons">
+                <p class="control is-expanded">
+                    {{ form_widget(form.price_unit_ht_1, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </p>
+                <p class="control" title="Devis en Euros">
+                    <a class="button is-small is-static">
+                        €
+                    </a>
+                </p>
+            </div>
+            {{ form_errors(form.price_unit_ht_1) }}
+        </div>
+
+        <div class="field column is-three-fifths-desktop">
+            <label class="label is-size-7">{{ form_label(form.description_1) }}</label>
+            <div class="control">
+                {{ form_widget(form.description_1, {'attr': {'class':'textarea has-text-centered is-small', 'style':'resize:none;'}}) }}
+                {{ form_errors(form.description_1) }}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="is-flex-desktop field">
+        <div class="column">
+            <label class="label is-size-7">{{ form_label(form.quantity_2) }}</label>
+            <div class="field">
+                <div class="control">
+                    {{ form_widget(form.quantity_2, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </div>
+                {{ form_errors(form.quantity_2) }}
+            </div>
+
+            <label class="label is-size-7">{{ form_label(form.price_unit_ht_2) }}</label>
+            <div class="field has-addons">
+                <p class="control is-expanded">
+                    {{ form_widget(form.price_unit_ht_2, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </p>
+                <p class="control" title="Devis en Euros">
+                    <a class="button is-small is-static">
+                        €
+                    </a>
+                </p>
+            </div>
+            {{ form_errors(form.price_unit_ht_2) }}
+        </div>
+
+        <div class="field column is-three-fifths-desktop">
+            <label class="label is-size-7">{{ form_label(form.description_2) }}</label>
+            <div class="control">
+                {{ form_widget(form.description_2, {'attr': {'class':'textarea has-text-centered is-small', 'style':'resize:none;'}}) }}
+                {{ form_errors(form.description_2) }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="is-flex-desktop field">
+        <div class="column">
+            <label class="label is-size-7">{{ form_label(form.quantity_3) }}</label>
+            <div class="field">
+                <div class="control">
+                    {{ form_widget(form.quantity_3, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </div>
+                {{ form_errors(form.quantity_3) }}
+            </div>
+
+            <label class="label is-size-7">{{ form_label(form.price_unit_ht_3) }}</label>
+            <div class="field has-addons">
+                <p class="control is-expanded">
+                    {{ form_widget(form.price_unit_ht_3, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </p>
+                <p class="control" title="Devis en Euros">
+                    <a class="button is-small is-static">
+                        €
+                    </a>
+                </p>
+            </div>
+            {{ form_errors(form.price_unit_ht_3) }}
+        </div>
+
+        <div class="field column is-three-fifths-desktop">
+            <label class="label is-size-7">{{ form_label(form.description_3) }}</label>
+            <div class="control">
+                {{ form_widget(form.description_3, {'attr': {'class':'textarea has-text-centered is-small', 'style':'resize:none;'}}) }}
+                {{ form_errors(form.description_3) }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="is-flex-desktop field">
+        <div class="column">
+            <label class="label is-size-7">{{ form_label(form.quantity_4) }}</label>
+            <div class="field">
+                <div class="control">
+                    {{ form_widget(form.quantity_4, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </div>
+                {{ form_errors(form.quantity_4) }}
+            </div>
+
+            <label class="label is-size-7">{{ form_label(form.price_unit_ht_4) }}</label>
+            <div class="field has-addons">
+                <p class="control is-expanded">
+                    {{ form_widget(form.price_unit_ht_4, {'attr': {'class':'input is-small has-text-centered'}}) }}
+                </p>
+                <p class="control" title="Devis en Euros">
+                    <a class="button is-small is-static">
+                        €
+                    </a>
+                </p>
+            </div>
+            {{ form_errors(form.price_unit_ht_4) }}
+        </div>
+
+        <div class="field column is-three-fifths-desktop">
+            <label class="label is-size-7">{{ form_label(form.description_4) }}</label>
+            <div class="control">
+                {{ form_widget(form.description_4, {'attr': {'class':'textarea has-text-centered is-small', 'style':'resize:none;'}}) }}
+                {{ form_errors(form.description_4) }}
+            </div>
+        </div>
+    </div>
+
+</div>

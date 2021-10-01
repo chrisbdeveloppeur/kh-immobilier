@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/files/templates/devis_chrisbdev_template.docx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/files/templates/devis_chrisbdev_template.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-37-30.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-39-07.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-39-07.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-45-39.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-45-39.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-55-37.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-55-37.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-57-47.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_13-57-47.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_15-54-25.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_15-54-25.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_15-57-06.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_15-57-06.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_15-58-33.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_15-58-33.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_BONNET_45.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_BONNET_45.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_DELANNOY_56.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_DELANNOY_56.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_GAUTHIER_47.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_GAUTHIER_47.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_GUYON_46.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_GUYON_46.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_LETELLIER_35.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_LETELLIER_35.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DevisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DevisController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/QuittancesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuittancesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/DevisType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DevisType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/entreprenariat/devis/edit_devis.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/devis/edit_devis.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/DevisController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="122" column="17" lean-forward="true" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
+            <state relative-caret-position="459">
+              <caret line="121" column="90" selection-start-line="121" selection-start-column="90" selection-end-line="121" selection-end-column="90" />
               <folding>
                 <element signature="e#34#55#0#PHP" expanded="true" />
                 <element signature="e#4942#4988#0#PHP" expanded="true" />
@@ -127,6 +98,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/entreprenariat/devis/infos_prestations.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="76" selection-start-line="6" selection-start-column="76" selection-end-line="6" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="332">
@@ -177,8 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/locataire/_delete_form.html.twig" />
-        <option value="$PROJECT_DIR$/templates/bien_immo/_delete_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/new.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/_delete_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/entreprise/new.html.twig" />
@@ -216,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/Entity/Entreprise.php" />
         <option value="$PROJECT_DIR$/src/Controller/ImmoController.php" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
-        <option value="$PROJECT_DIR$/templates/entreprenariat/devis/edit_devis.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/EntrepriseController.php" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
@@ -226,8 +203,11 @@
         <option value="$PROJECT_DIR$/src/Controller/JobController.php" />
         <option value="$PROJECT_DIR$/templates/entreprenariat/select_document_type.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/DevisType.php" />
-        <option value="$PROJECT_DIR$/src/Controller/DevisController.php" />
         <option value="$PROJECT_DIR$/src/Controller/QuittancesController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/DevisController.php" />
+        <option value="$PROJECT_DIR$/templates/entreprenariat/devis/infos_client.html.twig" />
+        <option value="$PROJECT_DIR$/templates/entreprenariat/devis/edit_devis.html.twig" />
+        <option value="$PROJECT_DIR$/templates/entreprenariat/devis/infos_prestations.html.twig" />
       </list>
     </option>
   </component>
@@ -376,40 +356,7 @@
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-              <item name="devis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-              <item name="quittances" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="documents" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
@@ -444,6 +391,13 @@
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="entreprenariat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="entreprenariat" type="462c0819:PsiDirectoryNode" />
+              <item name="devis" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -542,12 +496,12 @@
       <workItem from="1633073536642" duration="8033000" />
       <workItem from="1633087430343" duration="6833000" />
       <workItem from="1633105481254" duration="2518000" />
-      <workItem from="1633114138376" duration="3235000" />
+      <workItem from="1633114138376" duration="6153000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="285086000" />
+    <option name="totallyTimeSpent" value="288004000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -607,26 +561,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/bien_immo/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/LocataireType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -893,13 +827,6 @@
     <entry file="file://$PROJECT_DIR$/public/documents/quittances/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/entreprenariat/devis/edit_devis.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -947,10 +874,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="109" column="35" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+          <folding>
+            <element signature="e#34#59#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/entreprenariat/devis/edit_devis.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="81" lean-forward="true" selection-start-line="17" selection-start-column="81" selection-end-line="17" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/entreprenariat/devis/infos_client.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DevisController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="122" column="17" lean-forward="true" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
+        <state relative-caret-position="459">
+          <caret line="121" column="90" selection-start-line="121" selection-start-column="90" selection-end-line="121" selection-end-column="90" />
           <folding>
             <element signature="e#34#55#0#PHP" expanded="true" />
             <element signature="e#4942#4988#0#PHP" expanded="true" />
@@ -961,13 +912,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
+    <entry file="file://$PROJECT_DIR$/templates/entreprenariat/devis/infos_prestations.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="109" column="35" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
-          <folding>
-            <element signature="e#34#59#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="6" column="76" selection-start-line="6" selection-start-column="76" selection-end-line="6" selection-end-column="76" />
         </state>
       </provider>
     </entry>
