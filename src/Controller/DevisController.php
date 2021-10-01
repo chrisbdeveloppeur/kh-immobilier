@@ -33,7 +33,7 @@ class DevisController extends AbstractController
             $quantity_1 = $form->get('quantity_1')->getData();
             $price_unit_ht_1 = $form->get("price_unit_ht_1")->getData();
             $total_ht_1 = $quantity_1 * $price_unit_ht_1;
-            $total = $total_ht_1*$quantity_1;
+            $total = $total_ht_1;
             $account = (30/100)*$total;
             $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/devis_".$entreprise_name."_template.docx");
             $template->setValue("client_name",$form->get("client_name")->getData());
