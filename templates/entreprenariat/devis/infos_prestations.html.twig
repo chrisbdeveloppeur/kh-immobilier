@@ -32,11 +32,17 @@
                 {{ form_errors(form.description_1) }}
             </div>
         </div>
+
+    </div>
+
+    <div class="button is-small" onclick="this.nextElementSibling.classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-minus');this.querySelector('i').classList.toggle('fa-plus');">
+        <span class="icon is-small">
+            <i class="fas fa-plus"></i>
+        </span>
     </div>
 
 
-
-    <div class="is-flex-desktop field">
+    <div class="is-flex-desktop field is-hidden">
         <div class="column">
             <label class="label is-size-7">{{ form_label(form.quantity_2) }}</label>
             <div class="field">
@@ -69,8 +75,13 @@
         </div>
     </div>
 
+    <div class="button is-small" onclick="this.nextElementSibling.classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-minus');this.querySelector('i').classList.toggle('fa-plus');">
+        <span class="icon is-small">
+            <i class="fas fa-plus"></i>
+        </span>
+    </div>
 
-    <div class="is-flex-desktop field">
+    <div class="is-flex-desktop field is-hidden">
         <div class="column">
             <label class="label is-size-7">{{ form_label(form.quantity_3) }}</label>
             <div class="field">
@@ -103,8 +114,13 @@
         </div>
     </div>
 
+    <div class="button is-small" onclick="this.nextElementSibling.classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-minus');this.querySelector('i').classList.toggle('fa-plus');">
+        <span class="icon is-small">
+            <i class="fas fa-plus"></i>
+        </span>
+    </div>
 
-    <div class="is-flex-desktop field">
+    <div class="is-flex-desktop field is-hidden">
         <div class="column">
             <label class="label is-size-7">{{ form_label(form.quantity_4) }}</label>
             <div class="field">
