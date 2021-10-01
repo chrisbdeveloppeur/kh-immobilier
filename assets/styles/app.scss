@@ -42,6 +42,9 @@ a.navbar-item:focus, a.navbar-item:focus-within{
 .bg-info-onhover:hover{
     background-color: $info !important;
 }
+.bg-info-05-onhover:hover{
+  background-color: rgba(52, 136, 206, 0.5) !important;
+}
 .text-white-onhover:hover{
    color: white !important;
 }
