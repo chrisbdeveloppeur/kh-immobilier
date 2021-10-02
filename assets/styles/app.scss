@@ -87,6 +87,13 @@ i.fa-search-js{
   }
 }
 
+.is-absolute-top-0{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .remove-blurred-onhover:hover{
   filter: none;
   -webkit-filter: none;

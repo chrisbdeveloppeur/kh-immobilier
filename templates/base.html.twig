@@ -22,9 +22,11 @@
 
     {{ include('includes/header.html.twig') }}
 
-    <div class="hero is-small is-dark is-bold">
+    <div class="hero is-small is-relative">
+        <div class="title-main-background is-absolute-top-0" style="z-index: -2;{% block title_main_background_img %}{% endblock %}"></div>
+        <div class="title-main-background is-absolute-top-0" style="z-index: -1;{% block title_main_background_layer %}background: rgba(0,3,6,.9);{% endblock %}"></div>
         <div class="hero-body">
-            <h1 class="title has-text-centered">
+            <h1 class="title has-text-light has-text-centered">
                 {% block title_main %}Outil d'aministration de vos documents{% endblock %}
             </h1>
         </div>

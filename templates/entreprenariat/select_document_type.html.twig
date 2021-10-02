@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ entreprise.name }}{% endblock %}
+{% block title_main_background_img %};background: center / cover no-repeat url({{ vich_uploader_asset(entreprise, 'imageFile') }});{% endblock %}
+{% block title_main %}{{ entreprise.name }}{% endblock %}
 
 {% block body %}
     <div class="hero-body">
