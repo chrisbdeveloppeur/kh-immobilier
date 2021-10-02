@@ -5,6 +5,18 @@
 
 {% block body %}
 
+    <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
+        <a class="button is-small" href="{{ path('immo_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+            <span class="icon-text">
+                <span class="icon">
+                    <i class="fas fa-paper-plane"></i>
+                </span>
+                <span>Envoyer la quittance</span>
+            </span>
+
+        </a>
+    </div>
+
     {% if pdf_exist %}
         <div class="column is-flex is-justify-content-center is-align-items-center">
            <iframe src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" width="650" height="900" align="middle"></iframe>
@@ -34,29 +46,6 @@
             </div>
 #}
         {% endif %}
-
-        <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
-            <a class="file has-name is-boxed" href="" download="" title="Envoyer la quittance a {{ locataire.email }}">
-                <label class="file-label">
-                    <span class="file-input"></span>
-                    <span class="file-cta">
-                            <span class="file-icon">
-                                <span class="icon">
-                                    <i class="fas fa-2x fa-file-pdf"></i>
-                                </span>
-                            </span>
-                            <span class="fil-icon">
-                                <span class="icon">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                </span>
-                            </span>
-                        </span>
-                    <span class="file-name has-text-dark">
-                            {{ file_name }}.docx
-                        </span>
-                </label>
-            </a>
-        </div>
 
         <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
             <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">

@@ -44,6 +44,7 @@ class ImmoController extends AbstractController
      * @Route("/send-quittance-{id}", name="send_quittance")
      */
     public function mail(MailController $mailController, QuittanceRepository $quittanceRepository, $id){
+//        dd($id);
         $quittance = $quittanceRepository->find($id);
         $locataire = $quittance->getLocataire();
         $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';

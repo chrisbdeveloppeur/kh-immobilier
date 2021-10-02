@@ -61,12 +61,12 @@ class QuittancesController extends AbstractController
         $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
 
         if (!$locataire->getQuittances()->contains($quittance)){
-            $new_quittance = new Quittance();
-            $new_quittance->setFileName($file);
-            $new_quittance->setLocataire($locataire);
-            $new_quittance->setBienImmo($locataire->getLogement());
-            $new_quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
-            $em->persist($new_quittance);
+            $quittance = new Quittance();
+            $quittance->setFileName($file);
+            $quittance->setLocataire($locataire);
+            $quittance->setBienImmo($locataire->getLogement());
+            $quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
+            $em->persist($quittance);
             $em->flush();
 
             $template->setValue("quittance_id", $locataire->getQuittances()->count());
@@ -98,6 +98,7 @@ class QuittancesController extends AbstractController
             "file_name" => $file,
             "locataire" => $locataire,
             "pdf_exist" => $pdf_exist,
+            "quittance" => $quittance,
         ]);
 
     }
@@ -125,12 +126,14 @@ class QuittancesController extends AbstractController
      * @return Response
      * @Route("/ddl-{file_name}-{loc_id}", name="ddl-quittance-pdf")
      */
-    public function downloadPdf($file_name, $loc_id, LocataireRepository $locataireRepository): Response
+    public function downloadPdf($file_name, $loc_id, LocataireRepository $locataireRepository, QuittanceRepository $quittanceRepository): Response
     {
         $locataire = $locataireRepository->find($loc_id);
+        $quittance = $quittanceRepository->findOneBy(['file_name' => $file_name]);
         return $this->render("immo/quittances/download_file.html.twig",[
             "file_name" => $file_name,
             "locataire" => $locataire,
+            "quittance" => $quittance,
         ]);
     }
 }
