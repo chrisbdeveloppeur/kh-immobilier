@@ -83,7 +83,11 @@ class LocataireController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('locataire_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Les modifications ont bien étés appliquées');
+
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+//            return $this->redirectToRoute('locataire_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('locataire/edit.html.twig', [
