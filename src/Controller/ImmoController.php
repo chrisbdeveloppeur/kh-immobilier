@@ -43,14 +43,15 @@ class ImmoController extends AbstractController
     /**
      * @Route("/send-quittance-{id}", name="send_quittance")
      */
-    public function mail(MailController $mailController, QuittanceRepository $quittanceRepository, $id){
+    public function mail(Request $request,MailController $mailController, QuittanceRepository $quittanceRepository, $id){
 //        dd($id);
         $quittance = $quittanceRepository->find($id);
         $locataire = $quittance->getLocataire();
         $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
         $mailController->sendMessage($quittance_file_path, $locataire);
         $this->addFlash('success', 'La quittance de loyer à bien été envoyer pour : ' . $locataire );
-        return $this->redirectToRoute('immo_accueil');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
     }
 
 }
