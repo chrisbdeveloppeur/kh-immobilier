@@ -92,6 +92,12 @@ class BienImmo
      */
     private $solde;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $free;
+
+
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
@@ -108,6 +114,7 @@ class BienImmo
         $solde = new Solde();
         $solde->setBienImmo($this);
         $this->solde = $solde;
+        $this->setFree();
     }
 
     public function __toString()
@@ -207,6 +214,10 @@ class BienImmo
             $this->locataires[] = $locataire;
             $locataire->setLogement($this);
         }
+//        if ($this->locataires->first()){
+//            $this->setFree(false);
+//        }else{$this->setFree(true);}
+//        $this->setFree();
 
         return $this;
     }
@@ -218,6 +229,10 @@ class BienImmo
                 $locataire->setLogement(null);
             }
         }
+//        if ($this->locataires->first()){
+//            $this->setFree(false);
+//        }else{$this->setFree(true);}
+//        $this->setFree();
 
         return $this;
     }
@@ -338,6 +353,22 @@ class BienImmo
     {
         $loyer_ttc = $this->getCharges() + $this->getLoyerHc();
         return $loyer_ttc;
+    }
+
+
+    public function getFree(): ?bool
+    {
+        return $this->free;
+    }
+
+    public function setFree(): self
+    {
+        if ($this->locataires->first()){
+            $this->free = false;
+        }else{
+            $this->free = true;
+        }
+        return $this;
     }
 
 /*

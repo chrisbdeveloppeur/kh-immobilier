@@ -29,7 +29,8 @@ class BienImmoController extends AbstractController
 
         $biens_immos = $paginator->paginate(
             $all_biens_immos,
-            $request->query->getInt('page',1)
+            $request->query->getInt('page',1),
+            $request->query->getInt('numItemsPerPage',50)
         );
 
         return $this->render('bien_immo/index.html.twig', [

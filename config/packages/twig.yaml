@@ -5,4 +5,4 @@ twig:
     exception_controller: null
 #    form_themes: ['bootstrap_4_horizontal_layout.html.twig']
 #    paths:
-#        '%kernel.project_dir%/vendor/acme/foo-bar/templates': foo_bar
+#        "%kernel.project_dir%/templates/themes": themes

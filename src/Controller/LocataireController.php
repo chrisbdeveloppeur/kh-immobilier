@@ -81,6 +81,7 @@ class LocataireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+//            dd($form->getData());
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Les modifications ont bien étés appliquées');

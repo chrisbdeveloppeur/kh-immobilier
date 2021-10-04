@@ -47,6 +47,7 @@ class LocataireType extends AbstractType
             ])
             ->add('email', EmailType::class,[
                 'label' => 'Email',
+                'required' => false,
             ])
             ->add('gender', ChoiceType::class,[
                 'label' => 'Sexe',
@@ -65,12 +66,12 @@ class LocataireType extends AbstractType
             ])
             ->add('logement', EntityType::class,[
                 'class' => BienImmo::class,
-                'mapped' => false,
+                'mapped' => true,
                 'required' => false,
                 'placeholder' => 'Sans logement',
                 'help' => $this->logement_fulled_msg,
                 'query_builder' => function (BienImmoRepository $er) {
-                    //$er = $er->findWithoutLocataires();
+//                    $er = $er->findWithoutLocataires();
                     return $er->createQueryBuilder('u')
                         //->setParameter('value', false)
                         //->where('u.oqp = :value')
