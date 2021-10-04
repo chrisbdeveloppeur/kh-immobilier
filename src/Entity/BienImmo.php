@@ -114,7 +114,7 @@ class BienImmo
         $solde = new Solde();
         $solde->setBienImmo($this);
         $this->solde = $solde;
-        $this->setFree();
+        $this->setFree(true);
     }
 
     public function __toString()
@@ -214,9 +214,9 @@ class BienImmo
             $this->locataires[] = $locataire;
             $locataire->setLogement($this);
         }
-//        if ($this->locataires->first()){
-//            $this->setFree(false);
-//        }else{$this->setFree(true);}
+        if ($this->locataires->first()){
+            $this->setFree(false);
+        }else{$this->setFree(true);}
 //        $this->setFree();
 
         return $this;
@@ -229,9 +229,9 @@ class BienImmo
                 $locataire->setLogement(null);
             }
         }
-//        if ($this->locataires->first()){
-//            $this->setFree(false);
-//        }else{$this->setFree(true);}
+        if ($this->locataires->first()){
+            $this->setFree(false);
+        }else{$this->setFree(true);}
 //        $this->setFree();
 
         return $this;
@@ -361,13 +361,13 @@ class BienImmo
         return $this->free;
     }
 
-    public function setFree(): self
+    public function setFree($value): self
     {
-        if ($this->locataires->first()){
-            $this->free = false;
-        }else{
-            $this->free = true;
-        }
+//        if ($this->locataires->first()){
+//            $this->free = $value;
+//        }else{
+            $this->free = $value;
+//        }
         return $this;
     }
 

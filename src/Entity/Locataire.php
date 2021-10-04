@@ -136,6 +136,9 @@ class Locataire
     {
         $this->logement = $logement;
         $this->setSansLogement();
+        if ($logement){
+            $this->logement->setFree(false);
+        }
 //        if ($logement == null){
 //            $this->setSansLogement(true);
 //        }else{

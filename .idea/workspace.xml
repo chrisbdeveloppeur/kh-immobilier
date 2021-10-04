@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210918174716.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210918174800.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210928094342.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210930143609.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211001114428.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211001114507.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211001162744.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211001221106.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211004174715.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/BienImmo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BienImmo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Locataire.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/LocataireController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
@@ -88,10 +82,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/locataire/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="117" selection-start-line="17" selection-start-column="117" selection-end-line="17" selection-end-column="117" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="313">
+              <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="140" column="9" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -130,7 +145,6 @@
         <option value="$PROJECT_DIR$/templates/includes/sub_header_entreprenariat.html.twig" />
         <option value="$PROJECT_DIR$/templates/themes/pagination/custom_pagination.html.twig" />
         <option value="$PROJECT_DIR$/templates/themes/pagination/custom_sortable_link.html.twig" />
-        <option value="$PROJECT_DIR$/templates/locataire/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/themes/form/_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/registration/register.html.twig" />
         <option value="$PROJECT_DIR$/templates/bien_immo/show.html.twig" />
@@ -172,12 +186,13 @@
         <option value="$PROJECT_DIR$/templates/immo/homepage.html.twig" />
         <option value="$PROJECT_DIR$/config/packages/knp_paginator.yaml" />
         <option value="$PROJECT_DIR$/templates/immo/biens_card.html.twig" />
-        <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
         <option value="$PROJECT_DIR$/src/Controller/LocataireController.php" />
         <option value="$PROJECT_DIR$/src/Repository/BienImmoRepository.php" />
         <option value="$PROJECT_DIR$/src/Form/LocataireType.php" />
-        <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
         <option value="$PROJECT_DIR$/src/Controller/BienImmoController.php" />
+        <option value="$PROJECT_DIR$/templates/locataire/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
+        <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
       </list>
     </option>
   </component>
@@ -336,6 +351,12 @@
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DataFixtures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -354,6 +375,12 @@
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="immo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="locataire" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
@@ -422,19 +449,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes" />
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\assets" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\immo" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\public\documents\quittances" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form\pagination" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\assets" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\immo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -505,12 +532,12 @@
       <workItem from="1633345373555" duration="373000" />
       <workItem from="1633348129441" duration="1994000" />
       <workItem from="1633364539505" duration="5480000" />
-      <workItem from="1633384568924" duration="248000" />
+      <workItem from="1633384568924" duration="1318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309964000" />
+    <option name="totallyTimeSpent" value="311034000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -569,19 +596,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/entreprise/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/documents/devis/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/documents/quittances/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Devis.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-31">
@@ -897,13 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="189" selection-start-line="189" selection-end-line="203" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/bien_immo/_delete_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -947,13 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/LocataireType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -968,6 +968,44 @@
           <folding>
             <element signature="e#1045#1072#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/locataire/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="117" selection-start-line="17" selection-start-column="117" selection-end-line="17" selection-end-column="117" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__AppEntityBienImmo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="566" lean-forward="true" selection-start-line="566" selection-end-line="566" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="58" column="29" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="140" column="9" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
         </state>
       </provider>
     </entry>
