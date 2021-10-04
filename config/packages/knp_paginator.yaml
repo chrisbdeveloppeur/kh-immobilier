@@ -14,8 +14,14 @@ knp_paginator:
 
 #    pagination: '@KnpPaginator/Pagination/bulma_pagination.html.twig'
 #    sortable : '@KnpPaginator/Pagination/twitter_bootstrap_v4_font_awesome_sortable_link.html.twig'
-#    filtration: '@KnpPaginator/Pagination/twitter_bootstrap_v4_filtration.html.twig'
+    filtration: '@KnpPaginator/Pagination/twitter_bootstrap_v4_filtration.html.twig'
 
     pagination: '@KnpPaginator/Pagination/custom_pagination.html.twig'
     sortable : '@KnpPaginator/Pagination/custom_sortable_link.html.twig'
-    filtration: '@KnpPaginator/Pagination/twitter_bootstrap_v4_filtration.html.twig'
+
+#knp_paginator.template.pagination: '../templates/themes/pagination/custom_pagination.html.twig'
+#knp_paginator.template.sortable: '../templates/themes/pagination/custom_sortable_link.html.twig'
+
+#    pagination: '%kernel.project_dir%/templates/themes/pagination/custom_pagination.html.twig'
+#   sortable : '%kernel.project_dir%/templates/themes/pagination/custom_sortable_link.html.twig'
+
