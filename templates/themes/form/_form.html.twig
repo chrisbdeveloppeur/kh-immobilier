@@ -20,24 +20,21 @@
             {% if child.vars.block_prefixes[1] == 'choice' %}
                 <div class="select is-small is-fullwidth">
 
-                    {#
+
                     {% if child.vars.name == 'logement' %}
                         <select name="{{ child.vars.full_name }}" id="{{ child.vars.id }}">
+                            <option value="null">Sans logement</option>
                             {% for choice in child.vars.choices %}
-                                {{ dump(choice) }}
-                                {% if choice.data.free %}
-                                    <option value="{{ choice.value }}">{{ choice.label }} (Libre)</option>
+                                {% if choice.data.free == 'true' %}
+                                    <option value="{{ choice.value }}" {% if choice.data.__isInitialized__ is defined %}selected="selected"{% endif %}>{{ choice.label }} (Libre)</option>
                                 {% else %}
-                                    <option value="{{ choice.value }}">{{ choice.label }}</option>
+                                    <option value="{{ choice.value }}" {% if choice.data.__isInitialized__ is defined %}selected="selected"{% endif %}>{{ choice.label }}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
                     {% else %}
                         {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
                     {% endif %}
-                    #}
-
-                    {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
 
                 </div>
             {% elseif child.vars.block_prefixes[1] == 'number' %}
