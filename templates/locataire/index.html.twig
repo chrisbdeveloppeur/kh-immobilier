@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des licataires{% endblock %}
+{% block title %}Liste des locataires{% endblock %}
 
 {% block title_main %}Liste des locataires{% endblock %}
 
@@ -22,11 +22,29 @@
             <tbody>
             {% for locataire in locataires %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7">{{ locataire.lastName }}</td>
-                    <td class="is-size-7">{{ locataire.firstName }}</td>
+                    <td class="is-size-7">
+                        <a class="fa-search-js" href="{{ path('locataire_show', {'id': locataire.id }) }}" title="Voir les détails du locataire">
+                            <span class="text-info-onhover has-text-dark">
+                                <span>{{ locataire.lastName }}</span>
+                                <span class="icon">
+                                    <i class="fas fa-search fa-search-js"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </td>
+                    <td class="is-size-7">
+                        <a class="fa-search-js" href="{{ path('locataire_show', {'id': locataire.id }) }}" title="Voir les détails du locataire">
+                            <span class="text-info-onhover has-text-dark">
+                                <span>{{ locataire.firstName }}</span>
+                                <span class="icon">
+                                    <i class="fas fa-search fa-search-js"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </td>
                     <td class="is-size-7">
                         {% if locataire.email %}
-                            <a href="mailto:{{ locataire.email }}" class="fa-search-js">
+                            <a href="mailto:{{ locataire.email }}" class="fa-search-js" title="Envoyer un message">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.email }}</span>
                                     <span class="icon">
@@ -42,7 +60,7 @@
                     <td class="is-size-7">{{ locataire.mode }}</td>
                     <td class="is-size-7">
                         {% if locataire.logement %}
-                            <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}">
+                            <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.logement }}</span>
                                     <span class="icon">
