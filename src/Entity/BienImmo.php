@@ -113,6 +113,7 @@ class BienImmo
         $this->quittances = new ArrayCollection();
         $solde = new Solde();
         $solde->setBienImmo($this);
+        $this->setEcheance(1);
         $this->solde = $solde;
         $this->setFree(true);
     }
