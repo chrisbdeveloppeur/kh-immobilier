@@ -51,7 +51,6 @@ class BienImmo
      */
     private $charges;
 
-
     /**
      * @ORM\OneToMany(targetEntity=Locataire::class, mappedBy="logement")
      */
@@ -218,7 +217,6 @@ class BienImmo
         if ($this->locataires->first()){
             $this->setFree(false);
         }else{$this->setFree(true);}
-//        $this->setFree();
 
         return $this;
     }

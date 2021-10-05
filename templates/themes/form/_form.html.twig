@@ -19,7 +19,26 @@
 
             {% if child.vars.block_prefixes[1] == 'choice' %}
                 <div class="select is-small is-fullwidth">
+
+                    {#
+                    {% if child.vars.name == 'logement' %}
+                        <select name="{{ child.vars.full_name }}" id="{{ child.vars.id }}">
+                            {% for choice in child.vars.choices %}
+                                {{ dump(choice) }}
+                                {% if choice.data.free %}
+                                    <option value="{{ choice.value }}">{{ choice.label }} (Libre)</option>
+                                {% else %}
+                                    <option value="{{ choice.value }}">{{ choice.label }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    {% else %}
+                        {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
+                    {% endif %}
+                    #}
+
                     {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
+
                 </div>
             {% elseif child.vars.block_prefixes[1] == 'number' %}
                 <div class="field has-addons mb-0">
