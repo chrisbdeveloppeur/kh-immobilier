@@ -45,6 +45,7 @@ class LocataireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $locataire->setLogement($form->get('logement')->getData());
             $name = $locataire->getLastName() . " " . $locataire->getFirstName();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($locataire);
@@ -81,7 +82,7 @@ class LocataireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            dd($form->getData());
+            $locataire->setLogement($form->get('logement')->getData());
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Les modifications ont bien étés appliquées');
