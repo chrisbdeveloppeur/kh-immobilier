@@ -77,12 +77,13 @@ class LocataireType extends AbstractType
                         //->where('u.oqp = :value')
                         ->orderBy('u.building', 'ASC');
                 },
-                'group_by' => function($choice, $key, $value){
-                    if ($choice == $value){
-                        return 'Libre';
+                'group_by' => function(BienImmo $logement){
+                    if ($logement->getFree()){
+                        return 'Logements libres';
                     }else{
-                        return 'Non libre';
+                        return 'Logements occupés';
                     }
+
                 }
             ])
         ;
