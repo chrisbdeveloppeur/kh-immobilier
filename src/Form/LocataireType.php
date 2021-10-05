@@ -77,13 +77,6 @@ class LocataireType extends AbstractType
                         //->where('u.oqp = :value')
                         ->orderBy('u.building', 'ASC');
                 },
-                'group_by'  => function($choice, $key, $value) {
-                    if ($choice == true) {
-                        return 'Libre';
-                    }
-
-                    return 'Non libre';
-                },
             ])
         ;
     }
