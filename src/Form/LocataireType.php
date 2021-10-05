@@ -66,7 +66,7 @@ class LocataireType extends AbstractType
             ])
             ->add('logement', EntityType::class,[
                 'class' => BienImmo::class,
-                'mapped' => true,
+                'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans logement',
                 'help' => $this->logement_fulled_msg,
@@ -77,6 +77,13 @@ class LocataireType extends AbstractType
                         //->where('u.oqp = :value')
                         ->orderBy('u.building', 'ASC');
                 },
+                'group_by' => function($choice, $key, $value){
+                    if ($choice == $value){
+                        return 'Libre';
+                    }else{
+                        return 'Non libre';
+                    }
+                }
             ])
         ;
     }
