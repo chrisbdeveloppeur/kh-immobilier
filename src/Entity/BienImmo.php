@@ -214,9 +214,10 @@ class BienImmo
             $this->locataires[] = $locataire;
             $locataire->setLogement($this);
         }
-        if ($this->locataires->first()){
-            $this->setFree(false);
-        }else{$this->setFree(true);}
+        //if ($this->locataires->first()){
+        //    $this->setFree(false);
+        //}else{$this->setFree(true);}
+        $this->setFree(false);
 
         return $this;
     }
@@ -226,12 +227,12 @@ class BienImmo
         if ($this->locataires->removeElement($locataire)) {
             if ($locataire->getLogement() === $this) {
                 $locataire->setLogement(null);
-            }
+            }//
         }
-        if ($this->locataires->first()){
-            $this->setFree(false);
-        }else{$this->setFree(true);}
-//        $this->setFree();
+        //if ($this->locataires->first()){
+        //    $this->setFree(false);
+        //}else{$this->setFree(true);}
+        $this->setFree(true);
 
         return $this;
     }

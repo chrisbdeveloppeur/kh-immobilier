@@ -71,18 +71,19 @@ class LocataireType extends AbstractType
                 'placeholder' => 'Sans logement',
                 'help' => $this->logement_fulled_msg,
                 'choice_attr' => function (BienImmo $logement){
-                    if (!$logement->getFree()){
-                        return ['disabled'=>'disabled'];
-                    }else{
+                        if (count($logement->getLocataires()) == 0){
                         return [''];
+                    }else{
+                        return ['disabled'=>'disabled'];
                     }
+
                 },
                 'query_builder' => function (BienImmoRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.free', 'DESC');
                 },
                 'group_by' => function(BienImmo $logement){
-                    if ($logement->getFree()){
+                    if (count($logement->getLocataires()) == 0){
                         return 'Logements libres';
                     }else{
                         return 'Logements occupés';
