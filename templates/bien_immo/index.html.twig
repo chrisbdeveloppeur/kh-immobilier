@@ -53,7 +53,16 @@
                 {% set total_charges =  total_charges + bien_immo.charges %}
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7 has-text-weight-bold help-mouse-hover" title="{{ bien_immo.building }}">{{ bien_immo.building }}</td>
+                    <td class="is-size-7 has-text-weight-bold help-mouse-hover">
+                        <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
+                            <span class="text-info-onhover has-text-dark">
+                                <span>{{ bien_immo.building }}</span>
+                                <span class="icon">
+                                    <i class="fas fa-search fa-search-js"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.street }}">{{ bien_immo.street }}</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
