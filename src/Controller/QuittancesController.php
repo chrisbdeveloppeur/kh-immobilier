@@ -30,7 +30,12 @@ class QuittancesController extends AbstractController
         $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
         $template->setValue('p_gender', $user->getGender());
         $template->setValue('p_lastname', $user->getLastname());
-        $template->setValue('p_firstname', $user->getFirstname());
+        if ($user->getGender() == 'Couple'){
+            $first_name = $user->getFirstname();
+        }else{
+            $first_name = '';
+        }
+        $template->setValue('p_firstname', $first_name);
         $template->setValue("last_name",$locataire->getLastName());
         $template->setValue("first_name",$locataire->getFirstName());
         $template->setValue("gender",$locataire->getGender());
@@ -101,8 +106,6 @@ class QuittancesController extends AbstractController
 //        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
         $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
         $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
-
-        dd($cmd);
 
         if (!shell_exec($cmd) == null){
             shell_exec($cmd);
