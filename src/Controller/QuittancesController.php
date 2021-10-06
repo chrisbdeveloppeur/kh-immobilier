@@ -14,10 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuittancesController extends AbstractController
 {
     /**
-     * @Route("/quittances-{loc_id}", name="quittances")
+     * @Route("/quittances-{loc_id}-{new}", name="quittances")
      * @IsGranted("ROLE_USER")
      */
-    public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
+    public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, $new): Response
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -25,15 +25,7 @@ class QuittancesController extends AbstractController
         $locataire = $locataireRepository->find($loc_id);
         $date = new \DateTime();
         $loyer_ttc = $locataire->getLogement()->getLoyerHc() + $locataire->getLogement()->getCharges();
-        /*$mode = "N/A";
-        if ($locataire->getMode() == "virement_banquaire"){
-            $mode = "Virement bancaire";
-        }elseif ($locataire->getMode() == "especes"){
-            $mode = "Espèces";
-        }elseif ($locataire->getMode() == "cheque"){
-            $mode = "Chèque";
-        }
-        */
+
         $date->setTimezone(new \DateTimeZone("Europe/Paris"));
         $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
         $template->setValue('p_gender', $user->getGender());
@@ -69,7 +61,7 @@ class QuittancesController extends AbstractController
             $em->persist($quittance);
             $em->flush();
 
-            $template->setValue("quittance_id", $locataire->getQuittances()->count());
+            $template->setValue("quittance_id", $quittance->getId());
 
             if (!file_exists('../assets/files/quittances/')) {
                 mkdir('../assets/files/quittances/', 0777, true);
@@ -82,8 +74,7 @@ class QuittancesController extends AbstractController
             $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
             $word->saveAs("../public/documents/quittances/" . $file . ".docx");
 
-            $this->convertWordToPdf($file . ".docx", $loc_id);
-
+            $this->convertWordToPdf($file . ".docx", $loc_id, $new);
         }
 
         if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
