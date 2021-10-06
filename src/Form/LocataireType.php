@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LocataireType extends AbstractType
@@ -18,6 +19,7 @@ class LocataireType extends AbstractType
 
     private $logement_fulled = true;
     private $logement_fulled_msg;
+    private $current_locataire_id;
 
     public function __construct(BienImmoRepository $bienImmoRepository)
     {
@@ -33,7 +35,7 @@ class LocataireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $logement_fulled = $this->logement_fulled;
-
+        $this->current_locataire_id = $options['data']->getId();
         if ($logement_fulled == true){
             $this->logement_fulled_msg = 'Tout les biens immobiliers sont actuellement occupés par un locataire';
         }
@@ -71,7 +73,7 @@ class LocataireType extends AbstractType
                 'placeholder' => 'Sans logement',
                 'help' => $this->logement_fulled_msg,
                 'choice_attr' => function (BienImmo $logement){
-                        if (count($logement->getLocataires()) == 0){
+                        if (count($logement->getLocataires()) == 0 || $logement->getLocataires()->current()->getId() == $this->current_locataire_id ){
                         return [''];
                     }else{
                         return ['disabled'=>'disabled'];
