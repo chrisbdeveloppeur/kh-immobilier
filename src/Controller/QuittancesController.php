@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuittancesController extends AbstractController
 {
     /**
-     * @Route("/quittances-{loc_id}-{new}", name="quittances")
+     * @Route("/quittances-{loc_id}", name="quittances")
      * @IsGranted("ROLE_USER")
      */
     public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, $new): Response
