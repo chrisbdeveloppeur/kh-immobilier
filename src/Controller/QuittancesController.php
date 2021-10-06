@@ -102,6 +102,8 @@ class QuittancesController extends AbstractController
         $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
         $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
 
+        dd($cmd);
+
         if (!shell_exec($cmd) == null){
             shell_exec($cmd);
         }
