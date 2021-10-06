@@ -17,7 +17,7 @@ class QuittancesController extends AbstractController
      * @Route("/quittances-{loc_id}", name="quittances")
      * @IsGranted("ROLE_USER")
      */
-    public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, $new): Response
+    public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -74,7 +74,7 @@ class QuittancesController extends AbstractController
             $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
             $word->saveAs("../public/documents/quittances/" . $file . ".docx");
 
-            $this->convertWordToPdf($file . ".docx", $loc_id, $new);
+            $this->convertWordToPdf($file . ".docx", $loc_id);
         }
 
         if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
