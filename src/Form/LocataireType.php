@@ -46,8 +46,8 @@ class LocataireType extends AbstractType
                 'label' => 'Prénom',
                 'constraints' => [
                     new Regex([
-                        'pattern' => "/^[a-zA-Z ]*$/",
-                        'match' => true,
+                        'pattern' => "/[;:<>{}\/0-9]/",
+                        'match' => false,
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
@@ -56,8 +56,8 @@ class LocataireType extends AbstractType
                 'label' => 'Nom',
                 'constraints' => [
                     new Regex([
-                        'pattern' => "/^[a-zA-Z ]*$/",
-                        'match' => true,
+                        'pattern' => "/[;:<>{}\/0-9]/",
+                        'match' => false,
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],

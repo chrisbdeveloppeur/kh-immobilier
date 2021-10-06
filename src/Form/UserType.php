@@ -39,8 +39,8 @@ class UserType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new Regex([
-                        'pattern' => "/^[a-zA-Z ]*$/",
-                        'match' => true,
+                        'pattern' => "/[;:<>{}\/0-9]/",
+                        'match' => false,
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
@@ -50,8 +50,8 @@ class UserType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new Regex([
-                        'pattern' => "/^[a-zA-Z ]*$/",
-                        'match' => true,
+                        'pattern' => "/[;:<>{}\/0-9]/",
+                        'match' => false,
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
