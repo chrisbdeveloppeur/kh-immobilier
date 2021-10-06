@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
@@ -36,10 +37,24 @@ class UserType extends AbstractType
             ->add('lastName', TextType::class,[
                 'label' => 'Nom*',
                 'required' => true,
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/[a-zA-Z ]/",
+                        'match' => true,
+                        'message' => 'Valeur non autorisée',
+                    ]),
+                ],
             ])
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom*',
                 'required' => true,
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/[a-zA-Z ]/",
+                        'match' => true,
+                        'message' => 'Valeur non autorisée',
+                    ]),
+                ],
             ])
             ->add('phoneNumber', TextType::class,[
                 'label' => 'Tel',
