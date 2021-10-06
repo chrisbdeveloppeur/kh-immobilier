@@ -55,7 +55,8 @@ class LocataireType extends AbstractType
                 'label' => 'Sexe',
                 'choices' => [
                     'Homme' => 'M.',
-                    'Femme' => 'Mme.'
+                    'Femme' => 'Mme.',
+                    'Couple' => 'Couple'
                 ]
             ])
             ->add('mode', ChoiceType::class,[
