@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class LocataireType extends AbstractType
 {
@@ -43,9 +44,21 @@ class LocataireType extends AbstractType
         $builder
             ->add('first_name', TextType::class,[
                 'label' => 'Prénom',
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/^[a-z]+$/i",
+                        'message' => 'Les caractères spéciaux ne sont pas autorisé',
+                    ]),
+                ],
             ])
             ->add('last_name', TextType::class,[
                 'label' => 'Nom',
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/^[a-z]+$/i",
+                        'message' => 'Les caractères spéciaux ne sont pas autorisé',
+                    ]),
+                ],
             ])
             ->add('email', EmailType::class,[
                 'label' => 'Email',

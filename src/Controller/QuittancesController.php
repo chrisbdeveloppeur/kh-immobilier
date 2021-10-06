@@ -30,12 +30,7 @@ class QuittancesController extends AbstractController
         $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
         $template->setValue('p_gender', $user->getGender());
         $template->setValue('p_lastname', $user->getLastname());
-        if ($user->getGender() == 'Couple'){
-            $first_name = $user->getFirstname();
-        }else{
-            $first_name = '';
-        }
-        $template->setValue('p_firstname', $first_name);
+        $template->setValue('p_firstname', $user->getFirstname());
         $template->setValue("last_name",$locataire->getLastName());
         $template->setValue("first_name",$locataire->getFirstName());
         $template->setValue("gender",$locataire->getGender());
