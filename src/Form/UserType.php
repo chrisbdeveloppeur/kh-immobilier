@@ -39,7 +39,7 @@ class UserType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new Regex([
-                        'pattern' => "/[a-zA-Z ]/",
+                        'pattern' => "/^[a-zA-Z ]*$/",
                         'match' => true,
                         'message' => 'Valeur non autorisée',
                     ]),
@@ -50,7 +50,7 @@ class UserType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new Regex([
-                        'pattern' => "/[a-zA-Z ]/",
+                        'pattern' => "/^[a-zA-Z ]*$/",
                         'match' => true,
                         'message' => 'Valeur non autorisée',
                     ]),
