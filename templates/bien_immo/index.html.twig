@@ -32,6 +32,9 @@
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Loyer TTC', 'loyer_ttc') }}</span>
                     </th>
                     <th>
+                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Echeance', 'echeance') }}</span>
+                    </th>
+                    <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Solde', 'solde') }}</span>
                     </th>
                     <th>
@@ -54,21 +57,27 @@
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
                 <tr class="has-text-centered">
                     <td class="is-size-7 has-text-weight-bold help-mouse-hover">
-                        <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
-                            <span class="text-info-onhover has-text-dark">
+                            <span class="text-info-onhover has-text-dark show-on-hover">
                                 <span>{{ bien_immo.building }}</span>
-                                <span class="icon">
-                                    <i class="fas fa-search fa-search-js"></i>
-                                </span>
+                                <a class="show-on-hover-target" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </a>
+                                <a class="show-on-hover-target" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
+                                    <span class="icon">
+                                        <i class="fas fa-lg fa-pen-square"></i>
+                                    </span>
+                                </a>
                             </span>
-                        </a>
                     </td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.street }}">{{ bien_immo.street }}</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerTtc }} €">{{ bien_immo.loyerTtc }} €</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
+                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
                     <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td class="is-size-7 help-mouse-hover">
                         {% if bien_immo.locataires is not empty %}
@@ -77,11 +86,11 @@
                                     <i class="fas fa-user"></i>
                                 </span>
                             </a>
-                            <a class="fa-search-js" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="{{ bien_immo.locataires.current }}">
+                            <a class="show-on-hover" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="{{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ bien_immo.locataires.current }}</span>
-                                    <span class="icon">
-                                        <i class="fas fa-search fa-search-js"></i>
+                                    <span class="icon show-on-hover-target">
+                                        <i class="fas fa-search"></i>
                                     </span>
                                 </span>
                             </a>
@@ -95,12 +104,12 @@
                         {% endif %}
                     </td>
                     <td class="is-size-7 help-mouse-hover">
-                        <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails">
+                        <a class="is-hidden-desktop" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails">
                             <span class="icon">
                                 <i class="fas fa-lg fa-search"></i>
                             </span>
                         </a>
-                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
+                        <a class="is-hidden-desktop" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
                             <span class="icon">
                                 <i class="fas fa-lg fa-pen-square"></i>
                             </span>

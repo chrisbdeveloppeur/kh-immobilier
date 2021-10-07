@@ -72,6 +72,19 @@ i.fa-search-js{
   }
 }
 
+.show-on-hover-target{
+  display: inline-block;
+  width: 0px;
+  opacity: 0;
+  transition: .2s;
+}
+
+.show-on-hover-target-active{
+  width: 20px;
+  opacity: 1;
+  transition: .2s;
+}
+
 .is-absolute{
   position: absolute !important;
 }

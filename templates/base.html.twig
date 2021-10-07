@@ -60,6 +60,24 @@
         }
     </script>
 
+    {#       SHOW ON HOVER       #}
+    <script>
+
+        let onHoverElements = document.querySelectorAll('.show-on-hover');
+        onHoverElements.forEach(function(elem) {
+            let targetToShow = elem.querySelectorAll('.show-on-hover-target');
+                elem.addEventListener('mouseover', function () {
+                    targetToShow.forEach(target => target.classList.add('show-on-hover-target-active'));
+                });
+                elem.addEventListener('mouseleave', function () {
+                    targetToShow.forEach(target => target.classList.remove('show-on-hover-target-active'));
+                });
+                //let targetToShow = elem.querySelectorAll('.show-on-hover-target');
+                //targetToShow.forEach(target => console.log(target));
+            }
+        )
+
+    </script>
 
 {#      REMOVE TIMER        #}
 <script>
