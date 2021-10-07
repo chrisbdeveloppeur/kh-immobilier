@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BienImmoType extends AbstractType
 {
-    private $current_bien_immo_id = 0;
+    private $current_bien_immo_id;
     private $locataires_housed = true;
     private $locataires_housed_msg;
 
@@ -128,7 +128,7 @@ class BienImmoType extends AbstractType
                 'placeholder' => 'Sans locataire',
                 'help' => $this->locataires_housed_msg,
                 'choice_attr' => function (Locataire $locataire){
-                    if (!$locataire->getLogement() || $locataire->getLogement()->getId() == $this->current_bien_immo_id ){
+                    if (!$locataire->getLogement() || $locataire->getId() == $this->current_bien_immo_id ){
                         return [''];
                     }else{
                         return ['disabled'=>'disabled'];
