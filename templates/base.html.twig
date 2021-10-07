@@ -8,6 +8,7 @@
     <title>{% block title %}Documents{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
+        <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
     {% endblock %}
 
 {#    {% block javascripts %}#}
@@ -44,6 +45,10 @@
 
     {{ include('includes/flash_message.html.twig') }}
 
+
+{% block javascripts %}
+
+    <script src="~bulma-calendar/dist/js/bulma-calendar.min.js"></script>
 
     <script>
         function ajaxEditFile(event){
@@ -121,6 +126,8 @@
         }
     }
 </script>
+
+{% endblock %}
 
 </body>
 </html>

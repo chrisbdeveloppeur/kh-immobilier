@@ -40,7 +40,7 @@
                     #}
 
                 </div>
-            {% elseif child.vars.block_prefixes[1] == 'number' %}
+            {% elseif child.vars.name in ['loyer_hc','charges','solde'] %}
                 <div class="field has-addons mb-0">
                     <p class="control is-expanded">
                         {{ form_widget(child, {'attr': {'class': 'input has-text-centered is-small'} }) }}
