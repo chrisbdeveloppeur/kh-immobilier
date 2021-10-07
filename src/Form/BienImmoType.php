@@ -17,21 +17,20 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class BienImmoType extends AbstractType
 {
     private $current_bien_immo_id = 0;
-    private $logement_fulled = true;
-    private $logement_fulled_msg;
+    private $locataires_housed = true;
+    private $locataires_housed_msg;
 
-    public function __construct(BienImmoRepository $bienImmoRepository)
+    public function __construct(LocataireRepository $locataireRepository)
     {
-        $biens_immos = $bienImmoRepository->findAll();
-        foreach ($biens_immos as $bien_immo){
-            if ($bien_immo->getLocataires()->count() == 0){
-                $this->logement_fulled = false;
+        $locataires = $locataireRepository->findAll();
+        foreach ($locataires as $locataire){
+            if (!$locataire->getLogement()){
+                $this->locataires_housed = false;
             }
         }
-        if ($this->logement_fulled == true){
-            $this->logement_fulled_msg = 'Tout les biens immobiliers sont actuellement occupés par un locataire';
+        if ($this->locataires_housed == true){
+            $this->locataires_housed_msg = 'Tout les locataires sont actuellement logés';
         }
-
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -79,12 +78,24 @@ class BienImmoType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans locataire',
-                'help' => $this->logement_fulled_msg,
+                'help' => $this->locataires_housed_msg,
+                'choice_attr' => function (Locataire $locataire){
+                    if (!$locataire->getLogement() || $locataire->getLogement()->getId() == $this->current_bien_immo_id ){
+                        return [''];
+                    }else{
+                        return ['disabled'=>'disabled'];
+                    }
+
+                },
+                'group_by' => function(Locataire $locataire){
+                    if (!$locataire->getLogement()){
+                        return 'Locataires non logés';
+                    }else{
+                        return 'Locataires logés';
+                    }
+                },
                 'query_builder' => function (LocataireRepository $er) {
                     return $er->createQueryBuilder('u')
-                        ->setParameter('value', true)
-                        ->Where('u.sans_logement = :value')
-                        ->orWhere('u.id = ' . $this->current_bien_immo_id)
                         ->orderBy('u.last_name', 'ASC');
                 },
             ])

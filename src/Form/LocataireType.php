@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\BienImmo;
 use App\Entity\Locataire;
 use App\Repository\BienImmoRepository;
-use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -19,20 +18,20 @@ use Symfony\Component\Validator\Constraints\Regex;
 class LocataireType extends AbstractType
 {
 
-    private $locataires_housed = true;
-    private $locataires_housed_msg;
+    private $logement_fulled = true;
+    private $logement_fulled_msg;
     private $current_locataire_id;
 
-    public function __construct(LocataireRepository $locataireRepository)
+    public function __construct(BienImmoRepository $bienImmoRepository)
     {
-        $locataires = $locataireRepository->findAll();
-        foreach ($locataires as $locataire){
-            if (!$locataire->getLogement()){
-                $this->locataires_housed = false;
+        $biens_immos = $bienImmoRepository->findAll();
+        foreach ($biens_immos as $bien_immo){
+            if ($bien_immo->getLocataires()->count() == 0){
+                $this->logement_fulled = false;
             }
         }
-        if ($this->locataires_housed == true){
-            $this->locataires_housed_msg = 'Tout les locataires sont actuellement logés';
+        if ($this->logement_fulled == true){
+            $this->logement_fulled_msg = 'Tout les biens immobiliers sont actuellement occupés par un locataire';
         }
     }
 
@@ -95,17 +94,18 @@ class LocataireType extends AbstractType
                     }
 
                 },
-                'query_builder' => function (BienImmoRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.free', 'DESC');
-                },
                 'group_by' => function(BienImmo $logement){
                     if (count($logement->getLocataires()) == 0){
                         return 'Logements libres';
                     }else{
                         return 'Logements occupés';
                     }
-                }
+                },
+                'query_builder' => function (BienImmoRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.free', 'DESC');
+                },
+
             ])
         ;
     }
