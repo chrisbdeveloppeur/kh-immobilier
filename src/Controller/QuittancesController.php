@@ -66,14 +66,14 @@ class QuittancesController extends AbstractController
     {
         $project_dir = $this->getParameter('kernel.project_dir');
 //        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
-        $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
+        $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\public\documents\quittances\\';
         $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
 
         if (!shell_exec($cmd) == null){
             shell_exec($cmd);
         }
 
-        return $this->redirectToRoute("quittances",[
+        return $this->redirectToRoute("quittances_edit_current_month_quittance",[
             'loc_id' => $loc_id,
         ]);
     }
@@ -142,15 +142,15 @@ class QuittancesController extends AbstractController
     {
         $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
 
-        if (!file_exists('../assets/files/quittances/')) {
-            mkdir('../assets/files/quittances/', 0777, true);
-        }
+        //if (!file_exists('../assets/files/quittances/')) {
+        //    mkdir('../assets/files/quittances/', 0777, true);
+        //}
         if (!file_exists('../public/documents/quittances/')) {
             mkdir('../public/documents/quittances/', 0777, true);
         }
 
-        $template->saveAs("../assets/files/quittances/" . $file . ".docx");
-        $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
+        $template->saveAs("../public/documents/quittances/" . $file . ".docx");
+        $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
         $word->saveAs("../public/documents/quittances/" . $file . ".docx");
 
         $this->convertWordToPdf($file . ".docx", $locataire->getId());

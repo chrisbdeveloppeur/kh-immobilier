@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\BienImmo;
 use App\Entity\Locataire;
 use App\Repository\BienImmoRepository;
+use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -18,28 +19,26 @@ use Symfony\Component\Validator\Constraints\Regex;
 class LocataireType extends AbstractType
 {
 
-    private $logement_fulled = true;
-    private $logement_fulled_msg;
+    private $locataires_housed = true;
+    private $locataires_housed_msg;
     private $current_locataire_id;
 
-    public function __construct(BienImmoRepository $bienImmoRepository)
+    public function __construct(LocataireRepository $locataireRepository)
     {
-        $biens_immos = $bienImmoRepository->findAll();
-        foreach ($biens_immos as $bien_immo){
-            if (count($bien_immo->getLocataires()) == 0){
-                $this->logement_fulled = false;
+        $locataires = $locataireRepository->findAll();
+        foreach ($locataires as $locataire){
+            if (!$locataire->getLogement()){
+                $this->locataires_housed = false;
             }
         }
-
+        if ($this->locataires_housed == true){
+            $this->locataires_housed_msg = 'Tout les locataires sont actuellement logés';
+        }
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $logement_fulled = $this->logement_fulled;
         $this->current_locataire_id = $options['data']->getId();
-        if ($logement_fulled == true){
-            $this->logement_fulled_msg = 'Tout les biens immobiliers sont actuellement occupés par un locataire';
-        }
 
         $builder
             ->add('first_name', TextType::class,[

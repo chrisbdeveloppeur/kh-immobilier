@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\BienImmo;
 use App\Entity\Locataire;
 use App\Entity\Solde;
+use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -16,15 +17,29 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class BienImmoType extends AbstractType
 {
     private $current_bien_immo_id = 0;
+    private $logement_fulled = true;
+    private $logement_fulled_msg;
+
+    public function __construct(BienImmoRepository $bienImmoRepository)
+    {
+        $biens_immos = $bienImmoRepository->findAll();
+        foreach ($biens_immos as $bien_immo){
+            if ($bien_immo->getLocataires()->count() == 0){
+                $this->logement_fulled = false;
+            }
+        }
+        if ($this->logement_fulled == true){
+            $this->logement_fulled_msg = 'Tout les biens immobiliers sont actuellement occupés par un locataire';
+        }
+
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        dd($options['data']->getLocataires()->current());
         if($options['data']->getLocataires()->current()) {
             $this->current_bien_immo_id = $options['data']->getLocataires()->current()->getId();
         }
 
-//        dd($this->current_bien_immo_id);
         $builder
             ->add('building', TextType::class,[
                 'label' => "Tire du bien",
@@ -64,6 +79,7 @@ class BienImmoType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans locataire',
+                'help' => $this->logement_fulled_msg,
                 'query_builder' => function (LocataireRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->setParameter('value', true)
