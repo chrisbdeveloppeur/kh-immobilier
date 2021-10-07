@@ -23,32 +23,32 @@
             {% for locataire in locataires %}
                 <tr class="has-text-centered">
                     <td class="is-size-7">
-                        <a class="fa-search-js" href="{{ path('locataire_show', {'id': locataire.id }) }}" title="Voir les détails du locataire">
+                        <span class="show-on-hover" title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
-                                <span class="has-text-weight-bold">{{ locataire.lastName }}</span>
-                                <span class="icon">
-                                    <i class="fas fa-search fa-search-js"></i>
-                                </span>
+                                <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.lastName }}</a>
+                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target text-info-onhover" title="Modifier les informations du locataire">
+                                    <i class="fas fa-lg fa-pen-square"></i>
+                                </a>
                             </span>
-                        </a>
+                        </span>
                     </td>
                     <td class="is-size-7">
-                        <a class="fa-search-js" href="{{ path('locataire_show', {'id': locataire.id }) }}" title="Voir les détails du locataire">
+                        <span class="show-on-hover" title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
-                                <span class="has-text-weight-bold">{{ locataire.firstName }}</span>
-                                <span class="icon">
-                                    <i class="fas fa-search fa-search-js"></i>
-                                </span>
+                                <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.firstName }}</a>
+                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target text-info-onhover" title="Modifier les informations du locataire">
+                                    <i class="fas fa-lg fa-pen-square"></i>
+                                </a>
                             </span>
-                        </a>
+                        </span>
                     </td>
                     <td class="is-size-7">
                         {% if locataire.email %}
-                            <a href="mailto:{{ locataire.email }}" class="fa-search-js" title="Envoyer un message">
+                            <a href="mailto:{{ locataire.email }}" class="show-on-hover" title="Envoyer un message">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.email }}</span>
-                                    <span class="icon">
-                                        <i class="fas fa-envelope fa-search-js"></i>
+                                    <span class="icon show-on-hover-target">
+                                        <i class="fas fa-envelope"></i>
                                     </span>
                                 </span>
                             </a>
@@ -60,11 +60,11 @@
                     <td class="is-size-7">{{ locataire.mode }}</td>
                     <td class="is-size-7">
                         {% if locataire.logement %}
-                            <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">
+                            <a class="show-on-hover" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.logement }}</span>
-                                    <span class="icon">
-                                        <i class="fas fa-search fa-search-js"></i>
+                                    <span class="icon show-on-hover-target">
+                                        <i class="fas fa-search"></i>
                                     </span>
                                 </span>
                             </a>
@@ -73,13 +73,8 @@
                         {% endif %}
                     </td>
                     <td class="is-size-7">
-                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}" title="Voir les détails">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-search"></i>
-                            </span>
-                        </a>
 
-                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier les informations du locataire">
+                        <a class="is-hidden-desktop" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier les informations du locataire">
                             <span class="icon">
                                 <i class="fas fa-lg fa-pen-square"></i>
                             </span>
