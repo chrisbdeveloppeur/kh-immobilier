@@ -113,8 +113,7 @@ class BienImmoType extends AbstractType
                 'label' => "Echéance*",
                 'help' => 'Date d\'échéance de payement',
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => [],
-                'row_attr' => ['class' => 'has-icons-left']
+                'attr' => ['class' => 'has-text-centered'],
             ])
 
             ->add('solde', NumberType::class, [
