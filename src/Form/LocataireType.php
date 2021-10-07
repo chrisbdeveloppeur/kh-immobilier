@@ -49,6 +49,7 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('last_name', TextType::class,[
                 'label' => 'Nom',
@@ -59,10 +60,12 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('email', EmailType::class,[
                 'label' => 'Email',
                 'required' => false,
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('gender', ChoiceType::class,[
                 'label' => 'Sexe',

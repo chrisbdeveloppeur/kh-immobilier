@@ -43,20 +43,20 @@ class BienImmoType extends AbstractType
         $builder
             ->add('building', TextType::class,[
                 'label' => "Tire du bien",
-                'attr' => [],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('street', TextType::class,[
                 'label' => "Nom de la rue",
-                'attr' => [],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('cp', TextType::class,[
                 'label' => "Code postal",
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => [],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('city', TextType::class,[
                 'label' => "Ville",
-                'attr' => [],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('loyer_hc', NumberType::class,[
                 'label' => "Loyer HC",
@@ -69,13 +69,14 @@ class BienImmoType extends AbstractType
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => [],
             ])
+            /*
             ->add('echeance', NumberType::class,[
                 'label' => "Echéance",
                 'help' => 'Date d\'échéance de payement',
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => [],
+                'attr' => ['type' => 'date'],
             ])
-        /*
+            */
             ->add('echeance', ChoiceType::class,[
                 'choices' => [
                     '1' => 1,
@@ -113,8 +114,9 @@ class BienImmoType extends AbstractType
                 'help' => 'Date d\'échéance de payement',
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => [],
+                'row_attr' => ['class' => 'has-icons-left']
             ])
-        */
+
             ->add('solde', NumberType::class, [
                 'mapped' => false,
                 'label' => "Solde",
