@@ -61,11 +61,6 @@
                                 <a class="text-info-onhover" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
                                     {{ bien_immo.building }}
                                 </a>
-                                <a class="show-on-hover-target text-info-onhover" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
-                                    <span class="icon">
-                                        <i class="fas fa-search"></i>
-                                    </span>
-                                </a>
                                 <a class="show-on-hover-target text-info-onhover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-pen-square"></i>
@@ -106,11 +101,6 @@
                         {% endif %}
                     </td>
                     <td class="is-size-7 help-mouse-hover">
-                        <a class="is-hidden-desktop" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-search"></i>
-                            </span>
-                        </a>
                         <a class="is-hidden-desktop" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
                             <span class="icon">
                                 <i class="fas fa-lg fa-pen-square"></i>

@@ -73,15 +73,15 @@ i.fa-search-js{
 }
 
 .show-on-hover-target{
-  display: inline-block;
-  width: 0px;
-  opacity: 0;
+  display: inline-block !important;
+  width: 0px !important;
+  opacity: 0 !important;
   transition: .3s;
 }
 
 .show-on-hover-target-active{
-  width: 20px;
-  opacity: 1;
+  width: 20px !important;
+  opacity: 1 !important;
   transition: .3s;
 }
 
