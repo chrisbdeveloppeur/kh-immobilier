@@ -39,7 +39,7 @@ class QuittancesController extends AbstractController
             $em->persist($quittance);
             $em->flush();
 
-            $template->setValue("quittance_id", $quittance->getId());
+            $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
 
             if (!file_exists('../assets/files/quittances/')) {
                 mkdir('../assets/files/quittances/', 0777, true);
