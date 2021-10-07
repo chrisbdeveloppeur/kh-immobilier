@@ -12,19 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/quittances", name="quittances_")
+ * @IsGranted("ROLE_USER")
+ */
 class QuittancesController extends AbstractController
 {
     /**
-     * @Route("/quittances-{loc_id}", name="quittances")
-     * @IsGranted("ROLE_USER")
+     * @Route("/{loc_id}", name="edit_current_month_quittance")
      */
-    public function home($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
+    public function editCurrentMonthQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
     {
         $date = new \DateTime();
 
         $locataire = $locataireRepository->find($loc_id);
 
-        $template = $this->fillTemplate($locataire);
+        $template = $this->fillQuittanceTemplate($locataire);
 
         $file = "quittance_" . strftime("%B_") . $locataire->getLastName() . '_' . $locataire->getLogement()->getId();
 
@@ -39,20 +42,8 @@ class QuittancesController extends AbstractController
             $em->persist($quittance);
             $em->flush();
 
-            $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
+            $this->createQuittanceFile($template, $locataire, $file);
 
-            if (!file_exists('../assets/files/quittances/')) {
-                mkdir('../assets/files/quittances/', 0777, true);
-            }
-            if (!file_exists('../public/documents/quittances/')) {
-                mkdir('../public/documents/quittances/', 0777, true);
-            }
-
-            $template->saveAs("../assets/files/quittances/" . $file . ".docx");
-            $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
-            $word->saveAs("../public/documents/quittances/" . $file . ".docx");
-
-            $this->convertWordToPdf($file . ".docx", $loc_id);
         }
 
         if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
@@ -60,8 +51,6 @@ class QuittancesController extends AbstractController
         }else{
             $pdf_exist = false;
         }
-
-        //$this->addFlash('success',"La quittance à bien été édité !");
 
         return $this->render("immo/quittances/download_file.html.twig",[
             "file_name" => $file,
@@ -93,7 +82,7 @@ class QuittancesController extends AbstractController
      * @param $file_name
      * @param $file_name_pdf
      * @return Response
-     * @Route("/ddl-{file_name}-{loc_id}", name="ddl-quittance-pdf")
+     * @Route("/ddl/{file_name}/{loc_id}", name="ddl_quittance")
      */
     public function downloadPdf($file_name, $loc_id, LocataireRepository $locataireRepository, QuittanceRepository $quittanceRepository): Response
     {
@@ -113,7 +102,7 @@ class QuittancesController extends AbstractController
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
-    public function fillTemplate($locataire)
+    public function fillQuittanceTemplate($locataire)
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -146,5 +135,24 @@ class QuittancesController extends AbstractController
         $template->setValue("month",strftime("%B"));
 
         return $template;
+    }
+
+
+    public function createQuittanceFile($template, $locataire, $file)
+    {
+        $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
+
+        if (!file_exists('../assets/files/quittances/')) {
+            mkdir('../assets/files/quittances/', 0777, true);
+        }
+        if (!file_exists('../public/documents/quittances/')) {
+            mkdir('../public/documents/quittances/', 0777, true);
+        }
+
+        $template->saveAs("../assets/files/quittances/" . $file . ".docx");
+        $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/quittances/".$file.".docx");
+        $word->saveAs("../public/documents/quittances/" . $file . ".docx");
+
+        $this->convertWordToPdf($file . ".docx", $locataire->getId());
     }
 }

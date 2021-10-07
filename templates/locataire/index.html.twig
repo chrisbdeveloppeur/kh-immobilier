@@ -86,7 +86,7 @@
                         </a>
 
                         {% if locataire.logement %}
-                            <a href="{{ path('quittances', {'loc_id': locataire.id }) }}" title="Editer une quittance de loyer">
+                            <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': locataire.id }) }}" title="Editer une quittance de loyer">
                             <span class="icon">
                                 <i class="fas fa-lg fa-file-contract"></i>
                             </span>
