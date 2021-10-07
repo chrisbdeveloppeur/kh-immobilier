@@ -32,7 +32,7 @@
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Loyer TTC', 'loyer_ttc') }}</span>
                     </th>
                     <th>
-                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Echeance', 'echeance') }}</span>
+                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Echéance', 'echeance') }}</span>
                     </th>
                     <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Solde', 'solde') }}</span>
@@ -86,7 +86,7 @@
                                     <i class="fas fa-user"></i>
                                 </span>
                             </a>
-                            <a class="show-on-hover" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="{{ bien_immo.locataires.current }}">
+                            <a class="show-on-hover" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ bien_immo.locataires.current }}</span>
                                     <span class="icon show-on-hover-target">
@@ -144,6 +144,7 @@
                 <th class="is-size-7 help-mouse-hover" title="Total loyers">
                     <span>{{ total_loyer_ttc|number_format(2) }} €</span>
                 </th>
+                <th></th>
                 <th class="is-size-7 help-mouse-hover" title="Total soldes">
                     <span>{{ total_solde|number_format(2) }} €</span>
                 </th>
