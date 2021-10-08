@@ -1,4 +1,5 @@
 {% if section == 'immobilier' %}
+
 <div class="is-flex-desktop is-justify-content-space-between">
     <div class="column buttons are-small has-text-centered-touch">
         <a href="{{ path('immo_accueil') }}" class="button is-dark bg-info-onhover">Vue d'ensemble</a>
@@ -10,7 +11,9 @@
         <a href="{{ path('locataire_new') }}" class="button is-dark bg-info-onhover">Ajouter un locataire</a>
     </div>
 </div>
+
 {% elseif section == 'entreprenariat' %}
+
     <div class="is-flex-desktop is-justify-content-space-between">
         <div class="column buttons are-small has-text-centered-touch">
             <a href="{{ path('entreprenariat_home') }}" class="button is-dark bg-info-onhover">Vue d'ensemble</a>
@@ -22,4 +25,5 @@
             <a href="#" class="button is-dark bg-info-onhover">Ajouter un client</a>
         </div>
     </div>
+
 {% endif %}
