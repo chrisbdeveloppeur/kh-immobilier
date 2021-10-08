@@ -28,8 +28,8 @@
             <tbody>
             {% for locataire in locataires %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7">
-                        <span class="show-on-hover" title="Voir les détails du locataire">
+                    <td class="is-size-7 show-on-hover">
+                        <span title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
                                 <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.lastName }}</a>
                                 <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier les informations du locataire">
@@ -38,8 +38,8 @@
                             </span>
                         </span>
                     </td>
-                    <td class="is-size-7">
-                        <span class="show-on-hover" title="Voir les détails du locataire">
+                    <td class="is-size-7 show-on-hover">
+                        <span title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
                                 <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.firstName }}</a>
                                 <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier les informations du locataire">
@@ -48,9 +48,9 @@
                             </span>
                         </span>
                     </td>
-                    <td class="is-size-7">
+                    <td class="is-size-7 show-on-hover">
                         {% if locataire.email %}
-                            <a href="mailto:{{ locataire.email }}" class="show-on-hover" title="Envoyer un message">
+                            <a href="mailto:{{ locataire.email }}" title="Envoyer un message">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.email }}</span>
                                     <span class="icon show-on-hover-target is-hidden-mobile">
@@ -64,9 +64,9 @@
                     </td>
                     <td class="is-size-7">{{ locataire.gender }}</td>
                     <td class="is-size-7">{{ locataire.mode }}</td>
-                    <td class="is-size-7">
+                    <td class="is-size-7 show-on-hover">
                         {% if locataire.logement %}
-                            <a class="show-on-hover" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">
+                            <a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.logement }}</span>
                                     <span class="icon show-on-hover-target is-hidden-mobile">

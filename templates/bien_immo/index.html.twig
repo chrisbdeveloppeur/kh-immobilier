@@ -17,9 +17,6 @@
             <thead>
                 <tr class="has-text-centered">
                     <th>
-                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Titre', 'building') }}</span>
-                    </th>
-                    <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
                     </th>
                     <th>
@@ -62,10 +59,10 @@
                 {% set total_charges =  total_charges + bien_immo.charges %}
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7 has-text-weight-bold">
-                            <span class="text-info-onhover has-text-dark show-on-hover">
+                    <td class="is-size-7 has-text-weight-bold show-on-hover">
+                            <span class="text-info-onhover has-text-dark">
                                 <a class="text-info-onhover" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
-                                    {{ bien_immo.building }}
+                                    <span class="is-uppercase">{{ bien_immo.street }}</span>
                                 </a>
                                 <a class="show-on-hover-target text-info-onhover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
                                     <span class="icon">
@@ -74,7 +71,6 @@
                                 </a>
                             </span>
                     </td>
-                    <td class="is-size-7" title="{{ bien_immo.street }}">{{ bien_immo.street }}</td>
                     <td class="is-size-7" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
                     <td class="is-size-7" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
                     <td class="is-size-7" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
@@ -82,14 +78,14 @@
                     <td class="is-size-7" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
                     <td class="is-size-7" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
                     <td class="is-size-7" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
-                    <td class="is-size-7">
+                    <td class="is-size-7 show-on-hover">
                         {% if bien_immo.locataires is not empty %}
                             <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
                                 <span class="icon has-text-info text-black-onhover">
                                     <i class="fas fa-user"></i>
                                 </span>
                             </a>
-                            <a class="show-on-hover" href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
+                            <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ bien_immo.locataires.current }}</span>
                                     <span class="icon show-on-hover-target">

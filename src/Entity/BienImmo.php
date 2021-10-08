@@ -22,7 +22,7 @@ class BienImmo
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $building;
 
@@ -129,7 +129,7 @@ class BienImmo
 
     public function __toString()
     {
-        return $this->getBuilding();
+        return $this->getStreet();
     }
 
     public function getId(): ?int
@@ -142,9 +142,9 @@ class BienImmo
         return $this->building;
     }
 
-    public function setBuilding(string $building): self
+    public function setBuilding(?string $building): self
     {
-        $this->building = mb_strtoupper($building);
+        $this->building = $building;
 
         return $this;
     }
@@ -157,7 +157,6 @@ class BienImmo
     public function setStreet(string $street): self
     {
         $this->street = $street;
-
         return $this;
     }
 
