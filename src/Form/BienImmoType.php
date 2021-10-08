@@ -76,6 +76,7 @@ class BienImmoType extends AbstractType
             ->add('superficie', NumberType::class,[
                 'label' => "Superficie*",
                 'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
             ])
             ->add('loyer_hc', NumberType::class,[
                 'label' => "Loyer HC",
