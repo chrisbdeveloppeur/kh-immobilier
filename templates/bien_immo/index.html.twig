@@ -6,6 +6,12 @@
 
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
+
+    <div class="tags has-addons mb-0">
+        <span class="tag has-text-weight-bold">Nombre total de bien immobilier</span>
+        <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
+    </div>
+
     <div class="table-container">
         <table class="table is-narrow" style="width: 100%;">
             <thead>

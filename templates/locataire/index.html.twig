@@ -6,6 +6,12 @@
 
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
+
+    <div class="tags has-addons mb-0">
+        <span class="tag has-text-weight-bold">Nombre total de locataires</span>
+        <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
+    </div>
+
     <div class="table-container">
         <table class="table is-narrow" style="width: 100%;">
             <thead>
@@ -26,7 +32,7 @@
                         <span class="show-on-hover" title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
                                 <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.lastName }}</a>
-                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target text-info-onhover" title="Modifier les informations du locataire">
+                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier les informations du locataire">
                                     <i class="fas fa-lg fa-pen-square"></i>
                                 </a>
                             </span>
@@ -36,7 +42,7 @@
                         <span class="show-on-hover" title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
                                 <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.firstName }}</a>
-                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target text-info-onhover" title="Modifier les informations du locataire">
+                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier les informations du locataire">
                                     <i class="fas fa-lg fa-pen-square"></i>
                                 </a>
                             </span>
@@ -47,7 +53,7 @@
                             <a href="mailto:{{ locataire.email }}" class="show-on-hover" title="Envoyer un message">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.email }}</span>
-                                    <span class="icon show-on-hover-target">
+                                    <span class="icon show-on-hover-target is-hidden-mobile">
                                         <i class="fas fa-envelope"></i>
                                     </span>
                                 </span>
@@ -63,7 +69,7 @@
                             <a class="show-on-hover" href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.logement }}</span>
-                                    <span class="icon show-on-hover-target">
+                                    <span class="icon show-on-hover-target is-hidden-mobile">
                                         <i class="fas fa-search"></i>
                                     </span>
                                 </span>
