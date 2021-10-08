@@ -31,12 +31,14 @@
         </div>
     </div>
 
+    {% set section = '' %}
     {% block nav_secondaire %}
         {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') %}
-            {{ include('includes/sub_header_immo.html.twig') }}
+            {% set section = 'immobilier' %}
         {% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
-            {{ include('includes/sub_header_entreprenariat.html.twig') }}
+            {% set section = 'entreprenariat' %}
         {% endif %}
+        {{ include('includes/sub_header.html.twig') }}
     {% endblock %}
 
     {% block body %}{% endblock %}
