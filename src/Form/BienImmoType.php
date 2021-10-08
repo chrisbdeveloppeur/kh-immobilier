@@ -60,7 +60,7 @@ class BienImmoType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('type', ChoiceType::class,[
-                'label' => "Type de logement*",
+                'label' => "Type de logement",
                 'choices' => [
                     'Studio' => 'Studio',
                     'T1' => 'T1',
@@ -74,7 +74,7 @@ class BienImmoType extends AbstractType
                 'attr' => ['class' => 'has-text-centered'],
             ])
             ->add('superficie', NumberType::class,[
-                'label' => "Superficie*",
+                'label' => "Superficie",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
