@@ -81,15 +81,13 @@
 <script>
     let objectToRemove = document.querySelectorAll('.remove-timer-5s');
     objectToRemove.forEach(function(element) {
-        setTimeout(function () {
-            element.style.transition = '5s';
-            element.style.opacity = '0';
             setTimeout(function () {
-                element.classList.add('is-hidden')
-            },5000);
-        },10000);
-
-
+                element.style.transition = '5s';
+                element.style.opacity = '0';
+                setTimeout(function () {
+                    element.classList.add('is-hidden')
+                },5000);
+            },10000);
         }
     )
 </script>
