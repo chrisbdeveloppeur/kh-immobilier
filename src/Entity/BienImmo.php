@@ -96,6 +96,16 @@ class BienImmo
      */
     private $free;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $superficie;
+
 
     public function __construct()
     {
@@ -379,4 +389,28 @@ class BienImmo
         return $this;
     }
     */
+
+public function getType(): ?string
+{
+    return $this->type;
+}
+
+public function setType(?string $type): self
+{
+    $this->type = $type;
+
+    return $this;
+}
+
+public function getSuperficie(): ?float
+{
+    return $this->superficie;
+}
+
+public function setSuperficie(?float $superficie): self
+{
+    $this->superficie = $superficie;
+
+    return $this;
+}
 }
