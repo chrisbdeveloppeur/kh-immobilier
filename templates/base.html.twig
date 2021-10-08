@@ -79,19 +79,22 @@
 
 {#      REMOVE TIMER        #}
 <script>
-    let objectToRemove = document.querySelectorAll('.remove-timer-5s');
-    objectToRemove.forEach(function(element) {
+    function removeAfterTimer(element, time) {
+        setTimeout(function () {
+            element.style.transition = '5s';
+            element.style.opacity = '0';
             setTimeout(function () {
-                element.style.transition = '5s';
-                element.style.opacity = '0';
-                setTimeout(function () {
-                    element.classList.add('is-hidden')
-                },5000);
-            },10000);
-        }
-    )
+                element.classList.add('is-hidden')
+            },5000);
+        },time + '000');
+    }
 </script>
 
+    {#     REMOVE FLASH MSG BASE     #}
+    <script>
+        let objectToRemove = document.querySelectorAll('.remove-timer-5s');
+        objectToRemove.forEach(elem => removeAfterTimer(elem, 10));
+    </script>
 
 
 {#     SCRIPT POUR AJOUT INFORMATION PRESTATIONS DEVIS     #}
