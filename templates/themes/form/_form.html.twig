@@ -19,6 +19,7 @@
 
             {% if child.vars.block_prefixes[1] == 'choice' %}
                 {% if child.vars.name == 'echeance' %}
+                    {#
                     <div class="control has-icons-left">
                         <div class="select is-small is-fullwidth">
                             {{ form_widget(child) }}
@@ -26,6 +27,32 @@
                         <div class="icon is-small is-left">
                             <i class="fas fa-calendar-day"></i>
                         </div>
+                    </div>
+                    #}
+
+                    <div class="field has-addons">
+
+                        <p class="control">
+                            <a class="button is-static is-small">
+                                Les
+                            </a>
+                        </p>
+
+                        <div class="control has-icons-left is-expanded">
+                            <div class="select is-small is-fullwidth">
+                                {{ form_widget(child) }}
+                            </div>
+                            <div class="icon is-small is-left">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                        </div>
+
+                        <p class="control">
+                            <a class="button is-static is-small">
+                                du mois
+                            </a>
+                        </p>
+
                     </div>
                 {% else %}
                     <div class="select is-small is-fullwidth">
