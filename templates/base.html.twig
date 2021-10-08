@@ -19,6 +19,14 @@
 
 <section class="">
 
+    {#     Définission de la variable section en fonction de ce que contient le nom de la route dans laquel on se trouve     #}
+    {% set section = '' %}
+    {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') %}
+        {% set section = 'immobilier' %}
+    {% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
+        {% set section = 'entreprenariat' %}
+    {% endif %}
+
     {{ include('includes/header.html.twig') }}
 
     <div class="hero is-small is-relative">
@@ -26,18 +34,27 @@
         <div class="title-main-background is-absolute-top-0" style="z-index: -1;{% block title_main_background_layer %}background: rgba(2, 18, 34, 0.9);{% endblock %}"></div>
         <div class="hero-body">
             <h1 class="title has-text-light has-text-centered">
-                {% block title_main %}Outil d'aministration de vos documents{% endblock %}
+                <span class="icon-text is-align-items-center">
+
+                    <span class="icon is-large">
+                        {% if section == 'immobilier' %}
+                            <i class="fas fa-city"></i>
+                        {% elseif section == 'entreprenariat' %}
+                            <i class="fas fa-user-tie"></i>
+                        {% else %}
+                            <i class="fas fa-mail-bulk"></i>
+                        {% endif %}
+                    </span>
+
+                    <span>
+                        {% block title_main %}Outil d'aministration de vos documents{% endblock %}
+                    </span>
+                </span>
             </h1>
         </div>
     </div>
 
-    {% set section = '' %}
     {% block nav_secondaire %}
-        {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') %}
-            {% set section = 'immobilier' %}
-        {% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
-            {% set section = 'entreprenariat' %}
-        {% endif %}
         {{ include('includes/sub_header.html.twig') }}
     {% endblock %}
 
