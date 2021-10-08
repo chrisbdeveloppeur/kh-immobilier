@@ -62,7 +62,7 @@
                 {% set total_charges =  total_charges + bien_immo.charges %}
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7 has-text-weight-bold help-mouse-hover">
+                    <td class="is-size-7 has-text-weight-bold">
                             <span class="text-info-onhover has-text-dark show-on-hover">
                                 <a class="text-info-onhover" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
                                     {{ bien_immo.building }}
@@ -74,15 +74,15 @@
                                 </a>
                             </span>
                     </td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.street }}">{{ bien_immo.street }}</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
-                    <td class="is-size-7 help-mouse-hover" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
-                    <td class="is-size-7 help-mouse-hover">
+                    <td class="is-size-7" title="{{ bien_immo.street }}">{{ bien_immo.street }}</td>
+                    <td class="is-size-7" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
+                    <td class="is-size-7" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
+                    <td class="is-size-7" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
+                    <td class="is-size-7" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
+                    <td class="is-size-7" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
+                    <td class="is-size-7" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
+                    <td class="is-size-7" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
+                    <td class="is-size-7">
                         {% if bien_immo.locataires is not empty %}
                             <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
                                 <span class="icon has-text-info text-black-onhover">
@@ -106,7 +106,7 @@
                             <span title="Logement actuellement sans locataire">Sans locataire</span>
                         {% endif %}
                     </td>
-                    <td class="is-size-7 help-mouse-hover">
+                    <td class="is-size-7">
                         <a class="is-hidden-desktop" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
                             <span class="icon">
                                 <i class="fas fa-lg fa-pen-square"></i>
@@ -133,17 +133,17 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th class="is-size-7 help-mouse-hover" title="Total loyers hors charges">
+                <th class="is-size-7" title="Total loyers hors charges">
                     <span>{{ total_loyer_hc|number_format(2) }} €</span>
                 </th>
-                <th class="is-size-7 help-mouse-hover" title="Total charges">
+                <th class="is-size-7" title="Total charges">
                     <span>{{ total_charges|number_format(2) }} €</span>
                 </th>
-                <th class="is-size-7 help-mouse-hover" title="Total loyers">
+                <th class="is-size-7" title="Total loyers">
                     <span>{{ total_loyer_ttc|number_format(2) }} €</span>
                 </th>
                 <th></th>
-                <th class="is-size-7 help-mouse-hover" title="Total soldes">
+                <th class="is-size-7" title="Total soldes">
                     <span>{{ total_solde|number_format(2) }} €</span>
                 </th>
                 <th></th>
