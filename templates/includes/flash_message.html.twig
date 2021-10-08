@@ -2,8 +2,7 @@
 {% for type, message_list in app.flashes %}
     {% for message in message_list %}
 
-        <div class="column is-flex is-justify-content-end is-align-items-center remove-timer-5s" style="position: fixed;bottom: 0;z-index: 100;width: 100%;opacity: .9">
-            <article class="message column px-0 py-0 is-one-third is-small is-{{ type }} has-text-centered flash-msg">
+            <article class="message mr-5 px-0 py-0 is-one-third is-small is-{{ type }} has-text-centered flash-msg remove-timer-5s" style="position: fixed;bottom: 0;right:0;z-index: 100;opacity: .9">
                 <div class="message-header">
                 <span class="icon has-text-light">
                     <i class="fas fa-lg fa-info-circle"></i>
@@ -14,7 +13,6 @@
                     {{ message|raw }}
                 </div>
             </article>
-        </div>
 
     {% endfor %}
 {% endfor %}
