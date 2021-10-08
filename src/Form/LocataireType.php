@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Regex;
 
@@ -46,7 +45,7 @@ class LocataireType extends AbstractType
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",
                         'match' => false,
-                        'message' => 'Valeur non autorisée',
+                        'message' => 'Valeur incorrecte',
                     ]),
                 ],
                 'attr' => ['class' => 'input is-small has-text-centered'],
@@ -57,7 +56,7 @@ class LocataireType extends AbstractType
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",
                         'match' => false,
-                        'message' => 'Valeur non autorisée',
+                        'message' => 'Valeur incorrecte',
                     ]),
                 ],
                 'attr' => ['class' => 'input is-small has-text-centered'],

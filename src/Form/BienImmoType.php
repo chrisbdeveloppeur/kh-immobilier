@@ -4,8 +4,6 @@ namespace App\Form;
 
 use App\Entity\BienImmo;
 use App\Entity\Locataire;
-use App\Entity\Solde;
-use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -14,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class BienImmoType extends AbstractType
 {
@@ -75,17 +74,22 @@ class BienImmoType extends AbstractType
             ->add('superficie', NumberType::class,[
                 'label' => "Superficie*",
                 'attr' => ['class' => 'input is-small has-text-centered'],
+                'constraints' => new Regex([
+                    'pattern' => "/[&;:<>{}\/-]{3}/",
+                    'match' => false,
+                    'message' => 'Valeur incorrecte',
+                ]),
             ])
             ->add('loyer_hc', NumberType::class,[
                 'label' => "Loyer HC",
                 'help' => 'Loyer sans les charges',
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => [],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('charges', NumberType::class,[
                 'label' => "Charges",
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => [],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('echeance', ChoiceType::class,[
                 'label' => "Echéance*",
@@ -99,6 +103,7 @@ class BienImmoType extends AbstractType
                 'mapped' => false,
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('locataires', EntityType::class,[
                 'class' => Locataire::class,
