@@ -20,9 +20,9 @@
                         <span class="is-size-7">
                             {{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}
                         </span>
-                        <span>
-                            {{ knp_pagination_filter(locataires, {'last_name': 'lastname'}) }}
-                        </span>
+{#                        <span>#}
+{#                            {{ knp_pagination_filter(locataires, {'mode': 'lastname'}) }}#}
+{#                        </span>#}
                     </th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Email', 'email') }}</span></th>
