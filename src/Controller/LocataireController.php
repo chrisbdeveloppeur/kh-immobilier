@@ -105,13 +105,16 @@ class LocataireController extends AbstractController
     {
         $locataireName = $locataire->getFirstName() .' '. $locataire->getLastName();
         $entityManager = $this->getDoctrine()->getManager();
-        if ($locataire->getLogement()){
-            $locataire->getLogement()->setFree(true);
-        }
         if ($this->isCsrfTokenValid('delete'.$locataire->getId(), $request->request->get('_token'))) {
+            if ($locataire->getLogement()){
+                $locataire->getLogement()->setFree(true);
+            }
             $entityManager->remove($locataire);
             $entityManager->flush();
         }elseif ($request->getMethod() == 'GET'){
+            if ($locataire->getLogement()){
+                $locataire->getLogement()->setFree(true);
+            }
             $entityManager->remove($locataire);
             $entityManager->flush();
         }
