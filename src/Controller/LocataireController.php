@@ -99,15 +99,24 @@ class LocataireController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="locataire_delete", methods={"POST"})
+     * @Route("/{id}/delete", name="locataire_delete", methods={"POST","GET"})
      */
     public function delete(Request $request, Locataire $locataire): Response
     {
+        $locataireName = $locataire->getFirstName() .' '. $locataire->getLastName();
+        $entityManager = $this->getDoctrine()->getManager();
+        if ($locataire->getLogement()){
+            $locataire->getLogement()->setFree(true);
+        }
         if ($this->isCsrfTokenValid('delete'.$locataire->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($locataire);
+            $entityManager->flush();
+        }elseif ($request->getMethod() == 'GET'){
             $entityManager->remove($locataire);
             $entityManager->flush();
         }
+
+        $this->addFlash('danger', 'Le locataire <b>' . $locataireName . '</b> à été supprimé définitivement');
 
         return $this->redirectToRoute('locataire_index', [], Response::HTTP_SEE_OTHER);
     }

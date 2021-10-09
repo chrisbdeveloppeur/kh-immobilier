@@ -41,7 +41,7 @@
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Solde', 'solde') }}</span>
                     </th>
                     <th>
-                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Locataire', 'locataires.current') }}</span>
+                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
                     </th>
                     <th>
                         <span class="is-size-7">Actions</span>
@@ -103,11 +103,13 @@
                         {% endif %}
                     </td>
                     <td class="is-size-7">
+
                         <a class="is-hidden-desktop" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
                             <span class="icon">
                                 <i class="fas fa-lg fa-pen-square"></i>
                             </span>
                         </a>
+
                         {% if bien_immo.locataires is not empty %}
                             <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">
                                 <span class="icon">
@@ -115,6 +117,13 @@
                                 </span>
                             </a>
                         {% endif %}
+
+                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" title="Supprimer le logement" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');">
+                            <span class="icon has-text-danger">
+                                <i class="far fa-lg fa-trash-alt"></i>
+                            </span>
+                        </a>
+
                     </td>
                 </tr>
             {% else %}

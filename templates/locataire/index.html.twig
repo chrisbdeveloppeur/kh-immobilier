@@ -88,11 +88,17 @@
 
                         {% if locataire.logement %}
                             <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': locataire.id }) }}" title="Editer une quittance de loyer">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-file-contract"></i>
-                            </span>
+                                <span class="icon">
+                                    <i class="fas fa-lg fa-file-contract"></i>
+                                </span>
                             </a>
                         {% endif %}
+
+                        <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" title="Supprimer le locataire" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');">
+                            <span class="icon has-text-danger">
+                                <i class="far fa-lg fa-trash-alt"></i>
+                            </span>
+                        </a>
 
                     </td>
                 </tr>

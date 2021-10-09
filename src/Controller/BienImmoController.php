@@ -30,7 +30,11 @@ class BienImmoController extends AbstractController
         $biens_immos = $paginator->paginate(
             $all_biens_immos,
             $request->query->getInt('page',1),
-            $request->query->getInt('numItemsPerPage',50)
+            $request->query->getInt('numItemsPerPage',50),
+            array(
+                'defaultSortFieldName' => 'locataires.current',
+                'defaultSortDirection' => 'asc',
+            )
         );
 
         return $this->render('bien_immo/index.html.twig', [
@@ -123,13 +127,16 @@ class BienImmoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="bien_immo_delete", methods={"POST"})
+     * @Route("/{id}/delete", name="bien_immo_delete", methods={"GET","POST"})
      */
     public function delete(Request $request, BienImmo $bienImmo): Response
     {
         $immoName = $bienImmo->getBuilding();
+        $entityManager = $this->getDoctrine()->getManager();
         if ($this->isCsrfTokenValid('delete'.$bienImmo->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($bienImmo);
+            $entityManager->flush();
+        }elseif ($request->getMethod() == 'GET'){
             $entityManager->remove($bienImmo);
             $entityManager->flush();
         }
