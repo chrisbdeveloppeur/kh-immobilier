@@ -28,7 +28,11 @@ class LocataireController extends AbstractController
         $locataires = $paginator->paginate(
             $all_locataires,
             $request->query->getInt('page',1),
-            $request->query->getInt('numItemsPerPage',50)
+            $request->query->getInt('numItemsPerPage',50),
+            array(
+                'defaultSortFieldName' => 'sanslogement',
+                'defaultSortDirection' => 'desc',
+            )
         );
         return $this->render('locataire/index.html.twig', [
             'locataires' => $locataires,
