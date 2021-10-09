@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Locataire;
 use App\Entity\Quittance;
+use App\Form\QuittancesType;
 use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,6 +20,47 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuittancesController extends AbstractController
 {
+    /**
+     * @Route("/new/{loc_id}", name="edit_new_quittance")
+     */
+    public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, Request $request): Response
+    {
+        $date = new \DateTime();
+
+        $locataire = $locataireRepository->find($loc_id);
+        $logement = $locataire->getLogement();
+
+        $form = $this->createForm(QuittancesType::class);
+        $form->get('date')->setData($date->format('d/m/Y'));
+        $form->get('quittance_id')->setData($locataire->getQuittances()->count() + 1);
+        $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
+        $form->get('payment_date')->setData($logement->getEcheance() .' '. strftime("%B"));
+        $form->get('first_day')->setData(1);
+        $form->get('last_day')->setData(\Date('t'));
+        $form->get('month')->setData(strftime("%B"));
+        $form->get('loyer_hc')->setData($logement->getLoyerHc());
+        $form->get('charges')->setData($logement->getCharges());
+        $form->get('mode')->setData($locataire->getMode());
+        $form->get('solde')->setData($logement->getSolde());
+
+        dd($form);
+
+        $file = "quittance_" . strftime("%B_") . $locataire->getLastName() . '_' . $locataire->getLogement()->getId() .'_'. uniqid();
+
+        $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
+
+//        if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
+//            $pdf_exist = true;
+//        }else{
+//            $pdf_exist = false;
+//        }
+
+        return $this->render("immo/quittances/download_file.html.twig",[
+
+        ]);
+
+    }
+
     /**
      * @Route("/{loc_id}", name="edit_current_month_quittance")
      */
