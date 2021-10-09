@@ -1,12 +1,31 @@
+{% set logement_status_color = '' %}
+{% if bien_immo.locataires is empty %}
+    {% set logement_status_color = 'light' %}
+{% else %}
+    {% set logement_status_color = 'success' %}
+{% endif %}
 <div class="card">
     <header class="card-header has-background-dark">
-        <p class="card-header-title has-text-light is-justify-content-center">
-            <span class="icon-text {% if bien_immo.locataires is empty %}has-text-light{% else %}has-text-success{% endif %}">
-                <span class="icon">
-                    <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
+        <p class="card-header-title has-text-{{ logement_status_color }} has-icons-left">
+
+            {% if bien_immo.type %}
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-warehouse"></i>
+                    </span>
+                    <span class="has-text-weight-bold">{{ bien_immo.type }}</span>
                 </span>
-                <span class="is-uppercase">{{ bien_immo.street }}</span>
+            {% endif %}
+
+            <span class="is-expanded column px-0 py-0 is-flex is-justify-content-center">
+                <span class="icon-text has-text-{{ logement_status_color }}">
+                    <span class="icon">
+                        <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
+                    </span>
+                    <span class="is-uppercase">{{ bien_immo.street }}</span>
+                </span>
             </span>
+
         </p>
     </header>
     <div class="card-content has-background-light">
