@@ -53,13 +53,21 @@
 {#                        </span>#}
 {#                    </a>#}
 {#                {% else %}#}
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire" onmouseover="this.querySelector('i.add-loc').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i.add-loc').classList.replace('fa-user-plus','fa-user-slash')">
-                        <span class="tag is-hidden-touch" onmouseover="this.classList.add('is-info')" onmouseleave="this.classList.remove('is-info')">
-                            <i class="fas fa-user-slash add-loc"></i>
-                        </span>
-                        <span class="tag is-info is-hidden-desktop">
+                    <a class="text-success-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire">
+                        <span class="is-italic">Sans locattaire</span>
+                        <span class="icon show-on-hover-target is-hidden-touch">
                             <i class="fas fa-user-plus add-loc"></i>
                         </span>
+                        <span class="icon is-hidden-desktop">
+                            <i class="fas fa-user-plus add-loc"></i>
+                        </span>
+{#                        <span class="tag is-hidden-touch" onmouseover="this.classList.add('is-success')" onmouseleave="this.classList.remove('is-success')">#}
+{#                            <i class="fas fa-user-slash add-loc"></i>#}
+{#                        </span>#}
+{#                        <span class="tag is-success is-hidden-desktop">#}
+{#                            <i class="fas fa-user-plus add-loc"></i>#}
+{#                        </span>#}
+
                     </a>
 {#                {% endif %}#}
             {% endif %}

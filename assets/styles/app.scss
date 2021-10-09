@@ -6,10 +6,15 @@ $table-head-background-color : whitesmoke;
 //$table-head-cell-color : white;
 $table-foot-background-color : whitesmoke;
 //$table-foot-cell-color : white;
+$link : #363636;
 
 .button, a{
     //border-radius: 0 !important;
     transition: .25s;
+}
+
+a{
+  text-decoration: none;
 }
 
 th, td{
@@ -58,6 +63,10 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   color: $info !important;
 }
 
+.text-success-onhover:hover{
+  color: $success !important;
+}
+
 i.fa-search-js{
   width: 0;
   opacity: 0;
@@ -98,13 +107,7 @@ i.fa-search-js{
   transition: ease .5s;
 }
 
-@media (min-width: 1023px) {
-  .is-blurred-desktop{
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
-    transition: ease .5s;
-  }
-}
+
 
 .is-absolute-top-0{
   position: absolute;
@@ -143,6 +146,15 @@ i.fa-search-js{
   }
   .is-flex-direction-column-mobil{
     flex-direction: column;
+  }
+}
+
+
+@media (min-width: 1023px) {
+  .is-blurred-desktop{
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    transition: ease .5s;
   }
 }
 
