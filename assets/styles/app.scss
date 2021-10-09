@@ -73,7 +73,7 @@ i.fa-search-js{
 }
 
 .show-on-hover-target{
-  display: inline-block !important;
+  //display: inline-block !important;
   visibility: hidden;
   width: 0px !important;
   opacity: 0 !important;
@@ -82,7 +82,7 @@ i.fa-search-js{
 
 .show-on-hover-target-active{
   visibility: visible;
-  width: 1px !important;
+  width: 15px !important;
 
   opacity: 1 !important;
   transition: .3s;

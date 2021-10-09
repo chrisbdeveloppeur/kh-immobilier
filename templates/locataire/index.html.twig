@@ -18,6 +18,7 @@
         <table class="table is-narrow" style="width: 100%;">
             <thead>
                 <tr class="has-text-centered">
+                    <th><span class="is-size-7">Actions</span></th>
                     <th>
                         <span class="is-size-7">
                             {{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}
@@ -31,16 +32,46 @@
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Sexe', 'gender') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Moyent de paiement', 'mode') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Logement', 'logement.building') }}</span></th>
-                    <th><span class="is-size-7">Actions</span></th>
                 </tr>
             </thead>
             <tbody>
             {% for locataire in locataires %}
                 <tr class="has-text-centered">
+                    <td class="is-size-7">
+
+                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier les informations du locataire">
+                            <span class="icon text-info-onhover">
+                                <i class="fas fa-lg fa-pen-square"></i>
+                            </span>
+                        </a>
+
+                        {% if locataire.logement %}
+                            <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': locataire.id }) }}" title="Editer une quittance de loyer">
+                                <span class="icon text-info-onhover">
+                                    <i class="fas fa-lg fa-file-contract"></i>
+                                </span>
+                            </a>
+                        {% endif %}
+
+                        <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" title="Supprimer le locataire" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');">
+                            <span class="icon has-text-danger">
+                                <i class="far fa-lg fa-trash-alt"></i>
+                            </span>
+                        </a>
+
+                    </td>
+
                     <td class="is-size-7 show-on-hover">
                         <span title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
-                                <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.lastName }}</a>
+                                <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover icon-text">
+                                    <span>
+                                        {{ locataire.lastName }}
+                                    </span>
+                                    <span class="icon show-on-hover-target">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </a>
                                 <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier les informations du locataire">
                                     <i class="fas fa-lg fa-pen-square"></i>
                                 </a>
@@ -50,7 +81,14 @@
                     <td class="is-size-7 show-on-hover">
                         <span title="Voir les détails du locataire">
                             <span class="text-info-onhover has-text-dark">
-                                <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover">{{ locataire.firstName }}</a>
+                                <a href="{{ path('locataire_show', {'id': locataire.id }) }}" class="has-text-weight-bold text-info-onhover icon-text">
+                                    <span>
+                                        {{ locataire.firstName }}
+                                    </span>
+                                    <span class="icon show-on-hover-target">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </a>
                                 <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier les informations du locataire">
                                     <i class="fas fa-lg fa-pen-square"></i>
                                 </a>
@@ -86,29 +124,6 @@
                         {% else %}
                             <i>N/A</i>
                         {% endif %}
-                    </td>
-                    <td class="is-size-7">
-
-                        <a class="is-hidden-desktop" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier les informations du locataire">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-pen-square"></i>
-                            </span>
-                        </a>
-
-                        {% if locataire.logement %}
-                            <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': locataire.id }) }}" title="Editer une quittance de loyer">
-                                <span class="icon">
-                                    <i class="fas fa-lg fa-file-contract"></i>
-                                </span>
-                            </a>
-                        {% endif %}
-
-                        <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" title="Supprimer le locataire" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');">
-                            <span class="icon has-text-danger">
-                                <i class="far fa-lg fa-trash-alt"></i>
-                            </span>
-                        </a>
-
                     </td>
                 </tr>
             {% else %}
