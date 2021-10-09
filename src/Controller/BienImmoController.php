@@ -30,7 +30,7 @@ class BienImmoController extends AbstractController
         $biens_immos = $paginator->paginate(
             $all_biens_immos,
             $request->query->getInt('page',1),
-            $request->query->getInt('numItemsPerPage',10),
+            $request->query->getInt('numItemsPerPage',20),
             array(
                 'defaultSortFieldName' => 'locataires.current',
                 'defaultSortDirection' => 'asc',

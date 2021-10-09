@@ -33,7 +33,7 @@ class ImmoController extends AbstractController
         $biens_immos = $paginator->paginate(
             $all_biens_immos,
             $request->query->getInt('page',1),
-            5
+            10
         );
 
         $locataires = $paginator->paginate(

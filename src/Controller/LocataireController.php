@@ -28,7 +28,7 @@ class LocataireController extends AbstractController
         $locataires = $paginator->paginate(
             $all_locataires,
             $request->query->getInt('page',1),
-            $request->query->getInt('numItemsPerPage',10),
+            $request->query->getInt('numItemsPerPage',20),
             array(
                 'defaultSortFieldName' => 'sanslogement',
                 'defaultSortDirection' => 'desc',
