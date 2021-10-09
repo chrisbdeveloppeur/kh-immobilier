@@ -19,6 +19,9 @@
             <thead>
                 <tr class="has-text-centered">
                     <th>
+                        <span class="is-size-7">Actions</span>
+                    </th>
+                    <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
                     </th>
                     <th>
@@ -45,9 +48,6 @@
                     <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
                     </th>
-                    <th>
-                        <span class="is-size-7">Actions</span>
-                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -61,17 +61,43 @@
                 {% set total_charges =  total_charges + bien_immo.charges %}
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7 has-text-weight-bold show-on-hover">
-                            <span class="text-info-onhover has-text-dark">
-                                <a class="text-info-onhover" href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" title="Voir les détails du logement">
-                                    <span class="is-uppercase">{{ bien_immo.street }}</span>
-                                </a>
-                                <a class="show-on-hover-target text-info-onhover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
-                                    <span class="icon">
-                                        <i class="fas fa-lg fa-pen-square"></i>
-                                    </span>
-                                </a>
+                    <td class="is-size-7">
+
+                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le logement">
+                            <span class="icon text-info-onhover">
+                                <i class="fas fa-lg fa-pen-square"></i>
                             </span>
+                        </a>
+
+                        {% if bien_immo.locataires is not empty %}
+                            <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">
+                                <span class="icon text-info-onhover">
+                                    <i class="fas fa-lg fa-file-contract"></i>
+                                </span>
+                            </a>
+                        {% endif %}
+
+                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" title="Supprimer le logement" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');">
+                            <span class="icon has-text-danger">
+                                <i class="far fa-lg fa-trash-alt"></i>
+                            </span>
+                        </a>
+
+                    </td>
+                    <td class="is-size-7 has-text-weight-bold show-on-hover">
+                        <span class="text-info-onhover has-text-dark">
+                            <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text" title="Voir les détails du logement">
+                                <span>
+                                    {{ bien_immo.street }}
+                                </span>
+                                <span class="icon show-on-hover-target">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </a>
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier le logement">
+                                <i class="fas fa-lg fa-pen-square"></i>
+                            </a>
+                        </span>
                     </td>
                     <td class="is-size-7" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
                     <td class="is-size-7" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
@@ -103,29 +129,6 @@
                             </a>
                             <span title="Logement actuellement sans locataire">Sans locataire</span>
                         {% endif %}
-                    </td>
-                    <td class="is-size-7">
-
-                        <a class="is-hidden-desktop" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le bien">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-pen-square"></i>
-                            </span>
-                        </a>
-
-                        {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">
-                                <span class="icon">
-                                    <i class="fas fa-lg fa-file-contract"></i>
-                                </span>
-                            </a>
-                        {% endif %}
-
-                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" title="Supprimer le logement" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');">
-                            <span class="icon has-text-danger">
-                                <i class="far fa-lg fa-trash-alt"></i>
-                            </span>
-                        </a>
-
                     </td>
                 </tr>
             {% else %}
