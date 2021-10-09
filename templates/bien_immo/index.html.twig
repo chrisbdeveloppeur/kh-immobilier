@@ -7,15 +7,21 @@
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
 
-    <div class="tags has-addons mb-0">
-        <span class="tag has-text-weight-bold">Nombre total de bien immobilier</span>
-        <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
+    <div class="is-flex is-flex-direction-column is-align-items-center">
+        <div class="tags has-addons mb-0">
+            <span class="tag has-text-weight-bold">Nombre total de bien immobilier</span>
+            <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
+        </div>
+
+        {{ knp_pagination_render(biens_immos) }}
     </div>
 
-    {{ knp_pagination_render(biens_immos) }}
+{#  POUR GOOGLE MAPS SEARCH  #}
+{#    <input type="text" id="autocomplete" placeholder="Indiquer une adresse">#}
+{#  ##############  #}
 
-    <div class="table-container">
-        <table class="table is-narrow" style="width: 100%;">
+    <div class="table-container is-flex-desktop is-justify-content-center">
+        <table class="table is-narrow">
             <thead>
                 <tr class="has-text-centered">
                     <th>
@@ -90,7 +96,7 @@
                                 <span>
                                     {{ bien_immo.street }}
                                 </span>
-                                <span class="icon show-on-hover-target">
+                                <span class="icon show-on-hover-target is-hidden-touch">
                                     <i class="fas fa-search"></i>
                                 </span>
                             </a>
@@ -116,7 +122,7 @@
                             <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ bien_immo.locataires.current }}</span>
-                                    <span class="icon show-on-hover-target">
+                                    <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-search"></i>
                                     </span>
                                 </span>

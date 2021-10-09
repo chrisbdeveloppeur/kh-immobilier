@@ -163,6 +163,40 @@
     }
 </script>
 
+{#     GOOGLE PLACES API     #}
+{#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaH0Y_IPiD0Lz7DG29EdsIPJ3SNW4GAcU&libraries=places&callback=initMap" async defer>#}
+{#    </script>#}
+{#    <script>#}
+{#        let autocomplete;#}
+{#        function initAutocomplete() {#}
+{#            autocomplete = new google.maps.places.Autocomplete(#}
+{#                document.getElementById('autocomplete'),#}
+{#                {#}
+{#                    types: ['establishment'],#}
+{#                    componentRestrictions: {'country' : ['FR']},#}
+{#                    fields: ['places_id', 'geometry', 'name']#}
+{#                }#}
+{#            );#}
+
+{#            autocomplete.addListener('place_changed', onPlaceChanged);#}
+{#        }#}
+
+{#        function onPlaceChanged() {#}
+{#            var place = autocomplete.getPlace();#}
+
+{#            if (!place.geometry){#}
+{#                // User did not select a prediction; reset the input field#}
+{#                document.getElementById('autocomplete').placeholder = 'Indiquer une adresse';#}
+{#            } else {#}
+{#                // Display details about the valid place#}
+{#                document.getElementById('details').innerHTML = place.name;#}
+{#            }#}
+
+{#        }#}
+{#    </script>#}
+
+{#  ######################################################################  #}
+
 {% endblock %}
 
 </body>

@@ -7,15 +7,17 @@
 {% block body %}
 <section class="section is-flex-direction-column is-align-items-center">
 
-    <div class="tags has-addons mb-0">
-        <span class="tag has-text-weight-bold">Nombre total de locataires</span>
-        <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
+    <div class="is-flex is-flex-direction-column is-align-items-center">
+        <div class="tags has-addons mb-0">
+            <span class="tag has-text-weight-bold">Nombre total de locataires</span>
+            <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
+        </div>
+
+        {{ knp_pagination_render(locataires) }}
     </div>
 
-    {{ knp_pagination_render(locataires) }}
-
-    <div class="table-container">
-        <table class="table is-narrow" style="width: 100%;">
+    <div class="table-container is-flex-desktop is-justify-content-center">
+        <table class="table is-narrow">
             <thead>
                 <tr class="has-text-centered">
                     <th><span class="is-size-7">Actions</span></th>
@@ -68,7 +70,7 @@
                                     <span>
                                         {{ locataire.lastName }}
                                     </span>
-                                    <span class="icon show-on-hover-target">
+                                    <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-search"></i>
                                     </span>
                                 </a>
@@ -85,7 +87,7 @@
                                     <span>
                                         {{ locataire.firstName }}
                                     </span>
-                                    <span class="icon show-on-hover-target">
+                                    <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-search"></i>
                                     </span>
                                 </a>
@@ -100,7 +102,7 @@
                             <a href="mailto:{{ locataire.email }}" title="Envoyer un message">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.email }}</span>
-                                    <span class="icon show-on-hover-target is-hidden-mobile">
+                                    <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-envelope"></i>
                                     </span>
                                 </span>
@@ -116,7 +118,7 @@
                             <a href="{{ path('bien_immo_show', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.logement }}</span>
-                                    <span class="icon show-on-hover-target is-hidden-mobile">
+                                    <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-search"></i>
                                     </span>
                                 </span>
