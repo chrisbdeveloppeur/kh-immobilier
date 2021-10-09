@@ -12,6 +12,8 @@
         <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
     </div>
 
+    {{ knp_pagination_render(locataires) }}
+
     <div class="table-container">
         <table class="table is-narrow" style="width: 100%;">
             <thead>

@@ -27,7 +27,7 @@ class AppFixtures extends Fixture
 //        }
 
 
-        for ($i = 0; $i<= 6; $i++) {
+        for ($i = 0; $i<= 15; $i++) {
             $locataire = new Locataire();
             $sexe = $faker->randomElement(['M.', 'Mme.']);
             if ($sexe == 'M.'){

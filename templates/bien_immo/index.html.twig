@@ -12,6 +12,8 @@
         <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
     </div>
 
+    {{ knp_pagination_render(biens_immos) }}
+
     <div class="table-container">
         <table class="table is-narrow" style="width: 100%;">
             <thead>

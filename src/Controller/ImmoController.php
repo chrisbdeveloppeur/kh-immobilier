@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\BienImmoRepository;
+use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -23,19 +24,27 @@ class ImmoController extends AbstractController
     /**
      * @Route("/accueil", name="accueil")
      */
-    public function index(Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PaginatorInterface $paginator): Response
+    public function index(Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PaginatorInterface $paginator, LocataireRepository $locataireRepository): Response
     {
 
         $all_biens_immos = $bienImmoRepository->findAll();
+        $all_locataires = $locataireRepository->findAll();
 
         $biens_immos = $paginator->paginate(
             $all_biens_immos,
             $request->query->getInt('page',1),
-            10
+            5
+        );
+
+        $locataires = $paginator->paginate(
+            $all_locataires,
+            $request->query->getInt('page',1),
+            100
         );
 
         return $this->render('immo/homepage.html.twig', [
             "biens_immos" => $biens_immos,
+            "locataires" => $locataires,
         ]);
     }
 

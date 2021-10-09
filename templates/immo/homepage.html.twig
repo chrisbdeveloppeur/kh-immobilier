@@ -10,18 +10,25 @@
 
             <div class="column is-flex is-align-items-center is-flex-direction-column px-0 py-0">
 
-                <div class="tags has-addons mb-0">
-                    <span class="tag has-text-weight-bold">Nombre total de biens immobiliers</span>
-                    <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
+                <div class="tags">
+                    <div class="tags has-addons mb-0">
+                        <span class="tag has-text-weight-bold">Nombre total de biens immobiliers</span>
+                        <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
+                    </div>
+                    <div class="tags has-addons mb-0">
+                        <span class="tag has-text-weight-bold">Nombre total de locataires</span>
+                        <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
+                    </div>
                 </div>
 
                 <div class="tabs mb-2">
                     <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'A-Z', 'street') }}</span>
+                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
                     <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>
                     <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}</span>
                     <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Loyer TTC', 'loyer_ttc') }}</span>
                 </div>
-                {#<span class="">{{ knp_pagination_filter(biens_immos, ['building']) }}</span>#}
+{#                <span class="">{{ knp_pagination_filter(biens_immos, ['building']) }}</span>#}
 
                 {{ knp_pagination_render(biens_immos) }}
 
