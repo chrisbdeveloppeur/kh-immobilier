@@ -25,6 +25,7 @@ class UserType extends AbstractType
                 'label' => 'Adresse Email*',
                 'required' => true,
                 'invalid_message' => 'Adresse Email invalide',
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('gender', ChoiceType::class,[
                 'label' => 'Sexe*',
@@ -44,6 +45,7 @@ class UserType extends AbstractType
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom*',
@@ -55,11 +57,13 @@ class UserType extends AbstractType
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('phoneNumber', TextType::class,[
                 'label' => 'Tel',
                 'required' => false,
                 'invalid_message' => 'Ce numéro n\'est pas valide',
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
 //            ->add('plainPassword', RepeatedType::class, [
 //                'type' => PasswordType::class,
