@@ -36,40 +36,22 @@
             Loyer TTC : <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b><br>
             Locataire :
             {% if bien_immo.locataires.current %}
-                <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" class="has-text-success has-text-weight-bold show-on-hover">
+                <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" class="has-text-success has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
                     <span>{{ bien_immo.locataires.current }}</span>
                     <span class="icon show-on-hover-target is-hidden-touch">
                         <i class="fas fa-search"></i>
                     </span>
                 </a>
             {% else %}
-{#                {% if locataire.logement %}#}
-{#                    <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.id }) }}">#}
-{#                        <span class="icon-text has-text-info">#}
-{#                            <span>{{ locataire.logement }}</span>#}
-{#                            <span class="icon">#}
-{#                                <i class="fas fa-search fa-search-js"></i>#}
-{#                            </span>#}
-{#                        </span>#}
-{#                    </a>#}
-{#                {% else %}#}
-                    <a class="text-success-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire">
-                        <span class="is-italic">Sans locattaire</span>
-                        <span class="icon show-on-hover-target is-hidden-touch">
-                            <i class="fas fa-user-plus add-loc"></i>
-                        </span>
-                        <span class="icon is-hidden-desktop">
-                            <i class="fas fa-user-plus add-loc"></i>
-                        </span>
-{#                        <span class="tag is-hidden-touch" onmouseover="this.classList.add('is-success')" onmouseleave="this.classList.remove('is-success')">#}
-{#                            <i class="fas fa-user-slash add-loc"></i>#}
-{#                        </span>#}
-{#                        <span class="tag is-success is-hidden-desktop">#}
-{#                            <i class="fas fa-user-plus add-loc"></i>#}
-{#                        </span>#}
-
-                    </a>
-{#                {% endif %}#}
+                <a class="text-success-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire">
+                    <span class="is-italic">Sans locattaire</span>
+                    <span class="icon show-on-hover-target is-hidden-touch">
+                        <i class="fas fa-user-plus add-loc"></i>
+                    </span>
+                    <span class="icon is-hidden-desktop">
+                        <i class="fas fa-user-plus add-loc"></i>
+                    </span>
+                </a>
             {% endif %}
         </div>
     </div>
@@ -86,7 +68,7 @@
                     <span>Quittance du mois</span>
                 </a>
             {% endif %}
-            <a href="#" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+            <a href="#" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column">
                 <span>Editer une quittance</span>
             </a>
 
