@@ -36,13 +36,18 @@
             Loyer TTC : <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b><br>
             Locataire :
             {% if bien_immo.locataires.current %}
-                <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" class="tag is-dark">{{ bien_immo.locataires.current.firstName }} {{ bien_immo.locataires.current.lastName }}</a>
+                <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" class="has-text-success has-text-weight-bold show-on-hover">
+                    <span>{{ bien_immo.locataires.current }}</span>
+                    <span class="icon show-on-hover-target is-hidden-touch">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </a>
             {% else %}
                 Sans locataire
             {% endif %}
         </div>
     </div>
-    <footer class="card-footer">
+    <footer class="card-footer is-flex-direction-column-mobil card-footer-column-mobil">
         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
         {% if bien_immo.locataires is not empty %}
             <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column">

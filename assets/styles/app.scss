@@ -126,5 +126,25 @@ i.fa-search-js{
   top: 0 !important;
 }
 
+
+@media (max-width: 1023px) {
+  .is-flex-direction-column-touch{
+    flex-direction: column;
+  }
+  .is-flex-direction-column-touch{
+    flex-direction: column;
+  }
+}
+
+@media (max-width:768px) {
+  .card-footer-column-mobil>a{
+    border: none !important;
+    border-bottom: 1px solid #ededed !important ;
+  }
+  .is-flex-direction-column-mobil{
+    flex-direction: column;
+  }
+}
+
 @import "~bulma";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
