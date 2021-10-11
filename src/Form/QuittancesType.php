@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Date;
 
 class QuittancesType extends AbstractType
 {
@@ -33,7 +34,7 @@ class QuittancesType extends AbstractType
         $builder
             ->add('date', DateType::class,[
                 'widget' => 'single_text',
-                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date'],
+                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
             ->add('quittance_id', TextType::class,[
                 'attr' => ['class'=>'has-text-centered input is-small']

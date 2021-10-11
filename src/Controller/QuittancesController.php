@@ -31,7 +31,6 @@ class QuittancesController extends AbstractController
         $logement = $locataire->getLogement();
 
         $form = $this->createForm(QuittancesType::class);
-        $form->handleRequest($request);
 
 //        $form->get('date')->setData($date->format('d/m/Y'));
         $form->get('quittance_id')->setData($locataire->getQuittances()->count() + 1);
@@ -45,7 +44,15 @@ class QuittancesController extends AbstractController
         $form->get('mode')->setData($locataire->getMode());
         $form->get('solde')->setData($logement->getSolde());
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $template = $this->fillQuittanceTemplate($locataire);
+            $date = $form->get('date')->getData()->format('d-m-Y');
+            $file = "quittance_".$date.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
+            $this->createQuittanceFile($template, $locataire, $file);
+
+            $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
+
 //            $locataire->setLogement($form->get('logement')->getData());
 //            $name = $locataire->getLastName() . " " . $locataire->getFirstName();
 //            $entityManager = $this->getDoctrine()->getManager();
@@ -54,7 +61,18 @@ class QuittancesController extends AbstractController
 
 //            $this->addFlash('success','Le locataire <b>'. $name .'</b> a été créer avec succès');
 
-            return $this->redirectToRoute('quittances_ddl_quittance');
+            if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
+                $pdf_exist = true;
+            }else{
+                $pdf_exist = false;
+            }
+
+            return $this->render("immo/quittances/download_file.html.twig",[
+                "file_name" => $file,
+                "locataire" => $locataire,
+                "pdf_exist" => $pdf_exist,
+                "quittance" => $quittance,
+            ]);
         }
 
 
