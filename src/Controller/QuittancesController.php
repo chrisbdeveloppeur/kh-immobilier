@@ -92,6 +92,7 @@ class QuittancesController extends AbstractController
 
         return $this->render("immo/quittances/edit_quittance.html.twig",[
             'form' => $form->createView(),
+            'locataire' => $locataire,
         ]);
 
     }
