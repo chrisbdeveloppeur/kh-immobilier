@@ -37,6 +37,23 @@
                         </p>
 
                     </div>
+                {% elseif child.vars.name in ['first_day','last_day'] %}
+                            <div class="field has-addons">
+                                <p class="control">
+                                    <a class="button is-static is-small">
+                                        {% if child.vars.name == 'first_day' %}
+                                            Du
+                                        {% elseif child.vars.name == 'last_day' %}
+                                            au
+                                        {% endif %}
+                                    </a>
+                                </p>
+                                <div class="control is-expanded">
+                                    <div class="select is-small is-fullwidth">
+                                        {{ form_widget(child) }}
+                                    </div>
+                                </div>
+                            </div>
                 {% else %}
                     <div class="select is-small is-fullwidth">
 
@@ -64,29 +81,9 @@
                         </a>
                     </p>
                 </div>
-                {% elseif child.vars.name in ['first_day','last_day'] %}
-                    <div class="field has-addons mb-0">
-                        <p class="control is-expanded">
-                            {{ form_widget(child) }}
-                        </p>
-                        <p class="control">
-                            <a class="button is-static is-small">
-                                {% if child.vars.name in ['superficie'] %}
-                                    m²
-                                {% else %}
-                                    €
-                                    {% if child.vars.name in ['solde'] %}
-                                        restants
-                                    {% elseif child.vars.name in ['loyer_hc','charges']  %}
-                                        / Mois
-                                    {% endif %}
-                                {% endif %}
-                            </a>
-                        </p>
-                    </div>
-                {% else %}
+            {% else %}
                 {{ form_widget(child) }}
-                {% endif %}
+            {% endif %}
 
 
             {% if form_help(child) %}
