@@ -2,8 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/QuittancesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuittancesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/immo/quittances/edit_quittance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/immo/quittances/edit_quittance.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_07-10-2021_KANGA_93_61646fb349d55.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_07-10-2021_KANGA_93_61646fb349d55.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_07-10-2021_KANGA_93_61646fef0d001.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_07-10-2021_KANGA_93_61646fef0d001.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_07-10-2021_KANGA_93_61647009ab4e5.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_07-10-2021_KANGA_93_61647009ab4e5.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_MAILLOT_90_61649fac40d18.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_MAILLOT_90_61649fac40d18.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f2b1b290.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f2b1b290.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f5b82396.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f5b82396.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f73adc83.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f73adc83.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f9859e63.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_RICHARD_92_61649f9859e63.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_FABRE_94.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_FABRE_94.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_GIRARD_95.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_GIRARD_95.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_KANGA_93.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_KANGA_93.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_LEMAITRE_91.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_LEMAITRE_91.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MAILLET_97.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MAILLET_97.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MAILLOT_90.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MAILLOT_90.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MAKAGNON_90.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MAKAGNON_90.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MPANA_92.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_MPANA_92.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_PICARD_94.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_PICARD_94.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_RICHARD_92.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_RICHARD_92.pdf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,11 +113,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/immo/quittances/edit_quittance.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="221">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+              <folding>
+                <element signature="e#302#316#0#Twig" expanded="true" />
+                <element signature="e#366#380#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,11 +135,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/quittance">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state projectRestartId="ae033100-eb0c-4308-a796-a5d53aec2c57">
-              <filtering />
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
@@ -330,6 +370,11 @@
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
@@ -606,12 +651,12 @@
       <workItem from="1633759440338" duration="25480000" />
       <workItem from="1633864633324" duration="1716000" />
       <workItem from="1633891111602" duration="4380000" />
-      <workItem from="1633976406166" duration="5048000" />
+      <workItem from="1633976406166" duration="5310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="427043000" />
+    <option name="totallyTimeSpent" value="427305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -637,7 +682,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.21946308" />
+      <window_info anchor="right" id="Database" order="3" weight="0.21908316" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -942,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/quittance">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="ae033100-eb0c-4308-a796-a5d53aec2c57">
-          <filtering />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/immo/quittances/download_file.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1013,8 +1051,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/immo/quittances/edit_quittance.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="221">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding>
+            <element signature="e#302#316#0#Twig" expanded="true" />
+            <element signature="e#366#380#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/quittance">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="ae033100-eb0c-4308-a796-a5d53aec2c57">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
