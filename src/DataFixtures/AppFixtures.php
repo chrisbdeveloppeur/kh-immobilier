@@ -50,7 +50,7 @@ class AppFixtures extends Fixture
             $bien->setCity($faker->city);
             $bien->setLoyerHc($faker->numberBetween(300,1200));
             $bien->setCharges($faker->numberBetween(50,300));
-            $bien->setEcheance($faker->randomElement([0,5,10,15]));
+            $bien->setEcheance($faker->randomElement([5,10,15]));
 
             //$solde = new Solde();
             //$solde->setBienImmo($bien);
