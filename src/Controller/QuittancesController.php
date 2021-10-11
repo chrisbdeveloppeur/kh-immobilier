@@ -32,7 +32,6 @@ class QuittancesController extends AbstractController
 
         $form = $this->createForm(QuittancesType::class);
 
-//        $form->get('date')->setData($date->format('d/m/Y'));
         $form->get('quittance_id')->setData($locataire->getQuittances()->count() + 1);
         $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
         $form->get('payment_date')->setData($logement->getEcheance() .' '. strftime("%B"));
@@ -47,17 +46,17 @@ class QuittancesController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $template = $this->fillQuittanceTemplate($locataire);
-            $date = $form->get('date')->getData()->format('d-m-Y');
-            $file = "quittance_".$date.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
+            $dateForFile = $form->get('date')->getData()->format('d-m-Y');
+            $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
             $this->createQuittanceFile($template, $locataire, $file);
 
-            $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
-
-//            $locataire->setLogement($form->get('logement')->getData());
-//            $name = $locataire->getLastName() . " " . $locataire->getFirstName();
-//            $entityManager = $this->getDoctrine()->getManager();
-//            $entityManager->persist($locataire);
-//            $entityManager->flush();
+            $quittance = new Quittance();
+            $quittance->setFileName($file);
+            $quittance->setLocataire($locataire);
+            $quittance->setBienImmo($locataire->getLogement());
+            $quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
+            $em->persist($quittance);
+            $em->flush();
 
 //            $this->addFlash('success','Le locataire <b>'. $name .'</b> a été créer avec succès');
 
