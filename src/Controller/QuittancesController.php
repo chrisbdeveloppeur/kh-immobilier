@@ -26,6 +26,8 @@ class QuittancesController extends AbstractController
      */
     public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, Request $request): Response
     {
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
+        date_default_timezone_set('Europe/Paris');
         $date = new \DateTime();
 
         $locataire = $locataireRepository->find($loc_id);
