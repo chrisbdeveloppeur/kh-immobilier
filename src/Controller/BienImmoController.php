@@ -139,7 +139,9 @@ class BienImmoController extends AbstractController
             $entityManager->remove($bienImmo);
             $entityManager->flush();
         }elseif ($request->getMethod() == 'GET'){
-            $locataire->setSansLogement(true);
+            if ($locataire){
+                $locataire->setSansLogement(true);
+            }
             $entityManager->remove($bienImmo);
             $entityManager->flush();
         }
