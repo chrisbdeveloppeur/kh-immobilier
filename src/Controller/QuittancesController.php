@@ -221,7 +221,7 @@ class QuittancesController extends AbstractController
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
-    public function fillQuittanceTemplateFromForm($locataire, QuittancesType $form)
+    public function fillQuittanceTemplateFromForm($locataire, $form)
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -241,16 +241,16 @@ class QuittancesController extends AbstractController
         $template->setValue("street",$locataire->getLogement()->getStreet());
         $template->setValue("cp",$locataire->getLogement()->getCp());
         $template->setValue("city",$locataire->getLogement()->getCity());
-        $template->setValue("date",$date->format('d/m/Y'));
-        $template->setValue("mode",$locataire->getMode());
-        $template->setValue("loyer_ttc",$locataire->getLogement()->getLoyerTtc());
-        $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
-        $template->setValue("charges",$locataire->getLogement()->getCharges());
-        $template->setValue("solde",$locataire->getLogement()->getSolde());
-        $template->setValue("payment_date",$date->format('d/m/Y'));
-        $template->setValue("first_day",'1');
-        $template->setValue("last_day",\Date('t'));
-        $template->setValue("month",strftime("%B"));
+        $template->setValue("date",$form->get('date')->getData()->format('d/m/Y'));
+        $template->setValue("mode",$form->get('mode')->getData());
+        $template->setValue("loyer_ttc",$form->get('loyer_ttc')->getData());
+        $template->setValue("loyer_hc",$form->get('loyer_hc')->getData());
+        $template->setValue("charges",$form->get('charges')->getData());
+        $template->setValue("solde",$form->get('solde')->getData());
+        $template->setValue("payment_date",$form->get('payment_date')->getData());
+        $template->setValue("first_day",$form->get('first_day')->getData());
+        $template->setValue("last_day",$form->get('last_day')->getData());
+        $template->setValue("month",$form->get('month')->getData());
 
         return $template;
     }
