@@ -14,44 +14,58 @@ use Symfony\Component\Validator\Constraints\Date;
 class QuittancesType extends AbstractType
 {
 
-//    private $months;
-//
-//    public function __construct()
-//    {
-//        setlocale(LC_TIME, 'fr_FR.utf8','fra');
-//        date_default_timezone_set('Europe/Paris');
-//        $this->months = array();
-//        for ($i = 0; $i < 8; $i++) {
-//            $timestamp = mktime(0, 0, 0, date('n') - $i, 1);
-//            $this->months[date('n', $timestamp)] = date('F', $timestamp);
-//        }
-////        dd($this->months);
-//        return $this->months;
-//    }
+    private $first_day_choices;
+    private $last_day_choices;
+
+    public function __construct()
+    {
+        for ($i=0; $i <= \Date('t') - 1; $i++){
+            $this->first_day_choices[] = $i;
+        }
+        for ($i=0; $i <= \Date('t'); $i++){
+            $this->last_day_choices[] = $i;
+        }
+        unset($this->first_day_choices[0]);
+        unset($this->last_day_choices[0]);
+        return $this->first_day_choices;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $first_day_choices = $this->first_day_choices;
+        $last_day_choices = $this->last_day_choices;
+
         $builder
             ->add('date', DateType::class,[
+                'label' => 'Date d\'edition',
                 'widget' => 'single_text',
                 'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
             ->add('quittance_id', TextType::class,[
+                'label' => 'Quittance N°',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
             ->add('loyer_ttc', TextType::class,[
+                'label' => 'Loyer (TTC)',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
             ->add('payment_date', TextType::class,[
+                'label' => 'Date de payement',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
-            ->add('first_day', TextType::class,[
-                'attr' => ['class'=>'has-text-centered input is-small']
+            ->add('first_day', ChoiceType::class,[
+                'label' => 'Premier jour de la quittance',
+                'attr' => ['class'=>'has-text-centered input is-small'],
+                'choices' => $first_day_choices,
             ])
-            ->add('last_day', TextType::class,[
-                'attr' => ['class'=>'has-text-centered input is-small']
+            ->add('last_day', ChoiceType::class,[
+                'label' => 'Dernier jour de la quittance',
+                'attr' => ['class'=>'has-text-centered input is-small'],
+                'choices' => $last_day_choices,
+                'placeholder' => $last_day_choices[count($last_day_choices)]
             ])
             ->add('month', ChoiceType::class,[
+                'label' => 'Mois de la quittance',
                 'choices' => [
                     'Janvier' => 'janvier',
                     'Février' => 'fevrier',
@@ -69,9 +83,11 @@ class QuittancesType extends AbstractType
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
             ->add('loyer_hc', TextType::class,[
+                'label' => 'Loyer (HC)',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
             ->add('charges', TextType::class,[
+                'label' => 'Charges',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
             ->add('mode', ChoiceType::class,[
@@ -84,6 +100,7 @@ class QuittancesType extends AbstractType
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
             ->add('solde', TextType::class,[
+                'label' => 'Solde',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
         ;

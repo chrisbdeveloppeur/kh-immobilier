@@ -10,6 +10,7 @@ use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +46,7 @@ class QuittancesController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $template = $this->fillQuittanceTemplate($locataire);
+            $template = $this->fillQuittanceTemplateFromForm($locataire, $form);
             $dateForFile = $form->get('date')->getData()->format('d-m-Y');
             $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
             $this->createQuittanceFile($template, $locataire, $file);
@@ -184,7 +185,6 @@ class QuittancesController extends AbstractController
         $user = $this->getUser();
 
         $date = new \DateTime();
-        $loyer_ttc = $locataire->getLogement()->getLoyerHc() + $locataire->getLogement()->getCharges();
 
         $date->setTimezone(new \DateTimeZone("Europe/Paris"));
         $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
@@ -200,7 +200,48 @@ class QuittancesController extends AbstractController
         $template->setValue("city",$locataire->getLogement()->getCity());
         $template->setValue("date",$date->format('d/m/Y'));
         $template->setValue("mode",$locataire->getMode());
-        $template->setValue("loyer_ttc",$loyer_ttc);
+        $template->setValue("loyer_ttc",$locataire->getLogement()->getLoyerTtc());
+        $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
+        $template->setValue("charges",$locataire->getLogement()->getCharges());
+        $template->setValue("solde",$locataire->getLogement()->getSolde());
+        $template->setValue("payment_date",$date->format('d/m/Y'));
+        $template->setValue("first_day",'1');
+        $template->setValue("last_day",\Date('t'));
+        $template->setValue("month",strftime("%B"));
+
+        return $template;
+    }
+
+
+    /**
+     * @param Locataire $locataire
+     * @return \PhpOffice\PhpWord\TemplateProcessor
+     * @throws \PhpOffice\PhpWord\Exception\CopyFileException
+     * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
+     */
+    public function fillQuittanceTemplateFromForm($locataire, QuittancesType $form)
+    {
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
+        date_default_timezone_set('Europe/Paris');
+        $user = $this->getUser();
+
+        $date = new \DateTime();
+
+        $date->setTimezone(new \DateTimeZone("Europe/Paris"));
+        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
+        $template->setValue('p_gender', $user->getGender());
+        $template->setValue('p_lastname', $user->getLastname());
+        $template->setValue('p_firstname', $user->getFirstname());
+        $template->setValue("last_name",$locataire->getLastName());
+        $template->setValue("first_name",$locataire->getFirstName());
+        $template->setValue("gender",$locataire->getGender());
+        $template->setValue("building",$locataire->getLogement()->getBuilding());
+        $template->setValue("street",$locataire->getLogement()->getStreet());
+        $template->setValue("cp",$locataire->getLogement()->getCp());
+        $template->setValue("city",$locataire->getLogement()->getCity());
+        $template->setValue("date",$date->format('d/m/Y'));
+        $template->setValue("mode",$locataire->getMode());
+        $template->setValue("loyer_ttc",$locataire->getLogement()->getLoyerTtc());
         $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
         $template->setValue("charges",$locataire->getLogement()->getCharges());
         $template->setValue("solde",$locataire->getLogement()->getSolde());
