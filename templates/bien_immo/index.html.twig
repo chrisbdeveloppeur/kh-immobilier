@@ -36,6 +36,9 @@
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Ville', 'city') }}</span>
                     </th>
                     <th>
+                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
+                    </th>
+                    <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>
                     </th>
                     <th>
@@ -106,6 +109,7 @@
                     </td>
                     <td class="is-size-7" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
                     <td class="is-size-7" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
+                    <td class="is-size-7" title="{{ bien_immo.type }}">{{ bien_immo.type }}</td>
                     <td class="is-size-7" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
                     <td class="is-size-7" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
                     <td class="is-size-7" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
@@ -144,6 +148,7 @@
             </tbody>
             <tfoot>
             <tr>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
