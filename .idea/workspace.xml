@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/immo/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/immo/homepage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,11 +60,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/immo/homepage.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/includes/sub_header.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
               <folding>
                 <element signature="e#12#26#0#Twig" expanded="true" />
               </folding>
@@ -103,7 +123,6 @@
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/templates/entreprise/show.html.twig" />
         <option value="$PROJECT_DIR$/templates/entreprise/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/JobController.php" />
         <option value="$PROJECT_DIR$/src/Form/DevisType.php" />
         <option value="$PROJECT_DIR$/src/Controller/DevisController.php" />
@@ -127,7 +146,6 @@
         <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
         <option value="$PROJECT_DIR$/templates/bien_immo/edit.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/sub_header_immo.html.twig" />
-        <option value="$PROJECT_DIR$/templates/includes/sub_header.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
         <option value="$PROJECT_DIR$/config/packages/knp_paginator.yaml" />
         <option value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/custom_filtration.html.twig" />
@@ -151,6 +169,8 @@
         <option value="$PROJECT_DIR$/templates/locataire/show.html.twig" />
         <option value="$PROJECT_DIR$/templates/bien_immo/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/immo/homepage.html.twig" />
+        <option value="$PROJECT_DIR$/templates/includes/sub_header.html.twig" />
+        <option value="$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig" />
       </list>
     </option>
   </component>
@@ -334,6 +354,12 @@
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="bien_immo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="entreprenariat" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
@@ -537,12 +563,12 @@
       <workItem from="1633864633324" duration="1716000" />
       <workItem from="1633891111602" duration="4380000" />
       <workItem from="1633976406166" duration="5908000" />
-      <workItem from="1634025656430" duration="3000000" />
+      <workItem from="1634025656430" duration="3245000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="430903000" />
+    <option name="totallyTimeSpent" value="431148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
@@ -580,15 +606,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/entreprise/_delete_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#91#108#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/locataire/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -657,16 +674,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/includes/sub_header_immo.html.twig" />
     <entry file="file://$PROJECT_DIR$/templates/includes/sub_header_entreprenariat.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/includes/sub_header.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding>
-            <element signature="e#1118#1134#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/custom_sortable_link.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -946,6 +953,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/includes/sub_header.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/entreprenariat/homepage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding>
             <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>

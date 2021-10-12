@@ -5,14 +5,16 @@
 
 {% block body %}
 
-    <div class="columns is-multiline is-justify-content-center is-align-items-center">
-        {% for entreprise in entreprises %}
-            <a href="{{ path('entreprenariat_entreprise', {'id': entreprise.id,'entreprise_name': entreprise.name|replace({' ': ''}) }) }}" class="column is-one-quarter mx-1 my-1 py-0 px-0 is-flex is-justify-content-center is-align-items-center" style="height: 200px;position: relative;overflow: hidden;border-radius: 5px;{% if entreprise.imageName %}background: center / cover no-repeat url({{ vich_uploader_asset(entreprise, 'imageFile') }}){% else %}background: center / cover no-repeat url({{ asset('build/images/Startup.072310c3.png') }}){% endif %}">
+    <section class="section">
+        <div class="columns is-multiline is-justify-content-center is-align-items-center">
+            {% for entreprise in entreprises %}
+                <a href="{{ path('entreprenariat_entreprise', {'id': entreprise.id,'entreprise_name': entreprise.name|replace({' ': ''}) }) }}" class="column is-one-quarter mx-1 my-1 py-0 px-0 is-flex is-justify-content-center is-align-items-center" style="height: 200px;position: relative;overflow: hidden;border-radius: 5px;{% if entreprise.imageName %}background: center / cover no-repeat url({{ vich_uploader_asset(entreprise, 'imageFile') }}){% else %}background: center / cover no-repeat url({{ asset('build/images/Startup.072310c3.png') }}){% endif %}">
                 <span class="has-text-weight-bold has-text-light is-size-3 has-text-centered is-flex is-justify-content-center is-align-items-center bg-info-05-onhover" style="height: 100%;width: 100%;background: rgba(0,0,0,.3);transition: .2s">
                     {{ entreprise.name }}
                 </span>
-            </a>
-        {% endfor %}
-    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
 
 {% endblock %}
