@@ -1,5 +1,20 @@
 <div class="column is-flex is-justify-content-center">
+
     {{ form_start(form, {'attr': {'class': 'column is-one-third'} }) }}
+
+    {% if form.vars.name == 'bien_immo' %}
+        <div class="field has-text-centered">
+            <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}">
+                <span class="icon">
+                    <i class="fas fa-file-signature"></i>
+                </span>
+                <span>
+                    Editer une quittance
+                </span>
+            </a>
+        </div>
+    {% endif %}
+
     {% for child in form %}
 
         <div class="field">
@@ -105,8 +120,10 @@
 
         </div>
     {% endfor %}
+
         <div class="field has-text-centered">
             <button class="button is-success is-small">{{ button_label|default('Valider') }}</button>
         </div>
+
     {{ form_end(form) }}
 </div>
