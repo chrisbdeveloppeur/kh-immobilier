@@ -24,7 +24,7 @@ class BienImmoType extends AbstractType
     public function __construct(LocataireRepository $locataireRepository)
     {
         $locataires = $locataireRepository->findAll();
-        $this->echeance = range(1,30,1);
+        $this->echeance = range(0,29,1);
         foreach ($locataires as $locataire){
             if (!$locataire->getLogement()){
                 $this->locataires_housed = false;
