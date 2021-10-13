@@ -37,7 +37,8 @@ class QuittancesController extends AbstractController
 
         $form->get('quittance_id')->setData($locataire->getQuittances()->count() + 1);
         $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
-        $form->get('payment_date')->setData($logement->getEcheance() .' '. strftime("%B"));
+        //$form->get('payment_date')->setData($logement->getEcheance() .' '. strftime("%B"));
+        //$form->get('payment_date')->setData($logement->getEcheance());
         $form->get('first_day')->setData(1);
         $form->get('last_day')->setData(\Date('t'));
         $form->get('month')->setData(strftime("%B"));
@@ -248,7 +249,7 @@ class QuittancesController extends AbstractController
         $template->setValue("loyer_hc",$form->get('loyer_hc')->getData());
         $template->setValue("charges",$form->get('charges')->getData());
         $template->setValue("solde",$form->get('solde')->getData());
-        $template->setValue("payment_date",$form->get('payment_date')->getData());
+        $template->setValue("payment_date",$form->get('payment_date')->getData()->format('d/m/Y'));
         $template->setValue("first_day",$form->get('first_day')->getData());
         $template->setValue("last_day",$form->get('last_day')->getData());
         $template->setValue("month",$form->get('month')->getData());

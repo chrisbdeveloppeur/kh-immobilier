@@ -34,6 +34,8 @@ class QuittancesType extends AbstractType
     {
         $first_day_choices = $this->first_day_choices;
         $last_day_choices = $this->last_day_choices;
+        $date = new \DateTime('now');
+        $date = '1-' . $date->format('m-Y');
 
         $builder
             ->add('date', DateType::class,[
@@ -49,9 +51,10 @@ class QuittancesType extends AbstractType
                 'label' => 'Loyer (TTC)',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
-            ->add('payment_date', TextType::class,[
+            ->add('payment_date', DateType::class,[
                 'label' => 'Date de payement',
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'widget' => 'single_text',
+                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])
             ->add('first_day', ChoiceType::class,[
                 'label' => 'Premier jour de la quittance',
