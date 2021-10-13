@@ -192,7 +192,17 @@
         let selectLocataires = document.getElementById('bien_immo_locataires');
         if (selectLocataires) {
             selectLocataires.addEventListener('change', function (event) {
+                let redirectLink = document.getElementById('redirect-locataires');
+                let id = event.target.value;
+                if (id){
+                    redirectLink.href = '/locataire/'+event.target.value+'/edit/';
+                    redirectLink.classList.replace('is-static', 'is-info');
+                } else {
+                    redirectLink.href = '#';
+                    redirectLink.classList.replace('is-info', 'is-static');
+                }
                 console.log(event.target.value );
+                console.log(redirectLink.href);
             })
         }
     </script>
