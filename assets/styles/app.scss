@@ -129,6 +129,11 @@ i.fa-search-js{
   top: 0 !important;
 }
 
+table.table.is-narrow{
+  left:0;
+  position: sticky;
+}
+
 
 @media (max-width: 1023px) {
   .is-flex-direction-column-touch{
