@@ -2,17 +2,28 @@
 
     {{ form_start(form, {'attr': {'class': 'column is-one-third'} }) }}
 
-    {% if form.vars.name == 'bien_immo' %}
-        <div class="field has-text-centered">
-            <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}">
-                <span class="icon">
-                    <i class="fas fa-file-signature"></i>
-                </span>
-                <span>
-                    Editer une quittance
-                </span>
-            </a>
-        </div>
+    {% if form.vars.name in ['bien_immo','locataire'] %}
+
+        {% if form.vars.name == 'bien_immo' %}
+            {% set locataire_twig = bien_immo.locataires.current %}
+        {% elseif form.vars.name == 'locataire' %}
+            {% set locataire_twig = locataire %}
+        {% endif %}
+
+        {% if locataire_twig %}
+            <div class="field has-text-centered">
+                <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+                    <span class="icon">
+                        <i class="fas fa-file-signature"></i>
+                    </span>
+                    <span>
+                        Editer une quittance
+                    </span>
+                </a>
+            </div>
+        {% endif %}
+
+
     {% endif %}
 
     {% for child in form %}
