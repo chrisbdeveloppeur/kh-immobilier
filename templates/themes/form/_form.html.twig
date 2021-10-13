@@ -10,7 +10,7 @@
             {% set locataire_twig = locataire %}
         {% endif %}
 
-        {% if locataire_twig is defined and locataire_twig.logement %}
+        {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
             <div class="field has-text-centered">
                 <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" title="Editer une quittance de loyer pour {{ locataire_twig }}">
                     <span class="icon">
