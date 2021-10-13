@@ -45,6 +45,7 @@ class BienImmoType extends AbstractType
 
         $builder
             ->add('locataires', EntityType::class,[
+                'label' => 'Locataire',
                 'class' => Locataire::class,
                 'mapped' => false,
                 'required' => false,
