@@ -361,7 +361,7 @@ class BienImmo
     public function getLoyerTtc(): ?float
     {
         $loyer_ttc = $this->getCharges() + $this->getLoyerHc();
-        $loyer_ttc = is_float($loyer_ttc);
+        is_float($loyer_ttc);
         return $loyer_ttc;
     }
 
