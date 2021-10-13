@@ -36,12 +36,10 @@ class QuittancesController extends AbstractController
         $form = $this->createForm(QuittancesType::class);
 
         $form->get('quittance_id')->setData($locataire->getQuittances()->count() + 1);
-        $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
-        //$form->get('payment_date')->setData($logement->getEcheance() .' '. strftime("%B"));
-        //$form->get('payment_date')->setData($logement->getEcheance());
         $form->get('first_day')->setData(1);
         $form->get('last_day')->setData(\Date('t'));
         $form->get('month')->setData(strftime("%B"));
+        $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
         $form->get('loyer_hc')->setData($logement->getLoyerHc());
         $form->get('charges')->setData($logement->getCharges());
         $form->get('mode')->setData($locataire->getMode());

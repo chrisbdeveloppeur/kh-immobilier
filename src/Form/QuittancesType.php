@@ -51,18 +51,30 @@ class QuittancesType extends AbstractType
                 'label' => 'Loyer (TTC)',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
+            ->add('loyer_hc', TextType::class,[
+                'label' => 'Loyer (HC)',
+                'attr' => ['class'=>'has-text-centered input is-small']
+            ])
+            ->add('charges', TextType::class,[
+                'label' => 'Charges',
+                'attr' => ['class'=>'has-text-centered input is-small']
+            ])
+            ->add('solde', TextType::class,[
+                'label' => 'Solde',
+                'attr' => ['class'=>'has-text-centered input is-small']
+            ])
             ->add('payment_date', DateType::class,[
-                'label' => 'Date de payement',
+                'label' => 'Date du payement',
                 'widget' => 'single_text',
                 'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])
             ->add('first_day', ChoiceType::class,[
-                'label' => 'Premier jour de la quittance',
+                'label' => 'Premier jour d\'occupation',
                 'attr' => ['class'=>'has-text-centered input is-small'],
                 'choices' => $first_day_choices,
             ])
             ->add('last_day', ChoiceType::class,[
-                'label' => 'Dernier jour de la quittance',
+                'label' => 'Dernier jour d\'occupation',
                 'attr' => ['class'=>'has-text-centered input is-small'],
                 'choices' => $last_day_choices,
                 'placeholder' => $last_day_choices[count($last_day_choices)]
@@ -70,27 +82,19 @@ class QuittancesType extends AbstractType
             ->add('month', ChoiceType::class,[
                 'label' => 'Mois de la quittance',
                 'choices' => [
-                    'Janvier' => 'janvier',
-                    'Février' => 'fevrier',
-                    'Mars' => 'mars',
-                    'Avril' => 'avril',
-                    'Mai' => 'mai',
-                    'Juin' => 'juin',
-                    'Juillet' => 'juillet',
-                    'Août' => 'aout',
-                    'Septembre' => 'septembre',
-                    'Octobre' => 'octobre',
-                    'Novembre' => 'novembre',
-                    'Décembre' => 'decembre',
+                    'Janvier' => 'Janvier',
+                    'Février' => 'Fevrier',
+                    'Mars' => 'Mars',
+                    'Avril' => 'Avril',
+                    'Mai' => 'Mai',
+                    'Juin' => 'Juin',
+                    'Juillet' => 'Juillet',
+                    'Août' => 'Août',
+                    'Septembre' => 'Septembre',
+                    'Octobre' => 'Octobre',
+                    'Novembre' => 'Novembre',
+                    'Décembre' => 'Decembre',
                 ],
-                'attr' => ['class'=>'has-text-centered input is-small']
-            ])
-            ->add('loyer_hc', TextType::class,[
-                'label' => 'Loyer (HC)',
-                'attr' => ['class'=>'has-text-centered input is-small']
-            ])
-            ->add('charges', TextType::class,[
-                'label' => 'Charges',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
             ->add('mode', ChoiceType::class,[
@@ -100,10 +104,6 @@ class QuittancesType extends AbstractType
                     'Espèces' => 'Espèces',
                     'Chèque' => 'Chèque',
                 ],
-                'attr' => ['class'=>'has-text-centered input is-small']
-            ])
-            ->add('solde', TextType::class,[
-                'label' => 'Solde',
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
         ;
