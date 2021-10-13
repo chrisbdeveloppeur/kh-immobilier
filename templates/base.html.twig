@@ -190,27 +190,35 @@
 {#      CHANGE REDIRECTION FOR EDIT LOCATAIRE ON SELECT      #}
     <script>
         let selectLocataires = document.getElementById('bien_immo_locataires');
-        let redirectLink = document.getElementById('redirect-locataires');
+        let selectLogement = document.getElementById('locataire_logement');
+        let redirectLink = document.getElementById('redirect-adapt-link');
 
         if (selectLocataires) {
-            selectLocataires.addEventListener('change',event => adaptRedirectLinkLocataire(event));
-        }
-
-        window.onload = initAdaptRedirectLinkLocataire();
-
-        function adaptRedirectLinkLocataire(event) {
-            let id = event.target.value;
-            modifRedirectLinkLocataire(id);
-        }
-
-        function initAdaptRedirectLinkLocataire() {
+            selectLocataires.addEventListener('change',event => adaptRedirectLink(event, '/locataire/'));
             let id = selectLocataires.value;
-            modifRedirectLinkLocataire(id);
+            window.onload = modifRedirectLink(id, '/locataire/');
+        }
+        if (selectLogement) {
+            selectLogement.addEventListener('change',event => adaptRedirectLink(event, '/bien/immo/'));
+            let id = selectLogement.value;
+            window.onload = modifRedirectLink(id, '/bien/immo/');
         }
 
-        function modifRedirectLinkLocataire(id) {
+        // window.onload = initAdaptRedirectLink();
+
+        function adaptRedirectLink(event, entity) {
+            let id = event.target.value;
+            modifRedirectLink(id, entity);
+        }
+
+        // function initAdaptRedirectLink() {
+        //     let id = selectLocataires.value;
+        //     modifRedirectLink(id);
+        // }
+
+        function modifRedirectLink(id, entity) {
             if (id){
-                redirectLink.href = '/locataire/'+id+'/edit/';
+                redirectLink.href = entity+id+'/edit/';
                 redirectLink.classList.replace('is-static', 'is-info');
             } else {
                 redirectLink.href = '#';

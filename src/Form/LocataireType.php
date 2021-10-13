@@ -39,6 +39,33 @@ class LocataireType extends AbstractType
         $this->current_locataire_id = $options['data']->getId();
 
         $builder
+            ->add('logement', EntityType::class,[
+                'class' => BienImmo::class,
+                'mapped' => false,
+                'required' => false,
+                'placeholder' => 'Sans logement',
+                'help' => $this->logement_fulled_msg,
+                'choice_attr' => function (BienImmo $logement){
+                    if (count($logement->getLocataires()) == 0 || $logement->getLocataires()->current()->getId() == $this->current_locataire_id ){
+                        return [''];
+                    }else{
+                        return ['disabled'=>'disabled'];
+                    }
+
+                },
+                'group_by' => function(BienImmo $logement){
+                    if (count($logement->getLocataires()) == 0){
+                        return 'Logements libres';
+                    }else{
+                        return 'Logements occupés';
+                    }
+                },
+                'query_builder' => function (BienImmoRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.free', 'DESC');
+                },
+
+            ])
             ->add('first_name', TextType::class,[
                 'label' => 'Prénom',
                 'constraints' => [
@@ -81,33 +108,6 @@ class LocataireType extends AbstractType
                     'Espèces' => 'Espèces',
                     'Chèque' => 'Chèque',
                 ]
-            ])
-            ->add('logement', EntityType::class,[
-                'class' => BienImmo::class,
-                'mapped' => false,
-                'required' => false,
-                'placeholder' => 'Sans logement',
-                'help' => $this->logement_fulled_msg,
-                'choice_attr' => function (BienImmo $logement){
-                        if (count($logement->getLocataires()) == 0 || $logement->getLocataires()->current()->getId() == $this->current_locataire_id ){
-                        return [''];
-                    }else{
-                        return ['disabled'=>'disabled'];
-                    }
-
-                },
-                'group_by' => function(BienImmo $logement){
-                    if (count($logement->getLocataires()) == 0){
-                        return 'Logements libres';
-                    }else{
-                        return 'Logements occupés';
-                    }
-                },
-                'query_builder' => function (BienImmoRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.free', 'DESC');
-                },
-
             ])
         ;
     }
