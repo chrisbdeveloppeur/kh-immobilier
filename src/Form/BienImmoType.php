@@ -44,6 +44,32 @@ class BienImmoType extends AbstractType
         unset($echeance[0]);
 
         $builder
+            ->add('locataires', EntityType::class,[
+                'class' => Locataire::class,
+                'mapped' => false,
+                'required' => false,
+                'placeholder' => 'Sans locataire',
+                'help' => $this->locataires_housed_msg,
+                'choice_attr' => function (Locataire $locataire){
+                    if (!$locataire->getLogement() || $locataire->getId() == $this->current_bien_immo_id ){
+                        return [''];
+                    }else{
+                        return ['disabled'=>'disabled'];
+                    }
+
+                },
+                'group_by' => function(Locataire $locataire){
+                    if (!$locataire->getLogement()){
+                        return 'Locataires non logés';
+                    }else{
+                        return 'Locataires logés';
+                    }
+                },
+                'query_builder' => function (LocataireRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.last_name', 'ASC');
+                },
+            ])
             ->add('street', TextType::class,[
                 'label' => "Nom de la rue*",
                 'attr' => ['class' => 'input is-small has-text-centered'],
@@ -106,32 +132,6 @@ class BienImmoType extends AbstractType
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => ['class' => 'input is-small has-text-centered'],
-            ])
-            ->add('locataires', EntityType::class,[
-                'class' => Locataire::class,
-                'mapped' => false,
-                'required' => false,
-                'placeholder' => 'Sans locataire',
-                'help' => $this->locataires_housed_msg,
-                'choice_attr' => function (Locataire $locataire){
-                    if (!$locataire->getLogement() || $locataire->getId() == $this->current_bien_immo_id ){
-                        return [''];
-                    }else{
-                        return ['disabled'=>'disabled'];
-                    }
-
-                },
-                'group_by' => function(Locataire $locataire){
-                    if (!$locataire->getLogement()){
-                        return 'Locataires non logés';
-                    }else{
-                        return 'Locataires logés';
-                    }
-                },
-                'query_builder' => function (LocataireRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.last_name', 'ASC');
-                },
             ])
         ;
     }
