@@ -94,16 +94,13 @@
                     </td>
                     <td class="is-size-7 has-text-weight-bold show-on-hover">
                         <span class="text-info-onhover has-text-dark">
-                            <a href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text" title="Voir les détails du logement">
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text" title="Voir les détails du logement">
                                 <span>
                                     {{ bien_immo.street }}
                                 </span>
                                 <span class="icon show-on-hover-target is-hidden-touch">
                                     <i class="fas fa-search"></i>
                                 </span>
-                            </a>
-                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="icon show-on-hover-target is-hidden-mobile text-info-onhover" title="Modifier le logement">
-                                <i class="fas fa-lg fa-pen-square"></i>
                             </a>
                         </span>
                     </td>
@@ -122,7 +119,7 @@
                                     <i class="fas fa-user"></i>
                                 </span>
                             </a>
-                            <a href="{{ path('locataire_show', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
+                            <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ bien_immo.locataires.current }}</span>
                                     <span class="icon show-on-hover-target is-hidden-touch">
