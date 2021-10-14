@@ -134,6 +134,10 @@ table.table.is-narrow{
   position: sticky;
 }
 
+.not-allowed-onhover:hover{
+  cursor: not-allowed !important;
+}
+
 
 @media (max-width: 1023px) {
   .is-flex-direction-column-touch{

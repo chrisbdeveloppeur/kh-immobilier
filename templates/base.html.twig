@@ -204,29 +204,26 @@
             window.onload = modifRedirectLink(id, '/bien/immo/');
         }
 
-        // window.onload = initAdaptRedirectLink();
 
         function adaptRedirectLink(event, entity) {
             let id = event.target.value;
             modifRedirectLink(id, entity);
         }
 
-        // function initAdaptRedirectLink() {
-        //     let id = selectLocataires.value;
-        //     modifRedirectLink(id);
-        // }
 
         function modifRedirectLink(id, entity) {
             if (id){
                 redirectLink.href = entity+id+'/edit/';
-                redirectLink.classList.replace('is-static', 'is-info');
+                redirectLink.removeAttribute('disabled', 'disabled');
             } else {
                 redirectLink.href = '#';
-                redirectLink.classList.replace('is-info', 'is-static');
+                redirectLink.setAttribute('disabled', 'disabled');
             }
         }
 
     </script>
+
+    {#     ##############################################     #}
 
 {% endblock %}
 
