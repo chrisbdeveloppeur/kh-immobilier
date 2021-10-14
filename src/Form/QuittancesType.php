@@ -38,14 +38,19 @@ class QuittancesType extends AbstractType
         $date = '1-' . $date->format('m-Y');
 
         $builder
-            ->add('date', DateType::class,[
-                'label' => 'Date d\'edition',
-                'widget' => 'single_text',
-                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
-            ])
             ->add('quittance_id', TextType::class,[
                 'label' => 'Quittance N°',
                 'attr' => ['class'=>'has-text-centered input is-small']
+            ])
+            ->add('date', DateType::class,[
+                'label' => 'Date d\'edition de la quittance',
+                'widget' => 'single_text',
+                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
+            ])
+            ->add('payment_date', DateType::class,[
+                'label' => 'Date du payement',
+                'widget' => 'single_text',
+                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])
             ->add('loyer_ttc', TextType::class,[
                 'label' => 'Loyer (TTC)',
@@ -62,11 +67,6 @@ class QuittancesType extends AbstractType
             ->add('solde', TextType::class,[
                 'label' => 'Solde',
                 'attr' => ['class'=>'has-text-centered input is-small']
-            ])
-            ->add('payment_date', DateType::class,[
-                'label' => 'Date du payement',
-                'widget' => 'single_text',
-                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])
             ->add('first_day', ChoiceType::class,[
                 'label' => 'Premier jour d\'occupation',
