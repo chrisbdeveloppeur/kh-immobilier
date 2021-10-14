@@ -89,12 +89,16 @@
                         </div>
                         <p class="control">
                             {% if child.vars.name == 'locataires' %}
-                                <a href="#" id="redirect-adapt-link" class="button is-small is-info">
-                                    Modifier ce locataire
+                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Modifier le locataire">
+                                    <span class="icon">
+                                        <i class="fas fa-pen-square"></i>
+                                    </span>
                                 </a>
                             {% else %}
-                                <a href="#" id="redirect-adapt-link" class="button is-small is-info">
-                                    Modifier ce logement
+                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Modifier le logement">
+                                    <span class="icon">
+                                        <i class="fas fa-pen-square"></i>
+                                    </span>
                                 </a>
                             {% endif %}
                         </p>
