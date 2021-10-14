@@ -81,9 +81,10 @@ class QuittancesType extends AbstractType
             ])
             ->add('month', ChoiceType::class,[
                 'label' => 'Mois de la quittance',
+                'data' => ucfirst(strftime("%B")),
                 'choices' => [
                     'Janvier' => 'Janvier',
-                    'Février' => 'Fevrier',
+                    'Février' => 'Février',
                     'Mars' => 'Mars',
                     'Avril' => 'Avril',
                     'Mai' => 'Mai',
@@ -93,7 +94,7 @@ class QuittancesType extends AbstractType
                     'Septembre' => 'Septembre',
                     'Octobre' => 'Octobre',
                     'Novembre' => 'Novembre',
-                    'Décembre' => 'Decembre',
+                    'Décembre' => 'Décembre',
                 ],
                 'attr' => ['class'=>'has-text-centered input is-small']
             ])
