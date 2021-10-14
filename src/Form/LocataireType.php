@@ -30,7 +30,7 @@ class LocataireType extends AbstractType
             }
         }
         if ($this->logement_fulled == true){
-            $this->logement_fulled_msg = 'Tout les biens immobiliers sont actuellement occupés par un locataire';
+            $this->logement_fulled_msg = 'Tous les biens immobiliers sont actuellement occupés par un locataire';
         }
     }
 
