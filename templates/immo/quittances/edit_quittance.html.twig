@@ -2,11 +2,11 @@
 
 {% block title %}Edition d'une quittance{% endblock %}
 
-{% block title_main %}Edition d'une quittance pour {{ locataire }} {% endblock %}
+{% block title_main %}Edition d'une <b>quittance</b> pour <b>{{ locataire }}</b>{% endblock %}
 
 {% block body %}
 
-    <h2 class="is-size-5 has-text-centered">Veuillez vérifier l'édition de la quittance pour : <a class="text-info-onhover has-text-weight-bold" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Voir les détails du locataire">{{ locataire }}</a></h2>
+    <h2 class="is-size-5 has-text-centered">Veuillez valider l'édition de la quittance pour : <a class="text-info-onhover has-text-weight-bold" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Voir les détails du locataire">{{ locataire }}</a></h2>
     <h3 class="has-text-centered">Logement : <a class="text-info-onhover has-text-weight-bold" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}" title="Voir les détails du logement">{{ locataire.logement }}</a></h3>
 
     {{ include('themes/form/_form.html.twig') }}
