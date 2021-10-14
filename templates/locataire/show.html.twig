@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Locataire{% endblock %}
+{% block title %}{{ locataire }}{% endblock %}
 
-{% block title_main %}Locataire : {{ locataire.firstName }} {{ locataire.lastName }}{% endblock %}
+{% block title_main %}Locataire : <b>{{ locataire }}</b>{% endblock %}
 
 {% block body %}
 <section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
