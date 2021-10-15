@@ -123,7 +123,7 @@ class BienImmoType extends AbstractType
             ->add('echeance', ChoiceType::class,[
                 'label' => "Echéance*",
                 'choices' => $echeance,
-                'help' => 'Date d\'échéance de payement',
+                'help' => 'Echéance de payement',
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => ['class' => 'has-text-centered'],
             ])
