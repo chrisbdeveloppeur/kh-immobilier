@@ -78,7 +78,7 @@ class BienImmoType extends AbstractType
             ->add('building', TextType::class,[
                 'label' => "Complément d'adresse",
                 'attr' => ['class' => 'input is-small has-text-centered'],
-                'help' => 'Bâtiment / Etage / Escalier / Interphone',
+                'help' => 'Bâtiment / Étage / Escalier / Interphone',
                 'required' => false,
             ])
             ->add('cp', TextType::class,[
