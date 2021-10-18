@@ -47,6 +47,25 @@ class QuittancesType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => ['class'=>'readonly has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
+            ->add('month', ChoiceType::class,[
+                'label' => 'Mois de la quittance',
+                'data' => ucfirst(strftime("%B")),
+                'choices' => [
+                    'Janvier' => 'Janvier',
+                    'Février' => 'Février',
+                    'Mars' => 'Mars',
+                    'Avril' => 'Avril',
+                    'Mai' => 'Mai',
+                    'Juin' => 'Juin',
+                    'Juillet' => 'Juillet',
+                    'Août' => 'Août',
+                    'Septembre' => 'Septembre',
+                    'Octobre' => 'Octobre',
+                    'Novembre' => 'Novembre',
+                    'Décembre' => 'Décembre',
+                ],
+                'attr' => ['class'=>'readonly has-text-centered input is-small']
+            ])
             ->add('payment_date', DateType::class,[
                 'label' => 'Date du paiement',
                 'widget' => 'single_text',
@@ -78,25 +97,6 @@ class QuittancesType extends AbstractType
                 'attr' => ['class'=>'readonly has-text-centered input is-small'],
                 'choices' => $last_day_choices,
                 'placeholder' => $last_day_choices[count($last_day_choices)]
-            ])
-            ->add('month', ChoiceType::class,[
-                'label' => 'Mois de la quittance',
-                'data' => ucfirst(strftime("%B")),
-                'choices' => [
-                    'Janvier' => 'Janvier',
-                    'Février' => 'Février',
-                    'Mars' => 'Mars',
-                    'Avril' => 'Avril',
-                    'Mai' => 'Mai',
-                    'Juin' => 'Juin',
-                    'Juillet' => 'Juillet',
-                    'Août' => 'Août',
-                    'Septembre' => 'Septembre',
-                    'Octobre' => 'Octobre',
-                    'Novembre' => 'Novembre',
-                    'Décembre' => 'Décembre',
-                ],
-                'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])
             ->add('mode', ChoiceType::class,[
                 'label' => 'Moyen de paiement',

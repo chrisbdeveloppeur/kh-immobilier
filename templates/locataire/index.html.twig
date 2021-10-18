@@ -30,6 +30,7 @@
                     </th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Email', 'email') }}</span></th>
+                    <th><span class="is-size-7">Téléphone</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Sexe', 'gender') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Moyent de paiement', 'mode') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Logement', 'logement.building') }}</span></th>
@@ -95,6 +96,20 @@
                             <a href="mailto:{{ locataire.email }}" title="Envoyer un message">
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.email }}</span>
+                                    <span class="icon show-on-hover-target is-hidden-touch">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </span>
+                            </a>
+                        {% else %}
+                            <i>Non renseigné</i>
+                        {% endif %}
+                    </td>
+                    <td class="is-size-7 show-on-hover">
+                        {% if locataire.phone %}
+                            <a href="tel:{{ locataire.phone }}" title="Contacter">
+                                <span class="text-info-onhover has-text-dark">
+                                    <span>{{ locataire.phone }}</span>
                                     <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-envelope"></i>
                                     </span>

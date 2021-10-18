@@ -93,6 +93,17 @@ class LocataireType extends AbstractType
                 'required' => false,
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
+            ->add('phone', TextType::class,[
+                'label' => 'Numéro de téléphone',
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/[+-0-9]/",
+                        'match' => true,
+                        'message' => 'Valeur incorrecte',
+                    ]),
+                ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
+            ])
             ->add('gender', ChoiceType::class,[
                 'label' => 'Sexe',
                 'choices' => [

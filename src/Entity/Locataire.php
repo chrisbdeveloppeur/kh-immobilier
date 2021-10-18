@@ -61,6 +61,11 @@ class Locataire
      */
     private $sans_logement;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone;
+
 
     public function __construct()
     {
@@ -197,6 +202,18 @@ class Locataire
     public function setSansLogement($value): self
     {
         $this->sans_logement = $value;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }
