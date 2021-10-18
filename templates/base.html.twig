@@ -255,9 +255,11 @@
         readonlyClass.forEach(function (elem) {
             elem.setAttribute('readonly','readonly');
             if (elem.hasAttribute('readonly')){
-                elem.style.background = '#f5f5f5';
+                elem.style.background = '#dbdbdb';
+                elem.classList.add('not-allowed-onhover')
             }else {
                 elem.style.background = '#ffffff';
+                elem.classList.remove('not-allowed-onhover')
             }
         });
 
@@ -265,9 +267,11 @@
             readonlyClass.forEach(function (elem) {
                 elem.toggleAttribute('readonly');
                 if (elem.hasAttribute('readonly')){
-                    elem.style.background = '#f5f5f5';
+                    elem.style.background = '#dbdbdb';
+                    elem.classList.add('not-allowed-onhover')
                 }else {
                     elem.style.background = '#ffffff';
+                    elem.classList.remove('not-allowed-onhover')
                 }
             });
         }

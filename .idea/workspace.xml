@@ -2,9 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Form/QuittancesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/QuittancesType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6960480c-d9d6-4e9f-97e7-92221b832955.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6960480c-d9d6-4e9f-97e7-92221b832955.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20211009060625.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-40-47.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-40-47.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-43-30.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-43-30.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-38-58.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-38-58.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-48-25.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-48-25.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-49-44.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-49-44.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_23-51-51.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_23-51-51.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_02-10-2021_00-14-31.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_02-10-2021_00-14-31.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_08-10-2021_16-35-05.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_08-10-2021_16-35-05.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_BOUVET_93_6164a2dddd1f7.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_BOUVET_93_6164a2dddd1f7.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_MAILLOT_90_6164a3e7f22a2.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_MAILLOT_90_6164a3e7f22a2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_12-10-2021_MAKAGNON_90_61659d53d65ab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_12-10-2021_MAKAGNON_90_61659d53d65ab.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_DUPONT_106_616743531bcde.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_DUPONT_106_616743531bcde.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c6e878409.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c6e878409.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c857aadd9.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c857aadd9.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c87cb8327.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c87cb8327.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c8d943aff.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c8d943aff.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c916e3080.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c916e3080.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_14-10-2021_MAKAGNON_90_61680f379b28d.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_14-10-2021_MAKAGNON_90_61680f379b28d.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_MAKAGNON_90_616d30cc29dab.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_MAKAGNON_90_616d30cc29dab.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_PICARD_94_616d2ad903734.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_PICARD_94_616d2ad903734.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_BLIN_96.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_BLIN_96.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +87,7 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="MariaDB - @localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="edit_word: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="edit_word: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
     </expand>
     <select />
@@ -53,45 +97,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="257" column="50" selection-start-line="257" selection-start-column="50" selection-end-line="257" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/immo/quittances/edit_quittance.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/QuittancesType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
-              <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
-              <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
-              <caret line="56" column="45" selection-start-line="56" selection-start-column="45" selection-end-line="56" selection-end-column="45" />
-              <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-              <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-              <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
-              <caret line="72" column="45" selection-start-line="72" selection-start-column="45" selection-end-line="72" selection-end-column="45" />
-              <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
-              <caret line="98" column="45" selection-start-line="98" selection-start-column="45" selection-end-line="98" selection-end-column="45" />
-              <caret line="107" column="45" selection-start-line="107" selection-start-column="45" selection-end-line="107" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
+            <state relative-caret-position="389">
+              <caret line="269" column="51" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -100,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="26" column="63" selection-start-line="26" selection-start-column="63" selection-end-line="26" selection-end-column="63" />
+              <caret line="35" column="15" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -108,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="140" column="14" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
+            <state relative-caret-position="331">
+              <caret line="140" column="20" lean-forward="true" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -236,7 +243,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/flex" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
-      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
@@ -261,7 +267,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
@@ -301,6 +306,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
     </include_path>
   </component>
   <component name="ProjectConfigurationFiles">
@@ -343,7 +350,50 @@
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
               <item name="edit_word" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="devis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="documents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edit_word" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="documents" type="462c0819:PsiDirectoryNode" />
+              <item name="quittances" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edit_word" type="b2602c69:ProjectViewProjectNode" />
@@ -503,19 +553,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\pagination" />
-      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\public\documents\quittances" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\assets" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\form" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\immo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\themes\pagination" />
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes" />
+      <recent name="D:\JetBrains\PhpstormProjects\edit_word\public\documents\quittances" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -606,22 +656,24 @@
       <workItem from="1634230949948" duration="3123000" />
       <workItem from="1634314022458" duration="2076000" />
       <workItem from="1634542872246" duration="2955000" />
+      <workItem from="1634549888717" duration="2541000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="469290000" />
+    <option name="totallyTimeSpent" value="471831000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20872483" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21108742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22804533" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22751896" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -630,7 +682,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026846" side_tool="true" weight="0.23229462" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" visible="true" weight="0.23229462" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" visible="true" weight="0.23185265" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -649,43 +701,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/ParameterBag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="160" column="20" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/bien_immo">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="4b8bfe58-61df-4963-83e2-0bb21c3b3510">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
-          <caret line="199" selection-start-line="199" selection-end-line="199" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/locataire/_delete_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/twitter_bootstrap_v4_filtration.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/themes/pagination/custom_filtration.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -746,13 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/quittance">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="ad2ae7ca-abb0-43f8-99db-b23f7e61e67b">
-          <filtering />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -808,22 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="70" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/locataire">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="bbbb08a9-a2dc-4fb1-a53c-6a0ce4b8b410">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/custom_filtration.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -990,24 +982,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="140" column="14" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/RegistrationFormType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -1020,32 +998,119 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/QuittancesType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
-          <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
-          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
-          <caret line="56" column="45" selection-start-line="56" selection-start-column="45" selection-end-line="56" selection-end-column="45" />
-          <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-          <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-          <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
+        <state relative-caret-position="1700">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+          <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+          <caret line="70" column="45" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
           <caret line="72" column="45" selection-start-line="72" selection-start-column="45" selection-end-line="72" selection-end-column="45" />
           <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
-          <caret line="98" column="45" selection-start-line="98" selection-start-column="45" selection-end-line="98" selection-end-column="45" />
-          <caret line="107" column="45" selection-start-line="107" selection-start-column="45" selection-end-line="107" selection-end-column="45" />
+          <caret line="99" column="14" selection-start-line="99" selection-start-column="14" selection-end-line="99" selection-end-column="14" />
+          <caret line="108" column="14" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/custom_filtration.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/bien_immo">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="79d3bbbe-7f6b-41ba-a547-d08338c0af88">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/devis">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="79d3bbbe-7f6b-41ba-a547-d08338c0af88">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/entreprise">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="79d3bbbe-7f6b-41ba-a547-d08338c0af88">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/locataire">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="79d3bbbe-7f6b-41ba-a547-d08338c0af88">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/quittance">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="79d3bbbe-7f6b-41ba-a547-d08338c0af88">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="79d3bbbe-7f6b-41ba-a547-d08338c0af88">
+          <filtering>
+            <filter text="" />
+          </filtering>
+          <column-attributes>
+            <column name="roles" languageId="JSON" position="4" />
+          </column-attributes>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/edit_word/table/solde">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="79d3bbbe-7f6b-41ba-a547-d08338c0af88">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="140" column="20" lean-forward="true" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="26" column="63" selection-start-line="26" selection-start-column="63" selection-end-line="26" selection-end-column="63" />
+          <caret line="35" column="15" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="257" column="50" selection-start-line="257" selection-start-column="50" selection-end-line="257" selection-end-column="50" />
+        <state relative-caret-position="389">
+          <caret line="269" column="51" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
         </state>
       </provider>
     </entry>
