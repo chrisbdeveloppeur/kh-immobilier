@@ -40,42 +40,42 @@ class QuittancesType extends AbstractType
         $builder
             ->add('quittance_id', TextType::class,[
                 'label' => 'Quittance N°',
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'attr' => ['class'=>'disabled has-text-centered input is-small']
             ])
             ->add('date', DateType::class,[
                 'label' => 'Date d\'edition de la quittance',
                 'widget' => 'single_text',
-                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
+                'attr' => ['class'=>'disabled has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
             ->add('payment_date', DateType::class,[
                 'label' => 'Date du payement',
                 'widget' => 'single_text',
-                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
+                'attr' => ['class'=>'disabled has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])
             ->add('loyer_ttc', TextType::class,[
                 'label' => 'Loyer (TTC)',
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'attr' => ['class'=>'disabled has-text-centered input is-small']
             ])
             ->add('loyer_hc', TextType::class,[
                 'label' => 'Loyer (HC)',
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'attr' => ['class'=>'disabled has-text-centered input is-small']
             ])
             ->add('charges', TextType::class,[
                 'label' => 'Charges',
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'attr' => ['class'=>'disabled has-text-centered input is-small']
             ])
             ->add('solde', TextType::class,[
                 'label' => 'Solde',
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'attr' => ['class'=>'disabled has-text-centered input is-small']
             ])
             ->add('first_day', ChoiceType::class,[
                 'label' => 'Premier jour d\'occupation',
-                'attr' => ['class'=>'has-text-centered input is-small'],
+                'attr' => ['class'=>'disabled has-text-centered input is-small'],
                 'choices' => $first_day_choices,
             ])
             ->add('last_day', ChoiceType::class,[
                 'label' => 'Dernier jour d\'occupation',
-                'attr' => ['class'=>'has-text-centered input is-small'],
+                'attr' => ['class'=>'disabled has-text-centered input is-small'],
                 'choices' => $last_day_choices,
                 'placeholder' => $last_day_choices[count($last_day_choices)]
             ])
@@ -96,7 +96,7 @@ class QuittancesType extends AbstractType
                     'Novembre' => 'Novembre',
                     'Décembre' => 'Décembre',
                 ],
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'attr' => ['class'=>'disabled has-text-centered input is-small']
             ])
             ->add('mode', ChoiceType::class,[
                 'label' => 'Moyen de paiement',
@@ -105,7 +105,7 @@ class QuittancesType extends AbstractType
                     'Espèces' => 'Espèces',
                     'Chèque' => 'Chèque',
                 ],
-                'attr' => ['class'=>'has-text-centered input is-small']
+                'attr' => ['class'=>'disabled has-text-centered input is-small']
             ])
         ;
 

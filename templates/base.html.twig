@@ -235,6 +235,20 @@
 #}
 {####################################}
 
+    {#    DISABLED      #}
+    <script>
+        let disabledClass = document.querySelectorAll('.disabled');
+        disabledClass.forEach(function (elem) {
+            elem.setAttribute('disabled','disabled');
+        });
+
+        function toogleDisabledClass() {
+            disabledClass.forEach(function (elem) {
+                elem.toggleAttribute('disabled');
+            });
+        }
+    </script>
+
 {% endblock %}
 
 </body>

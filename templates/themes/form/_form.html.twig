@@ -22,8 +22,17 @@
                 </a>
             </div>
         {% endif %}
-
-
+    {% elseif form.vars.name in ['quittances'] %}
+            <div class="field has-text-centered">
+                <a class="button is-small is-info" onclick="toogleDisabledClass()">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-file-signature"></i>
+                    </span>
+                    <span>
+                        Modifier les informations de la quittance
+                    </span>
+                </a>
+            </div>
     {% endif %}
 
     {% for child in form %}
@@ -106,7 +115,7 @@
                 {% else %}
                     <div class="select is-small is-fullwidth">
 
-                        {{ form_widget(child, {'attr': {'class': 'has-text-centered'} }) }}
+                        {{ form_widget(child) }}
 
                     </div>
                 {% endif %}
