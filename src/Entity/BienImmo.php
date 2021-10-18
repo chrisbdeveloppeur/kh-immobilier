@@ -106,6 +106,11 @@ class BienImmo
      */
     private $superficie;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Copropriete::class, mappedBy="logement", cascade={"persist", "remove"})
+     */
+    private $copropriete;
+
 
     public function __construct()
     {
@@ -410,6 +415,28 @@ public function getSuperficie(): ?float
 public function setSuperficie(?float $superficie): self
 {
     $this->superficie = $superficie;
+
+    return $this;
+}
+
+public function getCopropriete(): ?Copropriete
+{
+    return $this->copropriete;
+}
+
+public function setCopropriete(?Copropriete $copropriete): self
+{
+    // unset the owning side of the relation if necessary
+    if ($copropriete === null && $this->copropriete !== null) {
+        $this->copropriete->setLogement(null);
+    }
+
+    // set the owning side of the relation if necessary
+    if ($copropriete !== null && $copropriete->getLogement() !== $this) {
+        $copropriete->setLogement($this);
+    }
+
+    $this->copropriete = $copropriete;
 
     return $this;
 }

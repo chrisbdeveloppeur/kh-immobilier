@@ -2,53 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6960480c-d9d6-4e9f-97e7-92221b832955.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6960480c-d9d6-4e9f-97e7-92221b832955.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211009060625.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-40-47.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-40-47.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-43-30.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_21-43-30.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-38-58.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-38-58.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-48-25.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-48-25.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-49-44.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_22-49-44.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_23-51-51.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_01-10-2021_23-51-51.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_02-10-2021_00-14-31.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_02-10-2021_00-14-31.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_08-10-2021_16-35-05.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/devis/devis_chrisbdev_08-10-2021_16-35-05.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_BOUVET_93_6164a2dddd1f7.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_BOUVET_93_6164a2dddd1f7.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_MAILLOT_90_6164a3e7f22a2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_11-10-2021_MAILLOT_90_6164a3e7f22a2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_12-10-2021_MAKAGNON_90_61659d53d65ab.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_12-10-2021_MAKAGNON_90_61659d53d65ab.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_DUPONT_106_616743531bcde.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_DUPONT_106_616743531bcde.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c6e878409.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c6e878409.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c857aadd9.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c857aadd9.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c87cb8327.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c87cb8327.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c8d943aff.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c8d943aff.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c916e3080.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_13-10-2021_MAKAGNON_90_6166c916e3080.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_14-10-2021_MAKAGNON_90_61680f379b28d.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_14-10-2021_MAKAGNON_90_61680f379b28d.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_MAKAGNON_90_616d30cc29dab.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_MAKAGNON_90_616d30cc29dab.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_PICARD_94_616d2ad903734.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_18-10-2021_PICARD_94_616d2ad903734.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_BLIN_96.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/quittances/quittance_octobre_BLIN_96.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/BienImmo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BienImmo.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,11 +48,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="389">
               <caret line="269" column="51" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Copropriete.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1462">
+              <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -116,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="331">
-              <caret line="140" column="20" lean-forward="true" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="20" />
+              <caret line="140" column="20" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -656,18 +619,18 @@
       <workItem from="1634230949948" duration="3123000" />
       <workItem from="1634314022458" duration="2076000" />
       <workItem from="1634542872246" duration="2955000" />
-      <workItem from="1634549888717" duration="2541000" />
+      <workItem from="1634549888717" duration="3035000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="471831000" />
+    <option name="totallyTimeSpent" value="472325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21108742" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21108742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -682,7 +645,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026846" side_tool="true" weight="0.23229462" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" visible="true" weight="0.23185265" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731544" visible="true" weight="0.23185265" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -701,13 +664,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/themes/pagination/custom_filtration.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1096,7 +1052,7 @@
     <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
-          <caret line="140" column="20" lean-forward="true" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="20" />
+          <caret line="140" column="20" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1111,6 +1067,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
           <caret line="269" column="51" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Copropriete.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1462">
+          <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
         </state>
       </provider>
     </entry>
