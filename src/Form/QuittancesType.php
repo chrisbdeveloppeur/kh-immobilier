@@ -48,7 +48,7 @@ class QuittancesType extends AbstractType
                 'attr' => ['class'=>'readonly has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
             ->add('payment_date', DateType::class,[
-                'label' => 'Date du payement',
+                'label' => 'Date du paiement',
                 'widget' => 'single_text',
                 'attr' => ['class'=>'readonly has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])
@@ -69,12 +69,12 @@ class QuittancesType extends AbstractType
                 'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])
             ->add('first_day', ChoiceType::class,[
-                'label' => 'Premier jour d\'occupation',
+                'label' => 'Période',
                 'attr' => ['class'=>'readonly has-text-centered input is-small'],
                 'choices' => $first_day_choices,
             ])
             ->add('last_day', ChoiceType::class,[
-                'label' => 'Dernier jour d\'occupation',
+                'label' => false,
                 'attr' => ['class'=>'readonly has-text-centered input is-small'],
                 'choices' => $last_day_choices,
                 'placeholder' => $last_day_choices[count($last_day_choices)]
