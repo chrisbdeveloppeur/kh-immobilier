@@ -121,11 +121,11 @@
                 {% endif %}
             {% elseif child.vars.name in ['loyer_hc','charges','solde','superficie','loyer_ttc'] %}
                     <div class="field has-addons mb-0">
-                        <p class="control is-expanded">
+                        <p class="control column px-0 py-0 is-two-thirds">
                             {{ form_widget(child) }}
                         </p>
-                        <p class="control">
-                            <a class="button is-static is-small">
+                        <p class="control column px-0 py-0">
+                            <a class="button is-static is-small is-fullwidth">
                                 {% if child.vars.name in ['superficie'] %}
                                     m²
                                 {% else %}
@@ -169,4 +169,5 @@
         </div>
 
     {{ form_end(form) }}
+
 </div>
