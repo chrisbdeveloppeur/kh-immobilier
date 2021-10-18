@@ -235,7 +235,7 @@
 #}
 {####################################}
 
-    {#    DISABLED      #}
+    {#    TOOTLGE DISABLED      #}
     <script>
         let disabledClass = document.querySelectorAll('.disabled');
         disabledClass.forEach(function (elem) {
@@ -245,6 +245,30 @@
         function toogleDisabledClass() {
             disabledClass.forEach(function (elem) {
                 elem.toggleAttribute('disabled');
+            });
+        }
+    </script>
+
+    {#    TOOTLGE READ-ONLY      #}
+    <script>
+        let readonlyClass = document.querySelectorAll('.readonly');
+        readonlyClass.forEach(function (elem) {
+            elem.setAttribute('readonly','readonly');
+            if (elem.hasAttribute('readonly')){
+                elem.style.background = '#f5f5f5';
+            }else {
+                elem.style.background = '#ffffff';
+            }
+        });
+
+        function toogleReadonlyClass() {
+            readonlyClass.forEach(function (elem) {
+                elem.toggleAttribute('readonly');
+                if (elem.hasAttribute('readonly')){
+                    elem.style.background = '#f5f5f5';
+                }else {
+                    elem.style.background = '#ffffff';
+                }
             });
         }
     </script>
