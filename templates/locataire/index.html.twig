@@ -102,7 +102,9 @@
                                 </span>
                             </a>
                         {% else %}
-                            <i>Non renseigné</i>
+                            <span>
+                                <i>Non renseigné</i>
+                            </span>
                         {% endif %}
                     </td>
                     <td class="is-size-7 show-on-hover">
@@ -111,12 +113,14 @@
                                 <span class="text-info-onhover has-text-dark">
                                     <span>{{ locataire.phone }}</span>
                                     <span class="icon show-on-hover-target is-hidden-touch">
-                                        <i class="fas fa-envelope"></i>
+                                        <i class="fas fa-phone"></i>
                                     </span>
                                 </span>
                             </a>
                         {% else %}
-                            <i>Non renseigné</i>
+                            <span>
+                                <i>Non renseigné</i>
+                            </span>
                         {% endif %}
                     </td>
                     <td class="is-size-7">{{ locataire.gender }}</td>

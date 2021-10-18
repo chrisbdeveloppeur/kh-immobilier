@@ -8,6 +8,7 @@ $table-foot-background-color : whitesmoke;
 //$table-foot-cell-color : white;
 $link : #363636;
 
+
 .button, a{
     //border-radius: 0 !important;
     transition: .25s;
@@ -136,6 +137,10 @@ i.fa-search-js{
 table.table.is-narrow{
   left:0;
   position: sticky;
+}
+
+.table td, .table th{
+  vertical-align: middle !important;
 }
 
 .not-allowed-onhover:hover{
