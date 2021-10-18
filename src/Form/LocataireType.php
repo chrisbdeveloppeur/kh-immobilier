@@ -95,6 +95,7 @@ class LocataireType extends AbstractType
             ])
             ->add('phone', TextType::class,[
                 'label' => 'Numéro de téléphone',
+                'required' => false,
                 'constraints' => [
                     new Regex([
                         'pattern' => "/[+-0-9]/",
