@@ -165,7 +165,7 @@
     {% endfor %}
 
         <div class="field has-text-centered">
-            <button class="button is-success is-small">{{ button_label|default('Valider') }}</button>
+            <button class="button is-success is-small" onclick="this.classList.add('is-loading')">{{ button_label|default('Valider') }}</button>
         </div>
 
     {{ form_end(form) }}
