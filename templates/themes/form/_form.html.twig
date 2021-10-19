@@ -23,6 +23,7 @@
     </div>
 {% endif %}
 
+
 <div class="column is-flex is-justify-content-center">
 
     {{ form_start(form, {'attr': {'class': 'column is-one-third', 'id': 'form', 'onsubmit':'isLoading()'} }) }}
@@ -192,9 +193,7 @@
 </div>
 
 
-{% if form.vars.name in ['bien_immo','copropriete'] %}
-    {{ include('themes/form/_form_copropriete.html.twig') }}
-{% endif %}
+
 
 <script>
     let tabs = document.querySelectorAll('.tabs').forEach(function (elem) {

@@ -50,14 +50,11 @@ class BienImmoController extends AbstractController
     public function new(Request $request): Response
     {
         $bienImmo = new BienImmo();
-        $copropriete = new Copropriete();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
-        $form_2 = $this->createForm(CoproprieteType::class, $copropriete);
         $form->get('loyer_hc')->setData(0);
         $form->get('charges')->setData(0);
         $form->get('solde')->setData(0);
         $form->handleRequest($request);
-        $form_2->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -81,7 +78,6 @@ class BienImmoController extends AbstractController
         return $this->render('bien_immo/new.html.twig', [
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
-            'form_2' => $form_2->createView(),
         ]);
     }
 
@@ -103,9 +99,7 @@ class BienImmoController extends AbstractController
     public function edit(Request $request, BienImmo $bienImmo): Response
     {
         $locataire = $bienImmo->getLocataires()->first();
-        $copropriete = $bienImmo->getCopropriete();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
-        $form_2 = $this->createForm(CoproprieteType::class, $copropriete);
         $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
         $form->get('locataires')->setData($locataire);
         $form->handleRequest($request);
@@ -133,7 +127,6 @@ class BienImmoController extends AbstractController
         return $this->render('bien_immo/edit.html.twig', [
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
-            'form_2' => $form_2->createView(),
         ]);
     }
 
