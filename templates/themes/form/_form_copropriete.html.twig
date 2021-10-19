@@ -1,0 +1,35 @@
+<div class="column is-flex is-justify-content-center">
+    {{ form_start(form_2) }}
+
+    {% for child in form_2 %}
+
+        <div class="field">
+            {% if 'token' not in form_label(child) %}
+                <div class="label is-size-7">
+                    {{ form_label(child) }}
+                </div>
+            {% endif %}
+
+            {{ form_widget(child) }}
+            {% if form_help(child) %}
+                <span class="help is-info mt-0">
+                    <span class="icon-text" style="flex-wrap: nowrap">
+                        <span class="icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>{{ form_help(child) }}</span>
+                    </span>
+                </span>
+            {% endif %}
+
+            {% if form_errors(child) %}
+                <span class="tag is-danger">
+                    {{ form_errors(child) }}
+                </span>
+            {% endif %}
+        </div>
+
+    {% endfor %}
+
+    {{ form_end(form_2) }}
+</div>
