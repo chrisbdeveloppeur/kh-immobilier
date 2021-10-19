@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BienImmo;
-use App\Entity\Copropriete;
 use App\Form\BienImmoType;
-use App\Form\CoproprieteType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -59,10 +57,8 @@ class BienImmoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bienImmo);
-            $entityManager->persist($copropriete);
             $solde = $form->get('solde')->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
-            $bienImmo->setCopropriete($copropriete);
 
             if ($form->get('locataires')->getData() !== null){
                 $bienImmo->addLocataire($form->get('locataires')->getData());

@@ -8,6 +8,7 @@ use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -133,6 +134,33 @@ class BienImmoType extends AbstractType
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => ['class' => 'input is-small has-text-centered'],
+            ])
+
+
+            ->add('coproName', TextType::class,[
+                'label' => "Nom de la copropriété",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('coproContact', TextType::class,[
+                'label' => "Contact / Référent",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('coproEmail', EmailType::class,[
+                'label' => "Adresse Email",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('coproPhone', TextType::class,[
+                'label' => "Numéro de téléphone",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('coproAdresse', TextType::class,[
+                'label' => "Adresse postal",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
             ])
         ;
     }

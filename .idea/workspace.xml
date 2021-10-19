@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BienImmoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BienImmoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CoproprieteType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BienImmoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BienImmoType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/themes/form/_form_copropriete.html.twig" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="306">
+              <caret line="64" column="23" lean-forward="true" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -76,10 +74,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Copropriete.php">
+        <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="308">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Form/BienImmoType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="157" column="36" selection-start-line="157" selection-start-column="36" selection-end-line="157" selection-end-column="36" />
+              <folding>
+                <element signature="e#28#52#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,7 +149,6 @@
         <option value="$PROJECT_DIR$/assets/bootstrap.js" />
         <option value="$PROJECT_DIR$/assets/app.js" />
         <option value="$PROJECT_DIR$/templates/immo/quittances/download_file.html.twig" />
-        <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
         <option value="$PROJECT_DIR$/config/packages/knp_paginator.yaml" />
         <option value="$PROJECT_DIR$/templates/bien_immo/edit.html.twig" />
         <option value="$PROJECT_DIR$/templates/locataire/edit.html.twig" />
@@ -160,9 +169,10 @@
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/CoproprieteType.php" />
         <option value="$PROJECT_DIR$/src/Entity/Copropriete.php" />
-        <option value="$PROJECT_DIR$/src/Form/BienImmoType.php" />
         <option value="$PROJECT_DIR$/templates/themes/form/_form_copropriete.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/BienImmoController.php" />
+        <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
+        <option value="$PROJECT_DIR$/src/Form/BienImmoType.php" />
         <option value="$PROJECT_DIR$/templates/themes/form/_form.html.twig" />
       </list>
     </option>
@@ -285,7 +295,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-195" />
     <option name="y" value="-30" />
     <option name="width" value="1940" />
@@ -630,17 +640,18 @@
       <workItem from="1634542872246" duration="2955000" />
       <workItem from="1634549888717" duration="3035000" />
       <workItem from="1634587031165" duration="7483000" />
-      <workItem from="1634632944326" duration="9021000" />
+      <workItem from="1634632944326" duration="10624000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="488829000" />
+    <option name="totallyTimeSpent" value="490432000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21677852" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21677852" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -655,7 +666,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5033557" side_tool="true" weight="0.23087819" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4966443" visible="true" weight="0.23087819" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4966443" visible="true" weight="0.23087819" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1031,23 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-797">
-          <caret line="369" column="5" selection-start-line="369" selection-start-column="5" selection-end-line="369" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/BienImmoType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="135" column="14" selection-start-line="135" selection-start-column="14" selection-end-line="135" selection-end-column="14" />
-          <folding>
-            <element signature="e#28#52#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/BienImmoController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1057,13 +1051,6 @@
             <element signature="e#2837#2854#0#PHP" expanded="true" />
             <element signature="e#3389#3415#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Copropriete.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1091,10 +1078,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Copropriete.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="54" column="27" lean-forward="true" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/BienImmoType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="157" column="36" selection-start-line="157" selection-start-column="36" selection-end-line="157" selection-end-column="36" />
+          <folding>
+            <element signature="e#28#52#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="306">
+          <caret line="64" column="23" lean-forward="true" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
         </state>
       </provider>
     </entry>
