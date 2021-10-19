@@ -281,6 +281,18 @@
         }
     </script>
 
+
+    {#     IS-LOADING     #}
+    <script>
+        function isLoading() {
+            let btn = document.getElementById('btn-submit');
+            if (btn) {
+                btn.classList.add('is-loading');
+            }
+        }
+    </script>
+    {######################}
+
 {% endblock %}
 
 </body>
