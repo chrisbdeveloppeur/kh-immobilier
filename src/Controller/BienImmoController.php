@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\BienImmo;
+use App\Entity\Copropriete;
 use App\Form\BienImmoType;
+use App\Form\CoproprieteType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -48,17 +50,22 @@ class BienImmoController extends AbstractController
     public function new(Request $request): Response
     {
         $bienImmo = new BienImmo();
+        $copropriete = new Copropriete();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
+        $form_2 = $this->createForm(CoproprieteType::class, $copropriete);
         $form->get('loyer_hc')->setData(0);
         $form->get('charges')->setData(0);
         $form->get('solde')->setData(0);
         $form->handleRequest($request);
+        $form_2->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bienImmo);
+            $entityManager->persist($copropriete);
             $solde = $form->get('solde')->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
+            $bienImmo->setCopropriete($copropriete);
 
             if ($form->get('locataires')->getData() !== null){
                 $bienImmo->addLocataire($form->get('locataires')->getData());
@@ -74,6 +81,7 @@ class BienImmoController extends AbstractController
         return $this->render('bien_immo/new.html.twig', [
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
+            'form_2' => $form_2->createView(),
         ]);
     }
 
