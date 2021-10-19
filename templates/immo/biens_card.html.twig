@@ -53,36 +53,21 @@
                     </span>
                 </a>
             {% endif %}
+            <br>
+            Copropriété :
+            {% if bien_immo.coproname %}
+                {{ bien_immo.coproname }}
+            {% else %}
+                <i>N/A</i>
+            {% endif %}
         </div>
     </div>
     <footer class="card-footer is-flex-direction-column-mobil card-footer-column-mobil">
         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
         {% if bien_immo.locataires is not empty %}
-{#            {% if bien_immo.quittances.current %}#}
-{#                <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column">#}
-{#                    <span>Voir la quittance</span>#}
-{#                    <span class="help">(du mois en cours)</span>#}
-{#                </a>#}
-{#            {% else %}#}
-{#                <a href="{{ path('quittances_edit_current_month_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column">#}
-{#                    <span>Quittance du mois</span>#}
-{#                </a>#}
-{#            {% endif %}#}
             <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column">
                 <span>Editer une quittance</span>
             </a>
-
-
-{#        {% else %}#}
-{#            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-text-dark has-text-centered">Ajouter un locataire</a>#}
         {% endif %}
-{#        {% if bien_immo.locataires is not empty and bien_immo.quittances.current and bien_immo.locataires.current.email %}#}
-{#            <a href="{{ path('immo_send_quittance', {'id': bien_immo.quittances.current.id }) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">#}
-{#                <span>Envoyer la quittance</span>#}
-{#                {% if bien_immo.locataires.current.email %}#}
-{#                    <span class="help">({{ bien_immo.locataires.current.email }})</span>#}
-{#                {% endif %}#}
-{#            </a>#}
-{#        {% endif %}#}
     </footer>
 </div>
