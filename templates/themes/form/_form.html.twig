@@ -163,6 +163,23 @@
                             </a>
                         </p>
                     </div>
+            {% elseif 'token' not in form_label(child) %}
+                <p class="control has-icons-left has-icons-right">
+                    {{ form_widget(child) }}
+                    {% if 'mail' in child.vars.name %}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-at"></i>
+                        </span>
+                    {% elseif 'phone' in child.vars.name %}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                    {% elseif ('street' in child.vars.name) or ('cp' in child.vars.name) or ('city' in child.vars.name) or ('building' in child.vars.name) or ('Adresse' in child.vars.name) %}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </span>
+                    {% endif %}
+                </p>
             {% else %}
                 {{ form_widget(child) }}
             {% endif %}
