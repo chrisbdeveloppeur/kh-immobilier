@@ -1,3 +1,9 @@
+{% if form.vars.name == 'bien_immo' %}
+    {% set locataire_twig = bien_immo.locataires.current %}
+{% elseif form.vars.name == 'locataire' %}
+    {% set locataire_twig = locataire %}
+{% endif %}
+
 {% if form.vars.name in ['bien_immo'] %}
     <div class="tabs is-centered is-boxed is-small">
         <ul>
@@ -22,12 +28,6 @@
     {{ form_start(form, {'attr': {'class': 'column is-one-third', 'id': 'form', 'onsubmit':'isLoading()'} }) }}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
-
-        {% if form.vars.name == 'bien_immo' %}
-            {% set locataire_twig = bien_immo.locataires.current %}
-        {% elseif form.vars.name == 'locataire' %}
-            {% set locataire_twig = locataire %}
-        {% endif %}
 
         {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
             <div class="field has-text-centered">
@@ -190,6 +190,13 @@
     {{ form_end(form) }}
 
 </div>
+
+
+{% if form.vars.name in ['bien_immo','copropriete'] %}
+    <div class="column is-flex is-justify-content-center">
+        
+    </div>
+{% endif %}
 
 <script>
     let tabs = document.querySelectorAll('.tabs').forEach(function (elem) {
