@@ -69,7 +69,7 @@
 
     {% elseif form.vars.name in ['quittances'] %}
             <div class="field has-text-centered">
-                <a class="button is-small is-info" onclick="toogleReadonlyClass()">
+                <a class="button is-small is-light" onclick="toogleReadonlyClass();this.classList.toggle('is-light')">
                     <span class="icon">
                         <i class="fas fa-lg fa-file-signature"></i>
                     </span>
