@@ -152,6 +152,11 @@ table.table.is-narrow{
   touch-action: none !important;
 }
 
+form.quittances{
+  border: solid rgba(0,0,0,.4) 1px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
 
 @media (max-width: 1023px) {
   .is-flex-direction-column-touch{
