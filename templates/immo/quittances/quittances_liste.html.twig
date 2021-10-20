@@ -5,9 +5,9 @@
 
         {% for quittance in bien_immo.quittances %}
                 <div class="column is-half-desktop px-0 py-0 pb-3">
-                        <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-small {{ quittance.createdDate|date('Y') }}" target="popup">
+                        <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-small {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" target="popup">
                                 {{ quittance.fileName }}
-                                {{ quittance.createdDate|format_datetime('short', 'none', locale='fr') }}
+                                {{ quittance.createdDate|format_datetime(pattern="MMMM'_'EEEE'_'y", locale='fr') }}
                         </a>
                 </div>
         {% endfor %}
