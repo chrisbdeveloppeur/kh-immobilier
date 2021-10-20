@@ -42,9 +42,9 @@
 {% endif %}
 
 
-<div class="column is-flex is-justify-content-center pb-0">
+<div class="column is-flex is-justify-content-center">
 
-    {{ form_start(form, {'attr': {'class': 'column pb-0 is-one-third '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading()'} }) }}
+    {{ form_start(form, {'attr': {'class': 'column is-one-third '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading()'} }) }}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
 

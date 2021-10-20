@@ -62,17 +62,8 @@ class QuittancesController extends AbstractController
 
 //            $this->addFlash('success','Le locataire <b>'. $name .'</b> a été créer avec succès');
 
-            if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
-                $pdf_exist = true;
-            }else{
-                $pdf_exist = false;
-            }
-
-            return $this->render("immo/quittances/download_file.html.twig",[
-                "file_name" => $file,
-                "locataire" => $locataire,
-                "pdf_exist" => $pdf_exist,
-                "quittance" => $quittance,
+            return $this->redirectToRoute('quittances_render_quittance', [
+                'quittance_id' => $quittance->getId()
             ]);
         }
 
@@ -94,6 +85,30 @@ class QuittancesController extends AbstractController
             'locataire' => $locataire,
         ]);
 
+    }
+
+
+    /**
+     * @Route("/render/{quittance_id}", name="render_quittance")
+     */
+    public function renderQuittance(QuittanceRepository $quittanceRepository, $quittance_id){
+
+        $quittance = $quittanceRepository->find($quittance_id);
+        $locataire = $quittance->getLocataire();
+        $file = $quittance->getFileName();
+
+        if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
+            $pdf_exist = true;
+        }else{
+            $pdf_exist = false;
+        }
+
+        return $this->render('immo/quittances/download_file.html.twig',[
+            "file_name" => $file,
+            "locataire" => $locataire,
+            "quittance" => $quittance,
+            "pdf_exist" => $pdf_exist,
+        ]);
     }
 
     /**
