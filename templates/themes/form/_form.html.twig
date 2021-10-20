@@ -7,7 +7,7 @@
 {% endif %}
 
 {% if form.vars.name in ['bien_immo'] %}
-    <div class="tabs is-centered is-boxed is-small">
+    <div class="tabs is-centered is-boxed is-small mb-0">
         <ul>
             <li class="is-active" id="logement">
                 <a>
@@ -33,6 +33,10 @@
     {{ form_start(form, {'attr': {'class': 'column is-one-third', 'id': 'form', 'onsubmit':'isLoading()'} }) }}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
+
+        <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
+            <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.coproName }}</b></span>
+        </div>
 
         {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
             <div class="field has-text-centered">
@@ -170,11 +174,15 @@
                         <span class="icon is-small is-left">
                             <i class="fas fa-at"></i>
                         </span>
-                    {% elseif 'phone' in child.vars.name %}
+                    {% elseif 'phone' in child.vars.name or 'Phone' in child.vars.name %}
                         <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                         </span>
                     {% elseif ('street' in child.vars.name) or ('cp' in child.vars.name) or ('city' in child.vars.name) or ('building' in child.vars.name) or ('Adresse' in child.vars.name) %}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </span>
+                    {% elseif ('name' in child.vars.name) or ('Contact' in child.vars.name) %}
                         <span class="icon is-small is-left">
                             <i class="fas fa-map-marked-alt"></i>
                         </span>
@@ -223,8 +231,8 @@
             li.addEventListener('click', function () {
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
-                console.log(li.id);
                 let fields = document.querySelectorAll('.'+li.id);
+                console.log(fields);
                 let notfields = document.querySelectorAll('.bien-immo');
                 notfields.forEach(notfield => notfield.classList.add('is-hidden'));
                 fields.forEach(field => field.classList.remove('is-hidden'));
