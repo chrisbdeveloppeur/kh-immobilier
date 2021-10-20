@@ -2,11 +2,12 @@
 {% if bien_immo.quittances|length == 0 %}
         <i>Aucun quittance de loyer n'a étées éditer pour le moment</i>
 {% else %}
+
         {% for quittance in bien_immo.quittances %}
                 <div class="column is-half-desktop px-0 py-0 pb-3">
-                        <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-small" target="popup">
+                        <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-small {{ quittance.createdDate|date('Y') }}" target="popup">
                                 {{ quittance.fileName }}
-                                {{ quittance.createdDate|date('d/m/Y') }}
+                                {{ quittance.createdDate|format_datetime('short', 'none', locale='fr') }}
                         </a>
                 </div>
         {% endfor %}
