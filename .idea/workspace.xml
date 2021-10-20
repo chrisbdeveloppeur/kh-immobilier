@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,11 +49,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="149" column="36" selection-start-line="149" selection-start-column="36" selection-end-line="149" selection-end-column="36" />
+            <state relative-caret-position="187">
+              <caret line="46" column="64" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+              <folding>
+                <element signature="e#2574#9652#0#Twig" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="158" column="61" selection-start-line="158" selection-start-column="61" selection-end-line="158" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -136,6 +149,8 @@
       <find>file</find>
       <find>show</find>
       <find>table</find>
+      <find>pen</find>
+      <find>quittan</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,13 +203,13 @@
         <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
         <option value="$PROJECT_DIR$/src/Form/BienImmoType.php" />
         <option value="$PROJECT_DIR$/templates/immo/biens_card.html.twig" />
-        <option value="$PROJECT_DIR$/assets/styles/app.scss" />
         <option value="$PROJECT_DIR$/src/Controller/BienImmoController.php" />
         <option value="$PROJECT_DIR$/templates/immo/quittances/quittances_liste.html.twig" />
         <option value="$PROJECT_DIR$/templates/immo/quittances/download_file.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/ImmoController.php" />
         <option value="$PROJECT_DIR$/src/Controller/QuittancesController.php" />
         <option value="$PROJECT_DIR$/templates/themes/form/_form.html.twig" />
+        <option value="$PROJECT_DIR$/assets/styles/app.scss" />
       </list>
     </option>
   </component>
@@ -663,15 +678,16 @@
       <workItem from="1634587031165" duration="7483000" />
       <workItem from="1634632944326" duration="17654000" />
       <workItem from="1634664495315" duration="2126000" />
-      <workItem from="1634723446215" duration="9170000" />
+      <workItem from="1634723446215" duration="10503000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="508758000" />
+    <option name="totallyTimeSpent" value="510091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30536914" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1025,13 +1041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
@@ -1062,13 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-322">
           <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/immo/quittances/quittances_liste.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -1113,10 +1115,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/immo/quittances/quittances_liste.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="149" column="36" selection-start-line="149" selection-start-column="36" selection-end-line="149" selection-end-column="36" />
+        <state relative-caret-position="187">
+          <caret line="46" column="64" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+          <folding>
+            <element signature="e#2574#9652#0#Twig" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="158" column="61" selection-start-line="158" selection-start-column="61" selection-end-line="158" selection-end-column="61" />
         </state>
       </provider>
     </entry>
