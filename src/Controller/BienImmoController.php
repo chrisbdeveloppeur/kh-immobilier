@@ -94,7 +94,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository): Response
+    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em): Response
     {
         $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
@@ -122,11 +122,16 @@ class BienImmoController extends AbstractController
 //            return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        //$quittances = $quittanceRepository->findAll();
-        //$fileExist = [];
-        //foreach ($quittances as $quittance){
-        //    $fileExist[] = $quittance->getFileName();
-        //}
+        $quittances = $quittanceRepository->findAll();
+
+        foreach ($quittances as $quittance){
+            $pdfFileExist = file_exists('../public/documents/quittances/' . $quittance->getFileName() . '.pdf');
+            $docxFileExist = file_exists('../public/documents/quittances/' . $quittance->getFileName() . '.docx');
+            if (!$pdfFileExist or  !$docxFileExist){
+                $em->remove($quittance);
+                $em->flush();
+            }
+        }
         //dd($fileExist);
 
         return $this->render('bien_immo/edit.html.twig', [
