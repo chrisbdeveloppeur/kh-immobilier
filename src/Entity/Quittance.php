@@ -39,9 +39,19 @@ class Quittance
      */
     private $bien_immo;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $year;
+
     public function __toString()
     {
         return $this->getFileName();
+    }
+
+    public function __construct()
+    {
+        $this->setYear(date_format('Y',date('now')));
     }
 
     public function getId(): ?int
@@ -93,6 +103,18 @@ class Quittance
     public function setBienImmo(?BienImmo $bien_immo): self
     {
         $this->bien_immo = $bien_immo;
+
+        return $this;
+    }
+
+    public function getYear(): ?string
+    {
+        return $this->year;
+    }
+
+    public function setYear(string $year): self
+    {
+        $this->year = $year;
 
         return $this;
     }
