@@ -34,9 +34,11 @@
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
 
-        <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
-            <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.coproName }}</b></span>
-        </div>
+        {% if form.vars.name in ['bien_immo'] %}
+            <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
+                <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.coproName }}</b></span>
+            </div>
+        {% endif %}
 
         {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
             <div class="field has-text-centered">
