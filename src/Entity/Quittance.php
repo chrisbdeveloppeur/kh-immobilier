@@ -51,7 +51,8 @@ class Quittance
 
     public function __construct()
     {
-        $this->setYear(date_format('Y',date('now')));
+        $date = new \DateTime('now');
+        $this->setYear($date->format('Y'));
     }
 
     public function getId(): ?int
