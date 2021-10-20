@@ -132,7 +132,6 @@ class BienImmoController extends AbstractController
                 $em->flush();
             }
         }
-        //dd($fileExist);
 
         return $this->render('bien_immo/edit.html.twig', [
             'bien_immo' => $bienImmo,
