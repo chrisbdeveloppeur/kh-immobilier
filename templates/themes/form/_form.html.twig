@@ -42,13 +42,13 @@
 {% endif %}
 
 
-<div class="column is-flex is-justify-content-center py-0">
+<div class="column is-flex is-justify-content-center pb-0">
 
-    {{ form_start(form, {'attr': {'class': 'column is-one-third '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading()'} }) }}
+    {{ form_start(form, {'attr': {'class': 'column pb-0 is-one-third '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading()'} }) }}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
 
-        {% if form.vars.name in ['bien_immo'] %}
+        {% if form.vars.name in ['bien_immo'] and bien_immo.coproName %}
             <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
                 <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.coproName }}</b></span>
             </div>
