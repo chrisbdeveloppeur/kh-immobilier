@@ -6,6 +6,7 @@ use App\Entity\BienImmo;
 use App\Form\BienImmoType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
+use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -93,7 +94,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, BienImmo $bienImmo): Response
+    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository): Response
     {
         $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
@@ -120,6 +121,13 @@ class BienImmoController extends AbstractController
             return $this->redirect($referer);
 //            return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
+
+        //$quittances = $quittanceRepository->findAll();
+        //$fileExist = [];
+        //foreach ($quittances as $quittance){
+        //    $fileExist[] = $quittance->getFileName();
+        //}
+        //dd($fileExist);
 
         return $this->render('bien_immo/edit.html.twig', [
             'bien_immo' => $bienImmo,

@@ -1,0 +1,9 @@
+{% for quittance in bien_immo.quittances %}
+        <div class="column is-half-desktop">
+                <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-small" target="popup">
+                        {{ quittance.fileName }}
+                        {{ quittance.createdDate|date('d/m/Y') }}
+                </a>
+        </div>
+{% endfor %}
+
