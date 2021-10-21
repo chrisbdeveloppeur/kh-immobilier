@@ -5,36 +5,7 @@
 
 {% block body %}
 
-    <div class="buttons my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
-
-        <a class="button is-small" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}" title="Voir {{ locataire.logement }}">
-            <span class="icon">
-                <i class="fas fa-building"></i>
-            </span>
-            <span>Voir le logement</span>
-        </a>
-
-        <a class="button is-small" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Voir {{ locataire }}">
-            <span class="icon">
-                <i class="fas fa-user"></i>
-            </span>
-            <span>Voir le locataire</span>
-        </a>
-
-        <a class="button is-small" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
-            <span class="icon">
-                <i class="fas fa-file-medical"></i>
-            </span>
-            <span>Editer à nouveau</span>
-        </a>
-
-        <a class="button is-small" href="{{ path('immo_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
-            <span class="icon">
-                <i class="fas fa-paper-plane"></i>
-            </span>
-            <span>Envoyer la quittance</span>
-        </a>
-    </div>
+    {{ include('includes/third_header.html.twig') }}
 
     {% if pdf_exist %}
         <div class="column is-flex is-justify-content-center is-align-items-center">
@@ -42,29 +13,7 @@
         </div>
     {% endif %}
 
-
     <div class="column">
-        {% if pdf_exist %}
-{#
-            <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
-                <a class="file has-name is-boxed" href="{{ asset('build/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}">
-                    <label class="file-label">
-                        <span class="file-input"></span>
-                            <span class="file-cta">
-                                <span class="file-icon">
-                                    <span class="icon">
-                                        <i class="fas fa-2x fa-file-pdf"></i>
-                                    </span>
-                                </span>
-                            </span>
-                        <span class="file-name has-text-dark">
-                            {{ file_name }}.pdf
-                        </span>
-                    </label>
-                </a>
-            </div>
-#}
-        {% endif %}
 
         <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
             <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">
