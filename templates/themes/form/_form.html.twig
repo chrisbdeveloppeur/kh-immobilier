@@ -236,11 +236,11 @@
 
         {% if 'new' in app.request.get('_route') %}
             <div class="field has-text-centered">
-                <button class="button is-success is-small" id="btn-submit">Valider</button>
+                <button class="button is-success is-small btn-to-hide" id="btn-submit">Valider</button>
             </div>
         {% else %}
             <div class="field has-text-centered">
-                <button class="button is-success is-small" id="btn-submit">Sauvegarder les modifications</button>
+                <button class="button is-success is-small btn-to-hide" id="btn-submit">Sauvegarder les modifications</button>
             </div>
         {% endif %}
 
@@ -263,13 +263,16 @@
             li.addEventListener('click', function () {
                 let fields = document.querySelectorAll('.'+li.id);
                 let notfields = document.querySelectorAll('.bien-immo');
+                let btnToHide = document.querySelectorAll('.btn-to-hide');
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
                 if ( li.id === 'quittances' ){
-                    document.getElementById('btn-submit').classList.add('is-hidden');
+                    // document.getElementById('btn-submit').classList.add('is-hidden');
+                    btnToHide.forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#quittances').classList.remove('is-hidden');
                 }else {
-                    document.getElementById('btn-submit').classList.remove('is-hidden');
+                    // document.getElementById('btn-submit').classList.remove('is-hidden');
+                    btnToHide.forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#quittances').classList.add('is-hidden');
                 }
                 notfields.forEach(notfield => notfield.classList.add('is-hidden'));
