@@ -68,7 +68,7 @@ class BienImmoController extends AbstractController
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'Le logement <b>'.$bienImmo->getBuilding().'</b> a été créé avec succès');
+            $this->addFlash('success', 'Le logement <b>'.$bienImmo->getStreet().'</b> a été créé avec succès');
 
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -144,7 +144,7 @@ class BienImmoController extends AbstractController
      */
     public function delete(Request $request, BienImmo $bienImmo): Response
     {
-        $immoName = $bienImmo->getBuilding();
+        $immoName = $bienImmo->getStreet();
         $entityManager = $this->getDoctrine()->getManager();
         $locataire = $bienImmo->getLocataires()->current();
         if ($this->isCsrfTokenValid('delete'.$bienImmo->getId(), $request->request->get('_token'))) {
