@@ -234,15 +234,28 @@
 {#        <button class="button is-success is-small" id="btn-submit">{{ button_label|default('Valider') }}Valider</button>#}
 {#    </div>#}
 
-        {% if 'new' in app.request.get('_route') %}
-            <div class="field has-text-centered">
-                <button class="button is-success is-small btn-to-hide" id="btn-submit">Valider</button>
-            </div>
+    {% if 'new' in app.request.get('_route') %}
+        {% if 'quittances' in app.request.get('_route') %}
+            {% set validation_button = 'Editer la quittance' %}
         {% else %}
-            <div class="field has-text-centered">
-                <button class="button is-success is-small btn-to-hide" id="btn-submit">Sauvegarder les modifications</button>
-            </div>
+            {% set validation_button = 'Valider' %}
         {% endif %}
+    {% else %}
+        {% set validation_button = 'Sauvegarder les modifications' %}
+    {% endif %}
+
+    <div class="field has-text-centered">
+        <button class="button is-success is-small btn-to-hide" id="btn-submit">
+            {% if validation_button == 'Editer la quittance' %}
+            <span class="icon">
+                <i class="fab fa-github"></i>
+            </span>
+            <span>{{ validation_button }}</span>
+            {% else %}
+                {{ validation_button }}
+            {% endif %}
+        </button>
+    </div>
 
     {{ form_end(form) }}
 
