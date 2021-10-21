@@ -14,17 +14,20 @@
         <span>Voir le locataire</span>
     </a>
 
-    <a class="button is-small" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
+    {% if 'quittances/render' in app.request.get('_route') %}
+        <a class="button is-small" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
             <span class="icon">
                 <i class="fas fa-file-medical"></i>
             </span>
-        <span>Editer à nouveau</span>
-    </a>
+            <span>Editer à nouveau</span>
+        </a>
 
-    <a class="button is-small" href="{{ path('immo_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+        <a class="button is-small" href="{{ path('immo_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
             <span class="icon">
                 <i class="fas fa-paper-plane"></i>
             </span>
-        <span>Envoyer la quittance</span>
-    </a>
+            <span>Envoyer la quittance</span>
+        </a>
+    {% endif %}
+
 </div>

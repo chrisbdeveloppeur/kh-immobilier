@@ -230,10 +230,6 @@
         </div>
     {% endfor %}
 
-{#    <div class="field has-text-centered">#}
-{#        <button class="button is-success is-small" id="btn-submit">{{ button_label|default('Valider') }}Valider</button>#}
-{#    </div>#}
-
     {% if 'new' in app.request.get('_route') %}
         {% if 'quittances' in app.request.get('_route') %}
             {% set validation_button = 'Editer la quittance' %}
