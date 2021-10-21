@@ -136,28 +136,58 @@ class BienImmoType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
 
+//            ->add('coproName', TextType::class,[
+//                'label' => "Nom de la copropriété",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('coproContact', TextType::class,[
+//                'label' => "Contact / Référent",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('coproEmail', EmailType::class,[
+//                'label' => "Adresse Email",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('coproPhone', TextType::class,[
+//                'label' => "Numéro de téléphone",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('coproAdresse', TextType::class,[
+//                'label' => "Adresse postal",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
 
             ->add('coproName', TextType::class,[
+                'mapped' => false,
                 'label' => "Nom de la copropriété",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
             ->add('coproContact', TextType::class,[
+                'mapped' => false,
                 'label' => "Contact / Référent",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
             ->add('coproEmail', EmailType::class,[
+                'mapped' => false,
                 'label' => "Adresse Email",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
             ->add('coproPhone', TextType::class,[
+                'mapped' => false,
                 'label' => "Numéro de téléphone",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
             ->add('coproAdresse', TextType::class,[
+                'mapped' => false,
                 'label' => "Adresse postal",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,

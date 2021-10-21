@@ -106,35 +106,42 @@ class BienImmo
      */
     private $superficie;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $copro_name;
+//    /**
+//     * @ORM\Column(type="string", length=255, nullable=true)
+//     */
+//    private $copro_name;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255, nullable=true)
+//     */
+//    private $copro_email;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255, nullable=true)
+//     */
+//    private $copro_adresse;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255, nullable=true)
+//     */
+//    private $copro_contact;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255, nullable=true)
+//     */
+//    private $copro_phone;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\OneToOne(targetEntity=Copropriete::class, inversedBy="bienImmo", cascade={"persist", "remove"})
      */
-    private $copro_email;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $copro_adresse;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $copro_contact;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $copro_phone;
+    private $copropriete;
 
 
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
+        $copropriete = new Copropriete();
+        $this->setCopropriete($copropriete);
         $current_date = new \DateTime('now');
         $this->payment_date = $current_date->format('d/m/Y');
         $this->first_day = '1';
@@ -148,6 +155,7 @@ class BienImmo
         $solde = new Solde();
         $solde->setBienImmo($this);
         $this->setEcheance(1);
+        $this->setSuperficie(0);
         $this->solde = $solde;
         $this->setFree(true);
     }
@@ -439,62 +447,74 @@ public function setSuperficie(?float $superficie): self
     return $this;
 }
 
-public function getCoproName(): ?string
+//public function getCoproName(): ?string
+//{
+//    return $this->copro_name;
+//}
+//
+//public function setCoproName(?string $copro_name): self
+//{
+//    $this->copro_name = $copro_name;
+//
+//    return $this;
+//}
+//
+//public function getCoproEmail(): ?string
+//{
+//    return $this->copro_email;
+//}
+//
+//public function setCoproEmail(?string $copro_email): self
+//{
+//    $this->copro_email = $copro_email;
+//
+//    return $this;
+//}
+//
+//public function getCoproAdresse(): ?string
+//{
+//    return $this->copro_adresse;
+//}
+//
+//public function setCoproAdresse(?string $copro_adresse): self
+//{
+//    $this->copro_adresse = $copro_adresse;
+//
+//    return $this;
+//}
+//
+//public function getCoproContact(): ?string
+//{
+//    return $this->copro_contact;
+//}
+//
+//public function setCoproContact(?string $copro_contact): self
+//{
+//    $this->copro_contact = $copro_contact;
+//
+//    return $this;
+//}
+//
+//public function getCoproPhone(): ?string
+//{
+//    return $this->copro_phone;
+//}
+//
+//public function setCoproPhone(?string $copro_phone): self
+//{
+//    $this->copro_phone = $copro_phone;
+//
+//    return $this;
+//}
+
+public function getCopropriete(): ?Copropriete
 {
-    return $this->copro_name;
+    return $this->copropriete;
 }
 
-public function setCoproName(?string $copro_name): self
+public function setCopropriete(?Copropriete $copropriete): self
 {
-    $this->copro_name = $copro_name;
-
-    return $this;
-}
-
-public function getCoproEmail(): ?string
-{
-    return $this->copro_email;
-}
-
-public function setCoproEmail(?string $copro_email): self
-{
-    $this->copro_email = $copro_email;
-
-    return $this;
-}
-
-public function getCoproAdresse(): ?string
-{
-    return $this->copro_adresse;
-}
-
-public function setCoproAdresse(?string $copro_adresse): self
-{
-    $this->copro_adresse = $copro_adresse;
-
-    return $this;
-}
-
-public function getCoproContact(): ?string
-{
-    return $this->copro_contact;
-}
-
-public function setCoproContact(?string $copro_contact): self
-{
-    $this->copro_contact = $copro_contact;
-
-    return $this;
-}
-
-public function getCoproPhone(): ?string
-{
-    return $this->copro_phone;
-}
-
-public function setCoproPhone(?string $copro_phone): self
-{
-    $this->copro_phone = $copro_phone;
+    $this->copropriete = $copropriete;
 
     return $this;
 }

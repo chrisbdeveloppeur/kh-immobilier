@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BienImmo;
+use App\Entity\Copropriete;
 use App\Form\BienImmoType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
@@ -103,6 +104,7 @@ class BienImmoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->getCoproprieteFormValues($bienImmo,$form);
             $solde = $form->get('solde')->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
             if ($form->get('locataires')->getData() == null){
@@ -181,5 +183,17 @@ class BienImmoController extends AbstractController
 //        return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         $referer = $request->headers->get('referer');
         return $this->redirect($referer);
+    }
+
+
+
+
+    private function getCoproprieteFormValues($bienImmo, $form){
+        $bienImmo->getCopropriete()->setName($form->get("coproName")->getData());
+        $bienImmo->getCopropriete()->setEmail($form->get("coproEmail")->getData());
+        $bienImmo->getCopropriete()->setPhone($form->get("coproPhone")->getData());
+        $bienImmo->getCopropriete()->setAdresse($form->get("coproAdresse")->getData());
+        $bienImmo->getCopropriete()->setContact($form->get("coproContact")->getData());
+        return $form;
     }
 }
