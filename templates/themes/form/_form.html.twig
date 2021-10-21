@@ -267,11 +267,9 @@
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
                 if ( li.id === 'quittances' ){
-                    // document.getElementById('btn-submit').classList.add('is-hidden');
                     btnToHide.forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#quittances').classList.remove('is-hidden');
                 }else {
-                    // document.getElementById('btn-submit').classList.remove('is-hidden');
                     btnToHide.forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#quittances').classList.add('is-hidden');
                 }
