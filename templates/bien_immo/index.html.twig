@@ -123,16 +123,19 @@
                     <td class="is-size-7" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
                     <td class="is-size-7" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
                     <td class="is-size-7" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
-                    <td class="is-size-7 show-on-hover">
+                    <td class="is-size-7">
                         {% if bien_immo.locataires is not empty %}
                             <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
-                                <span class="icon has-text-info text-black-onhover">
+                                <span class="icon has-text-info text-black-onhover is-hidden-touch">
                                     <i class="fas fa-user"></i>
                                 </span>
+                                <span class="icon is-hidden-desktop">
+                                    <i class="fas fa-user-minus"></i>
+                                </span>
                             </a>
-                            <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
+                            <a class="show-on-hover" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
-                                    <span>{{ bien_immo.locataires.current }}</span>
+                                    <span><b>{{ bien_immo.locataires.current }}</b></span>
                                     <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-search"></i>
                                     </span>
@@ -140,8 +143,11 @@
                             </a>
                         {% else %}
                             <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
-                                <span class="icon has-text-dark text-info-onhover">
+                                <span class="icon has-text-dark text-info-onhover is-hidden-touch">
                                     <i class="fas fa-user-slash"></i>
+                                </span>
+                                <span class="icon has-text-info is-hidden-desktop">
+                                    <i class="fas fa-user-plus"></i>
                                 </span>
                             </a>
                             <span title="Logement actuellement sans locataire">Sans locataire</span>
