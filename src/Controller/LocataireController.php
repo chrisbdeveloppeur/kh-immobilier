@@ -24,7 +24,12 @@ class LocataireController extends AbstractController
      */
     public function index(LocataireRepository $locataireRepository, Request $request, PaginatorInterface $paginator): Response
     {
-        $all_locataires = $locataireRepository->findAll();
+        $user = $this->getUser();
+        if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
+            $all_locataires = $locataireRepository->findAll();
+        }else{
+            $all_locataires = $locataireRepository->findBy(['user' => $user->getId()]);
+        }
 
         $locataires = $paginator->paginate(
             $all_locataires,

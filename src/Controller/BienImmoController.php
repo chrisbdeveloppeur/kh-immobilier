@@ -30,7 +30,12 @@ class BienImmoController extends AbstractController
      */
     public function index(BienImmoRepository $bienImmoRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $all_biens_immos = $bienImmoRepository->findAll();
+        $user = $this->getUser();
+        if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
+            $all_biens_immos = $bienImmoRepository->findAll();
+        }else{
+            $all_biens_immos = $bienImmoRepository->findBy(['user' => $user->getId()]);
+        }
 
         $biens_immos = $paginator->paginate(
             $all_biens_immos,
