@@ -69,9 +69,9 @@
 
     {% elseif form.vars.name in ['quittances'] %}
             <div class="field has-text-centered">
-                <a class="button is-small is-light" onclick="toogleReadonlyClass();this.classList.toggle('is-light');this.getElementById('text-1').classList.toggle('is-hidden');this.getElementById('text-2').classList.toggle('is-hidden')">
+                <a class="button is-small is-light" onclick="toogleReadonlyClass();this.classList.toggle('is-light');this.querySelector('#text-1').classList.toggle('is-hidden');this.querySelector('#text-2').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-unlock');this.querySelector('i').classList.toggle('fa-lock')">
                     <span class="icon">
-                        <i class="fas fa-lg fa-file-signature"></i>
+                        <i class="fas fa-lg fa-lock"></i>
                     </span>
                     <span id="text-1">
                         Modifier les informations de la quittance
