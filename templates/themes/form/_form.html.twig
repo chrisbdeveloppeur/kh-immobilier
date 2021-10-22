@@ -48,7 +48,7 @@
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
 
-        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}
+        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete %}
             <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
                 <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete }}</b></span>
             </div>

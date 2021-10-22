@@ -101,10 +101,15 @@ class BienImmoController extends AbstractController
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
         $form->get('locataires')->setData($locataire);
+        if (!$bienImmo->getCopropriete()){
+            $bienImmo->setCopropriete(new Copropriete());
+        }else{
+            $this->initCoproprieteForm($bienImmo, $form);
+        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getCoproprieteFormValues($bienImmo,$form);
+            $this->editCopropriete($bienImmo,$form);
             $solde = $form->get('solde')->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
             if ($form->get('locataires')->getData() == null){
@@ -188,12 +193,21 @@ class BienImmoController extends AbstractController
 
 
 
-    private function getCoproprieteFormValues($bienImmo, $form){
+    private function editCopropriete($bienImmo, $form){
         $bienImmo->getCopropriete()->setName($form->get("coproName")->getData());
         $bienImmo->getCopropriete()->setEmail($form->get("coproEmail")->getData());
         $bienImmo->getCopropriete()->setPhone($form->get("coproPhone")->getData());
         $bienImmo->getCopropriete()->setAdresse($form->get("coproAdresse")->getData());
         $bienImmo->getCopropriete()->setContact($form->get("coproContact")->getData());
+        return $form;
+    }
+
+    private function initCoproprieteForm($bienImmo, $form){
+        $form->get("coproName")->setData($bienImmo->getCopropriete()->getName());
+        $form->get("coproEmail")->setData($bienImmo->getCopropriete()->getEmail());
+        $form->get("coproAdresse")->setData($bienImmo->getCopropriete()->getAdresse());
+        $form->get("coproContact")->setData($bienImmo->getCopropriete()->getContact());
+        $form->get("coproPhone")->setData($bienImmo->getCopropriete()->getPhone());
         return $form;
     }
 }
