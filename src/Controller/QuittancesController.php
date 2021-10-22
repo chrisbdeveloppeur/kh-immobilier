@@ -24,7 +24,7 @@ class QuittancesController extends AbstractController
     /**
      * @Route("/new/{loc_id}", name="edit_new_quittance")
      */
-    public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, Request $request): Response
+    public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, Request $request): Response
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -50,6 +50,7 @@ class QuittancesController extends AbstractController
             $template = $this->fillQuittanceTemplateFromForm($locataire, $form);
             $dateForFile = $form->get('date')->getData()->format('d-m-Y');
             $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
+            $file = str_replace(" ", "_",$file);
             $this->createQuittanceFile($template, $locataire, $file);
 
             $quittance = new Quittance();
@@ -60,25 +61,10 @@ class QuittancesController extends AbstractController
             $em->persist($quittance);
             $em->flush();
 
-//            $this->addFlash('success','Le locataire <b>'. $name .'</b> a été créer avec succès');
-
             return $this->redirectToRoute('quittances_render_quittance', [
                 'quittance_id' => $quittance->getId()
             ]);
         }
-
-
-//        dd($form);
-
-//        $file = "quittance_" . strftime("%B_") . $locataire->getLastName() . '_' . $locataire->getLogement()->getId() .'_'. uniqid();
-//
-//        $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
-
-//        if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
-//            $pdf_exist = true;
-//        }else{
-//            $pdf_exist = false;
-//        }
 
         return $this->render("immo/quittances/edit_quittance.html.twig",[
             'form' => $form->createView(),
