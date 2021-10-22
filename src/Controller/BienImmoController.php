@@ -58,6 +58,7 @@ class BienImmoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->editCopropriete($bienImmo, $form);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bienImmo);
             $solde = $form->get('solde')->getData();
