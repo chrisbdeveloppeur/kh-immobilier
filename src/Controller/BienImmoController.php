@@ -156,7 +156,9 @@ class BienImmoController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $locataire = $bienImmo->getLocataires()->current();
         if ($this->isCsrfTokenValid('delete'.$bienImmo->getId(), $request->request->get('_token'))) {
-            $locataire->setSansLogement(true);
+            if ($locataire){
+                $locataire->setSansLogement(true);
+            }
             $entityManager->remove($bienImmo);
             $entityManager->flush();
         }elseif ($request->getMethod() == 'GET'){

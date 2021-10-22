@@ -116,7 +116,7 @@ class LocataireType extends AbstractType
             ->add('mode', ChoiceType::class,[
                 'label' => 'Moyen de paiement',
                 'choices' => [
-                    'Virement banquaire' => 'Virement banquaire',
+                    'Virement bancaire' => 'Virement bancaire',
                     'Espèces' => 'Espèces',
                     'Chèque' => 'Chèque',
                 ]
