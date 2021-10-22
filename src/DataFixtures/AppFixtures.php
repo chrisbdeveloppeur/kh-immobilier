@@ -30,27 +30,27 @@ class AppFixtures extends Fixture
 //        $this->setBien();
 
         $locataire = $this->setLocataire('Couple','Axel et Laurine','MAKAGNON','axel.makagnon@gmail.com','Espèces');
-        $bien = $this->setBien($locataire,'4 Place Vaillant couturier','91100','Corbeil-Essonnes','800','200','7','T4');
+        $bien = $this->setBien($locataire,'4 Place Vaillant couturier','91100','Corbeil-Essonnes','800','200','7','T4','FONCIA','80');
         $manager->persist($locataire);
         $manager->persist($bien);
 
         $locataire2 = $this->setLocataire('M.','Maël','DASSE','','Virement bancaire');
-        $bien2 = $this->setBien($locataire2,'41 Rue Victor Hugo','10700','Rosières-près-Troys','400','40','2','Studio');
+        $bien2 = $this->setBien($locataire2,'41 Rue Victor Hugo','10700','Rosières-près-Troys','400','40','2','Studio','','0');
         $manager->persist($locataire2);
         $manager->persist($bien2);
 
         $locataire3 = $this->setLocataire('Mme.','Raymond','KANGA','','Virement bancaire');
-        $bien3 = $this->setBien($locataire3,'21 Avenue des Sablon','91350','Grigny','410','90','2','T2');
+        $bien3 = $this->setBien($locataire3,'21 Avenue des Sablon','91350','Grigny','410','90','2','T2','','0');
         $manager->persist($locataire3);
         $manager->persist($bien3);
 
         $locataire4 = $this->setLocataire('M.','Germain','MPANA','','Virement bancaire');
-        $bien4 = $this->setBien($locataire4,'6 Avenue des Sablon','91350','Grigny','500','160','15','T3');
+        $bien4 = $this->setBien($locataire4,'6 Avenue des Sablon','91350','Grigny','500','160','15','T3','','0');
         $manager->persist($locataire4);
         $manager->persist($bien4);
 
         $locataire5 = $this->setLocataire('Mme.','Alice','PICARD','','Virement bancaire');
-        $bien5 = $this->setBien($locataire5,'26 rue Jean piestre','91100','Corbeil-Essonnes','700','50','10','Studio');
+        $bien5 = $this->setBien($locataire5,'26 rue Jean piestre','91100','Corbeil-Essonnes','700','50','10','Studio','MATERA','35');
         $manager->persist($locataire5);
         $manager->persist($bien5);
 
@@ -124,7 +124,7 @@ class AppFixtures extends Fixture
         return $locataire;
     }
 
-    private function setBien($locataire, $street, $cp, $city, $loyer_hc, $charges, $echeance, $type){
+    private function setBien($locataire, $street, $cp, $city, $loyer_hc, $charges, $echeance, $type, $copropriete, $superficie){
 
         $bien = new BienImmo();
 
@@ -135,6 +135,8 @@ class AppFixtures extends Fixture
         $bien->setCharges($charges);
         $bien->setEcheance($echeance);
         $bien->setType($type);
+        $bien->setSuperficie($superficie);
+        $bien->getCopropriete()->setName($copropriete);
         $locataire->setLogement($bien);
         return $bien;
     }
