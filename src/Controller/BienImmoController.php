@@ -11,6 +11,7 @@ use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use function Sodium\add;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,23 +91,32 @@ class BienImmoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="bien_immo_show", methods={"GET"})
-     */
-    public function show(BienImmo $bienImmo, LocataireRepository $locataireRepository, $id): Response
-    {
-        $locataires = $locataireRepository->findBy(['logement' => $id],['last_name' => 'ASC']);
-        return $this->render('bien_immo/show.html.twig', [
-            'bien_immo' => $bienImmo,
-            'locataires' => $locataires
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="bien_immo_show", methods={"GET"})
+//     */
+//    public function show(BienImmo $bienImmo, LocataireRepository $locataireRepository, $id): Response
+//    {
+//        $locataires = $locataireRepository->findBy(['logement' => $id],['last_name' => 'ASC']);
+//        return $this->render('bien_immo/show.html.twig', [
+//            'bien_immo' => $bienImmo,
+//            'locataires' => $locataires
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em): Response
     {
+//        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($bienImmo->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
         $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
@@ -136,7 +146,6 @@ class BienImmoController extends AbstractController
 
             $referer = $request->headers->get('referer');
             return $this->redirect($referer);
-//            return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 
         $quittances = $quittanceRepository->findAll();
@@ -161,6 +170,15 @@ class BienImmoController extends AbstractController
      */
     public function delete(Request $request, BienImmo $bienImmo): Response
     {
+        //        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($bienImmo->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
         $immoName = $bienImmo->getStreet();
         $entityManager = $this->getDoctrine()->getManager();
         $locataire = $bienImmo->getLocataires()->current();
@@ -189,8 +207,18 @@ class BienImmoController extends AbstractController
     public function removeLocataire(Request $request,$id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
         $locataire = $locataireRepository->find($loc_id);
-        $name = $locataire->getLastName() . ' ' . $locataire->getFirstName();
         $bienImmo = $bienImmoRepository->find($id);
+        $name = $locataire->getLastName() . ' ' . $locataire->getFirstName();
+
+        //        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($bienImmo->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
         $logement = $bienImmo->getBuilding();
         $bienImmo->removeLocataire($locataire);
         $em->flush();

@@ -61,6 +61,16 @@ class ImmoController extends AbstractController
     public function mail(Request $request,MailController $mailController, QuittanceRepository $quittanceRepository, $id){
         $quittance = $quittanceRepository->find($id);
         $locataire = $quittance->getLocataire();
+
+        //        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($locataire->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
         $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
         $mailController->sendMessage($quittance_file_path, $locataire);
         $this->addFlash('success', 'La quittance de loyer à bien été envoyer pour : ' . $locataire );

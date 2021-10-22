@@ -73,21 +73,30 @@ class LocataireController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="locataire_show", methods={"GET"})
-     */
-    public function show(Locataire $locataire): Response
-    {
-        return $this->render('locataire/show.html.twig', [
-            'locataire' => $locataire,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="locataire_show", methods={"GET"})
+//     */
+//    public function show(Locataire $locataire): Response
+//    {
+//        return $this->render('locataire/show.html.twig', [
+//            'locataire' => $locataire,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="locataire_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Locataire $locataire): Response
     {
+        //        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($locataire->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->get('logement')->setData($locataire->getLogement());
         $form->handleRequest($request);
@@ -114,6 +123,15 @@ class LocataireController extends AbstractController
      */
     public function delete(Request $request, Locataire $locataire): Response
     {
+        //        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($locataire->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
         $locataireName = $locataire->getFirstName() .' '. $locataire->getLastName();
         $entityManager = $this->getDoctrine()->getManager();
         if ($this->isCsrfTokenValid('delete'.$locataire->getId(), $request->request->get('_token'))) {
