@@ -27,13 +27,12 @@ class ImmoController extends AbstractController
     public function index(Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PaginatorInterface $paginator, LocataireRepository $locataireRepository): Response
     {
         $user = $this->getUser();
-        dd(in_array('ROLE_SUPER_ADMIN',$user->getRoles()));
         if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
             $all_biens_immos = $bienImmoRepository->findAll();
             $all_locataires = $locataireRepository->findAll();
         }else{
-            $all_biens_immos = $bienImmoRepository->findBy(['user_id = ' . $user->getId()]);
-            $all_locataires = $locataireRepository->findBy(['user_id = ' . $user->getId()]);
+            $all_biens_immos = $bienImmoRepository->findBy(['user' => $user->getId()]);
+            $all_locataires = $locataireRepository->findBy(['user' => $user->getId()]);
         }
 
 

@@ -37,15 +37,15 @@ class BienImmoRepository extends ServiceEntityRepository
     }
 
 
-    /*
-    public function findOneBySomeField($value): ?BienImmo
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+
+//    public function findByUserId($id): ?BienImmo
+//    {
+//        return $this->createQueryBuilder('b')
+//            ->andWhere('b.user = :val')
+//            ->setParameter('val', $id)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
 }
