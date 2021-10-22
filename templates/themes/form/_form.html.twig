@@ -41,7 +41,7 @@
     </div>
 {% endif %}
 
-{% if locataire_twig %}
+{% if 'new' not in app.request.get('_route') %}
     <div class="column is-flex is-justify-content-center pb-0">
         <div class="help box-shadow-bulma border-radius-2px has-background-warning-light has-text-centered px-3 py-2 has-text-dark">
             <span class="icon">
