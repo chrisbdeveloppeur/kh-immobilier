@@ -6,16 +6,7 @@
 {% endif %}
 <div class="card mb-5">
     <header class="card-header has-background-dark">
-        <p class="card-header-title has-text-{{ logement_status_color }} has-icons-left">
-
-            {% if bien_immo.type %}
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fas fa-warehouse"></i>
-                    </span>
-                    <span class="has-text-weight-bold">{{ bien_immo.type }}</span>
-                </span>
-            {% endif %}
+        <p class="card-header-title has-text-{{ logement_status_color }} has-icons-left is-flex-direction-column-touch">
 
             <span class="is-expanded column px-0 py-0 is-flex is-justify-content-center">
                 <span class="icon-text has-text-{{ logement_status_color }}">
@@ -25,6 +16,19 @@
                     <span class="is-uppercase">{{ bien_immo.street }}</span>
                 </span>
             </span>
+
+            {% if bien_immo.type %}
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-warehouse"></i>
+                    </span>
+                    <span class="has-text-weight-bold">{{ bien_immo.type }}
+                        {% if bien_immo.superficie != 0 %}
+                            <span class="has-text-weight-bold is-size-7">({{ bien_immo.superficie }}m²)</span>
+                        {% endif %}
+                    </span>
+                </span>
+            {% endif %}
 
         </p>
     </header>
