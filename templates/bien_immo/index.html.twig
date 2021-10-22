@@ -26,8 +26,8 @@
                     <th>
                         <span class="is-size-7">Actions</span>
                     </th>
-                    <th>
-                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
+                    <th class="sticky-left px-0 py-0">
+                        <span class="is-size-7 has-background-white child-sticky-left px-2">{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
                     </th>
                     <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'CP', 'cp') }}</span>
@@ -98,9 +98,9 @@
                         </a>
 
                     </td>
-                    <td class="is-size-7 has-text-weight-bold show-on-hover">
+                    <td class="is-size-7 has-text-weight-bold show-on-hover sticky-left px-0 py-0">
                         <span class="text-info-onhover has-text-dark">
-                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text" title="Voir les détails du logement">
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text has-background-white child-sticky-left px-2" title="Voir les détails du logement">
                                 <span>
                                     {{ bien_immo.street }}
                                 </span>
@@ -164,7 +164,7 @@
             <tfoot>
             <tr>
                 <th></th>
-                <th></th>
+                <th class="sticky-left px-0 py-0"><span style="background: #f5f5f5;height: 20px;width: 100%"></span></th>
                 <th></th>
                 <th></th>
                 <th></th>
