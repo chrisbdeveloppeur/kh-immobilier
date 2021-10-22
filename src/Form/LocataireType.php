@@ -67,7 +67,7 @@ class LocataireType extends AbstractType
 
             ])
             ->add('last_name', TextType::class,[
-                'label' => 'Nom',
+                'label' => 'Nom*',
                 'constraints' => [
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",
@@ -78,7 +78,7 @@ class LocataireType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('first_name', TextType::class,[
-                'label' => 'Prénom',
+                'label' => 'Prénom*',
                 'constraints' => [
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",
