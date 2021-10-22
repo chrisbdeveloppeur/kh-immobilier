@@ -47,7 +47,7 @@
             <span class="icon">
                 <i class="fas fa-exclamation-triangle"></i>
             </span>
-            Veillez à bien sauvegarder vos modification en cliquant sur le boutton "<a href="#save" class="has-text-weight-bold is-underlined has-text-success">Sauvegarder les modifications</a>" en bas de page
+            Veillez à bien sauvegarder vos modifications en cliquant sur le bouton "<a href="#save" class="has-text-weight-bold is-underlined has-text-success">Sauvegarder les modifications</a>" en bas de page
        </div>
     </div>
 {% endif %}
@@ -57,12 +57,6 @@
     {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading()'} }) }}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
-
-        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete %}
-            <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
-                <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete.name }}</b></span>
-            </div>
-        {% endif %}
 
         {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
             <div class="field has-text-centered">
@@ -77,17 +71,17 @@
             </div>
         {% endif %}
 
+        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete %}
+            <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
+                <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete.name }}</b></span>
+            </div>
+        {% endif %}
+
     {% elseif form.vars.name in ['quittances'] %}
-            <div class="field has-text-centered">
-                <a class="button is-small is-light quittance-lock-btn">
+            <div class="field has-text-right">
+                <a class="button is-small is-danger is-light quittance-lock-btn" title="Modifier les informations de la quittance">
                     <span class="icon">
                         <i class="fas fa-lg fa-lock"></i>
-                    </span>
-                    <span id="text-1">
-                        Modifier les informations de la quittance
-                    </span>
-                    <span id="text-2" class="is-hidden">
-                        Vérouiller les informations de la quittance
                     </span>
                 </a>
             </div>
@@ -309,9 +303,12 @@
 
         ancrage.addEventListener('click', function () {
             toogleReadonlyClass();
-            ancrage.classList.toggle('is-light');
-            ancrage.querySelector('#text-1').classList.toggle('is-hidden');
-            ancrage.querySelector('#text-2').classList.toggle('is-hidden');
+            ancrage.classList.toggle('is-danger');
+            if (ancrage.querySelector('i').classList.contains('fa-unlock')) {
+                ancrage.setAttribute('title', 'Modifier les informations de la quittance');
+            }else {
+                ancrage.setAttribute('title', 'Vérouiler les informations de la quittance');
+            }
             ancrage.querySelector('i').classList.toggle('fa-unlock');
             ancrage.querySelector('i').classList.toggle('fa-lock');
         });
