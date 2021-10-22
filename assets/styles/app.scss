@@ -77,6 +77,14 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   padding: 2px 5px;
 }
 
+.box-shadow-bulma{
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+}
+
+.border-radius-2px{
+  border-radius: 2px;
+}
+
 i.fa-search-js{
   width: 0;
   opacity: 0;

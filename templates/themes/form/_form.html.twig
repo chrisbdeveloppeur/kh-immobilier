@@ -41,6 +41,16 @@
     </div>
 {% endif %}
 
+{% if locataire_twig %}
+    <div class="column is-flex is-justify-content-center pb-0">
+        <div class="help box-shadow-bulma border-radius-2px has-background-warning-light has-text-centered px-3 py-2 has-text-dark">
+            <span class="icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </span>
+            Veillez à bien sauvegarder vos modification en cliquant sur le boutton "<a href="#save" class="has-text-weight-bold is-underlined has-text-success">Sauvegarder les modifications</a>" en bas de page
+       </div>
+    </div>
+{% endif %}
 
 <div class="column is-flex is-justify-content-center">
 
@@ -243,7 +253,7 @@
         {% set validation_button = 'Sauvegarder les modifications' %}
     {% endif %}
 
-    <div class="field has-text-centered">
+    <div class="field has-text-centered" id="save">
         <button class="button is-success is-small btn-to-hide" id="btn-submit">
             {% if validation_button == 'Editer la quittance' %}
             <span class="icon">
