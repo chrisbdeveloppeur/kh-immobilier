@@ -148,12 +148,14 @@ class BienImmoController extends AbstractController
             return $this->redirect($referer);
         }
 
-        $quittances = $quittanceRepository->findAll();
 
+
+//        Supression de la data Quittance en BDD si le fichier n'existe pas
+        $quittances = $quittanceRepository->findAll();
         foreach ($quittances as $quittance){
             $pdfFileExist = file_exists('../public/documents/quittances/' . $quittance->getFileName() . '.pdf');
             $docxFileExist = file_exists('../public/documents/quittances/' . $quittance->getFileName() . '.docx');
-            if (!$pdfFileExist or  !$docxFileExist){
+            if (!$pdfFileExist or !$docxFileExist){
                 $em->remove($quittance);
                 $em->flush();
             }
