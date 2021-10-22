@@ -39,6 +39,9 @@
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
                     </th>
                     <th>
+                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Superficie', 'superficie') }}</span>
+                    </th>
+                    <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>
                     </th>
                     <th>
@@ -52,6 +55,9 @@
                     </th>
                     <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Solde', 'solde') }}</span>
+                    <th>
+                        <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Copropriété', ['bien_immo.copropriete.name']) }}</span>
+                    </th>
                     </th>
                     <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
@@ -107,6 +113,11 @@
                     <td class="is-size-7" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
                     <td class="is-size-7" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
                     <td class="is-size-7" title="{{ bien_immo.type }}">{{ bien_immo.type }}</td>
+                    {% if bien_immo.superficie %}
+                        <td class="is-size-7" title="{{ bien_immo.superficie }}">{{ bien_immo.superficie }} m²</td>
+                    {% else %}
+                        <td class="is-size-7" title="Non renseignée"><i>Non renseignée</i></td>
+                    {% endif %}
                     <td class="is-size-7" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
                     <td class="is-size-7" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
                     <td class="is-size-7" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
@@ -136,6 +147,13 @@
                             <span title="Logement actuellement sans locataire">Sans locataire</span>
                         {% endif %}
                     </td>
+                    <td>
+                        {% if bien_immo.copropriete.name %}
+                            <span class="is-size-7" title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
+                        {% else %}
+                            <span class="is-size-7" title="Non renseigné"><i>Non renseigné</i></span>
+                        {% endif %}
+                    </td>
                 </tr>
             {% else %}
                 <tr>
@@ -145,6 +163,7 @@
             </tbody>
             <tfoot>
             <tr>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
