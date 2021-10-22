@@ -69,7 +69,7 @@
 
     {% elseif form.vars.name in ['quittances'] %}
             <div class="field has-text-centered">
-                <a class="button is-small is-light" onclick="toogleReadonlyClass();this.classList.toggle('is-light');this.querySelector('#text-1').classList.toggle('is-hidden');this.querySelector('#text-2').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-unlock');this.querySelector('i').classList.toggle('fa-lock')">
+                <a class="button is-small is-light quittance-lock-btn">
                     <span class="icon">
                         <i class="fas fa-lg fa-lock"></i>
                     </span>
@@ -289,5 +289,22 @@
                 fields.forEach(field => field.classList.remove('is-hidden'));
             })
         })
+    })
+</script>
+
+
+<script>
+    let btn = document.querySelectorAll('.quittance-lock-btn');
+    btn.forEach(function (ancrage) {
+
+        ancrage.addEventListener('click', function () {
+            toogleReadonlyClass();
+            ancrage.classList.toggle('is-light');
+            ancrage.querySelector('#text-1').classList.toggle('is-hidden');
+            ancrage.querySelector('#text-2').classList.toggle('is-hidden');
+            ancrage.querySelector('i').classList.toggle('fa-unlock');
+            ancrage.querySelector('i').classList.toggle('fa-lock');
+        });
+
     })
 </script>
