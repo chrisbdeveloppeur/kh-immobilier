@@ -72,6 +72,11 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   color: $success !important;
 }
 
+.non-renseigne{
+  background-color: #dbdbdb !important;
+  padding: 2px 5px;
+}
+
 i.fa-search-js{
   width: 0;
   opacity: 0;

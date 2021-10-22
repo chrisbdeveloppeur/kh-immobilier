@@ -116,7 +116,7 @@
                     {% if bien_immo.superficie %}
                         <td class="is-size-7" title="{{ bien_immo.superficie }}">{{ bien_immo.superficie }} m²</td>
                     {% else %}
-                        <td class="is-size-7" title="Non renseignée"><i>Non renseignée</i></td>
+                        <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
                     {% endif %}
                     <td class="is-size-7" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
                     <td class="is-size-7" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
@@ -157,7 +157,7 @@
                         {% if bien_immo.copropriete.name %}
                             <span class="is-size-7" title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
                         {% else %}
-                            <span class="is-size-7" title="Non renseigné"><i>Non renseigné</i></span>
+                            <span class="is-size-7" title="Non renseigné"><i class="non-renseigne">N/A</i></span>
                         {% endif %}
                     </td>
                 </tr>
