@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/locataire")
@@ -42,9 +43,10 @@ class LocataireController extends AbstractController
     /**
      * @Route("/new", name="locataire_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserInterface $user): Response
     {
         $locataire = new Locataire();
+        $locataire->setUser($user);
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->handleRequest($request);
 

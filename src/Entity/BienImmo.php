@@ -112,6 +112,11 @@ class BienImmo
      */
     private $copropriete;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="biens_immos")
+     */
+    private $user;
+
 
     public function __construct()
     {
@@ -431,6 +436,18 @@ public function getCopropriete(): ?Copropriete
 public function setCopropriete(?Copropriete $copropriete): self
 {
     $this->copropriete = $copropriete;
+
+    return $this;
+}
+
+public function getUser(): ?User
+{
+    return $this->user;
+}
+
+public function setUser(?User $user): self
+{
+    $this->user = $user;
 
     return $this;
 }

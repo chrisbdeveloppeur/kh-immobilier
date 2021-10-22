@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -66,6 +68,22 @@ class User implements UserInterface
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $Entreprise;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BienImmo::class, mappedBy="user")
+     */
+    private $biens_immos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Locataire::class, mappedBy="user")
+     */
+    private $locataires;
+
+    public function __construct()
+    {
+        $this->biens_immos = new ArrayCollection();
+        $this->locataires = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -222,6 +240,66 @@ class User implements UserInterface
     public function setEntreprise(?Entreprise $Entreprise): self
     {
         $this->Entreprise = $Entreprise;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BienImmo[]
+     */
+    public function getBiensImmos(): Collection
+    {
+        return $this->biens_immos;
+    }
+
+    public function addBiensImmo(BienImmo $biensImmo): self
+    {
+        if (!$this->biens_immos->contains($biensImmo)) {
+            $this->biens_immos[] = $biensImmo;
+            $biensImmo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBiensImmo(BienImmo $biensImmo): self
+    {
+        if ($this->biens_immos->removeElement($biensImmo)) {
+            // set the owning side to null (unless already changed)
+            if ($biensImmo->getUser() === $this) {
+                $biensImmo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Locataire[]
+     */
+    public function getLocataires(): Collection
+    {
+        return $this->locataires;
+    }
+
+    public function addLocataire(Locataire $locataire): self
+    {
+        if (!$this->locataires->contains($locataire)) {
+            $this->locataires[] = $locataire;
+            $locataire->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLocataire(Locataire $locataire): self
+    {
+        if ($this->locataires->removeElement($locataire)) {
+            // set the owning side to null (unless already changed)
+            if ($locataire->getUser() === $this) {
+                $locataire->setUser(null);
+            }
+        }
 
         return $this;
     }

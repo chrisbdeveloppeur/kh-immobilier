@@ -15,6 +15,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * @Route("/bien/immo")
@@ -47,9 +50,10 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/new", name="bien_immo_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserInterface $user): Response
     {
         $bienImmo = new BienImmo();
+        $bienImmo->setUser($user);
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('superficie')->setData(0);
         $form->get('loyer_hc')->setData(0);
