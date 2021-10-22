@@ -6,8 +6,15 @@
         {% for quittance in bien_immo.quittances %}
                 <div class="column is-half-desktop px-0 py-0 pb-3">
                         <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-small {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" target="popup">
-                                {{ quittance.fileName }}
-                                {{ quittance.createdDate|format_datetime(pattern="MMMM'_'EEEE'_'y", locale='fr') }}
+                                <span>
+                                        {{ quittance.fileName }}
+                                        {{ quittance.createdDate|format_datetime(pattern="MMMM'_'EEEE'_'y", locale='fr') }}
+                                </span>
+                        </a>
+                        <a class="button is-small is-danger is-outlined" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')">
+                                <span class="icon">
+                                        <i class="fas fa-times"></i>
+                                </span>
                         </a>
                 </div>
         {% endfor %}

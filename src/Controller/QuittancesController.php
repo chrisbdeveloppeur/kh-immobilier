@@ -51,7 +51,7 @@ class QuittancesController extends AbstractController
             $dateForFile = $form->get('date')->getData()->format('d-m-Y');
             $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
             $file = str_replace(" ", "_",$file);
-            $this->createQuittanceFile($template, $locataire, $file);
+            $this->createQuittanceFile($template, $locataire, $file, $request);
 
             $quittance = new Quittance();
             $quittance->setFileName($file);
@@ -100,7 +100,7 @@ class QuittancesController extends AbstractController
     /**
      * @Route("/{loc_id}", name="edit_current_month_quittance")
      */
-    public function editCurrentMonthQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository): Response
+    public function editCurrentMonthQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, Request $request): Response
     {
         $date = new \DateTime();
 
@@ -121,7 +121,7 @@ class QuittancesController extends AbstractController
             $em->persist($quittance);
             $em->flush();
 
-            $this->createQuittanceFile($template, $locataire, $file);
+            $this->createQuittanceFile($template, $locataire, $file, $request);
 
         }
 
@@ -141,14 +141,18 @@ class QuittancesController extends AbstractController
     }
 
 
-    public function convertWordToPdf($file_name, $loc_id): Response
+    public function convertWordToPdf($file_name, $loc_id, Request $request): Response
     {
         $project_dir = $this->getParameter('kernel.project_dir');
 //        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
         $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\public\documents\quittances\\';
         $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
 
-        if (!shell_exec($cmd) == null){
+        if (shell_exec($cmd) == null || shell_exec($cmd) == false){
+            $this->addFlash('warning', 'Une erreur est survenue lors de l\'édition du fichier <b>.pdf</b>');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }else{
             shell_exec($cmd);
         }
 
@@ -257,7 +261,7 @@ class QuittancesController extends AbstractController
     }
 
 
-    public function createQuittanceFile($template, $locataire, $file)
+    public function createQuittanceFile($template, $locataire, $file, Request $request)
     {
         $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
 
@@ -272,6 +276,33 @@ class QuittancesController extends AbstractController
         $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
         $word->saveAs("../public/documents/quittances/" . $file . ".docx");
 
-        $this->convertWordToPdf($file . ".docx", $locataire->getId());
+        $this->convertWordToPdf($file . ".docx", $locataire->getId(), $request);
     }
+
+
+    /**
+     * @Route("/delete/quittance/{quittance_id}/", name="delete_quittance")
+     */
+    public function deleteQuittanceFile($quittance_id, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, Request $request){
+        $quittance = $quittanceRepository->find($quittance_id);
+        $file_pdf = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
+        $file_docx = '../public/documents/quittances/' . $quittance->getFileName() . '.docx';
+        if (file_exists($file_docx)){
+            unlink($file_docx);
+        }
+        if (file_exists($file_pdf)){
+            unlink($file_pdf);
+        }
+        $em->remove($quittance);
+        $em->flush();
+
+        $this->addFlash('danger', 'La quittance de loyer : <b>' . $quittance->getFileName() . '</b> a bien été suprimmée définitivement');
+
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
+//        dump($file_pdf);
+//        dump($file_docx);
+//        dd($quittance);
+    }
+
 }
