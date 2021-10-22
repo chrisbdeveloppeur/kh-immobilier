@@ -13,7 +13,10 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\User\User;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 class BienImmoType extends AbstractType
 {
@@ -21,9 +24,27 @@ class BienImmoType extends AbstractType
     private $locataires_housed = true;
     private $locataires_housed_msg;
     private $echeance;
+    private $user_id;
+    private $user_context;
 
-    public function __construct(LocataireRepository $locataireRepository)
+    public function __construct(LocataireRepository $locataireRepository, Security $security)
     {
+        $this->user_id = $security->getUser()->getId();
+
+        if (in_array('ROLE_SUPER_ADMIN', $security->getUser()->getRoles())){
+            $this->user_context = function (LocataireRepository $er){
+                   return $er->createQueryBuilder('u')
+                       ->orderBy('u.last_name', 'ASC');
+            };
+        }else{
+            $this->user_context = function (LocataireRepository $er){
+
+                return $er->createQueryBuilder('u')
+                    ->where('u.user = '. $this->user_id)
+                    ->orderBy('u.last_name', 'ASC');
+            };
+        }
+
         $locataires = $locataireRepository->findAll();
         $this->echeance = range(0,29,1);
         foreach ($locataires as $locataire){
@@ -38,6 +59,9 @@ class BienImmoType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+//        dd($this->current_user->getId());
+
         if($options['data']->getLocataires()->current()) {
             $this->current_bien_immo_id = $options['data']->getLocataires()->current()->getId();
         }
@@ -67,10 +91,8 @@ class BienImmoType extends AbstractType
                         return 'Locataires logés';
                     }
                 },
-                'query_builder' => function (LocataireRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.last_name', 'ASC');
-                },
+                'query_builder' => $this->user_context
+
             ])
             ->add('street', TextType::class,[
                 'label' => "Nom de la rue*",
@@ -135,32 +157,6 @@ class BienImmoType extends AbstractType
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
-
-//            ->add('coproName', TextType::class,[
-//                'label' => "Nom de la copropriété",
-//                'attr' => ['class' => 'input is-small has-text-centered'],
-//                'required' => false,
-//            ])
-//            ->add('coproContact', TextType::class,[
-//                'label' => "Contact / Référent",
-//                'attr' => ['class' => 'input is-small has-text-centered'],
-//                'required' => false,
-//            ])
-//            ->add('coproEmail', EmailType::class,[
-//                'label' => "Adresse Email",
-//                'attr' => ['class' => 'input is-small has-text-centered'],
-//                'required' => false,
-//            ])
-//            ->add('coproPhone', TextType::class,[
-//                'label' => "Numéro de téléphone",
-//                'attr' => ['class' => 'input is-small has-text-centered'],
-//                'required' => false,
-//            ])
-//            ->add('coproAdresse', TextType::class,[
-//                'label' => "Adresse postal",
-//                'attr' => ['class' => 'input is-small has-text-centered'],
-//                'required' => false,
-//            ])
 
             ->add('coproName', TextType::class,[
                 'mapped' => false,

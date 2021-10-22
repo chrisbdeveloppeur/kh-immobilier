@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class LocataireType extends AbstractType
@@ -20,9 +21,27 @@ class LocataireType extends AbstractType
     private $logement_fulled = true;
     private $logement_fulled_msg;
     private $current_locataire_id;
+    private $user_id;
+    private $user_context;
 
-    public function __construct(BienImmoRepository $bienImmoRepository)
+    public function __construct(BienImmoRepository $bienImmoRepository, Security $security)
     {
+        $this->user_id = $security->getUser()->getId();
+
+        if (in_array('ROLE_SUPER_ADMIN', $security->getUser()->getRoles())){
+            $this->user_context = function (BienImmoRepository $er){
+                return $er->createQueryBuilder('u')
+                    ->orderBy('u.free', 'ASC');
+            };
+        }else{
+            $this->user_context = function (BienImmoRepository $er){
+
+                return $er->createQueryBuilder('u')
+                    ->where('u.user = '. $this->user_id)
+                    ->orderBy('u.free', 'ASC');
+            };
+        }
+
         $biens_immos = $bienImmoRepository->findAll();
         foreach ($biens_immos as $bien_immo){
             if ($bien_immo->getLocataires()->count() == 0){
@@ -60,10 +79,7 @@ class LocataireType extends AbstractType
                         return 'Logements occupés';
                     }
                 },
-                'query_builder' => function (BienImmoRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.free', 'DESC');
-                },
+                'query_builder' => $this->user_context,
 
             ])
             ->add('last_name', TextType::class,[
