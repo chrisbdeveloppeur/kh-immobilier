@@ -49,7 +49,7 @@ class LocataireType extends AbstractType
             }
         }
         if ($this->logement_fulled == true){
-            $this->logement_fulled_msg = 'Tous les biens immobiliers sont actuellement occupés par un locataire';
+            $this->logement_fulled_msg = 'Aucun logements disponibles';
         }
     }
 
@@ -82,8 +82,8 @@ class LocataireType extends AbstractType
                 'query_builder' => $this->user_context,
 
             ])
-            ->add('last_name', TextType::class,[
-                'label' => 'Nom*',
+            ->add('first_name', TextType::class,[
+                'label' => 'Prénom*',
                 'constraints' => [
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",
@@ -93,8 +93,8 @@ class LocataireType extends AbstractType
                 ],
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
-            ->add('first_name', TextType::class,[
-                'label' => 'Prénom*',
+            ->add('last_name', TextType::class,[
+                'label' => 'Nom*',
                 'constraints' => [
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",

@@ -53,7 +53,7 @@ class BienImmoType extends AbstractType
             }
         }
         if ($this->locataires_housed == true){
-            $this->locataires_housed_msg = 'Tous les locataires sont actuellement logés';
+            $this->locataires_housed_msg = 'Aucun locataires disponibles';
         }
     }
 
