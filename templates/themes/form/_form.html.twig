@@ -294,6 +294,11 @@
                     btnToHide.forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#quittances').classList.add('is-hidden');
                 }
+                if ( li.id === 'copropriete' ){
+                    btnToHide.forEach(el => el.classList.add('is-hidden'));
+                }else {
+                    btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                }
                 notfields.forEach(notfield => notfield.classList.add('is-hidden'));
                 fields.forEach(field => field.classList.remove('is-hidden'));
             })

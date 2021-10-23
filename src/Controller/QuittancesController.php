@@ -57,7 +57,7 @@ class QuittancesController extends AbstractController
             $quittance->setFileName($file);
             $quittance->setLocataire($locataire);
             $quittance->setBienImmo($locataire->getLogement());
-            $quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
+            $quittance->setCreatedDate($form->get('date')->getData());
             $em->persist($quittance);
             $em->flush();
 

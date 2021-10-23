@@ -99,15 +99,21 @@ i.fa-search-js{
   }
 }
 
+.overflow-ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .overflow-ellipsis-100px{
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100px;
 }
 
-.overflow-ellipsis{
+.overflow-ellipsis-200px{
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .show-on-hover-target{

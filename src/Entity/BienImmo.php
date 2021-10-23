@@ -56,10 +56,10 @@ class BienImmo
      */
     private $locataires;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $payment_date;
+//    /**
+//     * @ORM\Column(type="string", nullable=true)
+//     */
+//    private $payment_date;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -124,7 +124,7 @@ class BienImmo
         $copropriete = new Copropriete();
         $copropriete->setBienImmo($this);
         $current_date = new \DateTime('now');
-        $this->payment_date = $current_date->format('d/m/Y');
+//        $this->payment_date = $current_date->format('d/m/Y');
         $this->first_day = '1';
 //        $this->month = \Date('F');
 //        setlocale(LC_TIME, 'fr_FR');
@@ -260,17 +260,17 @@ class BienImmo
         return $this;
     }
 
-    public function getPaymentDate(): ?string
-    {
-        return $this->payment_date;
-    }
-
-    public function setPaymentDate($payment_date): ?string
-    {
-        $this->payment_date = $payment_date;
-
-        return $this;
-    }
+//    public function getPaymentDate(): ?string
+//    {
+//        return $this->payment_date;
+//    }
+//
+//    public function setPaymentDate($payment_date): ?string
+//    {
+//        $this->payment_date = $payment_date;
+//
+//        return $this;
+//    }
 
     public function getFirstDay(): ?string
     {
