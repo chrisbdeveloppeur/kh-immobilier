@@ -2,13 +2,16 @@
 {% if bien_immo.quittances|length == 0 %}
         <i>Aucun quittance de loyer n'a été éditée pour le moment</i>
 {% else %}
-
         {% for quittance in bien_immo.quittances %}
-                <div class="column is-half-desktop px-0 py-0 pb-3">
-                        <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-small {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" target="popup">
-                                <span>
+                <div class="column buttons is-half-desktop px-0 py-0">
+{#                        <a class="button is-small is-static is-light">{{ quittance.createdDate|format_datetime(pattern="EEEE' 'MMMM' 'y", locale='fr') }}</a>#}
+                        <a class="button is-small is-static">{{ quittance.createdDate|format_datetime(pattern="MMMM' 'y", locale='fr')|capitalize }}</a>
+                        <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" class="button is-info is-small {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" target="popup" title="{{ quittance.fileName }}.pdf">
+                                <span class="icon">
+                                        <i class="fas fa-lg fa-file-pdf"></i>
+                                </span>
+                                <span class="overflow-ellipsis-100px">
                                         {{ quittance.fileName }}
-                                        {{ quittance.createdDate|format_datetime(pattern="MMMM'_'EEEE'_'y", locale='fr') }}
                                 </span>
                         </a>
                         <a class="button is-small is-danger is-outlined" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')">

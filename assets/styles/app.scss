@@ -99,6 +99,17 @@ i.fa-search-js{
   }
 }
 
+.overflow-ellipsis-100px{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.overflow-ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .show-on-hover-target{
   //display: inline-block !important;
   visibility: hidden;
