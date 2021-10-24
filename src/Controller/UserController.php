@@ -3,13 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ChangePasswordUserType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/user")
@@ -92,5 +95,38 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/{id}/change-password", name="change_password")
+     */
+    public function changePassword($id, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em): Response
+    {
+        $user = $userRepository->find($id);
+        $form = $this->createForm(ChangePasswordUserType::class, $user);
+        $form->handleRequest($request);
+
+//        $referer = $request->headers->get('referer');
+//        return $this->redirect($referer);
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $oldPassword = $request->request->get('change_password_user')['password'];
+            $newPassword = $form->get('plainPassword')->getData();
+//            dump($oldPassword);
+//            dd($newPassword);
+            if ($encoder->isPasswordValid($user, $oldPassword) && $oldPassword !== $newPassword){
+                dump('Ancient mot de passe VALIDE');
+            }elseif ($oldPassword === $newPassword){
+                dump('Le nouveau mot de passe doit être différent de l\'ancien');
+            }else{
+                dump('L\'ancien mot de passe indiqué est incorrecte');
+            }
+            die();
+
+        }
+
+        return $this->render('user/change_password.html.twig',[
+           'form' => $form->createView(),
+        ]);
     }
 }

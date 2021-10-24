@@ -249,6 +249,10 @@
         {% set validation_button = 'Sauvegarder les modifications' %}
     {% endif %}
 
+    {% if app.request.get('_route') == 'user_edit' %}
+        <a href="{{ path('change_password', {'id': app.user.id }) }}" class="button is-small is-fullwidth is-warning mb-3">Modifier mon mot de passe</a>
+    {% endif %}
+
     <div class="field has-text-centered" id="save">
         <button class="button is-success is-small" id="btn-submit">
             {% if validation_button == 'Editer la quittance' %}

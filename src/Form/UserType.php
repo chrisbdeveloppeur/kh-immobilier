@@ -65,34 +65,32 @@ class UserType extends AbstractType
                 'invalid_message' => 'Ce numéro n\'est pas valide',
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passe ne correspondent pas',
-                'required' => true,
-                'label' => 'Mot de passe',
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'first_options'  => [
-                    'label' => false,
-                    'attr' => ['class' => 'input is-small'],
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'Veuillez indiquer un mot de passe',
-                        ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} charactères',
-                            'max' => 4096,
-                        ]),
-                    ],
-                ],
-                'second_options' => [
-                    'label' => 'Confirmer votre mot de passe',
-                    'attr' => ['class' => 'input is-small'],
-                    ],
-
-
-            ])
+//            ->add('plainPassword', RepeatedType::class, [
+//                'type' => PasswordType::class,
+//                'invalid_message' => 'Les mots de passe ne correspondent pas',
+//                'required' => true,
+//                'label' => 'Mot de passe',
+//                'mapped' => false,
+//                'attr' => ['autocomplete' => 'new-password'],
+//                'first_options'  => [
+//                    'label' => false,
+//                    'attr' => ['class' => 'input is-small'],
+//                    'constraints' => [
+//                        new NotBlank([
+//                            'message' => 'Veuillez indiquer un mot de passe',
+//                        ]),
+//                        new Length([
+//                            'min' => 6,
+//                            'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} charactères',
+//                            'max' => 4096,
+//                        ]),
+//                    ],
+//                ],
+//                'second_options' => [
+//                    'label' => 'Confirmer votre mot de passe',
+//                    'attr' => ['class' => 'input is-small'],
+//                    ],
+//            ])
         ;
     }
 
