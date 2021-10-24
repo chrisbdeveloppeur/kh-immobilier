@@ -106,23 +106,31 @@ class UserController extends AbstractController
         $form = $this->createForm(ChangePasswordUserType::class, $user);
         $form->handleRequest($request);
 
-//        $referer = $request->headers->get('referer');
-//        return $this->redirect($referer);
         if ($form->isSubmitted() && $form->isValid()){
 
             $oldPassword = $request->request->get('change_password_user')['password'];
             $newPassword = $form->get('plainPassword')->getData();
-//            dump($oldPassword);
-//            dd($newPassword);
-            if ($encoder->isPasswordValid($user, $oldPassword) && $oldPassword !== $newPassword){
-                dump('Ancient mot de passe VALIDE');
-            }elseif ($oldPassword === $newPassword){
-                dump('Le nouveau mot de passe doit être différent de l\'ancien');
-            }else{
-                dump('L\'ancien mot de passe indiqué est incorrecte');
-            }
-            die();
 
+            if ($encoder->isPasswordValid($user, $oldPassword) && $oldPassword !== $newPassword) {
+
+                $user->setPassword(
+                    $encoder->encodePassword(
+                        $user,
+                        $newPassword
+                    )
+                );
+
+                $em->persist($user);
+                $em->flush();
+                $this->addFlash('success', 'Votre mot de passe a bien été modifié');
+            }elseif (!$encoder->isPasswordValid($user, $oldPassword)){
+                $this->addFlash('danger', '<b>Echec</b> : l\'ancien mot de passe est incorrect');
+            }elseif ($oldPassword === $newPassword){
+                $this->addFlash('danger', '<b>Echec</b> : le nouveau mot de passe doit être différent de l\'ancien');
+            }
+
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
         }
 
         return $this->render('user/change_password.html.twig',[

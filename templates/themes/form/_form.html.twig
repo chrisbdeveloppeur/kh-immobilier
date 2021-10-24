@@ -236,6 +236,21 @@
                 </span>
             {% endif %}
 
+{#            {{ dump(child.vars.children) }}#}
+            {% for sub_child in child.children %}
+                {% if form_errors(sub_child) %}
+                    <span class="tag is-danger">
+                        {{ form_errors(sub_child) }}
+                    </span>
+                {% endif %}
+            {% endfor %}
+{#            {% if not child.vars.valid %}#}
+{#                {{ dump(child.children) }}#}
+{#                <span class="tag is-danger">#}
+{#                    {{ dump(child.vars) }}#}
+{#                </span>#}
+{#            {% endif %}#}
+
         </div>
     {% endfor %}
 
