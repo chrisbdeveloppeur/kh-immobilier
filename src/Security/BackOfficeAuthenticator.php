@@ -69,9 +69,8 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
-
         if (!$user) {
-            throw new UsernameNotFoundException('Email introuvable.');
+            throw new CustomUserMessageAuthenticationException('Email incorrecte ou non enregistrée');
         }
 
         return $user;
@@ -82,8 +81,11 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
         if (!$user->isVerified()) {
             throw new CustomUserMessageAuthenticationException('Veuillez valider votre inscription via le mail de confirmation avant de pouvoir vous connecter');
         }
+        if (!$this->passwordEncoder->isPasswordValid($user,$credentials['password'])){
+            throw new CustomUserMessageAuthenticationException('Mot de passe incorrecte');
+        }
 
-            return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
     /**
