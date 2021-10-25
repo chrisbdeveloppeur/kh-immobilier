@@ -32,6 +32,7 @@ class ChangePasswordUserType extends AbstractType
 //                'row_attr' => ['class' => 'field'],
                 'first_options'  => [
                     'label' => false,
+                    'error_bubbling' => true,
                     'attr' => [
                         'class' => 'input is-small has-text-centered mb-2',
                         'placeholder' => 'Entrer mon nouveau mot de passe',
@@ -39,6 +40,7 @@ class ChangePasswordUserType extends AbstractType
                 ],
                 'second_options' => [
                     'label' => false,
+                    'error_bubbling' => false,
                     'attr' => [
                         'class' => 'input is-small has-text-centered',
                         'placeholder' => 'Confirmer mon nouveau mot de passe',
@@ -48,7 +50,7 @@ class ChangePasswordUserType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les nouveaux mots de passe ne correspondent pas',
                 'required' => true,
-//                'error_bubbling' => true,
+                'error_bubbling' => false,
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez remplir ce champ.']),
                     new Length([
