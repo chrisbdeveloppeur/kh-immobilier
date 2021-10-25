@@ -17,17 +17,17 @@ class ChangePasswordUserType extends AbstractType
     {
         $builder
             ->add('password', PasswordType::class,[
-                'label' => 'Entrer mon ancien mot de passe',
+                'label' => 'Mon ancien mot de passe',
                 'attr' => [
                     'class' => 'input is-small has-text-centered',
-                    'placeholder' => 'Mon ancien mot de passe',
+                    'placeholder' => 'Entrer mon ancien mot de passe',
                 ],
                     'mapped' => false,
                 ]
             )
 
             ->add('plainPassword', RepeatedType::class, [
-                'label' => 'Indiquer mon nouveau mot de passe',
+                'label' => 'Mon nouveau mot de passe',
                 'attr' => ['class' => 'field'],
 //                'row_attr' => ['class' => 'field'],
                 'first_options'  => [
