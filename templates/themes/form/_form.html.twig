@@ -2,13 +2,13 @@
     {% set locataire_twig = bien_immo.locataires.current %}
     {% set bien_immo_class = 'bien-immo' %}
 
-    {% if 'copro' in child.vars.name %}
-        {% set field_bien_immo_class = 'copropriete' %}
-    {% elseif 'logement' in child.vars.name %}
-        {% set field_bien_immo_class = 'logement' %}
-    {% elseif 'prestataire' in child.vars.name %}
-        {% set field_bien_immo_class = 'prestataire' %}
-    {% endif %}
+{#    {% if 'copro' in child.vars.name %}#}
+{#        {% set field_bien_immo_class = 'copropriete' %}#}
+{#    {% elseif 'logement' in child.vars.name %}#}
+{#        {% set field_bien_immo_class = 'logement' %}#}
+{#    {% elseif 'prestataire' in child.vars.name %}#}
+{#        {% set field_bien_immo_class = 'prestataire' %}#}
+{#    {% endif %}#}
 
 {% elseif form.vars.name == 'locataire' %}
     {% set locataire_twig = locataire %}
@@ -107,6 +107,12 @@
         </div>
         {% endif %}
 
+{% if form.vars.name in ['bien_immo'] %}
+    <div id="prestataires" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+        {{ include('immo/quittances/quittances_liste.html.twig') }}
+    </div>
+{% endif %}
+
 <div class="column is-flex is-justify-content-center">
 
     {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading()'} }) }}
@@ -130,7 +136,17 @@
     {% endif %}
 
     {% for child in form %}
-        <div class="field {% if form.vars.name == 'bien_immo' %} is-hidden {{ field_bien_immo_class }} {{ bien_immo_class }}{% endif %}">
+
+        {% set field_bien_immo_class = '' %}
+        {% if 'copro' in child.vars.name %}
+            {% set field_bien_immo_class = 'copropriete is-hidden' %}
+        {% elseif 'prestataire' in child.vars.name %}
+            {% set field_bien_immo_class = 'prestataire is-hidden' %}
+        {% else %}
+            {% set field_bien_immo_class = 'logement' %}
+        {% endif %}
+
+        <div class="field {% if form.vars.name == 'bien_immo' %} {{ field_bien_immo_class }} {{ bien_immo_class }}{% endif %}">
 
             {% if 'token' not in form_label(child) %}
                 <div class="label is-size-7">
@@ -304,7 +320,7 @@
         {% set validation_button = 'Sauvegarder les modifications' %}
     {% endif %}
 
-    <div class="field has-text-centered" id="save">
+    <div class="field has-text-centered btn-to-hide" id="save">
         <button class="button is-success is-small" id="btn-submit">
             {% if validation_button == 'Editer la quittance' %}
             <span class="icon">
@@ -333,6 +349,7 @@
 
 {#     ############   SCRIPT FOR TABS BIEN_IMMO   #############     #}
 <script>
+
     let tabs = document.querySelectorAll('.tabs').forEach(function (elem) {
         let lis = elem.querySelectorAll('li');
         lis.forEach(function (li) {
@@ -341,6 +358,7 @@
                 console.log(fields);
                 let notfields = document.querySelectorAll('.bien-immo');
                 let btnToHide = document.querySelectorAll('.btn-to-hide');
+                let btnToShow = document.querySelectorAll('.btn-to-show')
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
 
@@ -360,8 +378,10 @@
 
                 if ( li.id === 'prestataire' ){
                     btnToHide.forEach(el => el.classList.add('is-hidden'));
+                    document.querySelector('div#prestataires').classList.remove('is-hidden');
                 }else {
                     btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                    document.querySelector('div#prestataires').classList.add('is-hidden');
                 }
 
                 notfields.forEach(notfield => notfield.classList.add('is-hidden'));
@@ -369,6 +389,8 @@
             })
         })
     })
+
+
 </script>
 {#     ######################################################     #}
 

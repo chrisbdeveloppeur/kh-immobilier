@@ -16,20 +16,8 @@ class AppFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-//        for ($i = 0; $i<= 10; $i++){
-//            $bien = new BienImmo();
-//            $bien->setBuilding($faker->streetSuffix);
-//            $bien->setStreet($faker->streetAddress);
-//            $bien->setCp($faker->postcode);
-//            $bien->setCity($faker->city);
-//            $bien->setLoyerHc($faker->numberBetween(300,1200));
-//            $bien->setCharges($faker->numberBetween(50,300));
-//        }
-
-//        $this->setLocataire($faker,);
-//        $this->setBien();
-
-        /*$locataire = $this->setLocataire('Couple','Axel et Laurine','MAKAGNON','axel.makagnon@gmail.com','Espèces');
+/*
+        $locataire = $this->setLocataire('Couple','Axel et Laurine','MAKAGNON','axel.makagnon@gmail.com','Espèces');
         $bien = $this->setBien($locataire,'4 Place Vaillant couturier','91100','Corbeil-Essonnes','800','200','7','T4','FONCIA','80');
         $manager->persist($locataire);
         $manager->persist($bien);

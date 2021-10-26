@@ -1,0 +1,21 @@
+
+{% if bien_immo.prestataire|length == 0 %}
+        <i>Aucun prestataires n'a été enregistrer pour l'instant</i>
+{% else %}
+        {% for quittance in bien_immo.prestataire|sort %}
+                <div class="tags are-normal has-addons">
+                        <span class="tag is-dark">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+                        <a class="tag is-light {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" onclick="window.open(this.href, '_blank','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+                                <span class="icon">
+                                        <i class="fas fa-lg fa-file-pdf"></i>
+                                </span>
+                                <span class="overflow-ellipsis-200px">
+                                        {{ quittance.fileName }}
+                                </span>
+                        </a>
+                        <a class="tag is-delete" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')"></a>
+                </div>
+        {% endfor %}
+
+{% endif %}
+
