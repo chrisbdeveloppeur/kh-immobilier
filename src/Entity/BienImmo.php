@@ -56,11 +56,6 @@ class BienImmo
      */
     private $locataires;
 
-//    /**
-//     * @ORM\Column(type="string", nullable=true)
-//     */
-//    private $payment_date;
-
     /**
      * @ORM\Column(type="string", nullable=true)
      */
@@ -117,14 +112,17 @@ class BienImmo
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Prestataire::class, mappedBy="bienImmo")
+     */
+    private $prestataire;
+
 
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
         $copropriete = new Copropriete();
         $copropriete->setBienImmo($this);
-        $current_date = new \DateTime('now');
-//        $this->payment_date = $current_date->format('d/m/Y');
         $this->first_day = '1';
 //        $this->month = \Date('F');
 //        setlocale(LC_TIME, 'fr_FR');
@@ -139,6 +137,7 @@ class BienImmo
         $this->setSuperficie(0);
         $this->solde = $solde;
         $this->setFree(true);
+        $this->prestataire = new ArrayCollection();
     }
 
     public function __toString()
@@ -448,6 +447,36 @@ public function getUser(): ?User
 public function setUser(?User $user): self
 {
     $this->user = $user;
+
+    return $this;
+}
+
+/**
+ * @return Collection|Prestataire[]
+ */
+public function getPrestataire(): Collection
+{
+    return $this->prestataire;
+}
+
+public function addPrestataire(Prestataire $prestataire): self
+{
+    if (!$this->prestataire->contains($prestataire)) {
+        $this->prestataire[] = $prestataire;
+        $prestataire->setBienImmo($this);
+    }
+
+    return $this;
+}
+
+public function removePrestataire(Prestataire $prestataire): self
+{
+    if ($this->prestataire->removeElement($prestataire)) {
+        // set the owning side to null (unless already changed)
+        if ($prestataire->getBienImmo() === $this) {
+            $prestataire->setBienImmo(null);
+        }
+    }
 
     return $this;
 }

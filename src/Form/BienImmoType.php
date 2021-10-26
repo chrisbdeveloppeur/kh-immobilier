@@ -158,6 +158,8 @@ class BienImmoType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
 
+
+            // FORM FIELDS FOR COPROPRIETE RELATION ENTITY
             ->add('coproName', TextType::class,[
                 'mapped' => false,
                 'label' => "Nom de la copropriété",
@@ -183,6 +185,39 @@ class BienImmoType extends AbstractType
                 'required' => false,
             ])
             ->add('coproAdresse', TextType::class,[
+                'mapped' => false,
+                'label' => "Adresse postal",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+
+
+            // FORM FIELDS FOR PRESTATAIRE RELATION ENTITY
+            ->add('prestataireName', TextType::class,[
+                'mapped' => false,
+                'label' => "Nom de la copropriété",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('prestataireContact', TextType::class,[
+                'mapped' => false,
+                'label' => "Contact / Référent",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('prestataireEmail', EmailType::class,[
+                'mapped' => false,
+                'label' => "Adresse Email",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('prestatairePhone', TextType::class,[
+                'mapped' => false,
+                'label' => "Numéro de téléphone",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('prestataireAdresse', TextType::class,[
                 'mapped' => false,
                 'label' => "Adresse postal",
                 'attr' => ['class' => 'input is-small has-text-centered'],

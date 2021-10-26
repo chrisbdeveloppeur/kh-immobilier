@@ -1,7 +1,15 @@
 {% if form.vars.name == 'bien_immo' %}
     {% set locataire_twig = bien_immo.locataires.current %}
     {% set bien_immo_class = 'bien-immo' %}
-    {% set logement_class = 'logement' %}
+
+    {% if 'copro' in child.vars.name %}
+        {% set field_bien_immo_class = 'copropriete' %}
+    {% elseif 'logement' in child.vars.name %}
+        {% set field_bien_immo_class = 'logement' %}
+    {% elseif 'prestataire' in child.vars.name %}
+        {% set field_bien_immo_class = 'prestataire' %}
+    {% endif %}
+
 {% elseif form.vars.name == 'locataire' %}
     {% set locataire_twig = locataire %}
 {% endif %}
@@ -24,6 +32,15 @@
                             <i class="fas fa-users" aria-hidden="true"></i>
                         </span>
                         <span>Copropriété</span>
+                    </a>
+                </li>
+
+                <li id="prestataire">
+                    <a>
+                        <span class="icon is-small">
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>
+                        </span>
+                        <span>Prestataires</span>
                     </a>
                 </li>
 
@@ -113,7 +130,7 @@
     {% endif %}
 
     {% for child in form %}
-        <div class="field {% if form.vars.name == 'bien_immo' %}{% if 'copro' in child.vars.name %} is-hidden copropriete{% else %} {{ logement_class }}{% endif %} {{ bien_immo_class }}{% endif %}">
+        <div class="field {% if form.vars.name == 'bien_immo' %} is-hidden {{ field_bien_immo_class }} {{ bien_immo_class }}{% endif %}">
 
             {% if 'token' not in form_label(child) %}
                 <div class="label is-size-7">
@@ -321,10 +338,12 @@
         lis.forEach(function (li) {
             li.addEventListener('click', function () {
                 let fields = document.querySelectorAll('.'+li.id);
+                console.log(fields);
                 let notfields = document.querySelectorAll('.bien-immo');
                 let btnToHide = document.querySelectorAll('.btn-to-hide');
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
+
                 if ( li.id === 'quittances' ){
                     btnToHide.forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#quittances').classList.remove('is-hidden');
@@ -332,11 +351,19 @@
                     btnToHide.forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#quittances').classList.add('is-hidden');
                 }
+
                 if ( li.id === 'copropriete' ){
                     btnToHide.forEach(el => el.classList.add('is-hidden'));
                 }else {
                     btnToHide.forEach(el => el.classList.remove('is-hidden'));
                 }
+
+                if ( li.id === 'prestataire' ){
+                    btnToHide.forEach(el => el.classList.add('is-hidden'));
+                }else {
+                    btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                }
+
                 notfields.forEach(notfield => notfield.classList.add('is-hidden'));
                 fields.forEach(field => field.classList.remove('is-hidden'));
             })
