@@ -1,20 +1,37 @@
 
+<div class="column is-flex is-justify-content-center">
 {% if bien_immo.prestataire|length == 0 %}
         <i>Aucun prestataire n'a été enregistré pour l'instant</i>
 {% else %}
         {% for prestataire in bien_immo.prestataire|sort %}
-                <div class="tags are-normal has-addons">
-                        <a class="tag is-light" title="" href="#">
-{#                                <span class="icon">#}
-{#                                        <i class="fas fa-lg fa-file-pdf"></i>#}
-{#                                </span>#}
-                                <span class="overflow-ellipsis-200px">
-                                        {{ prestataire.name }}
-                                </span>
-                        </a>
-                        <a class="tag is-delete" href="{{ path('remove_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')"></a>
+                <div class="card">
+                        <header class="card-header">
+                                <p class="card-header-title">
+                                        Component
+                                </p>
+                                <button class="card-header-icon" aria-label="more options">
+                                      <span class="icon">
+                                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                      </span>
+                                </button>
+                        </header>
+                        <div class="card-content">
+                                <div class="content">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                                        <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+                                        <br>
+                                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                                </div>
+                        </div>
+                        <footer class="card-footer">
+                                <a href="#" class="card-footer-item">Save</a>
+                                <a href="#" class="card-footer-item">Edit</a>
+{#                                <a href="#" class="card-footer-item">Delete</a>#}
+                                <a class="card-footer-item" href="{{ path('remove_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')">Retirer</a>
+                        </footer>
                 </div>
+
         {% endfor %}
 
 {% endif %}
-
+</div>

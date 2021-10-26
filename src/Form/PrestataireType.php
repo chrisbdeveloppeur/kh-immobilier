@@ -53,7 +53,7 @@ class PrestataireType extends AbstractType
             ])
             ->add('infos', TextareaType::class,[
                 'label' => "Information complémentaire",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'textarea is-small has-text-centered'],
                 'required' => false,
             ])
         ;

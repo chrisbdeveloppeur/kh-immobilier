@@ -284,10 +284,10 @@
 
     {#     IS-LOADING     #}
     <script>
-        function isLoading() {
-            let btn = document.getElementById('btn-submit');
-            if (btn) {
-                btn.classList.add('is-loading');
+        function isLoading(el) {
+            let btn = el.getElementsByClassName('btn-submit');
+            if (btn[0]) {
+                btn[0].classList.add('is-loading');
             }
         }
     </script>

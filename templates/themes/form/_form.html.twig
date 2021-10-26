@@ -108,14 +108,78 @@
         {% endif %}
 
     {% if 'bien_immo' in app.request.get('_route') %}
-        <div class="column is-flex is-justify-content-center pb-0 prestataire is-hidden">
-            <a href="{{ path('new_prestataire', {'id': bien_immo.id}) }}" class="button is-info is-small">
+        <div class="prestataire is-hidden">
+            <div class="column is-flex is-justify-content-center pb-0 prestataire is-hidden" onclick="this.nextElementSibling.classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
+                <a href="#" class="button is-info is-small">
                 <span class="icon">
-                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-lg fa-angle-down"></i>
                 </span>
-                <span>Ajouter un prestataire</span>
-            </a>
+                    <span>Ajouter un prestataire</span>
+                </a>
+            </div>
+
+            <div class="column is-flex is-justify-content-center is-hidden">
+                {{ form_start(form_prestataire, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form_prestataire', 'onsubmit':'isLoading(this)'} }) }}
+
+                {% for child in form_prestataire %}
+                    <div class="field">
+                        {% if 'token' not in form_label(child) %}
+                            <div class="label is-size-7">
+                                {{ form_label(child) }}
+                            </div>
+                        {% endif %}
+
+                        {% if child.vars.block_prefixes[1] == 'choice' %}
+                            <div class="select is-small is-fullwidth">
+                                {{ form_widget(child) }}
+                            </div>
+                        {% else %}
+                            {{ form_widget(child) }}
+                        {% endif %}
+
+                        {% if form_help(child) %}
+                            <span class="help is-info mt-0">
+                                <span class="icon-text" style="flex-wrap: nowrap">
+                                    <span class="icon">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                    <span>{{ form_help(child) }}</span>
+                                </span>
+                             </span>
+                        {% endif %}
+
+                        {% if form_errors(child) %}
+                            <span class="tag is-danger">
+                                {{ form_errors(child) }}
+                            </span>
+                        {% endif %}
+
+                        {% for sub_child in child.children %}
+                            {% if form_errors(sub_child) %}
+                                <span class="tag is-danger">
+                                    {{ form_errors(sub_child) }}
+                                </span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                <div class="field has-text-centered">
+                    <button class="button is-success is-small btn-submit">
+                            <span class="icon">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        <span>Valider</span>
+                    </button>
+                </div>
+                {{ form_end(form_prestataire) }}
+            </div>
+
+            {{ include('includes/prestataires_liste.html.twig') }}
+
         </div>
+
+
     {% endif %}
 
 {% if form.vars.name in ['bien_immo'] %}
@@ -132,7 +196,7 @@
 
 <div class="column is-flex is-justify-content-center">
 
-    {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading()'} }) }}
+    {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
 
@@ -341,7 +405,7 @@
     {% endif %}
 
     <div class="field has-text-centered btn-to-hide" id="save">
-        <button class="button is-success is-small" id="btn-submit">
+        <button class="button is-success is-small btn-submit">
             {% if validation_button == 'Editer la quittance' %}
             <span class="icon">
                 <i class="fas fa-file-pdf"></i>
@@ -390,8 +454,11 @@
                 }
 
                 if ( li.id === 'prestataire' ){
-                    document.querySelectorAll('.prestataire').forEach(el => el.classList.remove('is-hidden'));
-                    document.querySelector('div#prestataires').classList.remove('is-hidden');
+                    document.querySelectorAll('.prestataire').forEach(function (el) {
+                        if (el.previousElementSibling && el.previousElementSibling.querySelector('i').classList.contains('fa-angle-down')){
+                            el.classList.add('is-hidden');
+                        }
+                    });
                 }else {
                     document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#prestataires').classList.add('is-hidden');

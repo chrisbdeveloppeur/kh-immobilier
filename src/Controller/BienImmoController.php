@@ -125,6 +125,9 @@ class BienImmoController extends AbstractController
         $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
         $form->get('locataires')->setData($locataire);
 
+        $prestataire = new Prestataire();
+        $form_prestataire = $this->createForm(PrestataireType::class, $prestataire);
+
         if (!$bienImmo->getCopropriete()){
             $bienImmo->setCopropriete(new Copropriete());
         }else{
@@ -132,7 +135,6 @@ class BienImmoController extends AbstractController
         }
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->editCopropriete($bienImmo,$form);
             $solde = $form->get('solde')->getData();
@@ -153,6 +155,18 @@ class BienImmoController extends AbstractController
             return $this->redirect($referer);
         }
 
+        $form_prestataire->handleRequest($request);
+        if ($form_prestataire->isSubmitted() && $form_prestataire->isValid()){
+            $name = $form_prestataire->get('name')->getData();
+            $bienImmo->addPrestataire($form_prestataire->getData());
+            $em->persist($form_prestataire->getData());
+            $em->flush();
+
+            $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$bienImmo.'</b>');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }
+
 
 
 //        Supression de la data Quittance en BDD si le fichier n'existe pas
@@ -169,6 +183,7 @@ class BienImmoController extends AbstractController
         return $this->render('bien_immo/edit.html.twig', [
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
+            'form_prestataire' => $form_prestataire->createView(),
         ]);
     }
 
