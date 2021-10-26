@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -199,6 +200,17 @@ class BienImmoType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
+            ->add('prestataireType', ChoiceType::class,[
+                'mapped' => false,
+                'label' => "Type",
+                'choices' => [
+                    'Plombier' => 'Plombier',
+                    'Electricien' => 'Electricien',
+                    'Assurance habitation' => 'Assurance habitation',
+                ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
             ->add('prestataireContact', TextType::class,[
                 'mapped' => false,
                 'label' => "Contact / Référent",
@@ -220,6 +232,12 @@ class BienImmoType extends AbstractType
             ->add('prestataireAdresse', TextType::class,[
                 'mapped' => false,
                 'label' => "Adresse postal",
+                'attr' => ['class' => 'input is-small has-text-centered'],
+                'required' => false,
+            ])
+            ->add('prestataireInfos', TextareaType::class,[
+                'mapped' => false,
+                'label' => "Information complémentaire",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])

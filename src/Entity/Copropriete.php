@@ -47,6 +47,11 @@ class Copropriete
      */
     private $bienImmo;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $infos;
+
 
     public function __toString()
     {
@@ -136,6 +141,18 @@ class Copropriete
         }
 
         $this->bienImmo = $bienImmo;
+
+        return $this;
+    }
+
+    public function getInfos(): ?string
+    {
+        return $this->infos;
+    }
+
+    public function setInfos(?string $infos): self
+    {
+        $this->infos = $infos;
 
         return $this;
     }
