@@ -52,6 +52,11 @@ class Prestataire
      */
     private $adresse;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $infos;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +142,18 @@ class Prestataire
     public function setAdresse(?string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getInfos(): ?string
+    {
+        return $this->infos;
+    }
+
+    public function setInfos(?string $infos): self
+    {
+        $this->infos = $infos;
 
         return $this;
     }

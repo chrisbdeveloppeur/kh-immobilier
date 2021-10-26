@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\BienImmo;
 use App\Entity\Copropriete;
+use App\Entity\Prestataire;
 use App\Form\BienImmoType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
@@ -121,11 +122,13 @@ class BienImmoController extends AbstractController
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
         $form->get('locataires')->setData($locataire);
+
         if (!$bienImmo->getCopropriete()){
             $bienImmo->setCopropriete(new Copropriete());
         }else{
             $this->initCoproprieteForm($bienImmo, $form);
         }
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -232,7 +235,20 @@ class BienImmoController extends AbstractController
         return $this->redirect($referer);
     }
 
+    /**
+     * @return Response
+     * @Route("/{id}/add-prestataire", name="add_prestataire", methods={"GET","POST"})
+     */
+    public function addPrestataire($id, Request $request, BienImmoRepository $bienImmoRepository): Response
+    {
 
+        $name = 'Prestataire';
+        $logement = $bienImmoRepository->find($id);
+
+        $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
+    }
 
 
     private function editCopropriete($bienImmo, $form){
@@ -252,4 +268,5 @@ class BienImmoController extends AbstractController
         $form->get("coproPhone")->setData($bienImmo->getCopropriete()->getPhone());
         return $form;
     }
+
 }

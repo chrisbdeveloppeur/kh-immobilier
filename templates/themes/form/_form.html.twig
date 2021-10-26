@@ -109,7 +109,7 @@
 
 {% if form.vars.name in ['bien_immo'] %}
     <div id="prestataires" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-        {{ include('immo/quittances/quittances_liste.html.twig') }}
+        {{ include('includes/prestataires_liste.html.twig') }}
     </div>
 {% endif %}
 
@@ -320,6 +320,18 @@
         {% set validation_button = 'Sauvegarder les modifications' %}
     {% endif %}
 
+
+    {% if 'bien_immo' in app.request.get('_route') %}
+        <div class="field has-text-centered btn-to-show">
+            <a href="{{ path('add_prestataire', {'id': bien_immo.id}) }}" class="button is-info is-small">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>Ajouter un prestataire</span>
+            </a>
+        </div>
+    {% endif %}
+
     <div class="field has-text-centered btn-to-hide" id="save">
         <button class="button is-success is-small" id="btn-submit">
             {% if validation_button == 'Editer la quittance' %}
@@ -377,10 +389,10 @@
                 }
 
                 if ( li.id === 'prestataire' ){
-                    // btnToHide.forEach(el => el.classList.add('is-hidden'));
+                    btnToShow.forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#prestataires').classList.remove('is-hidden');
                 }else {
-                    // btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                    btnToShow.forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#prestataires').classList.add('is-hidden');
                 }
 

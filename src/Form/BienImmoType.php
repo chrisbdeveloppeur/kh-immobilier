@@ -194,53 +194,53 @@ class BienImmoType extends AbstractType
 
 
             // FORM FIELDS FOR PRESTATAIRE RELATION ENTITY
-            ->add('prestataireName', TextType::class,[
-                'mapped' => false,
-                'label' => "Titre du prestataire",
-                'attr' => ['class' => 'input is-small has-text-centered'],
-                'required' => false,
-            ])
-            ->add('prestataireType', ChoiceType::class,[
-                'mapped' => false,
-                'label' => "Type",
-                'choices' => [
-                    'Plombier' => 'Plombier',
-                    'Electricien' => 'Electricien',
-                    'Assurance habitation' => 'Assurance habitation',
-                ],
-                'attr' => ['class' => 'input is-small has-text-centered'],
-                'required' => false,
-            ])
-            ->add('prestataireContact', TextType::class,[
-                'mapped' => false,
-                'label' => "Contact / Référent",
-                'attr' => ['class' => 'input is-small has-text-centered'],
-                'required' => false,
-            ])
-            ->add('prestataireEmail', EmailType::class,[
-                'mapped' => false,
-                'label' => "Adresse Email",
-                'attr' => ['class' => 'input is-small has-text-centered'],
-                'required' => false,
-            ])
-            ->add('prestatairePhone', TextType::class,[
-                'mapped' => false,
-                'label' => "Numéro de téléphone",
-                'attr' => ['class' => 'input is-small has-text-centered'],
-                'required' => false,
-            ])
-            ->add('prestataireAdresse', TextType::class,[
-                'mapped' => false,
-                'label' => "Adresse postal",
-                'attr' => ['class' => 'input is-small has-text-centered'],
-                'required' => false,
-            ])
-            ->add('prestataireInfos', TextareaType::class,[
-                'mapped' => false,
-                'label' => "Information complémentaire",
-                'attr' => ['class' => 'input is-small has-text-centered'],
-                'required' => false,
-            ])
+//            ->add('prestataireName', TextType::class,[
+//                'mapped' => false,
+//                'label' => "Titre du prestataire",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('prestataireType', ChoiceType::class,[
+//                'mapped' => false,
+//                'label' => "Type",
+//                'choices' => [
+//                    'Plombier' => 'Plombier',
+//                    'Electricien' => 'Electricien',
+//                    'Assurance habitation' => 'Assurance habitation',
+//                ],
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('prestataireContact', TextType::class,[
+//                'mapped' => false,
+//                'label' => "Contact / Référent",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('prestataireEmail', EmailType::class,[
+//                'mapped' => false,
+//                'label' => "Adresse Email",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('prestatairePhone', TextType::class,[
+//                'mapped' => false,
+//                'label' => "Numéro de téléphone",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('prestataireAdresse', TextType::class,[
+//                'mapped' => false,
+//                'label' => "Adresse postal",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
+//            ->add('prestataireInfos', TextareaType::class,[
+//                'mapped' => false,
+//                'label' => "Information complémentaire",
+//                'attr' => ['class' => 'input is-small has-text-centered'],
+//                'required' => false,
+//            ])
         ;
     }
 
