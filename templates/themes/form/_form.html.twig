@@ -93,23 +93,40 @@
 {% endif %}
 
         {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
-        <div class="column is-flex is-justify-content-center pb-0">
-            <div class="field has-text-centered">
-                <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" title="Editer une quittance de loyer pour {{ locataire_twig }}">
-                    <span class="icon">
-                        <i class="fas fa-lg fa-file-signature"></i>
-                    </span>
-                    <span>
-                        Editer une quittance
-                    </span>
-                </a>
+            <div class="column is-flex is-justify-content-center pb-0 quittance is-hidden">
+                <div class="field has-text-centered">
+                    <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+                        <span class="icon">
+                            <i class="fas fa-lg fa-file-signature"></i>
+                        </span>
+                        <span>
+                            Editer une quittance
+                        </span>
+                    </a>
+                </div>
             </div>
-        </div>
         {% endif %}
+
+    {% if 'bien_immo' in app.request.get('_route') %}
+        <div class="column is-flex is-justify-content-center pb-0 prestataire is-hidden">
+            <a href="{{ path('new_prestataire', {'id': bien_immo.id}) }}" class="button is-info is-small">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>Ajouter un prestataire</span>
+            </a>
+        </div>
+    {% endif %}
 
 {% if form.vars.name in ['bien_immo'] %}
     <div id="prestataires" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
         {{ include('includes/prestataires_liste.html.twig') }}
+    </div>
+{% endif %}
+
+{% if form.vars.name in ['bien_immo'] %}
+    <div id="quittances" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+        {{ include('immo/quittances/quittances_liste.html.twig') }}
     </div>
 {% endif %}
 
@@ -323,18 +340,6 @@
         {% set validation_button = 'Sauvegarder les modifications' %}
     {% endif %}
 
-
-    {% if 'bien_immo' in app.request.get('_route') %}
-        <div class="field has-text-centered btn-to-show">
-            <a href="{{ path('new_prestataire', {'id': bien_immo.id}) }}" class="button is-info is-small">
-                <span class="icon">
-                    <i class="fas fa-plus"></i>
-                </span>
-                <span>Ajouter un prestataire</span>
-            </a>
-        </div>
-    {% endif %}
-
     <div class="field has-text-centered btn-to-hide" id="save">
         <button class="button is-success is-small" id="btn-submit">
             {% if validation_button == 'Editer la quittance' %}
@@ -352,11 +357,7 @@
 
 </div>
 
-{% if form.vars.name in ['bien_immo'] %}
-    <div id="quittances" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-        {{ include('immo/quittances/quittances_liste.html.twig') }}
-    </div>
-{% endif %}
+
 
 
 
@@ -370,18 +371,15 @@
         lis.forEach(function (li) {
             li.addEventListener('click', function () {
                 let fields = document.querySelectorAll('.'+li.id);
-                console.log(fields);
                 let notfields = document.querySelectorAll('.bien-immo');
-                let btnToHide = document.querySelectorAll('.btn-to-hide');
-                let btnToShow = document.querySelectorAll('.btn-to-show');
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
 
                 if ( li.id === 'quittances' ){
-                    btnToHide.forEach(el => el.classList.add('is-hidden'));
+                    document.querySelectorAll('.quittance').forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#quittances').classList.remove('is-hidden');
                 }else {
-                    btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                    document.querySelectorAll('.quittance').forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#quittances').classList.add('is-hidden');
                 }
 
@@ -392,10 +390,10 @@
                 }
 
                 if ( li.id === 'prestataire' ){
-                    btnToShow.forEach(el => el.classList.remove('is-hidden'));
+                    document.querySelectorAll('.prestataire').forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#prestataires').classList.remove('is-hidden');
                 }else {
-                    btnToShow.forEach(el => el.classList.add('is-hidden'));
+                    document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#prestataires').classList.add('is-hidden');
                 }
 

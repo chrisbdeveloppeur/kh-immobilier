@@ -283,9 +283,6 @@ class BienImmoController extends AbstractController
         $referer = $request->headers->get('referer');
         return $this->redirect($referer);
 
-//        return $this->render('includes/edit_prestataire_form.html.twig',[
-//            'form' => $form->createView(),
-//        ]);
     }
 
 
