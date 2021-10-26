@@ -6,6 +6,7 @@ use App\Entity\BienImmo;
 use App\Entity\Copropriete;
 use App\Entity\Prestataire;
 use App\Form\BienImmoType;
+use App\Form\PrestataireType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
@@ -236,18 +237,33 @@ class BienImmoController extends AbstractController
     }
 
     /**
-     * @return Response
-     * @Route("/{id}/add-prestataire", name="add_prestataire", methods={"GET","POST"})
+     * @Route("/{id}/new-prestataire", name="new_prestataire", methods={"GET","POST"})
      */
-    public function addPrestataire($id, Request $request, BienImmoRepository $bienImmoRepository): Response
+    public function addPrestataire($id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
-
-        $name = 'Prestataire';
         $logement = $bienImmoRepository->find($id);
+        $prestataire = new Prestataire();
+        $form = $this->createForm(PrestataireType::class);
+        $form->handleRequest($request);
+        $name = $form->get('name')->getData();
 
-        $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
-        $referer = $request->headers->get('referer');
-        return $this->redirect($referer);
+        if ($form->isSubmitted() && $form->isValid()){
+            $logement->addPrestataire($prestataire);
+            $em->persist($prestataire);
+            $em->flush();
+
+            $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
+            return $this->redirectToRoute('bien_immo_edit',[
+                'id' => $id,
+            ]);
+        }
+
+//        $referer = $request->headers->get('referer');
+//        return $this->redirect($referer);
+
+        return $this->render('includes/edit_prestataire_form.html.twig',[
+           'form' => $form->createView(),
+        ]);
     }
 
 

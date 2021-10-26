@@ -57,6 +57,16 @@ class Prestataire
      */
     private $infos;
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+//    public function __construct()
+//    {
+//
+//    }
+
     public function getId(): ?int
     {
         return $this->id;

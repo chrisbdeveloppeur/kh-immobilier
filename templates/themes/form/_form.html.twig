@@ -310,12 +310,15 @@
         </div>
     {% endfor %}
 
+{#    {{ app.request.get('_route') }}#}
     {% if 'new' in app.request.get('_route') %}
         {% if 'quittances' in app.request.get('_route') %}
             {% set validation_button = 'Editer la quittance' %}
         {% else %}
             {% set validation_button = 'Valider' %}
         {% endif %}
+    {% elseif 'new_prestataire' in app.request.get('_route') %}
+        {% set validation_button = 'Ajouter le prestataire' %}
     {% else %}
         {% set validation_button = 'Sauvegarder les modifications' %}
     {% endif %}
@@ -323,7 +326,7 @@
 
     {% if 'bien_immo' in app.request.get('_route') %}
         <div class="field has-text-centered btn-to-show">
-            <a href="{{ path('add_prestataire', {'id': bien_immo.id}) }}" class="button is-info is-small">
+            <a href="{{ path('new_prestataire', {'id': bien_immo.id}) }}" class="button is-info is-small">
                 <span class="icon">
                     <i class="fas fa-plus"></i>
                 </span>
