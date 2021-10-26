@@ -47,6 +47,11 @@ class Prestataire
      */
     private $bienImmo;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Prestataire
     public function setBienImmo(?BienImmo $bienImmo): self
     {
         $this->bienImmo = $bienImmo;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
