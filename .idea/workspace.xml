@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BienImmoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BienImmoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PrestataireType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PrestataireType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/themes/form/_form.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="184" column="40" lean-forward="true" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
+            <state relative-caret-position="353">
+              <caret line="206" column="19" selection-start-line="206" selection-start-column="19" selection-end-line="206" selection-end-column="19" />
               <folding>
                 <element signature="e#4100#4129#0#Twig" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#3;n#!!top" expanded="true" />
@@ -78,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
+            <state relative-caret-position="272">
+              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
               <folding>
                 <element signature="e#1708#1726#0#Twig" expanded="true" />
               </folding>
@@ -90,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="288" column="25" lean-forward="true" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
+            <state relative-caret-position="-367">
+              <caret line="242" column="11" selection-start-line="242" selection-start-column="11" selection-end-line="242" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -161,7 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>building</find>
       <find>show-on-hover</find>
       <find>mail</find>
       <find>fa-search</find>
@@ -191,6 +185,7 @@
       <find>onload</find>
       <find>quittance</find>
       <find>save</find>
+      <find>load</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -247,9 +242,9 @@
         <option value="$PROJECT_DIR$/templates/includes/edit_prestataire_form.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/BienImmoController.php" />
         <option value="$PROJECT_DIR$/src/Form/PrestataireType.php" />
-        <option value="$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig" />
-        <option value="$PROJECT_DIR$/templates/themes/form/_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/templates/themes/form/_form.html.twig" />
+        <option value="$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig" />
       </list>
     </option>
   </component>
@@ -700,18 +695,17 @@
       <workItem from="1635069971311" duration="7154000" />
       <workItem from="1635152963096" duration="9233000" />
       <workItem from="1635230076536" duration="3348000" />
-      <workItem from="1635239049339" duration="19420000" />
+      <workItem from="1635239049339" duration="19936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="602501000" />
+    <option name="totallyTimeSpent" value="603017000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -726,7 +720,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5033557" side_tool="true" weight="0.23087819" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4966443" visible="true" weight="0.20693392" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4966443" visible="true" weight="0.20693392" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1147,20 +1141,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
-          <folding>
-            <element signature="e#1708#1726#0#Twig" expanded="true" />
-          </folding>
+        <state relative-caret-position="-367">
+          <caret line="242" column="11" selection-start-line="242" selection-start-column="11" selection-end-line="242" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/themes/form/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="184" column="40" lean-forward="true" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
+        <state relative-caret-position="353">
+          <caret line="206" column="19" selection-start-line="206" selection-start-column="19" selection-end-line="206" selection-end-column="19" />
           <folding>
             <element signature="e#4100#4129#0#Twig" expanded="true" />
             <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#3;n#!!top" expanded="true" />
@@ -1168,10 +1159,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="288" column="25" lean-forward="true" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
+        <state relative-caret-position="272">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding>
+            <element signature="e#1708#1726#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
