@@ -12,7 +12,7 @@
                                         {{ prestataire.name }}
                                 </span>
                         </a>
-                        <a class="tag is-delete" href="" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')"></a>
+                        <a class="tag is-delete" href="{{ path('remove_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')"></a>
                 </div>
         {% endfor %}
 

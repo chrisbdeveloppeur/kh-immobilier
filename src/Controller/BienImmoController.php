@@ -9,6 +9,7 @@ use App\Form\BienImmoType;
 use App\Form\PrestataireType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
+use App\Repository\PrestataireRepository;
 use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -248,8 +249,8 @@ class BienImmoController extends AbstractController
         $name = $form->get('name')->getData();
 
         if ($form->isSubmitted() && $form->isValid()){
-            $logement->addPrestataire($prestataire);
-            $em->persist($prestataire);
+            $logement->addPrestataire($form->getData());
+            $em->persist($form->getData());
             $em->flush();
 
             $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
@@ -264,6 +265,27 @@ class BienImmoController extends AbstractController
         return $this->render('includes/edit_prestataire_form.html.twig',[
            'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/remove-prestataire/{presta_id}", name="remove_prestataire", methods={"GET","POST"})
+     */
+    public function removePrestataire($id, $presta_id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PrestataireRepository $prestataireRepository): Response
+    {
+        $logement = $bienImmoRepository->find($id);
+        $prestataire = $prestataireRepository->find($presta_id);
+        $name = $prestataire->getName();
+        $logement->removePrestataire($prestataire);
+        $em->persist($logement);
+        $em->flush();
+        $this->addFlash('danger', 'Le prestataire <b>'.$name.'</b> à été retiré du logement <b>'.$logement.'</b>');
+
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
+
+//        return $this->render('includes/edit_prestataire_form.html.twig',[
+//            'form' => $form->createView(),
+//        ]);
     }
 
 
