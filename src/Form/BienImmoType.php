@@ -191,6 +191,12 @@ class BienImmoType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
+            ->add('coproInfos',TextareaType::class,[
+                'mapped' => false,
+                'label' => "Informations complémentaires",
+                'attr' => ['class' => 'textarea is-small has-text-centered'],
+                'required' => false,
+            ])
 
 
             // FORM FIELDS FOR PRESTATAIRE RELATION ENTITY

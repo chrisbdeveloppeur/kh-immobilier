@@ -59,7 +59,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/new", name="bien_immo_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UserInterface $user): Response
+    public function new(Request $request, UserInterface $user, EntityManagerInterface $em): Response
     {
         $bienImmo = new BienImmo();
         $bienImmo->setUser($user);
@@ -68,12 +68,12 @@ class BienImmoController extends AbstractController
         $form->get('loyer_hc')->setData(0);
         $form->get('charges')->setData(0);
         $form->get('solde')->setData(0);
-        $form->handleRequest($request);
+        $form_prestataire = $this->createForm(PrestataireType::class);
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->editCopropriete($bienImmo, $form);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($bienImmo);
+            $em->persist($bienImmo);
             $solde = $form->get('solde')->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
 
@@ -81,16 +81,29 @@ class BienImmoController extends AbstractController
                 $bienImmo->addLocataire($form->get('locataires')->getData());
             }
 
-            $entityManager->flush();
+            $em->flush();
 
             $this->addFlash('success', 'Le logement <b>'.$bienImmo->getStreet().'</b> a été créé avec succès');
 
             return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        $form_prestataire->handleRequest($request);
+        if ($form_prestataire->isSubmitted() && $form_prestataire->isValid()){
+            $name = $form_prestataire->get('name')->getData();
+            $bienImmo->addPrestataire($form_prestataire->getData());
+            $em->persist($form_prestataire->getData());
+            $em->flush();
+
+            $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$bienImmo.'</b>');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }
+
         return $this->render('bien_immo/new.html.twig', [
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
+            'form_prestataire' => $form_prestataire->createView(),
         ]);
     }
 
@@ -307,6 +320,7 @@ class BienImmoController extends AbstractController
         $bienImmo->getCopropriete()->setPhone($form->get("coproPhone")->getData());
         $bienImmo->getCopropriete()->setAdresse($form->get("coproAdresse")->getData());
         $bienImmo->getCopropriete()->setContact($form->get("coproContact")->getData());
+        $bienImmo->getCopropriete()->setInfos($form->get("coproInfos")->getData());
         return $form;
     }
 
@@ -316,6 +330,7 @@ class BienImmoController extends AbstractController
         $form->get("coproAdresse")->setData($bienImmo->getCopropriete()->getAdresse());
         $form->get("coproContact")->setData($bienImmo->getCopropriete()->getContact());
         $form->get("coproPhone")->setData($bienImmo->getCopropriete()->getPhone());
+        $form->get("coproInfos")->setData($bienImmo->getCopropriete()->getInfos());
         return $form;
     }
 

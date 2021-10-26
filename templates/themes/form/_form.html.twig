@@ -35,14 +35,16 @@
                     </a>
                 </li>
 
-                <li id="prestataire">
-                    <a>
-                        <span class="icon is-small">
-                            <i class="fas fa-briefcase" aria-hidden="true"></i>
-                        </span>
-                        <span>Prestataires</span>
-                    </a>
-                </li>
+                {% if 'new' not in app.request.get('_route') %}
+                    <li id="prestataire">
+                        <a>
+                            <span class="icon is-small">
+                                <i class="fas fa-briefcase" aria-hidden="true"></i>
+                            </span>
+                            <span>Prestataires</span>
+                        </a>
+                    </li>
+                {% endif %}
 
                 {% if locataire_twig %}
                     <li id="quittances">
@@ -165,11 +167,11 @@
                 {% endfor %}
 
                 <div class="field has-text-centered">
-                    <button class="button is-success is-small btn-submit">
-                            <span class="icon">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        <span>Valider</span>
+                    <button class="button is-info is-small btn-submit">
+                        <span class="icon">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span>Ajouter le prestataire</span>
                     </button>
                 </div>
                 {{ form_end(form_prestataire) }}
@@ -396,7 +398,7 @@
         {% if 'quittances' in app.request.get('_route') %}
             {% set validation_button = 'Editer la quittance' %}
         {% else %}
-            {% set validation_button = 'Valider' %}
+            {% set validation_button = 'Sauvegarder' %}
         {% endif %}
     {% elseif 'new_prestataire' in app.request.get('_route') %}
         {% set validation_button = 'Ajouter le prestataire' %}
@@ -407,12 +409,19 @@
     <div class="field has-text-centered btn-to-hide" id="save">
         <button class="button is-success is-small btn-submit">
             {% if validation_button == 'Editer la quittance' %}
-            <span class="icon">
-                <i class="fas fa-file-pdf"></i>
-            </span>
-            <span>{{ validation_button }}</span>
+                <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>
+                    {{ validation_button }}
+                </span>
             {% else %}
-                {{ validation_button }}
+                <span class="icon">
+                    <i class="fas fa-save"></i>
+                </span>
+                <span>
+                    {{ validation_button }}
+                </span>
             {% endif %}
         </button>
     </div>
