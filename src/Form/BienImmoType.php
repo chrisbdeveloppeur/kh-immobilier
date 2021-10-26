@@ -195,7 +195,7 @@ class BienImmoType extends AbstractType
             // FORM FIELDS FOR PRESTATAIRE RELATION ENTITY
             ->add('prestataireName', TextType::class,[
                 'mapped' => false,
-                'label' => "Nom de la copropriété",
+                'label' => "Titre du prestataire",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])

@@ -358,7 +358,7 @@
                 console.log(fields);
                 let notfields = document.querySelectorAll('.bien-immo');
                 let btnToHide = document.querySelectorAll('.btn-to-hide');
-                let btnToShow = document.querySelectorAll('.btn-to-show')
+                let btnToShow = document.querySelectorAll('.btn-to-show');
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
 
@@ -371,16 +371,16 @@
                 }
 
                 if ( li.id === 'copropriete' ){
-                    btnToHide.forEach(el => el.classList.add('is-hidden'));
+                    // btnToHide.forEach(el => el.classList.add('is-hidden'));
                 }else {
-                    btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                    // btnToHide.forEach(el => el.classList.remove('is-hidden'));
                 }
 
                 if ( li.id === 'prestataire' ){
-                    btnToHide.forEach(el => el.classList.add('is-hidden'));
+                    // btnToHide.forEach(el => el.classList.add('is-hidden'));
                     document.querySelector('div#prestataires').classList.remove('is-hidden');
                 }else {
-                    btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                    // btnToHide.forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#prestataires').classList.add('is-hidden');
                 }
 
