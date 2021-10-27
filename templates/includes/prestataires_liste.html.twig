@@ -6,7 +6,7 @@
         {% for prestataire in bien_immo.prestataire|sort %}
                 <div class="column is-half is-full-touch px-0 pt-0">
                         <div class="card">
-                                <header class="card-header has-background-info has-text-light" onclick="this.parentElement.querySelector('.card-content').classList.toggle('is-hidden');this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
+                                <header class="card-header has-background-info has-text-light" onclick="let cardFooter = this.parentElement.querySelector('.card-content'); if(cardFooter){cardFooter.classList.toggle('is-hidden');};this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
                                         <p class="card-header-title has-text-light is-justify-content-center is-uppercase">
                                                 <b>{{ prestataire }}</b>
                                         </p>
@@ -16,30 +16,32 @@
                                       </span>
                                         </button>
                                 </header>
-                                <div class="card-content is-hidden">
-                                        <div class="content">
-                                        <span class="has-text-centered is-size-7">
-                                                {% if prestataire.type %}
-                                                        <b>Type :</b> {{ prestataire.type }}<br>
-                                                {% endif %}
-                                                {% if prestataire.contactName %}
-                                                        <b>Contacte / Référant :</b> {{ prestataire.contactName }}<br>
-                                                {% endif %}
-                                                {% if prestataire.email %}
-                                                        <b>@mail :</b> {{ prestataire.email }}<br>
-                                                {% endif %}
-                                                {% if prestataire.email %}
-                                                        <b>Tel :</b> {{ prestataire.phone }}<br>
-                                                {% endif %}
-                                                {% if prestataire.adresse %}
-                                                        <b>Adresse :</b> {{ prestataire.adresse }}<br>
-                                                {% endif %}
-                                                {% if prestataire.infos %}
-                                                        <b>Informations complémentaires :</b> <p>{{ prestataire.infos }}</p>
-                                                {% endif %}
-                                        </span>
-                                        </div>
-                                </div>
+                                {% if prestataire.type or prestataire.infos or prestataire.contactName or prestataire.adresse or prestataire.phone or prestataire.email %}
+                                    <div class="card-content is-hidden">
+                                            <div class="content">
+                                            <span class="has-text-centered is-size-7">
+                                                    {% if prestataire.type %}
+                                                            <b>Type :</b> {{ prestataire.type }}<br>
+                                                    {% endif %}
+                                                    {% if prestataire.contactName %}
+                                                            <b>Contacte / Référant :</b> {{ prestataire.contactName }}<br>
+                                                    {% endif %}
+                                                    {% if prestataire.email %}
+                                                            <b>@mail :</b> {{ prestataire.email }}<br>
+                                                    {% endif %}
+                                                    {% if prestataire.email %}
+                                                            <b>Tel :</b> {{ prestataire.phone }}<br>
+                                                    {% endif %}
+                                                    {% if prestataire.adresse %}
+                                                            <b>Adresse :</b> {{ prestataire.adresse }}<br>
+                                                    {% endif %}
+                                                    {% if prestataire.infos %}
+                                                            <b>Informations complémentaires :</b> <p>{{ prestataire.infos }}</p>
+                                                    {% endif %}
+                                            </span>
+                                            </div>
+                                    </div>
+                                {% endif %}
                                 <footer class="card-footer is-hidden">
                                         <a href="{{ path('edit_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" class="card-footer-item">Modifier</a>
                                         <a class="card-footer-item" href="{{ path('remove_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')">Retirer</a>
