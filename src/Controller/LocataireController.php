@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Locataire;
 use App\Form\LocataireType;
+use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -48,10 +49,14 @@ class LocataireController extends AbstractController
     /**
      * @Route("/new", name="locataire_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UserInterface $user): Response
+    public function new(Request $request, UserInterface $user, BienImmoRepository $bienImmoRepository): Response
     {
         $locataire = new Locataire();
         $locataire->setUser($user);
+        $logements = $bienImmoRepository->findBy([
+            'user' => $user->getId(),
+            'free' => true,
+        ]);
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->handleRequest($request);
 
@@ -70,6 +75,7 @@ class LocataireController extends AbstractController
         return $this->render('locataire/new.html.twig', [
             'locataire' => $locataire,
             'form' => $form->createView(),
+            'logements' => $logements,
         ]);
     }
 
@@ -97,6 +103,11 @@ class LocataireController extends AbstractController
             };
         }
 
+        $logements = $bienImmoRepository->findBy([
+            'user' => $user->getId(),
+            'free' => true,
+        ]);
+
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->get('logement')->setData($locataire->getLogement());
         $form->handleRequest($request);
@@ -115,6 +126,7 @@ class LocataireController extends AbstractController
         return $this->render('locataire/edit.html.twig', [
             'locataire' => $locataire,
             'form' => $form->createView(),
+            'logements' => $logements,
         ]);
     }
 

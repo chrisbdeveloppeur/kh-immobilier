@@ -245,6 +245,15 @@
                                     </span>
                                 </a>
                             </p>
+                            {% if locataires|length == 0 %}
+                                <p class="control">
+                                    <a href="{{ path('locataire_new') }}" class="button is-small is-light" title="Ajouter un locataire">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-plus"></i>
+                                        </span>
+                                    </a>
+                                </p>
+                            {% endif %}
                         {% else %}
                             <p class="control">
                                 <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir le logement">
@@ -253,6 +262,15 @@
                                     </span>
                                 </a>
                             </p>
+                            {% if logements|length == 0 %}
+                                <p class="control">
+                                    <a href="{{ path('bien_immo_new') }}" class="button is-small is-light" title="Ajouter un bien immobilier">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-plus"></i>
+                                        </span>
+                                    </a>
+                                </p>
+                            {% endif %}
                         {% endif %}
 
                     </div>

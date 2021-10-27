@@ -59,10 +59,15 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/new", name="bien_immo_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UserInterface $user, EntityManagerInterface $em): Response
+    public function new(Request $request, UserInterface $user, EntityManagerInterface $em, LocataireRepository $locataireRepository): Response
     {
         $bienImmo = new BienImmo();
         $bienImmo->setUser($user);
+        $locataires = $locataireRepository->findBy([
+            'user' => $user->getId(),
+            'sans_logement' => true,
+        ]);
+
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('superficie')->setData(0);
         $form->get('loyer_hc')->setData(0);
@@ -104,6 +109,7 @@ class BienImmoController extends AbstractController
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
             'form_prestataire' => $form_prestataire->createView(),
+            'locataires' => $locataires,
         ]);
     }
 
@@ -111,7 +117,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em): Response
+    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository): Response
     {
 //        Vérification de l'utilisateur actuellement connecté
         if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
@@ -121,6 +127,10 @@ class BienImmoController extends AbstractController
                 return $this->redirect($referer);
             };
         }
+        $locataires = $locataireRepository->findBy([
+            'user' => $this->getUser()->getId(),
+            'sans_logement' => true,
+        ]);
 
         $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
@@ -198,6 +208,7 @@ class BienImmoController extends AbstractController
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
             'form_prestataire' => $form_prestataire->createView(),
+            'locataires' => $locataires
         ]);
     }
 
