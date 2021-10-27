@@ -7,8 +7,8 @@
                 <div class="column is-half is-full-touch px-0 pt-0">
                         <div class="card">
                                 <header class="card-header has-background-info has-text-light" onclick="this.parentElement.querySelector('.card-content').classList.toggle('is-hidden');this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
-                                        <p class="card-header-title has-text-light">
-                                                {{ prestataire }}
+                                        <p class="card-header-title has-text-light is-justify-content-center is-uppercase">
+                                                <b>{{ prestataire }}</b>
                                         </p>
                                         <button class="card-header-icon" aria-label="more options">
                                       <span class="icon">
@@ -41,8 +41,7 @@
                                         </div>
                                 </div>
                                 <footer class="card-footer is-hidden">
-                                        <a href="#" class="card-footer-item">Modifier</a>
-                                        {#                                <a href="#" class="card-footer-item">Delete</a>#}
+                                        <a href="{{ path('edit_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" class="card-footer-item">Modifier</a>
                                         <a class="card-footer-item" href="{{ path('remove_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')">Retirer</a>
                                 </footer>
                         </div>

@@ -7,9 +7,14 @@
 {% block body %}
     <div class="hero-body">
 
-        <div class="column">
+        <div class="column is-flex is-justify-content-center">
 
-            {{ include('themes/form/_form.html.twig') }}
+            {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
+
+                <button class="button" type="submit">
+                    Sauvegarder les modifications
+                </button>
+            {{ form_end(form) }}
 
         </div>
 

@@ -237,7 +237,7 @@ class BienImmoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/remove-locataire-{loc_id}", name="remove_loctataire", methods={"GET","POST"})
+     * @Route("/{id}/locataire/remove{loc_id}", name="remove_loctataire", methods={"GET","POST"})
      */
     public function removeLocataire(Request $request,$id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
@@ -266,7 +266,7 @@ class BienImmoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/new-prestataire", name="new_prestataire", methods={"GET","POST"})
+     * @Route("/{id}/prestataire/add", name="new_prestataire", methods={"GET","POST"})
      */
     public function addPrestataire($id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
@@ -296,7 +296,7 @@ class BienImmoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/remove-prestataire/{presta_id}", name="remove_prestataire", methods={"GET","POST"})
+     * @Route("/{id}/prestataire/remove/{presta_id}", name="remove_prestataire", methods={"GET","POST"})
      */
     public function removePrestataire($id, $presta_id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PrestataireRepository $prestataireRepository): Response
     {
@@ -310,7 +310,27 @@ class BienImmoController extends AbstractController
 
         $referer = $request->headers->get('referer');
         return $this->redirect($referer);
+    }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return Response
+     * @Route("/{id}/prestataire/edit/{presta_id}", name="edit_prestataire", methods={"GET","POST"})
+     */
+    public function editPrestataire($id, Request $request, $presta_id, PrestataireRepository $prestataireRepository): Response
+    {
+        $prestataire = $prestataireRepository->find($presta_id);
+        $form = $this->createForm(PrestataireType::class, $prestataire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            dd($form->getData());
+        }
+
+        return $this->render('includes/edit_prestataire_form.html.twig',[
+           'form' => $form->createView(),
+        ]);
     }
 
 
