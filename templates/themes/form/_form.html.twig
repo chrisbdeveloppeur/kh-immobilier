@@ -236,21 +236,25 @@
                                 {{ form_widget(child) }}
                             </div>
                         </div>
-                        <p class="control">
-                            {% if child.vars.name == 'locataires' %}
+
+                        {% if child.vars.name == 'locataires' %}
+                            <p class="control">
                                 <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir le locataire">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-search"></i>
                                     </span>
                                 </a>
-                            {% else %}
+                            </p>
+                        {% else %}
+                            <p class="control">
                                 <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir le logement">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-search"></i>
                                     </span>
                                 </a>
-                            {% endif %}
-                        </p>
+                            </p>
+                        {% endif %}
+
                     </div>
                 {% else %}
                     <div class="select is-small is-fullwidth">
