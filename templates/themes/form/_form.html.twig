@@ -121,60 +121,7 @@
             </div>
 
             <div class="column is-flex is-justify-content-center is-hidden">
-                {{ form_start(form_prestataire, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form_prestataire', 'onsubmit':'isLoading(this)'} }) }}
-
-                {% for child in form_prestataire %}
-                    <div class="field">
-                        {% if 'token' not in form_label(child) %}
-                            <div class="label is-size-7">
-                                {{ form_label(child) }}
-                            </div>
-                        {% endif %}
-
-                        {% if child.vars.block_prefixes[1] == 'choice' %}
-                            <div class="select is-small is-fullwidth">
-                                {{ form_widget(child) }}
-                            </div>
-                        {% else %}
-                            {{ form_widget(child) }}
-                        {% endif %}
-
-                        {% if form_help(child) %}
-                            <span class="help is-info mt-0">
-                                <span class="icon-text" style="flex-wrap: nowrap">
-                                    <span class="icon">
-                                        <i class="fas fa-info-circle"></i>
-                                    </span>
-                                    <span>{{ form_help(child) }}</span>
-                                </span>
-                             </span>
-                        {% endif %}
-
-                        {% if form_errors(child) %}
-                            <span class="tag is-danger">
-                                {{ form_errors(child) }}
-                            </span>
-                        {% endif %}
-
-                        {% for sub_child in child.children %}
-                            {% if form_errors(sub_child) %}
-                                <span class="tag is-danger">
-                                    {{ form_errors(sub_child) }}
-                                </span>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-
-                <div class="field has-text-centered">
-                    <button class="button is-info is-small btn-submit">
-                        <span class="icon">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <span>Ajouter le prestataire</span>
-                    </button>
-                </div>
-                {{ form_end(form_prestataire) }}
+                {{ include('themes/form/prestataire_form.html.twig') }}
             </div>
 
             {{ include('includes/prestataires_liste.html.twig') }}
@@ -504,3 +451,13 @@
     })
 </script>
 {#     ######################################################     #}
+
+
+<script>
+     let header = document.documentURI;
+     header = header.split('#');
+     header = header[header.length];
+     if (header){
+         console.log(header);
+     }
+</script>

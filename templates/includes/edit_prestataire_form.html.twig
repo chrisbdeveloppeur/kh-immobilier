@@ -1,20 +1,64 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Ajouter un prestataire{% endblock %}
+{% block title %}Modification d'un prestataire{% endblock %}
 
-{% block title_main %}Ajouter un prestataire{% endblock %}
+{% block title_main %}Modification du prestataire {% if prestataire.name %}<b>{{ prestataire.name }}</b>{% endif %}{% endblock %}
 
 {% block body %}
     <div class="hero-body">
 
+
+        <div class="tabs is-centered is-boxed is-small mb-0">
+            <ul>
+
+                        <li class="" id="logement">
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-building" aria-hidden="true"></i></span>
+                                <span>Bien immobilier</span>
+                            </a>
+                        </li>
+
+                        <li id="copropriete">
+                            <a>
+                                <span class="icon is-small">
+                                    <i class="fas fa-users" aria-hidden="true"></i>
+                                </span>
+                                <span>Copropriété</span>
+                            </a>
+                        </li>
+
+                        <li id="prestataire" class="is-active">
+                            <a>
+                                <span class="icon is-small">
+                                    <i class="fas fa-briefcase" aria-hidden="true"></i>
+                                </span>
+                                <span>Prestataires</span>
+                            </a>
+                        </li>
+
+
+                        <li id="quittances">
+                            <a>
+                                <span class="icon is-small">
+                                    <i class="fas fa-copy" aria-hidden="true"></i>
+                                </span>
+                                <span>Quittances</span>
+                            </a>
+                        </li>
+
+
+            </ul>
+        </div>
+
+        {% if prestataire.name %}
+            <div class="has-text-centered subtitle">
+                <span class="has-text-weight-bold is-uppercase"><b>{{ prestataire.name }}</b></span>
+            </div>
+        {% endif %}
+
         <div class="column is-flex is-justify-content-center">
 
-            {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
-
-                <button class="button" type="submit">
-                    Sauvegarder les modifications
-                </button>
-            {{ form_end(form) }}
+            {{ include('themes/form/prestataire_form.html.twig') }}
 
         </div>
 
