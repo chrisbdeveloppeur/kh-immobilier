@@ -21,7 +21,7 @@
 
     {#     Définission de la variable section en fonction de ce que contient le nom de la route dans laquel on se trouve     #}
     {% set section = '' %}
-    {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') %}
+    {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') or 'prestataire' in app.request.get('_route') %}
         {% set section = 'immobilier' %}
     {% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
         {% set section = 'entreprenariat' %}

@@ -282,13 +282,9 @@ class BienImmoController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
-            return $this->redirectToRoute('bien_immo_edit',[
-                'id' => $id,
-            ]);
+            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl();
+            return $this->redirect($route.'#prestataire');
         }
-
-//        $referer = $request->headers->get('referer');
-//        return $this->redirect($referer);
 
         return $this->render('includes/edit_prestataire_form.html.twig',[
            'form' => $form->createView(),
@@ -308,8 +304,8 @@ class BienImmoController extends AbstractController
         $em->flush();
         $this->addFlash('danger', 'Le prestataire <b>'.$name.'</b> à été retiré du logement <b>'.$logement.'</b>');
 
-        $referer = $request->headers->get('referer');
-        return $this->redirect($referer);
+        $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl();
+        return $this->redirect($route.'#prestataire');
     }
 
     /**
