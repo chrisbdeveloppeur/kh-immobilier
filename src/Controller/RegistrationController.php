@@ -35,9 +35,11 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->get('plainPassword')->setData('');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password = $form->get('plainPassword')->getData();
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -64,7 +66,8 @@ class RegistrationController extends AbstractController
 //                    ->to($user->getEmail())
                     ->to('kenshin91cb@gmail.com')
                     ->subject('Confirmation de votre Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->htmlTemplate('registration/confirmation_email.html.twig'),
+                $password
             );
             // do anything else you need here, like send an email
             $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="'.$linkMail.'" target="_blank">' . $user->getEmail() . '</a>');
@@ -113,6 +116,8 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Votre Email à été vérifié, vous pouvez maintenant vous connecter');
 
-        return $this->redirectToRoute('app_login');
+        return $this->redirectToRoute('change_password',[
+            'id' => $id,
+        ]);
     }
 }
