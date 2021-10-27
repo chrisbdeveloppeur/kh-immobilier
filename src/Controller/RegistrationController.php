@@ -35,7 +35,10 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->get('plainPassword')->setData('');
+//        $password = bin2hex(random_bytes(3));
+//        dump($password);
+//        $form->get('plainPassword')['first']->setData($password);
+//        $form->get('plainPassword')['second']->setData($password);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +47,7 @@ class RegistrationController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $password
                 )
             );
 
@@ -92,6 +95,7 @@ class RegistrationController extends AbstractController
      */
     public function verifyUserEmail(Request $request, UserRepository $userRepository): Response
     {
+
         $id = $request->get('id');
 
         if (null === $id) {

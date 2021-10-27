@@ -2,8 +2,8 @@
 
 <p>
     Veuillez cliquer sur le lien suivant pour confirmer votre Email : <br><br>
-    {{ password }}
-    <a href="{{ signedUrl }}">Confirmer mon adresse mail et changer mon mot de passe</a>.
+    Votre mot de passe temporaire : <b>{{ password }}</b><br>
+    <a href="{{ signedUrl }}">Confirmer mon adresse mail et changer mon mot de passe</a>.<br>
     Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
 </p>
 
