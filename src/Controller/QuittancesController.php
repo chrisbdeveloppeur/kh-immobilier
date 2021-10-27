@@ -285,6 +285,7 @@ class QuittancesController extends AbstractController
      */
     public function deleteQuittanceFile($quittance_id, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, Request $request){
         $quittance = $quittanceRepository->find($quittance_id);
+        $bien_immo_id = $quittance->getBienImmo()->getId();
         $file_pdf = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
         $file_docx = '../public/documents/quittances/' . $quittance->getFileName() . '.docx';
         if (file_exists($file_docx)){
@@ -298,11 +299,8 @@ class QuittancesController extends AbstractController
 
         $this->addFlash('danger', 'La quittance de loyer : <b>' . $quittance->getFileName() . '</b> a bien été suprimmée définitivement');
 
-        $referer = $request->headers->get('referer');
-        return $this->redirect($referer);
-//        dump($file_pdf);
-//        dump($file_docx);
-//        dd($quittance);
+        $route = $this->redirectToRoute('bien_immo_edit',['id'=>$bien_immo_id])->getTargetUrl();
+        return $this->redirect($route.'#quittances');
     }
 
 }

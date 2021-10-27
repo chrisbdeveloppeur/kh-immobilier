@@ -36,6 +36,7 @@ class Quittance
 
     /**
      * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="quittances")
+     * @ORM\JoinColumn(onDelete="CASCADE");
      */
     private $bien_immo;
 

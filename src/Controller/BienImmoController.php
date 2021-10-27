@@ -107,17 +107,6 @@ class BienImmoController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{id}", name="bien_immo_show", methods={"GET"})
-//     */
-//    public function show(BienImmo $bienImmo, LocataireRepository $locataireRepository, $id): Response
-//    {
-//        $locataires = $locataireRepository->findBy(['logement' => $id],['last_name' => 'ASC']);
-//        return $this->render('bien_immo/show.html.twig', [
-//            'bien_immo' => $bienImmo,
-//            'locataires' => $locataires
-//        ]);
-//    }
 
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
@@ -192,6 +181,18 @@ class BienImmoController extends AbstractController
                 $em->flush();
             }
         }
+        $files = scandir('../public/documents/quittances/');
+        foreach($files as $file) {
+            if ($file !== '..' && $file !== '.' && $file !== '.gitignore' && !str_contains($file, '.pdf')){
+                $file = explode('.docx', $file);
+                $file = $file[0];
+                if ($quittanceRepository->findOneBy(['file_name' => $file])){
+                }else{
+                    unlink('../public/documents/quittances/' . $file . '.pdf');
+                    unlink('../public/documents/quittances/' . $file . '.docx');
+                };
+            }
+        }
 
         return $this->render('bien_immo/edit.html.twig', [
             'bien_immo' => $bienImmo,
@@ -199,6 +200,9 @@ class BienImmoController extends AbstractController
             'form_prestataire' => $form_prestataire->createView(),
         ]);
     }
+
+
+
 
     /**
      * @Route("/{id}/delete", name="bien_immo_delete", methods={"GET","POST"})
@@ -260,36 +264,10 @@ class BienImmoController extends AbstractController
 
         $this->addFlash('warning', 'Le locataire <b>'.$name.'</b> à été retiré du logement <b>'.$logement.'</b>');
 
-//        return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         $referer = $request->headers->get('referer');
         return $this->redirect($referer);
     }
 
-//    /**
-//     * @Route("/{id}/prestataire/add", name="new_prestataire", methods={"GET","POST"})
-//     */
-//    public function addPrestataire($id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
-//    {
-//        $logement = $bienImmoRepository->find($id);
-//        $prestataire = new Prestataire();
-//        $form = $this->createForm(PrestataireType::class);
-//        $form->handleRequest($request);
-//        $name = $form->get('name')->getData();
-//
-//        if ($form->isSubmitted() && $form->isValid()){
-//            $logement->addPrestataire($form->getData());
-//            $em->persist($form->getData());
-//            $em->flush();
-//
-//            $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
-//            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl().'#prestataire';
-//            return $this->redirect($route);
-//        }
-//
-//        return $this->render('includes/edit_prestataire_form.html.twig',[
-//           'form' => $form->createView(),
-//        ]);
-//    }
 
     /**
      * @Route("/{id}/prestataire/remove/{presta_id}", name="remove_prestataire", methods={"GET","POST"})

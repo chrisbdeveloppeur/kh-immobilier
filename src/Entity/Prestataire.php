@@ -44,6 +44,7 @@ class Prestataire
 
     /**
      * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="prestataire")
+     * @ORM\JoinColumn(onDelete="CASCADE");
      */
     private $bienImmo;
 
