@@ -325,11 +325,11 @@ class BienImmoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-//            dd($form->getData());
+            dd($form->getData());
 //            $referer = $request->headers->get('referer');
 //            return $this->redirect($referer);
-            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()]);
-            return $this->redirect($route.'#prestataire');
+//            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()]);
+//            return $this->redirect($route.'#prestataire');
         }
 
         return $this->render('includes/edit_prestataire_form.html.twig',[
