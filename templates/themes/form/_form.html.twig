@@ -453,11 +453,14 @@
 {#     ######################################################     #}
 
 
+{#     ############  REDIRECT TO ANCRAGE   #############     #}
 <script>
      let header = document.documentURI;
      header = header.split('#');
-     header = header[header.length];
+     header = header[header.length - 1];
      if (header){
-         console.log(header);
+         let ancrage = document.getElementById(header);
+         ancrage.click();
      }
 </script>
+{#     ######################################################     #}
