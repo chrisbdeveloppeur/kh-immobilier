@@ -239,9 +239,9 @@
 
                         {% if child.vars.name == 'locataires' %}
                             <p class="control">
-                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir le locataire">
+                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le locataire">
                                     <span class="icon">
-                                        <i class="fas fa-lg fa-search"></i>
+                                        <i class="fas fa-lg fa-user-edit"></i>
                                     </span>
                                 </a>
                             </p>
@@ -256,9 +256,9 @@
                             {% endif %}
                         {% else %}
                             <p class="control">
-                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir le logement">
+                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le bien immobilier">
                                     <span class="icon">
-                                        <i class="fas fa-lg fa-search"></i>
+                                        <i class="fas fa-lg fa-edit"></i>
                                     </span>
                                 </a>
                             </p>
@@ -379,14 +379,14 @@
         <button class="button is-success is-small btn-submit">
             {% if validation_button == 'Editer la quittance' %}
                 <span class="icon">
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fas fa-lg fa-file-pdf"></i>
                 </span>
                 <span>
                     {{ validation_button }}
                 </span>
             {% else %}
                 <span class="icon">
-                    <i class="fas fa-save"></i>
+                    <i class="fas fa-lg fa-save"></i>
                 </span>
                 <span>
                     {{ validation_button }}

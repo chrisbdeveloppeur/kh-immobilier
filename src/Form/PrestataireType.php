@@ -27,7 +27,9 @@ class PrestataireType extends AbstractType
                     'Plombier' => 'Plombier',
                     'Electricien' => 'Electricien',
                     'Assurance habitation' => 'Assurance habitation',
+                    'Autre' => 'Autre',
                 ],
+                'placeholder' => 'Choisissez le type de prestataire',
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])

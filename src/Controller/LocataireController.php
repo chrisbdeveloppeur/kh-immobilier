@@ -92,7 +92,7 @@ class LocataireController extends AbstractController
     /**
      * @Route("/{id}/edit", name="locataire_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Locataire $locataire): Response
+    public function edit(Request $request, Locataire $locataire, BienImmoRepository $bienImmoRepository): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
         if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
@@ -104,7 +104,7 @@ class LocataireController extends AbstractController
         }
 
         $logements = $bienImmoRepository->findBy([
-            'user' => $user->getId(),
+            'user' => $this->getUser()->getId(),
             'free' => true,
         ]);
 
