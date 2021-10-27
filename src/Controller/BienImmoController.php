@@ -176,8 +176,8 @@ class BienImmoController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$bienImmo.'</b>');
-            $referer = $request->headers->get('referer');
-            return $this->redirect($referer);
+            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl().'#prestataire';
+            return $this->redirect($route);
         }
 
 
@@ -265,31 +265,31 @@ class BienImmoController extends AbstractController
         return $this->redirect($referer);
     }
 
-    /**
-     * @Route("/{id}/prestataire/add", name="new_prestataire", methods={"GET","POST"})
-     */
-    public function addPrestataire($id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
-    {
-        $logement = $bienImmoRepository->find($id);
-        $prestataire = new Prestataire();
-        $form = $this->createForm(PrestataireType::class);
-        $form->handleRequest($request);
-        $name = $form->get('name')->getData();
-
-        if ($form->isSubmitted() && $form->isValid()){
-            $logement->addPrestataire($form->getData());
-            $em->persist($form->getData());
-            $em->flush();
-
-            $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
-            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl();
-            return $this->redirect($route.'#prestataire');
-        }
-
-        return $this->render('includes/edit_prestataire_form.html.twig',[
-           'form' => $form->createView(),
-        ]);
-    }
+//    /**
+//     * @Route("/{id}/prestataire/add", name="new_prestataire", methods={"GET","POST"})
+//     */
+//    public function addPrestataire($id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
+//    {
+//        $logement = $bienImmoRepository->find($id);
+//        $prestataire = new Prestataire();
+//        $form = $this->createForm(PrestataireType::class);
+//        $form->handleRequest($request);
+//        $name = $form->get('name')->getData();
+//
+//        if ($form->isSubmitted() && $form->isValid()){
+//            $logement->addPrestataire($form->getData());
+//            $em->persist($form->getData());
+//            $em->flush();
+//
+//            $this->addFlash('success', 'Le prestataire <b>'.$name.'</b> à été ajouté au logement <b>'.$logement.'</b>');
+//            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl().'#prestataire';
+//            return $this->redirect($route);
+//        }
+//
+//        return $this->render('includes/edit_prestataire_form.html.twig',[
+//           'form' => $form->createView(),
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/prestataire/remove/{presta_id}", name="remove_prestataire", methods={"GET","POST"})
@@ -304,7 +304,7 @@ class BienImmoController extends AbstractController
         $em->flush();
         $this->addFlash('danger', 'Le prestataire <b>'.$name.'</b> à été retiré du logement <b>'.$logement.'</b>');
 
-        $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl();
+        $route = $this->redirectToRoute('bien_immo_edit',['id'=>$id])->getTargetUrl();
         return $this->redirect($route.'#prestataire');
     }
 

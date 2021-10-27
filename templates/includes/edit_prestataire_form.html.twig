@@ -8,7 +8,14 @@
     <div class="hero-body">
 
         <div class="column has-text-centered">
-            <a href="{{ path('bien_immo_edit', {'id': prestataire.bienImmo.id}) }}#prestataire" class="button">Revenir aux prestataires</a>
+            <a href="{{ path('bien_immo_edit', {'id': prestataire.bienImmo.id}) }}#prestataire" class="button is-small is-dark">
+                <span class="icon">
+                    <i class="fas fa-lg fa-caret-left"></i>
+                </span>
+                <span>
+                    Revenir aux prestataires
+                </span>
+            </a>
         </div>
 
         {% if prestataire.name %}

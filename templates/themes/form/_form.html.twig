@@ -112,7 +112,7 @@
     {% if 'bien_immo' in app.request.get('_route') %}
         <div class="prestataire is-hidden">
             <div class="column is-flex is-justify-content-center pb-0 prestataire is-hidden" onclick="this.nextElementSibling.classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
-                <a href="#" class="button is-info is-small">
+                <a class="button is-info is-small">
                 <span class="icon">
                     <i class="fas fa-lg fa-angle-down"></i>
                 </span>
@@ -390,6 +390,7 @@
         let lis = elem.querySelectorAll('li');
         lis.forEach(function (li) {
             li.addEventListener('click', function () {
+                window.location = '#' + li.id;
                 let fields = document.querySelectorAll('.'+li.id);
                 let notfields = document.querySelectorAll('.bien-immo');
                 lis.forEach(el => el.classList.remove('is-active'));
@@ -460,7 +461,9 @@
      header = header[header.length - 1];
      if (header){
          let ancrage = document.getElementById(header);
-         ancrage.click();
+         if (ancrage){
+             ancrage.click();
+         }
      }
 </script>
 {#     ######################################################     #}
