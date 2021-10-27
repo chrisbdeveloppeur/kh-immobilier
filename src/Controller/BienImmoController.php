@@ -318,17 +318,18 @@ class BienImmoController extends AbstractController
      * @return Response
      * @Route("/{id}/prestataire/edit/{presta_id}", name="edit_prestataire", methods={"GET","POST"})
      */
-    public function editPrestataire($id, Request $request, $presta_id, PrestataireRepository $prestataireRepository): Response
+    public function editPrestataire($id, Request $request, $presta_id, PrestataireRepository $prestataireRepository, EntityManagerInterface $em): Response
     {
         $prestataire = $prestataireRepository->find($presta_id);
         $form = $this->createForm(PrestataireType::class, $prestataire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl();
 
-//            $referer = $request->headers->get('referer');
-//            return $this->redirect($referer);
+            $em->persist($prestataire);
+            $em->flush();
+
+            $route = $this->redirectToRoute('bien_immo_edit',['id'=>$prestataire->getBienImmo()->getId()])->getTargetUrl();
             return $this->redirect($route.'#prestataire');
         }
 
