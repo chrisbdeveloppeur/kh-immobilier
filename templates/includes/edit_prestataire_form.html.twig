@@ -5,9 +5,9 @@
 {% block title_main %}Modification du prestataire {% if prestataire.name %}<b>{{ prestataire.name }}</b>{% endif %}{% endblock %}
 
 {% block body %}
-    <div class="hero-body">
+{#    <div class="hero-body">#}
 
-        <div class="column has-text-centered">
+        <div class="column has-text-left">
             <a href="{{ path('bien_immo_edit', {'id': prestataire.bienImmo.id}) }}#prestataire" class="button is-small is-dark">
                 <span class="icon">
                     <i class="fas fa-lg fa-caret-left"></i>
@@ -30,5 +30,5 @@
 
         </div>
 
-    </div>
+{#    </div>#}
 {% endblock %}
