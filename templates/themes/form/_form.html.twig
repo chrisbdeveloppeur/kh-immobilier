@@ -1,15 +1,6 @@
 {% if form.vars.name == 'bien_immo' %}
     {% set locataire_twig = bien_immo.locataires.current %}
     {% set bien_immo_class = 'bien-immo' %}
-
-{#    {% if 'copro' in child.vars.name %}#}
-{#        {% set field_bien_immo_class = 'copropriete' %}#}
-{#    {% elseif 'logement' in child.vars.name %}#}
-{#        {% set field_bien_immo_class = 'logement' %}#}
-{#    {% elseif 'prestataire' in child.vars.name %}#}
-{#        {% set field_bien_immo_class = 'prestataire' %}#}
-{#    {% endif %}#}
-
 {% elseif form.vars.name == 'locataire' %}
     {% set locataire_twig = locataire %}
 {% endif %}
@@ -279,7 +270,6 @@
                 </span>
             {% endif %}
 
-{#            {{ dump(child.vars.children) }}#}
             {% for sub_child in child.children %}
                 {% if form_errors(sub_child) %}
                     <span class="tag is-danger">
@@ -287,12 +277,6 @@
                     </span>
                 {% endif %}
             {% endfor %}
-{#            {% if not child.vars.valid %}#}
-{#                {{ dump(child.children) }}#}
-{#                <span class="tag is-danger">#}
-{#                    {{ dump(child.vars) }}#}
-{#                </span>#}
-{#            {% endif %}#}
 
         </div>
     {% endfor %}
