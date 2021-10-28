@@ -120,6 +120,9 @@ class LocataireController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $locataire->setLogement($form->get('logement')->getData());
+            if ($locataire->getLogement() && $this->isGranted('ROLE_SUPER_ADMIN')){
+                $locataire->getLogement()->setUser($form->get('user')->getData($locataire->getUser()));
+            }
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Les modifications ont bien étés appliquées');

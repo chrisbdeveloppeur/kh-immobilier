@@ -31,6 +31,7 @@ class Quittance
 
     /**
      * @ORM\ManyToOne(targetEntity=Locataire::class, inversedBy="Quittances")
+     * @ORM\JoinColumn(onDelete="CASCADE");
      */
     private $locataire;
 
