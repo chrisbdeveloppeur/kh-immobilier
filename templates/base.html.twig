@@ -55,7 +55,11 @@
     </div>
 
     {% block nav_secondaire %}
-        {{ include('includes/sub_header.html.twig') }}
+        {% if section == 'immobilier' %}
+            {{ include('includes/subs_headers/sub_header_immobilier.html.twig') }}
+        {% elseif section == 'entreprenariat' %}
+            {{ include('includes/subs_headers/sub_header_entreprenariat.html.twig') }}
+        {% endif %}
     {% endblock %}
 
     {% block body %}{% endblock %}
