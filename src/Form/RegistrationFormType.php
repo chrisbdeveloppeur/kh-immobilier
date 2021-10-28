@@ -16,6 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -35,13 +36,29 @@ class RegistrationFormType extends AbstractType
                     'Madame' => 'Mme.'
                 ]
             ])
-            ->add('lastName', TextType::class,[
-                'label' => 'Nom*',
-                'required' => true,
-            ])
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom*',
                 'required' => true,
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/[;:<>{}\/0-9]/",
+                        'match' => false,
+                        'message' => 'Valeur non autorisée',
+                    ]),
+                ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
+            ])
+            ->add('lastName', TextType::class,[
+                'label' => 'Nom*',
+                'required' => true,
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/[;:<>{}\/0-9]/",
+                        'match' => false,
+                        'message' => 'Valeur non autorisée',
+                    ]),
+                ],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('phoneNumber', TextType::class,[
                 'label' => 'Tel',

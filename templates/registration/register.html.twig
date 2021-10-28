@@ -44,21 +44,6 @@
     </div>
 
     <div class="field">
-        <label class="label is-size-7">{{ form_label(registrationForm.lastName) }}</label>
-        <p class="control has-icons-left has-icons-right">
-            {{ form_widget(registrationForm.lastName, {'attr' : {'class': 'has-text-centered form-control input is-small'}}) }}
-            <span class="icon is-small is-left">
-                <i class="fas fa-id-card"></i>
-            </span>
-        </p>
-        {% if form_errors(registrationForm.lastName) %}
-            <span class="tag is-danger">
-                {{ form_errors(registrationForm.lastName) }}
-            </span>
-        {% endif %}
-    </div>
-
-    <div class="field">
         <label class="label is-size-7">{{ form_label(registrationForm.firstName) }}</label>
         <p class="control has-icons-left has-icons-right">
             {{ form_widget(registrationForm.firstName, {'attr' : {'class': 'has-text-centered form-control input is-small'}}) }}
@@ -69,6 +54,21 @@
         {% if form_errors(registrationForm.firstName) %}
             <span class="tag is-danger">
                 {{ form_errors(registrationForm.firstName) }}
+            </span>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label class="label is-size-7">{{ form_label(registrationForm.lastName) }}</label>
+        <p class="control has-icons-left has-icons-right">
+            {{ form_widget(registrationForm.lastName, {'attr' : {'class': 'has-text-centered form-control input is-small'}}) }}
+            <span class="icon is-small is-left">
+                <i class="fas fa-id-card"></i>
+            </span>
+        </p>
+        {% if form_errors(registrationForm.lastName) %}
+            <span class="tag is-danger">
+                {{ form_errors(registrationForm.lastName) }}
             </span>
         {% endif %}
     </div>
