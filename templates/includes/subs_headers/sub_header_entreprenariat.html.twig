@@ -1,12 +1,48 @@
 
     <div class="is-flex-desktop is-justify-content-space-between">
         <div class="column has-text-centered-touch">
-            <a href="{{ path('entreprenariat_home') }}" class="button is-small is-dark bg-info-onhover">Vue d'ensemble</a>
-            <a href="{{ path('entreprise_index') }}" class="button is-small is-dark bg-info-onhover">Vos entreprises</a>
-            <a href="#" class="button is-small is-dark bg-info-onhover">Vos clients</a>
+            <a href="{{ path('entreprenariat_home') }}" class="button is-small is-dark bg-info-onhover">
+                <span class="icon">
+                    <i class="fas fa-lg fa-object-group"></i>
+                </span>
+                <span>
+                    Vue d'ensemble
+                </span>
+            </a>
+            <a href="{{ path('entreprise_index') }}" class="button is-small is-dark bg-info-onhover">
+                <span class="icon">
+                    <i class="fas fa-lg fa-registered"></i>
+                </span>
+                <span>
+                    Vos entreprises
+                </span>
+            </a>
+            <a href="#" class="button is-small is-dark bg-info-onhover">
+                <span class="icon">
+                    <i class="fas fa-lg fa-address-book"></i>
+                </span>
+                <span>
+                    Vos clients
+                </span>
+            </a>
         </div>
         <div class="column has-text-centered-touch has-text-right-desktop">
-            <a href="{{ path('entreprise_new') }}" class="button is-small is-dark bg-info-onhover">Ajouter une entreprise</a>
-            <a href="#" class="button is-small is-dark bg-info-onhover">Ajouter un client</a>
+            <a href="{{ path('entreprise_new') }}" class="button is-small is-dark bg-info-onhover">
+                <span class="icon px-3">
+                    <i class="fas fa-lg fa-registered"></i>
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>
+                    Ajouter une entreprise
+                </span>
+            </a>
+            <a href="#" class="button is-small is-dark bg-info-onhover">
+                <span class="icon">
+                    <i class="fas fa-lg fa-user-plus"></i>
+                </span>
+                <span>
+                    Ajouter un client
+                </span>
+            </a>
         </div>
     </div>
