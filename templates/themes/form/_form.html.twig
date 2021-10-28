@@ -15,72 +15,7 @@
 {% endif %}
 
 {% if form.vars.name in ['bien_immo','user','change_password_user'] %}
-    <div class="tabs is-centered is-boxed is-small mb-0">
-        <ul>
-
-            {% if form.vars.name == 'bien_immo' %}
-                <li class="is-active" id="logement">
-                    <a>
-                        <span class="icon is-small"><i class="fas fa-building" aria-hidden="true"></i></span>
-                        <span>Bien immobilier</span>
-                    </a>
-                </li>
-
-                <li id="copropriete">
-                    <a>
-                        <span class="icon is-small">
-                            <i class="fas fa-users" aria-hidden="true"></i>
-                        </span>
-                        <span>Copropriété</span>
-                    </a>
-                </li>
-
-                {% if 'new' not in app.request.get('_route') %}
-                    <li id="prestataire">
-                        <a>
-                            <span class="icon is-small">
-                                <i class="fas fa-briefcase" aria-hidden="true"></i>
-                            </span>
-                            <span>Prestataires</span>
-                        </a>
-                    </li>
-                {% endif %}
-
-                {% if locataire_twig %}
-                    <li id="quittances">
-                        <a>
-                            <span class="icon is-small">
-                                <i class="fas fa-copy" aria-hidden="true"></i>
-                            </span>
-                            <span>Quittances</span>
-                        </a>
-                    </li>
-                {% endif %}
-
-            {% endif %}
-
-            {% if form.vars.name == 'user' or form.vars.name == 'change_password_user' %}
-                <li class="{% if form.vars.name == 'user' %}is-active{% endif %}" id="gestionnaire">
-                    <a href="{{ path('user_edit', {'id': app.user.id}) }}">
-                        <span class="icon is-small">
-                            <i class="fas fa-user-edit" aria-hidden="true"></i>
-                        </span>
-                        <span>Mes informations</span>
-                    </a>
-                </li>
-
-                <li id="securite" class="{% if form.vars.name == 'change_password_user' %}is-active{% endif %}">
-                    <a href="{{ path('change_password', {'id': app.user.id}) }}">
-                        <span class="icon is-small">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        </span>
-                        <span>Securité</span>
-                    </a>
-                </li>
-            {% endif %}
-
-        </ul>
-    </div>
+    {{ include('includes/tabs_bien_immo.html.twig') }}
 {% endif %}
 
 {% if 'new' not in app.request.get('_route') %}
