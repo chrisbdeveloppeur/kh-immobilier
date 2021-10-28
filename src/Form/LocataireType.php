@@ -42,7 +42,11 @@ class LocataireType extends AbstractType
             };
         }
 
-        $biens_immos = $bienImmoRepository->findAll();
+        if ($security->isGranted('ROLE_SUPER_ADMIN')){
+            $biens_immos = $bienImmoRepository->findAll();
+        }else{
+            $biens_immos = $bienImmoRepository->findBy(['user' => $this->user_id]);
+        }
         foreach ($biens_immos as $bien_immo){
             if ($bien_immo->getLocataires()->count() == 0){
                 $this->logement_fulled = false;

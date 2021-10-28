@@ -67,6 +67,7 @@ class BienImmoController extends AbstractController
             'user' => $user->getId(),
             'sans_logement' => true,
         ]);
+        dd($locataires);
 
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('superficie')->setData(0);
