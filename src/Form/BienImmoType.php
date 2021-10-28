@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\BienImmo;
 use App\Entity\Locataire;
+use App\Entity\User;
 use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -15,8 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\User;
-use Symfony\Component\Security\Core\User\UserInterface;
+
 
 
 class BienImmoType extends AbstractType
@@ -27,16 +27,19 @@ class BienImmoType extends AbstractType
     private $echeance;
     private $user_id;
     private $user_context;
+    private $security;
 
     public function __construct(LocataireRepository $locataireRepository, Security $security)
     {
+        $this->security = $security;
         $this->user_id = $security->getUser()->getId();
 
-        if (in_array('ROLE_SUPER_ADMIN', $security->getUser()->getRoles())){
+        if ($security->isGranted('ROLE_SUPER_ADMIN')){
             $this->user_context = function (LocataireRepository $er){
                    return $er->createQueryBuilder('u')
                        ->orderBy('u.last_name', 'ASC');
             };
+            $locataires = $locataireRepository->findAll();
         }else{
             $this->user_context = function (LocataireRepository $er){
 
@@ -44,13 +47,9 @@ class BienImmoType extends AbstractType
                     ->where('u.user = '. $this->user_id)
                     ->orderBy('u.last_name', 'ASC');
             };
-        }
-
-        if ($security->isGranted('ROLE_SUPER_ADMIN')){
-            $locataires = $locataireRepository->findAll();
-        }else{
             $locataires = $locataireRepository->findBy(['user' => $this->user_id]);
         }
+
         $this->echeance = range(0,29,1);
         foreach ($locataires as $locataire){
             if (!$locataire->getLogement()){
@@ -200,7 +199,17 @@ class BienImmoType extends AbstractType
                 'label' => "Informations complémentaires",
                 'attr' => ['class' => 'textarea is-small has-text-centered'],
                 'required' => false,
-            ])
+            ]);
+
+        if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
+            $builder->add('user', EntityType::class,[
+                'label' => 'Gestionaire',
+                'class' => User::class,
+                'mapped' => true,
+                'required' => false,
+                'placeholder' => 'Sans gestionnaire',
+            ]);
+        }
 
         ;
     }

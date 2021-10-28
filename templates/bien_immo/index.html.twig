@@ -62,6 +62,11 @@
                     <th>
                         <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
                     </th>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <th>
+                            <span class="is-size-7">{{ knp_pagination_sortable(biens_immos, 'Gestionnaire', ['user']) }}</span>
+                        </th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -160,6 +165,13 @@
                             <span title="Logement actuellement sans locataire">Sans locataire</span>
                         {% endif %}
                     </td>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        {% if bien_immo.user %}
+                            <td class="is-size-7" title="{{ bien_immo.user }}">{{ bien_immo.user }}</td>
+                        {% else %}
+                            <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
+                        {% endif %}
+                    {% endif %}
                 </tr>
             {% else %}
                 <tr>
@@ -197,6 +209,7 @@
                 <th class="is-size-7" title="Total soldes">
                     <span>{{ total_solde|number_format(2) }} €</span>
                 </th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>

@@ -67,7 +67,6 @@ class BienImmoController extends AbstractController
             'user' => $user->getId(),
             'sans_logement' => true,
         ]);
-        dd($locataires);
 
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('superficie')->setData(0);
@@ -121,7 +120,7 @@ class BienImmoController extends AbstractController
     public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository): Response
     {
 //        Vérification de l'utilisateur actuellement connecté
-        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+        if (!$this->isGranted('ROLE_SUPER_ADMIN') ){
             if ($bienImmo->getUser() != $this->getUser()){
                 $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
                 $referer = $request->headers->get('referer');
@@ -135,6 +134,9 @@ class BienImmoController extends AbstractController
 
         $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
+        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+            $form->get('user')->setData($locataire->getUser());
+        }
         $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
         $form->get('locataires')->setData($locataire);
 

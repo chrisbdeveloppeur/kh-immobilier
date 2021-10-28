@@ -26,7 +26,7 @@ class LocataireController extends AbstractController
     public function index(LocataireRepository $locataireRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $user = $this->getUser();
-        if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
+        if ( $this->isGranted('ROLE_SUPER_ADMIN')){
             $all_locataires = $locataireRepository->findAll();
         }else{
             $all_locataires = $locataireRepository->findBy(['user' => $user->getId()]);
@@ -59,6 +59,9 @@ class LocataireController extends AbstractController
         ]);
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->handleRequest($request);
+//        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+//            $form->get('user')->setData($locataire->getUser());
+//        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $locataire->setLogement($form->get('logement')->getData());
@@ -95,7 +98,7 @@ class LocataireController extends AbstractController
     public function edit(Request $request, Locataire $locataire, BienImmoRepository $bienImmoRepository): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
-        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+        if (!$this->isGranted('ROLE_SUPER_ADMIN')){
             if ($locataire->getUser() != $this->getUser()){
                 $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
                 $referer = $request->headers->get('referer');
@@ -110,6 +113,9 @@ class LocataireController extends AbstractController
 
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->get('logement')->setData($locataire->getLogement());
+        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+            $form->get('user')->setData($locataire->getUser());
+        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

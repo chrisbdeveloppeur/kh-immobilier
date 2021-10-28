@@ -34,6 +34,11 @@
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Sexe', 'gender') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Moyent de paiement', 'mode') }}</span></th>
                     <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Logement', 'logement.building') }}</span></th>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <th>
+                            <span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Gestionnaire', ['user']) }}</span>
+                        </th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -139,6 +144,13 @@
                             <i class="non-renseigne">N/A</i>
                         {% endif %}
                     </td>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        {% if locataire.user %}
+                            <td class="is-size-7" title="{{ locataire.user }}">{{ locataire.user }}</td>
+                        {% else %}
+                            <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
+                        {% endif %}
+                    {% endif %}
                 </tr>
             {% else %}
                 <tr>

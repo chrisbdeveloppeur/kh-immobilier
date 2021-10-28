@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\BienImmo;
 use App\Entity\Locataire;
+use App\Entity\User;
 use App\Repository\BienImmoRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -23,16 +24,20 @@ class LocataireType extends AbstractType
     private $current_locataire_id;
     private $user_id;
     private $user_context;
+    private $gestionnaireField;
+    private $security;
 
     public function __construct(BienImmoRepository $bienImmoRepository, Security $security)
     {
+        $this->security = $security;
         $this->user_id = $security->getUser()->getId();
 
-        if (in_array('ROLE_SUPER_ADMIN', $security->getUser()->getRoles())){
+        if ($security->isGranted('ROLE_SUPER_ADMIN')){
             $this->user_context = function (BienImmoRepository $er){
                 return $er->createQueryBuilder('u')
                     ->orderBy('u.free', 'ASC');
             };
+            $biens_immos = $bienImmoRepository->findAll();
         }else{
             $this->user_context = function (BienImmoRepository $er){
 
@@ -40,13 +45,9 @@ class LocataireType extends AbstractType
                     ->where('u.user = '. $this->user_id)
                     ->orderBy('u.free', 'ASC');
             };
-        }
-
-        if ($security->isGranted('ROLE_SUPER_ADMIN')){
-            $biens_immos = $bienImmoRepository->findAll();
-        }else{
             $biens_immos = $bienImmoRepository->findBy(['user' => $this->user_id]);
         }
+
         foreach ($biens_immos as $bien_immo){
             if ($bien_immo->getLocataires()->count() == 0){
                 $this->logement_fulled = false;
@@ -140,7 +141,18 @@ class LocataireType extends AbstractType
                     'Espèces' => 'Espèces',
                     'Chèque' => 'Chèque',
                 ]
-            ])
+            ]);
+
+            if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
+                $builder->add('user', EntityType::class,[
+                    'label' => 'Gestionaire',
+                    'class' => User::class,
+                    'mapped' => true,
+                    'required' => false,
+                    'placeholder' => 'Sans gestionnaire',
+                ]);
+            }
+
         ;
     }
 
