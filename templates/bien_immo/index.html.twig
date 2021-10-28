@@ -19,7 +19,7 @@
 {#    <input type="text" id="autocomplete" placeholder="Indiquer une adresse">#}
 {#  ##############  #}
 
-    <div class="table-container is-flex-desktop is-justify-content-center">
+    <div class="table-container is-flex is-justify-content-center">
         <table class="table is-narrow">
             <thead>
                 <tr class="has-text-centered">
@@ -124,6 +124,13 @@
                     <td class="is-size-7" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
                     <td class="is-size-7" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
                     <td class="is-size-7">
+                        {% if bien_immo.copropriete.name %}
+                            <span class="is-size-7" title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
+                        {% else %}
+                            <span class="is-size-7" title="Non renseigné"><i class="non-renseigne">N/A</i></span>
+                        {% endif %}
+                    </td>
+                    <td class="is-size-7">
                         {% if bien_immo.locataires is not empty %}
                             <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
                                 <span class="icon has-text-info text-black-onhover is-hidden-touch">
@@ -153,18 +160,11 @@
                             <span title="Logement actuellement sans locataire">Sans locataire</span>
                         {% endif %}
                     </td>
-                    <td>
-                        {% if bien_immo.copropriete.name %}
-                            <span class="is-size-7" title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
-                        {% else %}
-                            <span class="is-size-7" title="Non renseigné"><i class="non-renseigne">N/A</i></span>
-                        {% endif %}
-                    </td>
                 </tr>
             {% else %}
                 <tr>
                     <td colspan="13" class="has-text-centered is-size-6">
-                        <span class="icon-text px-3 py-1 box-shadow-bulma has-background-info border-radius-2px has-text-light" style="line-height: normal">
+                        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
                             <span class="icon">
                                 <i class="fas fa-info-circle"></i>
                             </span>
