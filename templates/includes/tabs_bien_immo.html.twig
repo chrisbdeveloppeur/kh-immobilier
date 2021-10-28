@@ -4,7 +4,7 @@
         {% if form.vars.name == 'bien_immo' %}
             <li class="is-active" id="logement">
                 <a>
-                    <span class="icon is-small"><i class="fas fa-building" aria-hidden="true"></i></span>
+                    <span class="icon is-small"><i class="fas fa-lg fa-building" aria-hidden="true"></i></span>
                     <span>Bien immobilier</span>
                 </a>
             </li>
@@ -12,7 +12,7 @@
             <li id="copropriete">
                 <a>
                         <span class="icon is-small">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-lg fa-users" aria-hidden="true"></i>
                         </span>
                     <span>Copropriété</span>
                 </a>
@@ -22,7 +22,7 @@
                 <li id="prestataire">
                     <a>
                             <span class="icon is-small">
-                                <i class="fas fa-briefcase" aria-hidden="true"></i>
+                                <i class="fas fa-lg fa-briefcase" aria-hidden="true"></i>
                             </span>
                         <span>Prestataires</span>
                     </a>
@@ -33,7 +33,7 @@
                 <li id="quittances">
                     <a>
                             <span class="icon is-small">
-                                <i class="fas fa-copy" aria-hidden="true"></i>
+                                <i class="fas fa-lg fa-copy" aria-hidden="true"></i>
                             </span>
                         <span>Quittances</span>
                     </a>
@@ -46,7 +46,7 @@
             <li class="{% if form.vars.name == 'user' %}is-active{% endif %}" id="gestionnaire">
                 <a href="{{ path('user_edit', {'id': app.user.id}) }}">
                         <span class="icon is-small">
-                            <i class="fas fa-user-edit" aria-hidden="true"></i>
+                            <i class="fas fa-lg fa-user-edit" aria-hidden="true"></i>
                         </span>
                     <span>Mes informations</span>
                 </a>
@@ -55,7 +55,7 @@
             <li id="securite" class="{% if form.vars.name == 'change_password_user' %}is-active{% endif %}">
                 <a href="{{ path('change_password', {'id': app.user.id}) }}">
                         <span class="icon is-small">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-lg fa-shield-alt" aria-hidden="true"></i>
                         </span>
                     <span>Securité</span>
                 </a>
