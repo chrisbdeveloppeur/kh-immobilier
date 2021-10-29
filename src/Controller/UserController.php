@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -125,7 +126,6 @@ class UserController extends AbstractController
                 $em->flush();
                 $this->addFlash('success', 'Votre mot de passe a bien été modifié');
             }elseif (!$encoder->isPasswordValid($user, $oldPassword)){
-                //return new ;
                 $this->addFlash('danger', '<b>Echec</b> : l\'ancien mot de passe est incorrect');
             }elseif ($oldPassword === $newPassword){
                 $this->addFlash('danger', '<b>Echec</b> : le nouveau mot de passe doit être différent de l\'ancien');

@@ -5,7 +5,7 @@
             <article class="message mr-5 px-0 py-0 is-one-third is-small is-{{ type }} has-text-centered flash-msg remove-timer-5s" style="position: fixed;bottom: 0;right:0;z-index: 100;opacity: .9">
                 <div class="message-header">
                 <span class="icon has-text-light">
-                    <i class="fas fa-lg fa-info-circle"></i>
+                    <i class="fas fa-lg {% if type == 'danger' %}fa-exclamation-triangle{% elseif type == 'warning' %}fa-exclamation-circle{% else %}fa-info-circle{% endif %}"></i>
                 </span>
                     <button class="delete" aria-label="delete" onclick="this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);" ></button>
                 </div>
