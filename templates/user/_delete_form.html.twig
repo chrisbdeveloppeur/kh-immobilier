@@ -4,11 +4,11 @@
 {#</form>#}
 
 <div class="column has-text-centered">
-    <a href="{{ path('user_delete', {'id': user.id }) }}" class="button is-small is-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce compte gestionnaire ? Le compte sera irrécupérable')">
+    <a href="{{ path('user_del', {'id': user.id }) }}" class="button is-small is-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce compte gestionnaire ? Le compte sera irrécupérable')">
         <span class="icon">
             <i class="fas fa-user-times"></i>
         </span><span>
-            Supprimer mon compte
+            Supprimer le compte
         </span>
     </a>
 </div>

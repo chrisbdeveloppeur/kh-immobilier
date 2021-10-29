@@ -107,7 +107,8 @@ class BienImmo
     private $copropriete;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="biens_immos")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="biens_immos, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $user;
 

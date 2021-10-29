@@ -24,6 +24,7 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/", name="user_index", methods={"GET"})
+     * @IsGranted("ROLE_SUPER_ADMIN")
      */
     public function index(UserRepository $userRepository): Response
     {
@@ -34,6 +35,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_SUPER_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -56,7 +58,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
+     * @Route("/show/{id}", name="user_show", methods={"GET"})
      */
     public function show(User $user): Response
     {
@@ -66,7 +68,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="user_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user): Response
     {
@@ -86,21 +88,29 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_delete", methods={"POST"})
+     * @Route("/del/{id}", name="user_del", methods={"GET","POST"})
      */
-    public function delete(Request $request, User $user): Response
+    public function delete(Request $request, User $user, EntityManagerInterface $em): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
-            $entityManager->flush();
+//        dump('delete'.$user->getId());
+//        dump($request->request->get('_token'));
+//        dd($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token')));
+
+        if (in_array('ROLE_SUPER_ADMIN', $user->getRoles()) )
+        {
+            $this->addFlash('danger', 'Vous ne pouvez pas supprimer le compte super administrateur');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
         }
 
-        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+        $em->remove($user);
+        $em->flush();
+
+        return $this->redirectToRoute('app_login');
     }
 
     /**
-     * @Route("/{id}/change-password", name="change_password")
+     * @Route("/change-password/{id}", name="change_password")
      */
     public function changePassword($id, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em): Response
     {

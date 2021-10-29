@@ -70,12 +70,14 @@ class User implements UserInterface
     private $Entreprise;
 
     /**
-     * @ORM\OneToMany(targetEntity=BienImmo::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=BienImmo::class, mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $biens_immos;
 
     /**
-     * @ORM\OneToMany(targetEntity=Locataire::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Locataire::class, mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $locataires;
 
