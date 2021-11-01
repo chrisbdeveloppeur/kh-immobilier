@@ -55,11 +55,21 @@
     </div>
 
     {% block nav_secondaire %}
-        {% if section == 'immobilier' %}
-            {{ include('includes/subs_headers/sub_header_immobilier.html.twig') }}
-        {% elseif section == 'entreprenariat' %}
-            {{ include('includes/subs_headers/sub_header_entreprenariat.html.twig') }}
-        {% endif %}
+        <div class="px-1 py-1 box-shadow-bulma has-background-light" style="position: sticky;top: 3.25rem;z-index: 5" onclick="if (this.querySelector('#nav-secondaire').classList.contains('is-hidden-touch')){this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')}else{this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')};this.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch') ">
+            <div class="is-hidden-desktop is-flex is-justify-content-center pointer-mouse-hover">
+                <span class="icon">
+                    <i class="fas fa-lg fa-chevron-down"></i>
+                </span>
+            </div>
+            <div class="is-hidden-touch" id="nav-secondaire">
+                {% if section == 'immobilier' %}
+                    {{ include('includes/subs_headers/sub_header_immobilier.html.twig') }}
+                {% elseif section == 'entreprenariat' %}
+                    {{ include('includes/subs_headers/sub_header_entreprenariat.html.twig') }}
+                {% endif %}
+            </div>
+        </div>
+
     {% endblock %}
 
     <div class="column is-justify-content-center is-align-items-center is-flex-direction-column">

@@ -56,6 +56,10 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   cursor: help;
 }
 
+.pointer-mouse-hover:hover{
+  cursor: pointer;
+}
+
 .bg-info-onhover:hover{
     background-color: $info !important;
 }
