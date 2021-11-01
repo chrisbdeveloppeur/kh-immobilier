@@ -36,19 +36,21 @@
                 <div class="navbar-end">
                     {% if is_granted("ROLE_SUPER_ADMIN") %}
 
-                        <div class="navbar-item has-dropdown is-hoverable">
+                        <div class="navbar-item has-dropdown">
                             <a class="navbar-link">
                                 Gestionnaires
                             </a>
-
-                            <div class="navbar-dropdown">
-                                <a class="navbar-item" href="{{ path('user_index') }}" title="Accéder à la liste des gestionnaires">
-                                    Liste des gestionnaires
-                                </a>
-                                <a class="navbar-item" href="{{ path('app_register') }}" title="Ajouter un gestionnaire">
-                                    Ajouter un gestionnaire
-                                </a>
+                            <div class="dropdown-trigger">
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item" href="{{ path('user_index') }}" title="Accéder à la liste des gestionnaires">
+                                        Liste des gestionnaires
+                                    </a>
+                                    <a class="navbar-item" href="{{ path('app_register') }}" title="Ajouter un gestionnaire">
+                                        Ajouter un gestionnaire
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
 
 {#                        <a href="{{ path('app_register') }}" class="navbar-item" title="Ajouter un gestionnaire">#}

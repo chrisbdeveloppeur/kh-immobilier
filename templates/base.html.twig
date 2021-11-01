@@ -310,6 +310,25 @@
     </script>
     {######################}
 
+
+    {#     NAVBAR-DROPDOWN     #}
+    <script>
+        document.addEventListener('click', function (event) {
+            let navabarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown');
+            let target = event.target;
+            navabarDropdown.forEach(function (drop) {
+               if ( target.parentElement === drop){
+                   drop.classList.toggle('is-active')
+               }else {
+                   drop.classList.remove('is-active');
+               }
+            });
+        });
+
+
+    </script>
+    {######################}
+
 {% endblock %}
 
 </body>
