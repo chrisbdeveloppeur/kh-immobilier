@@ -105,8 +105,8 @@
                     </td>
                     <td class="is-size-7 has-text-weight-bold show-on-hover sticky-left px-0 py-0">
                         <span class="text-info-onhover has-text-dark">
-                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text has-background-white child-sticky-left px-2" title="Voir les détails du logement">
-                                <span>
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text has-background-white child-sticky-left px-2" title="{{ bien_immo.street }}">
+                                <span class="text-index-bien-immo">
                                     {{ bien_immo.street }}
                                 </span>
                                 <span class="icon show-on-hover-target is-hidden-touch">

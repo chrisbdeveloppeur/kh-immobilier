@@ -94,6 +94,12 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   transition: .3s;
 }
 
+.text-index-bien-immo{
+  max-width: 15vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .border-radius-2px{
   border-radius: 2px;
 }
