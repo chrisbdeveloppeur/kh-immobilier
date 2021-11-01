@@ -6,9 +6,9 @@
 
 {% block body %}
 
-            <div class="column is-flex-desktop is-align-items-center is-flex-direction-column px-0 py-0">
+{#            <div class="column is-flex-desktop is-align-items-center is-flex-direction-column px-0 py-0">#}
 
-                <div class="is-flex is-justify-content-center">
+                <div class="is-flex-tablet is-justify-content-center">
                     <div class="tags has-addons mb-0 mx-1">
                         <span class="tag is-light has-text-weight-bold">Nombre total de biens immobiliers</span>
                         <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
@@ -30,37 +30,40 @@
                 </div>
 {#                <span class="">{{ knp_pagination_filter(biens_immos, ['building']) }}</span>#}
 
-                {{ knp_pagination_render(biens_immos) }}
+    <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
+        {{ knp_pagination_render(biens_immos) }}
 
-                    {% set total_loyer_ttc = 0 %}
-                    {% set total_loyer_hc = 0 %}
-                    {% set total_charges = 0 %}
-                    {% for bien_immo in biens_immos %}
-                        {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
-                        {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
-                        {% set total_charges =  total_charges + bien_immo.charges %}
-                            <div class="column is-two-thirds is-full-touch is-two-fifths-widescreen">
-                                {{ include('immo/biens_card.html.twig') }}
-                            </div>
-                    {% else %}
-
-                        <div class="column">
-                            <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
-                                <span class="icon">
-                                    <i class="fas fa-info-circle"></i>
-                                </span>
-                                <span>
-                                    <b>Vous n'avez aucun Biens immobiliers enregistrés</b>
-                                </span>
-                            </span>
-                        </div>
-
-                    {% endfor %}
-
-                <div class="mb-6">
-                    {{ knp_pagination_render(biens_immos) }}
-                </div>
-
+        {% set total_loyer_ttc = 0 %}
+        {% set total_loyer_hc = 0 %}
+        {% set total_charges = 0 %}
+        {% for bien_immo in biens_immos %}
+            {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
+            {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
+            {% set total_charges =  total_charges + bien_immo.charges %}
+            <div class="column is-two-thirds is-full-touch is-two-fifths-widescreen">
+                {{ include('immo/biens_card.html.twig') }}
             </div>
+        {% else %}
+
+            <div class="column">
+                <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                    <span class="icon">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span>
+                        <b>Vous n'avez aucun Biens immobiliers enregistrés</b>
+                    </span>
+                </span>
+            </div>
+
+        {% endfor %}
+
+        <div class="mb-6">
+            {{ knp_pagination_render(biens_immos) }}
+        </div>
+
+    </div>
+
+{#            </div>#}
 
 {% endblock %}

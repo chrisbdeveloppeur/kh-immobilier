@@ -1,39 +1,40 @@
-{% if form.vars.name == 'bien_immo' %}
-    {% set locataire_twig = bien_immo.locataires.current %}
-    {% set bien_immo_class = 'bien-immo' %}
-{% elseif form.vars.name == 'locataire' %}
-    {% set locataire_twig = locataire %}
-{% endif %}
+<div class="column is-full px-0 py-0">
+    {% if form.vars.name == 'bien_immo' %}
+        {% set locataire_twig = bien_immo.locataires.current %}
+        {% set bien_immo_class = 'bien-immo' %}
+    {% elseif form.vars.name == 'locataire' %}
+        {% set locataire_twig = locataire %}
+    {% endif %}
 
-{% if form.vars.name in ['bien_immo','user','change_password_user'] %}
-    {{ include('includes/tabs_bien_immo.html.twig') }}
-{% endif %}
+    {% if form.vars.name in ['bien_immo','user','change_password_user'] %}
+        {{ include('includes/tabs_bien_immo.html.twig') }}
+    {% endif %}
 
-{% if 'new' not in app.request.get('_route') %}
-    <div class="column is-flex is-justify-content-center pb-0">
-        <div class="help box-shadow-bulma border-radius-2px has-background-warning-light has-text-centered px-3 py-2 has-text-dark">
+    {% if 'new' not in app.request.get('_route') %}
+        <div class="column is-flex is-justify-content-center pb-0">
+            <div class="help box-shadow-bulma border-radius-2px has-background-warning-light has-text-centered px-3 py-2 has-text-dark">
             <span class="icon">
                 <i class="fas fa-exclamation-triangle"></i>
             </span>
-            Veillez à bien sauvegarder vos modifications en cliquant sur le bouton "<a href="#save" class="has-text-weight-bold is-underlined has-text-success">Sauvegarder les modifications</a>" en bas de page
-       </div>
-    </div>
-{% endif %}
+                Veillez à bien sauvegarder vos modifications en cliquant sur le bouton "<a href="#save" class="has-text-weight-bold is-underlined has-text-success">Sauvegarder les modifications</a>" en bas de page
+            </div>
+        </div>
+    {% endif %}
 
-        {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
-            <div class="column is-flex is-justify-content-center pb-0 quittance is-hidden">
-                <div class="field has-text-centered">
-                    <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+    {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
+        <div class="column is-flex is-justify-content-center pb-0 quittance is-hidden">
+            <div class="field has-text-centered">
+                <a class="button is-fullwidth is-small is-info" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" title="Editer une quittance de loyer pour {{ locataire_twig }}">
                         <span class="icon">
                             <i class="fas fa-lg fa-file-signature"></i>
                         </span>
-                        <span>
+                    <span>
                             Editer une quittance
                         </span>
-                    </a>
-                </div>
+                </a>
             </div>
-        {% endif %}
+        </div>
+    {% endif %}
 
     {% if 'bien_immo' in app.request.get('_route') %}
         <div class="prestataire is-hidden">
@@ -57,31 +58,31 @@
 
     {% endif %}
 
-{% if form.vars.name in ['bien_immo'] %}
-    <div id="prestataires" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-        {{ include('includes/prestataires_liste.html.twig') }}
-    </div>
-{% endif %}
+    {% if form.vars.name in ['bien_immo'] %}
+        <div id="prestataires" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+            {{ include('includes/prestataires_liste.html.twig') }}
+        </div>
+    {% endif %}
 
-{% if form.vars.name in ['bien_immo'] %}
-    <div id="quittances" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-        {{ include('immo/quittances/quittances_liste.html.twig') }}
-    </div>
-{% endif %}
+    {% if form.vars.name in ['bien_immo'] %}
+        <div id="quittances" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+            {{ include('immo/quittances/quittances_liste.html.twig') }}
+        </div>
+    {% endif %}
 
-<div class="column is-flex is-justify-content-center">
+    <div class="column is-flex is-justify-content-center">
 
-    {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
+        {{ form_start(form, {'attr': {'class': 'column is-two-fifths '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
-    {% if form.vars.name in ['bien_immo','locataire'] %}
+        {% if form.vars.name in ['bien_immo','locataire'] %}
 
-        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete %}
-            <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
-                <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete.name }}</b></span>
-            </div>
-        {% endif %}
+            {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete %}
+                <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
+                    <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete.name }}</b></span>
+                </div>
+            {% endif %}
 
-    {% elseif form.vars.name in ['quittances'] %}
+        {% elseif form.vars.name in ['quittances'] %}
             <div class="field has-text-right">
                 <a class="button is-small is-danger is-light quittance-lock-btn" title="Modifier les informations de la quittance">
                     <span class="icon">
@@ -89,125 +90,125 @@
                     </span>
                 </a>
             </div>
-    {% endif %}
-
-    {% for child in form %}
-
-        {% set field_bien_immo_class = '' %}
-        {% if 'copro' in child.vars.name %}
-            {% set field_bien_immo_class = 'copropriete is-hidden' %}
-        {% elseif 'prestataire' in child.vars.name %}
-            {% set field_bien_immo_class = 'prestataire is-hidden' %}
-        {% else %}
-            {% set field_bien_immo_class = 'logement' %}
         {% endif %}
 
-        <div class="field {% if form.vars.name == 'bien_immo' %} {{ field_bien_immo_class }} {{ bien_immo_class }}{% endif %}">
+        {% for child in form %}
 
-            {% if 'token' not in form_label(child) %}
-                <div class="label is-size-7">
-                    {{ form_label(child) }}
-                </div>
+            {% set field_bien_immo_class = '' %}
+            {% if 'copro' in child.vars.name %}
+                {% set field_bien_immo_class = 'copropriete is-hidden' %}
+            {% elseif 'prestataire' in child.vars.name %}
+                {% set field_bien_immo_class = 'prestataire is-hidden' %}
+            {% else %}
+                {% set field_bien_immo_class = 'logement' %}
             {% endif %}
 
+            <div class="field {% if form.vars.name == 'bien_immo' %} {{ field_bien_immo_class }} {{ bien_immo_class }}{% endif %}">
 
-            {% if child.vars.block_prefixes[1] == 'choice' %}
-
-                {% if child.vars.name == 'echeance' %}
-                    <div class="field has-addons">
-
-                        <p class="control">
-                            <a class="button is-static is-small">
-                                Avant le
-                            </a>
-                        </p>
-
-                        <div class="control has-icons-left is-expanded">
-                            <div class="select is-small is-fullwidth">
-                                {{ form_widget(child) }}
-                            </div>
-                            <div class="icon is-small is-left">
-                                <i class="fas fa-calendar-day"></i>
-                            </div>
-                        </div>
-
-                        <p class="control">
-                            <a class="button is-static is-small">
-                                du mois
-                            </a>
-                        </p>
-
+                {% if 'token' not in form_label(child) %}
+                    <div class="label is-size-7">
+                        {{ form_label(child) }}
                     </div>
-                {% elseif child.vars.name in ['first_day','last_day'] %}
-                            <div class="field has-addons">
-                                <p class="control">
-                                    <a class="button is-static is-small">
-                                        {% if child.vars.name == 'first_day' %}
-                                            du
-                                        {% elseif child.vars.name == 'last_day' %}
-                                            au
-                                        {% endif %}
-                                    </a>
-                                </p>
-                                <div class="control is-expanded">
-                                    <div class="select is-small is-fullwidth">
-                                        {{ form_widget(child) }}
-                                    </div>
+                {% endif %}
+
+
+                {% if child.vars.block_prefixes[1] == 'choice' %}
+
+                    {% if child.vars.name == 'echeance' %}
+                        <div class="field has-addons">
+
+                            <p class="control">
+                                <a class="button is-static is-small">
+                                    Avant le
+                                </a>
+                            </p>
+
+                            <div class="control has-icons-left is-expanded">
+                                <div class="select is-small is-fullwidth">
+                                    {{ form_widget(child) }}
+                                </div>
+                                <div class="icon is-small is-left">
+                                    <i class="fas fa-calendar-day"></i>
                                 </div>
                             </div>
-                {% elseif child.vars.name in ['locataires','logement'] %}
-                    <div class="field has-addons mb-0">
-                        <div class="control is-expanded">
-                            <div class="select is-small is-fullwidth">
-                                {{ form_widget(child) }}
+
+                            <p class="control">
+                                <a class="button is-static is-small">
+                                    du mois
+                                </a>
+                            </p>
+
+                        </div>
+                    {% elseif child.vars.name in ['first_day','last_day'] %}
+                        <div class="field has-addons">
+                            <p class="control">
+                                <a class="button is-static is-small">
+                                    {% if child.vars.name == 'first_day' %}
+                                        du
+                                    {% elseif child.vars.name == 'last_day' %}
+                                        au
+                                    {% endif %}
+                                </a>
+                            </p>
+                            <div class="control is-expanded">
+                                <div class="select is-small is-fullwidth">
+                                    {{ form_widget(child) }}
+                                </div>
                             </div>
                         </div>
+                    {% elseif child.vars.name in ['locataires','logement'] %}
+                        <div class="field has-addons mb-0">
+                            <div class="control is-expanded">
+                                <div class="select is-small is-fullwidth">
+                                    {{ form_widget(child) }}
+                                </div>
+                            </div>
 
-                        {% if child.vars.name == 'locataires' %}
-                            <p class="control">
-                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le locataire">
+                            {% if child.vars.name == 'locataires' %}
+                                <p class="control">
+                                    <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le locataire">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-user-edit"></i>
                                     </span>
-                                </a>
-                            </p>
-                            {% if locataires|length == 0 %}
-                                <p class="control">
-                                    <a href="{{ path('locataire_new') }}" class="button is-small is-light" title="Ajouter un locataire">
+                                    </a>
+                                </p>
+                                {% if locataires|length == 0 %}
+                                    <p class="control">
+                                        <a href="{{ path('locataire_new') }}" class="button is-small is-light" title="Ajouter un locataire">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-plus"></i>
                                         </span>
-                                    </a>
-                                </p>
-                            {% endif %}
-                        {% else %}
-                            <p class="control">
-                                <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le bien immobilier">
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            {% else %}
+                                <p class="control">
+                                    <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le bien immobilier">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-edit"></i>
                                     </span>
-                                </a>
-                            </p>
-                            {% if logements|length == 0 %}
-                                <p class="control">
-                                    <a href="{{ path('bien_immo_new') }}" class="button is-small is-light" title="Ajouter un bien immobilier">
+                                    </a>
+                                </p>
+                                {% if logements|length == 0 %}
+                                    <p class="control">
+                                        <a href="{{ path('bien_immo_new') }}" class="button is-small is-light" title="Ajouter un bien immobilier">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-plus"></i>
                                         </span>
-                                    </a>
-                                </p>
+                                        </a>
+                                    </p>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                    </div>
-                {% else %}
-                    <div class="select is-small is-fullwidth">
+                        </div>
+                    {% else %}
+                        <div class="select is-small is-fullwidth">
 
-                        {{ form_widget(child) }}
+                            {{ form_widget(child) }}
 
-                    </div>
-                {% endif %}
-            {% elseif child.vars.name in ['loyer_hc','charges','solde','superficie','loyer_ttc'] %}
+                        </div>
+                    {% endif %}
+                {% elseif child.vars.name in ['loyer_hc','charges','solde','superficie','loyer_ttc'] %}
                     <div class="field has-addons mb-0">
                         <p class="control column px-0 py-0 is-two-thirds">
                             {{ form_widget(child) }}
@@ -227,34 +228,34 @@
                             </a>
                         </p>
                     </div>
-            {% elseif 'token' not in form_label(child) %}
-                <p class="control has-icons-left has-icons-right">
-                    {{ form_widget(child) }}
-                    {% if 'mail' in child.vars.name %}
-                        <span class="icon is-small is-left">
+                {% elseif 'token' not in form_label(child) %}
+                    <p class="control has-icons-left has-icons-right">
+                        {{ form_widget(child) }}
+                        {% if 'mail' in child.vars.name %}
+                            <span class="icon is-small is-left">
                             <i class="fas fa-at"></i>
                         </span>
-                    {% elseif 'phone' in child.vars.name or 'Phone' in child.vars.name %}
-                        <span class="icon is-small is-left">
+                        {% elseif 'phone' in child.vars.name or 'Phone' in child.vars.name %}
+                            <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                         </span>
-                    {% elseif ('street' in child.vars.name) or ('cp' in child.vars.name) or ('city' in child.vars.name) or ('building' in child.vars.name) or ('Adresse' in child.vars.name) %}
-                        <span class="icon is-small is-left">
+                        {% elseif ('street' in child.vars.name) or ('cp' in child.vars.name) or ('city' in child.vars.name) or ('building' in child.vars.name) or ('Adresse' in child.vars.name) %}
+                            <span class="icon is-small is-left">
                             <i class="fas fa-map-marked-alt"></i>
                         </span>
-                    {% elseif ('name' in child.vars.name) or ('Name' in child.vars.name) or ('Contact' in child.vars.name) %}
-                        <span class="icon is-small is-left">
+                        {% elseif ('name' in child.vars.name) or ('Name' in child.vars.name) or ('Contact' in child.vars.name) %}
+                            <span class="icon is-small is-left">
                             <i class="fas fa-signature"></i>
                         </span>
-                    {% endif %}
-                </p>
-            {% else %}
-                {{ form_widget(child) }}
-            {% endif %}
+                        {% endif %}
+                    </p>
+                {% else %}
+                    {{ form_widget(child) }}
+                {% endif %}
 
 
-            {% if form_help(child) %}
-                <span class="help is-info mt-0">
+                {% if form_help(child) %}
+                    <span class="help is-info mt-0">
                     <span class="icon-text" style="flex-wrap: nowrap">
                         <span class="icon">
                             <i class="fas fa-info-circle"></i>
@@ -262,61 +263,64 @@
                         <span>{{ form_help(child) }}</span>
                     </span>
                 </span>
-            {% endif %}
+                {% endif %}
 
-            {% if form_errors(child) %}
-                <span class="tag is-danger">
+                {% if form_errors(child) %}
+                    <span class="tag is-danger">
                     {{ form_errors(child) }}
                 </span>
-            {% endif %}
+                {% endif %}
 
-            {% for sub_child in child.children %}
-                {% if form_errors(sub_child) %}
-                    <span class="tag is-danger">
+                {% for sub_child in child.children %}
+                    {% if form_errors(sub_child) %}
+                        <span class="tag is-danger">
                         {{ form_errors(sub_child) }}
                     </span>
-                {% endif %}
-            {% endfor %}
+                    {% endif %}
+                {% endfor %}
 
-        </div>
-    {% endfor %}
+            </div>
+        {% endfor %}
 
-{#    {{ app.request.get('_route') }}#}
-    {% if 'new' in app.request.get('_route') %}
-        {% if 'quittances' in app.request.get('_route') %}
-            {% set validation_button = 'Editer la quittance' %}
+        {#    {{ app.request.get('_route') }}#}
+        {% if 'new' in app.request.get('_route') %}
+            {% if 'quittances' in app.request.get('_route') %}
+                {% set validation_button = 'Editer la quittance' %}
+            {% else %}
+                {% set validation_button = 'Sauvegarder' %}
+            {% endif %}
+        {% elseif 'new_prestataire' in app.request.get('_route') %}
+            {% set validation_button = 'Ajouter le prestataire' %}
         {% else %}
-            {% set validation_button = 'Sauvegarder' %}
+            {% set validation_button = 'Sauvegarder les modifications' %}
         {% endif %}
-    {% elseif 'new_prestataire' in app.request.get('_route') %}
-        {% set validation_button = 'Ajouter le prestataire' %}
-    {% else %}
-        {% set validation_button = 'Sauvegarder les modifications' %}
-    {% endif %}
 
-    <div class="field has-text-centered btn-to-hide" id="save">
-        <button class="button is-success is-small btn-submit">
-            {% if validation_button == 'Editer la quittance' %}
-                <span class="icon">
+        <div class="field has-text-centered btn-to-hide" id="save">
+            <button class="button is-success is-small btn-submit">
+                {% if validation_button == 'Editer la quittance' %}
+                    <span class="icon">
                     <i class="fas fa-lg fa-file-pdf"></i>
                 </span>
-                <span>
+                    <span>
                     {{ validation_button }}
                 </span>
-            {% else %}
-                <span class="icon">
+                {% else %}
+                    <span class="icon">
                     <i class="fas fa-lg fa-save"></i>
                 </span>
-                <span>
+                    <span>
                     {{ validation_button }}
                 </span>
-            {% endif %}
-        </button>
+                {% endif %}
+            </button>
+        </div>
+
+        {{ form_end(form) }}
+
     </div>
-
-    {{ form_end(form) }}
-
 </div>
+
+
 
 
 
