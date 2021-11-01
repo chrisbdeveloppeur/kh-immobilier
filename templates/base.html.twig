@@ -55,9 +55,9 @@
     </div>
 
     {% block nav_secondaire %}
-        {% if section == 'immobilier' or section == 'entreprenatiat' %}
-            <div class="px-1 py-1 box-shadow-bulma has-background-light" style="position: sticky;top: 3.25rem;z-index: 5" onclick="if (this.querySelector('#nav-secondaire').classList.contains('is-hidden-touch')){this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')}else{this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')};this.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch') ">
-                <div class="is-hidden-desktop is-flex is-justify-content-center pointer-mouse-hover">
+        {% if section == 'immobilier' or section == 'entreprenariat' %}
+            <div class="px-1 py-1 has-background-light custom-dropdown" style="position: sticky;top: 3.25rem;z-index: 5">
+                <div class="is-hidden-desktop is-flex is-justify-content-center pointer-mouse-hover box-shadow-bulma-hover"  onclick="if (document.querySelector('#nav-secondaire').classList.contains('is-hidden-touch')){this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')}else{this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')};document.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch')">
                     <span class="icon">
                         <i class="fas fa-lg fa-chevron-down"></i>
                     </span>
@@ -316,15 +316,15 @@
         document.addEventListener('click', function (event) {
             let navabarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown');
             let target = event.target;
+
             navabarDropdown.forEach(function (drop) {
-               if ( target.parentElement === drop){
+               if ( target.parentElement === drop || target === drop){
                    drop.classList.toggle('is-active')
                }else {
                    drop.classList.remove('is-active');
                }
             });
         });
-
 
     </script>
     {######################}
