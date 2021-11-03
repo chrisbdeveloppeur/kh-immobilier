@@ -1,6 +1,13 @@
 
 {% if bien_immo.quittances|length == 0 %}
-        <i>Aucune quittance de loyer n'a été éditée pour le moment</i>
+        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                <span class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <span>
+                    <b>Aucune quittance de loyer n'a été éditée pour le moment</b>
+                </span>
+        </span>
 {% else %}
         {% for quittance in bien_immo.quittances|sort %}
                 <div class="tags are-normal has-addons">

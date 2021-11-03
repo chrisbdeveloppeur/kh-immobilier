@@ -1,7 +1,14 @@
 
 <div class="column is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
 {% if bien_immo.prestataire|length == 0 %}
-        <i>Aucun prestataire n'a été enregistré pour l'instant</i>
+    <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+        <span class="icon">
+            <i class="fas fa-info-circle"></i>
+        </span>
+        <span>
+            <b>Aucun prestataires enregistrés</b>
+        </span>
+    </span>
 {% else %}
         {% for prestataire in bien_immo.prestataire|sort %}
                 <div class="column is-half is-full-touch px-0 pt-0">
