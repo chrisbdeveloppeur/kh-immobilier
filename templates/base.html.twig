@@ -299,12 +299,19 @@
     {#     NAVBAR-DROPDOWN     #}
     <script>
         document.addEventListener('click', function (event) {
-            let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown');
+            let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown, custom-dropdown');
             let navbarBurger = document.querySelectorAll('.navbar-burger');
             let sections = document.querySelectorAll('section');
             let navbarMenu = document.getElementById('navbarMenu');
             let target = event.target;
 
+            // if (document.querySelector('#nav-secondaire').classList.contains('is-hidden-touch'))
+            // {
+            //     this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')
+            // }else{
+            //     this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')
+            // };
+            // document.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch');
 
             navbarDropdown.forEach(function (drop) {
                if ( target.parentElement === drop || target === drop){
