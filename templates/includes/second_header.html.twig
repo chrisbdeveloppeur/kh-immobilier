@@ -1,0 +1,25 @@
+<div class="hero is-small is-relative">
+    <div class="title-main-background is-absolute-top-0" style="z-index: -2;{% block title_main_background_img %}{% endblock %}"></div>
+    <div class="title-main-background is-absolute-top-0" style="z-index: -1;{% block title_main_background_layer %}background: rgba(2, 18, 34, 0.9);{% endblock %}"></div>
+    <div class="hero-body">
+        <h1 class="title has-text-light has-text-centered">
+            <span class="icon-text is-align-items-center is-justify-content-center">
+
+                <span class="icon is-large">
+                    {% if section == 'immobilier' %}
+                        <i class="fas fa-city"></i>
+                           {% elseif section == 'entreprenariat' %}
+                        <i class="fas fa-user-tie"></i>
+                           {% else %}
+                        <i class="fas fa-mail-bulk"></i>
+                    {% endif %}
+                </span>
+
+                <span>
+                    {% block title_main %}<b>Outil d'aministration de vos documents</b>{% endblock %}
+                </span>
+
+            </span>
+        </h1>
+    </div>
+</div>

@@ -7,6 +7,7 @@ $table-head-background-color : whitesmoke;
 $table-foot-background-color : whitesmoke;
 //$table-foot-cell-color : white;
 $link : #363636;
+$header-background-layer : rgba(2, 18, 34, 0.9);
 
 
 .button, a{
@@ -46,6 +47,10 @@ a.navbar-item:focus, a.navbar-item:focus-within{
 
 .borderless-radius{
   border-radius: 0px !important;
+}
+
+.has-background-like-header{
+  background-color: $header-background-layer !important;
 }
 
 .body-section{
@@ -117,6 +122,7 @@ i.fa-search-js{
     opacity: 1;
   }
 }
+
 
 .overflow-ellipsis{
   overflow: hidden;
@@ -221,7 +227,7 @@ form.quittances{
 //  justify-content: center
 //}
 
-// TOUCH
+// TOUCH MAX
 @media (max-width: 1023px) {
   .is-flex-direction-column-touch{
     flex-direction: column;
@@ -247,7 +253,7 @@ form.quittances{
   };
 }
 
-// MOBILE
+// MOBILE MAX
 @media (max-width:768px) {
   .card-footer-column-mobil>a{
     border: none !important;
@@ -259,6 +265,13 @@ form.quittances{
   .is-small{
     font-size: 1rem !important;
   };
+}
+
+// MOBILE MIN
+@media (min-width: 768px) {
+  .footer-content > div:not(:first-child){
+    //border-left: rgba(255,255,255,0.2) 1px solid !important;
+  }
 }
 
 // DESKTOP
