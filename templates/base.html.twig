@@ -316,9 +316,10 @@
         document.addEventListener('click', function (event) {
             let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown');
             let navbarBurger = document.querySelectorAll('.navbar-burger');
+            let sections = document.querySelectorAll('section');
+            let navbarMenu = document.getElementById('navbarMenu');
             let target = event.target;
 
-            //console.log(target);
 
             navbarDropdown.forEach(function (drop) {
                if ( target.parentElement === drop || target === drop){
@@ -329,24 +330,16 @@
             });
 
             navbarBurger.forEach(function (drop) {
-                //let navbarMenu = document.getElementById('navbarMenu');
-                //let header = document.querySelector('header');
-                //let childs = header.querySelectorAll('header > *, header > * > *');
-                //console.log(childs);
-                //if (childs.hasChildNodes()){
-                //    console.log('Here it is !')
-                //}else {
-                //    console.log('Nope!')
-                //}
-                //console.log(header.childNodes);
-                //if ( target.parentElement === drop || target === drop){
-                //    console.log('add');
-                //    navbarMenu.classList.toggle('is-active')
-                //}else {
-                //    console.log('remove');
-                //    navbarMenu.classList.remove('is-active');
-                //}
+                if ( target.parentElement === drop || target === drop){
+                    navbarMenu.classList.toggle('is-active')
+                }
             });
+
+            sections.forEach(function (section) {
+                section.addEventListener('click', function () {
+                    navbarMenu.classList.remove('is-active');
+                })
+            })
         });
 
     </script>
