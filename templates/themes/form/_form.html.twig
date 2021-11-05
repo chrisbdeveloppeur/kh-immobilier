@@ -29,8 +29,8 @@
                             <i class="fas fa-lg fa-file-signature"></i>
                         </span>
                     <span>
-                            Editer une quittance
-                        </span>
+                        Editer une quittance
+                    </span>
                 </a>
             </div>
         </div>
@@ -172,7 +172,7 @@
                                     </span>
                                     </a>
                                 </p>
-                                {% if locataires|length == 0 %}
+                                {#{% if locataires|length == 0 %}#}
                                     <p class="control">
                                         <a href="{{ path('locataire_new') }}" class="button is-small is-light" title="Ajouter un locataire">
                                         <span class="icon">
@@ -180,7 +180,7 @@
                                         </span>
                                         </a>
                                     </p>
-                                {% endif %}
+                                {#{% endif %}#}
                             {% else %}
                                 <p class="control">
                                     <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le bien immobilier">
@@ -189,7 +189,7 @@
                                     </span>
                                     </a>
                                 </p>
-                                {% if logements|length == 0 %}
+                                {#{% if logements|length == 0 %}#}
                                     <p class="control">
                                         <a href="{{ path('bien_immo_new') }}" class="button is-small is-light" title="Ajouter un bien immobilier">
                                         <span class="icon">
@@ -197,7 +197,7 @@
                                         </span>
                                         </a>
                                     </p>
-                                {% endif %}
+                                {#{% endif %}#}
                             {% endif %}
 
                         </div>

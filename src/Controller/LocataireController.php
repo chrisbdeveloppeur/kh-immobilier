@@ -113,7 +113,7 @@ class LocataireController extends AbstractController
 
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->get('logement')->setData($locataire->getLogement());
-        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+        if ($this->isGranted('ROLE_SUPER_ADMIN') && $locataire){
             $form->get('user')->setData($locataire->getUser());
         }
         $form->handleRequest($request);
