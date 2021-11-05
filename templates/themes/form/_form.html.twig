@@ -335,13 +335,14 @@
         let lis = elem.querySelectorAll('li');
         lis.forEach(function (li) {
             li.addEventListener('click', function () {
-                window.location = '#' + li.id;
-                let fields = document.querySelectorAll('.'+li.id);
+                let id = li.previousElementSibling.id;
+                window.location = '#' + id;
+                let fields = document.querySelectorAll('.'+id);
                 let notfields = document.querySelectorAll('.bien-immo');
                 lis.forEach(el => el.classList.remove('is-active'));
                 li.classList.add('is-active');
 
-                if ( li.id === 'quittances' ){
+                if ( id === 'quittances' ){
                     document.querySelectorAll('.quittance').forEach(el => el.classList.remove('is-hidden'));
                     document.querySelector('div#quittances').classList.remove('is-hidden');
                 }else {
@@ -349,13 +350,13 @@
                     document.querySelector('div#quittances').classList.add('is-hidden');
                 }
 
-                if ( li.id === 'copropriete' ){
+                if ( id === 'copropriete' ){
                     // btnToHide.forEach(el => el.classList.add('is-hidden'));
                 }else {
                     // btnToHide.forEach(el => el.classList.remove('is-hidden'));
                 }
 
-                if ( li.id === 'prestataire' ){
+                if ( id === 'prestataire' ){
                     document.querySelectorAll('.prestataire').forEach(function (el) {
                         if (el.previousElementSibling && el.previousElementSibling.querySelector('i').classList.contains('fa-angle-down')){
                             el.classList.add('is-hidden');
@@ -407,7 +408,7 @@
      if (header){
          let ancrage = document.getElementById(header);
          if (ancrage){
-             ancrage.click();
+             ancrage.nextElementSibling.click();
          }
      }
 </script>
