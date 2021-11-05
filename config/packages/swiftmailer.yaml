@@ -1,4 +1,5 @@
 swiftmailer:
+    url: '%env(MAILER_URL)%'
     transport:        gmail
     username:         kenshin91cb@gmail.com
     password:         121090cb.K4gur0
@@ -12,4 +13,3 @@ swiftmailer:
             allow_self_signed: true
             verify_peer: false
             verify_peer_name: false
-#    delivery_addresses: ['kenshin91cb@gmail.com']
