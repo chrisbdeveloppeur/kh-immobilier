@@ -20,6 +20,8 @@ const startup_illustration = require('./img/png/Startup.png');
 const startup_illustration_2 = require('./img/svg/undraw_product_iteration_kjok.svg');
 const startup_illustration_3 = require('./img/svg/undraw_design_community_rcft.svg');
 const copyright = require('./img/svg/Copyright.svg');
+const main_background = require('./img/png/design_main_background.png');
+const main_background_2 = require('./img/jpg/atom-background.jpg');
 
 
 var bulmaCalendar = require('bulma-calendar');

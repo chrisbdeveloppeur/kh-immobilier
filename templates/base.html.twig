@@ -25,6 +25,14 @@
     {% set section = 'entreprenariat' %}
 {% endif %}
 
+<div id="main-background" style="background: center / cover url({{ asset('build/images/atom-background.2bd570b3.jpg') }})">
+    {% block main_background %}
+        <div style="height: 100%;width: 100%;background: rgba(255,255,255,.9);">
+
+        </div>
+    {% endblock %}
+</div>
+
 {% block header %}
     {{ include('includes/header.html.twig') }}
 {% endblock %}
