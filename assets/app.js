@@ -17,6 +17,7 @@ const facture_illustration = require('./img/png/facture.png');
 const startup_illustration = require('./img/png/Startup.png');
 const startup_illustration_2 = require('./img/svg/undraw_product_iteration_kjok.svg');
 const startup_illustration_3 = require('./img/svg/undraw_design_community_rcft.svg');
+const copyright = require('./img/svg/Copyright.svg');
 
 
 var bulmaCalendar = require('bulma-calendar');
