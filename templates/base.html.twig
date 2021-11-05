@@ -171,7 +171,9 @@
         let infosPrestaForms = document.getElementById('infos-prestations');
 
         for (i=0 ; i < infosPrestaForms.children.length ; i++){
-            if (infosPrestaForms.children[i].classList.contains('is-hidden')){
+            let child = infosPrestaForms.children[i];
+
+            if (child.classList.contains('is-hidden')){
                 if (i === infosPrestaForms.children.length - 1){
                     elem.classList.add('is-hidden')
                 } else {
@@ -182,10 +184,11 @@
                 } else {
                     elem.nextElementSibling.classList.add('is-hidden')
                 }
-                infosPrestaForms.children[i].classList.toggle('is-hidden');
+                child.classList.toggle('is-hidden');
                 break
             }
         }
+
     }
 
     function removeInfosPresta(elem) {
