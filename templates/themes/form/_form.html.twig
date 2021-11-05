@@ -59,13 +59,13 @@
     {% endif %}
 
     {% if form.vars.name in ['bien_immo'] %}
-        <div id="prestataires" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+        <div id="prestataires-liste" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
             {{ include('includes/prestataires_liste.html.twig') }}
         </div>
     {% endif %}
 
     {% if form.vars.name in ['bien_immo'] %}
-        <div id="quittances" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+        <div id="quittances-liste" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
             {{ include('immo/quittances/quittances_liste.html.twig') }}
         </div>
     {% endif %}
@@ -344,10 +344,10 @@
 
                 if ( id === 'quittances' ){
                     document.querySelectorAll('.quittance').forEach(el => el.classList.remove('is-hidden'));
-                    document.querySelector('div#quittances').classList.remove('is-hidden');
+                    document.querySelector('div#quittances-liste').classList.remove('is-hidden');
                 }else {
                     document.querySelectorAll('.quittance').forEach(el => el.classList.add('is-hidden'));
-                    document.querySelector('div#quittances').classList.add('is-hidden');
+                    document.querySelector('div#quittances-liste').classList.add('is-hidden');
                 }
 
                 if ( id === 'copropriete' ){
@@ -364,7 +364,7 @@
                     });
                 }else {
                     document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
-                    document.querySelector('div#prestataires').classList.add('is-hidden');
+                    document.querySelector('div#prestataires-liste').classList.add('is-hidden');
                 }
 
                 notfields.forEach(notfield => notfield.classList.add('is-hidden'));
