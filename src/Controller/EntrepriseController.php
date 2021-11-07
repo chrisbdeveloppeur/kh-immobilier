@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,15 +84,20 @@ class EntrepriseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="entreprise_delete", methods={"POST"})
+     * @Route("/{id}/delete", name="entreprise_delete", methods={"GET","POST"})
      */
-    public function delete(Request $request, Entreprise $entreprise): Response
+    public function delete(Request $request, Entreprise $entreprise, EntityManagerInterface $em): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$entreprise->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($entreprise);
-            $entityManager->flush();
-        }
+//        if ($this->isCsrfTokenValid('delete'.$entreprise->getId(), $request->request->get('_token'))) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->remove($entreprise);
+//            $entityManager->flush();
+//        }
+        $name = $entreprise->getName();
+        $em->remove($entreprise);
+        $em->flush();
+
+        $this->addFlash('danger', 'L\'entreprise : <b>'.$name.'</b> vient d\'être supprimer définitivement');
 
         return $this->redirectToRoute('entreprise_index', [], Response::HTTP_SEE_OTHER);
     }
