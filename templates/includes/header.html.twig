@@ -22,14 +22,16 @@
                         </span>
                     </a>
 
-                    <a href="{{ path('entreprenariat_home') }}" class="navbar-item is-light">
-                        <span class="icon-text">
-                            <span class="icon">
-                              <i class="fas fa-user-tie"></i>
+                    {% if is_granted("ROLE_SUPER_ADMIN") %}
+                        <a href="{{ path('entreprenariat_home') }}" class="navbar-item is-light">
+                            <span class="icon-text">
+                                <span class="icon">
+                                  <i class="fas fa-user-tie"></i>
+                                </span>
+                                <span>Entreprenariat</span>
                             </span>
-                            <span>Entreprenariat</span>
-                        </span>
-                    </a>
+                        </a>
+                    {% endif %}
 
                 </div>
 
