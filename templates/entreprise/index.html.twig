@@ -10,32 +10,32 @@
         <table class="table is-narrow" style="width: 100%;">
             <thead>
             <tr class="has-text-centered">
+                <th class="is-size-7">Actions</th>
                 <th class="is-size-7">Titre</th>
                 <th class="is-size-7">Propriétaire</th>
-                <th class="is-size-7">Siret</th>
-                <th class="is-size-7">Tva_number</th>
-                <th class="is-size-7">actions</th>
+                <th class="is-size-7">SIRET</th>
+                <th class="is-size-7">N° TVA</th>
             </tr>
             </thead>
             <tbody>
             {% for entreprise in entreprises %}
                 <tr class="has-text-centered">
-                    <td class="is-size-7">{{ entreprise.name }}</td>
-                    <td class="is-size-7">{{ entreprise.users.first }}</td>
-                    <td class="is-size-7">{{ entreprise.siret }}</td>
-                    <td class="is-size-7">{{ entreprise.tvaNumber }}</td>
                     <td class="is-size-7">
-                        <a href="{{ path('entreprise_show', {'id': entreprise.id}) }}" title="Voir les détails">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-search"></i>
-                            </span>
-                        </a>
                         <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}" title="Modifier l'entreprise">
                             <span class="icon">
                                 <i class="fas fa-lg fa-pen-square"></i>
                             </span>
                         </a>
+                        <a href="{{ path('entreprise_delete', {'id': entreprise.id}) }}" title="Supprimer l'entreprise" onclick="return confirm('Êtes-vous sur de vouloir supprimer cette entreprise ?')">
+                            <span class="icon has-text-danger">
+                                <i class="far fa-lg fa-trash-alt"></i>
+                            </span>
+                        </a>
                     </td>
+                    <td class="is-size-7">{{ entreprise.name }}</td>
+                    <td class="is-size-7">{{ entreprise.users.first }}</td>
+                    <td class="is-size-7">{{ entreprise.siret }}</td>
+                    <td class="is-size-7">{{ entreprise.tvaNumber }}</td>
                 </tr>
             {% else %}
                 <tr>
