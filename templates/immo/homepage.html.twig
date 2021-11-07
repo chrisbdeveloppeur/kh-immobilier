@@ -45,8 +45,8 @@
             </div>
         {% else %}
 
-            <div class="column">
-                <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+            <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
+                <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
                     <span class="icon">
                         <i class="fas fa-info-circle"></i>
                     </span>
@@ -54,6 +54,7 @@
                         <b>Vous n'avez aucun Biens immobiliers enregistrés</b>
                     </span>
                 </span>
+                <a href="{{ path('bien_immo_new') }}" class="button is-small is-info is-light">Ajouter un bien immobilier</a>
             </div>
 
         {% endfor %}

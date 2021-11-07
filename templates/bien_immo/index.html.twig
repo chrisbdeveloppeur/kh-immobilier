@@ -15,13 +15,24 @@
         {{ knp_pagination_render(biens_immos) }}
     </div>
 
-{#  POUR GOOGLE MAPS SEARCH  #}
-{#    <input type="text" id="autocomplete" placeholder="Indiquer une adresse">#}
-{#  ##############  #}
-
-    <div class="table-container is-flex is-justify-content-center">
-        <table class="table is-narrow">
-            <thead>
+    {% if biens_immos|length == 0 %}
+        <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
+            <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
+                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                        <span class="icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>
+                            <b>Vous n'avez aucun Biens immobiliers enregistrés</b>
+                        </span>
+                    </span>
+                <a href="{{ path('bien_immo_new') }}" class="button is-small is-info is-light">Ajouter un bien immobilier</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="table-container is-flex is-justify-content-center">
+            <table class="table is-narrow">
+                <thead>
                 <tr class="has-text-centered">
                     <th>
                         <span class="is-size-7">Actions</span>
@@ -68,42 +79,42 @@
                         </th>
                     {% endif %}
                 </tr>
-            </thead>
-            <tbody>
-            {% set total_loyer_ttc = 0 %}
-            {% set total_loyer_hc = 0 %}
-            {% set total_charges = 0 %}
-            {% set total_solde = 0 %}
-            {% for bien_immo in biens_immos %}
-                {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
-                {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
-                {% set total_charges =  total_charges + bien_immo.charges %}
-                {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
-                <tr class="has-text-centered">
-                    <td class="is-size-7">
+                </thead>
+                <tbody>
+                {% set total_loyer_ttc = 0 %}
+                {% set total_loyer_hc = 0 %}
+                {% set total_charges = 0 %}
+                {% set total_solde = 0 %}
+                {% for bien_immo in biens_immos %}
+                    {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
+                    {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
+                    {% set total_charges =  total_charges + bien_immo.charges %}
+                    {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
+                    <tr class="has-text-centered">
+                        <td class="is-size-7">
 
-                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le logement">
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Modifier le logement">
                             <span class="icon text-info-onhover">
                                 <i class="fas fa-lg fa-edit"></i>
                             </span>
-                        </a>
+                            </a>
 
-                        {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">
+                            {% if bien_immo.locataires is not empty %}
+                                <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">
                                 <span class="icon text-info-onhover">
                                     <i class="fas fa-lg fa-file-signature"></i>
                                 </span>
-                            </a>
-                        {% endif %}
+                                </a>
+                            {% endif %}
 
-                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" title="Supprimer le logement" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');">
+                            <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" title="Supprimer le logement" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');">
                             <span class="icon has-text-danger">
                                 <i class="far fa-lg fa-trash-alt"></i>
                             </span>
-                        </a>
+                            </a>
 
-                    </td>
-                    <td class="is-size-7 has-text-weight-bold show-on-hover sticky-left px-0 py-0">
+                        </td>
+                        <td class="is-size-7 has-text-weight-bold show-on-hover sticky-left px-0 py-0">
                         <span class="text-info-onhover has-text-dark">
                             <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="has-text-weight-bold text-info-onhover icon-text has-background-white child-sticky-left px-2" title="{{ bien_immo.street }}">
                                 <span class="text-index-bien-immo">
@@ -114,111 +125,113 @@
                                 </span>
                             </a>
                         </span>
-                    </td>
-                    <td class="is-size-7" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
-                    <td class="is-size-7" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
-                    <td class="is-size-7" title="{{ bien_immo.type }}">{{ bien_immo.type }}</td>
-                    {% if bien_immo.superficie %}
-                        <td class="is-size-7" title="{{ bien_immo.superficie }}">{{ bien_immo.superficie }} m²</td>
-                    {% else %}
-                        <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
-                    {% endif %}
-                    <td class="is-size-7" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
-                    <td class="is-size-7" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
-                    <td class="is-size-7" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
-                    <td class="is-size-7" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
-                    <td class="is-size-7" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
-                    <td class="is-size-7">
-                        {% if bien_immo.copropriete.name %}
-                            <span class="is-size-7" title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
+                        </td>
+                        <td class="is-size-7" title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>
+                        <td class="is-size-7" title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
+                        <td class="is-size-7" title="{{ bien_immo.type }}">{{ bien_immo.type }}</td>
+                        {% if bien_immo.superficie %}
+                            <td class="is-size-7" title="{{ bien_immo.superficie }}">{{ bien_immo.superficie }} m²</td>
                         {% else %}
-                            <span class="is-size-7" title="Non renseigné"><i class="non-renseigne">N/A</i></span>
+                            <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
                         {% endif %}
-                    </td>
-                    <td class="is-size-7">
-                        {% if bien_immo.locataires is not empty %}
-                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
+                        <td class="is-size-7" title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc }} €</td>
+                        <td class="is-size-7" title="{{ bien_immo.charges }} €">{{ bien_immo.charges }} €</td>
+                        <td class="is-size-7" title="{{ bien_immo.loyerTtc|number_format(2) }} €">{{ bien_immo.loyerTtc|number_format(2) }} €</td>
+                        <td class="is-size-7" title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
+                        <td class="is-size-7" title="{{ bien_immo.solde.malusQuantity|number_format(2) }} €">{{ bien_immo.solde.malusQuantity|number_format(2) }} €</td>
+                        <td class="is-size-7">
+                            {% if bien_immo.copropriete.name %}
+                                <span class="is-size-7" title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
+                            {% else %}
+                                <span class="is-size-7" title="Non renseigné"><i class="non-renseigne">N/A</i></span>
+                            {% endif %}
+                        </td>
+                        <td class="is-size-7">
+                            {% if bien_immo.locataires is not empty %}
+                                <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
                                 <span class="icon has-text-info text-black-onhover is-hidden-touch">
                                     <i class="fas fa-user"></i>
                                 </span>
-                                <span class="icon is-hidden-desktop">
+                                    <span class="icon is-hidden-desktop">
                                     <i class="fas fa-user-minus"></i>
                                 </span>
-                            </a>
-                            <a class="show-on-hover" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
+                                </a>
+                                <a class="show-on-hover" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
                                     <span><b>{{ bien_immo.locataires.current }}</b></span>
                                     <span class="icon show-on-hover-target is-hidden-touch">
                                         <i class="fas fa-search"></i>
                                     </span>
                                 </span>
-                            </a>
-                        {% else %}
-                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
+                                </a>
+                            {% else %}
+                                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
                                 <span class="icon has-text-dark text-info-onhover is-hidden-touch">
                                     <i class="fas fa-user-slash"></i>
                                 </span>
-                                <span class="icon has-text-info is-hidden-desktop">
+                                    <span class="icon has-text-info is-hidden-desktop">
                                     <i class="fas fa-user-plus"></i>
                                 </span>
-                            </a>
-                            <span title="Logement actuellement sans locataire">Sans locataire</span>
+                                </a>
+                                <span title="Logement actuellement sans locataire">Sans locataire</span>
+                            {% endif %}
+                        </td>
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            {% if bien_immo.user %}
+                                <td class="is-size-7" title="{{ bien_immo.user }}">{{ bien_immo.user }}</td>
+                            {% else %}
+                                <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
+                            {% endif %}
                         {% endif %}
-                    </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="15" class="has-text-centered is-size-6">
+                            <span>
+                                <i>Vide...</i>
+                            </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th></th>
+                    <th class="sticky-left px-0 py-0"><span style="background: #f5f5f5;height: 20px;width: 100%"></span></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th class="is-size-7" title="Total loyers hors charges">
+                        <span>{{ total_loyer_hc|number_format(2) }} €</span>
+                    </th>
+                    <th class="is-size-7" title="Total charges">
+                        <span>{{ total_charges|number_format(2) }} €</span>
+                    </th>
+                    <th class="is-size-7" title="Total loyers">
+                        <span>{{ total_loyer_ttc|number_format(2) }} €</span>
+                    </th>
+                    <th></th>
+                    <th class="is-size-7" title="Total soldes">
+                        <span>{{ total_solde|number_format(2) }} €</span>
+                    </th>
+                    <th></th>
+                    <th></th>
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        {% if bien_immo.user %}
-                            <td class="is-size-7" title="{{ bien_immo.user }}">{{ bien_immo.user }}</td>
-                        {% else %}
-                            <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
-                        {% endif %}
+                        <th></th>
                     {% endif %}
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="13" class="has-text-centered is-size-6">
-                        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
-                            <span class="icon">
-                                <i class="fas fa-info-circle"></i>
-                            </span>
-                            <span>
-                                <b>Vous n'avez aucun Biens immobiliers enregistrés</b>
-                            </span>
-                        </span>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-            <tfoot>
-            <tr>
-                <th></th>
-                <th class="sticky-left px-0 py-0"><span style="background: #f5f5f5;height: 20px;width: 100%"></span></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th class="is-size-7" title="Total loyers hors charges">
-                    <span>{{ total_loyer_hc|number_format(2) }} €</span>
-                </th>
-                <th class="is-size-7" title="Total charges">
-                    <span>{{ total_charges|number_format(2) }} €</span>
-                </th>
-                <th class="is-size-7" title="Total loyers">
-                    <span>{{ total_loyer_ttc|number_format(2) }} €</span>
-                </th>
-                <th></th>
-                <th class="is-size-7" title="Total soldes">
-                    <span>{{ total_solde|number_format(2) }} €</span>
-                </th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
+                </tfoot>
+            </table>
+        </div>
+        <div class="column has-text-centered">
+            <a href="{{ path('bien_immo_new') }}" class="button is-small is-light">Ajouter un Bien</a>
+        </div>
+    {% endif %}
 
-    <div class="column has-text-centered">
-        <a href="{{ path('bien_immo_new') }}" class="button is-small is-light">Ajouter un Bien</a>
-    </div>
+{#  POUR GOOGLE MAPS SEARCH  #}
+{#    <input type="text" id="autocomplete" placeholder="Indiquer une adresse">#}
+{#  ##############  #}
+
 </section>
 {% endblock %}
