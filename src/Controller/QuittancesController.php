@@ -230,7 +230,10 @@ class QuittancesController extends AbstractController
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
-        $user = $this->getUser();
+        $user = $locataire->getLogement()->getUser();
+        if (!$user){
+            $user = $this->getUser();
+        }
 
         $date = new \DateTime();
 
