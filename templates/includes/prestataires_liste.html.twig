@@ -13,7 +13,7 @@
         {% for prestataire in bien_immo.prestataire|sort %}
                 <div class="column is-half is-full-touch px-0 pt-0">
                         <div class="card">
-                                <header class="card-header has-background-info has-text-light" onclick="let cardFooter = this.parentElement.querySelector('.card-content'); if(cardFooter){cardFooter.classList.toggle('is-hidden');};this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
+                                <header class="card-header has-background-info has-text-light pointer-mouse-hover" onclick="let cardFooter = this.parentElement.querySelector('.card-content'); if(cardFooter){cardFooter.classList.toggle('is-hidden');};this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
                                         <p class="card-header-title has-text-light is-justify-content-center is-uppercase">
                                                 <b>{{ prestataire }}</b>
                                         </p>
