@@ -9,11 +9,11 @@
 
     {% if pdf_exist %}
         <div class="column is-flex is-justify-content-center is-align-items-center">
-           <iframe src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" width="650" height="900" align="middle"></iframe>
+           <iframe src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" width="650" height="900" align="middle" style="max-height: 90vh"></iframe>
         </div>
     {% endif %}
 
-    <div class="column">
+    <div class="column is-flex-desktop is-justify-content-center">
 
         <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
             <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">
@@ -26,13 +26,32 @@
                                 </span>
                             </span>
                         </span>
-                    <span class="file-name has-text-dark">
-                            {{ file_name }}.docx
+                    <span class="file-name has-text-dark has-background-white">
+                        Télécharger au format Words (.docx)
                         </span>
                 </label>
             </a>
         </div>
 
+        {% if pdf_exist %}
+            <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
+                <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+                    <label class="file-label">
+                        <span class="file-input"></span>
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <span class="icon">
+                                    <i class="fas fa-2x fa-file-pdf"></i>
+                                </span>
+                            </span>
+                        </span>
+                        <span class="file-name has-text-dark has-background-white">
+                        Télécharger au format Adobe reader (.pdf)
+                        </span>
+                    </label>
+                </a>
+            </div>
+        {% endif %}
     </div>
 
 
