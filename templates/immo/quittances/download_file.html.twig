@@ -9,7 +9,7 @@
 
     {% if pdf_exist %}
         <div class="column is-flex is-justify-content-center is-align-items-center">
-           <iframe src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" width="650" height="900" align="middle" style="max-height: 90vh"></iframe>
+           <iframe src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" width="650" height="900" align="middle" class="iframe-pdf"></iframe>
         </div>
     {% endif %}
 

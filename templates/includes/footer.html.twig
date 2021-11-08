@@ -6,9 +6,11 @@
                 <span>
                     <a href="{{ path('immo_accueil') }}" class="has-text-light">Immobilier</a>
                 </span>
-                <span>
-                    <a href="{{ path('entreprenariat_home') }}" class="has-text-light">Entreprenariat</a>
-                </span>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <span>
+                        <a href="{{ path('entreprenariat_home') }}" class="has-text-light">Entreprenariat</a>
+                    </span>
+                {% endif %}
             </div>
             <div class="column is-flex is-flex-direction-column">
                 <span>
