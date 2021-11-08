@@ -166,7 +166,7 @@ class BienImmoType extends AbstractType
             // FORM FIELDS FOR COPROPRIETE RELATION ENTITY
             ->add('coproName', TextType::class,[
                 'mapped' => false,
-                'label' => "Nom de la copropriété",
+                'label' => "Nom du Syndic/Syndicat",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
