@@ -126,18 +126,24 @@
 {#    </script>#}
 {######################}
 
-    <script>
-        function ajaxEditFile(event){
-            event.preventDefault();
-            const url = this.href;
 
-            axios.get(url).then(function (response) {
-            })
-        }
-    </script>
-
-    {#       SHOW ON HOVER       #}
     <script>
+
+        {#       SCRIPT AJAX       #}
+
+        //function ajaxEditFile(event){
+        //    event.preventDefault();
+        //    const url = this.href;
+
+        //    axios.get(url).then(function (response) {
+        //    })
+        //}
+
+        {#     ##############################################     #}
+
+
+
+        {#       SHOW ON HOVER       #}
 
         let onHoverElements = document.querySelectorAll('.show-on-hover');
         onHoverElements.forEach(function(elem) {
@@ -149,84 +155,93 @@
                     targetToShow.forEach(target => target.classList.remove('show-on-hover-target-active'));
                 });
             }
-        )
+        );
 
-    </script>
+        {#     ##############################################     #}
 
-{#      REMOVE TIMER        #}
-<script>
-    function removeAfterTimer(element, time) {
-        setTimeout(function () {
-            element.style.transition = '5s';
-            element.style.opacity = '0';
+
+
+
+        {#      REMOVE TIMER        #}
+
+        function removeAfterTimer(element, time) {
             setTimeout(function () {
-                element.classList.add('is-hidden')
-            },5000);
-        },time + '000');
-    }
-</script>
+                element.style.transition = '5s';
+                element.style.opacity = '0';
+                setTimeout(function () {
+                    element.classList.add('is-hidden')
+                },5000);
+            },time + '000');
+        }
 
-    {#     REMOVE FLASH MSG BASE     #}
-    <script>
+        {#     ##############################################     #}
+
+
+        {#     REMOVE FLASH MSG BASE     #}
+
         let objectToRemove = document.querySelectorAll('.remove-timer-5s');
         objectToRemove.forEach(elem => removeAfterTimer(elem, 10));
-    </script>
+
+        {#     ##############################################     #}
 
 
-{#     SCRIPT POUR AJOUT INFORMATION PRESTATIONS DEVIS     #}
-<script>
-    function addInfosPresta(elem) {
-        let infosPrestaForms = document.getElementById('infos-prestations');
 
-        for (i=0 ; i < infosPrestaForms.children.length ; i++){
-            let child = infosPrestaForms.children[i];
+        {#     SCRIPTS POUR AJOUT INFORMATION PRESTATIONS DEVIS     #}
 
-            if (child.classList.contains('is-hidden')){
-                if (i === infosPrestaForms.children.length - 1){
-                    elem.classList.add('is-hidden')
-                } else {
-                    elem.classList.remove('is-hidden')
+        function addInfosPresta(elem) {
+            let infosPrestaForms = document.getElementById('infos-prestations');
+
+            for (i=0 ; i < infosPrestaForms.children.length ; i++){
+                let child = infosPrestaForms.children[i];
+
+                if (child.classList.contains('is-hidden')){
+                    if (i === infosPrestaForms.children.length - 1){
+                        elem.classList.add('is-hidden')
+                    } else {
+                        elem.classList.remove('is-hidden')
+                    }
+                    if (i > 0){
+                        elem.nextElementSibling.classList.remove('is-hidden')
+                    } else {
+                        elem.nextElementSibling.classList.add('is-hidden')
+                    }
+                    child.classList.toggle('is-hidden');
+                    break
                 }
-                if (i > 0){
-                    elem.nextElementSibling.classList.remove('is-hidden')
-                } else {
-                    elem.nextElementSibling.classList.add('is-hidden')
+            }
+
+        }
+
+        function removeInfosPresta(elem) {
+            let infosPrestaForms = document.getElementById('infos-prestations');
+
+            for ( j=1 ; j <= infosPrestaForms.children.length ; j++){
+
+                if (!infosPrestaForms.children[j].classList.contains('is-hidden')){
+
+                    if (j === infosPrestaForms.children.length - 1){
+                        elem.classList.add('is-hidden');
+                    } else {
+                        elem.classList.remove('is-hidden');
+                    }
+                    if (j >= 0){
+                        elem.previousElementSibling.classList.remove('is-hidden');
+                    } else {
+                        elem.previousElementSibling.classList.add('is-hidden');
+                    }
+
+                    infosPrestaForms.children[j].classList.toggle('is-hidden');
+                    break
                 }
-                child.classList.toggle('is-hidden');
-                break
             }
         }
 
-    }
-
-    function removeInfosPresta(elem) {
-        let infosPrestaForms = document.getElementById('infos-prestations');
-
-        for ( j=1 ; j <= infosPrestaForms.children.length ; j++){
-
-            if (!infosPrestaForms.children[j].classList.contains('is-hidden')){
-
-                if (j === infosPrestaForms.children.length - 1){
-                    elem.classList.add('is-hidden');
-                } else {
-                    elem.classList.remove('is-hidden');
-                }
-                if (j >= 0){
-                    elem.previousElementSibling.classList.remove('is-hidden');
-                } else {
-                    elem.previousElementSibling.classList.add('is-hidden');
-                }
-
-                infosPrestaForms.children[j].classList.toggle('is-hidden');
-                break
-            }
-        }
-    }
-</script>
+        {#     ##############################################     #}
 
 
-{#      CHANGE REDIRECTION FOR EDIT LOCATAIRE ON SELECT      #}
-    <script>
+
+        {#      CHANGE REDIRECTION FOR EDIT LOCATAIRE ON SELECT      #}
+
         let selectLocataires = document.getElementById('bien_immo_locataires');
         let selectLogement = document.getElementById('locataire_logement');
         let redirectLink = document.getElementById('redirect-adapt-link');
@@ -265,21 +280,13 @@
             }
         }
 
-    </script>
-
-    {#     ##############################################     #}
+        {#     ##############################################     #}
 
 
-{#   GOOGLE AUTOCOMPLETION MAPS   #}
-{#
-    <script async
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqvNG1NYQw7OsCHCh9fhoZr_sd2jFUI0c&libraries=places&callback=initMap">
-    </script>
-#}
-{####################################}
 
-    {#    TOOTLGE DISABLED      #}
-    <script>
+
+        {#    TOOTLGE DISABLED      #}
+
         let disabledClass = document.querySelectorAll('.disabled');
         disabledClass.forEach(function (elem) {
             elem.setAttribute('disabled','disabled');
@@ -290,10 +297,10 @@
                 elem.toggleAttribute('disabled');
             });
         }
-    </script>
 
-    {#    TOOTLGE READ-ONLY      #}
-    <script>
+
+        {#    TOOTLGE READ-ONLY      #}
+
         let readonlyClass = document.querySelectorAll('.readonly');
         readonlyClass.forEach(function (elem) {
             elem.setAttribute('readonly','readonly');
@@ -322,37 +329,31 @@
                 }
             });
         }
-    </script>
+
+        {#     ##############################################     #}
 
 
-    {#     IS-LOADING     #}
-    <script>
+
+        {#     IS-LOADING     #}
+
         function isLoading(el) {
             let btn = el.getElementsByClassName('btn-submit');
             if (btn[0]) {
                 btn[0].classList.add('is-loading');
             }
         }
-    </script>
-    {######################}
+
+        {#     ##############################################     #}
 
 
-    {#     NAVBAR-DROPDOWN     #}
-    <script>
+        {#     NAVBAR-DROPDOWN     #}
+
         document.addEventListener('click', function (event) {
             let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown, custom-dropdown');
             let navbarBurger = document.querySelectorAll('.navbar-burger');
             let sections = document.querySelectorAll('section');
             let navbarMenu = document.getElementById('navbarMenu');
             let target = event.target;
-
-            // if (document.querySelector('#nav-secondaire').classList.contains('is-hidden-touch'))
-            // {
-            //     this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')
-            // }else{
-            //     this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')
-            // };
-            // document.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch');
 
             navbarDropdown.forEach(function (drop) {
                if ( target.parentElement === drop || target === drop){
@@ -375,8 +376,98 @@
             })
         });
 
+        {#     ##############################################     #}
+
+
+
+        {#     ############   SCRIPT FOR TABS BIEN_IMMO   #############     #}
+
+        let tabs = document.querySelectorAll('.tabs').forEach(function (elem) {
+            let lis = elem.querySelectorAll('li');
+            lis.forEach(function (li) {
+                li.addEventListener('click', function () {
+                    let id = li.previousElementSibling.id;
+                    window.location = '#' + id;
+                    let fields = document.querySelectorAll('.'+id);
+                    let notfields = document.querySelectorAll('.bien-immo');
+                    lis.forEach(el => el.classList.remove('is-active'));
+                    li.classList.add('is-active');
+
+                    if ( id === 'quittances' ){
+                        document.querySelectorAll('.quittance').forEach(el => el.classList.remove('is-hidden'));
+                        document.querySelector('div#quittances-liste').classList.remove('is-hidden');
+                    }else {
+                        document.querySelectorAll('.quittance').forEach(el => el.classList.add('is-hidden'));
+                        document.querySelector('div#quittances-liste').classList.add('is-hidden');
+                    }
+
+                    if ( id === 'copropriete' ){
+                        // btnToHide.forEach(el => el.classList.add('is-hidden'));
+                    }else {
+                        // btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                    }
+
+                    if ( id === 'prestataire' ){
+                        document.querySelectorAll('.prestataire').forEach(function (el) {
+                            if (el.previousElementSibling && el.previousElementSibling.querySelector('i').classList.contains('fa-angle-down')){
+                                el.classList.add('is-hidden');
+                            }
+                        });
+                    }else {
+                        document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
+                        document.querySelector('div#prestataires-liste').classList.add('is-hidden');
+                    }
+
+                    console.log(fields);
+                    console.log(notfields);
+                    notfields.forEach(notfield => notfield.classList.add('is-hidden'));
+                    fields.forEach(field => field.classList.remove('is-hidden'));
+                })
+            })
+        });
+
+        {#     ##############################################     #}
+
+
+
+
+        {#     ############  SCRIPT FOR EDIT QUITTANCE   #############     #}
+
+        let btn = document.querySelectorAll('.quittance-lock-btn');
+        btn.forEach(function (ancrage) {
+
+            ancrage.addEventListener('click', function () {
+                toogleReadonlyClass();
+                ancrage.classList.toggle('is-danger');
+                if (ancrage.querySelector('i').classList.contains('fa-unlock')) {
+                    ancrage.setAttribute('title', 'Modifier les informations de la quittance');
+                }else {
+                    ancrage.setAttribute('title', 'Vérouiler les informations de la quittance');
+                }
+                ancrage.querySelector('i').classList.toggle('fa-unlock');
+                ancrage.querySelector('i').classList.toggle('fa-lock');
+            });
+
+        });
+
+        {#     ######################################################     #}
+
+
+        {#     ############  REDIRECT TO ANCRAGE   #############     #}
+
+        let header = document.documentURI;
+        header = header.split('#');
+        header = header[header.length - 1];
+        if (header){
+            let ancrage = document.getElementById(header);
+            if (ancrage){
+                ancrage.nextElementSibling.click();
+            }
+        }
+
+        {#     ######################################################     #}
+
     </script>
-    {######################}
 
 {% endblock %}
 

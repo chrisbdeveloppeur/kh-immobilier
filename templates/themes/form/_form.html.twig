@@ -300,7 +300,7 @@
             {% set validation_button = 'Sauvegarder les modifications' %}
         {% endif %}
 
-        <div class="field has-text-centered btn-to-hide" id="save">
+        <div class="field has-text-centered" id="save">
             <button class="button is-success is-small btn-submit">
                 {% if validation_button == 'Editer la quittance' %}
                     <span class="icon">
@@ -324,97 +324,3 @@
 
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-{#     ############   SCRIPT FOR TABS BIEN_IMMO   #############     #}
-<script>
-
-    let tabs = document.querySelectorAll('.tabs').forEach(function (elem) {
-        let lis = elem.querySelectorAll('li');
-        lis.forEach(function (li) {
-            li.addEventListener('click', function () {
-                let id = li.previousElementSibling.id;
-                window.location = '#' + id;
-                let fields = document.querySelectorAll('.'+id);
-                let notfields = document.querySelectorAll('.bien-immo');
-                lis.forEach(el => el.classList.remove('is-active'));
-                li.classList.add('is-active');
-
-                if ( id === 'quittances' ){
-                    document.querySelectorAll('.quittance').forEach(el => el.classList.remove('is-hidden'));
-                    document.querySelector('div#quittances-liste').classList.remove('is-hidden');
-                }else {
-                    document.querySelectorAll('.quittance').forEach(el => el.classList.add('is-hidden'));
-                    document.querySelector('div#quittances-liste').classList.add('is-hidden');
-                }
-
-                if ( id === 'copropriete' ){
-                    // btnToHide.forEach(el => el.classList.add('is-hidden'));
-                }else {
-                    // btnToHide.forEach(el => el.classList.remove('is-hidden'));
-                }
-
-                if ( id === 'prestataire' ){
-                    document.querySelectorAll('.prestataire').forEach(function (el) {
-                        if (el.previousElementSibling && el.previousElementSibling.querySelector('i').classList.contains('fa-angle-down')){
-                            el.classList.add('is-hidden');
-                        }
-                    });
-                }else {
-                    document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
-                    document.querySelector('div#prestataires-liste').classList.add('is-hidden');
-                }
-
-                notfields.forEach(notfield => notfield.classList.add('is-hidden'));
-                fields.forEach(field => field.classList.remove('is-hidden'));
-            })
-        })
-    })
-
-
-</script>
-{#     ######################################################     #}
-
-
-{#     ############  SCRIPT FOR EDIT QUITTANCE   #############     #}
-<script>
-    let btn = document.querySelectorAll('.quittance-lock-btn');
-    btn.forEach(function (ancrage) {
-
-        ancrage.addEventListener('click', function () {
-            toogleReadonlyClass();
-            ancrage.classList.toggle('is-danger');
-            if (ancrage.querySelector('i').classList.contains('fa-unlock')) {
-                ancrage.setAttribute('title', 'Modifier les informations de la quittance');
-            }else {
-                ancrage.setAttribute('title', 'Vérouiler les informations de la quittance');
-            }
-            ancrage.querySelector('i').classList.toggle('fa-unlock');
-            ancrage.querySelector('i').classList.toggle('fa-lock');
-        });
-
-    })
-</script>
-{#     ######################################################     #}
-
-
-{#     ############  REDIRECT TO ANCRAGE   #############     #}
-<script>
-     let header = document.documentURI;
-     header = header.split('#');
-     header = header[header.length - 1];
-     if (header){
-         let ancrage = document.getElementById(header);
-         if (ancrage){
-             ancrage.nextElementSibling.click();
-         }
-     }
-</script>
-{#     ######################################################     #}

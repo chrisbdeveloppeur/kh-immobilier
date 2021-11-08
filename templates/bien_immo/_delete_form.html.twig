@@ -1,4 +1,4 @@
-<form class="has-text-centered btn-to-hide bien-immo logement is-hidden" method="post" action="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
+<form class="has-text-centered bien-immo logement is-hidden" method="post" action="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ bien_immo.id) }}">
     <button class="button is-danger is-small mx-3 my-2">
         <span class="icon">
