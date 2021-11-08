@@ -72,7 +72,12 @@
 
     <div class="column is-flex is-justify-content-center px-0 py-0">
 
-        {{ form_start(form, {'attr': {'class': 'bien-immo logement copropriete is-hidden column is-two-fifths has-background-light border-radius-2px box-shadow-bulma '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
+        {% if form.vars.name != 'quittances' %}
+            {% set hidden = 'is-hidden' %}
+        {% else %}
+            {% set hidden = '' %}
+        {% endif %}
+        {{ form_start(form, {'attr': {'class': 'bien-immo logement copropriete column is-two-fifths has-background-light border-radius-2px box-shadow-bulma '~ form.vars.name ~ hidden, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
         {% if form.vars.name in ['bien_immo','locataire'] %}
 

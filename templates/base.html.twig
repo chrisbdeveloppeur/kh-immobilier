@@ -251,7 +251,13 @@
 
         function modifRedirectLink(id, entity) {
             if (id){
-                redirectLink.href = entity+id+'/edit/';
+                let endingUrl = '';
+                if (entity === '/bien/immo/') {
+                    endingUrl = '/edit/#logement';
+                }else {
+                    endingUrl = /edit/;
+                }
+                redirectLink.href = entity+id+endingUrl;
                 redirectLink.removeAttribute('disabled', 'disabled');
             } else {
                 redirectLink.href = '#';
