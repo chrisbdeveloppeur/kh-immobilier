@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -12,12 +13,20 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -64,7 +73,7 @@ class UserType extends AbstractType
                 'required' => false,
                 'invalid_message' => 'Ce numéro n\'est pas valide',
                 'attr' => ['class' => 'input is-small has-text-centered'],
-            ])
+            ]);
 //            ->add('plainPassword', RepeatedType::class, [
 //                'type' => PasswordType::class,
 //                'invalid_message' => 'Les mots de passe ne correspondent pas',
@@ -91,7 +100,20 @@ class UserType extends AbstractType
 //                    'attr' => ['class' => 'input is-small'],
 //                    ],
 //            ])
-        ;
+
+        if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
+            $builder->add('roles', ChoiceType::class,[
+                'choices' => [
+                    'Super admin' => ['ROLE_SUPER_ADMIN'],
+                    'Admin' => ['ROLE_ADMIN'],
+                    'Standard' => ['ROLE_USER'],
+                ],
+                'multiple' => true,
+                'label' => 'Roles',
+                'mapped' => true,
+                'required' => false,
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
