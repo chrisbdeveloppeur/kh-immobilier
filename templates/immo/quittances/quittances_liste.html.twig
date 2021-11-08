@@ -19,7 +19,7 @@
                                         {{ quittance.fileName }}
                                 </span>
                         </a>
-                        <a class="tag is-delete" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')"></a>
+                        <a class="tag is-delete" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la qiuttance"></a>
                 </div>
         {% endfor %}
 
