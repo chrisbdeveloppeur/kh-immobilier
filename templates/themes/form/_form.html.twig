@@ -234,11 +234,10 @@
                     </div>
                 {% elseif 'token' not in form_label(child) %}
                     {% if child.vars.name == 'roles' %}
-                        <div class="is-flex-desktop">
+                        <div class="is-justify-content-center buttons">
                             {% for checkbox in child %}
-                                <div class="column is-flex-desktop is-justify-content-center is-align-items-center">
-                                    <label class="radio">
-                                        {{ form_widget(checkbox) }}
+                                <div class="is-flex-desktop is-justify-content-center is-align-items-center button is-small">
+                                    <label class="radio has-text-centered">
                                         {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
                                             Super Administrateur
                                         {% elseif checkbox.vars.value == 'ROLE_ADMIN' %}
@@ -246,8 +245,9 @@
                                         {% elseif checkbox.vars.value == 'ROLE_USER' %}
                                             Standard
                                         {% else %}
-                                            Roles?
+                                            Role non définie
                                         {% endif %}
+                                        {{ form_widget(checkbox, { 'attr' :  {'class':'is-hidden'}}) }}
                                     </label>
                                 </div>
                             {% endfor %}
