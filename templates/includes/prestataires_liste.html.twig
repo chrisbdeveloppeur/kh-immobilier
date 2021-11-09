@@ -13,15 +13,30 @@
         {% for prestataire in bien_immo.prestataire|sort %}
                 <div class="column is-two-fifths is-one-third-desktop is-full-mobile px-0 pt-0">
                         <div class="card">
-                                <header class="card-header has-background-info has-text-light pointer-mouse-hover" onclick="let cardFooter = this.parentElement.querySelector('.card-content'); if(cardFooter){cardFooter.classList.toggle('is-hidden');};this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
-                                        <p class="card-header-title has-text-light is-justify-content-center is-uppercase">
-                                                <b>{{ prestataire }}</b>
-                                        </p>
-                                        <button class="card-header-icon" aria-label="more options">
-                                      <span class="icon">
-                                              <i class="fas fa-lg fa-angle-down" aria-hidden="true"></i>
-                                      </span>
-                                        </button>
+                                <header class="card-header has-background-info has-text-light pointer-mouse-hover has-icons-left" onclick="let cardFooter = this.parentElement.querySelector('.card-content'); if(cardFooter){cardFooter.classList.toggle('is-hidden');};this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
+
+                                    <div class="px-3 is-flex is-align-items-center is-justify-content-center">
+                                        <span class="icon">
+                                            {% if prestataire.type == 'Electricien' %}
+                                                <i class="fas fa-lg fa-bolt"></i>
+                                            {% elseif prestataire.type == 'Plombier' %}
+                                                <i class="fas fa-lg fa-faucet"></i>
+                                            {% elseif prestataire.type == 'Assurance habitation' %}
+                                                <i class="fas fa-lg fa-file-contract"></i>
+                                            {% else %}
+                                                <i class="fas fa-lg fa-briefcase"></i>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+
+                                    <p class="card-header-title has-text-light is-justify-content-center is-uppercase">
+                                        <b>{{ prestataire }}</b>
+                                    </p>
+                                    <button class="card-header-icon" aria-label="more options">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-angle-down" aria-hidden="true"></i>
+                                        </span>
+                                    </button>
                                 </header>
                                 {% if prestataire.type or prestataire.infos or prestataire.contactName or prestataire.adresse or prestataire.phone or prestataire.email %}
                                     <div class="card-content is-hidden">
