@@ -55,7 +55,7 @@
                     {% elseif section == 'entreprenariat' %}
                         <i class="fas fa-user-tie"></i>
                     {% elseif section == 'gestionnaire' %}
-                        <i class="fas fa-user-tag"></i>
+                        <i class="fas fa-user-cog"></i>
                     {% else %}
                         <i class="fas fa-mail-bulk"></i>
                     {% endif %}
@@ -353,18 +353,24 @@
         {#     NAVBAR-DROPDOWN     #}
 
         document.addEventListener('click', function (event) {
-            let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown, custom-dropdown');
+            let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown, div.navbar-item.has-dropdown > *, div.navbar-item.has-dropdown > * > *, custom-dropdown');
             let navbarBurger = document.querySelectorAll('.navbar-burger');
             let sections = document.querySelectorAll('section');
             let navbarMenu = document.getElementById('navbarMenu');
             let target = event.target;
 
+            //console.log(navbarDropdown);
+            //if (Array.from(navbarDropdown).find(node => node === target)) {
+            //    drop.classList.toggle('is-active');
+            //}else {
+            //    drop.classList.remove('is-active');
+            //}
             navbarDropdown.forEach(function (drop) {
-               if ( target.parentElement === drop || target === drop){
-                   drop.classList.toggle('is-active')
-               }else {
-                   drop.classList.remove('is-active');
-               }
+                if (Array.from(navbarDropdown).find(node => node === target)) {
+                    drop.classList.toggle('is-active');
+                }else {
+                    drop.classList.remove('is-active');
+                }
             });
 
             navbarBurger.forEach(function (drop) {
