@@ -234,9 +234,9 @@
                     </div>
                 {% elseif 'token' not in form_label(child) %}
                     {% if child.vars.name == 'roles' %}
-                        <div class=" is-flex-desktop has-text-centered">
+                        <div class="is-flex-desktop">
                             {% for checkbox in child %}
-                                <div class="column is-flex is-justify-content-center is-align-items-center">
+                                <div class="column is-flex-desktop is-justify-content-center is-align-items-center">
                                     <label class="radio">
                                         {{ form_widget(checkbox) }}
                                         {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
@@ -246,6 +246,7 @@
                                         {% elseif checkbox.vars.value == 'ROLE_USER' %}
                                             Standard
                                         {% else %}
+                                            Roles?
                                         {% endif %}
                                     </label>
                                 </div>
