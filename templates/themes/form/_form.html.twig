@@ -234,19 +234,23 @@
                     </div>
                 {% elseif 'token' not in form_label(child) %}
                     {% if child.vars.name == 'roles' %}
-                        {% for checkbox in child %}
-                            <label class="radio">
-                                {{ form_widget(checkbox) }}
-                                {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
-                                    Super Administrateur
-                                {% elseif checkbox.vars.value == 'ROLE_ADMIN' %}
-                                    Administrateur
-                                {% elseif checkbox.vars.value == 'ROLE_USER' %}
-                                    Standard
-                                {% else %}
-                                {% endif %}
-                            </label>
-                        {% endfor %}
+                        <div class=" is-flex-desktop has-text-centered">
+                            {% for checkbox in child %}
+                                <div class="column is-flex is-justify-content-center is-align-items-center">
+                                    <label class="radio">
+                                        {{ form_widget(checkbox) }}
+                                        {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
+                                            Super Administrateur
+                                        {% elseif checkbox.vars.value == 'ROLE_ADMIN' %}
+                                            Administrateur
+                                        {% elseif checkbox.vars.value == 'ROLE_USER' %}
+                                            Standard
+                                        {% else %}
+                                        {% endif %}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
                     {% else %}
                         <p class="control has-icons-left has-icons-right">
                             {{ form_widget(child) }}
