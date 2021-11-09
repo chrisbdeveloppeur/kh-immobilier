@@ -108,10 +108,12 @@ class UserType extends AbstractType
                     'Admin' => ['ROLE_ADMIN'],
                     'Standard' => ['ROLE_USER'],
                 ],
-                'multiple' => true,
+                'multiple' => false,
+                'expanded' => true,
                 'label' => 'Roles',
-                'mapped' => true,
+                'mapped' => false,
                 'required' => false,
+                'placeholder' => false,
             ]);
         }
     }

@@ -116,8 +116,7 @@
                     </div>
                 {% endif %}
 
-
-                {% if child.vars.block_prefixes[1] == 'choice' %}
+                {% if child.vars.block_prefixes[1] == 'choice' and child.vars.name != 'roles'%}
 
                     {% if child.vars.name == 'echeance' %}
                         <div class="field has-addons">
@@ -234,26 +233,36 @@
                         </p>
                     </div>
                 {% elseif 'token' not in form_label(child) %}
-                    <p class="control has-icons-left has-icons-right">
-                        {{ form_widget(child) }}
-                        {% if 'mail' in child.vars.name %}
-                            <span class="icon is-small is-left">
+                    {% if child.vars.name == 'roles' %}
+                        {% for checkbox in child %}
+                            <label class="radio">
+                                {{ dump(checkbox.vars.value) }}
+                                {{ form_widget(checkbox) }}
+                            </label>
+                        {% endfor %}
+                    {% else %}
+                        <p class="control has-icons-left has-icons-right">
+                            {{ form_widget(child) }}
+                            {% if 'mail' in child.vars.name %}
+                                <span class="icon is-small is-left">
                             <i class="fas fa-at"></i>
                         </span>
-                        {% elseif 'phone' in child.vars.name or 'Phone' in child.vars.name %}
-                            <span class="icon is-small is-left">
+                            {% elseif 'phone' in child.vars.name or 'Phone' in child.vars.name %}
+                                <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                         </span>
-                        {% elseif ('street' in child.vars.name) or ('cp' in child.vars.name) or ('city' in child.vars.name) or ('building' in child.vars.name) or ('Adresse' in child.vars.name) %}
-                            <span class="icon is-small is-left">
+                            {% elseif ('street' in child.vars.name) or ('cp' in child.vars.name) or ('city' in child.vars.name) or ('building' in child.vars.name) or ('Adresse' in child.vars.name) %}
+                                <span class="icon is-small is-left">
                             <i class="fas fa-map-marked-alt"></i>
                         </span>
-                        {% elseif ('name' in child.vars.name) or ('Name' in child.vars.name) or ('Contact' in child.vars.name) %}
-                            <span class="icon is-small is-left">
+                            {% elseif ('name' in child.vars.name) or ('Name' in child.vars.name) or ('Contact' in child.vars.name) %}
+                                <span class="icon is-small is-left">
                             <i class="fas fa-signature"></i>
                         </span>
-                        {% endif %}
-                    </p>
+                            {% endif %}
+                        </p>
+                    {% endif %}
+
                 {% else %}
                     {{ form_widget(child) }}
                 {% endif %}
