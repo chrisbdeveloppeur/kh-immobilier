@@ -23,6 +23,8 @@
     {% set section = 'immobilier' %}
 {% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
     {% set section = 'entreprenariat' %}
+{% elseif 'user'in app.request.get('_route') or 'register' in app.request.get('_route') or 'login' in app.request.get('_route')  %}
+    {% set section = 'gestionnaire' %}
 {% endif %}
 
 <div id="main-background" style="background: center / cover url({{ asset('build/images/design_main_background.1d5a3f08.png') }})">
@@ -50,9 +52,11 @@
                 <span class="icon is-large">
                     {% if section == 'immobilier' %}
                         <i class="fas fa-city"></i>
-                           {% elseif section == 'entreprenariat' %}
+                    {% elseif section == 'entreprenariat' %}
                         <i class="fas fa-user-tie"></i>
-                           {% else %}
+                    {% elseif section == 'gestionnaire' %}
+                        <i class="fas fa-user-tag"></i>
+                    {% else %}
                         <i class="fas fa-mail-bulk"></i>
                     {% endif %}
                 </span>
