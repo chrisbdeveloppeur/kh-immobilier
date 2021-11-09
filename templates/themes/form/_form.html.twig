@@ -73,7 +73,7 @@
     <div class="column is-flex is-justify-content-center px-0 py-0">
 
         {% if form.vars.name != 'quittances' %}
-            {% set hidden = 'is-hidden' %}
+            {% set hidden = ' is-hidden' %}
         {% else %}
             {% set hidden = '' %}
         {% endif %}
@@ -81,7 +81,7 @@
 
         {% if form.vars.name in ['bien_immo','locataire'] %}
 
-            {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete %}
+            {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}
                 <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
                     <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete.name }}</b></span>
                 </div>
