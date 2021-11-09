@@ -67,7 +67,7 @@
         </div>
     </div>
     <footer class="card-footer is-flex-direction-column-mobil card-footer-column-mobil">
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
         {% if bien_immo.locataires is not empty %}
             <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column">
                 <span>Editer une quittance</span>
