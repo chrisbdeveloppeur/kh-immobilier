@@ -76,7 +76,6 @@ class UserController extends AbstractController
         $currentRole = $user->getRoles();
         $form->get('roles')->setData($currentRole[0]);
         $form->handleRequest($request);
-        //dd($role);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $role = $form->get('roles')->getData();

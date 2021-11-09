@@ -236,8 +236,15 @@
                     {% if child.vars.name == 'roles' %}
                         {% for checkbox in child %}
                             <label class="radio">
-                                {{ dump(checkbox.vars.value) }}
                                 {{ form_widget(checkbox) }}
+                                {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
+                                    Super Administrateur
+                                {% elseif checkbox.vars.value == 'ROLE_ADMIN' %}
+                                    Administrateur
+                                {% elseif checkbox.vars.value == 'ROLE_USER' %}
+                                    Standard
+                                {% else %}
+                                {% endif %}
                             </label>
                         {% endfor %}
                     {% else %}
