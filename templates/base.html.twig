@@ -14,6 +14,13 @@
 {#    {% block javascripts %}#}
 {#        {{ encore_entry_script_tags('app') }}#}
 {#    {% endblock %}#}
+    {#     SCRIPT POUR GOOGLE MAPS / PLACE AUTOCOMPLETION    #}
+    {#
+        <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqvNG1NYQw7OsCHCh9fhoZr_sd2jFUI0c&libraries=places&callback=initMap">
+        </script>
+    #}
+    {##############################################}
 </head>
 <body class="has-navbar-fixed-top">
 
@@ -310,11 +317,9 @@
             elem.setAttribute('readonly','readonly');
             if (elem.hasAttribute('readonly')){
                 elem.style.background = '#dbdbdb';
-                //elem.classList.add('not-allowed-onhover');
                 elem.classList.add('remove-mouse-events');
             }else {
                 elem.style.background = '#ffffff';
-                //elem.classList.remove('not-allowed-onhover');
                 elem.classList.remove('remove-mouse-events');
             }
         });
@@ -324,11 +329,9 @@
                 elem.toggleAttribute('readonly');
                 if (elem.hasAttribute('readonly')){
                     elem.style.background = '#dbdbdb';
-                    //elem.classList.add('not-allowed-onhover');
                     elem.classList.add('remove-mouse-events');
                 }else {
                     elem.style.background = '#ffffff';
-                    //elem.classList.remove('not-allowed-onhover');
                     elem.classList.remove('remove-mouse-events');
                 }
             });
@@ -359,12 +362,6 @@
             let navbarMenu = document.getElementById('navbarMenu');
             let target = event.target;
 
-            //console.log(navbarDropdown);
-            //if (Array.from(navbarDropdown).find(node => node === target)) {
-            //    drop.classList.toggle('is-active');
-            //}else {
-            //    drop.classList.remove('is-active');
-            //}
             navbarDropdown.forEach(function (drop) {
                 if (Array.from(navbarDropdown).find(node => node === target)) {
                     drop.classList.toggle('is-active');
@@ -428,8 +425,6 @@
                         document.querySelector('div#prestataires-liste').classList.add('is-hidden');
                     }
 
-                    console.log(fields);
-                    console.log(notfields);
                     notfields.forEach(notfield => notfield.classList.add('is-hidden'));
                     fields.forEach(field => field.classList.remove('is-hidden'));
                 })
@@ -478,6 +473,7 @@
         {#     ######################################################     #}
 
     </script>
+
 
 {% endblock %}
 
