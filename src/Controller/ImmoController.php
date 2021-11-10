@@ -19,6 +19,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ImmoController extends AbstractController
 {
+
+    /**
+     * @Route("/maps", name="maps")
+     */
+    public function maps()
+    {
+        return $this->render('google_place_search.html.twig');
+    }
+
     /**
      * @Route("/accueil", name="accueil")
      */
