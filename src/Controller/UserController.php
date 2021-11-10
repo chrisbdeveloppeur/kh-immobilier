@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/user")
@@ -70,11 +71,13 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user, Security $security): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $currentRole = $user->getRoles();
-        $form->get('roles')->setData($currentRole[0]);
+        if ($security->isGranted('ROLE_SUPER_ADMIN')){
+            $form->get('roles')->setData($currentRole[0]);
+        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
