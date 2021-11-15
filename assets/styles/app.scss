@@ -181,7 +181,9 @@ i.fa-search-js{
   transition: ease .5s;
 }
 
-
+.child-sticky-left{
+  flex-wrap: nowrap !important;
+}
 
 .is-absolute-top-0{
   position: absolute;
