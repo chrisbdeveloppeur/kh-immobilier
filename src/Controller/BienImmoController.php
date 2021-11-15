@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BienImmo;
 use App\Entity\Copropriete;
 use App\Entity\Prestataire;
+use App\Entity\Solde;
 use App\Form\BienImmoType;
 use App\Form\PrestataireType;
 use App\Repository\BienImmoRepository;
@@ -335,14 +336,16 @@ class BienImmoController extends AbstractController
      */
     public function duplicateBienImmo(BienImmo $bienImmo, EntityManagerInterface $em, Request $request)
     {
-        $bienImmoDuplicate = clone $bienImmo;
-        $em->persist($bienImmoDuplicate);
-        dd()
-        $em->flush($bienImmoDuplicate);
+        $bienImmoClone = clone $bienImmo;
+        $coproClone = clone $bienImmo->getCopropriete();
+        $bienImmoClone->setCopropriete($coproClone);
+        $bienImmoClone->setSolde(new Solde());
+        $em->persist($bienImmoClone);
+        $em->flush($bienImmoClone);
 
         $this->addFlash('success', 'Le Bien immobilier à été dupliqué');
-        $referer = $request->headers->get('referer');
-        return $this->redirect($referer);
+        $route = $this->redirectToRoute('bien_immo_edit',['id'=>$bienImmo->getId()])->getTargetUrl();
+        return $this->redirect($route.'#logement');
     }
 
 
