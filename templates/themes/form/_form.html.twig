@@ -19,6 +19,9 @@
                 Veillez à bien sauvegarder vos modifications en cliquant sur le bouton "<a href="#save" class="has-text-weight-bold is-underlined has-text-success">Sauvegarder les modifications</a>" en bas de page
             </div>
         </div>
+        <div class="column is-flex is-justify-content-center bien-immo logement is-hidden">
+            <a href="{{ path('duplicate', {'id': bien_immo.id}) }}" class="button">Dupliquer ce bien immo</a>
+        </div>
     {% endif %}
 
     {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}

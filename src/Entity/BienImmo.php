@@ -145,6 +145,11 @@ class BienImmo
         return $this->getStreet();
     }
 
+    public function __clone()
+    {
+        $this->id = null;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

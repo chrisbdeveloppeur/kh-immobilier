@@ -330,6 +330,21 @@ class BienImmoController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{id}/duplicate/", name="duplicate", methods={"GET","POST"})
+     */
+    public function duplicateBienImmo(BienImmo $bienImmo, EntityManagerInterface $em, Request $request)
+    {
+        $bienImmoDuplicate = clone $bienImmo;
+        $em->persist($bienImmoDuplicate);
+        dd()
+        $em->flush($bienImmoDuplicate);
+
+        $this->addFlash('success', 'Le Bien immobilier à été dupliqué');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
+    }
+
 
     private function editCopropriete($bienImmo, $form){
         $bienImmo->getCopropriete()->setName($form->get("coproName")->getData());
