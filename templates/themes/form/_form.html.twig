@@ -19,18 +19,6 @@
                 Veillez à bien sauvegarder vos modifications en cliquant sur le bouton "<a href="#save" class="has-text-weight-bold is-underlined has-text-success">Sauvegarder les modifications</a>" en bas de page
             </div>
         </div>
-        {% if form.vars.name == 'bien_immo' %}
-            <div class="column is-flex is-justify-content-center bien-immo logement is-hidden">
-                <a href="{{ path('duplicate', {'id': bien_immo.id}) }}" class="button is-small">
-                    <span class="icon">
-                        <i class="far fa-clone"></i>
-                    </span>
-                    <span>
-                        Dupliquer ce bien immo
-                    </span>
-                </a>
-            </div>
-        {% endif %}
     {% endif %}
 
     {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
@@ -92,6 +80,24 @@
         {{ form_start(form, {'attr': {'class': 'bien-immo logement copropriete column is-two-fifths has-background-light border-radius-2px box-shadow-bulma '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
         {% if form.vars.name in ['bien_immo','locataire'] %}
+
+            {% if form.vars.name == 'bien_immo' %}
+                <div class="tags mb-0 has-addons bien-immo logement is-hidden is-justify-content-end">
+                    <span class="tag is-small is-dark">
+                        <b>{{ bien_immo.street }}</b>
+                    </span>
+                    <a href="{{ path('duplicate', {'id': bien_immo.id}) }}" class="tag is-small button is-info" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                        <span class="icon">
+                            <i class="fas fa-clone"></i>
+                        </span>
+                    </a>
+                    <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-small button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
+                        <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                    </a>
+                </div>
+            {% endif %}
 
             {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}
                 <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
