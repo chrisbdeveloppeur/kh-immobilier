@@ -21,7 +21,14 @@
         </div>
         {% if form.vars.name == 'bien_immo' %}
             <div class="column is-flex is-justify-content-center bien-immo logement is-hidden">
-                <a href="{{ path('duplicate', {'id': bien_immo.id}) }}" class="button is-small">Dupliquer ce bien immo</a>
+                <a href="{{ path('duplicate', {'id': bien_immo.id}) }}" class="button is-small">
+                    <span class="icon">
+                        <i class="far fa-clone"></i>
+                    </span>
+                    <span>
+                        Dupliquer ce bien immo
+                    </span>
+                </a>
             </div>
         {% endif %}
     {% endif %}
