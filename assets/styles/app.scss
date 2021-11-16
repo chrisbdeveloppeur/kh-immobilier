@@ -176,8 +176,8 @@ i.fa-search-js{
 }
 
 .is-blurred{
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
+  filter: blur(3px) grayscale(100%);
+  -webkit-filter: blur(3px) grayscale(100%);
   transition: ease .5s;
 }
 
@@ -228,6 +228,17 @@ form.quittances{
   //border-radius: 3px;
   box-shadow: 0 0 10px rgba(0,0,0,.4);
   //clip-path: polygon(250px -10%, 110% 8%, 110% 110%, -10% 110%, -10% -10%)
+}
+
+.filter-bw{
+  filter : grayscale(100%) !important;
+  -webkit-filter: grayscale(100%) !important;
+  transition: .5s;
+}
+
+.remove-filter-bw-onhover{
+  filter : grayscale(0%) !important;
+  -webkit-filter: grayscale(0%) !important;
 }
 
 //.sticky-left{
@@ -296,8 +307,8 @@ form.quittances{
 // DESKTOP
 @media (min-width: 1023px) {
   .is-blurred-desktop{
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
+    filter: blur(3px) grayscale(100%);
+    -webkit-filter: blur(3px) grayscale(100%);
     transition: ease .5s;
   }
 }
