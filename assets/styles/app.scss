@@ -6,20 +6,21 @@ $success : #00a4b4;
 $warning : #ffe66d;
 $table-head-background-color : whitesmoke;
 //$table-head-cell-color : white;
-$table-foot-background-color : whitesmoke;
+$table-foot-background-color : white;
 //$table-foot-cell-color : white;
 $link : #363636;
 $header-background-layer : rgba(2, 18, 34, 0.9);
 
+$tabs-boxed-link-hover-background-color: white;
 
 .button, a{
     //border-radius: 0 !important;
     transition: .25s;
 }
 
-//form{
-//  background-color: #f5f5f5;
-//}
+.tab{
+  background: hsl(0, 0%, 96%);
+}
 
 #main-background{
   height: 100vh;
