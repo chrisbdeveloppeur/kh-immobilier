@@ -225,7 +225,15 @@
             </table>
         </div>
         <div class="column has-text-centered">
-            <a href="{{ path('bien_immo_new') }}" class="button is-small is-light">Ajouter un Bien</a>
+            <a href="{{ path('bien_immo_new') }}" class="button mb-2 is-small is-dark bg-info-onhover">
+                <span class="icon px-3">
+                    <i class="fas fa-lg fa-building"></i>
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>
+                    Ajouter un bien
+                </span>
+            </a>
         </div>
     {% endif %}
 
