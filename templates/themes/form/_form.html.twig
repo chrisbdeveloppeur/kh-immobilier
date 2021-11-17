@@ -10,6 +10,10 @@
         {{ include('includes/tabs_bien_immo.html.twig') }}
     {% endif %}
 
+    {% if form.vars.name in ['locataire'] %}
+        {{ include('includes/tabs_locataire.html.twig') }}
+    {% endif %}
+
     {% if 'new' not in app.request.get('_route') %}
         <div class="column is-flex is-justify-content-center bien-immo logement copropriete is-hidden">
             <div class="help box-shadow-bulma border-radius-2px has-background-warning-light has-text-centered px-3 py-2 has-text-dark">
@@ -64,7 +68,7 @@
         </div>
     {% endif %}
 
-    {% if form.vars.name in ['bien_immo'] %}
+    {% if form.vars.name in ['bien_immo','locataire'] %}
         <div id="quittances-liste" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
             {{ include('immo/quittances/quittances_liste.html.twig') }}
         </div>

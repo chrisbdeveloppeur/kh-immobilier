@@ -303,8 +303,9 @@ class QuittancesController extends AbstractController
 
         $this->addFlash('danger', 'La quittance de loyer : <b>' . $quittance->getFileName() . '</b> a bien été suprimmée définitivement');
 
-        $route = $this->redirectToRoute('bien_immo_edit',['id'=>$bien_immo_id])->getTargetUrl();
-        return $this->redirect($route.'#quittances');
+        //$route = $this->redirectToRoute('bien_immo_edit',['id'=>$bien_immo_id])->getTargetUrl();
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer.'#quittances');
     }
 
 }

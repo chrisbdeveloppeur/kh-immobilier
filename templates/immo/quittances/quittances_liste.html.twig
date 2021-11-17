@@ -1,4 +1,10 @@
-{% if bien_immo.quittances|length == 0 %}
+{% if form.vars.name == 'bien_immo' %}
+        {% set entity = bien_immo %}
+{% elseif form.vars.name == 'locataire' %}
+        {% set entity = locataire %}
+{% endif %}
+
+{% if entity.quittances|length == 0 %}
         <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
                 <span class="icon">
                     <i class="fas fa-info-circle"></i>
@@ -9,7 +15,7 @@
         </span>
 {% else %}
         <div class="box has-background-light">
-                {% for quittance in bien_immo.quittances|sort %}
+                {% for quittance in entity.quittances|sort %}
                         <div class="tags are-normal has-addons">
                                 <span class="tag is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
                                 <a class="tag is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" onclick="window.open(this.href, '_blank','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">

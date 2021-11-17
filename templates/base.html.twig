@@ -423,7 +423,9 @@
                         });
                     }else {
                         document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
-                        document.querySelector('div#prestataires-liste').classList.add('is-hidden');
+                        if (document.querySelector('div#prestataires-liste')){
+                            document.querySelector('div#prestataires-liste').classList.add('is-hidden');
+                        }
                     }
 
                     notfields.forEach(notfield => notfield.classList.add('is-hidden'));
