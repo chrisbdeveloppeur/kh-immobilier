@@ -9,8 +9,8 @@
         <div class="columns is-multiline is-justify-content-center is-align-items-center">
             {% for entreprise in entreprises %}
                 <a href="{{ path('entreprenariat_entreprise', {'id': entreprise.id,'entreprise_name': entreprise.name|replace({' ': ''}) }) }}" class="column is-one-quarter mx-1 my-1 py-0 px-0 is-flex is-justify-content-center is-align-items-center is-blurred-desktop remove-blurred-onhover scale-down-onhover" style="height: 200px;position: relative;overflow: hidden;border-radius: 5px;{% if entreprise.imageName %}background: center / cover no-repeat url({{ vich_uploader_asset(entreprise, 'imageFile') }}){% else %}background: bottom right / 15% no-repeat url({{ asset('build/images/Copyright.9e10809b.svg') }}){% endif %}">
-                    <span class="has-text-weight-bold has-text-light is-size-3 has-text-centered is-flex is-justify-content-center is-align-items-center bg-info-05-onhover has-text-dark" style="height: 100%;width: 100%;background: rgba(0,0,0,.3);transition: .2s">
-                        <p class="is-fullwidth column" style="background: rgba(255,255,255,.5)">{{ entreprise.name }}</p>
+                    <span class="has-text-weight-bold has-text-light is-size-3 has-text-centered is-flex is-justify-content-center is-align-items-center has-text-dark" style="height: 100%;width: 100%;background: rgba(0,0,0,.3);transition: .2s">
+                        <p class="is-fullwidth column has-text-black" style="background: rgba(255,255,255,.5)">{{ entreprise.name }}</p>
                     </span>
                 </a>
             {% endfor %}
