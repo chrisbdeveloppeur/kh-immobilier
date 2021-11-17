@@ -281,8 +281,10 @@
                 let endingUrl = '';
                 if (entity === '/bien/immo/') {
                     endingUrl = '/edit/#logement';
+                } else if (entity === '/locataire/') {
+                    endingUrl = '/edit/#locataire';
                 }else {
-                    endingUrl = /edit/;
+                    endingUrl = '/edit/';
                 }
                 redirectLink.href = entity+id+endingUrl;
                 redirectLink.removeAttribute('disabled', 'disabled');

@@ -103,6 +103,23 @@
                 </div>
             {% endif %}
 
+            {% if form.vars.name == 'locataire' %}
+                <div class="tags mb-0 has-addons bien-immo locataire is-hidden is-justify-content-end">
+                    <span class="tag is-small is-dark">
+                        {% if locataire.gender == 'Couple' %}
+                            <b>{{ locataire.gender }} {{ locataire.lastName }}</b>
+                        {% else %}
+                            <b>{{ locataire.gender }} {{ locataire }}</b>
+                        {% endif %}
+                    </span>
+                    <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="tag is-small button is-danger" title="Supprimer ce locataire" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce locataire?');">
+                        <span class="icon">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                    </a>
+                </div>
+            {% endif %}
+
             {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}
                 <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
                     <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete.name }}</b></span>

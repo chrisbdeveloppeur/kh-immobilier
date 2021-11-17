@@ -116,7 +116,7 @@
                         </td>
                         <td class="is-size-7 has-text-weight-bold show-on-hover sticky-left px-0 py-0">
                         <span class="text-info-onhover has-text-dark">
-                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-weight-bold text-info-onhover icon-text has-background-white child-sticky-left px-2" title="{{ bien_immo.street }}">
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-weight-bold text-info-onhover icon-text has-background-white child-sticky-left nowrap px-2" title="{{ bien_immo.street }}">
                                 <span class="text-index-bien-immo">
                                     {{ bien_immo.street }}
                                 </span>
@@ -156,7 +156,7 @@
                                     <i class="fas fa-user-minus"></i>
                                 </span>
                                 </a>
-                                <a class="show-on-hover" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
+                                <a class="show-on-hover" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover has-text-dark">
                                     <span><b>{{ bien_immo.locataires.current }}</b></span>
                                     <span class="icon show-on-hover-target is-hidden-touch">
