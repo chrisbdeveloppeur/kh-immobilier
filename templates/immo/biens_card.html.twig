@@ -40,7 +40,7 @@
             Loyer TTC : <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b><br>
             Locataire :
             {% if bien_immo.locataires.current %}
-                <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}" class="has-text-{{ logement_status_color }} has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
+                <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-{{ logement_status_color }} has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
                     <span>{{ bien_immo.locataires.current }}</span>
                     <span class="icon show-on-hover-target is-hidden-touch">
                         <i class="fas fa-search"></i>
