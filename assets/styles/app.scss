@@ -198,6 +198,14 @@ i.fa-search-js{
   -webkit-filter: none;
 }
 
+.scale-up-onhover:hover{
+  transform: scale(1.1);
+}
+
+.scale-down-onhover:hover{
+  transform: scale(.95);
+}
+
 .is-bottom{
   bottom: 0 !important;
 }
