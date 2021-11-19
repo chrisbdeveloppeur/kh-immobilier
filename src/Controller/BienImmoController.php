@@ -135,9 +135,11 @@ class BienImmoController extends AbstractController
         //        return $this->redirect($referer);
         //    };
         //}
+
         $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
-        if ($authorizedToBeHere === false){
-            return $this->redirectToRoute('bien_immo_edit');
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à être ici');
+            return $this->redirectToRoute('bien_immo_index');
         }
 
         $locataires = $locataireRepository->findBy([
@@ -240,17 +242,10 @@ class BienImmoController extends AbstractController
     public function delete(Request $request, BienImmo $bienImmo, AdaptByUser $adaptByUser): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
-        //if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
-        //    if ($bienImmo->getUser() != $this->getUser()){
-        //        $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-        //        $referer = $request->headers->get('referer');
-        //        return $this->redirect($referer);
-        //    };
-        //}
         $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
-        if ($authorizedToBeHere === false){
-            $referer = $request->headers->get('referer');
-            return $this->redirect($referer);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à faire cette action');
+            return $this->redirectToRoute('bien_immo_index');
         }
 
         $immoName = $bienImmo->getStreet();
@@ -285,19 +280,11 @@ class BienImmoController extends AbstractController
         $name = $locataire->getLastName() . ' ' . $locataire->getFirstName();
 
         //        Vérification de l'utilisateur actuellement connecté
-        //if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
-        //    if ($bienImmo->getUser() != $this->getUser()){
-        //        $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-        //        $referer = $request->headers->get('referer');
-        //        return $this->redirect($referer);
-        //    };
-        //}
         $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
-        if ($authorizedToBeHere === false){
-            $referer = $request->headers->get('referer');
-            return $this->redirect($referer);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à faire cette action');
+            return $this->redirectToRoute('bien_immo_index');
         }
-
 
         $logement = $bienImmo->getBuilding();
         $bienImmo->removeLocataire($locataire);
@@ -357,7 +344,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/duplicate/", name="duplicate", methods={"GET","POST"})
      */
-    public function duplicateBienImmo(BienImmo $bienImmo, EntityManagerInterface $em, Request $request)
+    public function duplicateBienImmo(BienImmo $bienImmo, EntityManagerInterface $em)
     {
         $bienImmoClone = clone $bienImmo;
         $coproClone = clone $bienImmo->getCopropriete();
