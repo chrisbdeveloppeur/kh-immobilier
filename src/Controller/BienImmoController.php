@@ -12,6 +12,7 @@ use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use App\Repository\PrestataireRepository;
 use App\Repository\QuittanceRepository;
+use App\Services\AdaptByUser;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -28,20 +29,28 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class BienImmoController extends AbstractController
 {
+
+    private $all_biens_immos;
+
+    public function __construct(AdaptByUser $adaptByUser)
+    {
+        $this->all_biens_immos = $adaptByUser->getAllBiensImmos();
+    }
+
     /**
      * @Route("/", name="bien_immo_index", methods={"GET"})
      */
     public function index(BienImmoRepository $bienImmoRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $user = $this->getUser();
-        if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
-            $all_biens_immos = $bienImmoRepository->findAll();
-        }else{
-            $all_biens_immos = $bienImmoRepository->findBy(['user' => $user->getId()]);
-        }
+        //if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
+        //    $all_biens_immos = $bienImmoRepository->findAll();
+        //}else{
+        //    $all_biens_immos = $bienImmoRepository->findBy(['user' => $user->getId()]);
+        //}
 
         $biens_immos = $paginator->paginate(
-            $all_biens_immos,
+            $this->all_biens_immos,
             $request->query->getInt('page',1),
             $request->query->getInt('numItemsPerPage',20),
             array(
@@ -116,16 +125,21 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository): Response
+    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository, AdaptByUser $adaptByUser): Response
     {
 //        Vérification de l'utilisateur actuellement connecté
-        if (!$this->isGranted('ROLE_SUPER_ADMIN') ){
-            if ($bienImmo->getUser() != $this->getUser()){
-                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-                $referer = $request->headers->get('referer');
-                return $this->redirect($referer);
-            };
+        //if (!$this->isGranted('ROLE_SUPER_ADMIN') ){
+        //    if ($bienImmo->getUser() != $this->getUser()){
+        //        $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+        //        $referer = $request->headers->get('referer');
+        //        return $this->redirect($referer);
+        //    };
+        //}
+        $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
+        if ($authorizedToBeHere === false){
+            return $this->redirectToRoute('bien_immo_edit');
         }
+
         $locataires = $locataireRepository->findBy([
             'user' => $this->getUser()->getId(),
             'sans_logement' => true,
@@ -223,15 +237,20 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/delete", name="bien_immo_delete", methods={"GET","POST"})
      */
-    public function delete(Request $request, BienImmo $bienImmo): Response
+    public function delete(Request $request, BienImmo $bienImmo, AdaptByUser $adaptByUser): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
-        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
-            if ($bienImmo->getUser() != $this->getUser()){
-                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-                $referer = $request->headers->get('referer');
-                return $this->redirect($referer);
-            };
+        //if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+        //    if ($bienImmo->getUser() != $this->getUser()){
+        //        $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+        //        $referer = $request->headers->get('referer');
+        //        return $this->redirect($referer);
+        //    };
+        //}
+        $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
+        if ($authorizedToBeHere === false){
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
         }
 
         $immoName = $bienImmo->getStreet();
@@ -259,20 +278,26 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/locataire/remove{loc_id}", name="remove_loctataire", methods={"GET","POST"})
      */
-    public function removeLocataire(Request $request,$id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
+    public function removeLocataire(Request $request,$id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, AdaptByUser $adaptByUser): Response
     {
         $locataire = $locataireRepository->find($loc_id);
         $bienImmo = $bienImmoRepository->find($id);
         $name = $locataire->getLastName() . ' ' . $locataire->getFirstName();
 
         //        Vérification de l'utilisateur actuellement connecté
-        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
-            if ($bienImmo->getUser() != $this->getUser()){
-                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-                $referer = $request->headers->get('referer');
-                return $this->redirect($referer);
-            };
+        //if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+        //    if ($bienImmo->getUser() != $this->getUser()){
+        //        $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+        //        $referer = $request->headers->get('referer');
+        //        return $this->redirect($referer);
+        //    };
+        //}
+        $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
+        if ($authorizedToBeHere === false){
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
         }
+
 
         $logement = $bienImmo->getBuilding();
         $bienImmo->removeLocataire($locataire);

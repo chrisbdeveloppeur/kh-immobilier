@@ -85,7 +85,7 @@
 
         {% if form.vars.name in ['bien_immo','locataire'] %}
 
-            {% if form.vars.name == 'bien_immo' %}
+            {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
                 <div class="tags mb-0 has-addons bien-immo logement is-hidden is-justify-content-end">
                     <span class="tag is-small is-dark">
                         <b>{{ bien_immo.street }}</b>
