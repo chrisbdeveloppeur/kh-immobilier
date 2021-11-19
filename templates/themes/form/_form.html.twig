@@ -103,7 +103,7 @@
                 </div>
             {% endif %}
 
-            {% if form.vars.name == 'locataire' %}
+            {% if form.vars.name == 'locataire' and 'new' not in app.request.get('_route')  %}
                 <div class="tags mb-0 has-addons bien-immo locataire is-hidden is-justify-content-end">
                     <span class="tag is-small is-dark">
                         {% if locataire.gender == 'Couple' %}
