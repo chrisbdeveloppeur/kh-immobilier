@@ -31,24 +31,19 @@ class BienImmoController extends AbstractController
 {
 
     private $all_biens_immos;
+    private $adaptByUser;
 
     public function __construct(AdaptByUser $adaptByUser)
     {
+        $this->adaptByUser = $adaptByUser;
         $this->all_biens_immos = $adaptByUser->getAllBiensImmos();
     }
 
     /**
      * @Route("/", name="bien_immo_index", methods={"GET"})
      */
-    public function index(BienImmoRepository $bienImmoRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $user = $this->getUser();
-        //if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
-        //    $all_biens_immos = $bienImmoRepository->findAll();
-        //}else{
-        //    $all_biens_immos = $bienImmoRepository->findBy(['user' => $user->getId()]);
-        //}
-
         $biens_immos = $paginator->paginate(
             $this->all_biens_immos,
             $request->query->getInt('page',1),
@@ -125,18 +120,10 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository, AdaptByUser $adaptByUser): Response
+    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository): Response
     {
 //        Vérification de l'utilisateur actuellement connecté
-        //if (!$this->isGranted('ROLE_SUPER_ADMIN') ){
-        //    if ($bienImmo->getUser() != $this->getUser()){
-        //        $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-        //        $referer = $request->headers->get('referer');
-        //        return $this->redirect($referer);
-        //    };
-        //}
-
-        $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($bienImmo);
         if (!$authorizedToBeHere){
             $this->addFlash('warning', 'Vous n\'êtes pas autorisé à être ici');
             return $this->redirectToRoute('bien_immo_index');
@@ -239,10 +226,10 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/delete", name="bien_immo_delete", methods={"GET","POST"})
      */
-    public function delete(Request $request, BienImmo $bienImmo, AdaptByUser $adaptByUser): Response
+    public function delete(Request $request, BienImmo $bienImmo): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
-        $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($bienImmo);
         if (!$authorizedToBeHere){
             $this->addFlash('warning', 'Vous n\'êtes pas autorisé à faire cette action');
             return $this->redirectToRoute('bien_immo_index');
@@ -273,14 +260,14 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/locataire/remove{loc_id}", name="remove_loctataire", methods={"GET","POST"})
      */
-    public function removeLocataire(Request $request,$id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, AdaptByUser $adaptByUser): Response
+    public function removeLocataire(Request $request,$id, $loc_id, LocataireRepository $locataireRepository, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
         $locataire = $locataireRepository->find($loc_id);
         $bienImmo = $bienImmoRepository->find($id);
         $name = $locataire->getLastName() . ' ' . $locataire->getFirstName();
 
         //        Vérification de l'utilisateur actuellement connecté
-        $authorizedToBeHere = $adaptByUser->redirectIfNotAuth($bienImmo);
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($bienImmo);
         if (!$authorizedToBeHere){
             $this->addFlash('warning', 'Vous n\'êtes pas autorisé à faire cette action');
             return $this->redirectToRoute('bien_immo_index');
@@ -300,7 +287,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/prestataire/remove/{presta_id}", name="remove_prestataire", methods={"GET","POST"})
      */
-    public function removePrestataire($id, $presta_id, Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PrestataireRepository $prestataireRepository): Response
+    public function removePrestataire($id, $presta_id, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PrestataireRepository $prestataireRepository): Response
     {
         $logement = $bienImmoRepository->find($id);
         $prestataire = $prestataireRepository->find($presta_id);
@@ -315,12 +302,11 @@ class BienImmoController extends AbstractController
     }
 
     /**
-     * @param $id
      * @param Request $request
      * @return Response
      * @Route("/{id}/prestataire/edit/{presta_id}", name="edit_prestataire", methods={"GET","POST"})
      */
-    public function editPrestataire($id, Request $request, $presta_id, PrestataireRepository $prestataireRepository, EntityManagerInterface $em): Response
+    public function editPrestataire(Request $request, $presta_id, PrestataireRepository $prestataireRepository, EntityManagerInterface $em): Response
     {
         $prestataire = $prestataireRepository->find($presta_id);
         $form = $this->createForm(PrestataireType::class, $prestataire);

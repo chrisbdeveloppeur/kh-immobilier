@@ -6,6 +6,7 @@ use App\Entity\Locataire;
 use App\Form\LocataireType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
+use App\Services\AdaptByUser;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,20 +21,23 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class LocataireController extends AbstractController
 {
+
+    private $all_locataires;
+    private $adaptByUser;
+
+    public function __construct(AdaptByUser $adaptByUser)
+    {
+        $this->adaptByUser = $adaptByUser;
+        $this->all_locataires = $adaptByUser->getAllLocataires();
+    }
+
     /**
      * @Route("/", name="locataire_index", methods={"GET"})
      */
-    public function index(LocataireRepository $locataireRepository, Request $request, PaginatorInterface $paginator): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
-        $user = $this->getUser();
-        if ( $this->isGranted('ROLE_SUPER_ADMIN')){
-            $all_locataires = $locataireRepository->findAll();
-        }else{
-            $all_locataires = $locataireRepository->findBy(['user' => $user->getId()]);
-        }
-
         $locataires = $paginator->paginate(
-            $all_locataires,
+            $this->all_locataires,
             $request->query->getInt('page',1),
             $request->query->getInt('numItemsPerPage',20),
             array(
@@ -98,12 +102,10 @@ class LocataireController extends AbstractController
     public function edit(Request $request, Locataire $locataire, BienImmoRepository $bienImmoRepository): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
-        if (!$this->isGranted('ROLE_SUPER_ADMIN')){
-            if ($locataire->getUser() != $this->getUser()){
-                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-                $referer = $request->headers->get('referer');
-                return $this->redirect($referer);
-            };
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($locataire);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à être ici');
+            return $this->redirectToRoute('locataire_index');
         }
 
         $logements = $bienImmoRepository->findBy([
@@ -145,12 +147,10 @@ class LocataireController extends AbstractController
     public function delete(Request $request, Locataire $locataire): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
-        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
-            if ($locataire->getUser() != $this->getUser()){
-                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
-                $referer = $request->headers->get('referer');
-                return $this->redirect($referer);
-            };
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($locataire);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à faire cete action');
+            return $this->redirectToRoute('locataire_index');
         }
 
         $locataireName = $locataire->getFirstName() .' '. $locataire->getLastName();
