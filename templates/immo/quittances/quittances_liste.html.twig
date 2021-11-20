@@ -4,7 +4,35 @@
         {% set entity = locataire %}
 {% endif %}
 
-{% if entity.quittances|length == 0 %}
+{% if form.vars.name == 'bien_immo' and entity.locataires.current is null %}
+        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-primary border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                <span class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <span>
+                    <b>Ce logement ne possède actuellement aucun locataire ...</b>
+                </span>
+                <span class="px-3">
+                        <a class="button is-small is-light is-outlined" title="Ajouter un locataire au logement" onclick="let btn = document.querySelector('div#logement').nextElementSibling.click();">
+                                Ajouter un locataire
+                        </a>
+                </span>
+        </span>
+{% elseif form.vars.name == 'locataire' and entity.logement is null %}
+        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-primary border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                <span class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <span>
+                    <b>Ce locataire ne possède actuellement aucun logement attribué...</b>
+                </span>
+                <span class="px-3">
+                        <a class="button is-small is-light is-outlined" title="Ajouter un logement au locataire" onclick="let btn = document.querySelector('div#locataire').nextElementSibling.click();">
+                                Ajouter un logement
+                        </a>
+                </span>
+        </span>
+{% elseif entity.quittances|length == 0 %}
         <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
                 <span class="icon">
                     <i class="fas fa-info-circle"></i>
