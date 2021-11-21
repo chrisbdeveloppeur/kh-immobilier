@@ -10,7 +10,7 @@
     {% endfor %}
 
 <div class="is-flex is-justify-content-center is-align-items-center" style="height: 100%;">
-    {{ form_start(registrationForm, {'attr' : {'class': 'column is-one-third'}}) }}
+    {{ form_start(registrationForm, {'attr' : {'class': 'column is-one-third', 'onsubmit':'isLoading(this)'}}) }}
     <div class="field">
         <label class="label is-size-7">{{ form_label(registrationForm.email) }}</label>
         <p class="control has-icons-left has-icons-right">
@@ -120,7 +120,7 @@
     </div>
 
     <div class="field has-text-centered">
-        <button type="submit" class="button is-success is-small">
+        <button type="submit" class="button is-success is-small btn-submit">
             <span class="icon">
                 <i class="fas fa-check"></i>
             </span>

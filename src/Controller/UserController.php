@@ -105,6 +105,7 @@ class UserController extends AbstractController
 //        dump('delete'.$user->getId());
 //        dump($request->request->get('_token'));
 //        dd($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token')));
+        $this->container->get('security.token_storage')->setToken(null);
 
         if (in_array('ROLE_SUPER_ADMIN', $user->getRoles()) )
         {
@@ -116,6 +117,7 @@ class UserController extends AbstractController
         $em->remove($user);
         $em->flush();
 
+        $this->addFlash('danger', 'Votre compte gestionnaire à bien été supprimé');
         return $this->redirectToRoute('user_index');
     }
 

@@ -5,7 +5,7 @@
 
 {% block body %}
     <div class="is-flex is-justify-content-center is-align-items-center" style="height: 100%;">
-        <form class="column is-one-third" method="post">
+        <form class="column is-one-third" method="post" onsubmit="isLoading(this)">
             {% if error %}
                 <div class="tag is-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -36,7 +36,7 @@
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 <div class="field has-text-centered">
                     <p class="control">
-                        <button class="button is-success is-small">
+                        <button class="button is-success is-small btn-submit">
                             Se connecter
                         </button>
                     </p>
