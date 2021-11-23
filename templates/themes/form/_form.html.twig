@@ -278,15 +278,21 @@
                                 <div class="is-flex-desktop is-justify-content-center is-align-items-center button is-small">
                                     <label class="radio has-text-centered">
                                         {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
-                                            Super Administrateur
+                                            <span class="icon" title="Super Administrateur">
+                                                <i class="fas fa-lg fa-user-secret"></i>
+                                            </span>
                                         {% elseif checkbox.vars.value == 'ROLE_ADMIN' %}
-                                            Administrateur
+                                            <span class="icon" title="Administrateur">
+                                                <i class="fas fa-lg fa-user-cog"></i>
+                                            </span>
                                         {% elseif checkbox.vars.value == 'ROLE_USER' %}
-                                            Standard
+                                            <span class="icon" title="Gestionnaire Standard">
+                                                <i class="fas fa-lg fa-user"></i>
+                                            </span>
                                         {% else %}
                                             Role non définie
                                         {% endif %}
-                                        {{ form_widget(checkbox, { 'attr' :  {'class':'is-hidden'}}) }}
+                                        {{ form_widget(checkbox, { 'attr' :  {'class':''}}) }}
                                     </label>
                                 </div>
                             {% endfor %}

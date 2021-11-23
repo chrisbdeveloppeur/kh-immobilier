@@ -1,4 +1,4 @@
-$info : #3488CE;
+$info : #009fd5;
 //$info : #7184c9;
 $danger : #d30000;
 //$success : #67b99a;
@@ -82,7 +82,7 @@ a.navbar-item:focus, a.navbar-item:focus-within{
 }
 
 .bg-info-onhover:hover{
-    background-color: $info !important;
+  background-color: $info !important;
 }
 .bg-info-05-onhover:hover{
   background-color: rgba(52, 136, 206, 0.7) !important;
