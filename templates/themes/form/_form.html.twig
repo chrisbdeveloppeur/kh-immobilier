@@ -278,15 +278,15 @@
                                 <div class="is-flex-desktop is-justify-content-center is-align-items-center button is-small">
                                     <label class="radio has-text-centered">
                                         {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
-                                            <span class="icon" title="Super Administrateur">
+                                            <span class="icon hovertext" data-hover="Super Administrateur">
                                                 <i class="fas fa-lg fa-user-secret"></i>
                                             </span>
                                         {% elseif checkbox.vars.value == 'ROLE_ADMIN' %}
-                                            <span class="icon" title="Administrateur">
+                                            <span class="icon hovertext" data-hover="Administrateur">
                                                 <i class="fas fa-lg fa-user-cog"></i>
                                             </span>
                                         {% elseif checkbox.vars.value == 'ROLE_USER' %}
-                                            <span class="icon" title="Gestionnaire Standard">
+                                            <span class="icon hovertext" data-hover="Gestionnaire Standard">
                                                 <i class="fas fa-lg fa-user"></i>
                                             </span>
                                         {% else %}
