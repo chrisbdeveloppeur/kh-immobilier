@@ -275,18 +275,18 @@
                     {% if child.vars.name == 'roles' %}
                         <div class="is-justify-content-start buttons">
                             {% for checkbox in child %}
-                                <div class="is-flex-desktop is-justify-content-center is-align-items-center button is-small">
+                                <div class="is-flex-desktop is-justify-content-center is-align-items-center button is-small hovertext" data-hover="{% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}Super Administrateur{% elseif checkbox.vars.value == 'ROLE_ADMIN' %}Administrateur{% elseif checkbox.vars.value == 'ROLE_USER' %}Gestionnaire Standard{% endif %}">
                                     <label class="radio has-text-centered">
                                         {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
-                                            <span class="icon hovertext" data-hover="Super Administrateur">
+                                            <span class="icon">
                                                 <i class="fas fa-lg fa-user-secret"></i>
                                             </span>
                                         {% elseif checkbox.vars.value == 'ROLE_ADMIN' %}
-                                            <span class="icon hovertext" data-hover="Administrateur">
+                                            <span class="icon">
                                                 <i class="fas fa-lg fa-user-cog"></i>
                                             </span>
                                         {% elseif checkbox.vars.value == 'ROLE_USER' %}
-                                            <span class="icon hovertext" data-hover="Gestionnaire Standard">
+                                            <span class="icon">
                                                 <i class="fas fa-lg fa-user"></i>
                                             </span>
                                         {% else %}
