@@ -267,8 +267,9 @@ form.quittances{
   content: attr(data-hover);
   visibility: hidden;
   opacity: 0;
-  width: auto;
-  background-color: black;
+  width: max-content;
+  max-width: 40vw;
+  background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   text-align: center;
   border-radius: 5px;
@@ -281,7 +282,7 @@ form.quittances{
   font-size: .7rem;
 }
 
-.hovertext:hover:before {
+.hovertext:hover:before, .hovertext:active:before {
   opacity: 1;
   visibility: visible;
 }
