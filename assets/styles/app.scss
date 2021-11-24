@@ -265,18 +265,18 @@ form.quittances{
   content: attr(data-hover);
   visibility: hidden;
   opacity: 0;
-  width: 140px;
+  width: auto;
   background-color: black;
   color: #fff;
   text-align: center;
   border-radius: 5px;
-  padding: 5px 0;
+  padding: 5px 10px;
   transition: opacity 1s ease-in-out;
-
   position: absolute;
   z-index: 1;
   left: 0;
   top: 110%;
+  font-size: .7rem;
 }
 
 .hovertext:hover:before {
