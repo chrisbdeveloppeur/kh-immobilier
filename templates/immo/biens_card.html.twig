@@ -13,6 +13,10 @@
                     <a href="{{ path('user_edit', {'id': bien_immo.user.id }) }}" class="has-text-dark has-text-weight-normal has-background-info is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
                         {{ bien_immo.user.firstname|first|capitalize }}{{ bien_immo.user.lastname|first|capitalize }}
                     </a>
+                {% elseif bien_immo.locataires.current.user %}
+                    <a href="{{ path('user_edit', {'id': bien_immo.locataires.current.user.id }) }}" class="has-text-dark has-text-weight-normal has-background-info is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.locataires.current.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
+                        {{ bien_immo.locataires.current.user.firstname|first|capitalize }}{{ bien_immo.locataires.current.user.lastname|first|capitalize }}
+                    </a>
                 {% else %}
                     <a class="has-text-dark has-text-weight-normal has-background-grey-lighter is-flex is-justify-content-center is-align-items-center hovertext not-allowed-onhover" disabled data-hover="Sans gestionnaire" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
                         N/A
