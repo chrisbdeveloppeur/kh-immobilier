@@ -24,7 +24,7 @@
     {% set section = 'immobilier' %}
 {% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
     {% set section = 'entreprenariat' %}
-{% elseif 'user'in app.request.get('_route') or 'register' in app.request.get('_route') or 'login' in app.request.get('_route')  %}
+{% elseif 'user' in app.request.get('_route') or 'register' in app.request.get('_route') or 'login' in app.request.get('_route') or 'change_password' in app.request.get('_route')  %}
     {% set section = 'gestionnaire' %}
 {% endif %}
 
@@ -56,7 +56,11 @@
                     {% elseif section == 'entreprenariat' %}
                         <i class="fas fa-user-tie"></i>
                     {% elseif section == 'gestionnaire' %}
-                        <i class="fas fa-user-cog"></i>
+                        {% if app.request.get('_route') == 'change_password' %}
+                            <i class="fas fa-user-shield"></i>
+                        {% else %}
+                            <i class="fas fa-user-cog"></i>
+                        {% endif %}
                     {% else %}
                         <i class="fas fa-mail-bulk"></i>
                     {% endif %}
