@@ -407,12 +407,12 @@
                     lis.forEach(el => el.classList.remove('is-active'));
                     li.classList.add('is-active');
 
-                    if ( id === 'quittances' ){
-                        document.querySelectorAll('.quittance').forEach(el => el.classList.remove('is-hidden'));
-                        document.querySelector('div#quittances-liste').classList.remove('is-hidden');
+                    if ( id === 'files' ){
+                        document.querySelectorAll('.file').forEach(el => el.classList.remove('is-hidden'));
+                        document.querySelector('div#files-liste').classList.remove('is-hidden');
                     }else {
-                        document.querySelectorAll('.quittance').forEach(el => el.classList.add('is-hidden'));
-                        document.querySelector('div#quittances-liste').classList.add('is-hidden');
+                        document.querySelectorAll('.file').forEach(el => el.classList.add('is-hidden'));
+                        document.querySelector('div#files-liste').classList.add('is-hidden');
                     }
 
                     if ( id === 'copropriete' ){

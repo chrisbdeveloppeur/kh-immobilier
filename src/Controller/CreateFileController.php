@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -59,4 +60,43 @@ class CreateFileController extends AbstractController
 
         return $template;
     }
+
+    public function createQuittanceFile($template, $locataire, $file, Request $request)
+    {
+        $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
+
+        //if (!file_exists('../assets/files/quittances/')) {
+        //    mkdir('../assets/files/quittances/', 0777, true);
+        //}
+        if (!file_exists('../public/documents/quittances/')) {
+            mkdir('../public/documents/quittances/', 0777, true);
+        }
+
+        $template->saveAs("../public/documents/quittances/" . $file . ".docx");
+        $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
+        $word->saveAs("../public/documents/quittances/" . $file . ".docx");
+
+        $this->convertWordToPdf($file . ".docx", $locataire->getId(), $request);
+    }
+
+    private function convertWordToPdf($file_name, $loc_id, Request $request): Response
+    {
+        $project_dir = $this->getParameter('kernel.project_dir');
+//        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
+        $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\public\documents\quittances\\';
+        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
+
+        if (shell_exec($cmd) == null || shell_exec($cmd) == false){
+            $this->addFlash('warning', 'Une erreur est survenue lors de l\'édition du fichier <b>.pdf</b>');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }else{
+            shell_exec($cmd);
+        }
+
+        return $this->redirectToRoute("quittances_edit_current_month_quittance",[
+            'loc_id' => $loc_id,
+        ]);
+    }
+
 }
