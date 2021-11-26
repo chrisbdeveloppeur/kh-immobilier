@@ -380,19 +380,4 @@ class BienImmoController extends AbstractController
     }
 
 
-
-    /**
-     * @Route("/{id}/document/delete", name="document_delete", methods={"POST","GET"})
-     */
-    public function deleteDocument($id, DocumentsRepository $documentsRepository, EntityManagerInterface $em, Request $request)
-    {
-        $document = $documentsRepository->find($id);
-        $name = $document->getTitle();
-        $em->remove($document);
-        $em->flush();
-        $this->addFlash('danger', 'Le document <b>'.$name.'</b> à bien été supprimé');
-        $referer = $request->headers->get('referer');
-        return $this->redirect($referer.'/#files');
-    }
-
 }

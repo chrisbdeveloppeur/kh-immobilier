@@ -15,8 +15,11 @@ class DocumentsType extends AbstractType
     {
         $builder
             ->add('title', TextType::class,[
-                'label' => 'Nom du fichier',
-                'attr' => ['class' => 'input is-small has-text-centered has-background-grey-lighter borderless-radius'],
+                'label' => false,
+                'attr' => [
+                    'class' => 'input is-small has-text-centered has-background-light borderless-radius',
+                    'placeholder' => 'Définir le nom du fichier'
+                ],
                 'required' => true,
             ])
             ->add('file', FileType::class,[

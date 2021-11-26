@@ -50,7 +50,7 @@
                 <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
 
                     {% for quittance in entity.quittances|sort %}
-                        <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-half-mobile is-1-widescreen mx-2 my-2 is-relative">
+                        <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative">
                             <a class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
                                 <span class="icon">
                                     <i class="fas fa-2x fa-file-pdf"></i>
@@ -67,7 +67,7 @@
                     {% endfor %}
 
                     {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
-                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-half-mobile is-1-widescreen mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
                             <span class="icon">
                                 <i class="fas fa-2x fa-file-pdf"></i>
                                 <i class="fas fa-plus"></i>
@@ -75,7 +75,7 @@
                             <span><b>Quittance</b></span>
                         </a>
                     {% elseif form.vars.name == 'locataire' and entity.logement is null %}
-                        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-half-mobile is-1-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
+                        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
                             <span>
                                 Pour éditer une quittance...
                             </span>
@@ -99,22 +99,17 @@
         {{ form_start(form_documents) }}
         <div class="file has-name is-boxed is-justify-content-center is-align-items-center mx-2 my-2">
             <label class="file-label">
-{#                    {{ form_widget(form_documents.title) }}#}
                     {{ form_widget(form_documents.file) }}
-
                 <span class="file-cta">
                     <span class="file-icon">
                       <i class="fas fa-upload"></i>
                     </span>
-                    <span class="file-label">
-                      Choisir un fichier…
+                    <span class="file-label overflow-ellipsis" id="file-label" style="max-width: 130px;">
+                        Choisir un fichier…
                     </span>
                 </span>
-{#                <span class="file-name has-background-dark has-text-light">#}
-{#                    Screen Shot 2017-07-29 at 15.54.25.png#}
-{#                </span>#}
                 {{ form_widget(form_documents.title) }}
-                <button class="button is-small borderless-radius" type="submit">Ajouter</button>
+                <button class="button is-info is-small borderless-radius" type="submit"><b>Ajouter</b></button>
             </label>
         </div>
         {{ form_end(form_documents) }}
@@ -123,14 +118,14 @@
         <div class="column mx-2 my-2 border-radius-2px" style="height: 30vh;border: dotted rgba(0,0,0,.5) 1px">
             <div class="columns is-multiline is-flex is-flex-direction-row">
                 {% for document in entity.documents %}
-                    <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-half-mobile is-2-widescreen mx-2 my-2 is-relative">
+                    <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
                         <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
                                 <span class="icon">
-                                    <i class="fas fa-2x fa-file-pdf"></i>
+                                    <i class="fas fa-2x fa-file"></i>
                                 </span>
                             <span class="overflow-ellipsis-200px is-block" style="max-width: 30vw">
-                                    {{ document.title }}
-                                </span>
+                                {{ document.title }}
+                            </span>
                         </a>
                         <a class="icon is-absolute-top-0 is-right-0 is-medium" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
                             <i class="fas fa-lg fa-times"></i>
@@ -147,8 +142,10 @@
 <script>
     let fileUpload = document.getElementById('documents_file');
     let inputFile = document.getElementById('documents_title');
+    // let title = document.getElementById('file-label');
     fileUpload.onchange = function () {
         console.log(fileUpload.files[0].name);
         inputFile.value = fileUpload.files[0].name;
+        // title.innerText = fileUpload.files[0].name;
     }
 </script>

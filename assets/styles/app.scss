@@ -142,7 +142,8 @@ i.fa-search-js{
 
 .overflow-ellipsis{
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis !important;
+  display: block !important;
 }
 
 .overflow-ellipsis-100px{

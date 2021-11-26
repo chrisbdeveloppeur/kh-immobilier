@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\DocumentsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -97,6 +99,21 @@ class CreateFileController extends AbstractController
         return $this->redirectToRoute("quittances_edit_current_month_quittance",[
             'loc_id' => $loc_id,
         ]);
+    }
+
+
+    /**
+     * @Route("/{id}/document/delete", name="document_delete", methods={"POST","GET"})
+     */
+    public function deleteDocument($id, DocumentsRepository $documentsRepository, EntityManagerInterface $em, Request $request)
+    {
+        $document = $documentsRepository->find($id);
+        $name = $document->getTitle();
+        $em->remove($document);
+        $em->flush();
+        $this->addFlash('danger', 'Le document <b>'.$name.'</b> à bien été supprimé');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer.'/#files');
     }
 
 }
