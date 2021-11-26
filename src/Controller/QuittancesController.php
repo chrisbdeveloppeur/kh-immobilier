@@ -21,6 +21,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuittancesController extends AbstractController
 {
+
+    private $createFileController;
+
+    public function __construct(CreateFileController $createFileController)
+    {
+        $this->createFileController = $createFileController;
+    }
+
     /**
      * @Route("/new/{loc_id}", name="edit_new_quittance")
      */
@@ -47,7 +55,8 @@ class QuittancesController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $template = $this->fillQuittanceTemplateFromForm($locataire, $form);
+            //$template = $this->fillQuittanceTemplateFromForm($locataire, $form);
+            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form);
             $dateForFile = $form->get('date')->getData()->format('d-m-Y');
             $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
             $file = str_replace(" ", "_",$file);
@@ -107,7 +116,8 @@ class QuittancesController extends AbstractController
 
         $locataire = $locataireRepository->find($loc_id);
 
-        $template = $this->fillQuittanceTemplate($locataire);
+        //$template = $this->fillQuittanceTemplate($locataire);
+        $template = $this->createFileController->fillQuittanceTemplate($locataire,null);
 
         $file = "quittance_" . strftime("%B_") . $locataire->getLastName() . '_' . $locataire->getLogement()->getId();
 
@@ -179,13 +189,13 @@ class QuittancesController extends AbstractController
         ]);
     }
 
-
     /**
      * @param Locataire $locataire
      * @return \PhpOffice\PhpWord\TemplateProcessor
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
+    /*
     public function fillQuittanceTemplate($locataire)
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
@@ -220,13 +230,14 @@ class QuittancesController extends AbstractController
         return $template;
     }
 
-
+*/
     /**
      * @param Locataire $locataire
      * @return \PhpOffice\PhpWord\TemplateProcessor
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
+    /*
     public function fillQuittanceTemplateFromForm($locataire, $form)
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
@@ -264,6 +275,7 @@ class QuittancesController extends AbstractController
         return $template;
     }
 
+    */
 
     public function createQuittanceFile($template, $locataire, $file, Request $request)
     {
