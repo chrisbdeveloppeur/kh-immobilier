@@ -76,24 +76,24 @@
         </div>
     {% endblock %}
 
-    {% block nav_secondaire %}
-        {% if section == 'immobilier' or section == 'entreprenariat' %}
-            <div class="has-background-light custom-dropdown" style="position: sticky;top: 3.25rem;z-index: 5">
-                <div class="is-hidden-desktop is-flex is-justify-content-center pointer-mouse-hover box-shadow-bulma px-1 py-1"  onclick="if (document.querySelector('#nav-secondaire').classList.contains('is-hidden-touch')){this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')}else{this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')};document.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch')">
-                    <span class="icon">
-                        <i class="fas fa-lg fa-chevron-down"></i>
-                    </span>
-                </div>
-                <div class="is-hidden-touch box-shadow-bulma has-background-light" id="nav-secondaire">
-                    {% if section == 'immobilier' %}
-                        {{ include('includes/subs_headers/sub_header_immobilier.html.twig') }}
-                    {% elseif section == 'entreprenariat' %}
-                        {{ include('includes/subs_headers/sub_header_entreprenariat.html.twig') }}
-                    {% endif %}
-                </div>
-            </div>
-        {% endif %}
-    {% endblock %}
+{#    {% block nav_secondaire %}#}
+{#        {% if section == 'immobilier' or section == 'entreprenariat' %}#}
+{#            <div class="has-background-light custom-dropdown" style="position: sticky;top: 3.25rem;z-index: 5">#}
+{#                <div class="is-hidden-desktop is-flex is-justify-content-center pointer-mouse-hover box-shadow-bulma px-1 py-1"  onclick="if (document.querySelector('#nav-secondaire').classList.contains('is-hidden-touch')){this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')}else{this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')};document.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch')">#}
+{#                    <span class="icon">#}
+{#                        <i class="fas fa-lg fa-chevron-down"></i>#}
+{#                    </span>#}
+{#                </div>#}
+{#                <div class="is-hidden-touch box-shadow-bulma has-background-light" id="nav-secondaire">#}
+{#                    {% if section == 'immobilier' %}#}
+{#                        {{ include('includes/subs_headers/sub_header_immobilier.html.twig') }}#}
+{#                    {% elseif section == 'entreprenariat' %}#}
+{#                        {{ include('includes/subs_headers/sub_header_entreprenariat.html.twig') }}#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endif %}#}
+{#    {% endblock %}#}
 
     <div class="column is-justify-content-center is-align-items-center is-flex-direction-column">
         {% block body %}{% endblock %}
