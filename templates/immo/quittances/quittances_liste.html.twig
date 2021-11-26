@@ -32,7 +32,7 @@
                         </a>
                 </span>
         </span>
-{% endif %}
+{#{% endif %}#}
 {#{% elseif entity.quittances|length == 0 %}#}
 {#        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">#}
 {#                <span class="icon">#}
@@ -42,7 +42,10 @@
 {#                    <b>Aucune quittance de loyer n'a été éditée pour le moment</b>#}
 {#                </span>#}
 {#        </span>#}
-{#{% else %}#}
+{% else %}
+
+    <p class="title is-5">Quittances de loyers</p>
+    <p class="subtitle is-6">Visionner & éditer des quittances de loyers</p>
 
                 <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
 
@@ -75,5 +78,7 @@
 
                 </div>
 
-{#{% endif %}#}
+    <hr style="border-bottom: rgba(0,0,0,.5) dotted 2px">
+
+{% endif %}
 
