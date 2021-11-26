@@ -18,20 +18,20 @@
                         </a>
                 </span>
         </span>
-{% elseif form.vars.name == 'locataire' and entity.logement is null %}
-        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-primary border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
-                <span class="icon">
-                    <i class="fas fa-info-circle"></i>
-                </span>
-                <span>
-                    <b>Ce locataire ne possède actuellement aucun logement attribué...</b>
-                </span>
-                <span class="px-3">
-                        <a class="button is-small is-light is-outlined" title="Ajouter un logement au locataire" onclick="let btn = document.querySelector('div#locataire').nextElementSibling.click();">
-                                Ajouter un logement
-                        </a>
-                </span>
-        </span>
+{#{% elseif form.vars.name == 'locataire' and entity.logement is null %}#}
+{#        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-primary border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">#}
+{#                <span class="icon">#}
+{#                    <i class="fas fa-info-circle"></i>#}
+{#                </span>#}
+{#                <span>#}
+{#                    <b>Ce locataire ne possède actuellement aucun logement attribué...</b>#}
+{#                </span>#}
+{#                <span class="px-3">#}
+{#                        <a class="button is-small is-light is-outlined" title="Ajouter un logement au locataire" onclick="let btn = document.querySelector('div#locataire').nextElementSibling.click();">#}
+{#                                Ajouter un logement#}
+{#                        </a>#}
+{#                </span>#}
+{#        </span>#}
 {#{% endif %}#}
 {#{% elseif entity.quittances|length == 0 %}#}
 {#        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">#}
@@ -74,6 +74,20 @@
                             </span>
                             <span><b>Quittance</b></span>
                         </a>
+                    {% elseif form.vars.name == 'locataire' and entity.logement is null %}
+                        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
+{#                            <span class="icon">#}
+{#                                <i class="fas fa-info-circle"></i>#}
+{#                            </span>#}
+                            <span>
+                                Pour éditer une quittance...
+                            </span>
+                            <span class="px-3">
+                                <a class="button is-small is-light is-outlined" title="Ajouter un logement au locataire" onclick="let btn = document.querySelector('div#locataire').nextElementSibling.click();">
+                                    Ajouter un logement
+                                </a>
+                            </span>
+                        </span>
                     {% endif %}
 
                 </div>

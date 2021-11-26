@@ -71,11 +71,17 @@ class Locataire
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="Locataire")
+     */
+    private $documents;
+
 
     public function __construct()
     {
         $this->Quittances = new ArrayCollection();
         $this->setSansLogement(true);
+        $this->documents = new ArrayCollection();
     }
 
     public function __toString()
@@ -231,6 +237,36 @@ class Locataire
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Documents[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Documents $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setLocataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Documents $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getLocataire() === $this) {
+                $document->setLocataire(null);
+            }
+        }
 
         return $this;
     }

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20211115204913 extends AbstractMigration
+final class Version20211126200908 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,14 +20,13 @@ final class Version20211115204913 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE bien_immo DROP FOREIGN KEY FK_174DAB7A76ED395');
-        $this->addSql('ALTER TABLE bien_immo ADD CONSTRAINT FK_174DAB7A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('CREATE TABLE documents (id INT AUTO_INCREMENT NOT NULL, locataire_id INT DEFAULT NULL, file_name VARCHAR(255) NOT NULL, created_date DATETIME NOT NULL, INDEX IDX_A2B07288D8A38199 (locataire_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE documents ADD CONSTRAINT FK_A2B07288D8A38199 FOREIGN KEY (locataire_id) REFERENCES locataire (id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE bien_immo DROP FOREIGN KEY FK_174DAB7A76ED395');
-        $this->addSql('ALTER TABLE bien_immo ADD CONSTRAINT FK_174DAB7A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE SET NULL');
+        $this->addSql('DROP TABLE documents');
     }
 }
