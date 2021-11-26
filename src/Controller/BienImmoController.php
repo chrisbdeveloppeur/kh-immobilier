@@ -7,8 +7,10 @@ use App\Entity\Copropriete;
 use App\Entity\Prestataire;
 use App\Entity\Solde;
 use App\Form\BienImmoType;
+use App\Form\DocumentsType;
 use App\Form\PrestataireType;
 use App\Repository\BienImmoRepository;
+use App\Repository\DocumentsRepository;
 use App\Repository\LocataireRepository;
 use App\Repository\PrestataireRepository;
 use App\Repository\QuittanceRepository;
@@ -145,6 +147,8 @@ class BienImmoController extends AbstractController
         $prestataire = new Prestataire();
         $form_prestataire = $this->createForm(PrestataireType::class, $prestataire);
 
+        $form_documents = $this->createForm(DocumentsType::class);
+
         if (!$bienImmo->getCopropriete()){
             $bienImmo->setCopropriete(new Copropriete());
         }else{
@@ -188,6 +192,15 @@ class BienImmoController extends AbstractController
         }
 
 
+        $form_documents->handleRequest($request);
+        if ($form_documents->isSubmitted() && $form_documents->isValid()){
+            $bienImmo->addDocument($form_documents->getData());
+            $em->flush();
+
+            $this->addFlash('success', 'Le fichier <b>'.$form_documents->get('title')->getData().'</b> à bien été ajouté');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }
 
 //        Supression de la data Quittance en BDD si le fichier n'existe pas
         $quittances = $quittanceRepository->findAll();
@@ -216,6 +229,7 @@ class BienImmoController extends AbstractController
             'bien_immo' => $bienImmo,
             'form' => $form->createView(),
             'form_prestataire' => $form_prestataire->createView(),
+            'form_documents' => $form_documents->createView(),
             'locataires' => $locataires
         ]);
     }
@@ -363,6 +377,22 @@ class BienImmoController extends AbstractController
         $form->get("coproPhone")->setData($bienImmo->getCopropriete()->getPhone());
         $form->get("coproInfos")->setData($bienImmo->getCopropriete()->getInfos());
         return $form;
+    }
+
+
+
+    /**
+     * @Route("/{id}/document/delete", name="document_delete", methods={"POST","GET"})
+     */
+    public function deleteDocument($id, DocumentsRepository $documentsRepository, EntityManagerInterface $em, Request $request)
+    {
+        $document = $documentsRepository->find($id);
+        $name = $document->getTitle();
+        $em->remove($document);
+        $em->flush();
+        $this->addFlash('danger', 'Le document <b>'.$name.'</b> à bien été supprimé');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer.'/#files');
     }
 
 }
