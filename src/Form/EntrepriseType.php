@@ -30,7 +30,7 @@ class EntrepriseType extends AbstractType
             ])
             ->add('imageFile', FileType::class,[
                 'label' => 'Image / Logo',
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'file-input has-text-centered'],
                 'required' => false,
             ])
         ;

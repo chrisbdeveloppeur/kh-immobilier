@@ -76,9 +76,6 @@
                         </a>
                     {% elseif form.vars.name == 'locataire' and entity.logement is null %}
                         <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
-{#                            <span class="icon">#}
-{#                                <i class="fas fa-info-circle"></i>#}
-{#                            </span>#}
                             <span>
                                 Pour éditer une quittance...
                             </span>
@@ -93,6 +90,57 @@
                 </div>
 
     <hr style="border-bottom: rgba(0,0,0,.5) dotted 2px">
+
+    <p class="title is-5">Autres documents</p>
+    <p class="subtitle is-6">Uploader & consulter les documents du locataires</p>
+
+    <div class="is-flex-desktop">
+
+        {{ form_start(form_documents) }}
+        <div class="file has-name is-boxed is-justify-content-center is-align-items-center">
+            <label class="file-label">
+{#                    {{ form_widget(form_documents.title) }}#}
+                    {{ form_widget(form_documents.file) }}
+
+                <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choisir un fichier…
+                    </span>
+                </span>
+{#                <span class="file-name has-background-dark has-text-light">#}
+{#                    Screen Shot 2017-07-29 at 15.54.25.png#}
+{#                </span>#}
+                {{ form_widget(form_documents.title) }}
+                <button class="button is-small" type="submit">Ajouter</button>
+            </label>
+        </div>
+        {{ form_end(form_documents) }}
+
+
+        <div class="column mx-2 my-2 has-background-light border-radius-2px box-shadow-bulma" style="height: 30vh;">
+            <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
+                {% for document in entity.documents %}
+                    <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
+                        <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                                <span class="icon">
+                                    <i class="fas fa-2x fa-file-pdf"></i>
+                                </span>
+                            <span class="overflow-ellipsis-200px is-block" style="max-width: 30vw">
+                                    {{ document.fileName }}
+                                </span>
+                            <span class="is-dark" title="Fichier édité le {{ document.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+                        </a>
+                        <a class="icon is-absolute-top-0 is-right-0 is-medium" href="#" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                            <i class="fas fa-lg fa-times"></i>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 {% endif %}
 

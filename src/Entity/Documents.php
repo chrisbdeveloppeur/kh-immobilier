@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\DocumentsRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints\Date;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -26,9 +27,14 @@ class Documents
     private $created_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Locataire::class, inversedBy="documents")
+     * @ORM\ManyToOne(targetEntity=Locataire::class, inversedBy="documents", cascade={"persist"})
      */
     private $Locataire;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="documents", cascade={"persist"})
+     */
+    private $BienImmo;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -57,6 +63,16 @@ class Documents
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    public function __construct()
+    {
+        $this->created_date = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
     public function getId(): ?int
     {
@@ -87,7 +103,7 @@ class Documents
         return $this;
     }
 
-    public function setImageFile(?File $file = null): void
+    public function setFile(?File $file = null): void
     {
         $this->file = $file;
 
@@ -121,6 +137,18 @@ class Documents
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getBienImmo(): ?BienImmo
+    {
+        return $this->BienImmo;
+    }
+
+    public function setBienImmo(?BienImmo $BienImmo): self
+    {
+        $this->BienImmo = $BienImmo;
 
         return $this;
     }

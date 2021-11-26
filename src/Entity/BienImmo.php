@@ -116,6 +116,11 @@ class BienImmo
      */
     private $prestataire;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="BienImmo", cascade={"persist"})
+     */
+    private $documents;
+
 
     public function __construct()
     {
@@ -137,6 +142,7 @@ class BienImmo
         $this->solde = $solde;
         $this->setFree(true);
         $this->prestataire = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function __toString()
@@ -479,6 +485,36 @@ public function removePrestataire(Prestataire $prestataire): self
         // set the owning side to null (unless already changed)
         if ($prestataire->getBienImmo() === $this) {
             $prestataire->setBienImmo(null);
+        }
+    }
+
+    return $this;
+}
+
+/**
+ * @return Collection|Documents[]
+ */
+public function getDocuments(): Collection
+{
+    return $this->documents;
+}
+
+public function addDocument(Documents $document): self
+{
+    if (!$this->documents->contains($document)) {
+        $this->documents[] = $document;
+        $document->setBienImmo($this);
+    }
+
+    return $this;
+}
+
+public function removeDocument(Documents $document): self
+{
+    if ($this->documents->removeElement($document)) {
+        // set the owning side to null (unless already changed)
+        if ($document->getBienImmo() === $this) {
+            $document->setBienImmo(null);
         }
     }
 

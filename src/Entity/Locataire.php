@@ -72,7 +72,7 @@ class Locataire
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="Locataire")
+     * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="Locataire", cascade={"persist"})
      */
     private $documents;
 

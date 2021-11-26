@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Documents;
 use App\Entity\Locataire;
+use App\Form\DocumentsType;
 use App\Form\LocataireType;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use App\Services\AdaptByUser;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -99,7 +102,7 @@ class LocataireController extends AbstractController
     /**
      * @Route("/{id}/edit", name="locataire_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Locataire $locataire, BienImmoRepository $bienImmoRepository): Response
+    public function edit(Request $request, Locataire $locataire, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em): Response
     {
         //        Vérification de l'utilisateur actuellement connecté
         $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($locataire);
@@ -114,18 +117,19 @@ class LocataireController extends AbstractController
         ]);
 
         $form = $this->createForm(LocataireType::class, $locataire);
+        $form_documents = $this->createForm(DocumentsType::class);
         $form->get('logement')->setData($locataire->getLogement());
         if ($this->isGranted('ROLE_SUPER_ADMIN') && $locataire){
             $form->get('user')->setData($locataire->getUser());
         }
-        $form->handleRequest($request);
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $locataire->setLogement($form->get('logement')->getData());
             if ($locataire->getLogement() && $this->isGranted('ROLE_SUPER_ADMIN')){
                 $locataire->getLogement()->setUser($form->get('user')->getData($locataire->getUser()));
             }
-            $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
             $this->addFlash('success', 'Les modifications ont bien étés appliquées');
 
@@ -134,9 +138,20 @@ class LocataireController extends AbstractController
 //            return $this->redirectToRoute('locataire_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        $form_documents->handleRequest($request);
+        if ($form_documents->isSubmitted() && $form_documents->isValid()){
+            $locataire->addDocument($form_documents->getData());
+            $em->flush();
+
+            $this->addFlash('success', 'Le fichier à bien été ajouté');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }
+
         return $this->render('locataire/edit.html.twig', [
             'locataire' => $locataire,
             'form' => $form->createView(),
+            'form_documents' => $form_documents->createView(),
             'logements' => $logements,
         ]);
     }
