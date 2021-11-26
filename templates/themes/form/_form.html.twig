@@ -15,7 +15,7 @@
     {% endif %}
 
     {% if 'new' not in app.request.get('_route') %}
-        <div class="column is-flex is-justify-content-center bien-immo logement copropriete is-hidden">
+        <div class="column is-flex is-justify-content-center bien-immo logement copropriete locataire is-hidden">
             <div class="help box-shadow-bulma border-radius-2px has-background-warning-light has-text-centered px-3 py-2 has-text-dark">
             <span class="icon">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -56,7 +56,7 @@
     {% endif %}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
-        <div id="files-liste" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+        <div id="files-liste" class="is-hidden column is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
             {{ include('immo/quittances/quittances_liste.html.twig') }}
         </div>
     {% endif %}
