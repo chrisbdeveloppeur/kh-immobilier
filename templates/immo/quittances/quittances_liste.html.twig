@@ -45,7 +45,7 @@
 
                 <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
                 {% for quittance in entity.quittances|sort %}
-                                <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-half-mobile mx-2 my-2 is-relative">
+                                <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile mx-2 my-2 is-relative">
                                                 <a class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" onclick="window.open(this.href, '_blank','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
                                                         <span class="icon">
                                                                 <i class="fas fa-2x fa-file-pdf"></i>
@@ -60,6 +60,17 @@
                                         </a>
                                 </div>
                 {% endfor %}
+
+                    {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
+                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+                            <span class="icon">
+                                <i class="fas fa-2x fa-file-pdf"></i>
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span><b>Quittance</b></span>
+                        </a>
+                    {% endif %}
+
                 </div>
 
 {% endif %}
