@@ -186,7 +186,7 @@ class QuittancesController extends AbstractController
         $this->addFlash('danger', 'La quittance de loyer : <b>' . $quittance->getFileName() . '</b> a bien été suprimmée définitivement');
 
         $referer = $request->headers->get('referer');
-        return $this->redirect($referer.'#quittances');
+        return $this->redirect($referer.'#files');
     }
 
 }
