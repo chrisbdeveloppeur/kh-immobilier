@@ -55,7 +55,7 @@
                                 <span class="icon">
                                     <i class="fas fa-2x fa-file-pdf"></i>
                                 </span>
-                                <span class="overflow-ellipsis nowrap-text is-block">
+                                <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
                                     {{ quittance.fileName }}
                                 </span>
                                 <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
@@ -131,14 +131,14 @@
 
 
         <div class="column mx-2 my-2 border-radius-2px" style="height: 30vh;border: dotted rgba(0,0,0,.5) 1px">
-            <div class="columns is-multiline is-flex is-flex-direction-row">
+            <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-space-evenly">
                 {% for document in entity.documents %}
                     <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
                         <a style="max-width: 100px" class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
                                 <span class="icon">
                                     <i class="fas fa-2x fa-file"></i>
                                 </span>
-                            <span class="overflow-ellipsis nowrap-text is-block">
+                            <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
                                 {{ document.title }}
                             </span>
                         </a>
@@ -154,7 +154,7 @@
                                 <span class="icon">
                                     <i class="fas fa-2x fa-file"></i>
                                 </span>
-                                <span class="overflow-ellipsis nowrap-text is-block">
+                                <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
                                 {{ document.title }}
                             </span>
                             </a>
