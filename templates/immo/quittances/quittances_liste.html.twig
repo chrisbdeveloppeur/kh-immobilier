@@ -130,8 +130,8 @@
         {{ form_end(form_documents) }}
 
 
-        <div class="column mx-2 my-2 border-radius-2px" style="height: 30vh;border: dotted rgba(0,0,0,.5) 1px">
-            <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-space-evenly">
+        <div class="column mx-2 my-2 border-radius-2px" style="min-height: 30vh;border: dotted rgba(0,0,0,.5) 1px">
+            <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
                 {% for document in entity.documents %}
                     <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
                         <a style="max-width: 100px" class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
