@@ -175,9 +175,9 @@
     let fileUpload = document.getElementById('documents_file');
     let inputFile = document.getElementById('documents_title');
     // let title = document.getElementById('file-label');
-    fileUpload.ondrop = function (){
+    fileUpload.ondrop = function (event){
         console.log('drop');
-    }
+    };
     fileUpload.onchange = function () {
         inputFile.value = fileUpload.files[0].name;
         // title.innerText = fileUpload.files[0].name;
