@@ -109,8 +109,12 @@ class CreateFileController extends AbstractController
     {
         $document = $documentsRepository->find($id);
         $name = $document->getTitle();
+        $file_name = $document->getFileName();
         $em->remove($document);
         $em->flush();
+        if (file_exists('../public/documents/uploaded_files/' . $file_name)){
+            unlink('../public/documents/uploaded_files/' . $file_name);
+        }
         $this->addFlash('danger', 'Le document <b>'.$name.'</b> à bien été supprimé');
         $referer = $request->headers->get('referer');
         return $this->redirect($referer.'/#files');

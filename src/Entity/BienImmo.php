@@ -118,6 +118,7 @@ class BienImmo
 
     /**
      * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="BienImmo", cascade={"persist"})
+     * @ORM\JoinColumn(onDelete="SET NULL");
      */
     private $documents;
 

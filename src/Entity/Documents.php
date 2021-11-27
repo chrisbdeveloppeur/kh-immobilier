@@ -28,11 +28,13 @@ class Documents
 
     /**
      * @ORM\ManyToOne(targetEntity=Locataire::class, inversedBy="documents", cascade={"persist"})
+     * @ORM\JoinColumn(onDelete="CASCADE");
      */
     private $Locataire;
 
     /**
      * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="documents", cascade={"persist"})
+     * @ORM\JoinColumn(onDelete="CASCADE");
      */
     private $BienImmo;
 

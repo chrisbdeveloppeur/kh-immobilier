@@ -73,6 +73,7 @@ class Locataire
 
     /**
      * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="Locataire", cascade={"persist"})
+     * @ORM\JoinColumn(onDelete="SET NULL");
      */
     private $documents;
 
