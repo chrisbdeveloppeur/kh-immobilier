@@ -51,11 +51,11 @@
 
                     {% for quittance in entity.quittances|sort %}
                         <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative">
-                            <a class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                            <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
                                 <span class="icon">
                                     <i class="fas fa-2x fa-file-pdf"></i>
                                 </span>
-                                <span class="overflow-ellipsis-200px is-block" style="max-width: 30vw">
+                                <span class="overflow-ellipsis nowrap-text is-block">
                                     {{ quittance.fileName }}
                                 </span>
                                 <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
@@ -134,11 +134,11 @@
             <div class="columns is-multiline is-flex is-flex-direction-row">
                 {% for document in entity.documents %}
                     <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
-                        <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                        <a style="max-width: 100px" class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
                                 <span class="icon">
                                     <i class="fas fa-2x fa-file"></i>
                                 </span>
-                            <span class="overflow-ellipsis-200px is-block" style="max-width: 30vw">
+                            <span class="overflow-ellipsis nowrap-text is-block">
                                 {{ document.title }}
                             </span>
                         </a>
@@ -150,11 +150,11 @@
                 {% if form.vars.name == 'bien_immo' and entity.locataires|length != 0 %}
                     {% for document in entity.locataires.first.documents %}
                         <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
-                            <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                            <a style="max-width: 100px" class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
                                 <span class="icon">
                                     <i class="fas fa-2x fa-file"></i>
                                 </span>
-                                <span class="overflow-ellipsis-200px is-block" style="max-width: 30vw">
+                                <span class="overflow-ellipsis nowrap-text is-block">
                                 {{ document.title }}
                             </span>
                             </a>
