@@ -17,7 +17,7 @@ class DocumentsType extends AbstractType
             ->add('title', TextType::class,[
                 'label' => false,
                 'attr' => [
-                    'class' => 'input is-small has-text-centered has-background-light borderless-radius',
+                    'class' => 'input is-small has-text-centered has-background-light borderless-radius overflow-ellipsis',
                     'placeholder' => 'Définir le nom du fichier'
                 ],
                 'required' => true,

@@ -108,7 +108,22 @@
                         Choisir un fichier…
                     </span>
                 </span>
-                {{ form_widget(form_documents.title) }}
+                <div class="field has-addons">
+
+                    <p class="control">
+                        <a class="button is-static is-small">
+                            Avant le
+                        </a>
+                    </p>
+
+                    <div class="control is-expanded">
+                        <div class="is-small is-fullwidth">
+                            {{ form_widget(form_documents.title) }}
+                        </div>
+                    </div>
+
+                </div>
+{#                {{ form_widget(form_documents.title) }}#}
                 <button class="button is-info is-small borderless-radius" type="submit"><b>Ajouter</b></button>
             </label>
         </div>
@@ -160,8 +175,10 @@
     let fileUpload = document.getElementById('documents_file');
     let inputFile = document.getElementById('documents_title');
     // let title = document.getElementById('file-label');
+    fileUpload.ondrop = function (){
+        console.log('drop');
+    }
     fileUpload.onchange = function () {
-        console.log(fileUpload.files[0].name);
         inputFile.value = fileUpload.files[0].name;
         // title.innerText = fileUpload.files[0].name;
     }
