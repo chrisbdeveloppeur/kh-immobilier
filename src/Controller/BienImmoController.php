@@ -212,6 +212,9 @@ class BienImmoController extends AbstractController
                 $em->flush();
             }
         }
+        if (!file_exists('../public/documents/quittances/')) {
+            mkdir('../public/documents/quittances/', 0777, true);
+        }
         $files = scandir('../public/documents/quittances/');
         foreach($files as $file) {
             if ($file !== '..' && $file !== '.' && $file !== '.gitignore' && !str_contains($file, '.pdf')){
