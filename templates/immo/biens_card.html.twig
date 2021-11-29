@@ -50,10 +50,23 @@
     </header>
     <div class="card-content">
         <div class="content">
-            Adresse : <b>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</b><br>
-            Loyer : <b>{{ bien_immo.loyerHc }} €</b><br>
-            Charges : <b>{{ bien_immo.charges }} €</b><br>
-            Loyer TTC : <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b><br>
+
+            <div class="column px-0 py-0">
+                Adresse : <b>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</b>
+            </div>
+
+            <div class="column px-0 py-0">
+                Loyer : <b>{{ bien_immo.loyerHc }} €</b>
+            </div>
+
+            <div class="column px-0 py-0">
+                Charges : <b>{{ bien_immo.charges }} €</b>
+            </div>
+
+            <div class="column px-0 py-0">
+                Loyer TTC : <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
+            </div>
+
             Locataire :
             {% if bien_immo.locataires.current %}
                 <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-{{ logement_status_color }} has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
