@@ -4,6 +4,7 @@
 {% else %}
     {% set logement_status_color = 'info' %}
 {% endif %}
+
 <div class="card mb-5">
     <header class="card-header has-background-dark">
         <p class="card-header-title has-text-{{ logement_status_color }} has-icons-left is-flex-direction-column-touch">
@@ -25,12 +26,12 @@
             {% endif %}
 
             <span class="is-expanded column px-0 py-0 is-flex is-justify-content-center">
-                <span class="icon-text has-text-{{ logement_status_color }}">
+                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text has-text-{{ logement_status_color }}">
                     <span class="icon">
                         <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
                     </span>
                     <span class="is-uppercase">{{ bien_immo.street }}</span>
-                </span>
+                </a>
             </span>
 
             {% if bien_immo.type %}
@@ -52,7 +53,35 @@
         <div class="content">
 
             <div class="column px-0 py-0">
-                Adresse : <b>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</b>
+                Adresse :
+                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du logement">
+                    <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
+                    <span class="icon show-on-hover-target is-hidden-touch">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </a>
+            </div>
+
+            <div class="column px-0 py-0">
+                Locataire :
+                {% if bien_immo.locataires.current %}
+                    <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-{{ logement_status_color }} has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
+                        <span>{{ bien_immo.locataires.current }}</span>
+                        <span class="icon show-on-hover-target is-hidden-touch">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </a>
+                {% else %}
+                    <a class="text-info-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire">
+                        <span class="is-italic">Sans locattaire</span>
+                        <span class="icon show-on-hover-target is-hidden-touch">
+                        <i class="fas fa-user-plus add-loc"></i>
+                    </span>
+                        <span class="icon is-hidden-desktop">
+                        <i class="fas fa-user-plus add-loc"></i>
+                    </span>
+                    </a>
+                {% endif %}
             </div>
 
             <div class="column px-0 py-0">
@@ -67,32 +96,20 @@
                 Loyer TTC : <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
             </div>
 
-            Locataire :
-            {% if bien_immo.locataires.current %}
-                <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-{{ logement_status_color }} has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
-                    <span>{{ bien_immo.locataires.current }}</span>
-                    <span class="icon show-on-hover-target is-hidden-touch">
-                        <i class="fas fa-search"></i>
-                    </span>
-                </a>
-            {% else %}
-                <a class="text-info-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire">
-                    <span class="is-italic">Sans locattaire</span>
-                    <span class="icon show-on-hover-target is-hidden-touch">
-                        <i class="fas fa-user-plus add-loc"></i>
-                    </span>
-                    <span class="icon is-hidden-desktop">
-                        <i class="fas fa-user-plus add-loc"></i>
-                    </span>
-                </a>
-            {% endif %}
-            <br>
-            Syndic/Syndicat :
-            {% if bien_immo.copropriete and bien_immo.copropriete.name %}
-                <b class="is-uppercase">{{ bien_immo.copropriete.name }}</b>
-            {% else %}
-                <i>N/A</i>
-            {% endif %}
+            <div class="column px-0 py-0">
+                Syndic/Syndicat :
+                {% if bien_immo.copropriete and bien_immo.copropriete.name %}
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails de la copropriété">
+                        <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
+                        <span class="icon show-on-hover-target is-hidden-touch">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </a>
+                {% else %}
+                    <i>N/A</i>
+                {% endif %}
+            </div>
+
         </div>
     </div>
     <footer class="card-footer is-flex-direction-column-mobil card-footer-column-mobil">

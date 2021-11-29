@@ -489,8 +489,13 @@
              input.addEventListener('change', changeMailToHref(input));
 
              function changeMailToHref(elem) {
-                 let ancrage = elem.parentElement.nextElementSibling.querySelector('a');
-                 ancrage.href = 'mailto:'+elem.value;
+                 if (elem.parentElement.nextElementSibling){
+                     let ancrage = elem.parentElement.nextElementSibling.querySelector('a');
+                     if (ancrage){
+                         ancrage.href = 'mailto:'+elem.value;
+                     }
+                 }
+
              }
          });
 
