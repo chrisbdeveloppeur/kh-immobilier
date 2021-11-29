@@ -481,6 +481,19 @@
 
         {#     ######################################################     #}
 
+
+        {#     ############  CHANGE MAIL:TO LINK   #############     #}
+         let mailInput = document.querySelectorAll('input[type=email]');
+         mailInput.forEach(function (input) {
+             let ancrage = input.parentElement.nextElementSibling.querySelector('a');
+             window.onload =
+             input.addEventListener('change', function () {
+               ancrage.href = 'mailto:'+input.value;
+           })
+         });
+
+        {#     ######################################################     #}
+
     </script>
 
 
