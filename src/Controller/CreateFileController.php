@@ -90,16 +90,9 @@ class CreateFileController extends AbstractController
 
         if (shell_exec($cmd) == null || shell_exec($cmd) == false){
             $this->addFlash('warning', 'Une erreur est survenue lors de l\'édition du fichier <b>.pdf</b>');
-            //$referer = $request->headers->get('referer');
-            //return $this->redirect($referer);
         }else{
             shell_exec($cmd);
         }
-
-        //return $this->redirectToRoute("quittances_ddl_quittance",[
-        //    'loc_id' => $loc_id,
-        //    'file_name' => $file_name,
-        //]);
     }
 
 
