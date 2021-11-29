@@ -68,29 +68,39 @@
             </div>
 
             <div class="column is-flex px-0 py-0 my-1">
+
                 <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
                     Locataire
                 </div>
-                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+
+                <div class="column is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     {% if bien_immo.locataires.current %}
-                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
+                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="column is-expanded px-0 py-0 has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
                             <span>{{ bien_immo.locataires.current }}</span>
                             <span class="icon show-on-hover-target is-hidden-touch">
-                            <i class="fas fa-search"></i>
-                        </span>
+                                <i class="fas fa-search"></i>
+                            </span>
                         </a>
+                        {% if bien_immo.locataires.current.email %}
+                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="column px-0 py-0 is-1 is-flex is-justify-content-center is-align-items-center has-text-centered hovertext" data-hover="Envoyer un mail">
+                                <span class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </a>
+                        {% endif %}
                     {% else %}
                         <a class="text-info-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire">
                             <span class="is-italic">Sans locattaire</span>
                             <span class="icon show-on-hover-target is-hidden-touch">
-                            <i class="fas fa-user-plus add-loc"></i>
-                        </span>
+                                <i class="fas fa-user-plus add-loc"></i>
+                            </span>
                             <span class="icon is-hidden-desktop">
-                            <i class="fas fa-user-plus add-loc"></i>
-                        </span>
+                                <i class="fas fa-user-plus add-loc"></i>
+                            </span>
                         </a>
                     {% endif %}
                 </div>
+
             </div>
 
 {#            <div class="column is-flex px-0 py-0 my-1">#}
