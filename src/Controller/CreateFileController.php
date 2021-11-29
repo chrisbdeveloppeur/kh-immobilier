@@ -78,10 +78,11 @@ class CreateFileController extends AbstractController
         $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
         $word->saveAs("../public/documents/quittances/" . $file . ".docx");
 
-        $this->convertWordToPdf($file . ".docx", $locataire->getId(), $request);
+        $response_pdf_exist = $this->convertWordToPdf($file . ".docx", $locataire->getId(), $request);
+        return $response_pdf_exist;
     }
 
-    private function convertWordToPdf($file_name, $loc_id, Request $request): Response
+    private function convertWordToPdf($file_name)
     {
         $project_dir = $this->getParameter('kernel.project_dir');
 //        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
@@ -90,15 +91,11 @@ class CreateFileController extends AbstractController
 
         if (shell_exec($cmd) == null || shell_exec($cmd) == false){
             $this->addFlash('warning', 'Une erreur est survenue lors de l\'édition du fichier <b>.pdf</b>');
-            $referer = $request->headers->get('referer');
-            return $this->redirect($referer);
+            return false;
         }else{
             shell_exec($cmd);
+            return true;
         }
-
-        return $this->redirectToRoute("quittances_edit_current_month_quittance",[
-            'loc_id' => $loc_id,
-        ]);
     }
 
 

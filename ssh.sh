@@ -1,2 +1,2 @@
 #!/bin/sh
-ssh weskyknm@199.16.130.59 -p 5022
+ssh -p 5022 weskyknm@node1-ca.n0c.com

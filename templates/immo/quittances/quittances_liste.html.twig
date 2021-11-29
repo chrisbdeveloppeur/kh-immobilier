@@ -18,30 +18,6 @@
                         </a>
                 </span>
         </span>
-{#{% elseif form.vars.name == 'locataire' and entity.logement is null %}#}
-{#        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-primary border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">#}
-{#                <span class="icon">#}
-{#                    <i class="fas fa-info-circle"></i>#}
-{#                </span>#}
-{#                <span>#}
-{#                    <b>Ce locataire ne possède actuellement aucun logement attribué...</b>#}
-{#                </span>#}
-{#                <span class="px-3">#}
-{#                        <a class="button is-small is-light is-outlined" title="Ajouter un logement au locataire" onclick="let btn = document.querySelector('div#locataire').nextElementSibling.click();">#}
-{#                                Ajouter un logement#}
-{#                        </a>#}
-{#                </span>#}
-{#        </span>#}
-{#{% endif %}#}
-{#{% elseif entity.quittances|length == 0 %}#}
-{#        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-info border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">#}
-{#                <span class="icon">#}
-{#                    <i class="fas fa-info-circle"></i>#}
-{#                </span>#}
-{#                <span>#}
-{#                    <b>Aucune quittance de loyer n'a été éditée pour le moment</b>#}
-{#                </span>#}
-{#        </span>#}
 {% elseif 'new' not in app.request.get('_route') %}
 
     <p class="title is-5">Quittances de loyers</p>
@@ -51,15 +27,33 @@
 
                     {% for quittance in entity.quittances|sort %}
                         <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative">
-                            <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
-                                <span class="icon">
-                                    <i class="fas fa-2x fa-file-pdf"></i>
-                                </span>
-                                <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
-                                    {{ quittance.fileName }}
-                                </span>
-                                <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
-                            </a>
+                            <div class="is-flex is-justify-content-center is-align-items-center">
+                                {% if quittance.pdfexist %}
+                                    <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                                        <span class="icon">
+                                            <i class="fas fa-2x fa-file-pdf"></i>
+                                        </span>
+                                        <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
+                                        {{ quittance.fileName }}
+                                        </span>
+                                        <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+                                    </a>
+                                    <a class="icon is-medium is-absolute-top-0 is-left-0 is-white" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                                        <i class="fas fa-lg fa-file-word"></i>
+                                    </a>
+                                {% else %}
+                                    <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                                        <span class="icon">
+                                            <i class="fas fa-2x fa-file-word"></i>
+                                        </span>
+                                        <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
+                                        {{ quittance.fileName }}
+                                        </span>
+                                        <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+                                    </a>
+                                {% endif %}
+                            </div>
+
                             <a class="icon is-absolute-top-0 is-right-0 is-medium" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
                                 <i class="fas fa-lg fa-times"></i>
                             </a>
@@ -130,7 +124,7 @@
         {{ form_end(form_documents) }}
 
 
-        <div class="column mx-2 my-2 border-radius-2px" style="min-height: 30vh;border: dotted rgba(0,0,0,.5) 1px">
+        <div class="column mx-2 my-2 border-radius-2px border-dotted-3px" style="min-height: 30vh;">
             <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
                 {% for document in entity.documents %}
                     <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">

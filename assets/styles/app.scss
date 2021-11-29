@@ -217,6 +217,10 @@ i.fa-search-js{
   border: solid $info 3px;
 }
 
+.border-dotted-3px{
+  border: dotted rgba(0,0,0,.5) 3px !important;
+}
+
 .is-bottom{
   bottom: 0 !important;
 }
@@ -227,6 +231,10 @@ i.fa-search-js{
 
 .is-right-0{
   right: 0 !important;
+}
+
+.is-left-0{
+  left: 0 !important;
 }
 
 table.table.is-narrow{

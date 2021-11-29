@@ -203,6 +203,7 @@ class BienImmoController extends AbstractController
         }
 
 //        Supression de la data Quittance en BDD si le fichier n'existe pas
+        /*
         $quittances = $quittanceRepository->findAll();
         foreach ($quittances as $quittance){
             $pdfFileExist = file_exists('../public/documents/quittances/' . $quittance->getFileName() . '.pdf');
@@ -212,9 +213,9 @@ class BienImmoController extends AbstractController
                 $em->flush();
             }
         }
-        if (!file_exists('../public/documents/quittances/')) {
-            mkdir('../public/documents/quittances/', 0777, true);
-        }
+        */
+
+
         $files = scandir('../public/documents/quittances/');
         foreach($files as $file) {
             if ($file !== '..' && $file !== '.' && $file !== '.gitignore' && !str_contains($file, '.pdf')){
@@ -222,11 +223,16 @@ class BienImmoController extends AbstractController
                 $file = $file[0];
                 if ($quittanceRepository->findOneBy(['file_name' => $file])){
                 }else{
-                    unlink('../public/documents/quittances/' . $file . '.pdf');
-                    unlink('../public/documents/quittances/' . $file . '.docx');
+                    if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
+                        unlink('../public/documents/quittances/' . $file . '.pdf');
+                    }
+                    if (file_exists('../public/documents/quittances/' . $file . '.docx')){
+                        unlink('../public/documents/quittances/' . $file . '.docx');
+                    }
                 };
             }
         }
+
 
         return $this->render('bien_immo/edit.html.twig', [
             'bien_immo' => $bienImmo,
