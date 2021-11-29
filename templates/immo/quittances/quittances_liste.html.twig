@@ -51,15 +51,22 @@
 
                     {% for quittance in entity.quittances|sort %}
                         <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative">
-                            <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
-                                <span class="icon">
-                                    <i class="fas fa-2x fa-file-pdf"></i>
-                                </span>
-                                <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
-                                    {{ quittance.fileName }}
-                                </span>
-                                <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
-                            </a>
+                            <div class="is-flex is-justify-content-center is-align-items-center">
+                                <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                                    <span class="icon">
+                                        <i class="fas fa-2x fa-file-pdf"></i>
+                                    </span>
+                                    <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
+                                        {{ quittance.fileName }}
+                                    </span>
+                                    <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+                                </a>
+
+                                <a class="icon is-medium is-absolute-top-0 is-left-0 is-white" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                                    <i class="fas fa-lg fa-file-word"></i>
+                                </a>
+                            </div>
+
                             <a class="icon is-absolute-top-0 is-right-0 is-medium" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
                                 <i class="fas fa-lg fa-times"></i>
                             </a>
