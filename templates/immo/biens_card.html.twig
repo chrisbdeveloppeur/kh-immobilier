@@ -41,7 +41,7 @@
                     </span>
                     <span class="has-text-weight-bold">{{ bien_immo.type }}
                         {% if bien_immo.superficie != 0 %}
-                            <span class="has-text-weight-bold is-size-7">({{ bien_immo.superficie }}m²)</span>
+                            <span class="is-italic">({{ bien_immo.superficie }}m²)</span>
                         {% endif %}
                     </span>
                 </span>
@@ -93,28 +93,28 @@
                 </div>
             </div>
 
-            <div class="column is-flex px-0 py-0 my-1">
-                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
-                    Loyer
-                </div>
-                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
-                    <b>{{ bien_immo.loyerHc }} €</b>
-                </div>
+{#            <div class="column is-flex px-0 py-0 my-1">#}
+{#                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
+{#                    Loyer#}
+{#                </div>#}
+{#                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
+{#                    <b>{{ bien_immo.loyerHc }} €</b>#}
+{#                </div>#}
 
-            </div>
+{#            </div>#}
+
+{#            <div class="column is-flex px-0 py-0 my-1">#}
+{#                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
+{#                    Charges#}
+{#                </div>#}
+{#                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
+{#                    <b>{{ bien_immo.charges }} €</b>#}
+{#                </div>#}
+{#            </div>#}
 
             <div class="column is-flex px-0 py-0 my-1">
-                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
-                    Charges
-                </div>
-                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
-                    <b>{{ bien_immo.charges }} €</b>
-                </div>
-            </div>
-
-            <div class="column is-flex px-0 py-0 my-1">
-                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
-                    Loyer TTC
+                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4 help-mouse-hover hovertext" data-hover="Charges incluses">
+                    <span>Loyer *</span>
                 </div>
                 <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
