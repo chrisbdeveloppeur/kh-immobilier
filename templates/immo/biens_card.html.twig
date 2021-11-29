@@ -2,35 +2,35 @@
 {% if bien_immo.locataires is empty %}
     {% set logement_status_color = 'light' %}
 {% else %}
-    {% set logement_status_color = 'info' %}
+    {% set logement_status_color = 'primary' %}
 {% endif %}
 
 <div class="card mb-5">
-    <header class="card-header has-background-dark">
-        <p class="card-header-title has-text-{{ logement_status_color }} has-icons-left is-flex-direction-column-touch">
+    <header class="card-header has-background-{{ logement_status_color }}">
+        <p class="card-header-title has-text-light has-icons-left is-flex-direction-column-touch">
 
             {% if is_granted('ROLE_SUPER_ADMIN') %}
                 {% if bien_immo.user %}
-                    <a href="{{ path('user_edit', {'id': bien_immo.user.id }) }}" class="has-text-dark has-text-weight-normal has-background-info is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
-                        {{ bien_immo.user.firstname|first|capitalize }}{{ bien_immo.user.lastname|first|capitalize }}
+                    <a href="{{ path('user_edit', {'id': bien_immo.user.id }) }}" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
+                        <b>{{ bien_immo.user.firstname|first|capitalize }}{{ bien_immo.user.lastname|first|capitalize }}</b>
                     </a>
                 {% elseif bien_immo.locataires.current.user %}
-                    <a href="{{ path('user_edit', {'id': bien_immo.locataires.current.user.id }) }}" class="has-text-dark has-text-weight-normal has-background-info is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.locataires.current.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
-                        {{ bien_immo.locataires.current.user.firstname|first|capitalize }}{{ bien_immo.locataires.current.user.lastname|first|capitalize }}
+                    <a href="{{ path('user_edit', {'id': bien_immo.locataires.current.user.id }) }}" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.locataires.current.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
+                        <b>{{ bien_immo.locataires.current.user.firstname|first|capitalize }}{{ bien_immo.locataires.current.user.lastname|first|capitalize }}</b>
                     </a>
                 {% else %}
-                    <a class="has-text-dark has-text-weight-normal has-background-grey-lighter is-flex is-justify-content-center is-align-items-center hovertext not-allowed-onhover" disabled data-hover="Sans gestionnaire" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
-                        N/A
+                    <a class="has-text-primary has-text-weight-normal has-background-grey-lighter is-flex is-justify-content-center is-align-items-center hovertext not-allowed-onhover" disabled data-hover="Sans gestionnaire" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
+                        <i class="is-size-7">N/A</i>
                     </a>
                 {% endif %}
             {% endif %}
 
             <span class="is-expanded column px-0 py-0 is-flex is-justify-content-center">
-                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text has-text-{{ logement_status_color }}">
+                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text has-text-light">
                     <span class="icon">
                         <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
                     </span>
-                    <span class="is-uppercase">{{ bien_immo.street }}</span>
+                    <span class="is-uppercase"><b>{{ bien_immo.street }}</b></span>
                 </a>
             </span>
 
@@ -65,7 +65,7 @@
             <div class="column px-0 py-0">
                 Locataire :
                 {% if bien_immo.locataires.current %}
-                    <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-{{ logement_status_color }} has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
+                    <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
                         <span>{{ bien_immo.locataires.current }}</span>
                         <span class="icon show-on-hover-target is-hidden-touch">
                             <i class="fas fa-search"></i>
@@ -113,10 +113,14 @@
         </div>
     </div>
     <footer class="card-footer is-flex-direction-column-mobil card-footer-column-mobil">
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered">Gérer ce logement</a>
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">
+            Gérer ce logement
+        </a>
         {% if bien_immo.locataires is not empty %}
-            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item has-background-dark has-text-light bg-info-onhover has-text-centered is-flex is-flex-direction-column">
-                <span>Editer une quittance</span>
+            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered is-flex is-flex-direction-column">
+                <span>
+                    Editer une quittance
+                </span>
             </a>
         {% endif %}
     </footer>
