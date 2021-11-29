@@ -50,6 +50,7 @@ class QuittancesController extends AbstractController
         $form->get('charges')->setData($logement->getCharges());
         $form->get('mode')->setData($locataire->getMode());
         $form->get('solde')->setData($logement->getSolde());
+        $quittance = new Quittance();
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -57,15 +58,15 @@ class QuittancesController extends AbstractController
             $dateForFile = $form->get('date')->getData()->format('d-m-Y');
             $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
             $file = str_replace(" ", "_",$file);
-            $this->createFileController->createQuittanceFile($template, $locataire, $file, $request);
 
-            $quittance = new Quittance();
             $quittance->setFileName($file);
             $quittance->setLocataire($locataire);
             $quittance->setBienImmo($locataire->getLogement());
             $quittance->setCreatedDate($date);
             $em->persist($quittance);
             $em->flush();
+
+            $this->createFileController->createQuittanceFile($template, $locataire, $file, $request);
 
             return $this->redirectToRoute('quittances_render_quittance', [
                 'quittance_id' => $quittance->getId()
@@ -103,9 +104,11 @@ class QuittancesController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{loc_id}", name="edit_current_month_quittance")
      */
+    /*
     public function editCurrentMonthQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, Request $request): Response
     {
         $date = new \DateTime();
@@ -145,8 +148,7 @@ class QuittancesController extends AbstractController
         ]);
 
     }
-
-
+*/
 
     /**
      * @param $file_name
