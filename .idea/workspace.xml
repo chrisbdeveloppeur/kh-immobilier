@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-    </list>
+    <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,11 +104,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deploy.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="252" selection-start-line="1" selection-start-column="252" selection-end-line="1" selection-end-column="252" />
+              <caret line="1" column="246" selection-start-line="1" selection-start-column="246" selection-end-line="1" selection-end-column="246" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ssh.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="37" lean-forward="true" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -179,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/includes/footer.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/BienImmoType.php" />
         <option value="$PROJECT_DIR$/templates/includes/prestataires_liste.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/UserType.php" />
@@ -230,6 +236,7 @@
         <option value="$PROJECT_DIR$/.env.local" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/deploy.sh" />
+        <option value="$PROJECT_DIR$/ssh.sh" />
       </list>
     </option>
   </component>
@@ -435,7 +442,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chrisBdev" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -450,11 +457,11 @@
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\job" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\public\documents\uploaded_files" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\templates\includes\subs_headers" />
-      <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\includes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -595,7 +602,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="858611000" />
+    <option name="totallyTimeSpent" value="858865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -659,9 +666,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/build/images/design_main_background.1d5a3f08.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/build/images/fa-brands-400.2f517e09.svg" />
     <entry file="file://$PROJECT_DIR$/public/build/images/undraw_houses-3-_xwf7.0da6cfa1.svg">
       <provider selected="true" editor-type-id="images" />
@@ -1021,7 +1025,14 @@
     <entry file="file://$PROJECT_DIR$/deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="252" selection-start-line="1" selection-start-column="252" selection-end-line="1" selection-end-column="252" />
+          <caret line="1" column="246" selection-start-line="1" selection-start-column="246" selection-end-line="1" selection-end-column="246" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ssh.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" lean-forward="true" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
         </state>
       </provider>
     </entry>
