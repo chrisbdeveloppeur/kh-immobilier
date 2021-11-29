@@ -485,11 +485,13 @@
         {#     ############  CHANGE MAIL:TO LINK   #############     #}
          let mailInput = document.querySelectorAll('input[type=email]');
          mailInput.forEach(function (input) {
-             let ancrage = input.parentElement.nextElementSibling.querySelector('a');
-             window.onload =
-             input.addEventListener('change', function () {
-               ancrage.href = 'mailto:'+input.value;
-           })
+             window.onload = changeMailToHref(input);
+             input.addEventListener('change', changeMailToHref(input));
+
+             function changeMailToHref(elem) {
+                 let ancrage = elem.parentElement.nextElementSibling.querySelector('a');
+                 ancrage.href = 'mailto:'+elem.value;
+             }
          });
 
         {#     ######################################################     #}
