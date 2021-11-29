@@ -54,10 +54,10 @@
         <div class="content">
 
             <div class="column is-flex px-0 py-0 my-1">
-                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
                     Adresse
                 </div>
-                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du logement">
                         <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
                         <span class="icon show-on-hover-target is-hidden-touch">
@@ -69,7 +69,7 @@
 
             <div class="column is-flex px-0 py-0 my-1">
 
-                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
                     Locataire
                 </div>
 
@@ -82,7 +82,7 @@
                             </span>
                         </a>
                         {% if bien_immo.locataires.current.email %}
-                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="column px-0 py-0 is-1 is-flex is-justify-content-center is-align-items-center has-text-centered hovertext" data-hover="Envoyer un mail">
+                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="column px-0 py-0 is-1 is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Envoyer un mail">
                                 <span class="icon">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -104,38 +104,38 @@
             </div>
 
 {#            <div class="column is-flex px-0 py-0 my-1">#}
-{#                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
+{#                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
 {#                    Loyer#}
 {#                </div>#}
-{#                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
+{#                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
 {#                    <b>{{ bien_immo.loyerHc }} €</b>#}
 {#                </div>#}
 
 {#            </div>#}
 
 {#            <div class="column is-flex px-0 py-0 my-1">#}
-{#                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
+{#                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
 {#                    Charges#}
 {#                </div>#}
-{#                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
+{#                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
 {#                    <b>{{ bien_immo.charges }} €</b>#}
 {#                </div>#}
 {#            </div>#}
 
             <div class="column is-flex px-0 py-0 my-1">
-                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4 help-mouse-hover hovertext" data-hover="Charges incluses">
+                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4 help-mouse-hover hovertext" data-hover="Charges incluses">
                     <span>Loyer *</span>
                 </div>
-                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
                 </div>
             </div>
 
             <div class="column is-flex px-0 py-0 my-1">
-                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
                     Syndic/Syndicat
                 </div>
-                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     {% if bien_immo.copropriete and bien_immo.copropriete.name %}
                         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails de la copropriété">
                             <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
