@@ -25,7 +25,7 @@
                 {% endif %}
             {% endif %}
 
-            <span class="is-expanded column px-0 py-0 is-flex is-justify-content-center">
+            <span class="is-expanded column is-flex px-0 py-0 my-1 is-flex is-justify-content-center">
                 <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text has-text-light">
                     <span class="icon">
                         <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
@@ -49,65 +49,94 @@
 
         </p>
     </header>
-    <div class="card-content">
+
+    <div class="card-content px-1 py-0">
         <div class="content">
 
-            <div class="column px-0 py-0">
-                Adresse :
-                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du logement">
-                    <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
-                    <span class="icon show-on-hover-target is-hidden-touch">
+            <div class="column is-flex px-0 py-0 my-1">
+                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                    Adresse
+                </div>
+                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du logement">
+                        <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
+                        <span class="icon show-on-hover-target is-hidden-touch">
                         <i class="fas fa-search"></i>
                     </span>
-                </a>
+                    </a>
+                </div>
             </div>
 
-            <div class="column px-0 py-0">
-                Locataire :
-                {% if bien_immo.locataires.current %}
-                    <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
-                        <span>{{ bien_immo.locataires.current }}</span>
-                        <span class="icon show-on-hover-target is-hidden-touch">
+            <div class="column is-flex px-0 py-0 my-1">
+                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                    Locataire
+                </div>
+                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                    {% if bien_immo.locataires.current %}
+                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
+                            <span>{{ bien_immo.locataires.current }}</span>
+                            <span class="icon show-on-hover-target is-hidden-touch">
                             <i class="fas fa-search"></i>
                         </span>
-                    </a>
-                {% else %}
-                    <a class="text-info-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire">
-                        <span class="is-italic">Sans locattaire</span>
-                        <span class="icon show-on-hover-target is-hidden-touch">
-                        <i class="fas fa-user-plus add-loc"></i>
-                    </span>
-                        <span class="icon is-hidden-desktop">
-                        <i class="fas fa-user-plus add-loc"></i>
-                    </span>
-                    </a>
-                {% endif %}
+                        </a>
+                    {% else %}
+                        <a class="text-info-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire">
+                            <span class="is-italic">Sans locattaire</span>
+                            <span class="icon show-on-hover-target is-hidden-touch">
+                            <i class="fas fa-user-plus add-loc"></i>
+                        </span>
+                            <span class="icon is-hidden-desktop">
+                            <i class="fas fa-user-plus add-loc"></i>
+                        </span>
+                        </a>
+                    {% endif %}
+                </div>
             </div>
 
-            <div class="column px-0 py-0">
-                Loyer : <b>{{ bien_immo.loyerHc }} €</b>
+            <div class="column is-flex px-0 py-0 my-1">
+                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                    Loyer
+                </div>
+                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                    <b>{{ bien_immo.loyerHc }} €</b>
+                </div>
+
             </div>
 
-            <div class="column px-0 py-0">
-                Charges : <b>{{ bien_immo.charges }} €</b>
+            <div class="column is-flex px-0 py-0 my-1">
+                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                    Charges
+                </div>
+                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                    <b>{{ bien_immo.charges }} €</b>
+                </div>
             </div>
 
-            <div class="column px-0 py-0">
-                Loyer TTC : <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
+            <div class="column is-flex px-0 py-0 my-1">
+                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                    Loyer TTC
+                </div>
+                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                    <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
+                </div>
             </div>
 
-            <div class="column px-0 py-0">
-                Syndic/Syndicat :
-                {% if bien_immo.copropriete and bien_immo.copropriete.name %}
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails de la copropriété">
-                        <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
-                        <span class="icon show-on-hover-target is-hidden-touch">
+            <div class="column is-flex px-0 py-0 my-1">
+                <div class="column border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                    Syndic/Syndicat
+                </div>
+                <div class="column is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                    {% if bien_immo.copropriete and bien_immo.copropriete.name %}
+                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails de la copropriété">
+                            <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
+                            <span class="icon show-on-hover-target is-hidden-touch">
                             <i class="fas fa-search"></i>
                         </span>
-                    </a>
-                {% else %}
-                    <i>N/A</i>
-                {% endif %}
+                        </a>
+                    {% else %}
+                        <i>N/A</i>
+                    {% endif %}
+                </div>
             </div>
 
         </div>
