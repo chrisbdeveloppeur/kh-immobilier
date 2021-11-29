@@ -46,6 +46,11 @@ class Quittance
      */
     private $year;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pdf_exist;
+
     public function __toString()
     {
         return $this->getFileName();
@@ -118,6 +123,18 @@ class Quittance
     public function setYear(string $year): self
     {
         $this->year = $year;
+
+        return $this;
+    }
+
+    public function getPdfExist(): ?bool
+    {
+        return $this->pdf_exist;
+    }
+
+    public function setPdfExist(?bool $pdf_exist): self
+    {
+        $this->pdf_exist = $pdf_exist;
 
         return $this;
     }
