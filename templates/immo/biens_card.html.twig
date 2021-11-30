@@ -82,14 +82,14 @@
                             </span>
                         </a>
                         {% if bien_immo.locataires.current.email %}
-                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Envoyer un mail">
+                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
                                 <span class="icon">
                                     <i class="fas fa-lg fa-envelope"></i>
                                 </span>
                             </a>
                         {% endif %}
                         {% if bien_immo.locataires.current.phone %}
-                            <a href="tel:{{ bien_immo.locataires.current.phone }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Appeler le locataire">
+                            <a href="tel:{{ bien_immo.locataires.current.phone }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
                                 <span class="icon">
                                     <i class="fas fa-lg fa-phone"></i>
                                 </span>
