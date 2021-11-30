@@ -26,8 +26,7 @@ class MailController
     public function sendMessage($file_path, $locataire)
     {
         $mail = (new \Swift_Message('Quittance de loyer'))
-            ->setFrom('admin@immo.com')
-            //->setTo('kenshin91cb@gmail.com')
+            ->setFrom('admin@edit-word.com')
             ->setTo($locataire->getEmail())
             ->setBody($this->renderer->render('emails/message.html.twig',[]), 'text/html' );
         $mail->attach(\Swift_Attachment::fromPath($file_path));
