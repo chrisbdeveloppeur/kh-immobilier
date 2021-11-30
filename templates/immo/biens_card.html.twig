@@ -5,7 +5,7 @@
     {% set logement_status_color = 'primary' %}
 {% endif %}
 
-<div class="card mb-5">
+<div class="card mb-5 is-size-7-mobile">
     <header class="card-header has-background-{{ logement_status_color }}">
         <p class="card-header-title has-text-light has-icons-left is-flex-direction-column-touch">
 
@@ -25,7 +25,7 @@
                 {% endif %}
             {% endif %}
 
-            <span class="is-expanded column is-flex px-0 py-0 my-1 is-flex is-justify-content-center">
+            <span class="is-expanded column is-flex-desktop px-0 py-0 is-flex is-justify-content-center">
                 <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text has-text-light">
                     <span class="icon">
                         <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
@@ -50,11 +50,11 @@
         </p>
     </header>
 
-    <div class="card-content px-1 py-0">
+    <div class="card-content px-0 py-0">
         <div class="content">
 
-            <div class="column is-flex px-0 py-0 my-1">
-                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+            <div class="column is-flex-desktop px-0 pt-0 pb-1">
+                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
                     Adresse
                 </div>
                 <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
@@ -67,13 +67,13 @@
                 </div>
             </div>
 
-            <div class="column is-flex px-0 py-0 my-1">
+            <div class="column is-flex-desktop px-0 pt-0 pb-1">
 
-                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
                     Locataire
                 </div>
 
-                <div class="column is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-1 py-1 is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     {% if bien_immo.locataires.current %}
                         <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="column is-expanded px-0 py-0 has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
                             <span>{{ bien_immo.locataires.current }}</span>
@@ -82,7 +82,7 @@
                             </span>
                         </a>
                         {% if bien_immo.locataires.current.email %}
-                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="column px-0 py-0 is-1 is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Envoyer un mail">
+                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="px-0 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Envoyer un mail">
                                 <span class="icon">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -103,8 +103,8 @@
 
             </div>
 
-{#            <div class="column is-flex px-0 py-0 my-1">#}
-{#                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
+{#            <div class="column is-flex-desktop px-0 pt-0 pb-1">#}
+{#                <div style="width: 150px;" class="px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">#}
 {#                    Loyer#}
 {#                </div>#}
 {#                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
@@ -113,8 +113,8 @@
 
 {#            </div>#}
 
-{#            <div class="column is-flex px-0 py-0 my-1">#}
-{#                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">#}
+{#            <div class="column is-flex-desktop px-0 pt-0 pb-1">#}
+{#                <div style="width: 150px;" class="px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">#}
 {#                    Charges#}
 {#                </div>#}
 {#                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
@@ -122,8 +122,8 @@
 {#                </div>#}
 {#            </div>#}
 
-            <div class="column is-flex px-0 py-0 my-1">
-                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4 help-mouse-hover hovertext" data-hover="Charges incluses">
+            <div class="column is-flex-desktop px-0 pt-0 pb-1">
+                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover hovertext" data-hover="Charges incluses">
                     <span>Loyer *</span>
                 </div>
                 <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
@@ -131,8 +131,8 @@
                 </div>
             </div>
 
-            <div class="column is-flex px-0 py-0 my-1">
-                <div class="column px-1 py-1 border-radius-2px has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center is-4">
+            <div class="column is-flex-desktop px-0 pt-0 pb-1">
+                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
                     Syndic/Syndicat
                 </div>
                 <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
