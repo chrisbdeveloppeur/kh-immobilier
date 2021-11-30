@@ -294,8 +294,8 @@ form.quittances{
   content: attr(data-hover);
   visibility: hidden;
   opacity: 0;
-  width: max-content;
-  max-width: 40vw;
+  min-width: max-content;
+  //max-width: 40vw;
   background-color: rgba(0, 0, 0, 1);
   color: #fff;
   text-align: center;
