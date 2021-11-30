@@ -78,7 +78,11 @@ class ImmoController extends AbstractController
             };
         }
 
-        $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
+        if ($quittance->getPdfExist()){
+            $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
+        }else{
+            $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.docx';
+        }
         $mailController->sendMessage($quittance_file_path, $locataire);
         $this->addFlash('success', 'La quittance de loyer à bien été envoyer pour : ' . $locataire );
         $referer = $request->headers->get('referer');

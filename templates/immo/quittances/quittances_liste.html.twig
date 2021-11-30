@@ -63,7 +63,7 @@
                     {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
                         <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
                             <span class="icon">
-                                <i class="fas fa-2x fa-file-pdf"></i>
+                                <i class="fas fa-2x fa-file-alt"></i>
                                 <i class="fas fa-plus"></i>
                             </span>
                             <span><b>Quittance</b></span>
@@ -96,7 +96,7 @@
                     {{ form_widget(form_documents.file) }}
                 <span class="file-cta">
                     <span class="file-icon">
-                      <i class="fas fa-upload"></i>
+                      <i class="fas fa-2x fa-file-upload"></i>
                     </span>
                     <span class="file-label overflow-ellipsis" id="file-label" style="max-width: 130px;">
                         Choisir un fichier…
@@ -118,7 +118,7 @@
 
                 </div>
 {#                {{ form_widget(form_documents.title) }}#}
-                <button class="button is-info is-small borderless-radius" type="submit"><b>Ajouter</b></button>
+                <button class="button is-info is-small borderless-radius" type="submit"><b>Valider</b></button>
             </label>
         </div>
         {{ form_end(form_documents) }}
