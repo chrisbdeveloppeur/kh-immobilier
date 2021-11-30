@@ -57,7 +57,7 @@
                 <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
                     Adresse
                 </div>
-                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du logement">
                         <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
                         <span class="icon show-on-hover-target is-hidden-touch">
@@ -73,7 +73,7 @@
                     Locataire
                 </div>
 
-                <div class="column px-1 py-1 is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     {% if bien_immo.locataires.current %}
                         <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="column is-expanded px-0 py-0 has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
                             <span>{{ bien_immo.locataires.current }}</span>
@@ -82,9 +82,16 @@
                             </span>
                         </a>
                         {% if bien_immo.locataires.current.email %}
-                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="px-0 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Envoyer un mail">
+                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Envoyer un mail">
                                 <span class="icon">
-                                    <i class="fas fa-envelope"></i>
+                                    <i class="fas fa-lg fa-envelope"></i>
+                                </span>
+                            </a>
+                        {% endif %}
+                        {% if bien_immo.locataires.current.phone %}
+                            <a href="tel:{{ bien_immo.locataires.current.phone }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="Appeler le locataire">
+                                <span class="icon">
+                                    <i class="fas fa-lg fa-phone"></i>
                                 </span>
                             </a>
                         {% endif %}
@@ -107,7 +114,7 @@
 {#                <div style="width: 150px;" class="px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">#}
 {#                    Loyer#}
 {#                </div>#}
-{#                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
+{#                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
 {#                    <b>{{ bien_immo.loyerHc }} €</b>#}
 {#                </div>#}
 
@@ -117,7 +124,7 @@
 {#                <div style="width: 150px;" class="px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">#}
 {#                    Charges#}
 {#                </div>#}
-{#                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
+{#                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
 {#                    <b>{{ bien_immo.charges }} €</b>#}
 {#                </div>#}
 {#            </div>#}
@@ -126,7 +133,7 @@
                 <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover hovertext" data-hover="Charges incluses">
                     <span>Loyer *</span>
                 </div>
-                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
                 </div>
             </div>
@@ -135,7 +142,7 @@
                 <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
                     Syndic/Syndicat
                 </div>
-                <div class="column px-1 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     {% if bien_immo.copropriete and bien_immo.copropriete.name %}
                         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails de la copropriété">
                             <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
