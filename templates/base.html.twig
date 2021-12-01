@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}Documents{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Gestion de votre patrimoine immobilier, gestion de contrat de location. Editeur de bail.{% endblock %}">
+    <title>edit-word | {% block title %}{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
 {#        <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">#}
