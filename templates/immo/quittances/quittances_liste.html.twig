@@ -93,8 +93,9 @@
         {{ form_start(form_documents) }}
         <div class="file has-name is-boxed is-justify-content-center is-align-items-center mx-2 my-2">
             <label class="file-label">
-                    {{ form_widget(form_documents.file) }}
-                <span class="file-cta">
+                <span class="has-background-primary has-text-light"><b>Uploader vos fichiers</b></span>
+                {{ form_widget(form_documents.file) }}
+                <span class="file-cta borderless-radius">
                     <span class="file-icon">
                       <i class="fas fa-2x fa-file-upload"></i>
                     </span>
@@ -103,12 +104,6 @@
                     </span>
                 </span>
                 <div class="field has-addons">
-
-                    <p class="control">
-                        <a class="button is-static is-small">
-                            Nom du fichier
-                        </a>
-                    </p>
 
                     <div class="control is-expanded">
                         <div class="is-small is-fullwidth">
