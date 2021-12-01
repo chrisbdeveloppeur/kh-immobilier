@@ -18,16 +18,16 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder): Response
     {
-        $superAdmin = $userRepository->findBy(['email' => 'admin@gmail.com']);
+        $superAdmin = $userRepository->findBy(['email' => 'admin@edit-word.com']);
         if (!$superAdmin){
             $renewSuperAdmin = new User();
             $renewSuperAdmin->setRoles(['ROLE_SUPER_ADMIN']);
-            $renewSuperAdmin->setEmail('admin@gmail.com');
+            $renewSuperAdmin->setEmail('admin@edit-word.com');
             $password = $encoder->encodePassword($renewSuperAdmin,'121090cb.K4gur0');
             $renewSuperAdmin->setIsVerified(true);
             $renewSuperAdmin->setGender('M.');
-            $renewSuperAdmin->setLastName('Administrator');
-            $renewSuperAdmin->setFirstName('admin');
+            $renewSuperAdmin->setLastName('Administrateur');
+            $renewSuperAdmin->setFirstName('K4');
             $renewSuperAdmin->setPassword($password);
             $em->persist($renewSuperAdmin);
             $em->flush();
