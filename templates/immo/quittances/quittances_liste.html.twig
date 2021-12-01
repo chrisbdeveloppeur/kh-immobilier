@@ -143,21 +143,6 @@
                             <i class="fas fa-lg fa-times"></i>
                         </a>
                     </div>
-                    {#
-                    <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
-                        <a style="max-width: 100px" class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
-                                <span class="icon">
-                                    <i class="fas fa-2x fa-file"></i>
-                                </span>
-                            <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
-                                {{ document.title }}
-                            </span>
-                        </a>
-                        <a class="icon is-absolute-top-0 is-right-0 is-medium" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
-                            <i class="fas fa-lg fa-times"></i>
-                        </a>
-                    </div>
-                    #}
                 {% endfor %}
                 {% if form.vars.name == 'bien_immo' and entity.locataires|length != 0 %}
                     {% for document in entity.locataires.first.documents %}
