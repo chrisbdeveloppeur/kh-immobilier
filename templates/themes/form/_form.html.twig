@@ -284,7 +284,7 @@
                                 </div>
                             {% endfor %}
                         </div>
-                    {% elseif child.vars.name in ['email','coproEmail'] and 'new' not in app.request.get('_route') %}
+                    {% elseif child.vars.name in ['email','coproEmail'] %}
                         <div class="field has-addons">
                             <div class="control is-expanded">
                                 {{ form_widget(child) }}
@@ -297,7 +297,7 @@
                                 </a>
                             </p>
                         </div>
-                    {% elseif child.vars.name in ['phone','coproPhone'] and 'new' not in app.request.get('_route') %}
+                    {% elseif child.vars.name in ['phone','coproPhone'] %}
                         <div class="field has-addons">
                             <div class="control is-expanded">
                                 {{ form_widget(child) }}

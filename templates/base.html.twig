@@ -485,29 +485,39 @@
         {#     ############  CHANGE MAIL:TO LINK   #############     #}
          let mailInput = document.querySelectorAll('input[type=email]');
          mailInput.forEach(function (input) {
-             window.onload = changeMailHref(input);
-             input.addEventListener('change', changeMailHref(input));
+             window.onload = changeMailHref();
+             input.addEventListener('change', changeMailHref );
 
-             function changeMailHref(elem) {
-                 if (elem.parentElement.nextElementSibling){
-                     let ancrage = elem.parentElement.nextElementSibling.querySelector('a');
+             function changeMailHref() {
+                 if (input.parentElement){
+                     let ancrage = input.parentElement.nextElementSibling.querySelector('a');
                      if (ancrage){
-                         ancrage.href = 'mailto:'+elem.value;
+                         if (!input.value){
+                             ancrage.setAttribute('disabled', true);
+                         }else {
+                             ancrage.removeAttribute('disabled');
+                         }
+                         ancrage.href = 'mailto:'+input.value;
                      }
                  }
-
              }
          });
+
         let phoneInput = document.querySelectorAll('input[type=tel]');
         phoneInput.forEach(function (input) {
-            window.onload = changePhoneHref(input);
-            input.addEventListener('change', changePhoneHref(input));
+            window.onload = changePhoneHref();
+            input.addEventListener('change', changePhoneHref );
 
-            function changePhoneHref(elem) {
-                if (elem.parentElement.nextElementSibling){
-                    let ancrage = elem.parentElement.nextElementSibling.querySelector('a');
+            function changePhoneHref() {
+                if (input.parentElement){
+                    let ancrage = input.parentElement.nextElementSibling.querySelector('a');
                     if (ancrage){
-                        ancrage.href = 'tel:'+elem.value;
+                        if (!input.value){
+                            ancrage.setAttribute('disabled', true);
+                        }else {
+                            ancrage.removeAttribute('disabled');
+                        }
+                        ancrage.href = 'tel:'+input.value;
                     }
                 }
 

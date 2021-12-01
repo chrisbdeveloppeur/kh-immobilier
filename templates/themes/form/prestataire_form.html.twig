@@ -12,6 +12,32 @@
                             <div class="select is-small is-fullwidth">
                                 {{ form_widget(child) }}
                             </div>
+                        {% elseif child.vars.name in ['email'] %}
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    {{ form_widget(child) }}
+                                </div>
+                                <p class="control">
+                                    <a class="button is-small is-info">
+                                    <span class="icon">
+                                        <i class="fas fa-lg fa-envelope"></i>
+                                    </span>
+                                    </a>
+                                </p>
+                            </div>
+                        {% elseif child.vars.name in ['phone'] %}
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    {{ form_widget(child) }}
+                                </div>
+                                <p class="control">
+                                    <a class="button is-small is-info">
+                                    <span class="icon">
+                                        <i class="fas fa-lg fa-phone"></i>
+                                    </span>
+                                    </a>
+                                </p>
+                            </div>
                         {% else %}
                             {{ form_widget(child) }}
                         {% endif %}
