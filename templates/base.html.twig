@@ -485,10 +485,10 @@
         {#     ############  CHANGE MAIL:TO LINK   #############     #}
          let mailInput = document.querySelectorAll('input[type=email]');
          mailInput.forEach(function (input) {
-             window.onload = changeMailToHref(input);
-             input.addEventListener('change', changeMailToHref(input));
+             window.onload = changeMailHref(input);
+             input.addEventListener('change', changeMailHref(input));
 
-             function changeMailToHref(elem) {
+             function changeMailHref(elem) {
                  if (elem.parentElement.nextElementSibling){
                      let ancrage = elem.parentElement.nextElementSibling.querySelector('a');
                      if (ancrage){
@@ -498,6 +498,21 @@
 
              }
          });
+        let phoneInput = document.querySelectorAll('input[type=tel]');
+        phoneInput.forEach(function (input) {
+            window.onload = changePhoneHref(input);
+            input.addEventListener('change', changePhoneHref(input));
+
+            function changePhoneHref(elem) {
+                if (elem.parentElement.nextElementSibling){
+                    let ancrage = elem.parentElement.nextElementSibling.querySelector('a');
+                    if (ancrage){
+                        ancrage.href = 'tel:'+elem.value;
+                    }
+                }
+
+            }
+        });
 
         {#     ######################################################     #}
 

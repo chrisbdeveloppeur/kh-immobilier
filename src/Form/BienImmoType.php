@@ -11,6 +11,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -182,7 +183,7 @@ class BienImmoType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
-            ->add('coproPhone', TextType::class,[
+            ->add('coproPhone', TelType::class,[
                 'mapped' => false,
                 'label' => "Numéro de téléphone",
                 'attr' => ['class' => 'input is-small has-text-centered'],

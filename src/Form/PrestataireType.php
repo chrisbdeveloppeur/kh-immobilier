@@ -6,6 +6,7 @@ use App\Entity\Prestataire;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -43,7 +44,7 @@ class PrestataireType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
             ])
-            ->add('phone', TextType::class,[
+            ->add('phone', TelType::class,[
                 'label' => "Numéro de téléphone",
                 'attr' => ['class' => 'input is-small has-text-centered'],
                 'required' => false,
