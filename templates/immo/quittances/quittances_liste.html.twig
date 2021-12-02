@@ -148,26 +148,28 @@
                         <div class="modal-background"></div>
                         <div class="modal-content">
                             <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
-                                <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
                                     {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}
-                                        <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">
-                                            <span class="icon">
-                                                <i class="fas fa-2x fa-file"></i>
-                                            </span>
-                                            <span class="overflow-ellipsis nowrap-text is-block is-size-7 px-2" style="width: inherit">
-                                                {{ document.title }}
-                                            </span>
-                                        </figure>
+                                        <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
+                                            <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">
+                                                <span class="icon">
+                                                    <i class="fas fa-2x fa-file"></i>
+                                                </span>
+                                                <span class="overflow-ellipsis nowrap-text is-block is-size-7 px-2" style="width: inherit">
+                                                    {{ document.title }}
+                                                </span>
+                                            </figure>
+                                        </a>
                                     {% elseif extension == 'pdf' %}
                                         <figure class="image is-flex is-justify-content-center" style="height: 85vh">
-                                            <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" align="middle" class="iframe-pdf"></iframe>
+                                            <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" class="iframe-pdf"></iframe>
                                         </figure>
                                     {% else %}
-                                        <figure class="image is-flex is-justify-content-center">
-                                            <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="max-height: 85vh; width: auto">
-                                        </figure>
+                                        <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
+                                            <figure class="image is-flex is-justify-content-center">
+                                                <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="max-height: 85vh; width: auto">
+                                            </figure>
+                                        </a>
                                     {% endif %}
-                                </a>
                                 <a class="icon is-absolute-top-0 is-right-0 is-medium has-background-danger has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
                                     <i class="fas fa-lg fa-trash-alt"></i>
                                 </a>
