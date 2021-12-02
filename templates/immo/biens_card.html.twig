@@ -5,7 +5,7 @@
     {% set logement_status_color = 'primary' %}
 {% endif %}
 
-<div class="card mb-5 is-size-7-mobile">
+<div class="card mb-5">
     <header class="card-header has-background-{{ logement_status_color }} mb-1">
         <p class="card-header-title has-text-light has-icons-left is-flex-direction-column-touch">
 
@@ -175,6 +175,9 @@
     <footer class="card-footer is-flex-direction-column-mobil card-footer-column-mobil">
         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">
             Gérer ce logement
+        </a>
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">
+            Documents
         </a>
         {% if bien_immo.locataires is not empty %}
             <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered is-flex is-flex-direction-column">

@@ -122,6 +122,14 @@
             <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
                 {% for document in entity.documents %}
                     {% set extension = document.fileName|split('.')|last %}
+                    <button class="button-modal">Show</button>
+                    <div class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            <!-- Any other Bulma elements you want -->
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
                     <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative hovertext" data-hover="{{ document.title }}">
                         <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
                             {% if extension not in ['png','jpeg','jpg','bmp'] %}
@@ -170,9 +178,29 @@
 
 {#      #}
 <script>
+    // SCRIPT CHANGE FILENAME
     let fileUpload = document.getElementById('documents_file');
     let inputFile = document.getElementById('documents_title');
     fileUpload.onchange = function () {
         inputFile.value = fileUpload.files[0].name;
-    }
+    };
+
+
+    // SCRIPT OPEN MODAL
+    let buttonsModal = document.querySelectorAll('.button-modal');
+    buttonsModal.forEach(function (btn) {
+        btn.addEventListener('click',function () {
+            if (btn.nextElementSibling && btn.nextElementSibling.classList.contains('modal')){
+                btn.nextElementSibling.classList.toggle('is-active');
+            }
+        })
+    });
+
+    // SCRIPT CLOSE MODAL
+    let modalClose = document.querySelectorAll('.modal-close, .modal-background');
+    modalClose.forEach(function (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            closeBtn.parentElement.classList.remove('is-active')
+        })
+    });
 </script>
