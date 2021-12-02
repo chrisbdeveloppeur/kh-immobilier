@@ -54,8 +54,8 @@
                                 {% endif %}
                             </div>
 
-                            <a class="icon is-absolute-top-0 is-right-0 is-medium" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
-                                <i class="fas fa-lg fa-times"></i>
+                            <a class="icon is-absolute-top-0 is-right-0 is-medium has-background-danger has-text-light" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
+                                <i class="fas fa-lg fa-trash-alt"></i>
                             </a>
                         </div>
                     {% endfor %}
@@ -139,8 +139,8 @@
                                 </figure>
                             {% endif %}
                         </div>
-                        <a class="icon is-absolute-top-0 is-right-0 is-medium has-background-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
-                            <i class="fas fa-lg fa-times"></i>
+                        <a class="icon is-absolute-top-0 is-right-0 is-medium has-background-danger has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                            <i class="fas fa-lg fa-trash-alt"></i>
                         </a>
                     </div>
 
@@ -149,7 +149,7 @@
                         <div class="modal-content">
                             <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
                                 <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
-                                    {% if extension not in ['png','jpeg','jpg','bmp'] %}
+                                    {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}
                                         <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">
                                             <span class="icon">
                                                 <i class="fas fa-2x fa-file"></i>
@@ -158,14 +158,18 @@
                                                 {{ document.title }}
                                             </span>
                                         </figure>
+                                    {% elseif extension == 'pdf' %}
+                                        <figure class="image is-flex is-justify-content-center" style="height: 85vh">
+                                            <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" align="middle" class="iframe-pdf"></iframe>
+                                        </figure>
                                     {% else %}
                                         <figure class="image is-flex is-justify-content-center">
                                             <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="max-height: 85vh; width: auto">
                                         </figure>
                                     {% endif %}
                                 </a>
-                                <a class="icon is-absolute-top-0 is-right-0 is-medium has-background-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
-                                    <i class="fas fa-lg fa-times"></i>
+                                <a class="icon is-absolute-top-0 is-right-0 is-medium has-background-danger has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                                    <i class="fas fa-lg fa-trash-alt"></i>
                                 </a>
                             </div>
                         </div>
@@ -184,8 +188,8 @@
                                 {{ document.title }}
                             </span>
                             </a>
-                            <a class="icon is-absolute-top-0 is-right-0 is-medium" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
-                                <i class="fas fa-lg fa-times"></i>
+                            <a class="icon is-absolute-top-0 is-right-0 is-medium has-background-danger has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                                <i class="fas fa-lg fa-trash-alt"></i>
                             </a>
                         </div>
                     {% endfor %}
