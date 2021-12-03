@@ -12,7 +12,9 @@ $link : #363636;
 $primary : rgba(2, 18, 34, 0.9);
 $header-background-layer : $primary;
 
-$tabs-boxed-link-hover-background-color: white;
+$tabs-boxed-link-hover-background-color: $primary;
+$tabs-boxed-link-active-background-color: $primary;
+$tabs-link-hover-color: white;
 
 .button, a{
     //border-radius: 0 !important;

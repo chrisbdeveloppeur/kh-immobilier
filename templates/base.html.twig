@@ -405,8 +405,12 @@
                     window.location = '#' + id;
                     let fields = document.querySelectorAll('.'+id);
                     let notfields = document.querySelectorAll('.bien-immo');
-                    lis.forEach(el => el.classList.remove('is-active'));
+                    lis.forEach(function (el) {
+                        el.classList.remove('is-active');
+                        el.querySelector('a').classList.remove('has-text-white','has-text-weight-bold');
+                    });
                     li.classList.add('is-active');
+                    li.querySelector('a').classList.add('has-text-white','has-text-weight-bold');
 
                     if ( id === 'files' ){
                         document.querySelectorAll('.file').forEach(el => el.classList.remove('is-hidden'));
