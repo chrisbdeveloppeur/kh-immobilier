@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}404{% endblock %}
+
+{% block body %}
+    <section class="section is-flex is-flex-direction-column is-align-items-cente has-text-centered">
+        <h1 class="title is-size-mega has-text-danger-dark"><b>404</b></h1>
+        <h2 class="subtitle is-3"><b>Page not found...</b></h2>
+
+        <p>
+            <a class="button is-small is-primary" href="{{ path('home') }}">Revenir au menu principal</a>
+        </p>
+    </section>
+{% endblock %}

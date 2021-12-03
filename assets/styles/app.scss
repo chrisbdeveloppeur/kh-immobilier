@@ -81,6 +81,10 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   cursor: pointer;
 }
 
+.is-size-mega{
+  font-size: 7rem !important;
+}
+
 .zoom-mouse-hover:hover{
   cursor: zoom-in;
 }
