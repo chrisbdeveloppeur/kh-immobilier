@@ -16,7 +16,7 @@
                 </a>
             </div>
 
-            <div id="navbarMenu" class="navbar-menu">
+            <div id="navbarMenu" class="navbar-menu is-size-5-mobile">
 
                 <div class="navbar-start">
 
@@ -54,7 +54,7 @@
                             </span>
 
                             <div class="dropdown-trigger">
-                                <div class="navbar-dropdown">
+                                <div class="navbar-dropdown is-size-5-mobile">
                                     <a class="navbar-item" href="{{ path('user_index') }}" title="Accéder à la liste des gestionnaires">
                                         Liste des gestionnaires
                                     </a>
@@ -66,20 +66,14 @@
 
                         </div>
 
-{#                        <a href="{{ path('app_register') }}" class="navbar-item" title="Ajouter un gestionnaire">#}
-{#                            <span class="icon">#}
-{#                                <i class="fas fa-user-plus"></i>#}
-{#                            </span>#}
-{#                        </a>#}
-
                     {% endif %}
                     {% if app.user %}
                         <div class="navbar-item">
                             <div class="tags has-addons is-justify-content-center">
-                                <span class="tag is-primary" title="modifier mon compte">
+                                <span class="tag is-size-6-mobile is-primary" title="modifier mon compte">
                                     <a class="has-text-light" href="{{ path('user_edit', {'id': app.user.id}) }}">Connecté : {{ app.user.username }}</a>
                                 </span>
-                                <a class="tag is-danger" href="{{ path('app_logout') }}" style="text-decoration: none">
+                                <a class="tag is-size-6-mobile is-danger" href="{{ path('app_logout') }}" style="text-decoration: none">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-sign-out-alt"></i>
                                     </span>
