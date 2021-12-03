@@ -28,21 +28,20 @@
 
 
     {% if 'bien_immo' in app.request.get('_route') %}
-        <div class="prestataire is-hidden">
-            <div class="column is-flex is-justify-content-center pb-0 prestataire is-hidden" onclick="this.nextElementSibling.classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
-                <a class="button is-info is-small">
-                <span class="icon">
-                    <i class="fas fa-lg fa-angle-down"></i>
-                </span>
-                    <span>Ajouter un prestataire</span>
-                </a>
+        <div class="prestataire is-hidden column is-flex-tablet">
+
+            <div class="column">
+                {{ include('includes/prestataires_liste.html.twig') }}
             </div>
 
-            <div class="column is-flex is-justify-content-center is-hidden">
-                {{ include('themes/form/prestataire_form.html.twig') }}
-            </div>
+            <div class="column">
+                <p class="title is-5 has-text-centered">Ajouter un prestataire</p>
+                <p class="subtitle is-6 has-text-centered">Entrer les informations et ajouter un nouveau prestataire</p>
 
-            {{ include('includes/prestataires_liste.html.twig') }}
+                <div class="column is-flex is-justify-content-center">
+                    {{ include('themes/form/prestataire_form.html.twig') }}
+                </div>
+            </div>
 
         </div>
 
