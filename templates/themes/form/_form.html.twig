@@ -61,7 +61,7 @@
         </div>
     {% endif %}
 
-    <div class="column is-flex is-justify-content-center px-0 py-0">
+    <div class="column is-flex-tablet is-justify-content-center px-0 py-0">
 
         {% if form.vars.name != 'quittances' %}
             {% set hidden = ' is-hidden' %}
@@ -309,6 +309,30 @@
                                     </span>
                                 </a>
                             </p>
+                        </div>
+                    {% elseif child.vars.block_prefixes[1] == 'file' %}
+                        <div class="file has-name">
+                            <label class="file-label">
+                                {{ form_widget(child) }}
+                                <input class="file-input" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Choisir une image…
+                                    </span>
+                                </span>
+                                {% if entreprise.imageName %}
+                                    <span class="file-name">
+                                        {{ entreprise.imageName }}
+                                    </span>
+                                {% else %}
+                                    <span class="file-name">
+                                        <i>Vide</i>
+                                    </span>
+                                {% endif %}
+                            </label>
                         </div>
                     {% else %}
                         <p class="control has-icons-left has-icons-right">
