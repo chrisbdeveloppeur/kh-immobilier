@@ -462,14 +462,12 @@
                 })
             })
         });
-
         {#     ##############################################     #}
 
 
 
 
         {#     ############  SCRIPT FOR EDIT QUITTANCE   #############     #}
-
         let btn = document.querySelectorAll('.quittance-lock-btn');
         btn.forEach(function (ancrage) {
 
@@ -486,12 +484,10 @@
             });
 
         });
-
         {#     ######################################################     #}
 
 
         {#     ############  REDIRECT TO ANCRAGE   #############     #}
-
         let header = document.documentURI;
         header = header.split('#');
         header = header[header.length - 1];
@@ -501,7 +497,6 @@
                 ancrage.nextElementSibling.click();
             }
         }
-
         {#     ######################################################     #}
 
 
@@ -525,7 +520,10 @@
                  }
              }
          });
+        {#     ######################################################     #}
 
+
+        {#     ############  CHANGE NUM:TO LINK   #############     #}
         let phoneInput = document.querySelectorAll('input[type=tel]');
         phoneInput.forEach(function (input) {
             window.onload = changePhoneHref();
@@ -546,13 +544,14 @@
 
             }
         });
-
         {#     ######################################################     #}
 
 
 
 
-        let cardHeaders = document.querySelectorAll('.card-header');
+        {#     ############  CHANGE NUM:TO LINK   #############     #}
+        let cardHeaders = document.querySelectorAll('.card-header.is-extendable');
+        console.log(cardHeaders);
         cardHeaders.forEach(function (cardHeader) {
             cardHeader.addEventListener('click', function () {
                 let cardFooter = cardHeader.parentElement.querySelector('.card-footer');
@@ -564,14 +563,15 @@
                 if(cardContent){
                     cardContent.classList.toggle('is-hidden')
                 }
-                if (arrow.classList.contains('fa-angle-down')){
+                if (arrow && arrow.classList.contains('fa-angle-down')){
                     arrow.classList.replace('fa-angle-down', 'fa-angle-up');
-                } else {
+                } else if(arrow && arrow.classList.contains('fa-angle-up')) {
                     arrow.classList.replace('fa-angle-up', 'fa-angle-down');
                 }
 
             })
-        })
+        });
+        {#     ######################################################     #}
 
 
     </script>
