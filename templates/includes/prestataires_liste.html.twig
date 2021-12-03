@@ -13,7 +13,7 @@
         {% for prestataire in bien_immo.prestataire|sort %}
                 <div class="column is-two-fifths is-one-third-desktop is-full-mobile px-0 pt-0">
                         <div class="card">
-                                <header class="card-header has-background-primary has-text-light pointer-mouse-hover has-icons-left" onclick="let cardFooter = this.parentElement.querySelector('.card-content'); if(cardFooter){cardFooter.classList.toggle('is-hidden');};this.parentElement.querySelector('.card-footer').classList.toggle('is-hidden');this.querySelector('i').classList.toggle('fa-angle-down');this.querySelector('i').classList.toggle('fa-angle-up')">
+                                <header class="card-header has-background-primary has-text-light pointer-mouse-hover has-icons-left" onclick="">
 
                                     <div class="px-3 is-flex is-align-items-center is-justify-content-center">
                                         <span class="icon">
@@ -65,8 +65,8 @@
                                     </div>
                                 {% endif %}
                                 <footer class="card-footer is-hidden">
-                                        <a href="{{ path('edit_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" class="card-footer-item">Modifier</a>
-                                        <a class="card-footer-item" href="{{ path('remove_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')">Retirer</a>
+                                        <a href="{{ path('edit_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">Modifier</a>
+                                        <a href="{{ path('remove_prestataire', {'id': bien_immo.id, 'presta_id': prestataire.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir retirer ce prestataire')" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">Retirer</a>
                                 </footer>
                         </div>
                 </div>
@@ -74,3 +74,6 @@
 
 {% endif %}
 </div>
+
+
+

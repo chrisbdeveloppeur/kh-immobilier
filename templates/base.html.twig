@@ -549,6 +549,31 @@
 
         {#     ######################################################     #}
 
+
+
+
+        let cardHeaders = document.querySelectorAll('.card-header');
+        cardHeaders.forEach(function (cardHeader) {
+            cardHeader.addEventListener('click', function () {
+                let cardFooter = cardHeader.parentElement.querySelector('.card-footer');
+                let cardContent = cardHeader.parentElement.querySelector('.card-content');
+                let arrow = cardHeader.querySelector('button i');
+                if(cardFooter){
+                    cardFooter.classList.toggle('is-hidden')
+                }
+                if(cardContent){
+                    cardContent.classList.toggle('is-hidden')
+                }
+                if (arrow.classList.contains('fa-angle-down')){
+                    arrow.classList.replace('fa-angle-down', 'fa-angle-up');
+                } else {
+                    arrow.classList.replace('fa-angle-up', 'fa-angle-down');
+                }
+
+            })
+        })
+
+
     </script>
 
 
