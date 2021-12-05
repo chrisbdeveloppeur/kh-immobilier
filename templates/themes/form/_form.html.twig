@@ -31,7 +31,12 @@
         <div class="prestataire is-hidden column is-flex-tablet">
 
             <div class="column">
-                {{ include('includes/prestataires_liste.html.twig') }}
+                <p class="title is-5 has-text-centered">Liste des prestataires</p>
+                <p class="subtitle is-6 has-text-centered">Consulter l'ensemble des prestataires enregistrés</p>
+
+                <div class="column is-flex is-justify-content-center">
+                    {{ include('immo/prestataires_liste.html.twig') }}
+                </div>
             </div>
 
             <div class="column">
@@ -50,12 +55,12 @@
 
     {% if form.vars.name in ['bien_immo'] %}
         <div id="prestataires-liste" class="is-hidden column is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
-            {{ include('includes/prestataires_liste.html.twig') }}
+            {{ include('immo/prestataires_liste.html.twig') }}
         </div>
     {% endif %}
 
     {% if form.vars.name in ['bien_immo','locataire'] %}
-        <div id="files-liste" class="is-hidden column is-flex-direction-column is-justify-content-center is-align-items-center has-text-centered">
+        <div id="files-liste" class="is-hidden column is-flex-desktop has-text-centered">
             {{ include('immo/documents/home_page.html.twig') }}
         </div>
     {% endif %}
@@ -67,7 +72,7 @@
         {% else %}
             {% set hidden = '' %}
         {% endif %}
-        {{ form_start(form, {'attr': {'class': 'bien-immo logement copropriete column is-two-fifths has-background-light border-radius-2px box-shadow-bulma '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
+        {{ form_start(form, {'attr': {'class': 'bien-immo logement copropriete column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
         {% if form.vars.name in ['bien_immo','locataire'] %}
 

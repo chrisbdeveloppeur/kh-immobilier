@@ -551,7 +551,6 @@
 
         {#     ############  CHANGE NUM:TO LINK   #############     #}
         let cardHeaders = document.querySelectorAll('.card-header.is-extendable');
-        console.log(cardHeaders);
         cardHeaders.forEach(function (cardHeader) {
             cardHeader.addEventListener('click', function () {
                 let cardFooter = cardHeader.parentElement.querySelector('.card-footer');
@@ -577,9 +576,11 @@
         // SCRIPT CHANGE FILENAME
         let fileUpload = document.getElementById('documents_file');
         let inputFile = document.getElementById('documents_title');
-        fileUpload.onchange = function () {
-            inputFile.value = fileUpload.files[0].name;
-        };
+        if (fileUpload){
+            fileUpload.onchange = function () {
+                inputFile.value = fileUpload.files[0].name;
+            };
+        }
 
 
         // SCRIPT OPEN MODAL

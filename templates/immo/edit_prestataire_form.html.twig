@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification d'un prestataire{% endblock %}
+
+{% block title_main %}Modification du prestataire {% if prestataire.name %}<b>{{ prestataire.name }}</b>{% endif %}{% endblock %}
+
+{% block body %}
+{#    <div class="hero-body">#}
+
+        <div class="column has-text-left">
+            <a href="{{ path('bien_immo_edit', {'id': prestataire.bienImmo.id}) }}#prestataire" class="button is-small is-dark">
+                <span class="icon">
+                    <i class="fas fa-lg fa-caret-left"></i>
+                </span>
+                <span>
+                    Revenir aux prestataires
+                </span>
+            </a>
+        </div>
+
+        {% if prestataire.name %}
+            <div class="has-text-centered subtitle">
+                <span class="has-text-weight-bold is-uppercase"><b>{{ prestataire.name }}</b></span>
+            </div>
+        {% endif %}
+
+        <div class="column is-flex is-justify-content-center">
+
+            {{ include('themes/form/prestataire_form.html.twig') }}
+
+        </div>
+
+{#    </div>#}
+{% endblock %}

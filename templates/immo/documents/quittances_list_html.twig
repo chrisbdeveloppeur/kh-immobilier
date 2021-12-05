@@ -1,5 +1,5 @@
 {% for quittance in entity.quittances|sort %}
-    <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative">
+    <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
         <div class="is-flex is-justify-content-center is-align-items-center">
             {% if quittance.pdfexist %}
                 <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
@@ -34,7 +34,7 @@
 {% endfor %}
 
                     {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
-                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
                             <span class="icon">
                                 <i class="fas fa-2x fa-file-alt"></i>
                                 <i class="fas fa-plus"></i>
@@ -42,7 +42,7 @@
                             <span><b>Quittance</b></span>
                         </a>
                     {% elseif form.vars.name == 'locataire' and entity.logement is null %}
-                        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-1-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
+                        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
                             <span>
                                 Pour éditer une quittance...
                             </span>

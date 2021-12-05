@@ -107,51 +107,6 @@ class QuittancesController extends AbstractController
 
 
     /**
-     * @Route("/{loc_id}", name="edit_current_month_quittance")
-     */
-    /*
-    public function editCurrentMonthQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, QuittanceRepository $quittanceRepository, Request $request): Response
-    {
-        $date = new \DateTime();
-
-        $locataire = $locataireRepository->find($loc_id);
-
-        $template = $this->createFileController->fillQuittanceTemplate($locataire,null);
-
-        $file = "quittance_" . strftime("%B_") . $locataire->getLastName() . '_' . $locataire->getLogement()->getId();
-
-        $quittance = $quittanceRepository->findOneBy(['file_name' => $file]);
-
-        if (!$locataire->getQuittances()->contains($quittance)){
-            $quittance = new Quittance();
-            $quittance->setFileName($file);
-            $quittance->setLocataire($locataire);
-            $quittance->setBienImmo($locataire->getLogement());
-            $quittance->setCreatedDate($date->setTimezone(new \DateTimeZone("Europe/Paris")));
-            $em->persist($quittance);
-            $em->flush();
-
-            $this->createFileController->createQuittanceFile($template, $locataire, $file, $request);
-
-        }
-
-        if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
-            $pdf_exist = true;
-        }else{
-            $pdf_exist = false;
-        }
-
-        return $this->render("immo/quittances/download_file.html.twig",[
-            "file_name" => $file,
-            "locataire" => $locataire,
-            "pdf_exist" => $pdf_exist,
-            "quittance" => $quittance,
-        ]);
-
-    }
-*/
-
-    /**
      * @param $file_name
      * @param $file_name_pdf
      * @return Response
