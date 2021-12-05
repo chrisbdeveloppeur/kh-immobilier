@@ -1,0 +1,73 @@
+{% if form.vars.name == 'bien_immo' %}
+        {% set entity = bien_immo %}
+{% elseif form.vars.name == 'locataire' %}
+        {% set entity = locataire %}
+{% endif %}
+
+{% if form.vars.name == 'bien_immo' and entity.locataires.current is null %}
+        <span class="icon-text px-3 py-2 box-shadow-bulma has-background-primary border-radius-2px has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                <span class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <span>
+                    <b>Ce logement ne possède actuellement aucun locataire ...</b>
+                </span>
+                <span class="px-3">
+                        <a class="button is-small is-light is-outlined" title="Ajouter un locataire au logement" onclick="let btn = document.querySelector('div#logement').nextElementSibling.click();">
+                                Ajouter un locataire
+                        </a>
+                </span>
+        </span>
+{% elseif 'new' not in app.request.get('_route') %}
+
+    <p class="title is-5">Quittances de loyers</p>
+    <p class="subtitle is-6">Visionner & éditer des quittances de loyers</p>
+
+                <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
+
+                    {{ include('immo/documents/quittances_list_html.twig') }}
+
+                </div>
+
+    <hr style="border-bottom: rgba(0,0,0,.2) solid 1px">
+
+    <p class="title is-5">Autres documents</p>
+    <p class="subtitle is-6">Uploader & consulter les documents du locataires</p>
+
+    <div class="is-flex-desktop">
+
+        {{ form_start(form_documents) }}
+        <div class="file has-name is-boxed is-justify-content-center is-align-items-center px-2 py-2 column is-full">
+            <label class="file-label">
+                <span class="has-background-primary has-text-light"><b>Uploader vos fichiers</b></span>
+                {{ form_widget(form_documents.file) }}
+                <span class="file-cta borderless-radius">
+                    <span class="file-icon">
+                      <i class="fas fa-2x fa-file-upload"></i>
+                    </span>
+                    <span class="file-label overflow-ellipsis" id="file-label" style="max-width: 130px;">
+                        Choisir un fichier…
+                    </span>
+                </span>
+                <div class="field has-addons">
+
+                    <div class="control is-expanded">
+                        <div class="is-small is-fullwidth">
+                            {{ form_widget(form_documents.title) }}
+                        </div>
+                    </div>
+
+                </div>
+                <button class="button is-info is-small borderless-radius" type="submit"><b>Valider</b></button>
+            </label>
+        </div>
+        {{ form_end(form_documents) }}
+
+        {{ include('immo/documents/documents_list.html.twig') }}
+
+    </div>
+
+{% endif %}
+
+
+

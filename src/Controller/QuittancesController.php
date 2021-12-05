@@ -74,7 +74,7 @@ class QuittancesController extends AbstractController
             ]);
         }
 
-        return $this->render("immo/quittances/edit_quittance.html.twig",[
+        return $this->render("immo/documents/edit_quittance.html.twig",[
             'form' => $form->createView(),
             'locataire' => $locataire,
         ]);
@@ -97,7 +97,7 @@ class QuittancesController extends AbstractController
             $pdf_exist = false;
         }
 
-        return $this->render('immo/quittances/download_file.html.twig',[
+        return $this->render('immo/documents/download_quittance.html.twig',[
             "file_name" => $file,
             "locataire" => $locataire,
             "quittance" => $quittance,
@@ -161,7 +161,7 @@ class QuittancesController extends AbstractController
     {
         $locataire = $locataireRepository->find($loc_id);
         $quittance = $quittanceRepository->findOneBy(['file_name' => $file_name]);
-        return $this->render("immo/quittances/download_file.html.twig",[
+        return $this->render("immo/documents/download_quittance.html.twig",[
             "file_name" => $file_name,
             "locataire" => $locataire,
             "quittance" => $quittance,

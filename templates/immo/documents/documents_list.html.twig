@@ -1,0 +1,80 @@
+<div class="column mx-2 my-2 border-radius-2px border-dotted-3px" style="min-height: 30vh;">
+    <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
+        {% for document in entity.documents %}
+            {% set extension = document.fileName|split('.')|last %}
+            <div class="button-modal box-shadow-bulma border-radius-2px mx-2 my-2 is-relative hovertext zoom-mouse-hover" data-hover="{{ document.title }}">
+                <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
+                    {% if extension not in ['png','jpeg','jpg','bmp'] %}
+                        <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="height: 120px;width: 96px">
+                                    <span class="icon">
+                                        <i class="fas fa-2x fa-file"></i>
+                                    </span>
+                            <span class="overflow-ellipsis nowrap-text is-block is-size-7 px-2" style="width: inherit">
+                                        {{ document.title }}
+                                    </span>
+                        </figure>
+                    {% else %}
+                        <figure class="image is-96x96 is-4by5 has-background-light">
+                            <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="object-fit: contain">
+                        </figure>
+                    {% endif %}
+                </div>
+                <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </div>
+
+            <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
+                        {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}
+                            <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
+                                <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">
+                                                <span class="icon">
+                                                    <i class="fas fa-2x fa-file"></i>
+                                                </span>
+                                    <span class="overflow-ellipsis nowrap-text is-block is-size-7 px-2" style="width: inherit">
+                                                    {{ document.title }}
+                                                </span>
+                                </figure>
+                            </a>
+                        {% elseif extension == 'pdf' %}
+                            <figure class="image is-flex is-justify-content-center" style="height: 85vh">
+                                <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" class="iframe-pdf"></iframe>
+                            </figure>
+                        {% else %}
+                            <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
+                                <figure class="image is-flex is-justify-content-center">
+                                    <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="max-height: 85vh; width: auto">
+                                </figure>
+                            </a>
+                        {% endif %}
+                        <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <button class="modal-close is-large" aria-label="close"></button>
+            </div>
+
+        {% endfor %}
+        {% if form.vars.name == 'bien_immo' and entity.locataires|length != 0 %}
+            {% for document in entity.locataires.first.documents %}
+                <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
+                    <a style="max-width: 100px" class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                                <span class="icon">
+                                    <i class="fas fa-2x fa-file"></i>
+                                </span>
+                        <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
+                                {{ document.title }}
+                            </span>
+                    </a>
+                    <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

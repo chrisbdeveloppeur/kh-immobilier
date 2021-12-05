@@ -574,6 +574,32 @@
         {#     ######################################################     #}
 
 
+        // SCRIPT CHANGE FILENAME
+        let fileUpload = document.getElementById('documents_file');
+        let inputFile = document.getElementById('documents_title');
+        fileUpload.onchange = function () {
+            inputFile.value = fileUpload.files[0].name;
+        };
+
+
+        // SCRIPT OPEN MODAL
+        let buttonsModal = document.querySelectorAll('.button-modal');
+        buttonsModal.forEach(function (btn) {
+            btn.addEventListener('click',function () {
+                if (btn.nextElementSibling && btn.nextElementSibling.classList.contains('modal')){
+                    btn.nextElementSibling.classList.toggle('is-active');
+                }
+            })
+        });
+
+        // SCRIPT CLOSE MODAL
+        let modalClose = document.querySelectorAll('.modal-close, .modal-background');
+        modalClose.forEach(function (closeBtn) {
+            closeBtn.addEventListener('click', function () {
+                closeBtn.parentElement.classList.remove('is-active')
+            })
+        });
+
     </script>
 
 
