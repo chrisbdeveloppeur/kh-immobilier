@@ -71,7 +71,7 @@
                         <div class="navbar-item">
                             <div class="tags has-addons is-justify-content-center">
                                 <span class="tag is-size-6-mobile is-primary" title="modifier mon compte">
-                                    <a class="has-text-light" href="{{ path('user_edit', {'id': app.user.id}) }}">Connecté : {{ app.user.username }}</a>
+                                    <a class="has-text-light" href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Connecté : {{ app.user.username }}</a>
                                 </span>
                                 <a class="tag is-size-6-mobile is-danger" href="{{ path('app_logout') }}" style="text-decoration: none">
                                     <span class="icon">
