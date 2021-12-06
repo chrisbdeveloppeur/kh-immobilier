@@ -1,5 +1,5 @@
 <div class="table-container">
-    <table class="table is-fullwidth">
+    <table class="table">
         <thead>
         <tr class="is-size-7">
             <th>N°</th>
@@ -23,7 +23,7 @@
                     <span class="has-text-light"><b>{{ quittance.id }}</b></span>
                 </td>
 
-                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ quittance.fileName }}">
+                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ quittance.fileName }}" style="width: 100%">
                     <span class="has-text-light"><b>{{ quittance.fileName }}</b></span>
                 </td>
 
@@ -33,18 +33,18 @@
 
                 <td>
 
-                    <a class="button is-primary is-outlined is-size-7" {% if not quittance.pdfexist %}disabled="true" title="Fichier au format .pdf indisponible"{% endif %} {% if quittance.pdfexist %}title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}"{% endif %}>
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" {% if not quittance.pdfexist %}disabled="true" title="Fichier au format .pdf indisponible"{% endif %} {% if quittance.pdfexist %}title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}"{% endif %}>
                     <span class="icon">
                         <i class="fas fa-lg fa-file-pdf"></i>
                     </span>
                     </a>
 
-                    <a class="button is-primary is-outlined is-size-7" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
                         <div class="icon">
                             <i class="fas fa-lg fa-file-word"></i>
                         </div>
                     </a>
-                    <a class="button is-danger is-outlined is-size-7" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
+                    <a class="button is-danger is-outlined is-size-7 borderless-radius" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
                     <span class="icon">
                         <i class="fas fa-lg fa-times"></i>
                     </span>
@@ -56,17 +56,17 @@
     </table>
 </div>
 
-
-{% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
-    <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-full-touch is-2-widescreen is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+<div class="is-flex-tablet is-justify-content-center">
+    {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
+        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma-hover has-background-light is-half is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
         <span class="icon">
             <i class="fas fa-2x fa-file-alt"></i>
             <i class="fas fa-plus"></i>
         </span>
-        <span><b>Quittance</b></span>
-    </a>
-{% elseif form.vars.name == 'locataire' and entity.logement is null %}
-    <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-full-mobile is-2-widescreen px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
+            <span><b>Quittance</b></span>
+        </a>
+    {% elseif form.vars.name == 'locataire' and entity.logement is null %}
+        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-full-mobile is-2-widescreen px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
         <span>
             Pour éditer une quittance...
         </span>
@@ -76,4 +76,6 @@
             </a>
         </span>
     </span>
-{% endif %}
+    {% endif %}
+</div>
+

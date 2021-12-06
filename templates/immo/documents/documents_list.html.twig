@@ -1,5 +1,5 @@
 <div class="table-container">
-    <table class="table is-fullwidth">
+    <table class="table">
         <thead>
         <tr class="is-size-7">
             <th>N°</th>
@@ -23,7 +23,7 @@
                     <span class="has-text-light"><b>{{ document.id }}</b></span>
                 </td>
 
-                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ document.title }}">
+                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ document.title }}" style="width: 100%;">
                     <span class="has-text-light"><b>{{ document.title }}</b></span>
                 </td>
 
@@ -31,21 +31,20 @@
                     <span class="has-text-light">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
                 </td>
 
-                <td>
-
-                    <a class="button is-primary is-outlined is-size-7 button-modal" title="Voir le document">
+                <td class="column">
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius button-modal" title="Voir le document">
                         <div class="icon">
                             <i class="fas fa-lg fa-eye"></i>
                         </div>
                     </a>
                     {{ include('immo/documents/modal_box.html.twig') }}
 
-                    <a class="button is-primary is-outlined is-size-7" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
                         <div class="icon">
                             <i class="fas fa-lg fa-file-download"></i>
                         </div>
                     </a>
-                    <a class="button is-danger is-outlined is-size-7" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la document">
+                    <a class="button is-danger is-outlined is-size-7 borderless-radius" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la document">
                     <span class="icon">
                         <i class="fas fa-lg fa-times"></i>
                     </span>
