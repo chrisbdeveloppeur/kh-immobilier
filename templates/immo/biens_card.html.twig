@@ -11,11 +11,11 @@
 
             {% if is_granted('ROLE_SUPER_ADMIN') %}
                 {% if bien_immo.user %}
-                    <a href="{{ path('user_edit', {'id': bien_immo.user.id }) }}" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
+                    <a href="{{ path('user_edit', {'id': bien_immo.user.id }) }}#gestionnaire" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
                         <b>{{ bien_immo.user.firstname|first|capitalize }}{{ bien_immo.user.lastname|first|capitalize }}</b>
                     </a>
                 {% elseif bien_immo.locataires.current.user %}
-                    <a href="{{ path('user_edit', {'id': bien_immo.locataires.current.user.id }) }}" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.locataires.current.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
+                    <a href="{{ path('user_edit', {'id': bien_immo.locataires.current.user.id }) }}#gestionnaire" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.locataires.current.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
                         <b>{{ bien_immo.locataires.current.user.firstname|first|capitalize }}{{ bien_immo.locataires.current.user.lastname|first|capitalize }}</b>
                     </a>
                 {% else %}
