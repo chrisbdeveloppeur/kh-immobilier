@@ -2,10 +2,29 @@
     <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-center">
         {% for document in entity.documents %}
             {% set extension = document.fileName|split('.')|last %}
-            <div class="button-modal box-shadow-bulma border-radius-2px mx-2 my-2 is-relative hovertext zoom-mouse-hover" data-hover="{{ document.title }}">
+            <div class="button-modal box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
+
+                <div class="column py-0 px-0 is-flex-tablet is-flex-direction-row has-background-light">
+
+                    <a class="button borderless-radius is-small is-primary is-outlined is-fullwidth" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">
+                        <div class="icon">
+                            <i class="fas fa-lg fa-file-download"></i>
+                        </div>
+                    </a>
+
+                    <div class="column px-0 py-0 is-full-mobile">
+                        <a class="is-3 button borderless-radius is-danger is-outlined is-small is-fullwidth" href="{{ path('document_delete', {'id': document.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-times"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+
                 <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
                     {% if extension not in ['png','jpeg','jpg','bmp'] %}
-                        <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="height: 120px;width: 96px">
+                        <figure class="has-background-primary has-text-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center hovertext zoom-mouse-hover" data-hover="{{ document.title }}" style="height: 120px;width: 96px">
                             <span class="icon">
                                 <i class="fas fa-2x fa-file"></i>
                             </span>
@@ -14,14 +33,12 @@
                             </span>
                         </figure>
                     {% else %}
-                        <figure class="image is-96x96 is-4by5 has-background-light">
+                        <figure class="image is-96x96 is-4by5 has-background-primary hovertext zoom-mouse-hover" data-hover="{{ document.title }}">
                             <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="object-fit: contain">
                         </figure>
                     {% endif %}
                 </div>
-                <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
-                    <i class="fas fa-trash-alt"></i>
-                </a>
+
             </div>
 
             <div class="modal">
@@ -29,31 +46,48 @@
                 <div class="modal-content">
                     <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
                         {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}
-                            <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
+                            <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
                                 <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">
-                                                <span class="icon">
-                                                    <i class="fas fa-2x fa-file"></i>
-                                                </span>
+                                    <span class="icon">
+                                        <i class="fas fa-2x fa-file"></i>
+                                    </span>
                                     <span class="overflow-ellipsis nowrap-text is-block is-size-7 px-2" style="width: inherit">
-                                                    {{ document.title }}
-                                                </span>
+                                        {{ document.title }}
+                                    </span>
                                 </figure>
-                            </a>
+                            </div>
                         {% elseif extension == 'pdf' %}
                             <figure class="image is-flex is-justify-content-center" style="height: 85vh">
                                 <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" class="iframe-pdf"></iframe>
                             </figure>
                         {% else %}
-                            <a class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.title }}">
+                            <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
                                 <figure class="image is-flex is-justify-content-center">
                                     <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="max-height: 85vh; width: auto">
                                 </figure>
-                            </a>
+                            </div>
                         {% endif %}
-                        <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
+
+                        <div class="column py-0 px-0 is-flex-tablet is-flex-direction-row has-background-light">
+
+                            <a class="button borderless-radius is-small is-primary is-outlined is-fullwidth" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">
+                                <div class="icon">
+                                    <i class="fas fa-lg fa-file-download"></i>
+                                </div>
+                            </a>
+
+                            <div class="column px-0 py-0 is-full-mobile">
+                                <a class="is-3 button borderless-radius is-danger is-outlined is-small is-fullwidth" href="{{ path('document_delete', {'id': document.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-times"></i>
+                            </span>
+                                </a>
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
                 <button class="modal-close is-large" aria-label="close"></button>
             </div>

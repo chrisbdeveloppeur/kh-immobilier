@@ -1,35 +1,45 @@
 {% for quittance in entity.quittances|sort %}
-    <div class="column box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative">
-        <div class="is-flex is-justify-content-center is-align-items-center">
+    <div class="column is-flex is-flex-direction-column box-shadow-bulma px-0 py-0 mx-2 my-2 border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
+
+        <div class="column py-0 px-0 is-flex-tablet is-flex-direction-row">
             {% if quittance.pdfexist %}
-                <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
-                                        <span class="icon">
-                                            <i class="fas fa-2x fa-file-pdf"></i>
-                                        </span>
-                    <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
-                                        {{ quittance.fileName }}
-                                        </span>
-                    <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+                <a class="button borderless-radius is-small is-primary is-outlined is-fullwidth" title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-file-pdf"></i>
+                    </span>
                 </a>
-                <a class="icon is-medium is-absolute-top-0 is-left-0 is-white" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
-                    <i class="fas fa-lg fa-file-word"></i>
+                <a class="button borderless-radius is-small is-primary is-outlined is-fullwidth" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                    <div class="icon">
+                        <i class="fas fa-lg fa-file-word"></i>
+                    </div>
                 </a>
             {% else %}
-                <a style="max-width: 100px" class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
-                                        <span class="icon">
-                                            <i class="fas fa-2x fa-file-word"></i>
-                                        </span>
-                    <span class="overflow-ellipsis nowrap-text is-block is-size-7-mobile">
-                                        {{ quittance.fileName }}
-                                        </span>
-                    <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+                <a class="button borderless-radius is-small is-primary is-outlined is-fullwidth" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                    <div class="icon">
+                        <i class="fas fa-lg fa-file-word"></i>
+                    </div>
                 </a>
             {% endif %}
+                        {#
+                    <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">
+                        {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}
+                    </span>
+                        #}
+            <div class="column px-0 py-0 is-full-mobile">
+                <a class="is-3 button borderless-radius is-danger is-outlined is-small is-fullwidth" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-times"></i>
+                    </span>
+                </a>
+            </div>
+
         </div>
 
-        <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-light" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
-            <i class="fas fa-trash-alt"></i>
-        </a>
+        <div class="column is-flex is-justify-content-center is-align-items-center has-background-primary has-text-light hovertext" data-hover="{{ quittance.fileName }}">
+            <span class="overflow-ellipsis nowrap-text is-block is-size-7">
+                {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}
+            </span>
+        </div>
     </div>
 {% endfor %}
 
