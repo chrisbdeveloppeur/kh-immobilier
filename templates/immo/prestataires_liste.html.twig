@@ -49,10 +49,10 @@
                                                             <b>Contacte / Référant :</b> {{ prestataire.contactName }}<br>
                                                     {% endif %}
                                                     {% if prestataire.email %}
-                                                            <b>@mail :</b> {{ prestataire.email }}<br>
+                                                            <b>@mail :</b> <a class="has-text-info" href="mailto:{{ prestataire.email }}">{{ prestataire.email }}</a><br>
                                                     {% endif %}
                                                     {% if prestataire.phone %}
-                                                            <b>Tel :</b> {{ prestataire.phone }}<br>
+                                                            <b>Tel :</b> <a class="has-text-info" href="tel:{{ prestataire.phone }}">{{ prestataire.phone }}</a><br>
                                                     {% endif %}
                                                     {% if prestataire.adresse %}
                                                             <b>Adresse :</b> {{ prestataire.adresse }}<br>

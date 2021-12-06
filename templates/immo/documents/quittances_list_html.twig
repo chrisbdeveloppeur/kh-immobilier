@@ -1,4 +1,59 @@
+
+<table class="table">
+    <thead>
+        <tr class="is-size-7">
+            <th><abbr title="Quittance">Quittance</abbr></th>
+            <th><abbr title="Date">Date</abbr></th>
+            <th><abbr title="Actions">Actions</abbr></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr class="is-size-7">
+            <th><abbr title="Quittance">Quittance</abbr></th>
+            <th><abbr title="Date">Date</abbr></th>
+            <th><abbr title="Actions">Actions</abbr></th>
+        </tr>
+    </tfoot>
+    <tbody>
+    {% for quittance in entity.quittances|sort %}
+        <tr class="is-size-7">
+            <td class="overflow-ellipsis-100px">
+                {% if quittance.pdfexist %}
+                    <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" title="{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">{{ quittance.fileName }}</a>
+                {% else %}
+                    <a href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" title="{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">{{ quittance.fileName }}</a>
+                {% endif %}
+            </td>
+            <td>
+                <span>{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}</span>
+            </td>
+            <td>
+                {% if quittance.pdfexist %}
+                    <a title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                        <span class="icon">
+                            <i class="fas fa-lg fa-file-pdf"></i>
+                        </span>
+                    </a>
+                    <a title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                        <div class="icon">
+                            <i class="fas fa-lg fa-file-word"></i>
+                        </div>
+                    </a>
+                {% endif %}
+                <a class="" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-times"></i>
+                    </span>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 {% for quittance in entity.quittances|sort %}
+
+   {#
     <div class="column is-flex is-flex-direction-column box-shadow-bulma px-0 py-0 mx-2 my-2 border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
 
         <div class="column py-0 px-0 is-flex-tablet is-flex-direction-row">
@@ -20,11 +75,11 @@
                     </div>
                 </a>
             {% endif %}
-                        {#
+
                     <span class="is-dark" title="Fichier édité le {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}">
                         {{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'y", locale='fr')|capitalize }}
                     </span>
-                        #}
+
             <a class="column px-0 py-0 is-full-mobile" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
                 <div class="is-3 button borderless-radius is-danger is-outlined is-small is-fullwidth">
                     <span class="icon">
@@ -41,25 +96,27 @@
             </span>
         </div>
     </div>
+
+    #}
 {% endfor %}
 
-                    {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
-                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
-                            <span class="icon">
-                                <i class="fas fa-2x fa-file-alt"></i>
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            <span><b>Quittance</b></span>
-                        </a>
-                    {% elseif form.vars.name == 'locataire' and entity.logement is null %}
-                        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
-                            <span>
-                                Pour éditer une quittance...
-                            </span>
-                            <span class="px-3">
-                                <a class="button is-small is-light is-outlined" title="Ajouter un logement au locataire" onclick="let btn = document.querySelector('div#locataire').nextElementSibling.click();">
-                                    Ajouter un logement
-                                </a>
-                            </span>
-                        </span>
-                    {% endif %}
+{% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
+    <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire_twig.id }) }}" class="column has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 is-relative file is-hidden has-background-info" title="Editer une quittance de loyer pour {{ locataire_twig }}">
+        <span class="icon">
+            <i class="fas fa-2x fa-file-alt"></i>
+            <i class="fas fa-plus"></i>
+        </span>
+        <span><b>Quittance</b></span>
+    </a>
+{% elseif form.vars.name == 'locataire' and entity.logement is null %}
+    <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-one-third-mobile is-2-widescreen mx-2 my-2 px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
+        <span>
+            Pour éditer une quittance...
+        </span>
+        <span class="px-3">
+            <a class="button is-small is-light is-outlined" title="Ajouter un logement au locataire" onclick="let btn = document.querySelector('div#locataire').nextElementSibling.click();">
+                Ajouter un logement
+            </a>
+        </span>
+    </span>
+{% endif %}
