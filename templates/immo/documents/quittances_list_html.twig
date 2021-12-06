@@ -2,6 +2,7 @@
 <table class="table">
     <thead>
         <tr class="is-size-7">
+            <th>N°</th>
             <th>Quittance</th>
             <th>Date</th>
             <th>Actions</th>
@@ -9,6 +10,7 @@
     </thead>
     <tfoot>
         <tr class="is-size-7">
+            <th>N°</th>
             <th>Quittance</th>
             <th>Date</th>
             <th>Actions</th>
@@ -17,12 +19,18 @@
     <tbody>
     {% for quittance in entity.quittances|sort %}
         <tr class="is-size-7">
+            <td class="has-background-primary has-text-light" title="Quittance N° {{ quittance.id }}">
+                <span class="has-text-light"><b>{{ quittance.id }}</b></span>
+            </td>
+
             <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ quittance.fileName }}">
                 <span class="has-text-light"><b>{{ quittance.fileName }}</b></span>
             </td>
+
             <td class="has-background-primary">
                 <span class="has-text-light">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
             </td>
+
             <td>
 
                 <a class="button is-primary is-outlined is-size-7" {% if not quittance.pdfexist %}disabled="true" title="Fichier au format .pdf indisponible"{% endif %} {% if quittance.pdfexist %}title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}"{% endif %}>
