@@ -25,7 +25,7 @@
         <p class="title is-5">Quittances de loyers</p>
         <p class="subtitle is-6">Visionner & éditer des quittances de loyers</p>
 
-        <div class="is-flex-desktop is-flex-direction-row is-justify-content-center">
+        <div class="">
 
             {{ include('immo/documents/quittances_list_html.twig') }}
 
@@ -42,7 +42,9 @@
         <p class="title is-5">Autres documents</p>
         <p class="subtitle is-6">Uploader & consulter les documents du locataires</p>
 
-        <div class="is-flex-desktop">
+        <div class="">
+
+            {{ include('immo/documents/documents_list.html.twig') }}
 
             {{ form_start(form_documents) }}
             <div class="file has-name is-boxed is-justify-content-center is-align-items-center px-2 py-2 column is-full">
@@ -70,8 +72,6 @@
                 </label>
             </div>
             {{ form_end(form_documents) }}
-
-            {{ include('immo/documents/documents_list.html.twig') }}
 
         </div>
 
