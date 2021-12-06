@@ -12,13 +12,13 @@
                         </div>
                     </a>
 
-                    <div class="column px-0 py-0 is-full-mobile">
-                        <a class="is-3 button borderless-radius is-danger is-outlined is-small is-fullwidth" href="{{ path('document_delete', {'id': document.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                    <a class="column px-0 py-0 is-full-mobile" href="{{ path('document_delete', {'id': document.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                        <a class="is-3 button borderless-radius is-danger is-outlined is-small is-fullwidth">
                             <span class="icon">
                                 <i class="fas fa-lg fa-times"></i>
                             </span>
                         </a>
-                    </div>
+                    </a>
 
                 </div>
 
