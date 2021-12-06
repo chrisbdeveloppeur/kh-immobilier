@@ -1,0 +1,51 @@
+{% set extension = document.fileName|split('.')|last %}
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
+            {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}
+                <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
+                    <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">
+                                    <span class="icon">
+                                        <i class="fas fa-2x fa-file"></i>
+                                    </span>
+                        <span class="overflow-ellipsis nowrap-text is-block is-size-7 px-2" style="width: inherit">
+                                        {{ document.title }}
+                                    </span>
+                    </figure>
+                </div>
+            {% elseif extension == 'pdf' %}
+                <figure class="image is-flex is-justify-content-center" style="height: 85vh">
+                    <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" class="iframe-pdf"></iframe>
+                </figure>
+            {% else %}
+                <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
+                    <figure class="image is-flex is-justify-content-center">
+                        <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="max-height: 85vh; width: auto">
+                    </figure>
+                </div>
+            {% endif %}
+
+            <div class="column py-0 px-0 is-flex-tablet is-flex-direction-row has-background-light">
+
+                <a class="button borderless-radius is-small is-primary is-outlined is-fullwidth" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">
+                    <div class="icon">
+                        <i class="fas fa-lg fa-file-download"></i>
+                    </div>
+                </a>
+
+                <a class="column px-0 py-0 is-full-mobile" href="{{ path('document_delete', {'id': document.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                    <div class="is-3 button borderless-radius is-danger is-outlined is-small is-fullwidth">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-times"></i>
+                                        </span>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>

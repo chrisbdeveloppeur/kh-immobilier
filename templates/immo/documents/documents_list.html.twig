@@ -23,8 +23,8 @@
                     <span class="has-text-light"><b>{{ document.id }}</b></span>
                 </td>
 
-                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ document.fileName }}">
-                    <span class="has-text-light"><b>{{ document.fileName }}</b></span>
+                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ document.title }}">
+                    <span class="has-text-light"><b>{{ document.title }}</b></span>
                 </td>
 
                 <td class="has-background-primary">
@@ -32,6 +32,13 @@
                 </td>
 
                 <td>
+
+                    <a class="button is-primary is-outlined is-size-7 button-modal" title="Voir le document">
+                        <div class="icon">
+                            <i class="fas fa-lg fa-eye"></i>
+                        </div>
+                    </a>
+                    {{ include('immo/documents/modal_box.html.twig') }}
 
                     <a class="button is-primary is-outlined is-size-7" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
                         <div class="icon">
