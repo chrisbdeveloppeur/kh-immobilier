@@ -1,3 +1,57 @@
+<div class="table-container">
+    <table class="table is-fullwidth">
+        <thead>
+        <tr class="is-size-7">
+            <th>N°</th>
+            <th>Document</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr class="is-size-7">
+            <th>N°</th>
+            <th>Document</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </tfoot>
+        <tbody>
+        {% for document in entity.documents|sort %}
+            <tr class="is-size-7">
+                <td class="has-background-primary has-text-light" title="Quittance N° {{ document.id }}">
+                    <span class="has-text-light"><b>{{ document.id }}</b></span>
+                </td>
+
+                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ document.fileName }}">
+                    <span class="has-text-light"><b>{{ document.fileName }}</b></span>
+                </td>
+
+                <td class="has-background-primary">
+                    <span class="has-text-light">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
+                </td>
+
+                <td>
+
+                    <a class="button is-primary is-outlined is-size-7" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                        <div class="icon">
+                            <i class="fas fa-lg fa-file-download"></i>
+                        </div>
+                    </a>
+                    <a class="button is-danger is-outlined is-size-7" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la document">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-times"></i>
+                    </span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{#
 <div class="column mx-2 my-2 border-radius-2px border-dotted-2px" style="min-height: 30vh;">
     <div class="columns is-multiline is-flex is-flex-direction-row is-justify-content-space-evenly">
         {% for document in entity.documents %}
@@ -112,3 +166,4 @@
         {% endif %}
     </div>
 </div>
+#}
