@@ -8,6 +8,7 @@
 
 {#            <div class="column is-flex-desktop is-align-items-center is-flex-direction-column px-0 py-0">#}
 
+    {#
                 <div class="is-flex-tablet is-justify-content-center">
                     <div class="tags has-addons mb-0 mx-1">
                         <span class="tag is-light has-text-weight-bold">Nombre total de biens immobiliers</span>
@@ -18,25 +19,29 @@
                         <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
                     </div>
                 </div>
+      #}
 
-                <div class="tags mb-2 is-justify-content-center">
-                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'A-Z', 'street') }}</span>
-                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
-                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Superficie', 'superficie') }}</span>
-{#                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>#}
-{#                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}</span>#}
-                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Loyer', 'loyer_ttc') }}</span>
-                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Syndic/Syndicat', 'copropriete.name') }}</span>
-                </div>
-{#                <span class="">{{ knp_pagination_filter(biens_immos, ['building']) }}</span>#}
+    <div class="tags mb-2 is-justify-content-center">
+        <span class="tag is-primary">Trier vos biens immobiliers</span>
+        <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'A-Z', 'street') }}</span>
+        <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
+        <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Superficie', 'superficie') }}</span>
+        {#                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>#}
+        {#                    <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}</span>#}
+        <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Loyer', 'loyer_ttc') }}</span>
+        <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Syndic/Syndicat', 'copropriete.name') }}</span>
+    </div>
+    {#                <span class="">{{ knp_pagination_filter(biens_immos, ['building']) }}</span>#}
 
-    <div class="column is-flex-desktop is-flex-direction-row-reverse px-0 py-0">
 
-        <div class="column is-full-touch">
+    <div class="column is-flex-desktop is-flex-direction-row-reverse is-justify-content-center px-0 py-0">
+
+        <div class="column is-full-touch is-2">
             {{ include('immo/side_infos.html.twig') }}
         </div>
 
-        <div class="column px-0 py-0 is-flex-desktop is-flex-direction-column is-align-items-center is-two-thirds is-full-touch">
+        <div class="column px-0 py-0 is-flex-desktop is-flex-direction-column is-half is-full-touch">
+
             {{ knp_pagination_render(biens_immos) }}
 
             {% set total_loyer_ttc = 0 %}
@@ -46,7 +51,7 @@
                 {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
                 {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                 {% set total_charges =  total_charges + bien_immo.charges %}
-                <div class="column is-full-touch is-four-fifths-desktop">
+                <div class="column is-full">
                     {{ include('immo/biens_card.html.twig') }}
                 </div>
             {% else %}
