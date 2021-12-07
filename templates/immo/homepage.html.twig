@@ -30,22 +30,28 @@
                 </div>
 {#                <span class="">{{ knp_pagination_filter(biens_immos, ['building']) }}</span>#}
 
-    <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
-        {{ knp_pagination_render(biens_immos) }}
+    <div class="column is-flex-desktop is-flex-direction-row-reverse px-0 py-0">
 
-        {% set total_loyer_ttc = 0 %}
-        {% set total_loyer_hc = 0 %}
-        {% set total_charges = 0 %}
-        {% for bien_immo in biens_immos %}
-            {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
-            {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
-            {% set total_charges =  total_charges + bien_immo.charges %}
-            <div class="column is-two-thirds is-full-touch is-two-fifths-widescreen">
-                {{ include('immo/biens_card.html.twig') }}
-            </div>
-        {% else %}
+        <div class="column is-full-touch">
+            {{ include('immo/side_infos.html.twig') }}
+        </div>
 
-            <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
+        <div class="column px-0 py-0 is-flex-desktop is-flex-direction-column is-align-items-center is-two-thirds is-full-touch">
+            {{ knp_pagination_render(biens_immos) }}
+
+            {% set total_loyer_ttc = 0 %}
+            {% set total_loyer_hc = 0 %}
+            {% set total_charges = 0 %}
+            {% for bien_immo in biens_immos %}
+                {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
+                {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
+                {% set total_charges =  total_charges + bien_immo.charges %}
+                <div class="column is-full-touch is-four-fifths-desktop">
+                    {{ include('immo/biens_card.html.twig') }}
+                </div>
+            {% else %}
+
+                <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
                 <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
                     <span class="icon">
                         <i class="fas fa-info-circle"></i>
@@ -54,13 +60,14 @@
                         <b>Vous n'avez aucun Biens immobiliers enregistrés</b>
                     </span>
                 </span>
-                <a href="{{ path('bien_immo_new') }}" class="button is-small is-info is-light">Ajouter un bien immobilier</a>
+                    <a href="{{ path('bien_immo_new') }}" class="button is-small is-info is-light">Ajouter un bien immobilier</a>
+                </div>
+
+            {% endfor %}
+
+            <div class="mb-6">
+                {{ knp_pagination_render(biens_immos) }}
             </div>
-
-        {% endfor %}
-
-        <div class="mb-6">
-            {{ knp_pagination_render(biens_immos) }}
         </div>
 
     </div>
