@@ -43,7 +43,7 @@
             {{ include('immo/documents/documents_list.html.twig') }}
 
             {{ form_start(form_documents, {'attr':{'class':'is-flex-tablet is-justify-content-center'}}) }}
-            <div class="file has-name is-boxed is-justify-content-center is-align-items-center px-0 py-0 column is-half box-shadow-bulma-hover">
+            <div class="file has-name is-boxed is-justify-content-center is-align-items-center px-0 py-0 column is-half">
                 <label class="file-label">
                     <span class="has-background-primary has-text-light"><b>Uploader vos fichiers</b></span>
                     {{ form_widget(form_documents.file) }}
@@ -64,7 +64,7 @@
                         </div>
 
                     </div>
-                    <button class="button is-info is-small borderless-radius" type="submit"><b>Valider</b></button>
+                    <button class="button is-info is-small borderless-radius box-shadow-bulma-hover" type="submit"><b>Valider</b></button>
                 </label>
             </div>
             {{ form_end(form_documents) }}
