@@ -16,7 +16,8 @@
                 </div>
             {% elseif extension == 'pdf' %}
                 <div class="is-flex is-justify-content-center" style="height: 85vh">
-                    <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}#view=fitH" width="100%" height="100%"></iframe>
+                    {#<iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}#view=fitH" width="100%" height="100%"></iframe>#}
+                    <object data="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}#view=fitH" width="100%" height="100%"></object>
                 </div>
             {% else %}
                 <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
