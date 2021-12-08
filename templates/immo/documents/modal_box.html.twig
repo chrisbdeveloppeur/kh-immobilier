@@ -6,22 +6,22 @@
             {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}
                 <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
                     <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">
-                                    <span class="icon">
-                                        <i class="fas fa-2x fa-file"></i>
-                                    </span>
+                        <span class="icon">
+                            <i class="fas fa-2x fa-file"></i>
+                        </span>
                         <span class="overflow-ellipsis nowrap-text is-block is-size-7 px-2" style="width: inherit">
-                                        {{ document.title }}
-                                    </span>
+                            {{ document.title }}
+                        </span>
                     </figure>
                 </div>
             {% elseif extension == 'pdf' %}
-                <figure class="image is-flex is-justify-content-center" style="height: 85vh">
-                    <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" class="iframe-pdf"></iframe>
-                </figure>
+                <div class="column is-flex is-justify-content-center is-align-items-center">
+                    <iframe src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" width="650" height="900" align="middle" class="iframe-pdf"></iframe>
+                </div>
             {% else %}
                 <div class="is-white {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
                     <figure class="image is-flex is-justify-content-center">
-                        <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="max-height: 85vh; width: auto">
+                        <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" alt="{{ document.fileName }}" style="max-height: 85vh; width: auto">
                     </figure>
                 </div>
             {% endif %}
