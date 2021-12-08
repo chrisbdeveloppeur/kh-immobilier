@@ -1,5 +1,5 @@
 <div class="table-container">
-    <table class="table">
+    <table class="table is-hoverable is-striped">
         <thead>
         <tr class="is-size-7">
             <th>N°</th>
@@ -19,16 +19,16 @@
         <tbody>
         {% for document in entity.documents|sort %}
             <tr class="is-size-7">
-                <td class="has-background-primary has-text-light" title="Quittance N° {{ document.id }}">
-                    <span class="has-text-light"><b>{{ document.id }}</b></span>
+                <td class="has-text-dark has-background-light" title="Quittance N° {{ document.id }}">
+                    <span class="has-text-dark"><b>{{ document.id }}</b></span>
                 </td>
 
-                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ document.title }}" style="width: 100%;">
-                    <span class="has-text-light"><b>{{ document.title }}</b></span>
+                <td class="overflow-ellipsis-100px has-text-dark" title="{{ document.title }}" style="width: 100%;">
+                    <span class="has-text-dark"><b>{{ document.title }}</b></span>
                 </td>
 
-                <td class="has-background-primary">
-                    <span class="has-text-light">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
+                <td class=">
+                    <span class="has-text-dark">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
                 </td>
 
                 <td class="column">
@@ -84,7 +84,7 @@
 
                 <div class="is-white button-modal {{ document.createdDate|format_datetime(pattern="y", locale='fr') }} {{ document.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">
                     {% if extension not in ['png','jpeg','jpg','bmp'] %}
-                        <figure class="has-background-primary has-text-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center hovertext zoom-mouse-hover" data-hover="{{ document.title }}" style="height: 120px;width: 96px">
+                        <figure class="has-text-dark is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center hovertext zoom-mouse-hover" data-hover="{{ document.title }}" style="height: 120px;width: 96px">
                             <span class="icon">
                                 <i class="fas fa-2x fa-file"></i>
                             </span>
@@ -93,7 +93,7 @@
                             </span>
                         </figure>
                     {% else %}
-                        <figure class="image is-96x96 is-4by5 has-background-primary hovertext zoom-mouse-hover" data-hover="{{ document.title }}">
+                        <figure class="image is-96x96 is-4by5 hovertext zoom-mouse-hover" data-hover="{{ document.title }}">
                             <img src="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" style="object-fit: contain">
                         </figure>
                     {% endif %}
@@ -164,7 +164,7 @@
                                 {{ document.title }}
                             </span>
                     </a>
-                    <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-light" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
+                    <a class="icon mx-1 my-1 border-radius-2px is-absolute-top-0 is-right-0 is-medium has-background-dark has-text-dark" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer le document">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </div>

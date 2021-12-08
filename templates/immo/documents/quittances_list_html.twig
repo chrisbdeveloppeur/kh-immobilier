@@ -1,5 +1,5 @@
 <div class="table-container">
-    <table class="table">
+    <table class="table is-striped is-hoverable">
         <thead>
         <tr class="is-size-7">
             <th>N°</th>
@@ -19,16 +19,16 @@
         <tbody>
         {% for quittance in entity.quittances|sort %}
             <tr class="is-size-7">
-                <td class="has-background-primary has-text-light" title="Quittance N° {{ quittance.id }}">
-                    <span class="has-text-light"><b>{{ quittance.id }}</b></span>
+                <td class=" has-text-dark has-background-light" title="Quittance N° {{ quittance.id }}">
+                    <span class="has-text-dark"><b>{{ quittance.id }}</b></span>
                 </td>
 
-                <td class="overflow-ellipsis-100px has-background-primary has-text-light" title="{{ quittance.fileName }}" style="width: 100%">
-                    <span class="has-text-light"><b>{{ quittance.fileName }}</b></span>
+                <td class="overflow-ellipsis-100px  has-text-dark" title="{{ quittance.fileName }}" style="width: 100%">
+                    <span class="has-text-dark"><b>{{ quittance.fileName }}</b></span>
                 </td>
 
-                <td class="has-background-primary">
-                    <span class="has-text-light">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
+                <td class="">
+                    <span class="has-text-dark">{{ quittance.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
                 </td>
 
                 <td>
@@ -66,7 +66,7 @@
             <span><b>Quittance</b></span>
         </a>
     {% elseif form.vars.name == 'locataire' and entity.logement is null %}
-        <span class="has-text-light is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-full-mobile is-2-widescreen px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
+        <span class="has-text-dark is-flex is-flex-direction-column is-justify-content-center is-align-items-center box-shadow-bulma border-radius-2px has-background-light is-one-fifth is-full-mobile is-2-widescreen px-2 py-2 file is-hidden has-background-info" style="line-height: normal">
         <span>
             Pour éditer une quittance...
         </span>
