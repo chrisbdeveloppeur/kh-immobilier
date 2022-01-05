@@ -82,7 +82,7 @@
                     <span class="tag is-small is-dark">
                         <b>{{ bien_immo.street }}</b>
                     </span>
-                    <a href="{{ path('duplicate', {'id': bien_immo.id}) }}" class="tag is-small button is-info" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                    <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-small button is-info" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
                         <span class="icon">
                             <i class="fas fa-clone"></i>
                         </span>
@@ -209,7 +209,7 @@
                                 </p>
                                 {#{% if locataires|length == 0 %}#}
                                     <p class="control">
-                                        <a href="{{ path('locataire_new') }}" class="button is-small is-light" title="Créer un nouveau locataire">
+                                        <a href="{{ path('locataire_new') }}#locataire" class="button is-small is-light" title="Créer un nouveau locataire">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-plus"></i>
                                         </span>
@@ -226,7 +226,7 @@
                                 </p>
                                 {#{% if logements|length == 0 %}#}
                                     <p class="control">
-                                        <a href="{{ path('bien_immo_new') }}" class="button is-small is-light" title="Créer un nouveau bien immobilier">
+                                        <a href="{{ path('bien_immo_new') }}#logement" class="button is-small is-light" title="Créer un nouveau bien immobilier">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-plus"></i>
                                         </span>

@@ -165,7 +165,7 @@
                                 </span>
                                 </a>
                             {% else %}
-                                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
+                                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
                                 <span class="icon has-text-dark text-info-onhover is-hidden-touch">
                                     <i class="fas fa-user-slash"></i>
                                 </span>
@@ -225,7 +225,7 @@
             </table>
         </div>
         <div class="column has-text-centered">
-            <a href="{{ path('bien_immo_new') }}" class="button mb-2 is-small is-dark bg-info-onhover">
+            <a href="{{ path('bien_immo_new') }}#logement" class="button mb-2 is-small is-dark bg-info-onhover">
                 <span class="icon px-3">
                     <i class="fas fa-lg fa-building"></i>
                     <i class="fas fa-plus"></i>
