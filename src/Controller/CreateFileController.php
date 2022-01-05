@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\Settings;
 
 class CreateFileController extends AbstractController
 {
@@ -96,6 +98,16 @@ class CreateFileController extends AbstractController
             shell_exec($cmd);
             return true;
         }
+
+        // Set PDF renderer.
+//// Make sure you have `tecnickcom/tcpdf` in your composer dependencies.
+//        Settings::setPdfRendererName(Settings::PDF_RENDERER_TCPDF);
+//// Path to directory with tcpdf.php file.
+//// Rigth now `TCPDF` writer is depreacted. Consider to use `DomPDF` or `MPDF` instead.
+//        Settings::setPdfRendererPath('vendor/tecnickcom/tcpdf');
+//        $phpWord = IOFactory::load("../public/documents/quittances/".$file_name, 'Word2007');
+//        $phpWord->save("../public/documents/quittances/".$file_name.".pdf", 'PDF');
+
     }
 
 
