@@ -23,7 +23,7 @@ class MailController
     }
 
 
-    public function sendMessage($file_path, $locataire)
+    public function sendQuittance($file_path, $locataire)
     {
         $mail = (new \Swift_Message('Quittance de loyer'))
             ->setFrom('admin@edit-word.com')

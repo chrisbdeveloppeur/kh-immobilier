@@ -147,4 +147,33 @@ class QuittancesController extends AbstractController
         return $this->redirect($referer.'#files');
     }
 
+
+    /**
+     * @Route("/send-quittance-{id}", name="send_quittance")
+     */
+    public function mail(Request $request,MailController $mailController, QuittanceRepository $quittanceRepository, $id){
+        $quittance = $quittanceRepository->find($id);
+        $locataire = $quittance->getLocataire();
+        $mail = $locataire->getEmail();
+
+        //        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($locataire->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
+        if ($quittance->getPdfExist()){
+            $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
+        }else{
+            $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.docx';
+        }
+        $mailController->sendQuittance($quittance_file_path, $locataire);
+        $this->addFlash('success', 'La quittance de loyer à bien été envoyer pour : ' . $mail );
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
+    }
+
 }
