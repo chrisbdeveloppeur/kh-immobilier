@@ -6,12 +6,21 @@ use App\Entity\BienImmo;
 use App\Entity\Entreprise;
 use App\Entity\Locataire;
 use App\Entity\Solde;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
@@ -41,6 +50,37 @@ class AppFixtures extends Fixture
         $bien5 = $this->setBien($locataire5,'26 rue Jean piestre','91100','Corbeil-Essonnes','700','50','10','Studio','MATERA','35');
         $manager->persist($locataire5);
         $manager->persist($bien5);
+
+        //make standard $users
+        for ($i = 1; $i <= 5; $i++){
+            $user = new User();
+            $user->setEmail('user'.$i.'@gmail.com');
+            $user->setGender($faker->randomElement(['M.','Mme.']));
+            $user->setRoles(['ROLE_USER']);
+            $user->setIsVerified(1);
+            $password = $this->encoder->encodePassword($user, '123456');
+            $user->setPassword($password);
+            $user->setFirstName('user'.$i.' name');
+            $user->setLastName('user'.$i.' last name');
+
+            $manager->persist($user);
+        }
+
+        //make privilege $users
+        for ($i = 1; $i <= 2; $i++){
+            $user = new User();
+            $user->setEmail('admin'.$i.'@gmail.com');
+            $user->setGender($faker->randomElement(['M.','Mme.']));
+            $user->setRoles(['ROLE_ADMIN']);
+            $user->setIsVerified(1);
+            $password = $this->encoder->encodePassword($user, '123456');
+            $user->setPassword($password);
+            $user->setFirstName('admin'.$i.' name');
+            $user->setLastName('admin'.$i.' last name');
+
+            $manager->persist($user);
+        }
+
 //*/
 
 //        for ($i = 0; $i<= 15; $i++) {
