@@ -59,7 +59,7 @@ class QuittancesController extends AbstractController
             $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
             $file = str_replace(" ", "_",$file);
 
-            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $request);
+            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file);
 
             $quittance->setFileName($file);
             $quittance->setLocataire($locataire);

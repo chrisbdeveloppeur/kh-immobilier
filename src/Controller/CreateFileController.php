@@ -65,7 +65,7 @@ class CreateFileController extends AbstractController
         return $template;
     }
 
-    public function createQuittanceFile($template, $locataire, $file, Request $request)
+    public function createQuittanceFile($template, $locataire, $file)
     {
         $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
 
@@ -77,37 +77,48 @@ class CreateFileController extends AbstractController
         }
 
         $template->saveAs("../public/documents/quittances/" . $file . ".docx");
-        $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
-        $word->saveAs("../public/documents/quittances/" . $file . ".docx");
+//        $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
+//        $rendererName = Settings::PDF_RENDERER_DOMPDF;
+//        $rendererLibraryPath = realpath('../vendor/dompdf/dompdf');
+//        Settings::setPdfRenderer($rendererName, $rendererLibraryPath);
+//        $word = IOFactory::load("../public/documents/quittances/" . $file . ".docx",'Word2007');
+//        $word->save("../public/documents/quittances/" . $file . '.pdf', 'PDF');
 
-        $response_pdf_exist = $this->convertWordToPdf($file . ".docx", $locataire->getId(), $request);
+        $response_pdf_exist = $this->convertWordToPdf($file);
         return $response_pdf_exist;
     }
 
     private function convertWordToPdf($file_name)
     {
-        $project_dir = $this->getParameter('kernel.project_dir');
-//        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
-        $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\public\documents\quittances\\';
-        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
+//        $project_dir = $this->getParameter('kernel.project_dir');
+////        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
+//        $chemin = 'soffice --headless --convert-to pdf '.$project_dir.'\public\documents\quittances\\';
+//        $cmd = $chemin . $file_name . ' --outdir '.$project_dir.'\public\documents\quittances';
+//
+//        if (shell_exec($cmd) == null || shell_exec($cmd) == false){
+//            $this->addFlash('warning', 'Une erreur est survenue lors de l\'édition du fichier <b>.pdf</b>');
+//            return false;
+//        }else{
+//            shell_exec($cmd);
+//            return true;
+//        }
 
-        if (shell_exec($cmd) == null || shell_exec($cmd) == false){
-            $this->addFlash('warning', 'Une erreur est survenue lors de l\'édition du fichier <b>.pdf</b>');
-            return false;
-        }else{
-            shell_exec($cmd);
-            return true;
-        }
-
-        // Set PDF renderer.
-//// Make sure you have `tecnickcom/tcpdf` in your composer dependencies.
+//         Set PDF renderer.
+// Make sure you have `tecnickcom/tcpdf` in your composer dependencies.
 //        Settings::setPdfRendererName(Settings::PDF_RENDERER_TCPDF);
-//// Path to directory with tcpdf.php file.
-//// Rigth now `TCPDF` writer is depreacted. Consider to use `DomPDF` or `MPDF` instead.
+// Path to directory with tcpdf.php file.
+// Rigth now `TCPDF` writer is depreacted. Consider to use `DomPDF` or `MPDF` instead.
 //        Settings::setPdfRendererPath('vendor/tecnickcom/tcpdf');
-//        $phpWord = IOFactory::load("../public/documents/quittances/".$file_name, 'Word2007');
-//        $phpWord->save("../public/documents/quittances/".$file_name.".pdf", 'PDF');
-
+        $rendererName = Settings::PDF_RENDERER_DOMPDF;
+        $rendererLibraryPath = realpath('../vendor/dompdf/dompdf');
+        Settings::setPdfRenderer($rendererName, $rendererLibraryPath);
+        $word = IOFactory::load("../public/documents/quittances/" . $file_name . ".docx",'Word2007');
+        if ($word){
+            $word->save("../public/documents/quittances/" . $file_name . '.pdf', 'PDF');
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
