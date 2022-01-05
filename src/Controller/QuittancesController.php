@@ -151,7 +151,7 @@ class QuittancesController extends AbstractController
     /**
      * @Route("/send-quittance-{id}", name="send_quittance")
      */
-    public function mail(Request $request,MailController $mailController, QuittanceRepository $quittanceRepository, $id){
+    public function mail(Request $request, MailController $mailController, QuittanceRepository $quittanceRepository, $id){
         $quittance = $quittanceRepository->find($id);
         $locataire = $quittance->getLocataire();
         $mail = $locataire->getEmail();
