@@ -25,6 +25,7 @@ const main_background_2 = require('./img/jpg/atom-background.jpg');
 const main_background_immo_1 = require('./img/svg/undraw_apartment_rent_o-0-ut.svg');
 const main_background_immo_2 = require('./img/jpg/architecture-g348c7dafa_1920.jpg');
 const main_background_immo_3 = require('./img/png/houses.png');
+const favicon = require('./img/png/edit-word-icon.png');
 
 
 var bulmaCalendar = require('bulma-calendar');

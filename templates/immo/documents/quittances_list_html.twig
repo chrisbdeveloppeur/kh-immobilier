@@ -1,3 +1,4 @@
+{% if entity.quittances|length != 0 %}
 <div class="table-container">
     <table class="table is-striped is-hoverable">
         <thead>
@@ -55,6 +56,7 @@
         </tbody>
     </table>
 </div>
+{% endif %}
 
 <div class="is-flex-tablet is-justify-content-center">
     {% if locataire_twig is defined and locataire_twig and locataire_twig.logement %}
