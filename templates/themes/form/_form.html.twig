@@ -72,6 +72,7 @@
         {% else %}
             {% set hidden = '' %}
         {% endif %}
+
         {{ form_start(form, {'attr': {'class': 'bien-immo logement copropriete column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
         {% if form.vars.name in ['bien_immo','locataire'] %}
