@@ -73,6 +73,8 @@ class BienImmoController extends AbstractController
             'sans_logement' => true,
         ]);
 
+
+
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('superficie')->setData(0);
         $form->get('loyer_hc')->setData(0);
