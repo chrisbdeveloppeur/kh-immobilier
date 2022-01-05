@@ -34,6 +34,12 @@
 
                 <td>
 
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance au locataire : {{ quittance.locataire.email }}" onclick="return confirm('Êtes-vous sûr de vouloir envoyer ce document?')">
+                        <span class="icon">
+                            <i class="fas fa-lg fa-paper-plane"></i>
+                        </span>
+                    </a>
+
                     <a class="button is-primary is-outlined is-size-7 borderless-radius" {% if not quittance.pdfexist %}disabled="true" title="Fichier au format .pdf indisponible"{% endif %} {% if quittance.pdfexist %}title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}"{% endif %}>
                     <span class="icon">
                         <i class="fas fa-lg fa-file-pdf"></i>
@@ -45,6 +51,7 @@
                             <i class="fas fa-lg fa-file-word"></i>
                         </div>
                     </a>
+
                     <a class="button is-danger is-outlined is-size-7 borderless-radius" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la quittance">
                     <span class="icon">
                         <i class="fas fa-lg fa-times"></i>
