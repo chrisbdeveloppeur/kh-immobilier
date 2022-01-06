@@ -54,6 +54,7 @@ class QuittancesController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
             $template = $this->createFileController->fillQuittanceTemplate($locataire,$form);
             $dateForFile = $form->get('date')->getData()->format('d-m-Y');
             $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
