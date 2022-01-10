@@ -1,6 +1,6 @@
 {% if entity.quittances|length != 0 %}
 <div class="table-container">
-    <table class="table is-striped is-hoverable">
+    <table class="table is-striped is-narrow is-hoverable">
         <thead>
         <tr class="is-size-7">
             <th>N°</th>
@@ -18,13 +18,14 @@
         </tr>
         </tfoot>
         <tbody>
-        {% for quittance in entity.quittances|sort %}
+        {% set numero_quittance = 1 %}
+        {% for quittance in entity.quittances|sort((a, b) => b.createdDate <=> a.createdDate) %}
             <tr class="is-size-7">
-                <td class=" has-text-dark has-background-light" title="Quittance N° {{ quittance.id }}">
-                    <span class="has-text-dark"><b>{{ quittance.id }}</b></span>
+                <td class=" has-text-dark has-background-light" title="Quittance N° {{ numero_quittance }}">
+                    <span class="has-text-dark"><b>{{ numero_quittance }}</b></span>
                 </td>
 
-                <td class="overflow-ellipsis-100px  has-text-dark" title="{{ quittance.fileName }}" style="width: 100%">
+                <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ quittance.fileName }}" style="width: 100%">
                     <span class="has-text-dark"><b>{{ quittance.fileName }}</b></span>
                 </td>
 
@@ -34,7 +35,7 @@
 
                 <td>
 
-                    <a class="button is-primary is-outlined is-size-7 borderless-radius" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance au locataire : {{ quittance.locataire.email }}" onclick="return confirm('Êtes-vous sûr de vouloir envoyer ce document?')">
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" {% if quittance.locataire.email %}href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance au locataire : {{ quittance.locataire.email }}" onclick="return confirm('Êtes-vous sûr de vouloir envoyer ce document?')"{% else %}title="Aucun email défini pour le locataire" disabled="true"{% endif %}>
                         <span class="icon">
                             <i class="fas fa-lg fa-paper-plane"></i>
                         </span>
@@ -59,6 +60,7 @@
                     </a>
                 </td>
             </tr>
+            {% set numero_quittance = numero_quittance + 1 %}
         {% endfor %}
         </tbody>
     </table>

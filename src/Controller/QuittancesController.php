@@ -174,7 +174,7 @@ class QuittancesController extends AbstractController
         $mailController->sendQuittance($quittance_file_path, $locataire);
         $this->addFlash('success', 'La quittance de loyer à bien été envoyer pour : ' . $mail );
         $referer = $request->headers->get('referer');
-        return $this->redirect($referer);
+        return $this->redirect($referer.'#files');
     }
 
 }

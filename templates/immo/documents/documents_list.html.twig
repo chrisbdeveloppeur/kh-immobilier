@@ -1,9 +1,8 @@
 {% if entity.documents|length != 0 %}
 <div class="table-container">
-    <table class="table is-hoverable is-striped">
+    <table class="table is-hoverable is-striped is-narrow">
         <thead>
         <tr class="is-size-7">
-            <th>N°</th>
             <th>Document</th>
             <th>Date</th>
             <th>Actions</th>
@@ -11,20 +10,16 @@
         </thead>
         <tfoot>
         <tr class="is-size-7">
-            <th>N°</th>
             <th>Document</th>
             <th>Date</th>
             <th>Actions</th>
         </tr>
         </tfoot>
         <tbody>
-        {% for document in entity.documents|sort %}
+        {% for document in entity.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}
             <tr class="is-size-7">
-                <td class="has-text-dark has-background-light" title="Quittance N° {{ document.id }}">
-                    <span class="has-text-dark"><b>{{ document.id }}</b></span>
-                </td>
 
-                <td class="overflow-ellipsis-100px has-text-dark" title="{{ document.title }}" style="width: 100%;">
+                <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ document.title }}" style="width: 100%;">
                     <span class="has-text-dark"><b>{{ document.title }}</b></span>
                 </td>
 
@@ -61,13 +56,10 @@
                 {% set object = entity.locataires.current %}
             {% endif %}
 
-            {% for document in object.documents|sort %}
+            {% for document in object.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}
                 <tr class="is-size-7">
-                    <td class="has-text-dark has-background-light" title="Quittance N° {{ document.id }}">
-                        <span class="has-text-dark"><b>{{ document.id }}</b></span>
-                    </td>
 
-                    <td class="overflow-ellipsis-100px has-text-dark" title="{{ document.title }}" style="width: 100%;">
+                    <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ document.title }}" style="width: 100%;">
                         <span class="has-text-dark"><b>{{ document.title }}</b></span>
                     </td>
 
