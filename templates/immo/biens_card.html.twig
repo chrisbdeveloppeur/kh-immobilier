@@ -53,12 +53,22 @@
     <div class="card-content px-0 py-0">
         <div class="content">
 
-            <div class="column is-flex-desktop px-0 pt-0 pb-1">
-                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
-                    Adresse
+            <div class="column is-flex px-0 pt-0 pb-1">
+                <div class="column overflow-ellipsis is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
+                    <span class="is-hidden-touch">
+                        Adresse
+                    </span>
+                    <span class="is-hidden-desktop">
+                        <i class="fas fa-2x fa-map-marked-alt"></i>
+                    </span>
                 </div>
                 <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du logement">
+                    <a href="https://maps.google.com/?q={{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}" onclick="window.open(
+                        this.href,
+                        'newwindow',
+                        'width=1000,height=600');
+                        return false;"
+                       class="has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du logement">
                         <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
                         <span class="icon show-on-hover-target is-hidden-touch">
                         <i class="fas fa-search"></i>
@@ -67,10 +77,15 @@
                 </div>
             </div>
 
-            <div class="column is-flex-desktop px-0 pt-0 pb-1">
+            <div class="column is-flex px-0 pt-0 pb-1">
 
-                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
-                    Locataire
+                <div class="column overflow-ellipsis is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
+                    <span class="is-hidden-touch">
+                        Locataire
+                    </span>
+                    <span class="is-hidden-desktop">
+                        <i class="fas fa-2x fa-user"></i>
+                    </span>
                 </div>
 
                 <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
@@ -110,37 +125,28 @@
 
             </div>
 
-{#            <div class="column is-flex-desktop px-0 pt-0 pb-1">#}
-{#                <div style="width: 150px;" class="px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">#}
-{#                    Loyer#}
-{#                </div>#}
-{#                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
-{#                    <b>{{ bien_immo.loyerHc }} €</b>#}
-{#                </div>#}
-
-{#            </div>#}
-
-{#            <div class="column is-flex-desktop px-0 pt-0 pb-1">#}
-{#                <div style="width: 150px;" class="px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">#}
-{#                    Charges#}
-{#                </div>#}
-{#                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">#}
-{#                    <b>{{ bien_immo.charges }} €</b>#}
-{#                </div>#}
-{#            </div>#}
-
-            <div class="column is-flex-desktop px-0 pt-0 pb-1">
-                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover hovertext" data-hover="Charges incluses">
-                    <span>Loyer *</span>
+            <div class="column is-flex px-0 pt-0 pb-1">
+                <div class="column overflow-ellipsis is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover hovertext" data-hover="Charges incluses">
+                    <span class="is-hidden-touch">
+                        Loyer *
+                    </span>
+                    <span class="is-hidden-desktop">
+                        <i class="fas fa-2x fa-hand-holding-usd"></i>
+                    </span>
                 </div>
                 <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
                 </div>
             </div>
 
-            <div class="column is-flex-desktop px-0 pt-0 pb-1">
-                <div class="column overflow-ellipsis is-4-desktop px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
-                    Syndic
+            <div class="column is-flex px-0 pt-0 pb-1">
+                <div class="column overflow-ellipsis is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
+                    <span class="is-hidden-touch">
+                        Syndic
+                    </span>
+                    <span class="is-hidden-desktop">
+                        <i class="fas fa-2x fa-hands-helping"></i>
+                    </span>
                 </div>
                 <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
                     {% if bien_immo.copropriete and bien_immo.copropriete.name %}
@@ -172,17 +178,30 @@
 
         </div>
     </div>
-    <footer class="card-footer is-flex-direction-column-mobil card-footer-column-mobil">
+    <footer class="card-footer card-footer-column-mobil">
         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">
-            Gérer ce logement
+            <span class="is-hidden-touch">
+                Gérer ce logement
+            </span>
+            <span class="is-hidden-desktop">
+                <i class="fas fa-2x fa-cogs"></i>
+            </span>
         </a>
         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">
-            Documents
+            <span class="is-hidden-touch">
+                Documents
+            </span>
+            <span class="is-hidden-desktop">
+                <i class="fas fa-2x fa-folder-open"></i>
+            </span>
         </a>
         {% if bien_immo.locataires is not empty %}
             <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered is-flex is-flex-direction-column">
-                <span>
+                <span class="is-hidden-touch">
                     Editer une quittance
+                </span>
+                <span class="is-hidden-desktop">
+                    <i class="fas fa-2x fa-file-signature"></i>
                 </span>
             </a>
         {% endif %}
