@@ -51,10 +51,10 @@
     </header>
 
     <div class="card-content px-0 py-0">
-        <div class="content">
+        <div class="content card-childs-even">
 
             <div class="column is-flex px-0 pt-0 pb-1">
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center">
+                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center">
                     <span class="is-hidden-touch">
                         Adresse
                     </span>
@@ -79,7 +79,7 @@
 
             <div class="column is-flex px-0 pt-0 pb-1">
 
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Locataire occupant">
+                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Locataire occupant">
                     <span class="is-hidden-touch">
                         Locataire
                     </span>
@@ -126,7 +126,7 @@
             </div>
 
             <div class="column is-flex px-0 pt-0 pb-1">
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover hovertext" data-hover="Charges incluses">
+                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover hovertext" data-hover="Charges incluses">
                     <span class="is-hidden-touch">
                         Loyer *
                     </span>
@@ -140,7 +140,7 @@
             </div>
 
             <div class="column is-flex px-0 pt-0 pb-1">
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-background-primary has-text-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Société de Syndic">
+                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Société de Syndic">
                     <span class="is-hidden-touch">
                         Syndic
                     </span>
@@ -179,7 +179,7 @@
         </div>
     </div>
     <footer class="card-footer card-footer-column-mobil">
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered">
             <span class="is-hidden-touch">
                 Gérer ce logement
             </span>
@@ -187,7 +187,7 @@
                 <i class="fas fa-2x fa-cogs"></i>
             </span>
         </a>
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered">
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered">
             <span class="is-hidden-touch">
                 Documents
             </span>
@@ -196,7 +196,7 @@
             </span>
         </a>
         {% if bien_immo.locataires is not empty %}
-            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item bg-primary-onhover is-primary-touch text-white-onhover text-bold-onhover has-text-centered is-flex is-flex-direction-column">
+            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered is-flex is-flex-direction-column">
                 <span class="is-hidden-touch">
                     Editer une quittance
                 </span>

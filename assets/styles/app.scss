@@ -333,6 +333,14 @@ form.quittances{
   visibility: visible;
 }
 
+.card-childs-even > *:nth-child(even) > div:first-child{
+  background: $primary;
+}
+.card-childs-even > *:nth-child(odd) > div:first-child{
+  background: $success;
+
+}
+
 
 //.sticky-left{
 //  position: sticky;

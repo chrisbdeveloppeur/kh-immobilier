@@ -22,7 +22,11 @@
       #}
 
     <div class="tags mb-2 is-justify-content-center">
-        <span class="tag is-primary">Trier vos biens immobiliers</span>
+        <span class="tag hovertext borderless-radius" data-hover="Trier les biens immobiliers">
+            <span class="icon">
+                <i class="fas fa-filter"></i> :
+            </span>
+        </span>
         <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'A-Z', 'street') }}</span>
         <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
         <span class="tag borderless-radius">{{ knp_pagination_sortable(biens_immos, 'Superficie', 'superficie') }}</span>
