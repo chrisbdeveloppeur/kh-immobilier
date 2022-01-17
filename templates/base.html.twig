@@ -185,12 +185,21 @@
 
         let onHoverElements = document.querySelectorAll('.show-on-hover');
         onHoverElements.forEach(function(elem) {
-            let targetToShow = elem.querySelectorAll('.show-on-hover-target');
+                let targetToShow = elem.querySelectorAll('.show-on-hover-target');
                 elem.addEventListener('mouseover', function () {
-                    targetToShow.forEach(target => target.classList.add('show-on-hover-target-active'));
+                    targetToShow.forEach(function(target){
+                        const width = (target.scrollWidth) + "px";
+                        target.classList.add('show-on-hover-target-active');
+                        target.style.width = width;
+                    }
+                );
                 });
                 elem.addEventListener('mouseleave', function () {
-                    targetToShow.forEach(target => target.classList.remove('show-on-hover-target-active'));
+                    targetToShow.forEach(function(target){
+                            target.classList.remove('show-on-hover-target-active');
+                            target.style.width = '0';
+                        }
+                    );
                 });
             }
         );

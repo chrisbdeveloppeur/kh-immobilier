@@ -185,16 +185,17 @@ i.fa-search-js{
 .show-on-hover-target{
   //display: inline-block !important;
   visibility: hidden;
-  width: 0 !important;
+  width: 0px;
   opacity: 0 !important;
-  //transition: .3s;
+  //padding: 0 !important;
+  transition: .3s;
 }
 
 .show-on-hover-target-active{
   visibility: visible;
-  width: max-content !important;
   opacity: 1 !important;
-  //transition: .3s;
+  padding: 0 10px !important;
+  transition: .3s;
 }
 
 .is-absolute{
