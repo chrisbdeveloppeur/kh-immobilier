@@ -353,8 +353,11 @@
             }
         });
 
-        function toogleReadonlyClass() {
-            readonlyClass.forEach(function (elem) {
+        function toogleReadonlyClass(btn) {
+            let form = btn.parentElement.parentElement;
+            console.log(form);
+            let inputs = form.querySelectorAll('.readonly');
+            inputs.forEach(function (elem) {
                 elem.toggleAttribute('readonly');
                 if (elem.hasAttribute('readonly')){
                     elem.style.background = '#dbdbdb';
@@ -471,16 +474,16 @@
 
 
         {#     ############  SCRIPT FOR EDIT QUITTANCE   #############     #}
-        let btn = document.querySelectorAll('.quittance-lock-btn');
+        let btn = document.querySelectorAll('.form-lock-btn');
         btn.forEach(function (ancrage) {
 
             ancrage.addEventListener('click', function () {
-                toogleReadonlyClass();
+                toogleReadonlyClass(ancrage);
                 ancrage.classList.toggle('is-danger');
                 if (ancrage.querySelector('i').classList.contains('fa-unlock')) {
-                    ancrage.setAttribute('title', 'Modifier les informations de la quittance');
+                    ancrage.setAttribute('title', 'Modifier les informations');
                 }else {
-                    ancrage.setAttribute('title', 'Vérouiler les informations de la quittance');
+                    ancrage.setAttribute('title', 'Vérouiler les informations');
                 }
                 ancrage.querySelector('i').classList.toggle('fa-unlock');
                 ancrage.querySelector('i').classList.toggle('fa-lock');

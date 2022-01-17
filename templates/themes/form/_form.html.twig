@@ -78,54 +78,67 @@
         {% if form.vars.name in ['bien_immo','locataire'] %}
 
             {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
-                <div class="tags mb-0 has-addons bien-immo logement is-hidden is-justify-content-end">
-                    <span class="tag is-small is-dark">
-                        <b>{{ bien_immo.street }}</b>
-                    </span>
-                    <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-small button is-info" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                <div class="is-flex is-justify-content-space-between">
+                    <a class="tag is-small is-danger is-light form-lock-btn" title="Modifier les informations">
                         <span class="icon">
-                            <i class="fas fa-clone"></i>
+                            <i class="fas fa-lg fa-lock"></i>
                         </span>
                     </a>
-                    <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-small button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
-                        <span class="icon">
-                            <i class="fas fa-trash-alt"></i>
+
+                    <div class="tags mb-0 has-addons bien-immo logement is-hidden is-justify-content-end">
+                        <span class="tag is-small is-dark">
+                            <b>{{ bien_immo.street }}</b>
                         </span>
-                    </a>
+                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-small button is-info" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                            <span class="icon">
+                                <i class="fas fa-clone"></i>
+                            </span>
+                        </a>
+                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-small button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
+                            <span class="icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="tags has-addons mb-0 bien-immo copropriete is-hidden is-justify-content-end">
+                        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}
+                            <span class="tag is-small is-dark is-uppercase">
+                            <b>{{ bien_immo.copropriete }}</b>
+                        </span>
+                        {% endif %}
+                    </div>
                 </div>
+
+
             {% endif %}
 
             {% if form.vars.name == 'locataire' and 'new' not in app.request.get('_route')  %}
-                <div class="tags mb-0 has-addons bien-immo locataire is-hidden is-justify-content-end">
-                    <span class="tag is-small is-dark">
-                        {% if locataire.gender == 'Couple' %}
-                            <b>{{ locataire.gender }} {{ locataire.lastName }}</b>
-                        {% else %}
-                            <b>{{ locataire.gender }} {{ locataire }}</b>
-                        {% endif %}
-                    </span>
-                    <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="tag is-small button is-danger" title="Supprimer ce locataire" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce locataire?');">
+                <div class="is-flex is-justify-content-space-between">
+                    <a class="tag is-small is-danger is-light form-lock-btn" title="Modifier les informations">
                         <span class="icon">
-                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-lg fa-lock"></i>
                         </span>
                     </a>
-                </div>
-            {% endif %}
-
-            {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}
-                <div class="bien-immo copropriete is-hidden has-text-centered subtitle">
-                    <span class="has-text-weight-bold is-uppercase"><b>{{ bien_immo.copropriete.name }}</b></span>
+                    <div class="tags mb-0 has-addons bien-immo locataire is-hidden is-justify-content-end">
+                        <span class="tag is-small is-dark">
+                            {% if locataire.gender == 'Couple' %}
+                                <b>{{ locataire.gender }} {{ locataire.lastName }}</b>
+                            {% else %}
+                                <b>{{ locataire.gender }} {{ locataire }}</b>
+                            {% endif %}
+                        </span>
+                        <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="tag is-small button is-danger" title="Supprimer ce locataire" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce locataire?');">
+                            <span class="icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             {% endif %}
 
         {% elseif form.vars.name in ['quittances'] %}
-            <div class="field has-text-right">
-                <a class="button is-small is-danger is-light quittance-lock-btn" title="Modifier les informations de la quittance">
-                    <span class="icon">
-                        <i class="fas fa-lg fa-lock"></i>
-                    </span>
-                </a>
-            </div>
+            {{ include('includes/form_lock_btn.html.twig') }}
         {% endif %}
 
         {% for child in form %}

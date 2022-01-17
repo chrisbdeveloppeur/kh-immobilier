@@ -75,6 +75,7 @@ class BienImmoType extends AbstractType
 
         $builder
             ->add('locataires', EntityType::class,[
+                'attr' => ['class' => 'readonly'],
                 'label' => 'Locataire',
                 'class' => Locataire::class,
                 'mapped' => false,
@@ -101,22 +102,22 @@ class BienImmoType extends AbstractType
             ])
             ->add('street', TextType::class,[
                 'label' => "Nom de la rue*",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('building', TextType::class,[
                 'label' => "Complément d'adresse",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'help' => 'Bâtiment / Étage / Escalier / Interphone',
                 'required' => false,
             ])
             ->add('cp', TextType::class,[
                 'label' => "Code postal*",
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('city', TextType::class,[
                 'label' => "Ville*",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('type', ChoiceType::class,[
                 'label' => "Type de logement",
@@ -130,37 +131,37 @@ class BienImmoType extends AbstractType
                     'T6' => 'T6',
                 ],
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'has-text-centered'],
+                'attr' => ['class' => 'has-text-centered readonly'],
             ])
             ->add('superficie', NumberType::class,[
                 'label' => "Superficie",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'required' => true,
             ])
             ->add('loyer_hc', NumberType::class,[
                 'label' => "Loyer HC",
                 'help' => 'Loyer sans les charges',
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('charges', NumberType::class,[
                 'label' => "Charges",
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('echeance', ChoiceType::class,[
                 'label' => "Echéance*",
                 'choices' => $echeance,
                 'help' => 'Echéance de paiement',
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'has-text-centered'],
+                'attr' => ['class' => 'has-text-centered readonly'],
             ])
 
             ->add('solde', NumberType::class, [
                 'mapped' => false,
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
 
 
@@ -168,37 +169,37 @@ class BienImmoType extends AbstractType
             ->add('coproName', TextType::class,[
                 'mapped' => false,
                 'label' => "Nom du Syndic/Syndicat",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'required' => false,
             ])
             ->add('coproContact', TextType::class,[
                 'mapped' => false,
                 'label' => "Contact / Référent",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'required' => false,
             ])
             ->add('coproEmail', EmailType::class,[
                 'mapped' => false,
                 'label' => "Adresse Email",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'required' => false,
             ])
             ->add('coproPhone', TelType::class,[
                 'mapped' => false,
                 'label' => "Numéro de téléphone",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'required' => false,
             ])
             ->add('coproAdresse', TextType::class,[
                 'mapped' => false,
                 'label' => "Adresse postal",
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'required' => false,
             ])
             ->add('coproInfos',TextareaType::class,[
                 'mapped' => false,
                 'label' => "Informations complémentaires",
-                'attr' => ['class' => 'textarea is-small has-text-centered'],
+                'attr' => ['class' => 'textarea is-small has-text-centered readonly'],
                 'required' => false,
             ]);
 
@@ -209,6 +210,7 @@ class BienImmoType extends AbstractType
                 'mapped' => true,
                 'required' => false,
                 'placeholder' => 'Sans gestionnaire',
+                'attr' => ['class' => 'readonly'],
             ]);
         }
 

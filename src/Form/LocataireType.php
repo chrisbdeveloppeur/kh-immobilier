@@ -86,6 +86,7 @@ class LocataireType extends AbstractType
                     }
                 },
                 'query_builder' => $this->user_context,
+                'attr' => ['class' => 'readonly'],
 
             ])
             ->add('first_name', TextType::class,[
@@ -97,7 +98,7 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur incorrecte',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('last_name', TextType::class,[
                 'label' => 'Nom*',
@@ -108,12 +109,12 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur incorrecte',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('email', EmailType::class,[
                 'label' => 'Email',
                 'required' => false,
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('phone', TelType::class,[
                 'label' => 'Numéro de téléphone',
@@ -125,7 +126,7 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur incorrecte',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => ['class' => 'input is-small has-text-centered readonly'],
             ])
             ->add('gender', ChoiceType::class,[
                 'label' => 'Sexe',
@@ -133,7 +134,8 @@ class LocataireType extends AbstractType
                     'Homme' => 'M.',
                     'Femme' => 'Mme.',
                     'Couple' => 'Couple'
-                ]
+                ],
+                'attr' => ['class' => 'readonly'],
             ])
             ->add('mode', ChoiceType::class,[
                 'label' => 'Moyen de paiement',
@@ -141,7 +143,8 @@ class LocataireType extends AbstractType
                     'Virement bancaire' => 'Virement bancaire',
                     'Espèces' => 'Espèces',
                     'Chèque' => 'Chèque',
-                ]
+                ],
+                'attr' => ['class' => 'readonly'],
             ]);
 
             if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
@@ -151,6 +154,7 @@ class LocataireType extends AbstractType
                     'mapped' => true,
                     'required' => false,
                     'placeholder' => 'Sans gestionnaire',
+                    'attr' => ['class' => 'readonly'],
                 ]);
             }
 
