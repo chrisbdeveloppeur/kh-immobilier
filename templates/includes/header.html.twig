@@ -18,7 +18,7 @@
                 <div class="navbar-start">
 
                     <a href="{{ path('immo_accueil') }}" class="navbar-item is-light show-on-hover">
-                        <span class="icon-text">
+                        <span class="icon-text has-text-primary">
                             <span class="icon">
                               <i class="fas fa-lg fa-city"></i>
                             </span>
@@ -29,7 +29,7 @@
 
                     {% if is_granted("ROLE_SUPER_ADMIN") %}
                         <a href="{{ path('entreprenariat_home') }}" class="navbar-item is-light show-on-hover">
-                            <span class="icon-text">
+                            <span class="icon-text has-text-primary">
                                 <span class="icon">
                                   <i class="fas fa-lg fa-user-tie"></i>
                                 </span>
@@ -45,14 +45,14 @@
                     {% if is_granted("ROLE_SUPER_ADMIN") %}
 
                         <div class="navbar-item has-dropdown">
-                            <span class="icon-text navbar-link">
+                            <span class="icon-text navbar-link has-text-primary">
                                 <span class="icon">
                                   <i class="fas fa-lg fa-users-cog"></i>
                                 </span>
                                 <span>Gestionnaires</span>
                             </span>
 
-                            <div class="dropdown-trigger">
+                            <div class="dropdown-trigger has-text-primary">
                                 <div class="navbar-dropdown is-size-5-mobile">
                                     <a class="navbar-item" href="{{ path('user_index') }}" title="Accéder à la liste des gestionnaires">
                                         Liste des gestionnaires
