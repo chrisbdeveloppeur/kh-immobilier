@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/entreprenariat/devis/download_file.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/entreprenariat/devis/download_file.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/files/templates/chrisbdev/devis_template.docx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/files/templates/chrisbdev/devis_template.docx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/src/Controller/DevisController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
-              <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+              <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -602,16 +602,15 @@
       <workItem from="1642337754851" duration="2316000" />
       <workItem from="1642411927402" duration="599000" />
       <workItem from="1642416162499" duration="8401000" />
-      <workItem from="1642499862827" duration="9638000" />
+      <workItem from="1642499862827" duration="10864000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1048685000" />
+    <option name="totallyTimeSpent" value="1049911000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2261745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -975,7 +974,7 @@
     <entry file="file://$PROJECT_DIR$/src/Controller/DevisController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
-          <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+          <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
         </state>
       </provider>
     </entry>
