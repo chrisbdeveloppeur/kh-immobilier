@@ -22,14 +22,14 @@ class DevisController extends AbstractController
      * @Route("/{id}/{entreprise_name}/devis", name="devis")
      * @IsGranted("ROLE_USER")
      */
-    public function home(Request $request, $entreprise_name, $id, EntrepriseRepository $entrepriseRepository): Response
+    public function home(Request $request, $entreprise_name, $id, EntrepriseRepository $entrepriseRepository, CreateFileController $fileController): Response
     {
         $entreprise = $entrepriseRepository->find($id);
         $entreprise_name_lower = mb_strtolower($entreprise_name);
         $form = $this->createForm(DevisType::class);
         $form->handleRequest($request);
 
-        if (!file_exists("../assets/files/templates/devis_".$entreprise_name."_template.docx")){
+        if (!file_exists("../assets/files/templates/".$entreprise_name."/devis_template.docx")){
             $this->addFlash('warning', 'Le template de base pour le devis de '.$entreprise_name.' n\'existe pas');
             $referer = $request->headers->get('referer');
             return $this->redirect($referer);
@@ -53,7 +53,7 @@ class DevisController extends AbstractController
             $total_ht_4 = $quantity_4 * $price_unit_ht_4;
             $total = $total_ht_1+$total_ht_2+$total_ht_3+$total_ht_4;
             $account = (30/100)*$total;
-            $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/devis_".$entreprise_name."_template.docx");
+            $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/".$entreprise_name."/devis_template.docx");
             $template->setValue("client_name",$form->get("client_name")->getData());
             $template->setValue("phone",$form->get("phone")->getData());
             $template->setValue("email",$form->get("email")->getData());
@@ -88,12 +88,13 @@ class DevisController extends AbstractController
             }
 
             $file_name = $file . ".docx";
-            $path_to_devis = "../assets/files/devis/" . $file_name;
+            $path_to_devis = "../public/documents/devis/" . $file_name;
             $template->saveAs($path_to_devis);
-            $word = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/devis/".$file.".docx");
-            $word->saveAs("../public/documents/devis/" . $file . ".docx");
+            //$word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/devis/".$file.".docx");
+            //$word->saveAs("../public/documents/devis/" . $file . ".html");
 
-            $this->convertWordToPdf($file_name, $entreprise_name, $id);
+            //$this->convertWordToPdf($file_name, $entreprise_name, $id);
+            $fileController->convertWordToPdf($file, 'devis');
 
             if (file_exists('../public/documents/devis/' . $file . '.pdf')){
                 $pdf_exist = true;

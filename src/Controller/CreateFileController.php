@@ -84,11 +84,11 @@ class CreateFileController extends AbstractController
 //        $word = IOFactory::load("../public/documents/quittances/" . $file . ".docx",'Word2007');
 //        $word->save("../public/documents/quittances/" . $file . '.pdf', 'PDF');
 
-        $response_pdf_exist = $this->convertWordToPdf($file);
+        $response_pdf_exist = $this->convertWordToPdf($file, 'quittances');
         return $response_pdf_exist;
     }
 
-    private function convertWordToPdf($file_name)
+    public function convertWordToPdf($file_name, $files_type)
     {
 //        $project_dir = $this->getParameter('kernel.project_dir');
 ////        $chemin = '"%ProgramFiles%\LibreOffice\program\soffice" --headless --convert-to pdf '.$project_dir.'\assets\files\quittances\\';
@@ -112,9 +112,9 @@ class CreateFileController extends AbstractController
         $rendererName = Settings::PDF_RENDERER_DOMPDF;
         $rendererLibraryPath = realpath('../vendor/dompdf/dompdf');
         Settings::setPdfRenderer($rendererName, $rendererLibraryPath);
-        $word = IOFactory::load("../public/documents/quittances/" . $file_name . ".docx",'Word2007');
+        $word = IOFactory::load("../public/documents/".$files_type."/" . $file_name . ".docx",'Word2007');
         if ($word){
-            $word->save("../public/documents/quittances/" . $file_name . '.pdf', 'PDF');
+            $word->save("../public/documents/".$files_type."/" . $file_name . '.pdf', 'PDF');
             return true;
         }else{
             return false;
