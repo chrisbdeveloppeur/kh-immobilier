@@ -45,12 +45,13 @@
 
 
 {% block aside_menu %}
+    {% if section == 'immobilier' or section == 'entreprenariat' %}
     <button class="button m-2 is-white borderless-radius" style="position: fixed;left: 0;z-index: 6" onclick="this.nextElementSibling.classList.toggle('is-hidden')">
         <span class="icon">
             <i class="fas fa-lg fa-stream"></i>
         </span>
     </button>
-    <div class="p-5 has-background-white is-hidden" style="position: fixed;left: 0;z-index: 6; height: 94vh;overflow: auto">
+    <div class="p-5 has-background-white is-hidden box-shadow-bulma aside-menu" style="position: fixed;left: 0;z-index: 6; height: 94vh;overflow: auto">
         <button class="button m-2 is-primary is-outlined borderless-radius" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.classList.toggle('is-hidden')">
         <span class="icon">
             <i class="fas fa-lg fa-times"></i>
@@ -61,9 +62,10 @@
         {% elseif section == 'entreprenariat' %}
             {{ include('includes/menus/aside_menu_entreprenariat.html.twig') }}
         {% else %}
-            {{ include('includes/menus/aside_menu_base.html.twig') }}
+        {#{{ include('includes/menus/aside_menu_base.html.twig') }}#}
         {% endif %}
     </div>
+    {% endif %}
 {% endblock %}
 
 
@@ -432,7 +434,9 @@
 
             navbarBurger.forEach(function (drop) {
                 if ( target.parentElement === drop || target === drop){
-                    navbarMenu.classList.toggle('is-active')
+                    navbarMenu.classList.toggle('is-active');
+                }else {
+                    drop.classList.remove('is-active');
                 }
             });
 
