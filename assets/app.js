@@ -27,6 +27,9 @@ const main_background_immo_2 = require('./img/jpg/architecture-g348c7dafa_1920.j
 const main_background_immo_3 = require('./img/png/houses.png');
 const favicon = require('./img/png/edit-word-favicon.png');
 const icon_white_blue = require('./img/png/edit-word-icon-white-blue.png');
+const second_header_background = require('./img/jpg/3d-render-of-low-poly-design-on-an-abstract-blur-background.jpg');
+const second_header_background_2 = require('./img/jpg/3d-technology-digital-wave-particle-background.jpg');
+const second_header_background_3 = require('./img/jpg/SL-051919-20420-10.jpg');
 
 
 var bulmaCalendar = require('bulma-calendar');
