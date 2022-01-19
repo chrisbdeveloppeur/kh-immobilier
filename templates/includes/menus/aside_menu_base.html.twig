@@ -1,7 +1,7 @@
-<aside class="menu {{ hidden_status }}">
+<aside class="menu is-full-touch {{ hidden_status }}">
     {% if is_granted("ROLE_USER") %}
     <p class="menu-label">
-        <span class="icon-text has-text-primary">
+        <span class="icon-text">
             <span class="icon">
                 <i class="fas fa-city"></i>
             </span>
@@ -51,7 +51,7 @@
     {% endif %}
     {% if is_granted("ROLE_ADMIN") %}
         <p class="menu-label">
-            <span class="icon-text has-text-primary">
+            <span class="icon-text">
                 <span class="icon">
                     <i class="fas fa-user-tie"></i>
                 </span>
@@ -85,7 +85,7 @@
     {% endif %}
     {% if is_granted("ROLE_SUPER_ADMIN") %}
         <p class="menu-label">
-            <span class="icon-text has-text-primary">
+            <span class="icon-text">
                 <span class="icon">
                     <i class="fas fa-users"></i>
                 </span>
@@ -107,7 +107,7 @@
     {% endif %}
     {% if is_granted("ROLE_USER") %}
     <p class="menu-label">
-        <span class="icon-text has-text-primary">
+        <span class="icon-text">
             <span class="icon">
                 <i class="fas fa-id-badge"></i>
             </span>

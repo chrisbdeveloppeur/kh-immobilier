@@ -46,14 +46,14 @@
 
 {% block aside_menu %}
     {% if is_granted('ROLE_USER') %}
-        <div class="px-4 py-6 has-background-white is-hidden box-shadow-bulma aside-menu" id="aside-menu">
-            <button class="button m-2 is-primary borderless-radius" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.classList.toggle('is-hidden')">
+        <div class="px-4 py-6 has-background-white box-shadow-bulma aside-menu is-hidden-touch" id="aside-menu">
+            <button class="button m-2 is-primary borderless-radius" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.style.left='-600px';this.parentElement.style.visibility='hidden';">
                 <span class="icon">
                     <i class="fas fa-lg fa-times"></i>
                 </span>
             </button>
 
-            {% include('includes/menus/aside_menu_base.html.twig') with {'hidden_status':''} %}
+            {% include('includes/menus/aside_menu_base.html.twig') with {'hidden_status':'','text_color':''} %}
 
         </div>
     {% endif %}
@@ -67,14 +67,14 @@
             <div class="is-absolute-top-0" style="{% block title_main_background_layer %}background: {% if section == 'immobilier' %}rgba(2, 18, 34, 0.8){% elseif section == 'entreprenariat' %}rgba(2, 18, 34, 0.2){% else %}rgba(2, 18, 34, 0.1){% endif %};{% endblock %}"></div>
             <div class="py-4" style="z-index: 1">
                 {% if is_granted('ROLE_USER') %}
-                    <button class="button m-2 is-white borderless-radius is-hidden-touch" style="position: fixed;left: 0;top: 3.88rem;z-index: 6" onclick="document.getElementById('aside-menu').classList.toggle('is-hidden')">
+                    <button class="button m-2 is-white borderless-radius is-hidden-touch" style="position: fixed;left: 0;top: 3.88rem;z-index: 6" onclick="document.getElementById('aside-menu').style.left='0px';document.getElementById('aside-menu').style.visibility='visible';">
                         <span class="icon">
                             <i class="fas fa-lg fa-stream"></i>
                         </span>
                     </button>
                 {% endif %}
                 <h1 class="title has-text-light has-text-centered is-size-4-mobile">
-                    <span class="icon-text is-align-items-center is-justify-content-center">
+                    <yarnspan class="icon-text is-align-items-center is-justify-content-center">
 
                         <span class="icon is-large">
                             {% if section == 'immobilier' %}
@@ -97,7 +97,7 @@
                             {% block title_main %}<b>Outil d'aministration de vos documents</b>{% endblock %}
                         </span>
 
-                    </span>
+                    </yarnspan>
                 </h1>
             </div>
         </div>
@@ -387,7 +387,6 @@
 
         function toogleReadonlyClass(btn) {
             let form = btn.parentElement.parentElement;
-            console.log(form);
             let inputs = form.querySelectorAll('.readonly');
             inputs.forEach(function (elem) {
                 elem.toggleAttribute('readonly');
@@ -438,6 +437,7 @@
                 if ( target.parentElement === drop || target === drop){
                     navbarMenu.classList.toggle('is-active');
                 }else {
+                    navbarMenu.classList.remove('is-active');
                     drop.classList.remove('is-active');
                 }
             });
@@ -652,7 +652,6 @@
         ////// SCRIPT REMOVE READONLY ON NEW ENTITY FORMS
         {% if 'new' in app.request.get('_route') %}
             let forms = document.querySelectorAll('form');
-            forms.forEach(form => console.log(form));
             forms.forEach(function (form) {
                 let formInputs = form.querySelectorAll('.readonly');
                 formInputs.forEach(function (input) {

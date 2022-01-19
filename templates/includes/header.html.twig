@@ -1,5 +1,5 @@
     <header class="navbar is-light is-fixed-top">
-        <div class="container has-text-centered">
+{#        <div class="container has-text-centered">#}
             <div class="navbar-brand">
                 <a href="{{ path('home') }}" class="navbar-item" title="Retour au menu principal">
                     <span class="icon">
@@ -14,34 +14,6 @@
             </div>
 
             <div id="navbarMenu" class="navbar-menu is-size-5-mobile">
-
-                {#
-                <div class="navbar-start">
-
-                    <a href="{{ path('immo_accueil') }}" class="navbar-item is-light show-on-hover">
-                        <span class="icon-text has-text-primary">
-                            <span class="icon">
-                              <i class="fas fa-lg fa-city"></i>
-                            </span>
-                            <span class="show-on-hover-target is-hidden-touch">Immobilier</span>
-                            <span class="is-hidden-desktop">Immobilier</span>
-                        </span>
-                    </a>
-
-                    {% if is_granted("ROLE_SUPER_ADMIN") %}
-                        <a href="{{ path('entreprenariat_home') }}" class="navbar-item is-light show-on-hover">
-                            <span class="icon-text has-text-primary">
-                                <span class="icon">
-                                  <i class="fas fa-lg fa-user-tie"></i>
-                                </span>
-                                <span class="show-on-hover-target is-hidden-touch">Entreprenariat</span>
-                                <span class="is-hidden-desktop">Entreprenariat</span>
-                            </span>
-                        </a>
-                    {% endif %}
-
-                </div>
-                #}
 
                 <div class="navbar-end">
 
@@ -72,39 +44,13 @@
                         </a>
                     {% endif %}
 
-                    {% include('includes/menus/aside_menu_base.html.twig') with {'hidden_status': 'is-hidden-desktop'} %}
-                    {#
-                    {% if is_granted("ROLE_SUPER_ADMIN") %}
-
-                        <div class="navbar-item has-dropdown">
-                            <span class="icon-text navbar-link has-text-primary">
-                                <span class="icon">
-                                  <i class="fas fa-lg fa-users-cog"></i>
-                                </span>
-                                <span>Gestionnaires</span>
-                            </span>
-
-                            <div class="dropdown-trigger has-text-primary">
-                                <div class="navbar-dropdown is-size-5-mobile">
-                                    <a class="navbar-item" href="{{ path('user_index') }}" title="Accéder à la liste des gestionnaires">
-                                        Liste des gestionnaires
-                                    </a>
-                                    <a class="navbar-item" href="{{ path('app_register') }}" title="Ajouter un gestionnaire">
-                                        Ajouter un gestionnaire
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    {% endif %}
-                    #}
-
+                    <div class="container has-text-centered">
+                        {% include('includes/menus/aside_menu_base.html.twig') with {'hidden_status': 'is-hidden-desktop','text_color':'has-text-light'} %}
+                    </div>
                 </div>
 
             </div>
 
-        </div>
     </header>
 
 
