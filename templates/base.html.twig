@@ -43,8 +43,31 @@
     {{ include('includes/header.html.twig') }}
 {% endblock %}
 
-<section class="is-flex is-flex-direction-column body-section">
 
+{% block aside_menu %}
+    <button class="button m-2 is-white borderless-radius" style="position: fixed;left: 0;z-index: 6" onclick="this.nextElementSibling.classList.toggle('is-hidden')">
+        <span class="icon">
+            <i class="fas fa-lg fa-stream"></i>
+        </span>
+    </button>
+    <div class="p-5 has-background-white is-hidden" style="position: fixed;left: 0;z-index: 6; height: 94vh;overflow: auto">
+        <button class="button m-2 is-primary is-outlined borderless-radius" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.classList.toggle('is-hidden')">
+        <span class="icon">
+            <i class="fas fa-lg fa-times"></i>
+        </span>
+        </button>
+        {% if section == 'immobilier' %}
+            {{ include('includes/menus/aside_menu_immo.html.twig') }}
+        {% elseif section == 'entreprenariat' %}
+            {{ include('includes/menus/aside_menu_entreprenariat.html.twig') }}
+        {% else %}
+            {{ include('includes/menus/aside_menu_base.html.twig') }}
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+<section class="is-flex is-flex-direction-column body-section">
     {% block second_header %}
         <div class="hero is-small is-relative has-background-primary">
             <div class="is-absolute-top-0" style="{% block title_main_background_img %}{% if section == 'immobilier' %}background: center / cover no-repeat url({{ asset('build/images/architecture-g348c7dafa_1920.013c9aa6.jpg') }});{% elseif section == 'entreprenariat' %}background: center / cover no-repeat url({{ asset('build/images/atom-background.2bd570b3.jpg') }});{% else %}background: center / cover no-repeat url({{ asset('build/images/design_main_background.1d5a3f08.png') }});{% endif %}{% endblock %}"></div>
@@ -97,6 +120,8 @@
             </div>
         {% endif %}
     {% endblock %}
+
+
 
 {#    {% block nav_secondaire %}#}
 {#        {% if section == 'immobilier' or section == 'entreprenariat' %}#}
