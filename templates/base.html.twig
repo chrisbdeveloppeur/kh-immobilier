@@ -51,10 +51,10 @@
             <i class="fas fa-lg fa-stream"></i>
         </span>
     </button>
-    <div class="p-5 has-background-white is-hidden box-shadow-bulma aside-menu" style="position: fixed;left: 0;z-index: 6; height: 94vh;overflow: auto">
+    <div class="px-4 py-6 has-background-white is-hidden box-shadow-bulma aside-menu" style="position: fixed;left: 0;z-index: 6; height: 94vh;overflow: auto">
         <button class="button m-2 is-primary borderless-radius" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.classList.toggle('is-hidden')">
         <span class="icon">
-            <i class="fas fa-lg fa-times"></i>
+            <targi class="fas fa-lg fa-times"></targi>
         </span>
         </button>
 
@@ -211,15 +211,17 @@
         let onHoverElements = document.querySelectorAll('.show-on-hover');
         onHoverElements.forEach(function(elem) {
                 let targetToShow = elem.querySelector('.show-on-hover-target');
-                const width = (targetToShow.scrollWidth) + "px";
-                elem.addEventListener('mouseover', function () {
-                    targetToShow.classList.add('show-on-hover-target-active');
-                    targetToShow.style.width = width;
-                });
-                elem.addEventListener('mouseleave', function () {
-                    targetToShow.classList.remove('show-on-hover-target-active');
-                    targetToShow.style.width = '0';
-                });
+                if (targetToShow){
+                    const width = (targetToShow.scrollWidth) + "px";
+                    elem.addEventListener('mouseover', function () {
+                        targetToShow.classList.add('show-on-hover-target-active');
+                        targetToShow.style.width = width;
+                    });
+                    elem.addEventListener('mouseleave', function () {
+                        targetToShow.classList.remove('show-on-hover-target-active');
+                        targetToShow.style.width = '0';
+                    });
+                }
             }
         );
 
@@ -530,7 +532,9 @@
         if (header){
             let ancrage = document.getElementById(header);
             if (ancrage){
-                ancrage.nextElementSibling.click();
+                if (ancrage.nextElementSibling){
+                    ancrage.nextElementSibling.click();
+                }
             }
         }
         {#     ######################################################     #}
@@ -567,14 +571,16 @@
 
             function changePhoneHref() {
                 if (input.parentElement){
-                    let ancrage = input.parentElement.nextElementSibling.querySelector('a');
-                    if (ancrage){
-                        if (!input.value){
-                            ancrage.setAttribute('disabled', true);
-                        }else {
-                            ancrage.removeAttribute('disabled');
+                    if (input.parentElement.nextElementSibling){
+                        let ancrage = input.parentElement.nextElementSibling.querySelector('a');
+                        if (ancrage){
+                            if (!input.value){
+                                ancrage.setAttribute('disabled', true);
+                            }else {
+                                ancrage.removeAttribute('disabled');
+                            }
+                            ancrage.href = 'tel:'+input.value;
                         }
-                        ancrage.href = 'tel:'+input.value;
                     }
                 }
 
