@@ -46,24 +46,20 @@
 
 {% block aside_menu %}
     {% if app.user %}
-    <button class="button m-2 is-white borderless-radius" style="position: fixed;left: 0;z-index: 6" onclick="this.nextElementSibling.classList.toggle('is-hidden')">
+    <button class="button m-2 is-white borderless-radius is-hidden-touch" style="position: fixed;left: 0;z-index: 6" onclick="this.nextElementSibling.classList.toggle('is-hidden')">
         <span class="icon">
             <i class="fas fa-lg fa-stream"></i>
         </span>
     </button>
     <div class="p-5 has-background-white is-hidden box-shadow-bulma aside-menu" style="position: fixed;left: 0;z-index: 6; height: 94vh;overflow: auto">
-        <button class="button m-2 is-primary is-outlined borderless-radius" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.classList.toggle('is-hidden')">
+        <button class="button m-2 is-primary borderless-radius" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.classList.toggle('is-hidden')">
         <span class="icon">
             <i class="fas fa-lg fa-times"></i>
         </span>
         </button>
-        {% if section == 'immobilier' %}
-            {{ include('includes/menus/aside_menu_immo.html.twig') }}
-        {% elseif section == 'entreprenariat' %}
-            {{ include('includes/menus/aside_menu_entreprenariat.html.twig') }}
-        {% else %}
-            {{ include('includes/menus/aside_menu_immo.html.twig') }}
-        {% endif %}
+
+        {% include('includes/menus/aside_menu_base.html.twig') with {'hidden_status':''} %}
+
     </div>
     {% endif %}
 {% endblock %}
@@ -105,6 +101,7 @@
         </div>
     {% endblock %}
     {% block nav_secondaire %}
+        {#
         {% if section == 'immobilier' or section == 'entreprenariat' %}
             <div class="has-background-light custom-dropdown" style="position: sticky;top: 3.25rem;z-index: 5">
                 <div class="is-hidden-desktop is-flex is-justify-content-center pointer-mouse-hover box-shadow-bulma px-1 py-1"  onclick="if (document.querySelector('#nav-secondaire').classList.contains('is-hidden-touch')){this.querySelector('i').classList.replace('fa-chevron-down','fa-chevron-up')}else{this.querySelector('i').classList.replace('fa-chevron-up','fa-chevron-down')};document.querySelector('#nav-secondaire').classList.toggle('is-hidden-touch')">
@@ -121,6 +118,7 @@
                 </div>
             </div>
         {% endif %}
+        #}
     {% endblock %}
 
 

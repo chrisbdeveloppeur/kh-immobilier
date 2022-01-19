@@ -1,48 +1,52 @@
-<aside class="menu">
+<aside class="menu {{ hidden_status }}">
+    {% if is_granted("ROLE_USER") %}
     <p class="menu-label">
-        General
+        Ma gestion immobilière
     </p>
     <ul class="menu-list">
-        <li><a>Dashboard</a></li>
-        <li><a>Customers</a></li>
-    </ul>
-    <p class="menu-label">
-        Administration
-    </p>
-    <ul class="menu-list">
-        <li><a>Team Settings</a></li>
+        <li><a href="{{ path('immo_accueil') }}">Vue d'ensemble</a></li>
         <li>
-            <a class="is-active">Manage Your Team</a>
+            <a>Biens immobiliers</a>
             <ul>
-                <li><a>Members</a></li>
-                <li><a>Plugins</a></li>
-                <li><a>Add a member</a></li>
+                <li><a href="{{ path('bien_immo_index') }}">Mes biens immobiliers</a></li>
+                <li><a href="{{ path('bien_immo_new') }}#logement">Ajouter un bien</a></li>
             </ul>
         </li>
-        <li><a>Invitations</a></li>
-        <li><a>Cloud Storage Environment Settings</a></li>
-        <li><a>Authentication</a></li>
-    </ul>
-    <p class="menu-label">
-        Transactions
-    </p>
-    <ul class="menu-list">
-        <li><a>Payments</a></li>
-        <li><a>Transfers</a></li>
-        <li><a>Balance</a></li>
-    </ul>
-    <ul class="menu-list">
-        <li><a>Team Settings</a></li>
         <li>
-            <a class="is-active">Manage Your Team</a>
+            <a href="{{ path('locataire_index') }}">Locataires</a>
             <ul>
-                <li><a>Members</a></li>
-                <li><a>Plugins</a></li>
-                <li><a>Add a member</a></li>
+                <li><a href="{{ path('locataire_index') }}">Mes locataires</a></li>
+                <li><a href="{{ path('locataire_new') }}#locataire">Ajouter un locataires</a></li>
             </ul>
         </li>
-        <li><a>Invitations</a></li>
-        <li><a>Cloud Storage Environment Settings</a></li>
-        <li><a>Authentication</a></li>
     </ul>
+    {% endif %}
+    {% if is_granted("ROLE_ADMIN") %}
+        <p class="menu-label">
+            Ma gestion d'entreprise
+        </p>
+        <ul class="menu-list">
+            <li><a href="{{ path('entreprenariat_home') }}">Vue d'ensemble</a></li>
+            <li><a href="{{ path('entreprise_index') }}">Mes entreprises</a></li>
+            <li><a href="{{ path('entreprise_new') }}">Ajouter une entreprise</a></li>
+        </ul>
+    {% endif %}
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        <p class="menu-label">
+            Gestionnaires
+        </p>
+        <ul class="menu-list">
+            <li><a href="{{ path('user_index') }}">Liste des gestionnaires</a></li>
+            <li><a href="{{ path('user_new') }}#gestionnaire">Ajouter un gestionnaire</a></li>
+        </ul>
+    {% endif %}
+    {% if is_granted("ROLE_USER") %}
+    <p class="menu-label">
+        Mon profil
+    </p>
+    <ul class="menu-list">
+        <li><a href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Modifier mon profil</a></li>
+        <li><a href="{{ path('change_password', {'id': app.user.id}) }}#securite">Modifier mon mot de passe</a></li>
+    </ul>
+    {% endif %}
 </aside>

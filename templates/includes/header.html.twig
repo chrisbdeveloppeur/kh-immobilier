@@ -15,6 +15,7 @@
 
             <div id="navbarMenu" class="navbar-menu is-size-5-mobile">
 
+                {#
                 <div class="navbar-start">
 
                     <a href="{{ path('immo_accueil') }}" class="navbar-item is-light show-on-hover">
@@ -40,8 +41,39 @@
                     {% endif %}
 
                 </div>
+                #}
 
                 <div class="navbar-end">
+
+                    {% if app.user %}
+                        <div class="navbar-item">
+                            <div class="tags are-medium has-addons is-justify-content-center">
+                                <span class="tag is-size-6-mobile is-primary" title="modifier mon compte">
+                                    <a class="has-text-light" href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire"><b class="is-hidden-touch">Connecté :</b> {{ app.user.username }}</a>
+                                </span>
+                                <a class="tag is-size-6-mobile is-danger" href="{{ path('app_logout') }}" style="text-decoration: none">
+                                    <span class="icon">
+                                        <i class="fas fa-lg fa-sign-out-alt"></i>
+                                    </span>
+                                    <span class="is-hidden-touch">
+                                        Se déconnecté
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="navbar-item">
+                            <span class="icon pr-3">
+                                <i class="fas fa-lg fa-sign-in-alt"></i>
+                            </span>
+                            <span>
+                                Connexion
+                            </span>
+                        </a>
+                    {% endif %}
+
+                    {% include('includes/menus/aside_menu_base.html.twig') with {'hidden_status': 'is-hidden-desktop'} %}
+                    {#
                     {% if is_granted("ROLE_SUPER_ADMIN") %}
 
                         <div class="navbar-item has-dropdown">
@@ -66,32 +98,8 @@
                         </div>
 
                     {% endif %}
-                    {% if app.user %}
-                        <div class="navbar-item">
-                            <div class="tags has-addons is-justify-content-center">
-                                <span class="tag is-size-6-mobile is-primary" title="modifier mon compte">
-                                    <a class="has-text-light" href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Connecté : {{ app.user.username }}</a>
-                                </span>
-                                <a class="tag is-size-6-mobile is-danger" href="{{ path('app_logout') }}" style="text-decoration: none">
-                                    <span class="icon">
-                                        <i class="fas fa-lg fa-sign-out-alt"></i>
-                                    </span>
-                                    <span>
-                                        Se déconnecté
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    {% else %}
-                        <a href="{{ path('app_login') }}" class="navbar-item">
-                            <span class="icon pr-3">
-                                <i class="fas fa-lg fa-sign-in-alt"></i>
-                            </span>
-                            <span>
-                                Connexion
-                            </span>
-                        </a>
-                    {% endif %}
+                    #}
+
                 </div>
 
             </div>
