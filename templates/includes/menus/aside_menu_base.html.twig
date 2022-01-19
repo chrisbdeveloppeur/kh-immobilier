@@ -4,19 +4,35 @@
         Ma gestion immobilière
     </p>
     <ul class="menu-list">
-        <li><a href="{{ path('immo_accueil') }}">Vue d'ensemble</a></li>
         <li>
-            <a>Biens immobiliers</a>
+            <b>
+                <a href="{{ path('immo_accueil') }}">Vue d'ensemble</a>
+            </b>
+        </li>
+        <li>
+            <a>
+                <b>Biens immobiliers</b>
+            </a>
             <ul>
-                <li><a href="{{ path('bien_immo_index') }}">Mes biens immobiliers</a></li>
-                <li><a href="{{ path('bien_immo_new') }}#logement">Ajouter un bien</a></li>
+                <li>
+                    <a href="{{ path('bien_immo_index') }}">Mes biens immobiliers</a>
+                </li>
+                <li>
+                    <a href="{{ path('bien_immo_new') }}#logement">Ajouter un bien</a>
+                </li>
             </ul>
         </li>
         <li>
-            <a href="{{ path('locataire_index') }}">Locataires</a>
+            <a>
+                <b>Locataires</b>
+            </a>
             <ul>
-                <li><a href="{{ path('locataire_index') }}">Mes locataires</a></li>
-                <li><a href="{{ path('locataire_new') }}#locataire">Ajouter un locataires</a></li>
+                <li>
+                    <a href="{{ path('locataire_index') }}">Mes locataires</a>
+                </li>
+                <li>
+                    <a href="{{ path('locataire_new') }}#locataire">Ajouter un locataires</a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -26,9 +42,21 @@
             Ma gestion d'entreprise
         </p>
         <ul class="menu-list">
-            <li><a href="{{ path('entreprenariat_home') }}">Vue d'ensemble</a></li>
-            <li><a href="{{ path('entreprise_index') }}">Mes entreprises</a></li>
-            <li><a href="{{ path('entreprise_new') }}">Ajouter une entreprise</a></li>
+            <li>
+                <b>
+                    <a href="{{ path('entreprenariat_home') }}">Vue d'ensemble</a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="{{ path('entreprise_index') }}">Mes entreprises</a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="{{ path('entreprise_new') }}">Ajouter une entreprise</a>
+                </b>
+            </li>
         </ul>
     {% endif %}
     {% if is_granted("ROLE_SUPER_ADMIN") %}
@@ -36,8 +64,16 @@
             Gestionnaires
         </p>
         <ul class="menu-list">
-            <li><a href="{{ path('user_index') }}">Liste des gestionnaires</a></li>
-            <li><a href="{{ path('user_new') }}#gestionnaire">Ajouter un gestionnaire</a></li>
+            <li>
+                <b>
+                    <a href="{{ path('user_index') }}">Liste des gestionnaires</a>
+                </b>
+            </li>
+            <li>
+                <b>
+                    <a href="{{ path('user_new') }}#gestionnaire">Ajouter un gestionnaire</a>
+                </b>
+            </li>
         </ul>
     {% endif %}
     {% if is_granted("ROLE_USER") %}
@@ -45,8 +81,16 @@
         Mon profil
     </p>
     <ul class="menu-list">
-        <li><a href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Modifier mon profil</a></li>
-        <li><a href="{{ path('change_password', {'id': app.user.id}) }}#securite">Modifier mon mot de passe</a></li>
+        <li>
+            <b>
+                <a href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Modifier mon profil</a>
+            </b>
+        </li>
+        <li>
+            <b>
+                <a href="{{ path('change_password', {'id': app.user.id}) }}#securite">Modifier mon mot de passe</a>
+            </b>
+        </li>
     </ul>
     {% endif %}
 </aside>
