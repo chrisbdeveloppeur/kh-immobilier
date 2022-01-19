@@ -47,7 +47,7 @@
 
     {% block second_header %}
         <div class="hero is-small is-relative has-background-primary">
-            <div class="is-absolute-top-0" style="{% block title_main_background_img %}{% if section == 'immobilier' %}background: 0 -700px / cover no-repeat url({{ asset('build/images/architecture-g348c7dafa_1920.013c9aa6.jpg') }});{% elseif section == 'entreprenariat' %}background: center / cover no-repeat url({{ asset('build/images/atom-background.2bd570b3.jpg') }});{% else %}background: center / cover no-repeat url({{ asset('build/images/design_main_background.1d5a3f08.png') }});{% endif %}{% endblock %}"></div>
+            <div class="is-absolute-top-0" style="{% block title_main_background_img %}{% if section == 'immobilier' %}background: center / cover no-repeat url({{ asset('build/images/architecture-g348c7dafa_1920.013c9aa6.jpg') }});{% elseif section == 'entreprenariat' %}background: center / cover no-repeat url({{ asset('build/images/atom-background.2bd570b3.jpg') }});{% else %}background: center / cover no-repeat url({{ asset('build/images/design_main_background.1d5a3f08.png') }});{% endif %}{% endblock %}"></div>
             <div class="is-absolute-top-0" style="{% block title_main_background_layer %}background: {% if section == 'immobilier' %}rgba(2, 18, 34, 0.8){% elseif section == 'entreprenariat' %}rgba(2, 18, 34, 0.2){% else %}rgba(2, 18, 34, 0.1){% endif %};{% endblock %}"></div>
             <div class="py-4" style="z-index: 1">
                 <h1 class="title has-text-light has-text-centered is-size-4-mobile">
