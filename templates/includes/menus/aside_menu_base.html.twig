@@ -1,12 +1,24 @@
 <aside class="menu {{ hidden_status }}">
     {% if is_granted("ROLE_USER") %}
     <p class="menu-label">
-        Ma gestion immobilière
+        <span class="icon-text has-text-primary">
+            <span class="icon">
+                <i class="fas fa-city"></i>
+            </span>
+            <span>Immobilier</span>
+        </span>
     </p>
     <ul class="menu-list">
         <li>
             <b>
-                <a href="{{ path('immo_accueil') }}">Vue d'ensemble</a>
+                <a href="{{ path('immo_accueil') }}" class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-object-group"></i>
+                    </span>
+                    <span>
+                        Vue d'ensemble
+                    </span>
+                </a>
             </b>
         </li>
         <li>
@@ -39,12 +51,24 @@
     {% endif %}
     {% if is_granted("ROLE_ADMIN") %}
         <p class="menu-label">
-            Ma gestion d'entreprise
+            <span class="icon-text has-text-primary">
+                <span class="icon">
+                    <i class="fas fa-user-tie"></i>
+                </span>
+                <span>Entreprenariat</span>
+            </span>
         </p>
         <ul class="menu-list">
             <li>
                 <b>
-                    <a href="{{ path('entreprenariat_home') }}">Vue d'ensemble</a>
+                    <a href="{{ path('entreprenariat_home') }}" class="icon-text">
+                        <span class="icon">
+                            <i class="fas fa-object-group"></i>
+                        </span>
+                        <span>
+                            Vue d'ensemble
+                        </span>
+                    </a>
                 </b>
             </li>
             <li>
@@ -61,7 +85,12 @@
     {% endif %}
     {% if is_granted("ROLE_SUPER_ADMIN") %}
         <p class="menu-label">
-            Gestionnaires
+            <span class="icon-text has-text-primary">
+                <span class="icon">
+                    <i class="fas fa-users"></i>
+                </span>
+                <span>Gestionnaires</span>
+            </span>
         </p>
         <ul class="menu-list">
             <li>
@@ -78,7 +107,12 @@
     {% endif %}
     {% if is_granted("ROLE_USER") %}
     <p class="menu-label">
-        Mon profil
+        <span class="icon-text has-text-primary">
+            <span class="icon">
+                <i class="fas fa-id-badge"></i>
+            </span>
+            <span>Mon profil</span>
+        </span>
     </p>
     <ul class="menu-list">
         <li>
