@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ entreprise.name }}{% endblock %}
-{% block title_main_background_img %};background: center / cover no-repeat url({{ vich_uploader_asset(entreprise, 'imageFile') }});{% endblock %}
+{% block title_main_background_img %}background: center / cover no-repeat url({{ vich_uploader_asset(entreprise, 'imageFile') }});{% endblock %}
 {#{% block title_main_background_layer %}background: rgba(2, 18, 34, 0.9);{% endblock %}#}
 {% block title_main %}<b>{{ entreprise.name }}</b>{% endblock %}
 
