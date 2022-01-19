@@ -45,7 +45,7 @@
 
 
 {% block aside_menu %}
-    {% if section == 'immobilier' or section == 'entreprenariat' %}
+    {% if app.user %}
     <button class="button m-2 is-white borderless-radius" style="position: fixed;left: 0;z-index: 6" onclick="this.nextElementSibling.classList.toggle('is-hidden')">
         <span class="icon">
             <i class="fas fa-lg fa-stream"></i>
@@ -62,7 +62,7 @@
         {% elseif section == 'entreprenariat' %}
             {{ include('includes/menus/aside_menu_entreprenariat.html.twig') }}
         {% else %}
-        {#{{ include('includes/menus/aside_menu_base.html.twig') }}#}
+            {{ include('includes/menus/aside_menu_immo.html.twig') }}
         {% endif %}
     </div>
     {% endif %}
@@ -418,7 +418,7 @@
         {#     NAVBAR-DROPDOWN     #}
 
         document.addEventListener('click', function (event) {
-            let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown, div.navbar-item.has-dropdown > *, div.navbar-item.has-dropdown > * > *, custom-dropdown');
+            let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown, div.navbar-item.has-dropdown > *, div.navbar-item.has-dropdown > * > *, .custom-dropdown');
             let navbarBurger = document.querySelectorAll('.navbar-burger');
             let sections = document.querySelectorAll('section');
             let navbarMenu = document.getElementById('navbarMenu');

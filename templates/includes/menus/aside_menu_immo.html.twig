@@ -3,19 +3,19 @@
         Ma gestion immobilière
     </p>
     <ul class="menu-list">
-        <li><a>Vue d'ensemble</a></li>
+        <li><a href="{{ path('immo_accueil') }}">Vue d'ensemble</a></li>
         <li>
             <a>Biens immobiliers</a>
             <ul>
-                <li><a>Mes biens immobiliers</a></li>
-                <li><a>Ajouter un bien</a></li>
+                <li><a href="{{ path('bien_immo_index') }}">Mes biens immobiliers</a></li>
+                <li><a href="{{ path('bien_immo_new') }}#logement">Ajouter un bien</a></li>
             </ul>
         </li>
         <li>
-            <a>Locataires</a>
+            <a href="{{ path('locataire_index') }}">Locataires</a>
             <ul>
-                <li><a>Mes locataires</a></li>
-                <li><a>Ajouter un locataires</a></li>
+                <li><a href="{{ path('locataire_index') }}">Mes locataires</a></li>
+                <li><a href="{{ path('locataire_new') }}#locataire">Ajouter un locataires</a></li>
             </ul>
         </li>
     </ul>
@@ -23,7 +23,7 @@
         Mon profil
     </p>
     <ul class="menu-list">
-        <li><a>Modifier mon profil</a></li>
-        <li><a>Modifier mon mot de passe</a></li>
+        <li><a href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Modifier mon profil</a></li>
+        <li><a href="{{ path('change_password', {'id': app.user.id}) }}#securite">Modifier mon mot de passe</a></li>
     </ul>
 </aside>
