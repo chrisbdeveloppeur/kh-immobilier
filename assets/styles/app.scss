@@ -347,7 +347,7 @@ form.quittances{
 
 #aside-menu{
   position: fixed;
-  left: -100vw;
+  right: -100vw;
   z-index: 6;
   height: 94vh;
   width: 400px;
@@ -357,11 +357,11 @@ form.quittances{
 }
 
 .closed-aside-menu-status{
-  left: -100vw !important;
+  right: -100vw !important;
   visibility: hidden;
 }
 .deployed-aside-menu-status{
-  left: 0px !important;
+  right: 0px !important;
   visibility: visible;
 }
 
