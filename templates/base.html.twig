@@ -45,7 +45,6 @@
 
 
 {% block aside_menu %}
-    {% if is_granted('ROLE_USER') %}
         <div class="px-4 py-6 has-background-white box-shadow-bulma aside-menu" id="aside-menu">
             <button class="button m-2 is-primary borderless-radius" id="close-aside-menu-btn" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.style.right='-100vw';this.parentElement.style.visibility='hidden';document.querySelectorAll('.deploy-aside-menu-btn').forEach(btn => btn.classList.remove('is-hidden'));document.querySelector('html').style.overflow='auto';this.classList.add('is-hidden-touch')">
                 <span class="icon">
@@ -56,7 +55,6 @@
             {% include('includes/menus/aside_menu_base.html.twig') with {'hidden_status':'','text_color':''} %}
 
         </div>
-    {% endif %}
 {% endblock %}
 
 
@@ -66,13 +64,13 @@
             <div class="is-absolute-top-0" style="{% block title_main_background_img %}{% if section == 'immobilier' %}background: center / cover no-repeat url({{ asset('build/images/architecture-g348c7dafa_1920.013c9aa6.jpg') }});{% elseif section == 'entreprenariat' %}background: center / cover no-repeat url({{ asset('build/images/atom-background.2bd570b3.jpg') }});{% else %}background: center / cover no-repeat url({{ asset('build/images/design_main_background.1d5a3f08.png') }});{% endif %}{% endblock %}"></div>
             <div class="is-absolute-top-0" style="{% block title_main_background_layer %}background: {% if section == 'immobilier' %}rgba(2, 18, 34, 0.8){% elseif section == 'entreprenariat' %}rgba(2, 18, 34, 0.2){% else %}rgba(2, 18, 34, 0.1){% endif %};{% endblock %}"></div>
             <div class="py-4" style="z-index: 1">
-                {% if is_granted('ROLE_USER') %}
-                    <button class="button m-2 is-white borderless-radius is-hidden-touch deploy-aside-menu-btn" id="deploy-aside-menu-btn" style="position: fixed;right: 0;top: 3.88rem;z-index: 6" onclick="document.getElementById('aside-menu').style.right='0px';document.getElementById('aside-menu').style.visibility='visible';this.classList.add('is-hidden');document.getElementById('close-aside-menu-btn').classList.remove('is-hidden-touch')">
-                        <span class="icon">
-                            <i class="fas fa-lg fa-stream"></i>
-                        </span>
-                    </button>
-                {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                        <button class="button m-2 is-white borderless-radius is-hidden-touch deploy-aside-menu-btn {% if not is_granted('ROLE_USER') %}is-hidden{% endif %}" id="deploy-aside-menu-btn" style="position: fixed;right: 0;top: 3.88rem;z-index: 6" onclick="document.getElementById('aside-menu').style.right='0px';document.getElementById('aside-menu').style.visibility='visible';this.classList.add('is-hidden');document.getElementById('close-aside-menu-btn').classList.remove('is-hidden-touch')">
+                            <span class="icon">
+                                <i class="fas fa-lg fa-stream"></i>
+                            </span>
+                        </button>
+                    {% endif %}
                 <h1 class="title has-text-light has-text-centered is-size-4-mobile">
                     <yarnspan class="icon-text is-align-items-center is-justify-content-center">
 

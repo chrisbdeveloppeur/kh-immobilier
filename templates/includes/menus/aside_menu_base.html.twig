@@ -1,4 +1,33 @@
 <aside class="menu is-full-touch has-text-centered-touch {{ hidden_status }}">
+    {% if app.user %}
+        <div class="is-hidden-desktop">
+            <div class="tags are-medium has-addons is-justify-content-center">
+                <span class="tag is-size-6-mobile is-primary" title="modifier mon compte">
+                    <a class="has-text-light" href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire"><b class="is-hidden-touch">Connecté :</b> {{ app.user.username }}</a>
+                </span>
+                <a class="tag is-size-6-mobile is-danger" href="{{ path('app_logout') }}" style="text-decoration: none">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-sign-out-alt"></i>
+                    </span>
+                    <span class="is-hidden-touch">
+                        Se déconnecté
+                    </span>
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <a href="{{ path('app_login') }}" class="tags has-addons are-medium is-hidden-desktop is-centered">
+            <span class="tag is-primary">
+                <span class="icon">
+                    <i class="fas fa-lg fa-sign-in-alt"></i>
+                </span>
+            </span>
+            <span class="tag is-info">
+                Connexion
+            </span>
+        </a>
+    {% endif %}
+
     {% if is_granted("ROLE_USER") %}
     <p class="menu-label">
         <span class="icon-text">
@@ -102,6 +131,7 @@
             <span>Mon profil</span>
         </span>
     </p>
+
     <ul class="menu-list">
         <li>
             <a href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Modifier mon profil</a>
