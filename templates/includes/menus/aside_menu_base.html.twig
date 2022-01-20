@@ -1,4 +1,4 @@
-<aside class="menu is-full-touch {{ hidden_status }}">
+<aside class="menu is-full-touch has-text-centered-touch {{ hidden_status }}">
     {% if is_granted("ROLE_USER") %}
     <p class="menu-label">
         <span class="icon-text">
@@ -10,16 +10,14 @@
     </p>
     <ul class="menu-list">
         <li>
-            <b>
-                <a href="{{ path('immo_accueil') }}" class="icon-text">
-                    <span class="icon">
-                        <i class="fas fa-object-group"></i>
-                    </span>
-                    <span>
-                        Vue d'ensemble
-                    </span>
-                </a>
-            </b>
+            <a href="{{ path('immo_accueil') }}" class="icon-text">
+                <span class="icon">
+                    <i class="fas fa-object-group"></i>
+                </span>
+                <span>
+                    Vue d'ensemble
+                </span>
+            </a>
         </li>
         <li>
             <a>
@@ -27,7 +25,7 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ path('bien_immo_index') }}">Mes biens immobiliers</a>
+                    <a href="{{ path('bien_immo_index') }}">Liste des biens immobiliers</a>
                 </li>
                 <li>
                     <a href="{{ path('bien_immo_new') }}#logement">Ajouter un bien</a>
@@ -40,7 +38,7 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ path('locataire_index') }}">Mes locataires</a>
+                    <a href="{{ path('locataire_index') }}">Liste des locataires</a>
                 </li>
                 <li>
                     <a href="{{ path('locataire_new') }}#locataire">Ajouter un locataires</a>
@@ -60,26 +58,20 @@
         </p>
         <ul class="menu-list">
             <li>
-                <b>
-                    <a href="{{ path('entreprenariat_home') }}" class="icon-text">
-                        <span class="icon">
-                            <i class="fas fa-object-group"></i>
-                        </span>
-                        <span>
-                            Vue d'ensemble
-                        </span>
-                    </a>
-                </b>
+                <a href="{{ path('entreprenariat_home') }}" class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-object-group"></i>
+                    </span>
+                    <span>
+                        Vue d'ensemble
+                    </span>
+                </a>
             </li>
             <li>
-                <b>
-                    <a href="{{ path('entreprise_index') }}">Mes entreprises</a>
-                </b>
+                <a href="{{ path('entreprise_index') }}">Liste des entreprises</a>
             </li>
             <li>
-                <b>
-                    <a href="{{ path('entreprise_new') }}">Ajouter une entreprise</a>
-                </b>
+                <a href="{{ path('entreprise_new') }}">Ajouter une entreprise</a>
             </li>
         </ul>
     {% endif %}
@@ -94,14 +86,10 @@
         </p>
         <ul class="menu-list">
             <li>
-                <b>
-                    <a href="{{ path('user_index') }}">Liste des gestionnaires</a>
-                </b>
+                <a href="{{ path('user_index') }}">Liste des gestionnaires</a>
             </li>
             <li>
-                <b>
-                    <a href="{{ path('user_new') }}#gestionnaire">Ajouter un gestionnaire</a>
-                </b>
+                <a href="{{ path('user_new') }}#gestionnaire">Ajouter un gestionnaire</a>
             </li>
         </ul>
     {% endif %}
@@ -116,14 +104,10 @@
     </p>
     <ul class="menu-list">
         <li>
-            <b>
-                <a href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Modifier mon profil</a>
-            </b>
+            <a href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">Modifier mon profil</a>
         </li>
         <li>
-            <b>
-                <a href="{{ path('change_password', {'id': app.user.id}) }}#securite">Modifier mon mot de passe</a>
-            </b>
+            <a href="{{ path('change_password', {'id': app.user.id}) }}#securite">Modifier mon mot de passe</a>
         </li>
     </ul>
     {% endif %}

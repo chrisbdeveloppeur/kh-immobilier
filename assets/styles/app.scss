@@ -347,13 +347,22 @@ form.quittances{
 
 #aside-menu{
   position: fixed;
-  left: -600px;
+  left: -100vw;
   z-index: 6;
   height: 94vh;
   width: 400px;
   overflow: auto;
   transition: .5s;
   visibility: hidden;
+}
+
+.closed-aside-menu-status{
+  left: -100vw !important;
+  visibility: hidden;
+}
+.deployed-aside-menu-status{
+  left: 0px !important;
+  visibility: visible;
 }
 
 //#navbarMenu{
@@ -416,6 +425,17 @@ form.quittances{
   .is-primary-touch{
     color: white !important;
     background-color: $primary !important;
+  }
+
+  #aside-menu{
+    width: 100%;
+    position: fixed !important;
+    z-index: 999;
+    top: 0;
+    height: 100vh;
+  }
+  #close-aside-menu-btn{
+    position: fixed !important;
   }
 }
 
