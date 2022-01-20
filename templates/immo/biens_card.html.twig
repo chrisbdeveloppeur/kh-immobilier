@@ -62,7 +62,7 @@
                         <i class="fas fa-2x fa-map-marked-alt"></i>
                     </span>
                 </div>
-                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded">
                     <a href="https://maps.google.com/?q={{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}" onclick="window.open(
                         this.href,
                         'newwindow',
@@ -88,7 +88,7 @@
                     </span>
                 </div>
 
-                <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded">
                     {% if bien_immo.locataires.current %}
                         <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="column is-expanded px-0 py-0 has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
                             <span>{{ bien_immo.locataires.current }}</span>
@@ -134,7 +134,7 @@
                         <i class="fas fa-2x fa-hand-holding-usd"></i>
                     </span>
                 </div>
-                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex-mobile is-justify-content-center is-align-items-center is-expanded has-text-green">
                     <b>{{ bien_immo.loyerTtc|number_format(2) }} €</b>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                         <i class="fas fa-2x fa-hands-helping"></i>
                     </span>
                 </div>
-                <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded has-text-centered">
+                <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded">
                     {% if bien_immo.copropriete and bien_immo.copropriete.name %}
                         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="column is-expanded px-0 py-0 has-text-info has-text-weight-bold show-on-hover" title="Voir les détails de la copropriété">
                             <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
