@@ -26,11 +26,11 @@
             {% endif %}
 
             <span class="is-expanded column is-flex-desktop px-0 py-0 is-justify-content-center">
-                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text has-text-light">
+                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text">
                     <span class="icon">
                         <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
                     </span>
-                    <span class="is-uppercase"><b>{{ bien_immo.street }}</b></span>
+                    <span class="font-custom">{{ bien_immo.street }}</span>
                 </a>
             </span>
 
@@ -39,7 +39,7 @@
                     <span class="icon">
                         <i class="fas fa-warehouse"></i>
                     </span>
-                    <span class="has-text-weight-bold">{{ bien_immo.type }}
+                    <span class="font-custom">{{ bien_immo.type }}
                         {% if bien_immo.superficie != 0 %}
                             <span class="is-italic">({{ bien_immo.superficie }}m²)</span>
                         {% endif %}

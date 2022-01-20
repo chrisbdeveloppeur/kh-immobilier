@@ -19,6 +19,9 @@ $tabs-link-hover-color: white;
 $menu-label-font-size: 1rem;
 $menu-label-color: $primary;
 $menu-label-letter-spacing:.3em;
+$menu-item-color: $primary;
+$menu-item-hover-color: white;
+$menu-item-hover-background-color: $primary;
 
 .button, a{
     //border-radius: 0 !important;
@@ -28,6 +31,12 @@ $menu-label-letter-spacing:.3em;
 .title-main{
   letter-spacing: .1em;
   font-size: 0.75em;
+}
+.font-custom{
+  letter-spacing: .3em;
+  font-size: 0.75em;
+  font-weight: lighter;
+  text-transform: uppercase;
 }
 
 .tab{
