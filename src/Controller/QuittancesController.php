@@ -43,7 +43,7 @@ class QuittancesController extends AbstractController
 
         $form->get('quittance_id')->setData($locataire->getQuittances()->count() + 1);
         $form->get('first_day')->setData(1);
-        $form->get('last_day')->setData(\Date('t'));
+        $form->get('last_day')->setData(31);
         $form->get('month')->setData(strftime("%B"));
         $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
         $form->get('loyer_hc')->setData($logement->getLoyerHc());
@@ -56,8 +56,8 @@ class QuittancesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $template = $this->createFileController->fillQuittanceTemplate($locataire,$form);
-            $dateForFile = $form->get('date')->getData()->format('d-m-Y');
-            $file = "quittance_".$dateForFile.'_'. $locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
+            $dateForFile = $form->get('date')->getData()->format('d_m_Y');
+            $file = "quittance_".$locataire->getLastName().'_'.$dateForFile.'_'.$locataire->getLogement()->getId().'_'.uniqid();
             $file = str_replace(" ", "_",$file);
 
             $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file);

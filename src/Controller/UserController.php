@@ -81,8 +81,10 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $role = $form->get('roles')->getData();
-            $user->setRoles([$role]);
+            if ($security->isGranted('ROLE_SUPER_ADMIN')){
+                $role = $form->get('roles')->getData();
+                $user->setRoles([$role]);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_edit',[

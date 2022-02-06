@@ -19,15 +19,15 @@ class QuittancesType extends AbstractType
 
     public function __construct()
     {
-        for ($i=0; $i <= \Date('t') - 1; $i++){
+        for ($i=0; $i <= 31; $i++){
             $this->first_day_choices[] = $i;
         }
-        for ($i=0; $i <= \Date('t'); $i++){
+        for ($i=0; $i <= 31; $i++){
             $this->last_day_choices[] = $i;
         }
         unset($this->first_day_choices[0]);
         unset($this->last_day_choices[0]);
-        return $this->first_day_choices;
+//        return $this->first_day_choices;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -96,7 +96,6 @@ class QuittancesType extends AbstractType
                 'label' => false,
                 'attr' => ['class'=>'readonly has-text-centered input is-small'],
                 'choices' => $last_day_choices,
-                'placeholder' => $last_day_choices[count($last_day_choices)]
             ])
             ->add('mode', ChoiceType::class,[
                 'label' => 'Moyen de paiement',
