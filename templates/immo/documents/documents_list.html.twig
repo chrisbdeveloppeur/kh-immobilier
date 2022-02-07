@@ -35,7 +35,7 @@
                     </a>
                     {{ include('immo/documents/modal_box.html.twig') }}
 
-                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">
                         <div class="icon">
                             <i class="fas fa-lg fa-file-download"></i>
                         </div>
@@ -75,7 +75,7 @@
                         </a>
                         {{ include('immo/documents/modal_box.html.twig') }}
 
-                        <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}">
+                        <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">
                             <div class="icon">
                                 <i class="fas fa-lg fa-file-download"></i>
                             </div>

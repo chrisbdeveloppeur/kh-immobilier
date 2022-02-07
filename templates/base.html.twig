@@ -387,6 +387,7 @@
             let form = btn.parentElement.parentElement;
             let inputs = form.querySelectorAll('.readonly');
             inputs.forEach(function (elem) {
+                console.log(elem);
                 elem.toggleAttribute('readonly');
                 if (elem.hasAttribute('readonly')){
                     elem.style.background = '#dbdbdb';
@@ -547,7 +548,7 @@
              input.addEventListener('change', changeMailHref );
 
              function changeMailHref() {
-                 if (input.parentElement){
+                 if (input && input.parentElement && input.parentElement.nextElementSibling){
                      let ancrage = input.parentElement.nextElementSibling.querySelector('a');
                      if (ancrage){
                          if (!input.value){

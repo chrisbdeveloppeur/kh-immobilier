@@ -41,13 +41,13 @@
                         </span>
                     </a>
 
-                    <a class="button is-primary is-outlined is-size-7 borderless-radius" {% if not quittance.pdfexist %}disabled="true" title="Fichier au format .pdf indisponible"{% endif %} {% if quittance.pdfexist %}title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}"{% endif %}>
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" {% if not quittance.pdfexist %}disabled="true" title="Fichier au format .pdf indisponible"{% endif %} {% if quittance.pdfexist %}title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ quittance.fileName }}"{% endif %}>
                     <span class="icon">
                         <i class="fas fa-lg fa-file-pdf"></i>
                     </span>
                     </a>
 
-                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ asset('documents/uploaded_files/') }}{{ quittance.fileName }}">
+                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ quittance.fileName }}">
                         <div class="icon">
                             <i class="fas fa-lg fa-file-word"></i>
                         </div>

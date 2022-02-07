@@ -34,6 +34,8 @@ class QuittancesType extends AbstractType
     {
         $first_day_choices = $this->first_day_choices;
         $last_day_choices = $this->last_day_choices;
+        setlocale(LC_TIME, 'fr_FR');
+        date_default_timezone_set('Europe/Paris');
         $date = new \DateTime('now');
         $date = '1-' . $date->format('m-Y');
 

@@ -137,8 +137,6 @@
                 </div>
             {% endif %}
 
-        {% elseif form.vars.name in ['quittances'] %}
-            {{ include('includes/form_lock_btn.html.twig') }}
         {% endif %}
 
         {% for child in form %}
