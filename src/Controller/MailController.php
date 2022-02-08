@@ -33,4 +33,13 @@ class MailController
         $this->mailer->send($mail);
     }
 
+    public function sendSimpleMail( string $subject, string $adresses, string $message)
+    {
+        $mail = (new \Swift_Message($subject))
+            ->setFrom('admin@edit-word.com')
+            ->setTo($adresses)
+            ->setBody($message);
+        $this->mailer->send($mail);
+    }
+
 }
