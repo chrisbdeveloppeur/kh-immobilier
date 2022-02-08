@@ -21,8 +21,8 @@
         {% set numero_quittance = 1 %}
         {% for quittance in entity.quittances|sort((a, b) => b.createdDate <=> a.createdDate) %}
             <tr class="is-size-7">
-                <td class=" has-text-dark has-background-light" title="Quittance N° {{ quittance.id }}">
-                    <span class="has-text-dark"><b>{{ quittance.id }}</b></span>
+                <td class=" has-text-dark has-background-light" title="Quittance N° {{ numero_quittance }}">
+                    <span class="has-text-dark"><b>{{ numero_quittance }}</b></span>
                 </td>
 
                 <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ quittance.fileName }}" style="width: 100%">

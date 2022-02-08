@@ -67,6 +67,8 @@ class CreateFileController extends AbstractController
 
     public function createQuittanceFile($template, $locataire, $file)
     {
+        //$id = $locataire->getQuittances()->last()->getId() + 1;
+        //$template->setValue("quittance_id", $id);
         $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
 
         //if (!file_exists('../assets/files/quittances/')) {

@@ -40,10 +40,12 @@ class QuittancesType extends AbstractType
         $date = '1-' . $date->format('m-Y');
 
         $builder
+            /*
             ->add('quittance_id', TextType::class,[
                 'label' => 'Quittance N°',
                 'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])
+            */
             ->add('date', DateType::class,[
                 'label' => 'Date d\'edition de la quittance',
                 'widget' => 'single_text',
