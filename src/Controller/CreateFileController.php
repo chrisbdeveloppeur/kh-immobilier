@@ -33,11 +33,9 @@ class CreateFileController extends AbstractController
 
         $date->setTimezone(new \DateTimeZone("Europe/Paris"));
         $template = new \PhpOffice\PhpWord\TemplateProcessor($this->projectRoot."/assets/files/templates/QUITTANCE_TEMPLATE.docx");
-        if ($user){
-            $template->setValue('p_gender', $user->getGender());
-            $template->setValue('p_lastname', $user->getLastname());
-            $template->setValue('p_firstname', $user->getFirstname());
-        }
+        $template->setValue('p_gender', $user->getGender());
+        $template->setValue('p_lastname', $user->getLastname());
+        $template->setValue('p_firstname', $user->getFirstname());
         $template->setValue("last_name",$locataire->getLastName());
         $template->setValue("first_name",$locataire->getFirstName());
         $template->setValue("gender",$locataire->getGender());
