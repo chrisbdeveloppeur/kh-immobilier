@@ -51,6 +51,11 @@ class Quittance
      */
     private $pdf_exist;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date;
+
     public function __toString()
     {
         return $this->getFileName();
@@ -137,6 +142,18 @@ class Quittance
     public function setPdfExist(?bool $pdf_exist): self
     {
         $this->pdf_exist = $pdf_exist;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

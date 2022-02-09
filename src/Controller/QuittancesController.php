@@ -66,6 +66,7 @@ class QuittancesController extends AbstractController
             $quittance->setLocataire($locataire);
             $quittance->setBienImmo($locataire->getLogement());
             $quittance->setCreatedDate($date);
+            $quittance->setDate($form->get('date')->getData());
             $quittance->setPdfExist($pdf_exist);
             $em->persist($quittance);
             $em->flush();

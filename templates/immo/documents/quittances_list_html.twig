@@ -4,16 +4,16 @@
         <thead>
         <tr class="is-size-7">
             <th>N°</th>
-            <th>Quittance</th>
-            <th>Date</th>
+            <th>Date d'édition</th>
+            <th>Nom du fichier</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tfoot>
         <tr class="is-size-7">
             <th>N°</th>
-            <th>Quittance</th>
-            <th>Date</th>
+            <th>Date d'édition</th>
+            <th>Nom du fichier</th>
             <th>Actions</th>
         </tr>
         </tfoot>
@@ -25,12 +25,12 @@
                     <span class="has-text-dark"><b>{{ numero_quittance }}</b></span>
                 </td>
 
-                <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ quittance.fileName }}" style="width: 100%">
-                    <span class="has-text-dark"><b>{{ quittance.fileName }}</b></span>
+                <td class="">
+                    <span class="has-text-dark has-text-weight-bold">{{ quittance.date|format_datetime(pattern="MMM' - 'YYYY", locale='fr')|capitalize }}</span>
                 </td>
 
-                <td class="">
-                    <span class="has-text-dark">{{ quittance.createdDate|format_datetime(pattern="dd'/'MM'/'YY", locale='fr')|capitalize }}</span>
+                <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ quittance.fileName }}" style="width: 100%">
+                    <span class="has-text-dark">{{ quittance.fileName }}</span>
                 </td>
 
                 <td>

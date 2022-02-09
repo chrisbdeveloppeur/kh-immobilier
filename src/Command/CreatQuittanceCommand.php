@@ -74,6 +74,7 @@ class CreatQuittanceCommand extends Command
                 $quittance->setLocataire($locataire);
                 $quittance->setBienImmo($locataire->getLogement());
                 $quittance->setCreatedDate($date);
+                $quittance->setDate($date);
                 $quittance->setPdfExist($pdf_exist);
                 $this->em->persist($quittance);
                 $this->em->flush();

@@ -45,7 +45,8 @@ class CreateFileController extends AbstractController
         $template->setValue("city",$locataire->getLogement()->getCity());
 
         if ($form == null){
-            $template->setValue("date",$date->format('d/m/Y'));
+            $template->setValue("date_top",$date->format('F Y'));
+            $template->setValue("date_bot",$date->format('d/m/Y'));
             $template->setValue("mode",$locataire->getMode());
             $template->setValue("loyer_ttc",$locataire->getLogement()->getLoyerTtc());
             $template->setValue("loyer_hc",$locataire->getLogement()->getLoyerHc());
@@ -56,7 +57,8 @@ class CreateFileController extends AbstractController
             $template->setValue("last_day",\Date('t'));
             $template->setValue("month",strftime("%B"));
         }else{
-            $template->setValue("date",$form->get('date')->getData()->format('d/m/Y'));
+            $template->setValue("date_top",$date->format('F Y'));
+            $template->setValue("date_bot",$date->format('d/m/Y'));
             $template->setValue("mode",$form->get('mode')->getData());
             $template->setValue("loyer_ttc",$form->get('loyer_ttc')->getData());
             $template->setValue("loyer_hc",$form->get('loyer_hc')->getData());
