@@ -2,11 +2,17 @@
 
 namespace App\Command;
 
+use App\Controller\CreateFileController;
 use App\Controller\MailController;
+use App\Controller\QuittancesController;
+use App\Entity\Quittance;
+use App\Repository\LocataireRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class CreatQuittanceCommand extends Command
@@ -14,11 +20,21 @@ class CreatQuittanceCommand extends Command
     protected static $defaultName = 'creat:quittance';
     protected static $defaultDescription = 'Add a short description for your command';
     private $mailer;
+    private $quittancesController;
+    private $locataireRepository;
+    private $em;
+    private $request;
+    private $createFileController;
 
-    public function __construct(string $name = null, MailController $mailer)
+    public function __construct(string $name = null, MailController $mailer, QuittancesController $quittancesController, LocataireRepository $locataireRepository, EntityManagerInterface $em, Request $request, CreateFileController $createFileController)
     {
         parent::__construct($name);
         $this->mailer = $mailer;
+        $this->quittancesController = $quittancesController;
+        $this->locataireRepository = $locataireRepository;
+        $this->em = $em;
+        $this->request = $request;
+        $this->createFileController = $createFileController;
     }
 
     protected function configure(): void
@@ -43,8 +59,30 @@ class CreatQuittanceCommand extends Command
         //    // ...
         //}
 
-        $this->mailer->sendSimpleMail('test','kenshin91cb@gmail.com','Test message !');
-        $io->success('Test de crons toute les secondes');
+        //$this->mailer->sendSimpleMail('test','kenshin91cb@gmail.com','Test message !');
+
+        $locataires = $this->locataireRepository->findAll();
+        foreach ($locataires as $locataire){
+            $quittance = new Quittance();
+            $date = new \DateTime();
+            $template = $this->createFileController->fillQuittanceTemplate($locataire, null);
+            $dateForFile = $date->format('m-Y');
+            $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
+            $file = str_replace(" ", "_",$file);
+            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file);
+
+            $quittance->setFileName($file);
+            $quittance->setLocataire($locataire);
+            $quittance->setBienImmo($locataire->getLogement());
+            $quittance->setCreatedDate($date);
+            $quittance->setPdfExist($pdf_exist);
+            $this->em->persist($quittance);
+            $this->em->flush();
+        }
+
+        $io->success('Les quittances ont été éditées !');
+
+
 
         return 0;
     }
