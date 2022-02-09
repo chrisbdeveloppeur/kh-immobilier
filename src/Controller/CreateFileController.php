@@ -13,11 +13,18 @@ use PhpOffice\PhpWord\Settings;
 
 class CreateFileController extends AbstractController
 {
+    private $projectRoot;
+
+    public function __construct(string $projectRoot)
+    {
+        $this->projectRoot = $projectRoot;
+    }
+
     public function fillQuittanceTemplate($locataire, $form)
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
-        $user = $locataire->getLogement()->getUser();
+        $user = $locataire->getUser();
         if (!$user){
             $user = $this->getUser();
         }
@@ -25,10 +32,12 @@ class CreateFileController extends AbstractController
         $date = new \DateTime();
 
         $date->setTimezone(new \DateTimeZone("Europe/Paris"));
-        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
-        $template->setValue('p_gender', $user->getGender());
-        $template->setValue('p_lastname', $user->getLastname());
-        $template->setValue('p_firstname', $user->getFirstname());
+        $template = new \PhpOffice\PhpWord\TemplateProcessor($this->projectRoot."/assets/files/templates/QUITTANCE_TEMPLATE.docx");
+        if ($user){
+            $template->setValue('p_gender', $user->getGender());
+            $template->setValue('p_lastname', $user->getLastname());
+            $template->setValue('p_firstname', $user->getFirstname());
+        }
         $template->setValue("last_name",$locataire->getLastName());
         $template->setValue("first_name",$locataire->getFirstName());
         $template->setValue("gender",$locataire->getGender());
@@ -112,11 +121,11 @@ class CreateFileController extends AbstractController
 // Rigth now `TCPDF` writer is depreacted. Consider to use `DomPDF` or `MPDF` instead.
 //        Settings::setPdfRendererPath('vendor/tecnickcom/tcpdf');
         $rendererName = Settings::PDF_RENDERER_DOMPDF;
-        $rendererLibraryPath = realpath('../vendor/dompdf/dompdf');
+        $rendererLibraryPath = realpath($this->projectRoot.'/vendor/dompdf/dompdf');
         Settings::setPdfRenderer($rendererName, $rendererLibraryPath);
-        $word = IOFactory::load("../public/documents/".$files_type."/" . $file_name . ".docx",'Word2007');
+        $word = IOFactory::load($this->projectRoot."/public/documents/".$files_type."/" . $file_name . ".docx",'Word2007');
         if ($word){
-            $word->save("../public/documents/".$files_type."/" . $file_name . '.pdf', 'PDF');
+            $word->save($this->projectRoot."/public/documents/".$files_type."/" . $file_name . '.pdf', 'PDF');
             return true;
         }else{
             return false;

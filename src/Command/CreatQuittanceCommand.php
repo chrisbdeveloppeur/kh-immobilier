@@ -12,7 +12,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\HttpFoundation\Request;
 
 
 class CreatQuittanceCommand extends Command
@@ -26,14 +25,13 @@ class CreatQuittanceCommand extends Command
     private $request;
     private $createFileController;
 
-    public function __construct(string $name = null, MailController $mailer, QuittancesController $quittancesController, LocataireRepository $locataireRepository, EntityManagerInterface $em, Request $request, CreateFileController $createFileController)
+    public function __construct(string $name = null, MailController $mailer, QuittancesController $quittancesController, LocataireRepository $locataireRepository, EntityManagerInterface $em, CreateFileController $createFileController)
     {
         parent::__construct($name);
         $this->mailer = $mailer;
         $this->quittancesController = $quittancesController;
         $this->locataireRepository = $locataireRepository;
         $this->em = $em;
-        $this->request = $request;
         $this->createFileController = $createFileController;
     }
 
