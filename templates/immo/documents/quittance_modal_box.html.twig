@@ -1,0 +1,62 @@
+{#{% set extension = quittance.fileName|split('.')|last %}#}
+<div class="modal">
+    <div class="modal-background"></div>
+
+    <div class="buttons is-absolute is-top my-2">
+
+{#        <a class="button is-small is-primary is-inverted borderless-radius" title="{{ quittance.fileName }}" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}" download="{{ quittance.fileName }}">#}
+{#            <div class="icon">#}
+{#                <i class="fas fa-lg fa-file-download"></i>#}
+{#            </div>#}
+{#        </a>#}
+
+        <a class="button is-primary is-inverted is-size-7 borderless-radius" {% if not quittance.pdfexist %}disabled="true" title="Fichier au format .pdf indisponible"{% endif %} {% if quittance.pdfexist %}title="{{ quittance.fileName }}.pdf" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf" download="{{ quittance.fileName }}"{% endif %}>
+            <span class="icon">
+                <i class="fas fa-lg fa-file-pdf"></i>
+            </span>
+        </a>
+
+        <a class="button is-primary is-inverted is-size-7 borderless-radius" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ quittance.fileName }}">
+            <div class="icon">
+                <i class="fas fa-lg fa-file-word"></i>
+            </div>
+        </a>
+
+        <a class="button is-small is-danger borderless-radius" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce quittance?')" title="Supprimer le quittance">
+            <span class="icon">
+                <i class="fas fa-lg fa-trash-alt"></i>
+            </span>
+        </a>
+
+    </div>
+
+    <div class="modal-content">
+
+        <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
+{#            {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}#}
+{#                <div class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">#}
+{#                    <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">#}
+{#                        <span class="icon">#}
+{#                            <i class="fas fa-2x fa-file"></i>#}
+{#                        </span>#}
+{#                    </figure>#}
+{#                </div>#}
+{#            {% elseif extension == 'pdf' %}#}
+                <div class="is-flex is-justify-content-center" style="height: 85vh">
+                    <iframe src="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf#view=fitH" width="100%" height="100%"></iframe>
+                </div>
+{#            {% else %}#}
+{#                <div class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">#}
+{#                    <figure class="image is-flex is-justify-content-center">#}
+{#                        <img src="{{ asset('documents/quittances/') }}{{ quittance.fileName }}" alt="{{ quittance.fileName }}" style="max-height: 85vh; width: auto">#}
+{#                    </figure>#}
+{#                </div>#}
+{#            {% endif %}#}
+
+        </div>
+
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+
+</div>
