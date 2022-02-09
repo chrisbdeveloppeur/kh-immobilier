@@ -83,11 +83,11 @@ class CreateFileController extends AbstractController
         //if (!file_exists('../assets/files/quittances/')) {
         //    mkdir('../assets/files/quittances/', 0777, true);
         //}
-        if (!file_exists('../public/documents/quittances/')) {
-            mkdir('../public/documents/quittances/', 0777, true);
+        if (!file_exists($this->projectRoot.'/public/documents/quittances/')) {
+            mkdir($this->projectRoot.'/public/documents/quittances/', 0777, true);
         }
 
-        $template->saveAs("../public/documents/quittances/" . $file . ".docx");
+        $template->saveAs($this->projectRoot."/public/documents/quittances/" . $file . ".docx");
 //        $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
 //        $rendererName = Settings::PDF_RENDERER_DOMPDF;
 //        $rendererLibraryPath = realpath('../vendor/dompdf/dompdf');
