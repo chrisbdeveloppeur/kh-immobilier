@@ -1,4 +1,4 @@
-{#{% set extension = quittance.fileName|split('.')|last %}#}
+
 <div class="modal">
     <div class="modal-background"></div>
 
@@ -27,26 +27,9 @@
     <div class="modal-content">
 
         <div class="box-shadow-bulma border-radius-2px mx-2 my-2 is-relative">
-{#            {% if extension not in ['png','jpeg','jpg','bmp','pdf'] %}#}
-{#                <div class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">#}
-{#                    <figure class="has-background-light is-flex is-flex-direction-column is-justify-content-space-evenly is-align-items-center" style="min-height: 70vh">#}
-{#                        <span class="icon">#}
-{#                            <i class="fas fa-2x fa-file"></i>#}
-{#                        </span>#}
-{#                    </figure>#}
-{#                </div>#}
-{#            {% elseif extension == 'pdf' %}#}
-                <div class="is-flex is-justify-content-center" style="height: 85vh">
-                    <iframe src="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf#view=fitH" width="100%" height="100%"></iframe>
-                </div>
-{#            {% else %}#}
-{#                <div class="is-white {{ quittance.createdDate|format_datetime(pattern="y", locale='fr') }} {{ quittance.createdDate|format_datetime(pattern="MMMM", locale='fr') }}">#}
-{#                    <figure class="image is-flex is-justify-content-center">#}
-{#                        <img src="{{ asset('documents/quittances/') }}{{ quittance.fileName }}" alt="{{ quittance.fileName }}" style="max-height: 85vh; width: auto">#}
-{#                    </figure>#}
-{#                </div>#}
-{#            {% endif %}#}
-
+            <div class="is-flex is-justify-content-center" style="height: 85vh">
+                <iframe src="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.pdf#view=fitH" width="100%" height="100%"></iframe>
+            </div>
         </div>
 
     </div>
