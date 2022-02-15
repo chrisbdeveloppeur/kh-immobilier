@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Quittance;
 use App\Repository\DocumentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,10 +15,12 @@ use PhpOffice\PhpWord\Settings;
 class CreateFileController extends AbstractController
 {
     private $projectRoot;
+    private $em;
 
-    public function __construct(string $projectRoot)
+    public function __construct(string $projectRoot, EntityManagerInterface $em)
     {
         $this->projectRoot = $projectRoot;
+        $this->em = $em;
     }
 
     public function fillQuittanceTemplate($locataire, $form)
@@ -74,11 +77,11 @@ class CreateFileController extends AbstractController
         return $template;
     }
 
-    public function createQuittanceFile($template, $locataire, $file)
+    public function createQuittanceFile($template, $locataire, $file, Quittance $quittance)
     {
         //$id = $locataire->getQuittances()->last()->getId() + 1;
         //$template->setValue("quittance_id", $id);
-        $template->setValue("quittance_id", $locataire->getQuittances()->count() + 1);
+        $template->setValue("quittance_id", $quittance->getId());
 
         //if (!file_exists('../assets/files/quittances/')) {
         //    mkdir('../assets/files/quittances/', 0777, true);
@@ -95,8 +98,11 @@ class CreateFileController extends AbstractController
 //        $word = IOFactory::load("../public/documents/quittances/" . $file . ".docx",'Word2007');
 //        $word->save("../public/documents/quittances/" . $file . '.pdf', 'PDF');
 
-        $response_pdf_exist = $this->convertWordToPdf($file, 'quittances');
-        return $response_pdf_exist;
+        $pdf_exist = $this->convertWordToPdf($file, 'quittances');
+        $quittance->setPdfExist($pdf_exist);
+        $this->em->flush();
+
+        //return $pdf_exist;
     }
 
     public function convertWordToPdf($file_name, $files_type)

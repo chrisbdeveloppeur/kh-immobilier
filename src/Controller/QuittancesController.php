@@ -60,16 +60,16 @@ class QuittancesController extends AbstractController
             $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
             $file = str_replace(" ", "_",$file);
 
-            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file);
-
             $quittance->setFileName($file);
             $quittance->setLocataire($locataire);
             $quittance->setBienImmo($locataire->getLogement());
             $quittance->setCreatedDate($date);
             $quittance->setDate($form->get('date')->getData());
-            $quittance->setPdfExist($pdf_exist);
+            //$quittance->setPdfExist($pdf_exist);
             $em->persist($quittance);
             $em->flush();
+
+            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance);
 
             return $this->redirectToRoute('quittances_render_quittance', [
                 'quittance_id' => $quittance->getId()
