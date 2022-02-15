@@ -26,7 +26,7 @@
                 </td>
 
                 <td class="">
-                    <span class="has-text-dark has-text-weight-bold">{{ quittance.date|format_datetime(pattern="MMM' - 'YYYY", locale='fr')|capitalize }}</span>
+                    <span class="has-text-dark has-text-weight-bold">{{ quittance.date|format_datetime(pattern="MMMM '-' yyyy", locale='fr')|capitalize }}</span>
                 </td>
 
                 <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ quittance.fileName }}" style="width: 100%">
