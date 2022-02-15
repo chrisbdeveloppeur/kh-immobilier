@@ -56,6 +56,10 @@ $button-static-color: white;
   z-index: -2;
 }
 
+.is-size-8{
+  font-size: 0.55rem !important;
+}
+
 a{
   text-decoration: none;
 }
@@ -362,6 +366,13 @@ form.quittances{
 .card-childs-even > *:nth-child(odd) > div:first-child{
   background: rgba(2, 23, 45, 0.66);
 
+}
+
+#deploy-aside-menu-btn{
+  position: fixed;
+  right: 0;
+  top: 3.25rem;
+  z-index: 6;
 }
 
 #aside-menu{
