@@ -1,50 +1,50 @@
 
-<div class="is-flex-desktop is-justify-content-space-between">
-    <div class="column pb-0 pt-2 is-flex-touch is-flex-direction-column has-text-centered-touch">
-        <a href="{{ path('immo_accueil') }}" class="button mb-2 is-small is-primary is-outlined">
+<div class="buttons is-justify-content-center">
+{#    <div class="column pb-0 pt-2 is-flex-touch is-flex-direction-column has-text-centered-touch">#}
+        <a href="{{ path('immo_accueil') }}" class="button is-size-7-touch is-small is-primary">
             <span class="icon">
                 <i class="fas fa-lg fa-object-group"></i>
             </span>
-            <span>
+            <span class="is-hidden-touch">
                 Vue d'ensemble
             </span>
         </a>
-        <a href="{{ path('bien_immo_index') }}" class="button mb-2 is-small is-primary is-outlined">
+        <a href="{{ path('bien_immo_index') }}" class="button is-size-7-touch is-small is-primary">
             <span class="icon">
                 <i class="fas fa-lg fa-city"></i>
             </span>
-            <span>
+            <span class="is-hidden-touch">
                 Vos biens
             </span>
 
         </a>
-        <a href="{{ path('locataire_index') }}" class="button mb-2 is-small is-primary is-outlined">
+        <a href="{{ path('locataire_index') }}" class="button is-size-7-touch is-small is-primary">
             <span class="icon">
                 <i class="fas fa-lg fa-users"></i>
             </span>
-            <span>
+            <span class="is-hidden-touch">
                 Vos locataires
             </span>
 
         </a>
-    </div>
-    <div class="column pb-0 pt-2 is-flex-touch is-flex-direction-column has-text-centered-touch has-text-right-desktop">
-        <a href="{{ path('bien_immo_new') }}#logement" class="button mb-2 is-small is-primary is-outlined">
+{#    </div>#}
+{#    <div class="column pb-0 pt-2 is-flex-touch is-flex-direction-column has-text-centered-touch has-text-right-desktop">#}
+        <a href="{{ path('bien_immo_new') }}#logement" class="button is-size-7-touch is-small is-primary">
             <span class="icon px-3">
                 <i class="fas fa-lg fa-building"></i>
                 <i class="fas fa-plus"></i>
             </span>
-            <span>
+            <span class="is-hidden-touch">
                 Ajouter un bien
             </span>
         </a>
-        <a href="{{ path('locataire_new') }}#locataire" class="button mb-2 is-small is-primary is-outlined">
+        <a href="{{ path('locataire_new') }}#locataire" class="button is-size-7-touch is-small is-primary">
             <span class="icon">
                 <i class="fas fa-lg fa-user-plus"></i>
             </span>
-            <span>
+            <span class="is-hidden-touch">
                 Ajouter un locataire
             </span>
         </a>
-    </div>
+{#    </div>#}
 </div>
