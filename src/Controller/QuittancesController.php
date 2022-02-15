@@ -56,7 +56,7 @@ class QuittancesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $template = $this->createFileController->fillQuittanceTemplate($locataire,$form);
-            $dateForFile = $form->get('date')->getData()->format('m-Y');
+            $dateForFile = $form->get('payment_date')->getData()->format('m-Y');
             $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
             $file = str_replace(" ", "_",$file);
 
