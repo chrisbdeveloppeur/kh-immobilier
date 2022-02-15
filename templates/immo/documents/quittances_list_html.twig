@@ -19,7 +19,7 @@
         </tfoot>
         <tbody>
         {% set numero_quittance = 1 %}
-        {% for quittance in entity.quittances|sort((a, b) => b.createdDate <=> a.createdDate) %}
+        {% for quittance in entity.quittances|sort((a, b) => b.date <=> a.date) %}
             <tr class="is-size-7">
                 <td class=" has-text-dark has-background-light" title="Quittance N° {{ quittance.id }}">
                     <span class="has-text-dark"><b>{{ quittance.id }}</b></span>
