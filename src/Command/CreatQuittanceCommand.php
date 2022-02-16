@@ -74,6 +74,7 @@ class CreatQuittanceCommand extends Command
                 $quittance->setBienImmo($locataire->getLogement());
                 $quittance->setCreatedDate($date);
                 $quittance->setDate($date);
+                $quittance->setYear($date->format('Y'));
                 //$quittance->setPdfExist($pdf_exist);
                 $this->em->persist($quittance);
                 $this->em->flush();
