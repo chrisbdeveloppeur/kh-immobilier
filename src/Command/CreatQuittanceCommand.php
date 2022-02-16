@@ -66,7 +66,7 @@ class CreatQuittanceCommand extends Command
                 $date = new \DateTime();
 
                 $dateForFile = $date->format('m-Y');
-                $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
+                $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
                 $file = str_replace(" ", "_",$file);
 
                 $quittance->setFileName($file);
@@ -74,6 +74,7 @@ class CreatQuittanceCommand extends Command
                 $quittance->setBienImmo($locataire->getLogement());
                 $quittance->setCreatedDate($date);
                 $quittance->setDate($date);
+                $quittance->setMonth($date->format('F'));
                 $quittance->setYear($date->format('Y'));
                 //$quittance->setPdfExist($pdf_exist);
                 $this->em->persist($quittance);
