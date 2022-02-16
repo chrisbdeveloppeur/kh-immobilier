@@ -64,20 +64,22 @@ class CreatQuittanceCommand extends Command
             if ($locataire->getUser()){
                 $quittance = new Quittance();
                 $date = new \DateTime();
-                $template = $this->createFileController->fillQuittanceTemplate($locataire, null);
+
                 $dateForFile = $date->format('m-Y');
                 $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId().'_'.uniqid();
                 $file = str_replace(" ", "_",$file);
-                $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file);
 
                 $quittance->setFileName($file);
                 $quittance->setLocataire($locataire);
                 $quittance->setBienImmo($locataire->getLogement());
                 $quittance->setCreatedDate($date);
                 $quittance->setDate($date);
-                $quittance->setPdfExist($pdf_exist);
+                //$quittance->setPdfExist($pdf_exist);
                 $this->em->persist($quittance);
                 $this->em->flush();
+
+                $template = $this->createFileController->fillQuittanceTemplate($locataire, null, $quittance);
+                $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance);
             }
         }
 

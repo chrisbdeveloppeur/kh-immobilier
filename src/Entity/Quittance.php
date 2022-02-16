@@ -168,7 +168,47 @@ class Quittance
 
     public function setMonth(?string $month): self
     {
-        $this->month = $month;
+        $month_fr = $month;
+        switch ($month){
+            case 'January' :
+                $month_fr = 'Janvier';
+                break;
+            case 'February' :
+                $month_fr = 'Février';
+                break;
+            case 'March' :
+                $month_fr = 'Mars';
+                break;
+            case 'April' :
+                $month_fr = 'Avril';
+                break;
+            case 'May' :
+                $month_fr = 'Mai';
+                break;
+            case 'June' :
+                $month_fr = 'Juin';
+                break;
+            case 'July' :
+                $month_fr = 'Juillet';
+                break;
+            case 'August' :
+                $month_fr = 'Août';
+                break;
+            case 'September' :
+                $month_fr = 'Septembre';
+                break;
+            case 'October' :
+                $month_fr = 'Octobre';
+                break;
+            case 'November' :
+                $month_fr = 'Novembre';
+                break;
+            case 'December' :
+                $month_fr = 'Décembre';
+                break;
+        }
+
+        $this->month = $month_fr;
 
         return $this;
     }

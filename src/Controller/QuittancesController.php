@@ -59,7 +59,6 @@ class QuittancesController extends AbstractController
             //$month_fr = strftime("%B", strtotime($month));
             //$month_fr = ucfirst($month_fr);
 
-            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form, $month);
             $dateForFile = $form->get('payment_date')->getData()->format('m-Y');
             $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
             $file = str_replace(" ", "_",$file);
@@ -75,6 +74,7 @@ class QuittancesController extends AbstractController
             $em->persist($quittance);
             $em->flush();
 
+            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form, $quittance);
             $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance);
 
             return $this->redirectToRoute('quittances_render_quittance', [

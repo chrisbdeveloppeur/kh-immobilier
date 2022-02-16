@@ -23,11 +23,12 @@ class CreateFileController extends AbstractController
         $this->em = $em;
     }
 
-    public function fillQuittanceTemplate($locataire, $form, $month)
+    public function fillQuittanceTemplate($locataire, $form, Quittance $quittance)
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
         $user = $locataire->getUser();
+        $month = $quittance->getMonth();
         if (!$user){
             $user = $this->getUser();
         }
