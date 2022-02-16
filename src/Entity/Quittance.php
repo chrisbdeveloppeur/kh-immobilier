@@ -56,6 +56,11 @@ class Quittance
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $month;
+
     public function __toString()
     {
         return $this->getFileName();
@@ -65,8 +70,6 @@ class Quittance
     {
         setlocale(LC_TIME, 'fr_FR');
         date_default_timezone_set('Europe/Paris');
-        $date = new \DateTime('now');
-        $this->setYear($date->format('Y'));
     }
 
     public function getId(): ?int
@@ -154,6 +157,18 @@ class Quittance
     public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getMonth(): ?string
+    {
+        return $this->month;
+    }
+
+    public function setMonth(?string $month): self
+    {
+        $this->month = $month;
 
         return $this;
     }

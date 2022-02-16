@@ -41,21 +41,25 @@ class QuittancesController extends AbstractController
 
         $form = $this->createForm(QuittancesType::class);
 
-        //$form->get('quittance_id')->setData($locataire->getQuittances()->count() + 1);
         $form->get('first_day')->setData(1);
         $form->get('last_day')->setData(31);
-        $form->get('month')->setData(strftime("%B"));
+        //$form->get('month')->setData(strftime("%B"));
         $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
         $form->get('loyer_hc')->setData($logement->getLoyerHc());
         $form->get('charges')->setData($logement->getCharges());
         $form->get('mode')->setData($locataire->getMode());
         $form->get('solde')->setData($logement->getSolde());
+
         $quittance = new Quittance();
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form);
+            $month = $form->get('payment_date')->getData()->format('F');
+            //$month_fr = strftime("%B", strtotime($month));
+            //$month_fr = ucfirst($month_fr);
+
+            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form, $month);
             $dateForFile = $form->get('payment_date')->getData()->format('m-Y');
             $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
             $file = str_replace(" ", "_",$file);
@@ -65,6 +69,8 @@ class QuittancesController extends AbstractController
             $quittance->setBienImmo($locataire->getLogement());
             $quittance->setCreatedDate($date);
             $quittance->setDate($form->get('payment_date')->getData());
+            $quittance->setMonth($month);
+            $quittance->setYear($form->get('payment_date')->getData()->format('Y'));
             //$quittance->setPdfExist($pdf_exist);
             $em->persist($quittance);
             $em->flush();

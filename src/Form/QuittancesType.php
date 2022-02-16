@@ -51,6 +51,7 @@ class QuittancesType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => ['class'=>'readonly has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
+            /*
             ->add('month', ChoiceType::class,[
                 'label' => 'Mois de la quittance',
                 'data' => ucfirst(strftime("%B")),
@@ -70,6 +71,7 @@ class QuittancesType extends AbstractType
                 ],
                 'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])
+            */
             ->add('payment_date', DateType::class,[
                 'label' => 'Date du paiement',
                 'widget' => 'single_text',

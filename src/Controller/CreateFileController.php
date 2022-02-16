@@ -23,7 +23,7 @@ class CreateFileController extends AbstractController
         $this->em = $em;
     }
 
-    public function fillQuittanceTemplate($locataire, $form)
+    public function fillQuittanceTemplate($locataire, $form, $month)
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -60,7 +60,7 @@ class CreateFileController extends AbstractController
             $template->setValue("last_day",\Date('t'));
             $template->setValue("month",strftime("%B"));
         }else{
-            $template->setValue("date_top",$form->get('month')->getData().$form->get('payment_date')->getData()->format(' Y'));
+            $template->setValue("date_top",$month.$form->get('payment_date')->getData()->format(' Y'));
             $template->setValue("date_bot",$date->format('d/m/Y'));
             $template->setValue("mode",$form->get('mode')->getData());
             $template->setValue("loyer_ttc",$form->get('loyer_ttc')->getData());
@@ -70,7 +70,7 @@ class CreateFileController extends AbstractController
             $template->setValue("payment_date",$form->get('payment_date')->getData()->format('d/m/Y'));
             $template->setValue("first_day",$form->get('first_day')->getData());
             $template->setValue("last_day",$form->get('last_day')->getData());
-            $template->setValue("month",$form->get('month')->getData());
+            $template->setValue("month",$month);
         }
 
 
