@@ -6,6 +6,7 @@
             <th>N°</th>
             <th>Quittance</th>
             <th>Nom du fichier</th>
+            <th>Statut</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -14,6 +15,7 @@
             <th>N°</th>
             <th>Quittance</th>
             <th>Nom du fichier</th>
+            <th>Statut</th>
             <th>Actions</th>
         </tr>
         </tfoot>
@@ -34,27 +36,29 @@
                 </td>
 
                 <td>
-
-
-                        {% if quittance.payed %}
-                            <a class="button is-info is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
+                    {% if quittance.payed %}
+                        <a class="button is-info is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
                                 <span class="icon">
-                                    <i class="fas fa-check"></i>
+                                    <i class="fas fa-money-bill"></i>
                                 </span>
-                                <span class="txt">
+                            <span class="txt">
                                     Payée
                                 </span>
-                            </a>
-                        {% else %}
-                            <a class="button is-warning is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
+                        </a>
+                    {% else %}
+                        <a class="button is-warning is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
                                 <span class="icon">
                                     <i class="fas fa-sync-alt"></i>
                                 </span>
-                                <span class="txt">
+                            <span class="txt">
                                     Non payée
                                 </span>
-                            </a>
-                        {% endif %}
+                        </a>
+                    {% endif %}
+
+                </td>
+
+                <td>
 
                     <a class="button is-primary is-outlined is-size-7 borderless-radius" {% if quittance.locataire.email %}href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance au locataire : {{ quittance.locataire.email }}" onclick="return confirm('Êtes-vous sûr de vouloir envoyer ce document?')"{% else %}title="Aucun email défini pour le locataire" disabled="true"{% endif %}>
                         <span class="icon">
