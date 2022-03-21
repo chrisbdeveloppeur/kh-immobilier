@@ -284,7 +284,7 @@ class Quittance
 
     public function getLoyerGlobale()
     {
-        $loyerGlobale = $this->getLoyerTtc() + $this->getCharges();
+        $loyerGlobale = $this->getLoyerHt() + $this->getCharges();
         return $loyerGlobale;
     }
 }
