@@ -3,7 +3,9 @@ $info : #009fd5;
 $danger : #d30000;
 //$success : #67b99a;
 $success : #00a4b4;
+$success-light : #EBFDFF;
 $warning : #ffe66d;
+$warning-light : #FFFCEB;
 .has-text-green{
   color: #27a854 !important;
 }
@@ -31,6 +33,14 @@ $button-static-color: white;
 .button, a{
     //border-radius: 0 !important;
     transition: .25s;
+}
+
+.has-background-success-light{
+  background: $success-light;
+}
+
+.has-background-warning-light{
+  background: $warning-light;
 }
 
 .title-main{

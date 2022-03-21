@@ -4,8 +4,9 @@
 {% else %}
     {% set logement_status_color = 'primary' %}
 {% endif %}
+{% set last_quittance = bien_immo.quittances|last %}
 
-<div class="card mb-5">
+<div class="card mb-5 {% if last_quittance and last_quittance.payed %}has-background-success-light{% endif %}">
     <header class="card-header has-background-{{ logement_status_color }} mb-1">
         <p class="card-header-title has-text-light has-icons-left is-flex-direction-column-touch">
 
@@ -183,7 +184,6 @@
                     </span>
                 </div>
                 <div class="column px-5 py-1 is-align-items-center is-expanded has-text-centered">
-                    {% set last_quittance = bien_immo.quittances|last %}
                     <div class="pb-1">
                         {% if last_quittance %}
                             <span class="help">
