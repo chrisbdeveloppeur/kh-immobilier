@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Entity/Quittance.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Quittance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/immo/biens_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/immo/biens_card.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/QuittancesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuittancesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,12 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="205" column="22" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
-              <caret line="209" column="22" selection-start-line="209" selection-start-column="22" selection-end-line="209" selection-end-column="22" />
+            <state relative-caret-position="391">
+              <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
             </state>
           </provider>
         </entry>
@@ -84,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
+            <state relative-caret-position="282">
+              <caret line="216" column="18" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
               <folding>
                 <element signature="e#34#59#0#PHP" expanded="true" />
                 <element signature="e#3144#3173#0#PHP" expanded="true" />
@@ -94,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/immo/biens_card.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="189" column="26" lean-forward="true" selection-start-line="189" selection-start-column="26" selection-end-line="189" selection-end-column="26" />
+            <state relative-caret-position="279">
+              <caret line="190" column="97" selection-start-line="190" selection-start-column="97" selection-end-line="190" selection-end-column="97" />
               <folding>
                 <element signature="e#11905#11919#0#Twig" expanded="true" />
               </folding>
@@ -227,12 +227,12 @@
         <option value="$PROJECT_DIR$/templates/immo/documents/quittance_modal_box.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/QuittancesType.php" />
         <option value="$PROJECT_DIR$/src/Controller/CreateFileController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/QuittancesController.php" />
         <option value="$PROJECT_DIR$/src/Command/CreatQuittanceCommand.php" />
-        <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/immo/documents/quittances_list_html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Quittance.php" />
         <option value="$PROJECT_DIR$/templates/immo/biens_card.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/QuittancesController.php" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
       </list>
     </option>
   </component>
@@ -661,12 +661,12 @@
       <workItem from="1644914692070" duration="1083000" />
       <workItem from="1644926933221" duration="9304000" />
       <workItem from="1645009041149" duration="7477000" />
-      <workItem from="1647856138986" duration="10949000" />
+      <workItem from="1647856138986" duration="12899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1146682000" />
+    <option name="totallyTimeSpent" value="1148632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
@@ -1063,25 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
-          <folding>
-            <element signature="e#34#59#0#PHP" expanded="true" />
-            <element signature="e#3144#3173#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="205" column="22" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
-          <caret line="209" column="22" selection-start-line="209" selection-start-column="22" selection-end-line="209" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
@@ -1100,6 +1081,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/immo/biens_card.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="190" column="97" selection-start-line="190" selection-start-column="97" selection-end-line="190" selection-end-column="97" />
+          <folding>
+            <element signature="e#11905#11919#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Quittance.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -1107,13 +1098,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/immo/biens_card.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="189" column="26" lean-forward="true" selection-start-line="189" selection-start-column="26" selection-end-line="189" selection-end-column="26" />
+        <state relative-caret-position="282">
+          <caret line="216" column="18" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
           <folding>
-            <element signature="e#11905#11919#0#Twig" expanded="true" />
+            <element signature="e#34#59#0#PHP" expanded="true" />
+            <element signature="e#3144#3173#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
         </state>
       </provider>
     </entry>
