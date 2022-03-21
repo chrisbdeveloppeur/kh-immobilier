@@ -176,6 +176,22 @@
                 </div>
             </div>
 
+            <div class="column is-flex px-0 pt-0 pb-1">
+                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover">
+                    <span class="">
+                        Quittance
+                    </span>
+                </div>
+                <div class="column px-5 py-1 is-align-items-center is-expanded">
+                    {% set last_quittance = bien_immo.quittances|first %}
+                    <div class="tags has-addons">
+                        <span class="tag">Status dernière quittance</span>
+                        {% if last_quittance and last_quittance.payed %}<span class="is-uppercase tag is-info">Payée</span>{% else %}<span class="is-uppercase tag is-warning">Non payée</span>{% endif %}
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
     <footer class="card-footer card-footer-column-mobil">
