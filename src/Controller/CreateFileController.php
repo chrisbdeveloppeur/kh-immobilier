@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Quittance;
 use App\Repository\DocumentsRepository;
+use App\Repository\QuittanceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,11 +17,13 @@ class CreateFileController extends AbstractController
 {
     private $projectRoot;
     private $em;
+    private $quittanceRpository;
 
-    public function __construct(string $projectRoot, EntityManagerInterface $em)
+    public function __construct(string $projectRoot, EntityManagerInterface $em, QuittanceRepository $quittanceRepository)
     {
         $this->projectRoot = $projectRoot;
         $this->em = $em;
+        $this->quittanceRpository = $quittanceRepository;
     }
 
     public function fillQuittanceTemplate($locataire, $form, Quittance $quittance)
@@ -78,11 +81,13 @@ class CreateFileController extends AbstractController
         return $template;
     }
 
-    public function createQuittanceFile($template, $locataire, $file, Quittance $quittance)
+    public function createQuittanceFile($template, $locataire, $file, Quittance $quittance, $quittanceAlreadyExist)
     {
         //$id = $locataire->getQuittances()->last()->getId() + 1;
         //$template->setValue("quittance_id", $id);
         $template->setValue("quittance_id", $quittance->getId());
+        $presentQuittance = $this->quittanceRpository->findOneBy(['file_name'=>$file]);
+
 
         //if (!file_exists('../assets/files/quittances/')) {
         //    mkdir('../assets/files/quittances/', 0777, true);
@@ -91,6 +96,14 @@ class CreateFileController extends AbstractController
             mkdir($this->projectRoot.'/public/documents/quittances/', 0777, true);
         }
 
+        if ($quittanceAlreadyExist){
+            if (file_exists($this->projectRoot."/public/documents/quittances/" . $file . ".docx")){
+                unlink($this->projectRoot."/public/documents/quittances/" . $file . ".docx");
+            }
+            if (file_exists($this->projectRoot."/public/documents/quittances/" . $file . ".pdf")){
+                unlink($this->projectRoot."/public/documents/quittances/" . $file . ".pdf");
+            }
+        }
         $template->saveAs($this->projectRoot."/public/documents/quittances/" . $file . ".docx");
 //        $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
 //        $rendererName = Settings::PDF_RENDERER_DOMPDF;

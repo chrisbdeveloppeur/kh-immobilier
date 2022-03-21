@@ -30,7 +30,7 @@ class QuittancesController extends AbstractController
     /**
      * @Route("/new/{loc_id}", name="edit_new_quittance")
      */
-    public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, Request $request): Response
+    public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, Request $request, QuittanceRepository $quittanceRepository): Response
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -63,6 +63,13 @@ class QuittancesController extends AbstractController
             $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
             $file = str_replace(" ", "_",$file);
 
+            $presentQuittance = $quittanceRepository->findOneBy(['file_name' => $file]);
+            $quittanceAlreadyExist = false;
+            if ($presentQuittance){
+                $quittance = $presentQuittance;
+                $quittanceAlreadyExist = true;
+            }
+
             $quittance->setFileName($file);
             $quittance->setLocataire($locataire);
             $quittance->setBienImmo($locataire->getLogement());
@@ -75,7 +82,7 @@ class QuittancesController extends AbstractController
             $em->flush();
 
             $template = $this->createFileController->fillQuittanceTemplate($locataire,$form, $quittance);
-            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance);
+            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance, $quittanceAlreadyExist);
 
             return $this->redirectToRoute('quittances_render_quittance', [
                 'quittance_id' => $quittance->getId()
