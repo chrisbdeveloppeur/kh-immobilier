@@ -37,7 +37,7 @@
 
 
                         {% if quittance.payed %}
-                            <a class="button is-success is-size-7 borderless-radius has-text-weight-bold" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance" onclick="return confirm('Êtes-vous sûr de vouloir changer le statut de la quittance?')">
+                            <a class="button is-info is-size-7 borderless-radius has-text-weight-bold" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance" onclick="return confirm('Êtes-vous sûr de vouloir changer le statut de la quittance?')">
                                 <span class="icon">
                                     <i class="fas fa-sync-alt"></i>
                                 </span>
