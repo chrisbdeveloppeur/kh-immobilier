@@ -77,6 +77,9 @@ class QuittancesController extends AbstractController
             $quittance->setDate($form->get('payment_date')->getData());
             $quittance->setMonth($month);
             $quittance->setYear($form->get('payment_date')->getData()->format('Y'));
+            $quittance->setLoyerHt($form->get('loyer_hc')->getData());
+            $quittance->setLoyerTtc($form->get('loyer_ttc')->getData());
+            $quittance->setCharges($form->get('charges')->getData());
             //$quittance->setPdfExist($pdf_exist);
             $em->persist($quittance);
             $em->flush();

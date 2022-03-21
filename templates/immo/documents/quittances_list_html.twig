@@ -6,6 +6,7 @@
             <th>N°</th>
             <th>Quittance</th>
             <th>Nom du fichier</th>
+            <th>Loyer <span class="is-size-8">(+charges)</span></th>
             <th>Statut</th>
             <th>Actions</th>
         </tr>
@@ -15,6 +16,7 @@
             <th>N°</th>
             <th>Quittance</th>
             <th>Nom du fichier</th>
+            <th>Loyer <span class="is-size-8">(+charges)</span></th>
             <th>Statut</th>
             <th>Actions</th>
         </tr>
@@ -36,23 +38,27 @@
                 </td>
 
                 <td>
+                    <span>{{ quittance.loyerttc }}</span><span class="is-size-8">(+{{ quittance.charges }})</span>€
+                </td>
+
+                <td>
                     {% if quittance.payed %}
                         <a class="button is-info is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
-                                <span class="icon">
-                                    <i class="fas fa-money-bill"></i>
-                                </span>
-                            <span class="txt">
-                                    Payée
-                                </span>
+                            <span class="icon">
+                                <i class="fas fa-money-bill"></i>
+                            </span>
+                            <span class="txt is-uppercase">
+                                Payée
+                            </span>
                         </a>
                     {% else %}
                         <a class="button is-warning is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
-                                <span class="icon">
-                                    <i class="fas fa-sync-alt"></i>
-                                </span>
-                            <span class="txt">
-                                    Non payée
-                                </span>
+                            <span class="icon">
+                                <i class="fas fa-money-bill"></i>
+                            </span>
+                            <span class="txt is-uppercase">
+                                Non payée
+                            </span>
                         </a>
                     {% endif %}
 

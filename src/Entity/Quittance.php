@@ -66,6 +66,21 @@ class Quittance
      */
     private $payed;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $loyer_ht;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $loyer_ttc;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $charges;
+
     public function __toString()
     {
         return $this->getFileName();
@@ -229,5 +244,47 @@ class Quittance
         $this->payed = $payed;
 
         return $this;
+    }
+
+    public function getLoyerHt(): ?float
+    {
+        return $this->loyer_ht;
+    }
+
+    public function setLoyerHt(?float $loyer_ht): self
+    {
+        $this->loyer_ht = $loyer_ht;
+
+        return $this;
+    }
+
+    public function getLoyerTtc(): ?float
+    {
+        return $this->loyer_ttc;
+    }
+
+    public function setLoyerTtc(?float $loyer_ttc): self
+    {
+        $this->loyer_ttc = $loyer_ttc;
+
+        return $this;
+    }
+
+    public function getCharges(): ?float
+    {
+        return $this->charges;
+    }
+
+    public function setCharges(?float $charges): self
+    {
+        $this->charges = $charges;
+
+        return $this;
+    }
+
+    public function getLoyerGlobale()
+    {
+        $loyerGlobale = $this->getLoyerTtc() + $this->getCharges();
+        return $loyerGlobale;
     }
 }

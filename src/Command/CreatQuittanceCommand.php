@@ -86,6 +86,9 @@ class CreatQuittanceCommand extends Command
                 $quittance->setDate($date);
                 $quittance->setMonth($date->format('F'));
                 $quittance->setYear($date->format('Y'));
+                $quittance->setLoyerHt($locataire->getLogement()->getLoyerHc());
+                $quittance->setLoyerTtc($locataire->getLogement()->getLoyerTtc());
+                $quittance->setCharges($locataire->getLogement()->getCharges());
                 //$quittance->setPdfExist($pdf_exist);
                 $this->em->persist($quittance);
                 $this->em->flush();
