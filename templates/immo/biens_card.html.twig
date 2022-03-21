@@ -182,13 +182,19 @@
                         Quittance
                     </span>
                 </div>
-                <div class="column px-5 py-1 is-align-items-center is-expanded">
+                <div class="column px-5 py-1 is-align-items-center is-expanded has-text-centered">
                     {% set last_quittance = bien_immo.quittances|last %}
-                    <div class="tags has-addons mb-0">
-                        <span class="tag">Status dernière quittance</span>
-                        {% if last_quittance and last_quittance.payed %}<span class="is-uppercase has-text-weight-bold tag is-info">{{ last_quittance.loyerglobale }}€ Payée</span>{% else %}<span class="is-uppercase has-text-weight-bold tag is-warning">Non payée</span>{% endif %}
+                    <div class="pb-1">
+                        {% if last_quittance %}
+                            <span class="help">
+                                Statut de la dernière quittance <span class="tag is-grey-light">{{ last_quittance.month }} {{ last_quittance.date|date('Y') }}</span>
+                            </span>
+                            {% if last_quittance and last_quittance.payed %}<span class="is-uppercase has-text-weight-bold tag is-success">{{ last_quittance.loyerglobale }}€ Payée</span>{% else %}<span class="is-uppercase has-text-weight-bold tag is-warning">Non payée</span>{% endif %}
+                        {% else %}
+                            <span class="tag is-grey-light">Aucune quittances disponibles</span>
+                        {% endif %}
                     </div>
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="button is-small is-info">
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="button is-outlined is-fullwidth is-small is-primary has-text-weight-bold">
                         Voir les quittances...
                     </a>
                 </div>

@@ -200,11 +200,11 @@
             const url = this.href;
             axios.get(url).then(function (response) {
                 if (element.classList.contains('is-warning')){
-                    element.classList.replace('is-warning', 'is-info');
+                    element.classList.replace('is-warning', 'is-success');
                     element.querySelector('.txt').innerHTML = 'Payée';
                     //element.querySelector('i').classList.replace('fa-sync-alt', 'fa-money-bill')
                 }else{
-                    element.classList.replace('is-info', 'is-warning');
+                    element.classList.replace('is-success', 'is-warning');
                     element.querySelector('.txt').innerHTML = 'Non payée';
                     //element.querySelector('i').classList.replace('fa-money-bill', 'fa-sync-alt')
                 }
