@@ -61,6 +61,11 @@ class Quittance
      */
     private $month;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $payed;
+
     public function __toString()
     {
         return $this->getFileName();
@@ -70,6 +75,7 @@ class Quittance
     {
         setlocale(LC_TIME, 'fr_FR');
         date_default_timezone_set('Europe/Paris');
+        $this->payed = false;
     }
 
     public function getId(): ?int
@@ -209,6 +215,18 @@ class Quittance
         }
 
         $this->month = $month_fr;
+
+        return $this;
+    }
+
+    public function getPayed(): ?bool
+    {
+        return $this->payed;
+    }
+
+    public function setPayed(bool $payed): self
+    {
+        $this->payed = $payed;
 
         return $this;
     }

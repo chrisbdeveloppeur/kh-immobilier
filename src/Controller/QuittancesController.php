@@ -191,4 +191,36 @@ class QuittancesController extends AbstractController
         return $this->redirect($referer.'#files');
     }
 
+
+    /**
+     * @Route("/quittance/{id}/payed", name="quittance_payed")
+     */
+    public function quittancePayed(Request $request, QuittanceRepository $quittanceRepository, $id, EntityManagerInterface $em){
+
+        $quittance = $quittanceRepository->find($id);
+        $locataire = $quittance->getLocataire();
+
+        //        Vérification de l'utilisateur actuellement connecté
+        if (!in_array('ROLE_SUPER_ADMIN',$this->getUser()->getRoles()) ){
+            if ($locataire->getUser() != $this->getUser()){
+                $this->addFlash('warning', 'Vous n\'êtes pas habilité à être ici');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
+            };
+        }
+
+        if ($quittance->getPayed()){
+            $quittance->setPayed(false);
+            $this->addFlash('info', 'Vous venez de définir la quittance <b>'.$quittance->getId().'</b> au status "non payée"');
+        }else{
+            $quittance->setPayed(true);
+            $this->addFlash('success', 'Vous venez de définir la quittance <b>'.$quittance->getId().'</b> au status "payée"');
+        }
+        $em->flush();
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer.'#files');
+
+    }
+
+
 }

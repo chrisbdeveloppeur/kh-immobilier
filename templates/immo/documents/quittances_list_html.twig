@@ -35,6 +35,27 @@
 
                 <td>
 
+
+                        {% if quittance.payed %}
+                            <a class="button is-success is-size-7 borderless-radius has-text-weight-bold" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance" onclick="return confirm('Êtes-vous sûr de vouloir changer le statut de la quittance?')">
+                                <span class="icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </span>
+                                <span>
+                                    Payée
+                                </span>
+                            </a>
+                        {% else %}
+                            <a class="button is-warning is-size-7 borderless-radius has-text-weight-bold" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance" onclick="return confirm('Êtes-vous sûr de vouloir changer le statut de la quittance?')">
+                                <span class="icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </span>
+                                <span>
+                                    Non payée
+                                </span>
+                            </a>
+                        {% endif %}
+
                     <a class="button is-primary is-outlined is-size-7 borderless-radius" {% if quittance.locataire.email %}href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance au locataire : {{ quittance.locataire.email }}" onclick="return confirm('Êtes-vous sûr de vouloir envoyer ce document?')"{% else %}title="Aucun email défini pour le locataire" disabled="true"{% endif %}>
                         <span class="icon">
                             <i class="fas fa-lg fa-paper-plane"></i>
