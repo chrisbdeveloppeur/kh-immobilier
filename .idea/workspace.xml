@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/QuittancesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuittancesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/immo/documents/quittances_list_html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/immo/documents/quittances_list_html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/templates/immo/documents/quittances_list_html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="248">
-              <caret line="48" column="96" selection-start-line="48" selection-start-column="96" selection-end-line="48" selection-end-column="96" />
+              <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
               <folding>
                 <element signature="e#1533#1559#0#Twig" expanded="true" />
                 <element signature="e#2049#2075#0#Twig" expanded="true" />
@@ -69,8 +65,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="194" column="61" selection-start-line="194" selection-start-column="61" selection-end-line="194" selection-end-column="61" />
+            <state relative-caret-position="340">
+              <caret line="205" column="22" lean-forward="true" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -643,12 +639,12 @@
       <workItem from="1644914692070" duration="1083000" />
       <workItem from="1644926933221" duration="9304000" />
       <workItem from="1645009041149" duration="7477000" />
-      <workItem from="1647856138986" duration="6756000" />
+      <workItem from="1647856138986" duration="7265000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1142489000" />
+    <option name="totallyTimeSpent" value="1142998000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
@@ -1083,7 +1079,7 @@
     <entry file="file://$PROJECT_DIR$/templates/immo/documents/quittances_list_html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
-          <caret line="48" column="96" selection-start-line="48" selection-start-column="96" selection-end-line="48" selection-end-column="96" />
+          <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
           <folding>
             <element signature="e#1533#1559#0#Twig" expanded="true" />
             <element signature="e#2049#2075#0#Twig" expanded="true" />
@@ -1093,8 +1089,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="194" column="61" selection-start-line="194" selection-start-column="61" selection-end-line="194" selection-end-column="61" />
+        <state relative-caret-position="340">
+          <caret line="205" column="22" lean-forward="true" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
         </state>
       </provider>
     </entry>

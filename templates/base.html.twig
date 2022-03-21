@@ -195,9 +195,21 @@
             btn.addEventListener('click', ajaxQuittancePayed)
         });
         function ajaxQuittancePayed(event){
+            let element = this;
+            event.preventDefault();
             confirm('Êtes-vous sûr de vouloir changer le statut de la quittance?');
             const url = this.href;
             axios.get(url).then(function (response) {
+                if (element.classList.contains('is-warning')){
+                    element.classList.replace('is-warning', 'is-info');
+                    element.querySelector('.txt').innerHTML = 'Payée';
+                    element.querySelector('i').classList.replace('fa-sync-alt', 'fa-check')
+                }else{
+                    element.classList.replace('is-info', 'is-warning');
+                    element.querySelector('.txt').innerHTML = 'Non payée';
+                    element.querySelector('i').classList.replace('fa-check', 'fa-sync-alt')
+                }
+
             })
         }
 
