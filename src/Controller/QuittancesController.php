@@ -218,7 +218,7 @@ class QuittancesController extends AbstractController
         }
         $em->flush();
         $referer = $request->headers->get('referer');
-        return $this->redirect($referer.'#files');
+        return $this->json('test');
 
     }
 

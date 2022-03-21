@@ -185,17 +185,21 @@
     #}
     {##############################################}
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
 
         {#       SCRIPT AJAX       #}
 
-        //function ajaxEditFile(event){
-        //    event.preventDefault();
-        //    const url = this.href;
-
-        //    axios.get(url).then(function (response) {
-        //    })
-        //}
+        let ajaxQuittancePayedBtns = document.querySelectorAll('.ajax-quittance-played-btn');
+        ajaxQuittancePayedBtns.forEach(function (btn) {
+            btn.addEventListener('click', ajaxQuittancePayed)
+        });
+        function ajaxQuittancePayed(event){
+            confirm('Êtes-vous sûr de vouloir changer le statut de la quittance?');
+            const url = this.href;
+            axios.get(url).then(function (response) {
+            })
+        }
 
         {#     ##############################################     #}
 
