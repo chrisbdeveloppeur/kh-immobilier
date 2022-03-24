@@ -4,7 +4,7 @@
 {% else %}
     {% set logement_status_color = 'primary' %}
 {% endif %}
-{% set last_quittance = bien_immo.quittances|last %}
+{% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
 
 <div class="card mb-5 {% if last_quittance and last_quittance.payed %}has-background-success-light{% endif %}">
     <header class="card-header has-background-{{ logement_status_color }} mb-1">
