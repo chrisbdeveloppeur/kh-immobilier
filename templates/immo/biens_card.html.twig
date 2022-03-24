@@ -186,10 +186,11 @@
                 <div class="column px-5 py-1 is-align-items-center is-expanded has-text-centered">
                     <div class="pb-1">
                         {% if last_quittance %}
-                            <span class="help">
-                                Statut de la dernière quittance <span class="tag is-grey-light">{{ last_quittance.month }} {{ last_quittance.date|date('Y') }}</span>
-                            </span>
+                            <span class="help">Statut de la dernière quittance</span>
+                            <span class="tags has-addons is-centered">
+                                <span class="tag is-grey-light">{{ last_quittance.month }} {{ last_quittance.date|date('Y') }}</span>
                             {% if last_quittance and last_quittance.payed %}<span class="is-uppercase has-text-weight-bold tag is-success">{{ last_quittance.loyerglobale }}€ Payée</span>{% else %}<span class="is-uppercase has-text-weight-bold tag is-warning">Non payée</span>{% endif %}
+                            </span>
                         {% else %}
                             <span class="tag is-grey-light">Aucune quittances disponibles</span>
                         {% endif %}
