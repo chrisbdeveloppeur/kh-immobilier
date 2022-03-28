@@ -67,7 +67,7 @@
                     {% if is_granted('ROLE_USER') %}
                         <button class="button m-3 is-white borderless-radius is-hidden-touch deploy-aside-menu-btn {% if not is_granted('ROLE_USER') %}is-hidden{% endif %}" id="deploy-aside-menu-btn" onclick="document.getElementById('aside-menu').style.right='0px';document.getElementById('aside-menu').style.visibility='visible';this.classList.add('is-hidden');document.getElementById('close-aside-menu-btn').classList.remove('is-hidden-touch')">
                             <span class="icon">
-                                <i class="fas fa-lg fa-stream"></i>
+                                <i class="fas fa-lg fa-bars"></i>
                             </span>
                         </button>
                     {% endif %}
