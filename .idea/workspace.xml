@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/immo/biens_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/immo/biens_card.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +97,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/immo/biens_card.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="190" column="286" selection-start-line="190" selection-start-column="286" selection-end-line="190" selection-end-column="286" />
+            <state relative-caret-position="150">
+              <caret line="179" column="12" selection-start-line="179" selection-start-column="12" selection-end-line="179" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -683,16 +680,15 @@
       <workItem from="1647856138986" duration="15303000" />
       <workItem from="1647877499881" duration="1332000" />
       <workItem from="1648115239363" duration="2458000" />
-      <workItem from="1648118546551" duration="256000" />
+      <workItem from="1648118546551" duration="1024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1155082000" />
+    <option name="totallyTimeSpent" value="1155850000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1123,8 +1119,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/immo/biens_card.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="190" column="286" selection-start-line="190" selection-start-column="286" selection-end-line="190" selection-end-column="286" />
+        <state relative-caret-position="150">
+          <caret line="179" column="12" selection-start-line="179" selection-start-column="12" selection-end-line="179" selection-end-column="12" />
         </state>
       </provider>
     </entry>
