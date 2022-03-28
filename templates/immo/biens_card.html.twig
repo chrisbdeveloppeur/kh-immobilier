@@ -63,17 +63,14 @@
                         <i class="fas fa-2x fa-map-marked-alt"></i>
                     </span>
                 </div>
-                <div class="column px-5 py-1 is-expanded">
+                <div class="column p-0 is-expanded">
                     <a href="https://maps.google.com/?q={{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}" onclick="window.open(
                         this.href,
                         'newwindow',
                         'width=1000,height=600');
                         return false;"
-                       class="has-text-info has-text-weight-bold show-on-hover" title="Voir sur Google maps">
+                       class="button is-outlined borderless-radius p-5 is-primary is-fullwidth has-text-wrap has-text-weight-bold" title="Voir sur Google maps">
                         <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
-                        <span class="icon show-on-hover-target is-hidden-touch">
-                        <i class="fas fa-search"></i>
-                    </span>
                     </a>
                 </div>
             </div>
@@ -89,28 +86,31 @@
                     </span>
                 </div>
 
-                <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded">
+                <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
                     {% if bien_immo.locataires.current %}
-                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="column is-expanded px-0 py-0 has-text-info has-text-weight-bold show-on-hover" title="Voir les détails du locataire">
+                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="button is-outlined borderless-radius p-5 is-primary is-fullwidth has-text-wrap has-text-weight-bold" title="Voir les détails du locataire">
                             <span>{{ bien_immo.locataires.current }}</span>
-                            <span class="icon show-on-hover-target is-hidden-touch">
-                                <i class="fas fa-search"></i>
-                            </span>
                         </a>
-                        {% if bien_immo.locataires.current.email %}
-                            <a href="mailto:{{ bien_immo.locataires.current.email }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
-                                <span class="icon">
-                                    <i class="fas fa-lg fa-envelope"></i>
-                                </span>
-                            </a>
-                        {% endif %}
-                        {% if bien_immo.locataires.current.phone %}
-                            <a href="tel:{{ bien_immo.locataires.current.phone }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
-                                <span class="icon">
-                                    <i class="fas fa-lg fa-phone"></i>
-                                </span>
-                            </a>
-                        {% endif %}
+                        <div class="is-flex">
+                            {% if bien_immo.locataires.current.email %}
+                                <div class="column p-0 is-half-touch">
+                                    <a href="mailto:{{ bien_immo.locataires.current.email }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-envelope"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            {% endif %}
+                            {% if bien_immo.locataires.current.phone %}
+                                <div class="column p-0 is-half-touch">
+                                    <a href="tel:{{ bien_immo.locataires.current.phone }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-phone"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
                     {% else %}
                         <a class="text-info-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire">
                             <span class="is-italic">Sans locattaire</span>
@@ -149,28 +149,34 @@
                         <i class="fas fa-2x fa-hands-helping"></i>
                     </span>
                 </div>
-                <div class="column px-5 py-1 is-flex is-justify-content-center is-align-items-center is-expanded">
+                <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
                     {% if bien_immo.copropriete and bien_immo.copropriete.name %}
-                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="column is-expanded px-0 py-0 has-text-info has-text-weight-bold show-on-hover" title="Voir les détails de la copropriété">
+                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-outlined borderless-radius p-5 is-primary is-fullwidth has-text-wrap" title="Voir les détails de la copropriété">
                             <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
                             <span class="icon show-on-hover-target is-hidden-touch">
-                            <i class="fas fa-search"></i>
-                        </span>
+                                <i class="fas fa-search"></i>
+                            </span>
                         </a>
-                        {% if bien_immo.copropriete.email %}
-                            <a href="mailto:{{ bien_immo.copropriete.email }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="{{ bien_immo.copropriete.email }}">
-                                <span class="icon">
-                                    <i class="fas fa-lg fa-envelope"></i>
-                                </span>
-                            </a>
-                        {% endif %}
-                        {% if bien_immo.copropriete.phone %}
-                            <a href="tel:{{ bien_immo.copropriete.phone }}" class="px-1 py-0 is-4-desktop is-flex is-justify-content-center is-align-items-center has-text-centered text-info-onhover hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
-                                <span class="icon">
-                                    <i class="fas fa-lg fa-phone"></i>
-                                </span>
-                            </a>
-                        {% endif %}
+                        <div class="is-flex">
+                            {% if bien_immo.copropriete.email %}
+                                <div class="column p-0 is-half-touch">
+                                    <a href="mailto:{{ bien_immo.copropriete.email }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.copropriete.email }}">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-envelope"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            {% endif %}
+                            {% if bien_immo.copropriete.phone %}
+                                <div class="column p-0 is-half-touch">
+                                    <a href="tel:{{ bien_immo.copropriete.phone }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
+                                        <span class="icon">
+                                            <i class="fas fa-lg fa-phone"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
                     {% else %}
                         <i>N/A</i>
                     {% endif %}
