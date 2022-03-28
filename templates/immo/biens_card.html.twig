@@ -69,7 +69,7 @@
                         'newwindow',
                         'width=1000,height=600');
                         return false;"
-                       class="button borderless-radius p-5 is-primary is-fullwidth has-text-wrap has-text-weight-bold" title="Voir sur Google maps">
+                       class="button is-outlined borderless-radius p-5 is-primary is-fullwidth has-text-wrap has-text-weight-bold" title="Voir sur Google maps">
                         <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
                     </a>
                 </div>
@@ -88,7 +88,7 @@
 
                 <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
                     {% if bien_immo.locataires.current %}
-                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="button borderless-radius p-5 is-primary is-fullwidth has-text-wrap has-text-weight-bold" title="Voir les détails du locataire">
+                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="button is-outlined borderless-radius p-5 is-primary is-fullwidth has-text-wrap has-text-weight-bold" title="Voir les détails du locataire">
                             <span>{{ bien_immo.locataires.current }}</span>
                         </a>
                         <div class="is-flex">
@@ -151,7 +151,7 @@
                 </div>
                 <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
                     {% if bien_immo.copropriete and bien_immo.copropriete.name %}
-                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button borderless-radius p-5 is-primary is-fullwidth has-text-wrap" title="Voir les détails de la copropriété">
+                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-outlined borderless-radius p-5 is-primary is-fullwidth has-text-wrap" title="Voir les détails de la copropriété">
                             <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
                         </a>
                         <div class="is-flex">
