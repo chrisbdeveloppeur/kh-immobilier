@@ -122,6 +122,11 @@ class BienImmo
      */
     private $documents;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Financement::class, mappedBy="BienImmo", cascade={"persist", "remove"})
+     */
+    private $financement;
+
 
     public function __construct()
     {
@@ -518,6 +523,23 @@ public function removeDocument(Documents $document): self
             $document->setBienImmo(null);
         }
     }
+
+    return $this;
+}
+
+public function getFinancement(): ?Financement
+{
+    return $this->financement;
+}
+
+public function setFinancement(Financement $financement): self
+{
+    // set the owning side of the relation if necessary
+    if ($financement->getBienImmo() !== $this) {
+        $financement->setBienImmo($this);
+    }
+
+    $this->financement = $financement;
 
     return $this;
 }
