@@ -517,19 +517,20 @@
 
 
         {#     ############  SCRIPT FOR EDIT QUITTANCE   #############     #}
-        let btn = document.querySelectorAll('.form-lock-btn');
+        let btn = document.querySelectorAll('.form-edit-btn');
         btn.forEach(function (ancrage) {
 
             ancrage.addEventListener('click', function () {
                 toogleReadonlyClass(ancrage);
-                ancrage.classList.toggle('is-danger');
-                if (ancrage.querySelector('i').classList.contains('fa-unlock')) {
+                ancrage.classList.toggle('is-light');
+                ancrage.classList.toggle('is-info');
+                if (ancrage.classList.contains('is-light')) {
                     ancrage.setAttribute('title', 'Modifier les informations');
                 }else {
-                    ancrage.setAttribute('title', 'Vérouiler les informations');
+                    ancrage.setAttribute('title', 'Vérouiller les informations');
                 }
-                ancrage.querySelector('i').classList.toggle('fa-unlock');
-                ancrage.querySelector('i').classList.toggle('fa-lock');
+                //ancrage.querySelector('i').classList.toggle('fa-unlock');
+                //ancrage.querySelector('i').classList.toggle('fa-lock');
             });
 
         });

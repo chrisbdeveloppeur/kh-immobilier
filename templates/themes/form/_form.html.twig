@@ -79,9 +79,9 @@
 
             {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
                 <div class="is-flex is-justify-content-space-between">
-                    <a class="tag is-small is-danger is-light form-lock-btn" title="Modifier les informations">
+                    <a class="button is-small is-black is-light form-edit-btn" title="Modifier les informations">
                         <span class="icon">
-                            <i class="fas fa-lg fa-lock"></i>
+                            <i class="fas fa-lg fa-edit"></i>
                         </span>
                     </a>
 
@@ -115,9 +115,9 @@
 
             {% if form.vars.name == 'locataire' and 'new' not in app.request.get('_route')  %}
                 <div class="is-flex is-justify-content-space-between">
-                    <a class="tag is-small is-danger is-light form-lock-btn" title="Modifier les informations">
+                    <a class="button is-small is-black is-light form-edit-btn" title="Modifier les informations">
                         <span class="icon">
-                            <i class="fas fa-lg fa-lock"></i>
+                            <i class="fas fa-lg fa-edit"></i>
                         </span>
                     </a>
                     <div class="tags mb-0 has-addons bien-immo locataire is-hidden is-justify-content-end">

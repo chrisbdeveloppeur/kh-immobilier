@@ -27,12 +27,12 @@
             {% endif %}
 
             <span class="is-expanded column is-flex-desktop px-0 py-0 is-justify-content-center">
-                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="icon-text">
+                <span lass="icon-text">
                     <span class="icon">
                         <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
                     </span>
                     <span class="font-custom">{{ bien_immo.street }}</span>
-                </a>
+                </span>
             </span>
 
             {% if bien_immo.type %}
@@ -94,7 +94,7 @@
                         <div class="is-flex">
                             {% if bien_immo.locataires.current.email %}
                                 <div class="column p-0 is-expanded">
-                                    <a href="mailto:{{ bien_immo.locataires.current.email }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
+                                    <a href="mailto:{{ bien_immo.locataires.current.email }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-envelope"></i>
                                         </span>
@@ -103,7 +103,7 @@
                             {% endif %}
                             {% if bien_immo.locataires.current.phone %}
                                 <div class="column p-0 is-expanded">
-                                    <a href="tel:{{ bien_immo.locataires.current.phone }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
+                                    <a href="tel:{{ bien_immo.locataires.current.phone }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-phone"></i>
                                         </span>
@@ -157,7 +157,7 @@
                         <div class="is-flex">
                             {% if bien_immo.copropriete.email %}
                                 <div class="column p-0 is-expanded">
-                                    <a href="mailto:{{ bien_immo.copropriete.email }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.email }}">
+                                    <a href="mailto:{{ bien_immo.copropriete.email }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.email }}">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-envelope"></i>
                                         </span>
@@ -166,7 +166,7 @@
                             {% endif %}
                             {% if bien_immo.copropriete.phone %}
                                 <div class="column p-0 is-expanded">
-                                    <a href="tel:{{ bien_immo.copropriete.phone }}" class="button is-primary is-outlined is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
+                                    <a href="tel:{{ bien_immo.copropriete.phone }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-phone"></i>
                                         </span>
