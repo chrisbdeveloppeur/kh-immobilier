@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Snappy\Pdf;
 
 /**
  * @Route("/quittances", name="quittances_")
@@ -35,6 +36,19 @@ class QuittancesController extends AbstractController
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
         $date = new \DateTime();
+
+        /*
+        $snappy = new Pdf('/usr/local/bin/wkhtmltopdf');
+        $snappy->generateFromHtml(
+            $this->renderView(
+                'pdf/quittance_1.html.twig',
+                array(
+                    'some'  => 'test'
+                )
+            ),
+            'file.pdf'
+        );
+        */
 
         $locataire = $locataireRepository->find($loc_id);
         $logement = $locataire->getLogement();

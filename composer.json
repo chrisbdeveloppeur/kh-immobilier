@@ -11,6 +11,7 @@
         "doctrine/orm": "^2.9",
         "dompdf/dompdf": "^1.1",
         "knplabs/knp-paginator-bundle": "^5.6",
+        "knplabs/knp-snappy-bundle": "^1.9",
         "phpoffice/phpword": "^0.18.2",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/apache-pack": "^1.0",
@@ -49,7 +50,10 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/flex": true
+        }
     },
     "autoload": {
         "psr-4": {
