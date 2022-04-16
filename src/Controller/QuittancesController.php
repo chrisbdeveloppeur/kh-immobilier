@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Snappy\Pdf;
+use Dompdf\Dompdf;
 
 /**
  * @Route("/quittances", name="quittances_")
@@ -28,6 +28,7 @@ class QuittancesController extends AbstractController
         $this->createFileController = $createFileController;
     }
 
+
     /**
      * @Route("/new/{loc_id}", name="edit_new_quittance")
      */
@@ -37,17 +38,20 @@ class QuittancesController extends AbstractController
         date_default_timezone_set('Europe/Paris');
         $date = new \DateTime();
 
+
         /*
-        $snappy = new Pdf('/usr/local/bin/wkhtmltopdf');
-        $snappy->generateFromHtml(
-            $this->renderView(
-                'pdf/quittance_1.html.twig',
-                array(
-                    'some'  => 'test'
-                )
-            ),
-            'file.pdf'
-        );
+// instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('hello world');
+
+// (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+// Render the HTML as PDF
+        $dompdf->render();
+
+// Output the generated PDF to Browser
+        $dompdf->stream();
         */
 
         $locataire = $locataireRepository->find($loc_id);
