@@ -5,7 +5,8 @@
 
 {% block body %}
     <div class="is-flex is-justify-content-center is-align-items-center" style="height: 100%;">
-        <form class="column is-one-third" method="post" onsubmit="isLoading(this)">
+        <form class="column is-one-third is-one-quarter-desktop" method="post" onsubmit="isLoading(this)">
+            <h1 class="title has-text-centered">Bienvenue sur votre l'outil de gestion immobilière</h1>
             {% if error %}
                 <div class="tag is-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
