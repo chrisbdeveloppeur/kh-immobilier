@@ -1,0 +1,31 @@
+<div class="column is-flex p-0 box-shadow-bulma">
+
+    <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
+
+        <div class="column p-0 is-flex is-expanded">
+            <div class="p-2 is-flex is-justify-content-center is-align-items-center">
+                <div class="hovertext help-mouse-hover" data-hover="Adresse du bien">
+                    <span class="icon">
+                        <i class="fas fa-globe"></i>
+                    </span>
+                </div>
+            </div>
+            <span class="column is-expanded">{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
+        </div>
+
+        <div class="is-flex">
+            <div class="column p-1 is-expanded">
+                <a href="https://maps.google.com/?q={{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}" class="button is-fullwidth has-text-centered hovertext" data-hover="Voir sur google maps"  onclick="window.open(
+                                       this.href,
+                                       'newwindow',
+                                       'width=1000,height=600');
+                                       return false;">
+                    <span class="icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

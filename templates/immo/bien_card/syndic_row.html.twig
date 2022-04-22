@@ -1,0 +1,67 @@
+<div class="column is-flex p-0 box-shadow-bulma">
+
+    <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
+
+
+        <div class="column p-0 is-flex is-expanded">
+            <div class="p-2 is-flex is-justify-content-center is-align-items-center">
+                <div class="hovertext help-mouse-hover" data-hover="Société de Syndic">
+                    <span class="icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </span>
+                </div>
+            </div>
+            {% if bien_immo.copropriete.name %}
+                <span class="column is-expanded">
+                    {{ bien_immo.copropriete.name }}
+                </span>
+            {% else %}
+                <span class="column is-expanded is-italic">
+                    Sans nom
+                </span>
+            {% endif %}
+        </div>
+
+
+        {% if bien_immo.copropriete %}
+            <div class="is-flex">
+                {% if bien_immo.copropriete.email %}
+                    <div class="column p-1 is-expanded">
+                        <a href="mailto:{{ bien_immo.copropriete.email }}" class="button is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.email }}">
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </a>
+                    </div>
+                {% endif %}
+                {% if bien_immo.copropriete.phone %}
+                    <div class="column p-1 is-expanded">
+                        <a href="tel:{{ bien_immo.copropriete.phone }}" class="button is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
+                            <span class="icon">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                        </a>
+                    </div>
+                {% endif %}
+                <div class="column p-1 is-expanded">
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-fullwidth has-text-centered hovertext" data-hover="Modifier les informations de la copropriété">
+                        <span class="icon">
+                            <i class="fas fa-edit"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+{#        {% else %}#}
+{#            <div class="is-flex">#}
+{#                <div class="column p-1 is-expanded">#}
+{#                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-fullwidth has-text-centered hovertext" data-hover="Ajouter une copropriété">#}
+{#                        <span class="icon">#}
+{#                            <i class="fas fas fa-plus"></i>#}
+{#                        </span>#}
+{#                    </a>#}
+{#                </div>#}
+{#            </div>#}
+        {% endif %}
+    </div>
+
+</div>

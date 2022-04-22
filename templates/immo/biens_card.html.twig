@@ -1,6 +1,6 @@
 {% set logement_status_color = '' %}
 {% if bien_immo.locataires is empty %}
-    {% set logement_status_color = 'light' %}
+    {% set logement_status_color = 'primary' %}
 {% else %}
     {% set logement_status_color = 'primary' %}
 {% endif %}
@@ -15,10 +15,6 @@
                     <a href="{{ path('user_edit', {'id': bien_immo.user.id }) }}#gestionnaire" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
                         <b>{{ bien_immo.user.firstname|first|capitalize }}{{ bien_immo.user.lastname|first|capitalize }}</b>
                     </a>
-                {% elseif bien_immo.locataires.current.user %}
-                    <a href="{{ path('user_edit', {'id': bien_immo.locataires.current.user.id }) }}#gestionnaire" class="has-text-primary has-text-weight-normal has-background-light is-flex is-justify-content-center is-align-items-center hovertext" data-hover="Voir le gestionnaire {{ bien_immo.locataires.current.user }}" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
-                        <b>{{ bien_immo.locataires.current.user.firstname|first|capitalize }}{{ bien_immo.locataires.current.user.lastname|first|capitalize }}</b>
-                    </a>
                 {% else %}
                     <a class="has-text-primary has-text-weight-normal has-background-grey-lighter is-flex is-justify-content-center is-align-items-center hovertext not-allowed-onhover" disabled data-hover="Sans gestionnaire" style="padding: 5px;width:35px;height:35px;border-radius: 50%;">
                         <i class="is-size-7">N/A</i>
@@ -27,7 +23,7 @@
             {% endif %}
 
             <span class="is-expanded column is-flex-desktop px-0 py-0 is-justify-content-center">
-                <span lass="icon-text">
+                <span class="icon-text">
                     <span class="icon">
                         <i class="fas fa-lg {% if bien_immo.locataires is empty %}fa-home{% else %}fa-house-user{% endif %}"></i>
                     </span>
@@ -52,159 +48,17 @@
     </header>
 
     <div class="card-content px-0 py-0">
-        <div class="content card-childs-even">
+        <div class="content">
 
-            <div class="column is-flex px-0 pt-0 pb-1">
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center">
-                    <span class="is-hidden-touch">
-                        Adresse
-                    </span>
-                    <span class="is-hidden-desktop">
-                        <i class="fas fa-2x fa-map-marked-alt"></i>
-                    </span>
-                </div>
-                <div class="column p-0 is-expanded">
-                    <a href="https://maps.google.com/?q={{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}" onclick="window.open(
-                        this.href,
-                        'newwindow',
-                        'width=1000,height=600');
-                        return false;"
-                       class="column has-text-centered bg-primary-onhover text-white-onhover is-fullwidth has-text-wrap has-text-weight-bold" title="Voir sur Google maps">
-                        <span>{{ bien_immo.street }}, {{ bien_immo.cp }} {{ bien_immo.city }}</span>
-                    </a>
-                </div>
-            </div>
+            {{ include('immo/bien_card/street_row.html.twig') }}
 
-            <div class="column is-flex px-0 pt-0 pb-1">
+            {{ include('immo/bien_card/locataire_row.html.twig') }}
 
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center hovertext help-mouse-hover" data-hover="Locataire occupant">
-                    <span class="is-hidden-touch">
-                        Locataire *
-                    </span>
-                    <span class="is-hidden-desktop">
-                        <i class="fas fa-2x fa-user"></i>
-                    </span>
-                </div>
+            {{ include('immo/bien_card/loyer_row.html.twig') }}
 
-                <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
-                    {% if bien_immo.locataires.current %}
-                        <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="column bg-primary-onhover text-white-onhover has-text-centered is-fullwidth has-text-wrap has-text-weight-bold" title="Voir les détails du locataire">
-                            <span>{{ bien_immo.locataires.current }}</span>
-                        </a>
-                        <div class="is-flex">
-                            {% if bien_immo.locataires.current.email %}
-                                <div class="column p-0 is-expanded">
-                                    <a href="mailto:{{ bien_immo.locataires.current.email }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-envelope"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            {% endif %}
-                            {% if bien_immo.locataires.current.phone %}
-                                <div class="column p-0 is-expanded">
-                                    <a href="tel:{{ bien_immo.locataires.current.phone }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-phone"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% else %}
-                        <a class="text-info-onhover show-on-hover" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire">
-                            <span class="is-italic">Sans locattaire</span>
-                            <span class="icon show-on-hover-target is-hidden-touch">
-                                <i class="fas fa-user-plus add-loc"></i>
-                            </span>
-                            <span class="icon is-hidden-desktop">
-                                <i class="fas fa-user-plus add-loc"></i>
-                            </span>
-                        </a>
-                    {% endif %}
-                </div>
+            {{ include('immo/bien_card/syndic_row.html.twig') }}
 
-            </div>
-
-            <div class="column is-flex px-0 pt-0 pb-1">
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover hovertext" data-hover="Loyer *Charges incluses">
-                    <span class="is-hidden-touch">
-                        Loyer *
-                    </span>
-                    <span class="is-hidden-desktop">
-                        <i class="fas fa-2x fa-hand-holding-usd"></i>
-                    </span>
-                </div>
-                <div class="column px-5 py-1 is-flex is-align-items-center is-justify-content-center has-text-centered is-expanded has-text-success has-text-weight-bold">
-                    <span>{{ bien_immo.loyerTtc|number_format(2) }} €</span>
-                </div>
-            </div>
-
-            <div class="column is-flex px-0 pt-0 pb-1">
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center hovertext help-mouse-hover" data-hover="Société de Syndic">
-                    <span class="is-hidden-touch">
-                        Syndic *
-                    </span>
-                    <span class="is-hidden-desktop">
-                        <i class="fas fa-2x fa-hands-helping"></i>
-                    </span>
-                </div>
-                <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
-                    {% if bien_immo.copropriete and bien_immo.copropriete.name %}
-                        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="column has-text-centered bg-primary-onhover text-white-onhover is-fullwidth has-text-wrap" title="Voir les détails de la copropriété">
-                            <span><b class="is-uppercase">{{ bien_immo.copropriete.name }}</b></span>
-                        </a>
-                        <div class="is-flex">
-                            {% if bien_immo.copropriete.email %}
-                                <div class="column p-0 is-expanded">
-                                    <a href="mailto:{{ bien_immo.copropriete.email }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.email }}">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-envelope"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            {% endif %}
-                            {% if bien_immo.copropriete.phone %}
-                                <div class="column p-0 is-expanded">
-                                    <a href="tel:{{ bien_immo.copropriete.phone }}" class="button is-fullwidth borderless-radius p-5 is-4-desktop has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-phone"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% else %}
-                        <div class="column has-text-centered">
-                            <i>N/A</i>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="column is-flex px-0 pt-0 pb-1">
-                <div class="column is-4-desktop is-3-mobile px-1 py-1 has-text-light is-flex is-justify-content-center is-align-items-center help-mouse-hover">
-                    <span class="">
-                        Quittance
-                    </span>
-                </div>
-                <div class="column p-0 is-align-items-center is-expanded has-text-centered">
-                    <div class="pb-1">
-                        {% if last_quittance %}
-                            <span class="help">Statut de la dernière quittance</span>
-                            <span class="tags has-addons is-centered">
-                                <span class="tag is-grey-light">{{ last_quittance.month }} {{ last_quittance.date|date('Y') }}</span>
-                            {% if last_quittance and last_quittance.payed %}<span class="is-uppercase has-text-weight-bold tag is-success">{{ last_quittance.loyerglobale }}€ Payée</span>{% else %}<span class="is-uppercase has-text-weight-bold tag is-warning">Non payée</span>{% endif %}
-                            </span>
-                        {% else %}
-                            <span class="tag is-grey-light">Aucune quittances disponibles</span>
-                        {% endif %}
-                    </div>
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="column bg-primary-onhover text-white-onhover is-fullwidth is-small is-primary has-text-weight-bold">
-                        Voir les quittances...
-                    </a>
-                </div>
-            </div>
+            {{ include('immo/bien_card/quittance_row.html.twig') }}
 
         </div>
     </div>
