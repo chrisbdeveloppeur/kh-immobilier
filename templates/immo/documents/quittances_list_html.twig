@@ -43,20 +43,20 @@
 
                 <td>
                     {% if quittance.payed %}
-                        <a class="button is-success is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
+                        <a class="button is-success is-size-7 borderless-radius has-text-weight-bold ajax-quittance-payed-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
                             <span class="icon">
-                                <i class="fas fa-money-bill"></i>
+                                <i class="fas fa-check"></i>
                             </span>
-                            <span class="txt is-uppercase">
+                            <span class="txt is-italic">
                                 Payée
                             </span>
                         </a>
                     {% else %}
-                        <a class="button is-warning is-size-7 borderless-radius has-text-weight-bold ajax-quittance-played-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
+                        <a class="button is-warning is-size-7 borderless-radius has-text-weight-bold ajax-quittance-payed-btn" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" title="Changer le statut de la quittance">
                             <span class="icon">
-                                <i class="fas fa-money-bill"></i>
+                                <i class="fas fa-clock"></i>
                             </span>
-                            <span class="txt is-uppercase">
+                            <span class="txt is-italic">
                                 Non payée
                             </span>
                         </a>

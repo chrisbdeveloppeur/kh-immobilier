@@ -6,7 +6,7 @@
 {% endif %}
 {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
 
-<div class="card mb-5 {% if last_quittance and last_quittance.payed %}has-background-success-light{% endif %}">
+<div class="card mb-5 {% if last_quittance and last_quittance.payed %}has-background-success-light{% endif %} has-text-centered-touch">
     <header class="card-header has-background-{{ logement_status_color }} mb-1">
         <p class="card-header-title has-text-light has-icons-left is-flex-direction-column-touch">
 
@@ -62,6 +62,7 @@
 
         </div>
     </div>
+
     <footer class="card-footer card-footer-column-mobil">
         <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered">
             <span class="is-hidden-touch">
@@ -90,4 +91,5 @@
             </a>
         {% endif %}
     </footer>
+
 </div>

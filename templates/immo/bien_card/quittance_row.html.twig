@@ -4,55 +4,49 @@
 
         <div class="column p-0 is-flex is-expanded">
             <div class="p-2 is-flex is-justify-content-center is-align-items-center">
-                <div class="hovertext help-mouse-hover" data-hover="Statut de paiement">
+                <div class="hovertext help-mouse-hover" data-hover="Statut du dernier loyer">
                     <span class="icon">
-                        <i class="fas fa-file-archive"></i>
+                        <i class="fas fa-hand-holding-usd"></i>
                     </span>
                 </div>
             </div>
             <div class="column is-expanded">
                 {% if last_quittance %}
-                    <span class="tags has-addons is-centered">
-                    <span class="tag is-dark">
-                        {{ last_quittance.month }} {{ last_quittance.date|date('Y') }}
-                    </span>
-                    {% if last_quittance and last_quittance.payed %}
-                        <span class="is-uppercase has-text-weight-bold tag is-success">
-                            <span class="icon">
-                                <i class="fa fa-check"></i>
-                            </span>
-                        {{ last_quittance.loyerglobale }}€ Payée
-                        </span>
-                    {% else %}
-                        <span class="is-uppercase has-text-weight-bold tag is-warning is-italic">
-                            <span class="icon">
-                                <i class="fa fa-clock"></i>
-                            </span>
-                            Non payée
-                        </span>
-                        <a class="tag">
-                            Loyer déjà payé ? cliquez ici
-                        </a>
-                    {% endif %}
-                </span>
+                    {{ last_quittance.month }} {{ last_quittance.date|date('Y') }}
                 {% else %}
-                    <span class="tag is-grey-light">Aucune quittances disponibles</span>
+                    <span class="tag is-italic">Aucune quittances disponibles</span>
                 {% endif %}
             </div>
         </div>
 
-        <div class="is-flex">
+        <div class="is-flex is-align-items-center">
+            {% if last_quittance and last_quittance.payed %}
+                <div class="column p-1 is-expanded">
+                    <a class="button is-fullwidth is-success has-text-weight-bold ajax-quittance-payed-btn" href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" title="Changer le statut de la quittance">
+                        <span class="icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        <span class="txt is-italic">
+                            Payée
+                        </span>
+                    </a>
+                </div>
+            {% elseif last_quittance %}
+            <div class="column p-1 is-expanded">
+                <a class="button is-fullwidth is-warning has-text-weight-bold ajax-quittance-payed-btn" href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" title="Changer le statut de la quittance">
+                    <span class="icon">
+                        <i class="fas fa-clock"></i>
+                    </span>
+                    <span class="txt is-italic">
+                        Non payée
+                    </span>
+                </a>
+            </div>
+            {% endif %}
             <div class="column p-1 is-expanded">
                 <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="button is-fullwidth has-text-centered hovertext" data-hover="Voir toutes les quittances">
                     <span class="icon">
                         <i class="fas fa-search-dollar"></i>
-                    </span>
-                </a>
-            </div>
-            <div class="column p-1 is-expanded">
-                <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="button is-fullwidth has-text-centered hovertext" data-hover="Voir toutes les quittances">
-                    <span class="icon">
-                        <i class="fas fa-file-"></i>
                     </span>
                 </a>
             </div>

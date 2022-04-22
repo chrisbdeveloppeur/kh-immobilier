@@ -189,25 +189,31 @@
 
         {#       SCRIPT AJAX       #}
 
-        let ajaxQuittancePayedBtns = document.querySelectorAll('.ajax-quittance-played-btn');
+        let ajaxQuittancePayedBtns = document.querySelectorAll('.ajax-quittance-payed-btn');
         ajaxQuittancePayedBtns.forEach(function (btn) {
             btn.addEventListener('click',ajaxQuittancePayed)
         });
         function ajaxQuittancePayed(event){
             let element = this;
+            let txt = element.querySelector('.txt');
             event.preventDefault();
             const url = this.href;
+            element.classList.add('is-loading');
             axios.get(url).then(function (response) {
                 if (element.classList.contains('is-warning')){
                     element.classList.replace('is-warning', 'is-success');
-                    element.querySelector('.txt').innerHTML = 'Payée';
-                    //element.querySelector('i').classList.replace('fa-sync-alt', 'fa-money-bill')
+                    if (txt){
+                        txt.innerHTML = 'Payée';
+                    }
+                    element.querySelector('i').classList.replace('fa-clock', 'fa-check')
                 }else{
                     element.classList.replace('is-success', 'is-warning');
-                    element.querySelector('.txt').innerHTML = 'Non payée';
-                    //element.querySelector('i').classList.replace('fa-money-bill', 'fa-sync-alt')
+                    if (txt){
+                        txt.innerHTML = 'Non payée';
+                    }
+                    element.querySelector('i').classList.replace('fa-check', 'fa-clock')
                 }
-
+                element.classList.remove('is-loading');
             });
         }
 

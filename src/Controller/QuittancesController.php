@@ -216,14 +216,16 @@ class QuittancesController extends AbstractController
 
         if ($quittance->getPayed()){
             $quittance->setPayed(false);
-            //$this->addFlash('info', 'Vous venez de définir la quittance <b>'.$quittance->getFileName().'</b> au status "non payée"');
+            $message = 'Vous venez de définir la quittance au status "non payée"';
+//            $this->addFlash('info', $message );
         }else{
             $quittance->setPayed(true);
+            $message = 'Vous venez de définir la quittance au status "payée"';
             //$this->addFlash('success', 'Vous venez de définir la quittance <b>'.$quittance->getFileName().'</b> au status "payée"');
         }
         $em->flush();
         $referer = $request->headers->get('referer');
-        return $this->json('test');
+        return $this->json(['message' => $message]);
 
     }
 
