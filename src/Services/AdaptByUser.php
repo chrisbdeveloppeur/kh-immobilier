@@ -49,7 +49,7 @@ class AdaptByUser extends AbstractController
         return $all_locataires;
     }
 
-    public function redirectIfNotAuth($entity)
+    public function redirectIfNotAuth(BienImmo $entity)
     {
         if (!$this->isGranted('ROLE_SUPER_ADMIN')){
             if ($entity->getUser() !== $this->user){

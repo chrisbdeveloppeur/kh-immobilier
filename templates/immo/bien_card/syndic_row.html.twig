@@ -11,14 +11,16 @@
                     </span>
                 </div>
             </div>
-            {% if bien_immo.copropriete.name %}
+            {% if bien_immo.copropriete %}
                 <span class="column is-expanded">
-                    {{ bien_immo.copropriete.name }}
+                    <span class="tag {% if not bien_immo.copropriete.name %}is-italic{% endif %}">
+                        {{ bien_immo.copropriete.name|default('Sans nom') }}
+                    </span>
                 </span>
             {% else %}
                 <span class="column is-expanded">
-                    <span class="tag is-italic">
-                        Sans nom
+                    <span class="tag ">
+                        N/C
                     </span>
                 </span>
             {% endif %}
