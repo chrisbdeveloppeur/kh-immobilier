@@ -1,6 +1,6 @@
 <div class="column is-flex p-0 box-shadow-bulma">
 
-    <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
+    <div class="column p-0 is-flex is-justify-content-center is-align-items-center is-expanded">
 
         <div class="column p-0 is-flex is-expanded">
             <div class="p-2 is-flex is-justify-content-center is-align-items-center">
@@ -12,9 +12,9 @@
             </div>
             <div class="column is-expanded">
                 {% if last_quittance %}
-                    {{ last_quittance.month }} {{ last_quittance.date|date('Y') }}
+                    <span class="">{{ last_quittance.month }} {{ last_quittance.date|date('Y') }}</span>
                 {% else %}
-                    <span class="tag is-italic">Aucune quittances disponibles</span>
+                    <span class="is-italic">Aucune quittances disponibles</span>
                 {% endif %}
             </div>
         </div>
@@ -26,8 +26,11 @@
                         <span class="icon">
                             <i class="fas fa-check"></i>
                         </span>
-                        <span class="txt is-italic">
+                        <span class="txt is-italic is-hidden-touch">
                             Payée
+                        </span>
+                        <span class="txt is-italic is-hidden-desktop">
+                            <i class="fas fa-coins"></i>
                         </span>
                     </a>
                 </div>
@@ -37,8 +40,11 @@
                     <span class="icon">
                         <i class="fas fa-clock"></i>
                     </span>
-                    <span class="txt is-italic">
+                    <span class="txt is-italic is-hidden-touch">
                         Non payée
+                    </span>
+                    <span class="txt is-italic is-hidden-desktop">
+                        <i class="fas fa-coins"></i>
                     </span>
                 </a>
             </div>

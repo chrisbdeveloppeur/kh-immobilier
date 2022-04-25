@@ -46,7 +46,8 @@
 
         {% endif %}
 
-        {% if form.vars.name == 'user' or form.vars.name == 'change_password_user' %}
+{#        {{ dump(app.request.get('_route')) }}#}
+        {% if (form.vars.name == 'user' and app.request.get('_route') != 'user_new') or form.vars.name == 'change_password_user' %}
             <div class="is-hidden" id="gestionnaire"></div>
             <li class="{% if form.vars.name == 'user' %}is-active{% endif %} tab" id="">
                 <a href="{{ path('user_edit', {'id': user.id}) }}#gestionnaire">

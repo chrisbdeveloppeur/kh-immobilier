@@ -1,6 +1,6 @@
 <div class="column is-flex p-0 box-shadow-bulma">
 
-    <div class="column p-0 is-flex-desktop is-justify-content-center is-align-items-center is-expanded">
+    <div class="column p-0 is-flex is-justify-content-center is-align-items-center is-expanded">
 
 
         <div class="column p-0 is-flex is-expanded">
@@ -13,13 +13,13 @@
             </div>
             {% if bien_immo.copropriete %}
                 <span class="column is-expanded">
-                    <span class="tag {% if not bien_immo.copropriete.name %}is-italic{% endif %}">
+                    <span class="{% if not bien_immo.copropriete.name %}is-italic{% endif %}">
                         {{ bien_immo.copropriete.name|default('Sans nom') }}
                     </span>
                 </span>
             {% else %}
                 <span class="column is-expanded">
-                    <span class="tag ">
+                    <span class="">
                         N/C
                     </span>
                 </span>

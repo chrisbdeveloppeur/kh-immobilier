@@ -6,7 +6,7 @@
 {% endif %}
 {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
 
-<div class="card mb-5 {#{% if last_quittance and last_quittance.payed %}has-background-success-light{% endif %}#} has-text-centered-touch">
+<div class="card mb-5 {#{% if last_quittance and last_quittance.payed %}has-background-success-light{% endif %}#}">
     <header class="card-header has-background-{{ logement_status_color }} mb-1">
         <p class="card-header-title has-text-light has-icons-left is-flex-direction-column-touch">
 

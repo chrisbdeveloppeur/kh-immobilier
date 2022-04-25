@@ -44,7 +44,7 @@
 
 
 {% block aside_menu %}
-        <div class="px-4 py-6 has-background-white box-shadow-bulma aside-menu" id="aside-menu">
+        <div class="px-4 py-6 has-background-white box-shadow-bulma aside-menu is-flex is-flex-direction-column {% if not app.user %}is-justify-content-center{% endif %}" id="aside-menu">
             <button class="button is-medium is-primary borderless-radius" id="close-aside-menu-btn" style="position: absolute;right: 0;top: 0;z-index: 6" onclick="this.parentElement.style.right='-100vw';this.parentElement.style.visibility='hidden';document.querySelectorAll('.deploy-aside-menu-btn').forEach(btn => btn.classList.remove('is-hidden'));document.querySelector('html').style.overflow='auto';this.classList.add('is-hidden-touch')">
                 <span class="icon">
                     <i class="fas fa-lg fa-times"></i>
@@ -59,7 +59,7 @@
 
 <section class="is-flex is-flex-direction-column body-section">
     {% block second_header %}
-        <div class="hero is-small is-relative has-background-primary">
+        <div class="hero is-small has-background-primary" style="position: sticky;top: 3.25rem;z-index: 5">
             <div class="is-absolute-top-0" style="{% block title_main_background_img %}{% if section == 'immobilier' %}background: center / cover no-repeat url({{ asset('build/images/architecture-g348c7dafa_1920.013c9aa6.jpg') }});{% elseif section == 'entreprenariat' %}background: center / cover no-repeat url({{ asset('build/images/3d-render-of-low-poly-design-on-an-abstract-blur-background.14ca0913.jpg') }});{% else %}background: center / cover no-repeat url({{ asset('build/images/design_main_background.1d5a3f08.png') }});{% endif %}{% endblock %}"></div>
             <div class="is-absolute-top-0" style="{% block title_main_background_layer %}background: {% if section == 'immobilier' %}rgba(2, 18, 34, 0.8){% elseif section == 'entreprenariat' %}rgba(2, 18, 34, 0.7){% else %}rgba(2, 18, 34, 0.1){% endif %};{% endblock %}"></div>
             <div class="py-2" style="z-index: 2">
@@ -99,21 +99,21 @@
             </div>
         </div>
     {% endblock %}
-    {% block nav_secondaire %}
+{#    {% block nav_secondaire %}#}
 
-        {% if section == 'immobilier' or section == 'entreprenariat' %}
-            <div class="has-background-light custom-dropdown" style="position: sticky;top: 3.25rem;z-index: 1">
-                <div class="box-shadow-bulma has-background-primary-light column" id="nav-secondaire">
-                    {% if section == 'immobilier' %}
-                        {{ include('includes/subs_headers/sub_header_immobilier.html.twig') }}
-                    {% elseif section == 'entreprenariat' %}
-                        {{ include('includes/subs_headers/sub_header_entreprenariat.html.twig') }}
-                    {% endif %}
-                </div>
-            </div>
-        {% endif %}
+{#        {% if section == 'immobilier' or section == 'entreprenariat' %}#}
+{#            <div class="has-background-light custom-dropdown" style="position: sticky;top: 3.25rem;z-index: 1">#}
+{#                <div class="box-shadow-bulma has-background-primary-light column" id="nav-secondaire">#}
+{#                    {% if section == 'immobilier' %}#}
+{#                        {{ include('includes/subs_headers/sub_header_immobilier.html.twig') }}#}
+{#                    {% elseif section == 'entreprenariat' %}#}
+{#                        {{ include('includes/subs_headers/sub_header_entreprenariat.html.twig') }}#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endif %}#}
 
-    {% endblock %}
+{#    {% endblock %}#}
 
 
 
@@ -399,10 +399,10 @@
         });
 
         function toogleReadonlyClass(btn) {
-            let form = btn.parentElement.parentElement;
+            let form = btn.closest('form');
             let inputs = form.querySelectorAll('.readonly');
             inputs.forEach(function (elem) {
-                console.log(elem);
+                // console.log(elem);
                 elem.toggleAttribute('readonly');
                 if (elem.hasAttribute('readonly')){
                     elem.style.background = '#dbdbdb';
@@ -439,13 +439,13 @@
             let navbarMenu = document.getElementById('navbarMenu');
             let target = event.target;
 
-            navbarDropdown.forEach(function (drop) {
-                if (Array.from(navbarDropdown).find(node => node === target)) {
-                    drop.classList.toggle('is-active');
-                }else {
-                    drop.classList.remove('is-active');
-                }
-            });
+            // navbarDropdown.forEach(function (drop) {
+            //     if (Array.from(navbarDropdown).find(node => node === target)) {
+            //         drop.classList.toggle('is-active');
+            //     }else {
+            //         drop.classList.remove('is-active');
+            //     }
+            // });
 
             navbarBurger.forEach(function (drop) {
                 if ( target.parentElement === drop || target === drop){
@@ -527,12 +527,20 @@
 
             ancrage.addEventListener('click', function () {
                 toogleReadonlyClass(ancrage);
-                ancrage.classList.toggle('is-light');
-                ancrage.classList.toggle('is-info');
-                if (ancrage.classList.contains('is-light')) {
+                let text = this.querySelector('span.text');
+                // ancrage.classList.toggle('is-white');
+                // ancrage.classList.toggle('is-info');
+                ancrage.classList.toggle('is-focused');
+                if (!ancrage.classList.contains('is-focused')) {
                     ancrage.setAttribute('title', 'Modifier les informations');
+                    if (text){
+                        text.innerText ='Modifier les informations';
+                    }
                 }else {
                     ancrage.setAttribute('title', 'Vérouiller les informations');
+                    if (text){
+                        text.innerText ='Vérouiller les informations';
+                    }
                 }
                 //ancrage.querySelector('i').classList.toggle('fa-unlock');
                 //ancrage.querySelector('i').classList.toggle('fa-lock');
@@ -678,6 +686,23 @@
             });
 
         {% endif %}
+
+
+        ////// SCRIPT MAKE HOVERTEXT DATA (TEXT) ON GOOD POSITION FROM WIDTHSCREEN REFERENCE
+        // console.log(window.screen.width);
+        let widthScreenHalf = window.screen.width / 2;
+        let hovertexts = document.querySelectorAll('.hovertext');
+        hovertexts.forEach(function(hovertext){
+            let hovertextXPos = hovertext.getBoundingClientRect().x;
+            if (hovertextXPos >= widthScreenHalf){
+                hovertext.classList.add('hovertext-right');
+            }else {
+                hovertext.classList.add('hovertext-left');
+            }
+            // console.log(hovertext.classList);
+        });
+        // console.log(hovertexts[0].getBoundingClientRect().x);
+
 
     </script>
 

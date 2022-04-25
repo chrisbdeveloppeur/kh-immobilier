@@ -1,5 +1,5 @@
     <header class="navbar is-light is-fixed-top">
-{#        <div class="container has-text-centered">#}
+
             <div class="navbar-brand">
                 <a href="{{ path('home') }}" class="is-flex is-justify-content-center is-align-items-center" title="Retour au menu principal">
                     <span class="icon is-medium m-2">
@@ -15,23 +15,110 @@
 
             <div id="navbarMenu" class="navbar-menu is-size-5-mobile">
 
+                <div class="navbar-start">
+                    <a href="{{ path('home') }}" class="navbar-item">
+                        Accueil
+                    </a>
+
+                    {% if is_granted('ROLE_USER') %}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Immobilier
+                        </a>
+
+                        <div class="navbar-dropdown">
+
+                            <a class="navbar-item" href="{{ path('immo_accueil') }}">
+                                Vue d'ensemble
+                            </a>
+                            <hr class="dropdown-divider">
+
+                            <a class="navbar-item" href="{{ path('bien_immo_index') }}">
+                                Mes biens immobiliers
+                            </a>
+                            <a class="navbar-item" href="{{ path('bien_immo_new') }}#logement">
+                                Ajouter un bien
+                            </a>
+
+                            <hr class="dropdown-divider">
+
+                            <a class="navbar-item" href="{{ path('locataire_index') }}">
+                                Mes locataires
+                            </a>
+                            <a class="navbar-item" href="{{ path('locataire_new') }}#locataire">
+                                Ajouter un locataire
+                            </a>
+                        </div>
+
+                    </div>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                Entreprenariat
+                            </a>
+
+                            <div class="navbar-dropdown">
+
+                                <a class="navbar-item" href="{{ path('entreprenariat_home') }}">
+                                    Vue d'ensemble
+                                </a>
+                                <hr class="dropdown-divider">
+
+                                <a class="navbar-item" href="{{ path('entreprise_index') }}">
+                                    Mes entreprises
+                                </a>
+                                <a class="navbar-item" href="{{ path('entreprise_new') }}">
+                                    Ajouter une entreprise
+                                </a>
+                            </div>
+
+                        </div>
+                    {% endif %}
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                Gestionnaires
+                            </a>
+
+                            <div class="navbar-dropdown">
+
+                                <a class="navbar-item" href="{{ path('user_index') }}">
+                                    Liste des gestionnaires
+                                </a>
+                                <a class="navbar-item" href="{{ path('user_new') }}">
+                                    Ajouter un gestionnaire
+                                </a>
+                            </div>
+
+                        </div>
+                    {% endif %}
+                </div>
+
                 <div class="navbar-end">
 
                     {% if app.user %}
-                        <div class="navbar-item">
-                            <div class="tags are-medium has-addons is-justify-content-center">
-                                <span class="tag is-size-6-mobile is-primary" title="modifier mon compte">
-                                    <a class="has-text-light" href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire"><b class="is-hidden-touch">Connecté :</b> {{ app.user.username }}</a>
-                                </span>
-                                <a class="tag is-size-6-mobile is-danger" href="{{ path('app_logout') }}" style="text-decoration: none">
-                                    <span class="icon">
-                                        <i class="fas fa-lg fa-sign-out-alt"></i>
-                                    </span>
-                                    <span class="is-hidden-touch">
-                                        Se déconnecté
-                                    </span>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                {{ app.user.username }}
+                            </a>
+
+                            <div class="navbar-dropdown">
+
+                                <a class="navbar-item" href="{{ path('user_edit', {'id': app.user.id}) }}#gestionnaire">
+                                    Modifier mon profil
+                                </a>
+                                <a class="navbar-item" href="{{ path('change_password', {'id': app.user.id}) }}#securite">
+                                    Sécurité
+                                </a>
+                                <hr class="dropdown-divider">
+
+                                <a href="{{ path('app_logout') }}" class="navbar-item">
+                                    Se deconnecter
                                 </a>
                             </div>
+
                         </div>
                     {% else %}
                         <a href="{{ path('app_login') }}" class="navbar-item">

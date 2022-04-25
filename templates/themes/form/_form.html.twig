@@ -79,11 +79,11 @@
 
             {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
                 <div class="is-flex is-justify-content-space-between">
-                    <a class="button is-small is-black is-light form-edit-btn" title="Modifier les informations">
-                        <span class="icon">
-                            <i class="fas fa-lg fa-edit"></i>
-                        </span>
-                    </a>
+{#                    <a class="button is-white form-edit-btn" title="Modifier les informations">#}
+{#                        <span class="icon">#}
+{#                            <i class="fas fa-lg fa-edit"></i>#}
+{#                        </span>#}
+{#                    </a>#}
 
                     <div class="tags mb-0 has-addons bien-immo logement is-hidden is-justify-content-end">
                         <span class="tag is-small is-dark">
@@ -419,24 +419,37 @@
             {% set validation_button = 'Sauvegarder les modifications' %}
         {% endif %}
 
-        <div class="field has-text-centered" id="save">
-            <button class="button is-success is-small btn-submit">
-                {% if validation_button == 'Editer la quittance' %}
+        <div class="field is-flex-desktop has-text-centered" id="save">
+            <div class="column p-0 is-half">
+                <a class="button borderless-radius is-fullwidth is-small form-edit-btn" title="Modifier les informations">
                     <span class="icon">
-                        <i class="fas fa-lg fa-file-invoice"></i>
+                        <i class="fas fa-lg fa-edit"></i>
                     </span>
-                    <span>
-                        {{ validation_button }}
+                    <span class="text">
+                        Modifier les informations
                     </span>
-                {% else %}
-                    <span class="icon">
-                        <i class="fas fa-lg fa-save"></i>
-                    </span>
-                    <span>
-                        {{ validation_button }}
-                    </span>
-                {% endif %}
-            </button>
+                </a>
+            </div>
+
+            <div class="column p-0 is-half">
+                <button class="button borderless-radius is-fullwidth is-success is-small btn-submit">
+                    {% if validation_button == 'Editer la quittance' %}
+                        <span class="icon">
+                            <i class="fas fa-lg fa-file-invoice"></i>
+                        </span>
+                        <span>
+                            {{ validation_button }}
+                        </span>
+                    {% else %}
+                        <span class="icon">
+                            <i class="fas fa-lg fa-save"></i>
+                        </span>
+                        <span>
+                            {{ validation_button }}
+                        </span>
+                    {% endif %}
+                </button>
+            </div>
         </div>
 
         {{ form_end(form) }}

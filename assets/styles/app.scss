@@ -354,7 +354,7 @@ form.quittances{
   //overflow: hidden;
   //text-overflow: ellipsis;
   min-width: max-content;
-  //max-width: 150px;
+  max-width: 150px;
   background-color: rgba(0, 0, 0, 1);
   color: #fff;
   text-align: center;
@@ -364,11 +364,15 @@ form.quittances{
   position: absolute;
   z-index: 1;
   font-weight: bold;
-  left: 0;
   top: 105%;
   font-size: .7rem;
 }
-
+.hovertext-left:before {
+  left: 0 !important;
+}
+.hovertext-right:before {
+  right: 0 !important;
+}
 .hovertext:hover:before, .hovertext:active:before {
   opacity: 1;
   visibility: visible;
