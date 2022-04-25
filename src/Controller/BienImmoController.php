@@ -73,7 +73,12 @@ class BienImmoController extends AbstractController
             'sans_logement' => true,
         ]);
 
-
+        if (count($locataires)){
+            $locataireFree = true;
+        }else{
+            $locataireFree = false;
+        }
+//        dd($locataireFree);
 
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('superficie')->setData(0);

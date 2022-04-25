@@ -419,17 +419,20 @@
             {% set validation_button = 'Sauvegarder les modifications' %}
         {% endif %}
 
-        <div class="field is-flex-desktop has-text-centered" id="save">
-            <div class="column p-0 is-half">
-                <a class="button borderless-radius is-fullwidth is-small form-edit-btn" title="Modifier les informations">
-                    <span class="icon">
-                        <i class="fas fa-lg fa-edit"></i>
-                    </span>
-                    <span class="text">
-                        Modifier les informations
-                    </span>
-                </a>
-            </div>
+        <div class="field is-flex-desktop is-justify-content-center has-text-centered" id="save">
+
+            {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
+                <div class="column p-0 is-half">
+                    <a class="button borderless-radius is-fullwidth is-small form-edit-btn" title="Modifier les informations">
+                        <span class="icon">
+                            <i class="fas fa-lg fa-edit"></i>
+                        </span>
+                        <span class="text">
+                            Modifier les informations
+                        </span>
+                    </a>
+                </div>
+            {% endif %}
 
             <div class="column p-0 is-half">
                 <button class="button borderless-radius is-fullwidth is-success is-small btn-submit">

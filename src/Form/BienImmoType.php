@@ -7,6 +7,7 @@ use App\Entity\Locataire;
 use App\Entity\User;
 use App\Repository\LocataireRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Cache\Adapter\AbstractAdapter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -29,6 +30,7 @@ class BienImmoType extends AbstractType
     private $user_id;
     private $user_context;
     private $security;
+    private $redirectLink;
 
     public function __construct(LocataireRepository $locataireRepository, Security $security)
     {
@@ -58,7 +60,7 @@ class BienImmoType extends AbstractType
             }
         }
         if ($this->locataires_housed == true){
-            $this->locataires_housed_msg = 'Aucun locataires disponibles';
+            $this->locataires_housed_msg = '';
         }
     }
 
@@ -81,7 +83,7 @@ class BienImmoType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans locataire',
-                'help' => $this->locataires_housed_msg,
+//                'help' => $this->locataires_housed_msg,
                 'choice_attr' => function (Locataire $locataire){
                     if (!$locataire->getLogement() || $locataire->getId() == $this->current_bien_immo_id ){
                         return [''];
