@@ -61,10 +61,17 @@ class LocataireController extends AbstractController
     {
         $locataire = new Locataire();
         $locataire->setUser($user);
-        $logements = $bienImmoRepository->findBy([
-            'user' => $user->getId(),
-            'free' => true,
-        ]);
+
+        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+            $logements = $bienImmoRepository->findBy([
+                'free' => true,
+            ]);
+        }else{
+            $logements = $bienImmoRepository->findBy([
+                'user' => $user->getId(),
+                'free' => true,
+            ]);
+        }
         $form = $this->createForm(LocataireType::class, $locataire);
         $form->handleRequest($request);
 //        if ($this->isGranted('ROLE_SUPER_ADMIN')){
@@ -112,10 +119,16 @@ class LocataireController extends AbstractController
             return $this->redirectToRoute('locataire_index');
         }
 
-        $logements = $bienImmoRepository->findBy([
-            'user' => $this->getUser()->getId(),
-            'free' => true,
-        ]);
+        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+            $logements = $bienImmoRepository->findBy([
+                'free' => true,
+            ]);
+        }else{
+            $logements = $bienImmoRepository->findBy([
+                'user' => $user->getId(),
+                'free' => true,
+            ]);
+        }
 
         $form = $this->createForm(LocataireType::class, $locataire);
         $form_documents = $this->createForm(DocumentsType::class);

@@ -85,13 +85,26 @@
 {#                        </span>#}
 {#                    </a>#}
 
-                    <div class="tags mb-0 has-addons bien-immo logement is-hidden is-justify-content-end">
+                    <div class="tags mb-0 has-addons bien-immo logement copropriete is-hidden is-justify-content-end">
                         <span class="tag is-small is-dark">
                             <b>{{ bien_immo.street }}</b>
                         </span>
-                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-small button is-info" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                        {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
+                                <a class="tag button form-edit-btn" style="text-decoration: none" title="Modifier les informations">
+                                    <span class="icon">
+                                        <i class="fas fa-lg fa-edit"></i>
+                                    </span>
+                                    <span class="text">
+                                        Modifier
+                                    </span>
+                                </a>
+                        {% endif %}
+                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-small button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
                             <span class="icon">
                                 <i class="fas fa-clone"></i>
+                            </span>
+                            <span class="text">
+                                Dupliquer
                             </span>
                         </a>
                         <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-small button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
@@ -218,7 +231,7 @@
                                     </span>
                                     </a>
                                 </p>
-                                {#{% if locataires|length == 0 %}#}
+                                {% if locataires|length == 0 %}
                                     <p class="control">
                                         <a href="{{ path('locataire_new') }}#locataire" class="button is-small is-light" title="Créer un nouveau locataire">
                                         <span class="icon">
@@ -226,7 +239,7 @@
                                         </span>
                                         </a>
                                     </p>
-                                {#{% endif %}#}
+                                {% endif %}
                             {% else %}
                                 <p class="control">
                                     <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le bien immobilier">
@@ -235,7 +248,7 @@
                                     </span>
                                     </a>
                                 </p>
-                                {#{% if logements|length == 0 %}#}
+                                {% if logements|length == 0 %}
                                     <p class="control">
                                         <a href="{{ path('bien_immo_new') }}#logement" class="button is-small is-light" title="Créer un nouveau bien immobilier">
                                         <span class="icon">
@@ -243,7 +256,7 @@
                                         </span>
                                         </a>
                                     </p>
-                                {#{% endif %}#}
+                                {% endif %}
                             {% endif %}
 
                         </div>
@@ -380,13 +393,13 @@
 
                 {% if form_help(child) %}
                     <span class="help is-info mt-0">
-                    <span class="icon-text" style="flex-wrap: nowrap">
-                        <span class="icon">
-                            <i class="fas fa-info-circle"></i>
+                        <span class="icon-text" style="flex-wrap: nowrap">
+                            <span class="icon">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>{{ form_help(child) }}</span>
                         </span>
-                        <span>{{ form_help(child) }}</span>
                     </span>
-                </span>
                 {% endif %}
 
                 {% if form_errors(child) %}
@@ -421,18 +434,18 @@
 
         <div class="field is-flex-desktop is-justify-content-center has-text-centered" id="save">
 
-            {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
-                <div class="column p-0 is-half">
-                    <a class="button borderless-radius is-fullwidth is-small form-edit-btn" title="Modifier les informations">
-                        <span class="icon">
-                            <i class="fas fa-lg fa-edit"></i>
-                        </span>
-                        <span class="text">
-                            Modifier les informations
-                        </span>
-                    </a>
-                </div>
-            {% endif %}
+{#            {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}#}
+{#                <div class="column p-0 is-half">#}
+{#                    <a class="button borderless-radius is-fullwidth is-small form-edit-btn" title="Modifier les informations">#}
+{#                        <span class="icon">#}
+{#                            <i class="fas fa-lg fa-edit"></i>#}
+{#                        </span>#}
+{#                        <span class="text">#}
+{#                            Modifier les informations#}
+{#                        </span>#}
+{#                    </a>#}
+{#                </div>#}
+{#            {% endif %}#}
 
             <div class="column p-0 is-half">
                 <button class="button borderless-radius is-fullwidth is-success is-small btn-submit">

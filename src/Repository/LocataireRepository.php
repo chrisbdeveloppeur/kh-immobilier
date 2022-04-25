@@ -36,6 +36,17 @@ class LocataireRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findAllLocataireFree()
+    {
+        return $this->createQueryBuilder('locatairefree')
+            ->setParameter('value', true)
+            ->where('locatairefree.sans_logement = :value')
+            ->orderBy('locatairefree.last_name', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Locataire

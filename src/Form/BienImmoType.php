@@ -60,7 +60,7 @@ class BienImmoType extends AbstractType
             }
         }
         if ($this->locataires_housed == true){
-            $this->locataires_housed_msg = '';
+            $this->locataires_housed_msg = 'Aucun locataires disponibles';
         }
     }
 
@@ -83,7 +83,7 @@ class BienImmoType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'placeholder' => 'Sans locataire',
-//                'help' => $this->locataires_housed_msg,
+                'help' => $this->locataires_housed_msg,
                 'choice_attr' => function (Locataire $locataire){
                     if (!$locataire->getLogement() || $locataire->getId() == $this->current_bien_immo_id ){
                         return [''];

@@ -68,17 +68,17 @@ class BienImmoController extends AbstractController
     {
         $bienImmo = new BienImmo();
         $bienImmo->setUser($user);
-        $locataires = $locataireRepository->findBy([
-            'user' => $user->getId(),
-            'sans_logement' => true,
-        ]);
-
-        if (count($locataires)){
-            $locataireFree = true;
+        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+            $locataires = $locataireRepository->findBy([
+                'sans_logement' => true,
+            ]);
         }else{
-            $locataireFree = false;
+            $locataires = $locataireRepository->findBy([
+                'user' => $user->getId(),
+                'sans_logement' => true,
+            ]);
         }
-//        dd($locataireFree);
+
 
         $form = $this->createForm(BienImmoType::class, $bienImmo);
         $form->get('superficie')->setData(0);
@@ -138,10 +138,17 @@ class BienImmoController extends AbstractController
             return $this->redirectToRoute('bien_immo_index');
         }
 
-        $locataires = $locataireRepository->findBy([
-            'user' => $this->getUser()->getId(),
-            'sans_logement' => true,
-        ]);
+        if ($this->isGranted('ROLE_SUPER_ADMIN')){
+            $locataires = $locataireRepository->findBy([
+                'sans_logement' => true,
+            ]);
+        }else{
+            $locataires = $locataireRepository->findBy([
+                'user' => $this->getUser()->getId(),
+                'sans_logement' => true,
+            ]);
+        }
+
 
         $locataire = $bienImmo->getLocataires()->first();
         $form = $this->createForm(BienImmoType::class, $bienImmo);
