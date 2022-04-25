@@ -85,8 +85,8 @@
 {#                        </span>#}
 {#                    </a>#}
 
-                    <div class="tags mb-0 has-addons bien-immo logement copropriete is-hidden is-justify-content-end">
-                        <span class="tag is-small is-dark">
+                    <div class="tags mb-0 bien-immo logement copropriete is-hidden">
+                        <span class="tag is-dark">
                             <b>{{ bien_immo.street }}</b>
                         </span>
                         {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
@@ -99,7 +99,7 @@
                                     </span>
                                 </a>
                         {% endif %}
-                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-small button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
                             <span class="icon">
                                 <i class="fas fa-clone"></i>
                             </span>
@@ -107,7 +107,7 @@
                                 Dupliquer
                             </span>
                         </a>
-                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-small button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
+                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
                             <span class="icon">
                                 <i class="fas fa-trash-alt"></i>
                             </span>

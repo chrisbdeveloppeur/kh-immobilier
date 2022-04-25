@@ -533,10 +533,14 @@
                 ancrage.classList.toggle('is-focused');
                 if (!ancrage.classList.contains('is-focused')) {
                     ancrage.setAttribute('title', 'Modifier les informations');
+                    ancrage.querySelector('i').classList.toggle('fa-edit');
+                    ancrage.querySelector('i').classList.toggle('fa-lock');
                     if (text){
                         text.innerText ='Modifier';
                     }
                 }else {
+                    ancrage.querySelector('i').classList.toggle('fa-edit');
+                    ancrage.querySelector('i').classList.toggle('fa-lock');
                     ancrage.setAttribute('title', 'Vérouiller les informations');
                     if (text){
                         text.innerText ='Vérouiller';
