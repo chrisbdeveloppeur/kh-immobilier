@@ -127,6 +127,11 @@ class BienImmo
      */
     private $financement;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=EtatDesLieux::class, inversedBy="BienImmo")
+     */
+    private $etatDesLieux;
+
 
     public function __construct()
     {
@@ -540,6 +545,18 @@ public function setFinancement(Financement $financement): self
     }
 
     $this->financement = $financement;
+
+    return $this;
+}
+
+public function getEtatDesLieux(): ?EtatDesLieux
+{
+    return $this->etatDesLieux;
+}
+
+public function setEtatDesLieux(?EtatDesLieux $etatDesLieux): self
+{
+    $this->etatDesLieux = $etatDesLieux;
 
     return $this;
 }

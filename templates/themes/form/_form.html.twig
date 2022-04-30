@@ -470,5 +470,12 @@
 
         {{ form_end(form) }}
 
+        {{ form_start(form_etat_des_lieux, {'attr': {'class': 'is-hidden bien-immo etatDesLieux column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
+            {{ form_widget(form_etat_des_lieux.sens_circuit) }}
+            {{ form_widget(form_etat_des_lieux.date) }}
+            {{ form_widget(form_etat_des_lieux.Bailleur) }}
+            <button class="button is-small">Valider</button>
+        {{ form_end(form_etat_des_lieux) }}
+
     </div>
 </div>

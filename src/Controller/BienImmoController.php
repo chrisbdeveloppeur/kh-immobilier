@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\BienImmo;
 use App\Entity\Copropriete;
+use App\Entity\EtatDesLieux;
 use App\Entity\Prestataire;
 use App\Entity\Solde;
 use App\Form\BienImmoType;
 use App\Form\DocumentsType;
+use App\Form\EtatDesLieuxType;
 use App\Form\PrestataireType;
 use App\Repository\BienImmoRepository;
 use App\Repository\DocumentsRepository;
@@ -163,6 +165,9 @@ class BienImmoController extends AbstractController
 
         $form_documents = $this->createForm(DocumentsType::class);
 
+        $etat_des_lieux = new EtatDesLieux();
+        $form_etat_des_lieux = $this->createForm(EtatDesLieuxType::class, $etat_des_lieux);
+
         if (!$bienImmo->getCopropriete()){
             $bienImmo->setCopropriete(new Copropriete());
         }else{
@@ -216,6 +221,12 @@ class BienImmoController extends AbstractController
             return $this->redirect($referer);
         }
 
+        $form_etat_des_lieux->handleRequest($request);
+        if ($form_etat_des_lieux->isSubmitted() && $form_etat_des_lieux->isValid()){
+            $this->addFlash('success', 'Etat des lieux créer');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }
 //        Supression de la data Quittance en BDD si le fichier n'existe pas
         /*
         $quittances = $quittanceRepository->findAll();
@@ -253,6 +264,7 @@ class BienImmoController extends AbstractController
             'form' => $form->createView(),
             'form_prestataire' => $form_prestataire->createView(),
             'form_documents' => $form_documents->createView(),
+            'form_etat_des_lieux' => $form_etat_des_lieux->createView(),
             'locataires' => $locataires
         ]);
     }
