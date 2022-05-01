@@ -223,6 +223,9 @@ class BienImmoController extends AbstractController
 
         $form_etat_des_lieux->handleRequest($request);
         if ($form_etat_des_lieux->isSubmitted() && $form_etat_des_lieux->isValid()){
+            $em->persist($etat_des_lieux);
+//            dd($etat_des_lieux);
+            $em->flush();
             $this->addFlash('success', 'Etat des lieux créer');
             $referer = $request->headers->get('referer');
             return $this->redirect($referer);

@@ -474,45 +474,47 @@
             lis.forEach(function (li) {
                 li.addEventListener('click', function () {
                     let id = li.previousElementSibling.id;
-                    window.location = '#' + id;
-                    let fields = document.querySelectorAll('.'+id);
-                    let notfields = document.querySelectorAll('.bien-immo');
-                    lis.forEach(function (el) {
-                        el.classList.remove('is-active');
-                        el.querySelector('a').classList.remove('has-text-white','has-text-weight-bold');
-                    });
-                    li.classList.add('is-active');
-                    li.querySelector('a').classList.add('has-text-white','has-text-weight-bold');
-
-                    if ( id === 'files' ){
-                        document.querySelectorAll('.file').forEach(el => el.classList.remove('is-hidden'));
-                        document.querySelector('div#files-liste').classList.remove('is-hidden');
-                    }else {
-                        document.querySelectorAll('.file').forEach(el => el.classList.add('is-hidden'));
-                        document.querySelector('div#files-liste').classList.add('is-hidden');
-                    }
-
-                    if ( id === 'copropriete' ){
-                        // btnToHide.forEach(el => el.classList.add('is-hidden'));
-                    }else {
-                        // btnToHide.forEach(el => el.classList.remove('is-hidden'));
-                    }
-
-                    if ( id === 'prestataire' ){
-                        document.querySelectorAll('.prestataire').forEach(function (el) {
-                            if (el.previousElementSibling && el.previousElementSibling.querySelector('i').classList.contains('fa-angle-down')){
-                                el.classList.add('is-hidden');
-                            }
+                    if (id){
+                        window.location = '#' + id;
+                        let fields = document.querySelectorAll('.'+id);
+                        let notfields = document.querySelectorAll('.bien-immo');
+                        lis.forEach(function (el) {
+                            el.classList.remove('is-active');
+                            el.querySelector('a').classList.remove('has-text-white','has-text-weight-bold');
                         });
-                    }else {
-                        document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
-                        if (document.querySelector('div#prestataires-liste')){
-                            document.querySelector('div#prestataires-liste').classList.add('is-hidden');
-                        }
-                    }
+                        li.classList.add('is-active');
+                        li.querySelector('a').classList.add('has-text-white','has-text-weight-bold');
 
-                    notfields.forEach(notfield => notfield.classList.add('is-hidden'));
-                    fields.forEach(field => field.classList.remove('is-hidden'));
+                        if ( id === 'files' ){
+                            document.querySelectorAll('.file').forEach(el => el.classList.remove('is-hidden'));
+                            document.querySelector('div#files-liste').classList.remove('is-hidden');
+                        }else {
+                            document.querySelectorAll('.file').forEach(el => el.classList.add('is-hidden'));
+                            document.querySelector('div#files-liste').classList.add('is-hidden');
+                        }
+
+                        if ( id === 'copropriete' ){
+                            // btnToHide.forEach(el => el.classList.add('is-hidden'));
+                        }else {
+                            // btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                        }
+
+                        if ( id === 'prestataire' ){
+                            document.querySelectorAll('.prestataire').forEach(function (el) {
+                                if (el.previousElementSibling && el.previousElementSibling.querySelector('i').classList.contains('fa-angle-down')){
+                                    el.classList.add('is-hidden');
+                                }
+                            });
+                        }else {
+                            document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
+                            if (document.querySelector('div#prestataires-liste')){
+                                document.querySelector('div#prestataires-liste').classList.add('is-hidden');
+                            }
+                        }
+
+                        notfields.forEach(notfield => notfield.classList.add('is-hidden'));
+                        fields.forEach(field => field.classList.remove('is-hidden'));
+                    }
                 })
             })
         });
@@ -532,16 +534,16 @@
                 // ancrage.classList.toggle('is-info');
                 ancrage.classList.toggle('is-focused');
                 if (!ancrage.classList.contains('is-focused')) {
-                    ancrage.setAttribute('title', 'Modifier les informations');
-                    ancrage.querySelector('i').classList.toggle('fa-edit');
-                    ancrage.querySelector('i').classList.toggle('fa-lock');
+                    // ancrage.setAttribute('title', 'Modifier les informations');
+                    // ancrage.querySelector('i').classList.toggle('fa-edit');
+                    // ancrage.querySelector('i').classList.toggle('fa-lock');
                     if (text){
                         text.innerText ='Modifier';
                     }
                 }else {
-                    ancrage.querySelector('i').classList.toggle('fa-edit');
-                    ancrage.querySelector('i').classList.toggle('fa-lock');
-                    ancrage.setAttribute('title', 'Vérouiller les informations');
+                    // ancrage.querySelector('i').classList.toggle('fa-edit');
+                    // ancrage.querySelector('i').classList.toggle('fa-lock');
+                    // ancrage.setAttribute('title', 'Vérouiller les informations');
                     if (text){
                         text.innerText ='Vérouiller';
                     }

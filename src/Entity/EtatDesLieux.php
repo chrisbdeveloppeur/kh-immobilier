@@ -35,11 +35,6 @@ class EtatDesLieux
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="etatDesLieuxes")
-     */
-    private $Bailleur;
-
-    /**
      * @ORM\ManyToMany(targetEntity=FormField::class, inversedBy="etatDesLieuxes")
      */
     private $fields;
@@ -105,18 +100,6 @@ class EtatDesLieux
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getBailleur(): ?User
-    {
-        return $this->Bailleur;
-    }
-
-    public function setBailleur(?User $Bailleur): self
-    {
-        $this->Bailleur = $Bailleur;
 
         return $this;
     }

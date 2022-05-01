@@ -32,7 +32,7 @@
                 </li>
             {% endif %}
 
-            {% if locataire_twig %}
+            {% if 'new' not in app.request.get('_route') %}
                 <div class="is-hidden" id="files"></div>
                 <li class="tab" id="">
                     <a>
@@ -42,9 +42,19 @@
                         <span>Fichiers</span>
                     </a>
                 </li>
+{#            {% else %}#}
+{#                <div class="is-hidden"></div>#}
+{#                <li class="tab">#}
+{#                    <a disabled="true" class="button is-small is-disabled">#}
+{#                        <span class="icon is-small">#}
+{#                            <i class="fas fa-lg fa-copy" aria-hidden="true"></i>#}
+{#                        </span>#}
+{#                        <span>Fichiers</span>#}
+{#                    </a>#}
+{#                </li>#}
             {% endif %}
 
-            {% if is_granted('ROLE_SUPER_ADMIN') %}
+            {% if is_granted('ROLE_SUPER_ADMIN') and 'new' not in app.request.get('_route') %}
                 <div class="is-hidden" id="etatDesLieux"></div>
                 <li class="tab" id="">
                     <a>

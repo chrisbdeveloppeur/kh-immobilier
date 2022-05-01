@@ -81,11 +81,6 @@ class User implements UserInterface
      */
     private $locataires;
 
-    /**
-     * @ORM\OneToMany(targetEntity=EtatDesLieux::class, mappedBy="Bailleur")
-     */
-    private $etatDesLieuxes;
-
     public function __construct()
     {
         $this->biens_immos = new ArrayCollection();
@@ -312,33 +307,4 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, EtatDesLieux>
-     */
-    public function getEtatDesLieuxes(): Collection
-    {
-        return $this->etatDesLieuxes;
-    }
-
-    public function addEtatDesLieux(EtatDesLieux $etatDesLieux): self
-    {
-        if (!$this->etatDesLieuxes->contains($etatDesLieux)) {
-            $this->etatDesLieuxes[] = $etatDesLieux;
-            $etatDesLieux->setBailleur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEtatDesLieux(EtatDesLieux $etatDesLieux): self
-    {
-        if ($this->etatDesLieuxes->removeElement($etatDesLieux)) {
-            // set the owning side to null (unless already changed)
-            if ($etatDesLieux->getBailleur() === $this) {
-                $etatDesLieux->setBailleur(null);
-            }
-        }
-
-        return $this;
-    }
 }

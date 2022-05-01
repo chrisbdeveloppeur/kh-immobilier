@@ -125,7 +125,7 @@ class LocataireController extends AbstractController
             ]);
         }else{
             $logements = $bienImmoRepository->findBy([
-                'user' => $user->getId(),
+                'user' => $this->getUser()->getId(),
                 'free' => true,
             ]);
         }

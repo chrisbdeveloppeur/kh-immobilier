@@ -8,6 +8,7 @@ use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
@@ -21,32 +22,26 @@ class EtatDesLieuxType extends AbstractType
     {
         $this->security = $security;
         $this->user_id = $security->getUser()->getId();
-        if ($security->isGranted('ROLE_SUPER_ADMIN')){
-            $bailleurs = $userRepository->findAll();
-        }else{
-            $bailleurs = $userRepository->findBy(['user' => $this->user_id]);
-        }
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $date = new \DateTime('now');
+
         $builder
             ->add('sens_circuit', ChoiceType::class,[
+                'label' => 'Entrée / Sortie',
                 'choices' => [
                     'Arrivé' => true,
                     'Sortie' => false
-                ]
+                ],
+                'attr' => ['class'=>'has-text-centered input is-small'],
             ])
-            ->add('date')
-            ->add('Bailleur', EntityType::class,[
-                'label' => 'Bailleur',
-                'class' => User::class,
-                'mapped' => true,
-                'required' => false,
-                'placeholder' => 'Définissez le bailleur',
-                //'attr' => ['class' => 'readonly'],
+            ->add('date', DateType::class,[
+                'label' => 'Date de l\'état des lieux',
+                'widget' => 'single_text',
+                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
-            //->add('fields')
         ;
     }
 

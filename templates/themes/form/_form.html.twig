@@ -86,20 +86,28 @@
 {#                    </a>#}
 
                     <div class="tags mb-0 bien-immo logement copropriete is-hidden">
-                        <span class="tag is-dark">
+                        <span class="tag is-size-6-touch is-dark">
                             <b>{{ bien_immo.street }}</b>
                         </span>
                         {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
-                                <a class="tag button form-edit-btn" style="text-decoration: none" title="Modifier les informations">
+{#                                <a class="tag is-size-6-touch button form-edit-btn" style="text-decoration: none" title="Modifier les informations">#}
+{#                                    <span class="icon">#}
+{#                                        <i class="fas fa-lg fa-edit"></i>#}
+{#                                    </span>#}
+{#                                    <span class="text">#}
+{#                                        Modifier#}
+{#                                    </span>#}
+{#                                </a>#}
+                            <div class="tag is-size-6-touch button hovertext" data-hover="Modifier les informations">
+                                <input id="switchExample" type="checkbox" name="switchExample" class="switch is-primary is-small is-rtl form-edit-btn">
+                                <label for="switchExample" style="padding-top: 0">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-edit"></i>
                                     </span>
-                                    <span class="text">
-                                        Modifier
-                                    </span>
-                                </a>
+                                </label>
+                            </div>
                         {% endif %}
-                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-size-6-touch button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
                             <span class="icon">
                                 <i class="fas fa-clone"></i>
                             </span>
@@ -107,20 +115,20 @@
                                 Dupliquer
                             </span>
                         </a>
-                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
+                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-size-6-touch button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
                             <span class="icon">
                                 <i class="fas fa-trash-alt"></i>
                             </span>
                         </a>
                     </div>
 
-                    <div class="tags has-addons mb-0 bien-immo copropriete is-hidden is-justify-content-end">
-                        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}
-                            <span class="tag is-small is-dark is-uppercase">
-                            <b>{{ bien_immo.copropriete }}</b>
-                        </span>
-                        {% endif %}
-                    </div>
+{#                    <div class="tags has-addons mb-0 bien-immo copropriete is-hidden is-justify-content-end">#}
+{#                        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}#}
+{#                            <span class="tag is-size-6-touch is-small is-dark is-uppercase">#}
+{#                            <b>{{ bien_immo.copropriete }}</b>#}
+{#                        </span>#}
+{#                        {% endif %}#}
+{#                    </div>#}
                 </div>
 
 
@@ -470,12 +478,19 @@
 
         {{ form_end(form) }}
 
-        {{ form_start(form_etat_des_lieux, {'attr': {'class': 'is-hidden bien-immo etatDesLieux column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
-            {{ form_widget(form_etat_des_lieux.sens_circuit) }}
-            {{ form_widget(form_etat_des_lieux.date) }}
-            {{ form_widget(form_etat_des_lieux.Bailleur) }}
-            <button class="button is-small">Valider</button>
-        {{ form_end(form_etat_des_lieux) }}
+
+        {% if 'new' not in app.request.get('_route') and 'bien' in app.request.get('_route') %}
+            {{ include('themes/form/etat_des_lieux_form.html.twig') }}
+        {% endif %}
+{#        {{ form_start(form_etat_des_lieux, {'attr': {'class': 'is-hidden bien-immo etatDesLieux column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}#}
+{#            {% for child in form_etat_des_lieux %}#}
+{#                {% if child.vars.name != '_token' %}#}
+{#                    {{ form_label(child) }}#}
+{#                    {{ form_widget(child) }}#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#            <button class="button is-small is-success">Valider</button>#}
+{#        {{ form_end(form_etat_des_lieux) }}#}
 
     </div>
 </div>
