@@ -34,11 +34,21 @@
                     <td class="is-size-7">{{ user.lastName }}</td>
                     <td class="is-size-7">{{ user.firstName }}</td>
                     <td class="is-size-7">
-                        {% if 'ROLE_SUPER_ADMIN' in user.roles %}
-                            Super gestionnaire
-                        {% else %}
-                            Standard
-                        {% endif %}
+                        {% for role in user.roles %}
+                            <span class="icon" data-hover="{{ role }}" title="{{ role }}">
+                                <i class="fas fa-lg
+                                    {% if role == 'ROLE_SUPER_ADMIN' %}
+                                    fa-chess-king
+                                    {% elseif role == 'ROLE_ADMIN' %}
+                                    fa-chess-rook
+                                    {% elseif role == 'ROLE_ENTREPRENEUR' %}
+                                    fa-briefcase
+                                    {% elseif role == 'ROLE_PROPRIETAIRE' %}
+                                    fa-key
+                                    {% endif %}
+                                "></i>
+                            </span>
+                        {% endfor %}
 {#                        {{ user.roles ? user.roles|json_encode : '' }}#}
                     </td>
                 </tr>

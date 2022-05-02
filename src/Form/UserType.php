@@ -105,11 +105,12 @@ class UserType extends AbstractType
         if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
             $builder->add('roles', ChoiceType::class,[
                 'choices' => [
-                    'Super admin' => ['ROLE_SUPER_ADMIN'],
-                    'Admin' => ['ROLE_ADMIN'],
-                    'Standard' => ['ROLE_USER'],
+                    'Super admin' => 'ROLE_SUPER_ADMIN',
+                    'Admin' => 'ROLE_ADMIN',
+                    'Entrepreneur' => 'ROLE_ENTREPRENEUR',
+                    'Propriétaire' => 'ROLE_PROPRIETAIRE',
                 ],
-                'multiple' => false,
+                'multiple' => true,
                 'expanded' => true,
                 'label' => 'Type de compte',
                 'mapped' => false,

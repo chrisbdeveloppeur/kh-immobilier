@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/entreprise")
- * @IsGranted("ROLE_USER")
+ * @IsGranted("ROLE_ENTREPRENEUR", message="Vous n'êtes pas entrepreneur")
  */
 class EntrepriseController extends AbstractController
 {

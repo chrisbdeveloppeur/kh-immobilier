@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/immo", name="immo_")
- * @IsGranted("ROLE_USER")
+ * @IsGranted("ROLE_PROPRIETAIRE", message="Vous n'êtes pas propriétaire")
  */
 class ImmoController extends AbstractController
 {

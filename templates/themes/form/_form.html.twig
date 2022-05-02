@@ -299,7 +299,7 @@
                     {% if child.vars.name == 'roles' %}
                         <div class="is-justify-content-start buttons">
                             {% for checkbox in child %}
-                                <div class="is-flex-desktop is-justify-content-center is-align-items-center button is-small hovertext" data-hover="{% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}Super Administrateur{% elseif checkbox.vars.value == 'ROLE_ADMIN' %}Administrateur{% elseif checkbox.vars.value == 'ROLE_USER' %}Gestionnaire Standard{% endif %}">
+                                <div class="is-flex-desktop is-justify-content-center is-align-items-center button is-small hovertext" data-hover="{{ checkbox.vars.label }}{#{% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}Super Administrateur{% elseif checkbox.vars.value == 'ROLE_ADMIN' %}Administrateur{% elseif checkbox.vars.value == 'ROLE_USER' %}Gestionnaire Standard{% endif %}#}">
                                     <label class="radio has-text-centered">
                                         {% if checkbox.vars.value == 'ROLE_SUPER_ADMIN' %}
                                             <span class="icon">
@@ -309,9 +309,13 @@
                                             <span class="icon">
                                                 <i class="fas fa-lg fa-chess-rook"></i>
                                             </span>
-                                        {% elseif checkbox.vars.value == 'ROLE_USER' %}
+                                        {% elseif checkbox.vars.value == 'ROLE_ENTREPRENEUR' %}
                                             <span class="icon">
-                                                <i class="fas fa-lg fa-chess-pawn"></i>
+                                                <i class="fas fa-lg fa-briefcase"></i>
+                                            </span>
+                                        {% elseif checkbox.vars.value == 'ROLE_PROPRIETAIRE' %}
+                                            <span class="icon">
+                                                <i class="fas fa-lg fa-key"></i>
                                             </span>
                                         {% else %}
                                             Role non définie

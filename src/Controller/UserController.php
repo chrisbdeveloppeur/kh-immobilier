@@ -76,14 +76,14 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $currentRole = $user->getRoles();
         if ($security->isGranted('ROLE_SUPER_ADMIN')){
-            $form->get('roles')->setData($currentRole[0]);
+            $form->get('roles')->setData($currentRole);
         }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($security->isGranted('ROLE_SUPER_ADMIN')){
                 $role = $form->get('roles')->getData();
-                $user->setRoles([$role]);
+                $user->setRoles($role);
             }
             $this->getDoctrine()->getManager()->flush();
 

@@ -36,6 +36,10 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/proprietaire, roles: ROLE_PROPRIETAIRE }
+         - { path: ^/entrepreneur, roles: ROLE_ENTREPRENEUR }
     role_hierarchy:
+        ROLE_PROPRIETAIRE:       [ROLE_USER]
+        ROLE_ENTREPRENEUR:       [ROLE_USER]
         ROLE_ADMIN:       [ROLE_ADMIN, ROLE_USER]
-        ROLE_SUPER_ADMIN: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER, ROLE_ALLOWED_TO_SWITCH, ROLE_ENTREPRENEUR, ROLE_PROPRIETAIRE]

@@ -29,7 +29,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/bien/immo")
- * @IsGranted("ROLE_USER")
+ * @IsGranted("ROLE_PROPRIETAIRE", message="Vous n'êtes pas propriétaire")
  */
 class BienImmoController extends AbstractController
 {

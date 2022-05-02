@@ -31,6 +31,7 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $userLogged;
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -73,6 +74,7 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
             throw new CustomUserMessageAuthenticationException('Email incorrecte ou non enregistrée');
         }
 
+        $this->userLogged = $user;
         return $user;
     }
 
@@ -102,12 +104,28 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
             return new RedirectResponse($targetPath);
         }
 
+//        dd($this->in_array_any(['ROLE_USER','ROLE_SUPER_ADMIN'],$this->userLogged->getRoles()));
+        if (in_array('ROLE_SUPER_ADMIN',$this->userLogged->getRoles())){
+            $redirect = $this->urlGenerator->generate('home');
+        }elseif (in_array('ROLE_PROPRIETAIRE',$this->userLogged->getRoles())){
+            $redirect = $this->urlGenerator->generate('immo_accueil');
+        }elseif (in_array('ROLE_ENTREPRENEUR',$this->userLogged->getRoles())){
+            $redirect = $this->urlGenerator->generate('entreprenariat_home');
+        }else{
+            $redirect = $this->urlGenerator->generate('home');
+        }
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('home'));
+        return new RedirectResponse($redirect);
     }
 
     protected function getLoginUrl()
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+
+    private function in_array_any($needles, $haystack) {
+        return !empty(array_intersect($needles, $haystack));
+    }
+
 }
