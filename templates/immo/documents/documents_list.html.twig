@@ -49,7 +49,7 @@
             </tr>
         {% endfor %}
 
-        {% if form.vars.name == 'bien_immo' %}
+        {% if form.vars.name == 'bien_immo' and entity.locataires.current %}
 
             {% if entity.logement is defined %}
                 {% set object = entity.logement %}
