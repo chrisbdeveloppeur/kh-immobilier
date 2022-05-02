@@ -49,7 +49,7 @@
             </tr>
         {% endfor %}
 
-        {% if (entity.logement is defined) or (entity.locataires.current is defined) %}
+        {% if form.vars.name == 'bien_immo' %}
 
             {% if entity.logement is defined %}
                 {% set object = entity.logement %}
@@ -57,7 +57,7 @@
                 {% set object = entity.locataires.current %}
             {% endif %}
 
-            {% for document in entity.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}
+            {% for document in entity.locataires.current.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}
                 <tr class="is-size-7">
 
                     <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ document.title }}" style="width: 100%;">
