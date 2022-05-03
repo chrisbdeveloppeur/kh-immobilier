@@ -81,6 +81,11 @@ class User implements UserInterface
      */
     private $locataires;
 
+    /**
+     * @ORM\OneToMany(targetEntity=EtatDesLieux::class, mappedBy="creator")
+     */
+    private $etatDesLieux;
+
     public function __construct()
     {
         $this->biens_immos = new ArrayCollection();
@@ -303,6 +308,19 @@ class User implements UserInterface
                 $locataire->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEtatDesLieux()
+    {
+        return $this->etatDesLieux;
+    }
+
+    public function setEtatDesLieux(EtatDesLieux $etatDesLieux): self
+    {
+        $etatDesLieux->setCreator($this);
+        $this->etatDesLieux = $etatDesLieux;
 
         return $this;
     }

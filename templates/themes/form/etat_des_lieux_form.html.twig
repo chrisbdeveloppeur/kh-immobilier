@@ -1,4 +1,4 @@
-{{ form_start(form_etat_des_lieux, {'attr': {'class': 'is-hidden bien-immo etatDesLieux column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
+{{ form_start(form_etat_des_lieux, {'attr': {'class': 'column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
     {% for child in form_etat_des_lieux %}
         <div class="field">

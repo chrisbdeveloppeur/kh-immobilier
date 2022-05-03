@@ -48,19 +48,18 @@ class EtatDesLieuxRepository extends ServiceEntityRepository
     // /**
     //  * @return EtatDesLieux[] Returns an array of EtatDesLieux objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+
+//    public function findByBienImmo($value)
+//    {
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.bien_immo = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('e.id', 'ASC')
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
 
     /*
     public function findOneBySomeField($value): ?EtatDesLieux

@@ -35,7 +35,7 @@ class EtatDesLieux
     private $sens_circuit;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date;
 
@@ -43,6 +43,12 @@ class EtatDesLieux
      * @ORM\ManyToMany(targetEntity=FormField::class, inversedBy="etatDesLieuxes")
      */
     private $fields;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="etatDesLieux", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private $creator;
 
     public function __toString()
     {
@@ -53,6 +59,7 @@ class EtatDesLieux
     {
         $this->BienImmo = new ArrayCollection();
         $this->fields = new ArrayCollection();
+        $this->sens_circuit = 1;
     }
 
     public function getId(): ?int
@@ -152,6 +159,19 @@ class EtatDesLieux
     public function removeField(FormField $field): self
     {
         $this->fields->removeElement($field);
+
+        return $this;
+    }
+
+
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(User $creator): self
+    {
+        $this->creator = $creator;
 
         return $this;
     }

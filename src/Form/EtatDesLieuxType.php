@@ -32,19 +32,23 @@ class EtatDesLieuxType extends AbstractType
         $date = new \DateTime('now');
 
         $builder
-            ->add('sens_circuit', ChoiceType::class,[
-                'label' => 'Entrée / Sortie',
-                'choices' => [
-                    'Arrivé' => true,
-                    'Sortie' => false
-                ],
+            ->add('name', TextType::class,[
+                'label' => 'Titre de l\'état des lieux',
                 'attr' => ['class'=>'has-text-centered input is-small'],
             ])
-            ->add('date', DateType::class,[
-                'label' => 'Date de l\'état des lieux',
-                'widget' => 'single_text',
-                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
-            ])
+//            ->add('sens_circuit', ChoiceType::class,[
+//                'label' => 'Entrée / Sortie',
+//                'choices' => [
+//                    'Arrivé' => true,
+//                    'Sortie' => false
+//                ],
+//                'attr' => ['class'=>'has-text-centered input is-small'],
+//            ])
+//            ->add('date', DateType::class,[
+//                'label' => 'Date de l\'état des lieux',
+//                'widget' => 'single_text',
+//                'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
+//            ])
         ;
 
     }

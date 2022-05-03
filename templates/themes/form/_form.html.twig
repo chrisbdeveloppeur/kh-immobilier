@@ -482,14 +482,39 @@
 
         {{ form_end(form) }}
 
-
-        {% if 'new' not in app.request.get('_route') and 'bien' in app.request.get('_route') %}
-
-            {% for etat_des_lieux in bien_immo.etatDesLieux %}
-                <div class="button is-small">{{  }}</div>
-            {% endfor %}
-
-            {{ include('themes/form/etat_des_lieux_form.html.twig') }}
+        {% if 'new' not in app.request.get('_route') and 'bien' in app.request.pathInfo %}
+                <div class="column is-flex is-align-items-center is-flex-direction-column is-hidden bien-immo etatDesLieux">
+                    <form action="{{ path('bien_immo_etat_des_lieux', {'id_immo': bien_immo.id}) }}" name="etat_des_lieux_select_form" method="post">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <div class="select is-small is-fullwidth">
+                                    <select name="etat_des_lieux">
+                                        {% for etat_des_lieux in all_etats_des_lieux %}
+                                            {% if bien_immo.user == etat_des_lieux.creator or is_granted('ROLE_SUPER_ADMIN')  %}
+                                                <option value="{{ etat_des_lieux.id }}" {% if bien_immo.etatDesLieux == etat_des_lieux %}selected{% endif %}>{{ etat_des_lieux }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-small is-primary">Choisir un modèle</button>
+                            </div>
+                        </div>
+                    </form>
+{#                    <div class="field">#}
+{#                        <div class="select is-small is-fullwidth">#}
+{#                            <select name="" id="">#}
+{#                                {% for etat_des_lieux in all_etats_des_lieux %}#}
+{#                                    {% if bien_immo.user == etat_des_lieux.creator or is_granted('ROLE_SUPER_ADMIN')  %}#}
+{#                                        <option>{{ etat_des_lieux }}</option>#}
+{#                                    {% endif %}#}
+{#                                {% endfor %}#}
+{#                            </select>#}
+{#                        </div>#}
+{#                    </div>#}
+                    {{ include('themes/form/etat_des_lieux_form.html.twig') }}
+                </div>
         {% endif %}
 {#        {{ form_start(form_etat_des_lieux, {'attr': {'class': 'is-hidden bien-immo etatDesLieux column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}#}
 {#            {% for child in form_etat_des_lieux %}#}
