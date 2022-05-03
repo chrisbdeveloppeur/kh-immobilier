@@ -19,9 +19,9 @@
                     </div>
                     <p class="control">
                         <a class="button is-small is-info">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-envelope"></i>
-                                        </span>
+                            <span class="icon">
+                                <i class="fas fa-lg fa-envelope"></i>
+                            </span>
                         </a>
                     </p>
                 </div>
@@ -32,9 +32,9 @@
                     </div>
                     <p class="control">
                         <a class="button is-small is-info">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-phone"></i>
-                                        </span>
+                            <span class="icon">
+                                <i class="fas fa-lg fa-phone"></i>
+                            </span>
                         </a>
                     </p>
                 </div>
@@ -44,30 +44,45 @@
 
             {% if form_help(child) %}
                 <span class="help is-info mt-0">
-                                    <span class="icon-text" style="flex-wrap: nowrap">
-                                        <span class="icon">
-                                            <i class="fas fa-info-circle"></i>
-                                        </span>
-                                        <span>{{ form_help(child) }}</span>
-                                    </span>
-                                 </span>
+                    <span class="icon-text" style="flex-wrap: nowrap">
+                        <span class="icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>{{ form_help(child) }}</span>
+                    </span>
+                </span>
             {% endif %}
 
             {% if form_errors(child) %}
                 <span class="tag is-danger">
-                                    {{ form_errors(child) }}
-                                </span>
+                    {{ form_errors(child) }}
+                </span>
             {% endif %}
 
             {% for sub_child in child.children %}
                 {% if form_errors(sub_child) %}
                     <span class="tag is-danger">
-                                        {{ form_errors(sub_child) }}
-                                    </span>
+                        {{ form_errors(sub_child) }}
+                    </span>
                 {% endif %}
             {% endfor %}
         </div>
     {% endfor %}
+
+<div class="field has-text-centered">
+    <div class="button is-info is-small btn-submit" onclick="addFieldForm(this.parentElement)">
+        <span class="icon">
+            <i class="fas fa-lg fa-plus"></i>
+        </span>
+        <span>Ajouter un champs</span>
+    </div>
+    <div class="button is-info is-small btn-submit" onclick="removeFieldForm(this.parentElement)">
+        <span class="icon">
+            <i class="fas fa-lg fa-minus"></i>
+        </span>
+        <span>Retirer un champs</span>
+    </div>
+</div>
 
 <div class="field has-text-centered">
     <button class="button is-info is-small btn-submit">
@@ -79,3 +94,43 @@
 </div>
 
 {{ form_end(form_etat_des_lieux) }}
+
+
+<script>
+    function addFieldForm(nextElement) {
+        // crée un nouvel élément div
+        var newDiv = document.createElement("div");
+        // crée le contenu html
+        var html =
+            "  <p class=\"control\">\n" +
+            "    <span class=\"select\">\n" +
+            "      <select>\n" +
+            "        <option>$</option>\n" +
+            "        <option>£</option>\n" +
+            "        <option>€</option>\n" +
+            "      </select>\n" +
+            "    </span>\n" +
+            "  </p>\n" +
+            "  <p class=\"control is-expanded\">\n" +
+            "    <input class=\"input\" type=\"text\" placeholder=\"Amount of money\">\n" +
+            "  </p>\n" +
+            "  <p class=\"control\">\n" +
+            "    <a class=\"button\">\n" +
+            "      Transfer\n" +
+            "    </a>\n" +
+            "  </p>\n";
+        // Ajout des classes au nouvel element
+        newDiv.classList.add('field-added', 'field', 'has-text-centered', 'has-addons');
+        // Ajout du contenu html dans le nouvelle element
+        newDiv.innerHTML = html;
+        // Positionner l'element créer
+        nextElement.parentElement.insertBefore(newDiv, nextElement);
+    }
+
+    function removeFieldForm(nextElement) {
+        var previousElement = nextElement.previousElementSibling;
+        if (previousElement && previousElement.classList.contains('field-added')) {
+            previousElement.remove();
+        }
+    }
+</script>
