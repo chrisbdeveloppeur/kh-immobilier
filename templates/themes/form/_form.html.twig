@@ -484,6 +484,11 @@
 
 
         {% if 'new' not in app.request.get('_route') and 'bien' in app.request.get('_route') %}
+
+            {% for etat_des_lieux in bien_immo.etatDesLieux %}
+                <div class="button is-small">{{  }}</div>
+            {% endfor %}
+
             {{ include('themes/form/etat_des_lieux_form.html.twig') }}
         {% endif %}
 {#        {{ form_start(form_etat_des_lieux, {'attr': {'class': 'is-hidden bien-immo etatDesLieux column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}#}

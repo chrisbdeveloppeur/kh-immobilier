@@ -69,18 +69,21 @@
         </div>
     {% endfor %}
 
+<div class="label is-size-7">
+    <label for="">
+        Ajouter des champs
+    </label>
+</div>
 <div class="field has-text-centered">
-    <div class="button is-info is-small btn-submit" onclick="addFieldForm(this.parentElement)">
+    <div class="button is-info is-small" title="Ajouter un champs" onclick="addFieldForm(this.parentElement)">
         <span class="icon">
             <i class="fas fa-lg fa-plus"></i>
         </span>
-        <span>Ajouter un champs</span>
     </div>
-    <div class="button is-info is-small btn-submit" onclick="removeFieldForm(this.parentElement)">
+    <div class="button is-info is-small" title="Retirer un champs" onclick="removeFieldForm(this.parentElement)">
         <span class="icon">
             <i class="fas fa-lg fa-minus"></i>
         </span>
-        <span>Retirer un champs</span>
     </div>
 </div>
 
@@ -98,33 +101,33 @@
 
 <script>
     function addFieldForm(nextElement) {
-        // crée un nouvel élément div
-        var newDiv = document.createElement("div");
-        // crée le contenu html
-        var html =
-            "  <p class=\"control\">\n" +
-            "    <span class=\"select\">\n" +
-            "      <select>\n" +
-            "        <option>$</option>\n" +
-            "        <option>£</option>\n" +
-            "        <option>€</option>\n" +
-            "      </select>\n" +
-            "    </span>\n" +
-            "  </p>\n" +
-            "  <p class=\"control is-expanded\">\n" +
-            "    <input class=\"input\" type=\"text\" placeholder=\"Amount of money\">\n" +
-            "  </p>\n" +
-            "  <p class=\"control\">\n" +
-            "    <a class=\"button\">\n" +
-            "      Transfer\n" +
-            "    </a>\n" +
-            "  </p>\n";
-        // Ajout des classes au nouvel element
-        newDiv.classList.add('field-added', 'field', 'has-text-centered', 'has-addons');
-        // Ajout du contenu html dans le nouvelle element
-        newDiv.innerHTML = html;
-        // Positionner l'element créer
-        nextElement.parentElement.insertBefore(newDiv, nextElement);
+        var nbMaxField = 50;
+        var previousElement = nextElement.previousElementSibling;
+        if (parseInt(previousElement.id) < nbMaxField || !previousElement.classList.contains('field-added')) {
+// crée un nouvel élément div
+            var newDiv = document.createElement("div");
+            // Ajout des classes au nouvel element
+            newDiv.classList.add('field-added', 'field', 'has-text-centered', 'has-addons');
+            newDiv.id = 'fields';
+            var id = 1;
+            if (previousElement && previousElement.classList.contains('field-added')) {
+                id = parseInt(previousElement.id)  + 1;
+                newDiv.id = id;
+            }else {
+                newDiv.id = id;
+            }
+            // crée le contenu html
+            var html =
+                "  <p class=\"control is-expanded\">\n" +
+                "    <input class=\"input is-small\" type=\"text\" placeholder=\"Label du champs\" name='etat_des_lieux[field-"+id+"]'>\n" +
+                "  </p>\n";
+            // Ajout du contenu html dans le nouvelle element
+            newDiv.innerHTML = html;
+            // Positionner l'element créer
+            nextElement.parentElement.insertBefore(newDiv, nextElement);
+        }else {
+            return 'Vous avez atteint le nombre maximal de champs'
+        }
     }
 
     function removeFieldForm(nextElement) {

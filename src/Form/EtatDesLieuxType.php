@@ -53,6 +53,7 @@ class EtatDesLieuxType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => EtatDesLieux::class,
+            'allow_extra_fields' => true,
         ]);
     }
 }

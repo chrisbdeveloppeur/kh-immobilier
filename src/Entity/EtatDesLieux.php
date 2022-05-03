@@ -20,6 +20,11 @@ class EtatDesLieux
     private $id;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $name;
+
+    /**
      * @ORM\OneToMany(targetEntity=BienImmo::class, mappedBy="etatDesLieux")
      */
     private $BienImmo;
@@ -39,6 +44,11 @@ class EtatDesLieux
      */
     private $fields;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->BienImmo = new ArrayCollection();
@@ -48,6 +58,24 @@ class EtatDesLieux
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     * @return EtatDesLieux
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
     }
 
     /**

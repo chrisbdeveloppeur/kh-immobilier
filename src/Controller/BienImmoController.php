@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BienImmo;
 use App\Entity\Copropriete;
 use App\Entity\EtatDesLieux;
+use App\Entity\FormField;
 use App\Entity\Prestataire;
 use App\Entity\Solde;
 use App\Form\BienImmoType;
@@ -224,7 +225,18 @@ class BienImmoController extends AbstractController
         $form_etat_des_lieux->handleRequest($request);
         if ($form_etat_des_lieux->isSubmitted() && $form_etat_des_lieux->isValid()){
             $em->persist($etat_des_lieux);
-            dd($form_etat_des_lieux->get('field')->getData());
+            $extraDatas = $form_etat_des_lieux->getExtraData();
+            if ($extraDatas){
+                foreach ($extraDatas as $data){
+                    $formField = new FormField();
+                    $em->persist($formField);
+                    $formField->setType('input');
+                    $formField->setLabel($data);
+                    $formField->addEtatDesLieux($etat_des_lieux);
+                }
+            }
+
+//            dd($formField);
             $em->flush();
             $this->addFlash('success', 'Etat des lieux créer');
             $referer = $request->headers->get('referer');
