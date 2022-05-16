@@ -294,7 +294,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id_immo}/etat-des-lieux", name="bien_immo_etat_des_lieux", methods={"GET","POST"})
      */
-    public function changeEtatDesLieux(Request $request, BienImmoRepository $bienImmoRepository, $id_immo, EtatDesLieuxRepository $etatDesLieuxRepository, EntityManagerInterface $em){
+    public function showEtatDesLieux(Request $request, BienImmoRepository $bienImmoRepository, $id_immo, EtatDesLieuxRepository $etatDesLieuxRepository, EntityManagerInterface $em){
         $bienImmo = $bienImmoRepository->find($id_immo);
         $etatDesLieux = $etatDesLieuxRepository->find($_POST['etat_des_lieux']);
         $em->persist($bienImmo);

@@ -34,9 +34,19 @@ class FormField
      */
     private $etatDesLieuxes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=FormSection::class, inversedBy="formFields")
+     */
+    private $formSection;
+
     public function __construct()
     {
         $this->etatDesLieuxes = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getLabel();
     }
 
     public function getId(): ?int
@@ -91,6 +101,18 @@ class FormField
         if ($this->etatDesLieuxes->removeElement($etatDesLieux)) {
             $etatDesLieux->removeField($this);
         }
+
+        return $this;
+    }
+
+    public function getFormSection(): ?FormSection
+    {
+        return $this->formSection;
+    }
+
+    public function setFormSection(?FormSection $formSection): self
+    {
+        $this->formSection = $formSection;
 
         return $this;
     }

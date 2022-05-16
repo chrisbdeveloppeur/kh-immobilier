@@ -74,7 +74,7 @@
         Ajouter des champs
     </label>
 </div>
-<div class="field has-text-centered">
+<div class="field">
     <div class="button is-info is-small" title="Ajouter un champs" onclick="addFieldForm(this.parentElement)">
         <span class="icon">
             <i class="fas fa-lg fa-plus"></i>
@@ -92,7 +92,7 @@
         <span class="icon">
             <i class="fas fa-lg fa-plus"></i>
         </span>
-        <span>Créer un état des lieux</span>
+        <span>Créer un formulaire d'état des lieux</span>
     </button>
 </div>
 
@@ -104,7 +104,7 @@
         var nbMaxField = 50;
         var previousElement = nextElement.previousElementSibling;
         if (parseInt(previousElement.id) < nbMaxField || !previousElement.classList.contains('field-added')) {
-// crée un nouvel élément div
+            // crée un nouvel élément div
             var newDiv = document.createElement("div");
             // Ajout des classes au nouvel element
             newDiv.classList.add('field-added', 'field', 'has-text-centered', 'has-addons');

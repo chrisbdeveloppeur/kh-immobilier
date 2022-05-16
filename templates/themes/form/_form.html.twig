@@ -424,6 +424,9 @@
                                 <button type="submit" class="button is-small is-primary">Choisir un modèle</button>
                             </div>
                         </div>
+                        {% for field in bien_immo.etatDesLieux.fields %}
+                            <span class="tag">{{ field }}</span>
+                        {% endfor %}
                     </form>
 {#                    <div class="field">#}
 {#                        <div class="select is-small is-fullwidth">#}

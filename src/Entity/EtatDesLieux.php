@@ -50,6 +50,11 @@ class EtatDesLieux
      */
     private $creator;
 
+    /**
+     * @ORM\OneToMany(targetEntity=FormSection::class, mappedBy="etatDesLieux", orphanRemoval=true)
+     */
+    private $formSections;
+
     public function __toString()
     {
         return $this->name;
@@ -60,6 +65,7 @@ class EtatDesLieux
         $this->BienImmo = new ArrayCollection();
         $this->fields = new ArrayCollection();
         $this->sens_circuit = 1;
+        $this->formSections = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -172,6 +178,36 @@ class EtatDesLieux
     public function setCreator(User $creator): self
     {
         $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FormSection>
+     */
+    public function getFormSections(): Collection
+    {
+        return $this->formSections;
+    }
+
+    public function addFormSection(FormSection $formSection): self
+    {
+        if (!$this->formSections->contains($formSection)) {
+            $this->formSections[] = $formSection;
+            $formSection->setEtatDesLieux($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormSection(FormSection $formSection): self
+    {
+        if ($this->formSections->removeElement($formSection)) {
+            // set the owning side to null (unless already changed)
+            if ($formSection->getEtatDesLieux() === $this) {
+                $formSection->setEtatDesLieux(null);
+            }
+        }
 
         return $this;
     }
