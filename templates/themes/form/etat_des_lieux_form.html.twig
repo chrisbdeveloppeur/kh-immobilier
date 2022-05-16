@@ -1,4 +1,4 @@
-{{ form_start(form_etat_des_lieux, {'attr': {'class': 'is-hidden bien-immo etatDesLieux column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
+{{ form_start(form_etat_des_lieux, {'attr': {'class': 'column is-two-fifths-desktop is-two-thirds-tablet has-background-light border-radius-2px box-shadow-bulma '~ form_etat_des_lieux.vars.name, 'id': 'form', 'onsubmit':'isLoading(this)'} }) }}
 
     {% for child in form_etat_des_lieux %}
         <div class="field">
@@ -19,9 +19,9 @@
                     </div>
                     <p class="control">
                         <a class="button is-small is-info">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-envelope"></i>
-                                        </span>
+                            <span class="icon">
+                                <i class="fas fa-lg fa-envelope"></i>
+                            </span>
                         </a>
                     </p>
                 </div>
@@ -32,9 +32,9 @@
                     </div>
                     <p class="control">
                         <a class="button is-small is-info">
-                                        <span class="icon">
-                                            <i class="fas fa-lg fa-phone"></i>
-                                        </span>
+                            <span class="icon">
+                                <i class="fas fa-lg fa-phone"></i>
+                            </span>
                         </a>
                     </p>
                 </div>
@@ -44,30 +44,48 @@
 
             {% if form_help(child) %}
                 <span class="help is-info mt-0">
-                                    <span class="icon-text" style="flex-wrap: nowrap">
-                                        <span class="icon">
-                                            <i class="fas fa-info-circle"></i>
-                                        </span>
-                                        <span>{{ form_help(child) }}</span>
-                                    </span>
-                                 </span>
+                    <span class="icon-text" style="flex-wrap: nowrap">
+                        <span class="icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>{{ form_help(child) }}</span>
+                    </span>
+                </span>
             {% endif %}
 
             {% if form_errors(child) %}
                 <span class="tag is-danger">
-                                    {{ form_errors(child) }}
-                                </span>
+                    {{ form_errors(child) }}
+                </span>
             {% endif %}
 
             {% for sub_child in child.children %}
                 {% if form_errors(sub_child) %}
                     <span class="tag is-danger">
-                                        {{ form_errors(sub_child) }}
-                                    </span>
+                        {{ form_errors(sub_child) }}
+                    </span>
                 {% endif %}
             {% endfor %}
         </div>
     {% endfor %}
+
+<div class="label is-size-7">
+    <label for="">
+        Ajouter des champs
+    </label>
+</div>
+<div class="field has-text-centered">
+    <div class="button is-info is-small" title="Ajouter un champs" onclick="addFieldForm(this.parentElement)">
+        <span class="icon">
+            <i class="fas fa-lg fa-plus"></i>
+        </span>
+    </div>
+    <div class="button is-info is-small" title="Retirer un champs" onclick="removeFieldForm(this.parentElement)">
+        <span class="icon">
+            <i class="fas fa-lg fa-minus"></i>
+        </span>
+    </div>
+</div>
 
 <div class="field has-text-centered">
     <button class="button is-info is-small btn-submit">
@@ -79,3 +97,43 @@
 </div>
 
 {{ form_end(form_etat_des_lieux) }}
+
+
+<script>
+    function addFieldForm(nextElement) {
+        var nbMaxField = 50;
+        var previousElement = nextElement.previousElementSibling;
+        if (parseInt(previousElement.id) < nbMaxField || !previousElement.classList.contains('field-added')) {
+// crée un nouvel élément div
+            var newDiv = document.createElement("div");
+            // Ajout des classes au nouvel element
+            newDiv.classList.add('field-added', 'field', 'has-text-centered', 'has-addons');
+            newDiv.id = 'fields';
+            var id = 1;
+            if (previousElement && previousElement.classList.contains('field-added')) {
+                id = parseInt(previousElement.id)  + 1;
+                newDiv.id = id;
+            }else {
+                newDiv.id = id;
+            }
+            // crée le contenu html
+            var html =
+                "  <p class=\"control is-expanded\">\n" +
+                "    <input class=\"input is-small\" type=\"text\" placeholder=\"Label du champs\" name='etat_des_lieux[field-"+id+"]'>\n" +
+                "  </p>\n";
+            // Ajout du contenu html dans le nouvelle element
+            newDiv.innerHTML = html;
+            // Positionner l'element créer
+            nextElement.parentElement.insertBefore(newDiv, nextElement);
+        }else {
+            return 'Vous avez atteint le nombre maximal de champs'
+        }
+    }
+
+    function removeFieldForm(nextElement) {
+        var previousElement = nextElement.previousElementSibling;
+        if (previousElement && previousElement.classList.contains('field-added')) {
+            previousElement.remove();
+        }
+    }
+</script>

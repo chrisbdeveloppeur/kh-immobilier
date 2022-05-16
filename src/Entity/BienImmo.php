@@ -128,7 +128,8 @@ class BienImmo
     private $financement;
 
     /**
-     * @ORM\ManyToOne(targetEntity=EtatDesLieux::class, inversedBy="BienImmo")
+     * @ORM\ManyToOne(targetEntity=EtatDesLieux::class, inversedBy="BienImmo", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $etatDesLieux;
 

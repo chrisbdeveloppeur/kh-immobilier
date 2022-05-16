@@ -20,7 +20,7 @@
                         Accueil
                     </a>
 
-                    {% if is_granted('ROLE_USER') %}
+                    {% if is_granted('ROLE_PROPRIETAIRE') %}
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                             Immobilier
@@ -53,7 +53,7 @@
                     </div>
                     {% endif %}
 
-                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    {% if is_granted('ROLE_ENTREPRENEUR') %}
                         <div class="navbar-item has-dropdown is-hoverable">
                             <a class="navbar-link">
                                 Entreprenariat

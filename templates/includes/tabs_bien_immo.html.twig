@@ -44,7 +44,7 @@
                 </li>
             {% endif %}
 
-            {% if is_granted('ROLE_SUPER_ADMIN') and 'new' not in app.request.get('_route') %}
+            {% if 'new' not in app.request.get('_route') %}
                 <div class="is-hidden" id="etatDesLieux"></div>
                 <li class="tab" id="">
                     <a>

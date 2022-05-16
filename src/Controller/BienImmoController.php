@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BienImmo;
 use App\Entity\Copropriete;
 use App\Entity\EtatDesLieux;
+use App\Entity\FormField;
 use App\Entity\Prestataire;
 use App\Entity\Solde;
 use App\Form\BienImmoType;
@@ -13,6 +14,7 @@ use App\Form\EtatDesLieuxType;
 use App\Form\PrestataireType;
 use App\Repository\BienImmoRepository;
 use App\Repository\DocumentsRepository;
+use App\Repository\EtatDesLieuxRepository;
 use App\Repository\LocataireRepository;
 use App\Repository\PrestataireRepository;
 use App\Repository\QuittanceRepository;
@@ -131,7 +133,7 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bien_immo_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository): Response
+    public function edit(Request $request, BienImmo $bienImmo, QuittanceRepository $quittanceRepository, EntityManagerInterface $em, LocataireRepository $locataireRepository, EtatDesLieuxRepository $etatDesLieuxRepository): Response
     {
 //        Vérification de l'utilisateur actuellement connecté
         $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($bienImmo);
@@ -223,8 +225,25 @@ class BienImmoController extends AbstractController
 
         $form_etat_des_lieux->handleRequest($request);
         if ($form_etat_des_lieux->isSubmitted() && $form_etat_des_lieux->isValid()){
+            if ($bienImmo->getUser() == null){
+                $creator = $this->getUser();
+            }else{
+                $creator = $bienImmo->getUser();
+            }
+            $etat_des_lieux->setCreator($creator);
             $em->persist($etat_des_lieux);
-//            dd($etat_des_lieux);
+            $extraDatas = $form_etat_des_lieux->getExtraData();
+            if ($extraDatas){
+                foreach ($extraDatas as $data){
+                    $formField = new FormField();
+                    $em->persist($formField);
+                    $formField->setType('input');
+                    $formField->setLabel($data);
+                    $formField->addEtatDesLieux($etat_des_lieux);
+                }
+            }
+
+//            dd($formField);
             $em->flush();
             $this->addFlash('success', 'Etat des lieux créer');
             $referer = $request->headers->get('referer');
@@ -268,11 +287,23 @@ class BienImmoController extends AbstractController
             'form_prestataire' => $form_prestataire->createView(),
             'form_documents' => $form_documents->createView(),
             'form_etat_des_lieux' => $form_etat_des_lieux->createView(),
-            'locataires' => $locataires
+            'locataires' => $locataires,
         ]);
     }
 
-
+    /**
+     * @Route("/{id_immo}/etat-des-lieux", name="bien_immo_etat_des_lieux", methods={"GET","POST"})
+     */
+    public function changeEtatDesLieux(Request $request, BienImmoRepository $bienImmoRepository, $id_immo, EtatDesLieuxRepository $etatDesLieuxRepository, EntityManagerInterface $em){
+        $bienImmo = $bienImmoRepository->find($id_immo);
+        $etatDesLieux = $etatDesLieuxRepository->find($_POST['etat_des_lieux']);
+        $em->persist($bienImmo);
+        $bienImmo->setEtatDesLieux($etatDesLieux);
+        $em->flush();
+        $this->addFlash('success', 'Etat des lieux séléctionné');
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer.'#etatDesLieux');
+    }
 
 
     /**
