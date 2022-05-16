@@ -77,86 +77,9 @@
 
         {% if form.vars.name in ['bien_immo','locataire'] %}
 
-            {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
-                <div class="is-flex is-justify-content-space-between">
-{#                    <a class="button is-white form-edit-btn" title="Modifier les informations">#}
-{#                        <span class="icon">#}
-{#                            <i class="fas fa-lg fa-edit"></i>#}
-{#                        </span>#}
-{#                    </a>#}
+            {{ include('themes/form/edit_buttons/edit_bien_immo_buttons.html.twig') }}
 
-                    <div class="tags mb-0 bien-immo logement copropriete is-hidden">
-                        <span class="tag is-size-6-touch is-dark">
-                            <b>{{ bien_immo.street }}</b>
-                        </span>
-                        {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
-{#                                <a class="tag is-size-6-touch button form-edit-btn" style="text-decoration: none" title="Modifier les informations">#}
-{#                                    <span class="icon">#}
-{#                                        <i class="fas fa-lg fa-edit"></i>#}
-{#                                    </span>#}
-{#                                    <span class="text">#}
-{#                                        Modifier#}
-{#                                    </span>#}
-{#                                </a>#}
-                            <div class="tag is-size-6-touch button hovertext" data-hover="Modifier les informations">
-                                <input id="switchExample" type="checkbox" name="switchExample" class="switch is-primary is-small is-rtl form-edit-btn">
-                                <label for="switchExample" style="padding-top: 0">
-                                    <span class="icon">
-                                        <i class="fas fa-lg fa-edit"></i>
-                                    </span>
-                                </label>
-                            </div>
-                        {% endif %}
-                        <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-size-6-touch button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
-                            <span class="icon">
-                                <i class="fas fa-clone"></i>
-                            </span>
-                            <span class="text">
-                                Dupliquer
-                            </span>
-                        </a>
-                        <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-size-6-touch button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
-                            <span class="icon">
-                                <i class="fas fa-trash-alt"></i>
-                            </span>
-                        </a>
-                    </div>
-
-{#                    <div class="tags has-addons mb-0 bien-immo copropriete is-hidden is-justify-content-end">#}
-{#                        {% if form.vars.name in ['bien_immo'] and bien_immo.copropriete.name %}#}
-{#                            <span class="tag is-size-6-touch is-small is-dark is-uppercase">#}
-{#                            <b>{{ bien_immo.copropriete }}</b>#}
-{#                        </span>#}
-{#                        {% endif %}#}
-{#                    </div>#}
-                </div>
-
-
-            {% endif %}
-
-            {% if form.vars.name == 'locataire' and 'new' not in app.request.get('_route')  %}
-                <div class="is-flex is-justify-content-space-between">
-                    <a class="button is-small is-black is-light form-edit-btn" title="Modifier les informations">
-                        <span class="icon">
-                            <i class="fas fa-lg fa-edit"></i>
-                        </span>
-                    </a>
-                    <div class="tags mb-0 has-addons bien-immo locataire is-hidden is-justify-content-end">
-                        <span class="tag is-small is-dark">
-                            {% if locataire.gender == 'Couple' %}
-                                <b>{{ locataire.gender }} {{ locataire.lastName }}</b>
-                            {% else %}
-                                <b>{{ locataire.gender }} {{ locataire }}</b>
-                            {% endif %}
-                        </span>
-                        <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="tag is-small button is-danger" title="Supprimer ce locataire" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce locataire?');">
-                            <span class="icon">
-                                <i class="fas fa-trash-alt"></i>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            {% endif %}
+            {{ include('themes/form/edit_buttons/edit_locataire_buttons.html.twig') }}
 
         {% endif %}
 

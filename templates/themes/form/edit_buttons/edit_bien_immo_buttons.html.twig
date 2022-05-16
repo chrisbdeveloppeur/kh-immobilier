@@ -1,0 +1,34 @@
+{% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
+    <div class="is-flex is-justify-content-space-between">
+
+        <div class="tags mb-0 bien-immo logement copropriete is-hidden">
+            <span class="tag is-size-6-touch is-dark">
+                <b>{{ bien_immo.street }}</b>
+            </span>
+            {% if form.vars.name == 'bien_immo' and 'new' not in app.request.get('_route') %}
+                <div class="tag is-size-6-touch button hovertext" data-hover="Modifier les informations">
+                    <input id="switchExample" type="checkbox" name="switchExample" class="switch is-primary is-small is-rtl form-edit-btn">
+                    <label for="switchExample" style="padding-top: 0">
+                        <span class="icon">
+                            <i class="fas fa-lg fa-edit"></i>
+                        </span>
+                    </label>
+                </div>
+            {% endif %}
+            <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-size-6-touch button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+                <span class="icon">
+                    <i class="fas fa-clone"></i>
+                </span>
+                <span class="text">
+                    Dupliquer
+                </span>
+            </a>
+            <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-size-6-touch button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
+                <span class="icon">
+                    <i class="fas fa-trash-alt"></i>
+                </span>
+            </a>
+        </div>
+
+    </div>
+{% endif %}

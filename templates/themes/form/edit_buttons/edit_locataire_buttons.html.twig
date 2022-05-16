@@ -1,0 +1,30 @@
+{% if form.vars.name == 'locataire' and 'new' not in app.request.get('_route')  %}
+    <div class="is-flex is-justify-content-space-between">
+
+        <div class="tags mb-0 bien-immo logement locataire is-hidden">
+            <span class="tag is-size-6-touch is-dark">
+                {% if locataire.gender == 'Couple' %}
+                    <b>{{ locataire.gender }} {{ locataire.lastName }}</b>
+                               {% else %}
+                    <b>{{ locataire.gender }} {{ locataire }}</b>
+                {% endif %}
+            </span>
+
+            <div class="tag is-size-6-touch button hovertext" data-hover="Modifier les informations">
+                <input id="switchExample" type="checkbox" name="switchExample" class="switch is-primary is-small is-rtl form-edit-btn">
+                <label for="switchExample" style="padding-top: 0">
+                    <span class="icon">
+                        <i class="fas fa-lg fa-edit"></i>
+                    </span>
+                </label>
+            </div>
+
+            <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="tag is-small button is-danger" title="Supprimer ce locataire" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce locataire?');">
+                <span class="icon">
+                    <i class="fas fa-trash-alt"></i>
+                </span>
+            </a>
+        </div>
+
+    </div>
+{% endif %}
