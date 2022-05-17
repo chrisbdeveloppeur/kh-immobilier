@@ -25,7 +25,7 @@
             <div class="is-flex">
                 {% if bien_immo.locataires.current.email %}
                     <div class="column p-1 is-expanded">
-                        <a href="mailto:{{ bien_immo.locataires.current.email }}" class="button is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
+                        <a href="mailto:{{ bien_immo.locataires.current.email }}" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.email }}">
                             <span class="icon">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -34,7 +34,7 @@
                 {% endif %}
                 {% if bien_immo.locataires.current.phone %}
                     <div class="column p-1 is-expanded">
-                        <a href="tel:{{ bien_immo.locataires.current.phone }}" class="button is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
+                        <a href="tel:{{ bien_immo.locataires.current.phone }}" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.locataires.current.phone }}">
                             <span class="icon">
                                 <i class="fas fa-phone"></i>
                             </span>
@@ -42,7 +42,7 @@
                     </div>
                 {% endif %}
                 <div class="column p-1 is-expanded">
-                    <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="button is-fullwidth has-text-centered hovertext" data-hover="Modifier le locataire">
+                    <a href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="Modifier le locataire">
                         <span class="icon">
                             <i class="fas fa-user-edit"></i>
                         </span>
@@ -52,7 +52,7 @@
         {% else %}
             <div class="is-flex">
                 <div class="column p-1 is-expanded">
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="button is-fullwidth has-text-centered hovertext" data-hover="Ajouter un locataire">
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="Ajouter un locataire">
                         <span class="icon">
                             <i class="fas fas fa-user-plus"></i>
                         </span>

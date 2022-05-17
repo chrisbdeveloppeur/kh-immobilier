@@ -355,7 +355,7 @@ form.quittances{
   //text-overflow: ellipsis;
   min-width: max-content;
   max-width: 150px;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: $primary;
   color: #fff;
   text-align: center;
   border-radius: 2px;
@@ -366,6 +366,7 @@ form.quittances{
   font-weight: bold;
   top: 105%;
   font-size: .7rem;
+  box-shadow: 0 0 20px rgba(0,0,0,.5);
 }
 .hovertext-left:before {
   left: 0 !important;

@@ -31,7 +31,7 @@
             <div class="is-flex">
                 {% if bien_immo.copropriete.email %}
                     <div class="column p-1 is-expanded">
-                        <a href="mailto:{{ bien_immo.copropriete.email }}" class="button is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.email }}">
+                        <a href="mailto:{{ bien_immo.copropriete.email }}" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.email }}">
                             <span class="icon">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -40,7 +40,7 @@
                 {% endif %}
                 {% if bien_immo.copropriete.phone %}
                     <div class="column p-1 is-expanded">
-                        <a href="tel:{{ bien_immo.copropriete.phone }}" class="button is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
+                        <a href="tel:{{ bien_immo.copropriete.phone }}" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="{{ bien_immo.copropriete.phone }}">
                             <span class="icon">
                                 <i class="fas fa-phone"></i>
                             </span>
@@ -48,7 +48,7 @@
                     </div>
                 {% endif %}
                 <div class="column p-1 is-expanded">
-                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-fullwidth has-text-centered hovertext" data-hover="Modifier les informations de la copropriété">
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="Modifier les informations de la copropriété">
                         <span class="icon">
                             <i class="fas fa-edit"></i>
                         </span>
@@ -58,7 +58,7 @@
 {#        {% else %}#}
 {#            <div class="is-flex">#}
 {#                <div class="column p-1 is-expanded">#}
-{#                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-fullwidth has-text-centered hovertext" data-hover="Ajouter une copropriété">#}
+{#                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#copropriete" class="button is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="Ajouter une copropriété">#}
 {#                        <span class="icon">#}
 {#                            <i class="fas fas fa-plus"></i>#}
 {#                        </span>#}
