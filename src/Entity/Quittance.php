@@ -67,17 +67,12 @@ class Quittance
     private $payed;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $loyer_ht;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $loyer_ttc;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $charges;
 
@@ -260,14 +255,7 @@ class Quittance
 
     public function getLoyerTtc(): ?float
     {
-        return $this->loyer_ttc;
-    }
-
-    public function setLoyerTtc(?float $loyer_ttc): self
-    {
-        $this->loyer_ttc = $loyer_ttc;
-
-        return $this;
+        return $this->loyer_ht + $this->charges;
     }
 
     public function getCharges(): ?float

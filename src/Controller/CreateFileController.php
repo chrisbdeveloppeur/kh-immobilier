@@ -67,7 +67,7 @@ class CreateFileController extends AbstractController
             $template->setValue("date_top",$month.$form->get('payment_date')->getData()->format(' Y'));
             $template->setValue("date_bot",$form->get('date')->getData()->format('d/m/Y'));
             $template->setValue("mode",$form->get('mode')->getData());
-            $template->setValue("loyer_ttc",$form->get('loyer_ttc')->getData());
+            $template->setValue("loyer_ttc",$form->get('loyer_hc')->getData() + $form->get('charges')->getData());
             $template->setValue("loyer_hc",$form->get('loyer_hc')->getData());
             $template->setValue("charges",$form->get('charges')->getData());
             $template->setValue("solde",$form->get('solde')->getData());

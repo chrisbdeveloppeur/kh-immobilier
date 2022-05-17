@@ -6,6 +6,7 @@ use App\Entity\Quittance;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -77,15 +78,11 @@ class QuittancesType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => ['class'=>'readonly has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])
-            ->add('loyer_ttc', TextType::class,[
-                'label' => 'Loyer (TTC)',
-                'attr' => ['class'=>'readonly has-text-centered input is-small']
-            ])
-            ->add('loyer_hc', TextType::class,[
+            ->add('loyer_hc', NumberType::class,[
                 'label' => 'Loyer (HC)',
                 'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])
-            ->add('charges', TextType::class,[
+            ->add('charges', NumberType::class,[
                 'label' => 'Charges',
                 'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])

@@ -46,7 +46,7 @@ class QuittancesController extends AbstractController
         $form->get('first_day')->setData(1);
         $form->get('last_day')->setData(31);
         //$form->get('month')->setData(strftime("%B"));
-        $form->get('loyer_ttc')->setData($logement->getLoyerTtc());
+        //$form->get('loyer_ttc')->setData($logement->getLoyerTtc());
         $form->get('loyer_hc')->setData($logement->getLoyerHc());
         $form->get('charges')->setData($logement->getCharges());
         $form->get('mode')->setData($locataire->getMode());
@@ -80,7 +80,7 @@ class QuittancesController extends AbstractController
             $quittance->setMonth($month);
             $quittance->setYear($form->get('payment_date')->getData()->format('Y'));
             $quittance->setLoyerHt($form->get('loyer_hc')->getData());
-            $quittance->setLoyerTtc($form->get('loyer_ttc')->getData());
+            //$quittance->setLoyerTtc($form->get('loyer_ttc')->getData());
             $quittance->setCharges($form->get('charges')->getData());
             //$quittance->setPdfExist($pdf_exist);
             $em->persist($quittance);
