@@ -15,7 +15,7 @@
                     </label>
                 </div>
             {% endif %}
-            <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-size-6-touch button" style="text-decoration: none" title="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
+            <a href="{{ path('duplicate', {'id': bien_immo.id}) }}#logement" class="tag is-size-6-touch button hovertext" style="text-decoration: none" data-hover="Dupliquer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir dupliquer ce bien immobilier?');">
                 <span class="icon">
                     <i class="fas fa-clone"></i>
                 </span>
@@ -23,7 +23,7 @@
                     Dupliquer
                 </span>
             </a>
-            <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-size-6-touch button is-danger" title="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
+            <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="tag is-size-6-touch button is-danger hovertext" data-hover="Supprimer ce bien immobilier" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce bien immobilier?');">
                 <span class="icon">
                     <i class="fas fa-trash-alt"></i>
                 </span>

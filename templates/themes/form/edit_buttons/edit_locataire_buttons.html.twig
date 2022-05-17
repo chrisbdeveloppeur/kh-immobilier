@@ -19,7 +19,7 @@
                 </label>
             </div>
 
-            <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="tag is-small button is-danger" title="Supprimer ce locataire" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce locataire?');">
+            <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="tag is-small button is-danger hovertext" data-hover="Supprimer ce locataire" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce locataire?');">
                 <span class="icon">
                     <i class="fas fa-trash-alt"></i>
                 </span>

@@ -156,7 +156,7 @@
 
                             {% if child.vars.name == 'locataires' %}
                                 <p class="control">
-                                    <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le locataire">
+                                    <a href="#" id="redirect-adapt-link" class="button is-small is-info hovertext" data-hover="Voir/Modifier le locataire">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-user-edit"></i>
                                     </span>
@@ -164,7 +164,7 @@
                                 </p>
                                 {% if locataires|length == 0 %}
                                     <p class="control">
-                                        <a href="{{ path('locataire_new') }}#locataire" class="button is-small is-light" title="Créer un nouveau locataire">
+                                        <a href="{{ path('locataire_new') }}#locataire" class="button is-small is-light hovertext" data-hover="Créer un nouveau locataire">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-plus"></i>
                                         </span>
@@ -173,7 +173,7 @@
                                 {% endif %}
                             {% else %}
                                 <p class="control">
-                                    <a href="#" id="redirect-adapt-link" class="button is-small is-info" title="Voir/Modifier le bien immobilier">
+                                    <a href="#" id="redirect-adapt-link" class="button is-small is-info hovertext" data-hover="Voir/Modifier le bien immobilier">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-edit"></i>
                                     </span>
@@ -181,7 +181,7 @@
                                 </p>
                                 {% if logements|length == 0 %}
                                     <p class="control">
-                                        <a href="{{ path('bien_immo_new') }}#logement" class="button is-small is-light" title="Créer un nouveau bien immobilier">
+                                        <a href="{{ path('bien_immo_new') }}#logement" class="button is-small is-light hovertext" data-hover="Créer un nouveau bien immobilier">
                                         <span class="icon">
                                             <i class="fas fa-lg fa-plus"></i>
                                         </span>
@@ -254,7 +254,7 @@
                                 {{ form_widget(child) }}
                             </div>
                             <p class="control">
-                                <a class="button is-small is-info">
+                                <a class="button is-small is-info hovertext" data-hover="Envoyer un mail">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-envelope"></i>
                                     </span>
@@ -267,7 +267,7 @@
                                 {{ form_widget(child) }}
                             </div>
                             <p class="control">
-                                <a class="button is-small is-info">
+                                <a class="button is-small is-info hovertext" data-hover="Appeler">
                                     <span class="icon">
                                         <i class="fas fa-lg fa-phone"></i>
                                     </span>
