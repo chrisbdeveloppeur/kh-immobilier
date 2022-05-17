@@ -105,7 +105,7 @@
                 {% if child.vars.block_prefixes[1] == 'choice' and child.vars.name != 'roles'%}
 
                     {% if child.vars.name == 'echeance' %}
-                        <div class="field has-addons">
+                        <div class="field has-addons mb-0">
 
                             <p class="control">
                                 <a class="button is-static is-small">
@@ -130,7 +130,7 @@
 
                         </div>
                     {% elseif child.vars.name in ['first_day','last_day'] %}
-                        <div class="field has-addons">
+                        <div class="field has-addons mb-0">
                             <p class="control">
                                 <a class="button is-static is-small">
                                     {% if child.vars.name == 'first_day' %}
