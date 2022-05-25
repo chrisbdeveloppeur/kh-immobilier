@@ -64,29 +64,29 @@
     </div>
 
     <footer class="card-footer card-footer-column-mobil">
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered">
-            <span class="is-hidden-touch">
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered is-flex-direction-column">
+            <span>
+                <i class="fas fa-lg fa-cogs"></i>
+            </span>
+            <span class="is-size-7">
                 Gérer ce logement
             </span>
-            <span class="is-hidden-desktop">
-                <i class="fas fa-2x fa-cogs"></i>
-            </span>
         </a>
-        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered">
-            <span class="is-hidden-touch">
-                Documents
+        <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered is-flex-direction-column">
+            <span>
+                <i class="fas fa-lg fa-folder-open"></i>
             </span>
-            <span class="is-hidden-desktop">
-                <i class="fas fa-2x fa-folder-open"></i>
+            <span class="is-size-7">
+                Documents
             </span>
         </a>
         {% if bien_immo.locataires is not empty %}
             <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id}) }}" class="card-footer-item bg-primary-onhover text-white-onhover text-bold-onhover has-text-centered is-flex is-flex-direction-column">
-                <span class="is-hidden-touch">
-                    Editer une quittance
+                <span>
+                    <i class="fas fa-lg fa-file-signature"></i>
                 </span>
-                <span class="is-hidden-desktop">
-                    <i class="fas fa-2x fa-file-signature"></i>
+                <span class="is-size-7">
+                    Editer une quittance
                 </span>
             </a>
         {% endif %}

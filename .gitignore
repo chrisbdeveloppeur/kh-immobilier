@@ -24,3 +24,12 @@ yarn-error.log
 !/assets/files/devis/.gitkeep
 !/assets/files/quittances/.gitkeep
 ###< Files ###
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

@@ -43,7 +43,11 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "fzaninotto/faker": "^1.9",
-        "symfony/maker-bundle": "^1.33"
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "4.4.*",
+        "symfony/css-selector": "4.4.*",
+        "symfony/maker-bundle": "^1.33",
+        "symfony/phpunit-bridge": "^6.0"
     },
     "config": {
         "preferred-install": {
