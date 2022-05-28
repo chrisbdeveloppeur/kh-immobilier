@@ -21,10 +21,15 @@ class PdfController extends AbstractController
     public function editPdfQuittance($id, QuittanceRepository $quittanceRepository)
     {
         $quittance = $quittanceRepository->find($id);
+        $locataire = $quittance->getLocataire();
+        $logement = $locataire->getLogement();
+        $proprietaire = $locataire->getUser();
         // instantiate and use the dompdf class
         $html = $this->renderView('pdf/quittance_1.html.twig',[
             'quittance' => $quittance,
-            'test' => 'Ok je test ici'
+            'locataire' => $locataire,
+            'logement' => $logement,
+            'proprietaire' => $proprietaire,
         ]);
         $option = new Options();
         $option->setIsHtml5ParserEnabled(true);
@@ -40,9 +45,13 @@ class PdfController extends AbstractController
         // Render the HTML as PDF
         $dompdf->render();
 
+        $output = $dompdf->output();
+        $path = '../public/documents/quittances/'.$quittance->getFileName().'.pdf';
+        file_put_contents($path, $output);
+
 //        dd($dompdf->getOptions());
         // Output the generated PDF to Browser
         ob_end_clean();
-        $dompdf->stream('test');
+//        $dompdf->stream($quittance->getFileName());
     }
 }

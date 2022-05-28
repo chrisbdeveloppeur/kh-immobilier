@@ -561,4 +561,12 @@ public function setEtatDesLieux(?EtatDesLieux $etatDesLieux): self
 
     return $this;
 }
+
+
+    public function getAdresse()
+    {
+        $adresse = $this->getStreet().' '.$this->getCp().' '.$this->getCity().''.$this->getBuilding();
+        return $adresse;
+    }
+
 }

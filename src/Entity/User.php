@@ -86,6 +86,11 @@ class User implements UserInterface
      */
     private $etatDesLieux;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
     public function __construct()
     {
         $this->biens_immos = new ArrayCollection();
@@ -321,6 +326,18 @@ class User implements UserInterface
     {
         $etatDesLieux->setCreator($this);
         $this->etatDesLieux = $etatDesLieux;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

@@ -22,10 +22,12 @@ class QuittancesController extends AbstractController
 {
 
     private $createFileController;
+    private $pdfController;
 
-    public function __construct(CreateFileController $createFileController)
+    public function __construct(CreateFileController $createFileController, PdfController $pdfController)
     {
         $this->createFileController = $createFileController;
+        $this->pdfController = $pdfController;
     }
 
 
@@ -75,7 +77,7 @@ class QuittancesController extends AbstractController
             $quittance->setFileName($file);
             $quittance->setLocataire($locataire);
             $quittance->setBienImmo($locataire->getLogement());
-            $quittance->setCreatedDate($date);
+            $quittance->setCreatedDate($form->get('date')->getData());
             $quittance->setDate($form->get('payment_date')->getData());
             $quittance->setMonth($month);
             $quittance->setYear($form->get('payment_date')->getData()->format('Y'));
@@ -86,8 +88,9 @@ class QuittancesController extends AbstractController
             $em->persist($quittance);
             $em->flush();
 
-            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form, $quittance);
-            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance, $quittanceAlreadyExist);
+            $this->pdfController->editPdfQuittance($quittance->getId(), $quittanceRepository);
+//            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form, $quittance);
+//            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance, $quittanceAlreadyExist);
 
             return $this->redirectToRoute('quittances_render_quittance', [
                 'quittance_id' => $quittance->getId()

@@ -8,11 +8,11 @@
 
     {{ include('includes/third_header.html.twig') }}
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <div class="column has-text-centered">
-            <a href="{{ path('pdf_quittance', {'id': 2}) }}" class="button">PDF</a>
-        </div>
-    {% endif %}
+{#    {% if is_granted('ROLE_ADMIN') %}#}
+{#        <div class="column has-text-centered">#}
+{#            <a href="{{ path('pdf_quittance', {'id': 2}) }}" class="button">PDF</a>#}
+{#        </div>#}
+{#    {% endif %}#}
 
     {{ include('themes/form/_form.html.twig') }}
 

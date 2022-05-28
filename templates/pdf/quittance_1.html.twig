@@ -105,13 +105,16 @@
 <body>
 
 <div style="display: flex;justify-content: center;align-items: center;padding: 2rem;">
-    <h1 style="display: block;text-align: center;padding-top: 2rem">
+    <h1 style="display: block;text-align: center;padding-top: 1rem">
         QUITTANCE DE LOYER
     </h1>
 </div>
 
 <p class="s3" style="display:block;text-indent: 0pt;text-align: center;">
-    Juillet 2021 Quittance n°01
+    {{ quittance.month }} {{ quittance.year }}
+</p>
+<p class="s3" style="display:block;text-indent: 0pt;text-align: center;">
+    Quittance n°{{ quittance.id }}
 </p>
 <p style="text-indent: 0pt;text-align: left;">
     <br/>
@@ -131,11 +134,19 @@
                 <tr style="height:65pt">
                     <td style="width:212pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;text-align: center;">
-                            Monsieur Christian BOUNGOU 136 Rue Georges le dû Bâtiment A3
+                            {{ proprietaire.gender }} {{ proprietaire.firstName }} {{ proprietaire.lastName }}
                         </p>
                         <p class="s2"
                            style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">
-                            91100 Corbeil-Essonnes
+                            136 Rue Georges le dû
+                        </p>
+                        <p class="s2"
+                           style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">
+                            91100, Corbeil-Essonnes
+                        </p>
+                        <p class="s2"
+                           style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">
+                            Bâtiment A3
                         </p>
                     </td>
                 </tr>
@@ -157,8 +168,21 @@
                 <tr style="height:65pt">
                     <td style="width:219pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 32pt;padding-right: 32pt;text-indent: 0pt;line-height: 16pt;text-align: center;">
-                            Madame Alice PICARD Résidence Crescend’O 26 rue Jean Piestre 91100 Corbeil-Essonnes
-                        </p></td>
+                            {{ locataire.gender }} {{ locataire.firstName }} {{  locataire.lastName }}
+                        </p>
+                        <p class="s2"
+                           style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">
+                            {{ logement.street }}
+                        </p>
+                        <p class="s2"
+                           style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">
+                            {{ logement.cp }}, {{  logement.city }}
+                        </p>
+                        <p class="s2"
+                           style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">
+                            {{ logement.building }}
+                        </p>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -177,60 +201,54 @@
             <p class="s4" style="padding-left: 5pt;text-indent: 0pt;line-height: 16pt;text-align: left;">
                 Reçu pour
                 <span class="s2">
-                    : Alice PICARD
+                    : <b>{{ locataire }}</b>
                 </span>
             </p>
-            <p style="text-indent: 0pt;text-align: left;">
-                <br/>
-            </p>
+            <br>
             <p class="s4" style="padding-left: 5pt;padding-right: 49pt;text-indent: 0pt;text-align: left;">
                 La somme de
                 <span class="s2">
-                    : 362,00 €
-                </span>
-                Le
-                <span class="s2">
-                    : le 16 Juillet 2021
+                    : <b>{{ quittance.loyerGlobale }} €</b>
                 </span>
             </p>
-            <p class="s4" style="padding-left: 5pt;padding-right: 35pt;text-indent: 0pt;text-align: left;">
-                En paiement du terme du
+            <br>
+            <p class="s4" style="padding-left: 5pt;padding-right: 49pt;text-indent: 0pt;text-align: left;">
+                Le
                 <span class="s2">
-                    : 16 au 31 Juillet 2021
+                    : <b>{{ quittance.date|format_datetime('medium', 'none', locale='fr') }}</b>
                 </span>
+            </p>
+            <br>
+            <p class="s4" style="padding-left: 5pt;padding-right: 35pt;text-indent: 0pt;text-align: left;">
+                En paiement du terme pour le mois de : <b>{{ quittance.month }}</b>
             </p>
         </td>
         <td style="width:233pt;padding: 6pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
             <p class="s4" style="padding-left: 5pt;padding-right: 69pt;text-indent: 0pt;text-align: left;">
-                Pour loyer et accessoires
-                <span class="s2"> </span>des locaux sis<span class="s2"> :</span></p>
-            <p style="text-indent: 0pt;text-align: left;"><br/></p>
-            <p class="s2" style="padding-left: 5pt;padding-right: 69pt;text-indent: 0pt;text-align: left;">Résidence
-                Crescend’O 26 rue Jean Piestre 91100 Corbeil-Essonnes</p>
-            <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                Pour loyer et accessoires des locaux sis :
+            </p>
+            <p class="s2" style="padding-left: 5pt;padding-right: 69pt;text-indent: 0pt;text-align: left;">
+                <b>{{ logement }}</b>
+            </p>
+            <br>
             <p class="s4" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-                Détail mensuel
-                <span
-                        class="s2"> :
-                </span>
+                Détail mensuel :
             </p>
             <p class="s2" style="padding-left: 23pt;text-indent: 0pt;line-height: 16pt;text-align: left;">- Loyer nu :
-                338,00 €</p>
-            <ul id="l1">
-                <li data-list-text="-">
-                    <p class="s2" style="padding-left: 41pt;text-indent: -18pt;line-height: 16pt;text-align: left;">
-                        Charges : 24,00 €
-                    </p>
-                </li>
-                <li data-list-text="-">
-                    <p class="s2" style="padding-left: 41pt;text-indent: -18pt;text-align: left;">
-                        Mode de paiement : Chèque
-                    </p>
-                </li>
-            </ul>
-            <p style="text-indent: 0pt;text-align: left;"><br/></p>
-            <p class="s4" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Solde à payer<span class="s2"> : 0 €</span>
-            </p></td>
+                <b>{{ quittance.loyerHt }} €</b>
+            </p>
+            <p class="s2" style="padding-left: 23pt;text-indent: 0pt;line-height: 16pt;text-align: left;">- Charges :
+                <b>{{ quittance.charges }} €</b>
+            </p>
+            <p class="s2" style="padding-left: 23pt;text-indent: 0pt;line-height: 16pt;text-align: left;">- Mode de paiement :
+                <b>{{ locataire.mode }}</b>
+            </p>
+            <br>
+            <p class="s4" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Solde à payer :<span class="s2">
+                    <b>{{ logement.solde }} €</b>
+                </span>
+            </p>
+        </td>
     </tr>
     <tr style="height:66pt">
         <td style="width:453pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"
@@ -246,12 +264,20 @@
 </table>
 <p style="padding-top: 13pt;padding-left: 365pt;padding-right:6pt;text-indent: -37pt;text-align: right;">
     Fait à Corbeil-Essonnes,<br>
-    Le 17 Juillet 2021
+    {{ quittance.date|format_datetime('medium', 'none', locale='fr') }}
 </p>
 <p style="text-indent: 0pt;text-align: left;"><br/></p>
-<p style="text-align: right;padding: 6pt">
-    <img width="195" height="70" src="data:image/png;base64,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8PDwfatXr35EIBCYo0eAzM3NH4eGhrIdAQ8DY7b51wctLS3z3dzcovB4/LCsrGxtUFCQT19f30c5qCwWC5efn69z7Nix05qami9HP/3FxcXbHBwc4m7evLkNmwTD+BT48AcEQYBCobgICQl1kEikzoCAgB+ZTCbPdAvs7+/nS01NtXF1daWM7A77YAAaGhqvfH19z+bl5X101GwMDE4BYPif88mcnZ2jAQCwra3ttZaWlmltomlubl5w5cqVPWNjnBKJRIaVldX9ixcvetTW1sqh/WUxMCYDMJlMwpYtW27hcDgoKCjIh51MI3FMTU+ePPmLgYFB3tjxf2dn5+jff/99IxZrCONzgtvLy+t8cnLylgsXLuzz9PS8hETaY7FY+Pr6epmqqirFqqoqperqaqWqqirF6upqpYqKCpWBgQFeJCiftrb2nzY2Nmk2NjZpy5cvf4HH47H4jJh8doLj5+fvJRKJzK1bt96GYRjX1NS0sLq6Wunt27cKg4ODxNGJ582b16uoqFitpKRUtWzZsr90dXULdXR0CkVFRelofQFMMJktwV24cOGH27dvb62oqFABAABRUdEOJSWlKkVFxSphYeFOGRmZeuR/SUnJZhwOh7bOmGDCEflfSpzG3g67AlIAAAAASUVORK5CYIIA"/>
-</p>
-<p style="text-indent: 0pt;text-align: left;"><br/></p>
-<p style="text-indent: 0pt;text-align: right;padding-right:6pt;">Christian BOUNGOU</p></body>
+
+{% if proprietaire == 'BOUNGOU Christian' %}
+    <p style="text-align: right;padding: 6pt">
+        <img width="195" height="70" src="data:image/png;base64,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8PDwfatXr35EIBCYo0eAzM3NH4eGhrIdAQ8DY7b51wctLS3z3dzcovB4/LCsrGxtUFCQT19f30c5qCwWC5efn69z7Nix05qami9HP/3FxcXbHBwc4m7evLkNmwTD+BT48AcEQYBCobgICQl1kEikzoCAgB+ZTCbPdAvs7+/nS01NtXF1daWM7A77YAAaGhqvfH19z+bl5X101GwMDE4BYPif88mcnZ2jAQCwra3ttZaWlmltomlubl5w5cqVPWNjnBKJRIaVldX9ixcvetTW1sqh/WUxMCYDMJlMwpYtW27hcDgoKCjIh51MI3FMTU+ePPmLgYFB3tjxf2dn5+jff/99IxZrCONzgtvLy+t8cnLylgsXLuzz9PS8hETaY7FY+Pr6epmqqirFqqoqperqaqWqqirF6upqpYqKCpWBgQFeJCiftrb2nzY2Nmk2NjZpy5cvf4HH47H4jJh8doLj5+fvJRKJzK1bt96GYRjX1NS0sLq6Wunt27cKg4ODxNGJ582b16uoqFitpKRUtWzZsr90dXULdXR0CkVFRelofQFMMJktwV24cOGH27dvb62oqFABAABRUdEOJSWlKkVFxSphYeFOGRmZeuR/SUnJZhwOh7bOmGDCEflfSpzG3g67AlIAAAAASUVORK5CYIIA"/>
+    </p>
+    <br>
+    <p style="text-indent: 0pt;text-align: right;padding-right:6pt;">
+        Christian BOUNGOU
+    </p>
+{% else %}
+    <p style="text-indent: 0pt;text-align: right;padding-right:6pt;">{{ proprietaire }}</p>
+{% endif %}
+</body>
 </html>

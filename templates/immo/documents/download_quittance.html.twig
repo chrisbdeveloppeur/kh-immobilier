@@ -15,23 +15,23 @@
 
     <div class="column is-flex-desktop is-justify-content-center">
 
-        <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
-            <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">
-                <label class="file-label">
-                    <span class="file-input"></span>
-                    <span class="file-cta">
-                            <span class="file-icon">
-                                <span class="icon">
-                                    <i class="fas fa-2x fa-file-word"></i>
-                                </span>
-                            </span>
-                        </span>
-                    <span class="file-name has-text-dark has-background-white">
-                        Télécharger au format Words (.docx)
-                        </span>
-                </label>
-            </a>
-        </div>
+{#        <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">#}
+{#            <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">#}
+{#                <label class="file-label">#}
+{#                    <span class="file-input"></span>#}
+{#                    <span class="file-cta">#}
+{#                            <span class="file-icon">#}
+{#                                <span class="icon">#}
+{#                                    <i class="fas fa-2x fa-file-word"></i>#}
+{#                                </span>#}
+{#                            </span>#}
+{#                        </span>#}
+{#                    <span class="file-name has-text-dark has-background-white">#}
+{#                        Télécharger au format Words (.docx)#}
+{#                        </span>#}
+{#                </label>#}
+{#            </a>#}
+{#        </div>#}
 
         {% if pdf_exist %}
             <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">

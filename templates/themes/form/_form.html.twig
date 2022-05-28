@@ -28,7 +28,7 @@
 
 
     {% if 'bien_immo' in app.request.get('_route') %}
-        <div class="prestataire is-hidden column is-flex-tablet">
+        <div class="prestataire is-hidden column px-0 is-flex-tablet">
 
             <div class="column">
                 <p class="title is-5 has-text-centered">Liste des prestataires</p>
@@ -39,11 +39,11 @@
                 </div>
             </div>
 
-            <div class="column">
+            <div class="column px-0">
                 <p class="title is-5 has-text-centered">Ajouter un prestataire</p>
                 <p class="subtitle is-6 has-text-centered">Entrer les informations et ajouter un nouveau prestataire</p>
 
-                <div class="column is-flex is-justify-content-center">
+                <div class="column px-0 is-flex is-justify-content-center">
                     {{ include('themes/form/prestataire_form.html.twig') }}
                 </div>
             </div>
