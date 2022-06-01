@@ -35,12 +35,18 @@
 
     <div class="column">
 
-        <p class="title is-5">Autres documents</p>
+        <p class="title is-5">Vos documents</p>
         <p class="subtitle is-6">Uploader & consulter les documents du locataires</p>
 
         <div class="">
 
-            {{ include('immo/documents/documents_list.html.twig') }}
+{#            {{ include('immo/documents/documents_list.html.twig') }}#}
+
+            {% if entity.locataires is defined %}
+                {{ include('immo/documents/documents_immo_list.html.twig') }}
+            {% elseif entity.logement is defined %}
+                {{ include('immo/documents/documents_locataire_list.html.twig') }}
+            {% endif %}
 
             {{ form_start(form_documents, {'attr':{'class':'is-flex-tablet is-justify-content-center'}}) }}
             <div class="file has-name is-boxed is-justify-content-center is-align-items-center px-0 py-0 column is-half">

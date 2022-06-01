@@ -1,97 +1,102 @@
-{% if entity.documents|length != 0 %}
-<div class="table-container">
-    <table class="table is-hoverable is-striped">
-        <thead>
-        <tr class="is-size-7">
-            <th>Document</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr class="is-size-7">
-            <th>Document</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-        </tfoot>
-        <tbody>
-        {% for document in entity.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}
-            <tr class="is-size-7">
+{#{% if entity.documents|length != 0 %}#}
+{#<div class="table-container">#}
+{#    <table class="table is-hoverable is-striped">#}
+{#        <thead>#}
+{#        <tr class="is-size-7">#}
+{#            <th>Document</th>#}
+{#            <th>Date</th>#}
+{#            <th>Actions</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tfoot>#}
+{#        <tr class="is-size-7">#}
+{#            <th>Document</th>#}
+{#            <th>Date</th>#}
+{#            <th>Actions</th>#}
+{#        </tr>#}
+{#        </tfoot>#}
+{#        <tbody>#}
+{#        {% if entity.locataires is defined %}#}
+{#            {{ include('immo/documents/documents_immo_list.html.twig') }}#}
+{#        {% elseif entity.logement is defined %}#}
+{#            {{ include('immo/documents/documents_locataire_list.html.twig') }}#}
+{#        {% endif %}#}
+{#        {% for document in entity.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}#}
+{#            <tr class="is-size-7">#}
 
-                <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ document.title }}" style="width: 100%;">
-                    <span class="has-text-dark"><b>{{ document.title }}</b></span>
-                </td>
+{#                <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ document.title }}" style="width: 100%;">#}
+{#                    <span class="has-text-dark"><b>{{ document.title }}</b></span>#}
+{#                </td>#}
 
-                <td class="">
-                    <span class="has-text-dark">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
-                </td>
+{#                <td class="">#}
+{#                    <span class="has-text-dark">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>#}
+{#                </td>#}
 
-                <td class="column">
-                    <a class="button is-primary is-outlined is-size-7 borderless-radius button-modal" title="Voir le document">
-                        <div class="icon">
-                            <i class="fas fa-lg fa-eye"></i>
-                        </div>
-                    </a>
-                    {{ include('immo/documents/modal_box.html.twig') }}
+{#                <td class="column">#}
+{#                    <a class="button is-primary is-outlined is-size-7 borderless-radius button-modal" title="Voir le document">#}
+{#                        <div class="icon">#}
+{#                            <i class="fas fa-lg fa-eye"></i>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                    {{ include('immo/documents/modal_box.html.twig') }}#}
 
-                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">
-                        <div class="icon">
-                            <i class="fas fa-lg fa-file-download"></i>
-                        </div>
-                    </a>
-                    <a class="button is-danger is-outlined is-size-7 borderless-radius" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la document">
-                    <span class="icon">
-                        <i class="fas fa-lg fa-times"></i>
-                    </span>
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
+{#                    <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">#}
+{#                        <div class="icon">#}
+{#                            <i class="fas fa-lg fa-file-download"></i>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                    <a class="button is-danger is-outlined is-size-7 borderless-radius" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la document">#}
+{#                    <span class="icon">#}
+{#                        <i class="fas fa-lg fa-times"></i>#}
+{#                    </span>#}
+{#                    </a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
 
-        {% if form.vars.name == 'bien_immo' and entity.locataires.current %}
+{#        {% if form.vars.name == 'bien_immo' and entity.locataires.current %}#}
 
-            {% if entity.logement is defined %}
-                {% set object = entity.logement %}
-            {% elseif entity.locataires.current is defined %}
-                {% set object = entity.locataires.current %}
-            {% endif %}
+{#            {% if entity.logement is defined %}#}
+{#                {% set object = entity.logement %}#}
+{#            {% elseif entity.locataires.current is defined %}#}
+{#                {% set object = entity.locataires.current %}#}
+{#            {% endif %}#}
 
-            {% for document in entity.locataires.current.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}
-                <tr class="is-size-7">
+{#            {% for document in entity.locataires.current.documents|sort((a, b) => b.createdDate <=> a.createdDate) %}#}
+{#                <tr class="is-size-7">#}
 
-                    <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ document.title }}" style="width: 100%;">
-                        <span class="has-text-dark"><b>{{ document.title }}</b></span>
-                    </td>
+{#                    <td class="overflow-ellipsis-100px has-text-dark has-text-left" title="{{ document.title }}" style="width: 100%;">#}
+{#                        <span class="has-text-dark"><b>{{ document.title }}</b></span>#}
+{#                    </td>#}
 
-                    <td class="">
-                        <span class="has-text-dark">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>
-                    </td>
+{#                    <td class="">#}
+{#                        <span class="has-text-dark">{{ document.createdDate|format_datetime(pattern="dd'/'M'/'YY", locale='fr')|capitalize }}</span>#}
+{#                    </td>#}
 
-                    <td class="column">
-                        <a class="button is-primary is-outlined is-size-7 borderless-radius button-modal" title="Voir le document">
-                            <div class="icon">
-                                <i class="fas fa-lg fa-eye"></i>
-                            </div>
-                        </a>
-                        {{ include('immo/documents/modal_box.html.twig') }}
+{#                    <td class="column">#}
+{#                        <a class="button is-primary is-outlined is-size-7 borderless-radius button-modal" title="Voir le document">#}
+{#                            <div class="icon">#}
+{#                                <i class="fas fa-lg fa-eye"></i>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                        {{ include('immo/documents/modal_box.html.twig') }}#}
 
-                        <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">
-                            <div class="icon">
-                                <i class="fas fa-lg fa-file-download"></i>
-                            </div>
-                        </a>
-                        <a class="button is-danger is-outlined is-size-7 borderless-radius" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la document">
-                    <span class="icon">
-                        <i class="fas fa-lg fa-times"></i>
-                    </span>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-        {% endif %}
+{#                        <a class="button is-primary is-outlined is-size-7 borderless-radius" title="{{ document.fileName }}" href="{{ asset('documents/uploaded_files/') }}{{ document.fileName }}" download="{{ document.fileName }}">#}
+{#                            <div class="icon">#}
+{#                                <i class="fas fa-lg fa-file-download"></i>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                        <a class="button is-danger is-outlined is-size-7 borderless-radius" href="{{ path('document_delete', {'id': document.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce document?')" title="Supprimer la document">#}
+{#                    <span class="icon">#}
+{#                        <i class="fas fa-lg fa-times"></i>#}
+{#                    </span>#}
+{#                        </a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        {% endif %}#}
 
-        </tbody>
-    </table>
-</div>
-{% endif %}
+{#        </tbody>#}
+{#    </table>#}
+{#</div>#}
+{#{% endif %}#}
