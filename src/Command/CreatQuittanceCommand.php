@@ -62,18 +62,19 @@ class CreatQuittanceCommand extends Command
 
         //$this->mailer->sendSimpleMail('test','kenshin91cb@gmail.com','Test message !');
 
-        $locataires = $this->locataireRepository->findAll();
+        $locataires = $this->locataireRepository->locatairesAvecLogement();
+//        Compteur
+        $counter = 0;
         foreach ($locataires as $locataire){
             if ($locataire->getUser()){
                 $quittance = new Quittance();
                 $date = new \DateTime();
-
+                $quittanceAlreadyExist = false;
                 $dateForFile = $date->format('m-Y');
                 $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
                 $file = str_replace(" ", "_",$file);
 
                 $presentQuittance = $this->quittanceRepository->findOneBy(['file_name' => $file]);
-                $quittanceAlreadyExist = false;
                 if ($presentQuittance){
                     $quittance = $presentQuittance;
                     $quittanceAlreadyExist = true;
