@@ -15,6 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PdfController extends AbstractController
 {
+    private $projectRoot;
+    public function __construct(string $projectRoot)
+    {
+        $this->projectRoot = $projectRoot;
+    }
+
     /**
      * @Route("/quittance/{id}", name="quittance")
      */
@@ -36,7 +42,6 @@ class PdfController extends AbstractController
         $option->setDefaultPaperSize('a4');
         $option->setDefaultPaperOrientation('portrait');
         $dompdf = new Dompdf($option);
-//        dd($dompdf->getOptions());
         $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation
@@ -46,12 +51,15 @@ class PdfController extends AbstractController
         $dompdf->render();
 
         $output = $dompdf->output();
-        $path = '../public/documents/quittances/'.$quittance->getFileName().'.pdf';
+
+//        Récupération de l'emplacement de sauvegarder du fichier
+        $path = $this->projectRoot.'/public/documents/quittances/'.$quittance->getFileName().'.pdf';
+
+//        Sauvegarde du fichier pdf
         file_put_contents($path, $output);
 
-//        dd($dompdf->getOptions());
         // Output the generated PDF to Browser
-        ob_end_clean();
+//        ob_end_clean();
 //        $dompdf->stream($quittance->getFileName());
     }
 }

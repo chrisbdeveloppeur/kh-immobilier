@@ -6,6 +6,7 @@ use App\Entity\Quittance;
 use App\Form\QuittancesType;
 use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
+use App\Traits\QuittancesTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,21 +21,22 @@ use Dompdf\Dompdf;
  */
 class QuittancesController extends AbstractController
 {
+    use QuittancesTrait;
 
     private $createFileController;
-    private $pdfController;
+//    private $pdfController;
 
-    public function __construct(CreateFileController $createFileController, PdfController $pdfController)
+    public function __construct(CreateFileController $createFileController)
     {
         $this->createFileController = $createFileController;
-        $this->pdfController = $pdfController;
+//        $this->pdfController = $pdfController;
     }
 
 
     /**
      * @Route("/new/{loc_id}", name="edit_new_quittance")
      */
-    public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, Request $request, QuittanceRepository $quittanceRepository): Response
+    public function editNewQuittance($loc_id, LocataireRepository $locataireRepository, EntityManagerInterface $em, Request $request, QuittanceRepository $quittanceRepository, PdfController $pdfController): Response
     {
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
         date_default_timezone_set('Europe/Paris');
@@ -54,44 +56,10 @@ class QuittancesController extends AbstractController
         $form->get('mode')->setData($locataire->getMode());
         $form->get('solde')->setData($logement->getSolde());
 
-        $quittance = new Quittance();
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $month = $form->get('payment_date')->getData()->format('F');
-            //$month_fr = strftime("%B", strtotime($month));
-            //$month_fr = ucfirst($month_fr);
-
-            $dateForFile = $form->get('payment_date')->getData()->format('m-Y');
-            $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
-            $file = str_replace(" ", "_",$file);
-
-            $presentQuittance = $quittanceRepository->findOneBy(['file_name' => $file]);
-            $quittanceAlreadyExist = false;
-            if ($presentQuittance){
-                $quittance = $presentQuittance;
-                $quittanceAlreadyExist = true;
-            }
-
-            $quittance->setFileName($file);
-            $quittance->setLocataire($locataire);
-            $quittance->setBienImmo($locataire->getLogement());
-            $quittance->setCreatedDate($form->get('date')->getData());
-            $quittance->setDate($form->get('payment_date')->getData());
-            $quittance->setMonth($month);
-            $quittance->setYear($form->get('payment_date')->getData()->format('Y'));
-            $quittance->setLoyerHt($form->get('loyer_hc')->getData());
-            //$quittance->setLoyerTtc($form->get('loyer_ttc')->getData());
-            $quittance->setCharges($form->get('charges')->getData());
-            //$quittance->setPdfExist($pdf_exist);
-            $em->persist($quittance);
-            $em->flush();
-
-            $this->pdfController->editPdfQuittance($quittance->getId(), $quittanceRepository);
-//            $template = $this->createFileController->fillQuittanceTemplate($locataire,$form, $quittance);
-//            $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance, $quittanceAlreadyExist);
-
+            $quittance = $this->createQuittance($pdfController, $em, $locataire, $quittanceRepository, $this->createFileController, $form);
             return $this->redirectToRoute('quittances_render_quittance', [
                 'quittance_id' => $quittance->getId()
             ]);

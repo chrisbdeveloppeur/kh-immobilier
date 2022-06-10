@@ -4,19 +4,22 @@ namespace App\Command;
 
 use App\Controller\CreateFileController;
 use App\Controller\MailController;
+use App\Controller\PdfController;
 use App\Controller\QuittancesController;
 use App\Entity\Quittance;
 use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
+use App\Traits\QuittancesTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-
 class CreatQuittanceCommand extends Command
 {
+    use QuittancesTrait;
+
     protected static $defaultName = 'creat:quittance';
     protected static $defaultDescription = 'Add a short description for your command';
     private $mailer;
@@ -26,8 +29,9 @@ class CreatQuittanceCommand extends Command
     private $em;
     private $request;
     private $createFileController;
+    private $pdfController;
 
-    public function __construct(string $name = null, MailController $mailer, QuittancesController $quittancesController, QuittanceRepository $quittanceRepository,LocataireRepository $locataireRepository, EntityManagerInterface $em, CreateFileController $createFileController)
+    public function __construct(string $name = null, MailController $mailer, QuittancesController $quittancesController, QuittanceRepository $quittanceRepository,LocataireRepository $locataireRepository, EntityManagerInterface $em, CreateFileController $createFileController, PdfController $pdfController)
     {
         parent::__construct($name);
         $this->mailer = $mailer;
@@ -36,6 +40,7 @@ class CreatQuittanceCommand extends Command
         $this->locataireRepository = $locataireRepository;
         $this->em = $em;
         $this->createFileController = $createFileController;
+        $this->pdfController = $pdfController;
     }
 
     protected function configure(): void
@@ -67,34 +72,7 @@ class CreatQuittanceCommand extends Command
         $counter = 0;
         foreach ($locataires as $locataire){
             if ($locataire->getUser()){
-                $quittance = new Quittance();
-                $date = new \DateTime();
-                $quittanceAlreadyExist = false;
-                $dateForFile = $date->format('m-Y');
-                $file = "quittance-".$dateForFile.'-'.$locataire->getLastName().'_'.$locataire->getLogement()->getId();
-                $file = str_replace(" ", "_",$file);
-
-                $presentQuittance = $this->quittanceRepository->findOneBy(['file_name' => $file]);
-                if ($presentQuittance){
-                    $quittance = $presentQuittance;
-                    $quittanceAlreadyExist = true;
-                }
-
-                $quittance->setFileName($file);
-                $quittance->setLocataire($locataire);
-                $quittance->setBienImmo($locataire->getLogement());
-                $quittance->setCreatedDate($date);
-                $quittance->setDate($date);
-                $quittance->setMonth($date->format('F'));
-                $quittance->setYear($date->format('Y'));
-                $quittance->setLoyerHt($locataire->getLogement()->getLoyerHc());
-                $quittance->setCharges($locataire->getLogement()->getCharges());
-                //$quittance->setPdfExist($pdf_exist);
-                $this->em->persist($quittance);
-                $this->em->flush();
-
-                $template = $this->createFileController->fillQuittanceTemplate($locataire, null, $quittance);
-                $pdf_exist = $this->createFileController->createQuittanceFile($template, $locataire, $file, $quittance, $quittanceAlreadyExist);
+                $this->createQuittance($this->pdfController,$this->em,$locataire, $this->quittanceRepository, $this->createFileController);
             }
         }
 
