@@ -40,7 +40,7 @@ trait QuittancesTrait
             $dateForFile = $date->format('d-m-Y');
         }
         $dateForFile = strtoupper(utf8_encode(strftime('%B_%Y', strtotime($dateForFile))));
-        $file = "QUITTANCE_".$dateForFile.'_'.$locataire->getLastName().'_LOGEMENT#'.$locataire->getLogement()->getId();
+        $file = "QUITTANCE_".$dateForFile.'_'.$locataire->getLastName().'_LOGEMENT_'.$locataire->getLogement()->getId();
         $file = str_replace(" ", "_",$file);
 
         $presentQuittance = $quittanceRepository->findOneBy(['file_name' => $file]);
