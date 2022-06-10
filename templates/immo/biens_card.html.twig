@@ -11,7 +11,7 @@
         <p class="card-header-title has-text-light has-icons-left is-flex-direction-column-touch">
 
             <a class="has-text-primary is-flex is-justify-content-center is-align-items-center hovertext" disabled data-hover="Identifiant du bien immobilier" id="logement-{{ bien_immo.id }}">
-                <span class="is-size-5 has-text-white pr-2">#{{ bien_immo.id }}</span>
+                <span class="is-size-6 has-text-white pr-2 fa-warehouse">#{{ bien_immo.id }}</span>
             </a>
 
             {% if is_granted('ROLE_SUPER_ADMIN') %}
