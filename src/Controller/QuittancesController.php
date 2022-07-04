@@ -64,7 +64,7 @@ class QuittancesController extends AbstractController
                 'quittance_id' => $quittance->getId()
             ]);
             $response->setPublic();
-            $response->setMaxAge(0);
+            $response->setMaxAge(1);
             return $response;
         }
 

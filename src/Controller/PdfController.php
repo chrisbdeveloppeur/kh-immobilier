@@ -62,4 +62,47 @@ class PdfController extends AbstractController
 //        ob_end_clean();
 //        $dompdf->stream($quittance->getFileName());
     }
+
+    /**
+     * @Route("/quittance/{id}/show", name="quittance_show")
+     */
+    public function showPdfQuittance($id, QuittanceRepository $quittanceRepository)
+    {
+        $quittance = $quittanceRepository->find($id);
+        $locataire = $quittance->getLocataire();
+        $logement = $locataire->getLogement();
+        $proprietaire = $locataire->getUser();
+        // instantiate and use the dompdf class
+        $html = $this->renderView('pdf/quittance_1.html.twig',[
+            'quittance' => $quittance,
+            'locataire' => $locataire,
+            'logement' => $logement,
+            'proprietaire' => $proprietaire,
+        ]);
+        $option = new Options();
+        $option->setIsHtml5ParserEnabled(true);
+        $option->setDefaultPaperSize('a4');
+        $option->setDefaultPaperOrientation('portrait');
+        $dompdf = new Dompdf($option);
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+//        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        $output = $dompdf->output();
+
+//        Récupération de l'emplacement de sauvegarder du fichier
+//        $path = $this->projectRoot.'/public/documents/quittances/'.$quittance->getFileName().'.pdf';
+
+//        Sauvegarde du fichier pdf
+//        file_put_contents($path, $output);
+
+        // Output the generated PDF to Browser
+        ob_end_clean();
+        $dompdf->stream($quittance->getFileName());
+
+    }
 }
