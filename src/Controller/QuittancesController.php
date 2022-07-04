@@ -60,9 +60,12 @@ class QuittancesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $quittance = $this->createQuittance($pdfController, $em, $locataire, $quittanceRepository, $this->createFileController, $form);
-            return $this->redirectToRoute('quittances_render_quittance', [
+            $response = $this->redirectToRoute('quittances_render_quittance', [
                 'quittance_id' => $quittance->getId()
             ]);
+            $response->setPublic();
+            $response->setMaxAge(0);
+            return $response;
         }
 
         return $this->render("immo/documents/edit_quittance.html.twig",[
