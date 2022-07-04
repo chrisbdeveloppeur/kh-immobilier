@@ -49,6 +49,7 @@ class QuittancesType extends AbstractType
             */
             ->add('date', DateType::class,[
                 'label' => 'Date d\'edition de la quittance',
+                'help' => 'Date de l\'édition de la quittance ainsi que la signature par le bailleur',
                 'widget' => 'single_text',
                 'attr' => ['class'=>'readonly has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime('now'), 'Y-m-d')],
             ])
@@ -75,6 +76,7 @@ class QuittancesType extends AbstractType
             */
             ->add('payment_date', DateType::class,[
                 'label' => 'Date du paiement',
+                'help' => 'Date de récéption du loyer',
                 'widget' => 'single_text',
                 'attr' => ['class'=>'readonly has-text-centered input is-small', 'type' => 'date', 'value' => date_format(new \DateTime($date), 'Y-m-d')]
             ])

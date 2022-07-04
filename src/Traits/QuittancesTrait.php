@@ -58,8 +58,8 @@ trait QuittancesTrait
             $quittance->setMonth($form->get('payment_date')->getData()->format('F'));
             $quittance->setYear($form->get('payment_date')->getData()->format('Y'));
             $quittance->setLoyerHt($form->get('loyer_hc')->getData());
-            //$quittance->setLoyerTtc($form->get('loyer_ttc')->getData());
             $quittance->setCharges($form->get('charges')->getData());
+            $quittance->setMode($form->get('mode')->getData());
         }else{
             $quittance->setCreatedDate($date);
             $quittance->setDate($date);

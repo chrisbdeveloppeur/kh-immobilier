@@ -76,6 +76,11 @@ class Quittance
      */
     private $charges;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mode;
+
     public function __toString()
     {
         return $this->getFileName();
@@ -274,5 +279,17 @@ class Quittance
     {
         $loyerGlobale = $this->getLoyerHt() + $this->getCharges();
         return $loyerGlobale;
+    }
+
+    public function getMode(): ?string
+    {
+        return $this->mode;
+    }
+
+    public function setMode(?string $mode): self
+    {
+        $this->mode = $mode;
+
+        return $this;
     }
 }
