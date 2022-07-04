@@ -10,12 +10,6 @@
             </span>
         </a>
 
-        <a class="button is-primary is-inverted borderless-radius" title="{{ quittance.fileName }}.docx" href="{{ asset('documents/quittances/') }}{{ quittance.fileName }}.docx" download="{{ quittance.fileName }}.docx">
-            <div class="icon">
-                <i class="fas fa-lg fa-file-word"></i>
-            </div>
-        </a>
-
         <a class="button is-small is-danger borderless-radius" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement ce quittance?')" title="Supprimer le quittance">
             <span class="icon">
                 <i class="fas fa-lg fa-trash-alt"></i>
