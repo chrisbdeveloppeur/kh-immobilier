@@ -35,20 +35,30 @@
                     </a>
                 </div>
             {% elseif last_quittance %}
-            <div class="column p-1 is-expanded">
-                <a class="button is-small is-fullwidth is-warning has-text-weight-bold ajax-quittance-payed-btn hovertext" href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" data-hover="Changer le statut de la quittance">
-                    <span class="icon">
-                        <i class="fas fa-clock"></i>
-                    </span>
-                    <span class="txt is-italic is-hidden-touch">
-                        Non payée
-                    </span>
-                    <span class="txt is-italic is-hidden-desktop">
-                        <i class="fas fa-coins"></i>
-                    </span>
-                </a>
-            </div>
+                
+                <div class="column p-1 is-expanded">
+                    <a class="button is-small is-fullwidth is-warning has-text-weight-bold ajax-quittance-payed-btn hovertext" href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" data-hover="Changer le statut de la quittance">
+                        <span class="icon">
+                            <i class="fas fa-clock"></i>
+                        </span>
+                        <span class="txt is-italic is-hidden-touch">
+                            Non payée
+                        </span>
+                        <span class="txt is-italic is-hidden-desktop">
+                            <i class="fas fa-coins"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="column p-1 is-expanded">
+                    <a href="{{ path('pdf_quittance_show', {'id': last_quittance.id}) }}" class="button is-primary is-outlined is-size-7 borderless-radius hovertext" data-hover="Telecharger la quittance" title="Telecharger la quittance du mois de {{ last_quittance.month }}">
+                        <div class="icon">
+                            <i class="fas fa-lg fa-download"></i>
+                        </div>
+                    </a>
+                </div>
             {% endif %}
+
             <div class="column p-1 is-expanded">
                 <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#files" class="button is-small is-primary is-outlined is-fullwidth has-text-centered hovertext" data-hover="Voir toutes les quittances">
                     <span class="icon">

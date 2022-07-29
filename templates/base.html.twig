@@ -695,7 +695,7 @@
 
 
         ////// SCRIPT MAKE HOVERTEXT DATA (TEXT) ON GOOD POSITION FROM WIDTHSCREEN REFERENCE
-        let widthScreenHalf = window.screen.width / 2;
+        let widthScreenHalf = window.innerWidth / 2;
         let hovertexts = document.querySelectorAll('.hovertext');
         hovertexts.forEach(function(hovertext){
             let hovertextXPos = hovertext.getBoundingClientRect().x;

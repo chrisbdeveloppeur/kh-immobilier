@@ -245,7 +245,11 @@
             </p>
             <br>
             <p class="s4" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Solde à payer :<span class="s2">
-                    <b>{{ logement.solde }} €</b>
+                    {% if logement.solde != 0 %}
+                        <b>{{ logement.solde }} €</b>
+                    {% elseif not quittance.payed %}
+                        <b>{{ quittance.loyerGlobale }} €</b>
+                    {% endif %}
                 </span>
             </p>
         </td>
