@@ -34,6 +34,14 @@
                         </span>
                     </a>
                 </div>
+
+                <div class="column p-1 is-expanded">
+                    <a href="{{ path('pdf_quittance_show', {'id': last_quittance.id}) }}" class="button is-small is-primary is-outlined borderless-radius hovertext" data-hover="Telecharger la quittance" title="Telecharger la quittance du mois de {{ last_quittance.month }}">
+                        <div class="icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </a>
+                </div>
             {% elseif last_quittance %}
                 
                 <div class="column p-1 is-expanded">
@@ -51,9 +59,9 @@
                 </div>
 
                 <div class="column p-1 is-expanded">
-                    <a href="{{ path('pdf_quittance_show', {'id': last_quittance.id}) }}" class="button is-primary is-outlined is-size-7 borderless-radius hovertext" data-hover="Telecharger la quittance" title="Telecharger la quittance du mois de {{ last_quittance.month }}">
+                    <a href="{{ path('pdf_quittance_show', {'id': last_quittance.id}) }}" class="button is-small is-primary is-outlined borderless-radius hovertext" data-hover="Telecharger la quittance" title="Telecharger la quittance du mois de {{ last_quittance.month }}">
                         <div class="icon">
-                            <i class="fas fa-lg fa-download"></i>
+                            <i class="fas fa-download"></i>
                         </div>
                     </a>
                 </div>
