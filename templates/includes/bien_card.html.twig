@@ -23,7 +23,7 @@
             </div>
             <span class="d-block mb-1">{{ bien_immo }}</span>
             <h3 class="card-title text-nowrap mb-2">€{{ bien_immo.loyerTtc }}</h3>
-            <small class="text-info fw-semibold" title="Payement du loyer prévus tout les {{ bien_immo.echeance }} du mois"><i class="bx bx-calendar"></i>{{ bien_immo.echeance }}</small>
+            <small class="text-info fw-semibold" title="Payement du loyer prévus tout les {{ bien_immo.echeance }} du mois"><i class="bx bx-calendar"></i>{{ bien_immo.echeance|format_number({min_integer_digit: 2}) }} {{ 'now'|format_date(pattern='MMMM', locale='fr') }}</small>
         </div>
     </div>
 </div>
