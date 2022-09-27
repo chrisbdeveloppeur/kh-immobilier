@@ -106,7 +106,7 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
 
 //        dd($this->in_array_any(['ROLE_USER','ROLE_SUPER_ADMIN'],$this->userLogged->getRoles()));
         if (in_array('ROLE_SUPER_ADMIN',$this->userLogged->getRoles())){
-            $redirect = $this->urlGenerator->generate('home');
+            $redirect = $this->urlGenerator->generate('immo_accueil');
         }elseif (in_array('ROLE_PROPRIETAIRE',$this->userLogged->getRoles())){
             $redirect = $this->urlGenerator->generate('immo_accueil');
         }elseif (in_array('ROLE_ENTREPRENEUR',$this->userLogged->getRoles())){

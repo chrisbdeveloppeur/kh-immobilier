@@ -42,22 +42,9 @@ class ImmoController extends AbstractController
             $all_locataires = $locataireRepository->findBy(['user' => $user->getId()]);
         }
 
-
-        $biens_immos = $paginator->paginate(
-            $all_biens_immos,
-            $request->query->getInt('page',1),
-            10
-        );
-
-        $locataires = $paginator->paginate(
-            $all_locataires,
-            $request->query->getInt('page',1),
-            100
-        );
-
-        return $this->render('immo/homepage.html.twig', [
-            "biens_immos" => $biens_immos,
-            "locataires" => $locataires,
+        return $this->render('accueil.html.twig', [
+            "biens_immos" => $all_biens_immos,
+            "locataires" => $all_locataires,
         ]);
     }
 
