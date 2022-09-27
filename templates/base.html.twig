@@ -1,12 +1,17 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="../assets/"
+      data-template="vertical-menu-template-free">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="{% block meta_description %}Gestion de votre patrimoine immobilier, gestion de contrat de location. Editeur de bail.{% endblock %}">
     {# FAVICON #}
-    <link rel="shortcut icon" href="{{ asset('build/images/edit-word-favicon.90147a61.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('img/favicon/KH-favicon.png') }}" type="image/x-icon">
     <title>KH immobilier | {% block title %}{% endblock %}</title>
 
     {#   DASHBOARD TEMPLATE   #}
@@ -78,9 +83,11 @@
 <script src="{{ asset('vendor/js/menu.js') }}"></script>
 <!-- endbuild -->
 <!-- Vendors JS -->
+<script src="{{ asset('vendor/libs/apex-charts/apexcharts.js') }}"></script>
 <!-- Main JS -->
 <script src="{{ asset('js/main.js') }}"></script>
 <!-- Page JS -->
+<script src="{{ asset('js/dashboards-analytics.js') }}"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
