@@ -26,9 +26,9 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
-                        <a href="index.html" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <li class="menu-item">
+                        <a href="{{ path('immo_accueil') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-layout"></i>
                             <div data-i18n="Analytics">Synthèse</div>
                         </a>
                     </li>
@@ -137,8 +137,8 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ path('app_logout') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-log-out"></i>
+                        <a href="{{ path('app_logout') }}" class="menu-link bg-label-danger">
+                            <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
                             <div data-i18n="Tables">Se déconnecter</div>
                         </a>
                     </li>
