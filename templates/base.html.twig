@@ -101,22 +101,24 @@
             let txt = element.querySelector('.txt');
             event.preventDefault();
             const url = this.href;
-            element.classList.add('is-loading');
+            //element.classList.add('is-loading');
             axios.get(url).then(function (response) {
-                if (element.classList.contains('is-warning')){
-                    element.classList.replace('is-warning', 'is-success');
+                if (element.classList.contains('bg-label-warning')){
+                    element.classList.replace('bg-label-warning', 'bg-label-success');
+                    element.title = "dernier loyer reçus";
                     if (txt){
                         txt.innerHTML = 'Payée';
                     }
-                    element.querySelector('i').classList.replace('fa-clock', 'fa-check')
+                    element.querySelector('i').classList.replace('bx-calendar-exclamation', 'bxs-calendar-check')
                 }else{
-                    element.classList.replace('is-success', 'is-warning');
+                    element.classList.replace('bg-label-success', 'bg-label-warning');
                     if (txt){
                         txt.innerHTML = 'Non payée';
                     }
-                    element.querySelector('i').classList.replace('fa-check', 'fa-clock')
+                    element.title = "dernier loyer non reçus";
+                    element.querySelector('i').classList.replace('bxs-calendar-check', 'bx-calendar-exclamation')
                 }
-                element.classList.remove('is-loading');
+                //element.classList.remove('is-loading');
             });
         }
 

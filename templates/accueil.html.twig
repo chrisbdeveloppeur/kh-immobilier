@@ -78,6 +78,7 @@
 
                                 <div class="row">
                                     {% for bien_immo in biens_immos|slice(0,3) %}
+                                        {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
                                         {{ include('includes/bien_card.html.twig') }}
                                     {% endfor %}
                                 </div>
@@ -109,6 +110,7 @@
                                     <div class="card-body" style="max-height: 350px;overflow: auto">
                                         <ul class="p-0 m-0">
                                             {% for bien_immo in biens_immos|slice(3) %}
+                                                {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
                                                 {% include 'includes/biens_row.html.twig' %}
                                             {% endfor %}
                                         </ul>
