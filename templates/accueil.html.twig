@@ -101,13 +101,13 @@
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                                                <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                                                <a class="dropdown-item" href="javascript:void(0);">Payés</a>
+                                                <a class="dropdown-item" href="javascript:void(0);">En attente de paiement</a>
+                                                <a class="dropdown-item" href="javascript:void(0);">Tout les loyers</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body" style="max-height: 350px;overflow: auto">
+                                    <div class="card-body overflow-hidden perfect-scrollbar" style="max-height: 350px">
                                         <ul class="p-0 m-0">
                                             {% for bien_immo in biens_immos|slice(3) %}
                                                 {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
@@ -480,6 +480,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+
     <!-- Page JS -->
     {% include 'includes/dashboards-analytics.html.twig' %}
 {% endblock %}

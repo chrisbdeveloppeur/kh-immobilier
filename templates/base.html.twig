@@ -612,6 +612,14 @@
         });
 
 
+        // POUR PERFECT SCROLLBAR
+        let perfectScrollbarElements = document.querySelectorAll('.perfect-scrollbar');
+        perfectScrollbarElements.forEach(function (el) {
+            new PerfectScrollbar(el, {
+                wheelPropagation: false
+            });
+        })
+
     </script>
 
 
