@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-4 col-12 mb-4">
+<div class="col-12 mb-4">
     <div class="card">
         <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
@@ -7,8 +7,8 @@
                         <a href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" class="badge bg-label-success rounded ajax-quittance-payed-btn" title="dernier loyer reçus"><i class='bx bxs-calendar-check'></i></a>
                     {% elseif last_quittance %}
                         <a href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" class="badge bg-label-warning rounded ajax-quittance-payed-btn" title="dernier loyer non reçus"><i class='bx bx-calendar-exclamation'></i></a>
-                    {% else %}
-                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" class="badge bg-label-danger rounded" title="aucune quittances de loyer trouvées"><i class='bx bxs-x-circle'></i></a>
+                    {% elseif bien_immo.locataire %}
+                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" title="aucune quittances de loyer trouvées"><i class='bx bxs-x-circle'></i></a>
                     {% endif %}
                 </div>
                 <div class="dropdown">

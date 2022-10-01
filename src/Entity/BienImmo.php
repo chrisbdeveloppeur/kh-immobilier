@@ -252,6 +252,16 @@ class BienImmo
         return $this->locataires;
     }
 
+    public function getLocataire()
+    {
+        if ($this->getLocataires()){
+            return $this->getLocataires()->first();
+        }else{
+            return null;
+        }
+
+    }
+
     public function addLocataire(Locataire $locataire): self
     {
         if (!$this->locataires->contains($locataire)) {
