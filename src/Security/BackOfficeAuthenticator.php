@@ -112,7 +112,7 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
         }elseif (in_array('ROLE_ENTREPRENEUR',$this->userLogged->getRoles())){
             $redirect = $this->urlGenerator->generate('entreprenariat_home');
         }else{
-            $redirect = $this->urlGenerator->generate('home');
+            $redirect = $this->urlGenerator->generate('immo_accueil');
         }
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
         return new RedirectResponse($redirect);
