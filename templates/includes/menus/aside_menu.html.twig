@@ -19,7 +19,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item">
+        <li class="menu-item {% if route == 'immo_accueil' %}active{% endif %}">
             <a href="{{ path('immo_accueil') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-layout"></i>
                 <div data-i18n="Analytics">Synthèse</div>

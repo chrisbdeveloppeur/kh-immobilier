@@ -65,6 +65,9 @@
 {# Exclusion des route #}
 {% set routes_exclude_for_aside = ['app_login'] %}
 
+{# Active routes for aside nav #}
+{% set route = app.request.get('_route') %}
+
 <body>
     <div {% if app.request.get('_route') not in routes_exclude_for_aside %}class="layout-wrapper layout-content-navbar"{% endif %}>
         <div {% if app.request.get('_route') not in routes_exclude_for_aside %}class="layout-container"{% endif %}>
