@@ -8,7 +8,18 @@
                     {% elseif last_quittance %}
                         <a href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" class="badge bg-label-warning rounded ajax-quittance-payed-btn" title="dernier loyer non reçus"><i class='bx bx-calendar-exclamation'></i></a>
                     {% elseif bien_immo.locataire %}
-                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" title="aucune quittances de loyer trouvées"><i class='bx bxs-x-circle'></i></a>
+{#                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" title="aucune quittances de loyer trouvées"><i class='bx bxs-file'></i></a>#}
+                        <span class="d-inline-block"
+                              tabindex="0"
+                              data-bs-toggle="popover"
+                              data-bs-offset="0,14"
+                              data-bs-placement="top"
+                              data-bs-trigger="hover focus"
+                              data-bs-content="aucune quittances de loyer trouvées">
+                            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" type="button" disabled>
+                                <i class='bx bxs-file'></i>
+                            </a>
+                        </span>
                     {% endif %}
                 </div>
                 <div class="dropdown">

@@ -62,16 +62,18 @@
     {% set section = 'gestionnaire' %}
 {% endif %}
 
+{# Exclusion des route #}
+{% set routes_exclude_for_aside = ['app_login'] %}
 
 <body>
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
+    <div {% if app.request.get('_route') not in routes_exclude_for_aside %}class="layout-wrapper layout-content-navbar"{% endif %}>
+        <div {% if app.request.get('_route') not in routes_exclude_for_aside %}class="layout-container"{% endif %}>
 
 {#     NAVIGATION ASIDE       #}
             {% block nav_aside %}{{ include('includes/menus/aside_menu.html.twig') }}{% endblock %}
 
             <!-- Layout container -->
-            <div class="layout-page">
+            <div {% if app.request.get('_route') not in routes_exclude_for_aside %}class="layout-page"{% endif %}>
                 <!-- Navbar -->
 
                 <nav class="layout-navbar d-xl-none container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
@@ -673,6 +675,13 @@
             new PerfectScrollbar(el, {
                 wheelPropagation: false
             });
+        });
+
+
+    //    POPOVER SNEAT
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
         })
 
     </script>
