@@ -51,7 +51,6 @@
 
 </head>
 
-
 {#     Définission de la variable section en fonction de ce que contient le nom de la route dans laquel on se trouve     #}
 {% set section = '' %}
 {% if 'immo' in app.request.get('_route') or 'locataire' in app.request.get('_route') or 'quittance' in app.request.get('_route') or 'loyer' in app.request.get('_route') or 'prestataire' in app.request.get('_route') %}
@@ -161,24 +160,27 @@
             let txt = element.querySelector('.txt');
             event.preventDefault();
             const url = this.href;
-            //element.classList.add('is-loading');
+            element.classList.add('is-loading');
             axios.get(url).then(function (response) {
+                console.log(response['data']);
                 if (element.classList.contains('bg-label-warning')){
                     element.classList.replace('bg-label-warning', 'bg-label-success');
-                    element.title = "dernier loyer reçus";
+                    element.title = "Dernier loyer reçus";
                     if (txt){
                         txt.innerHTML = 'Payée';
                     }
-                    element.querySelector('i').classList.replace('bx-calendar-exclamation', 'bxs-calendar-check')
+                    element.querySelector('i').classList.replace('bx-calendar-exclamation', 'bxs-calendar-check');
                 }else{
                     element.classList.replace('bg-label-success', 'bg-label-warning');
                     if (txt){
                         txt.innerHTML = 'Non payée';
                     }
-                    element.title = "dernier loyer non reçus";
+                    element.title = "Dernier loyer non reçus";
                     element.querySelector('i').classList.replace('bxs-calendar-check', 'bx-calendar-exclamation')
                 }
-                //element.classList.remove('is-loading');
+                console.log(element.title);
+                if (element.parentElement){element.parentElement.setAttribute('data-bs-content',element.title)}
+                element.classList.remove('is-loading');
             });
         }
 

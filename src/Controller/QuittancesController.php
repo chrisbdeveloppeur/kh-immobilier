@@ -198,8 +198,12 @@ class QuittancesController extends AbstractController
             //$this->addFlash('success', 'Vous venez de définir la quittance <b>'.$quittance->getFileName().'</b> au status "payée"');
         }
         $em->flush();
+        $data = [
+            'message' => $message,
+            'statusQuittancePayed' => $quittance->getPayed(),
+        ];
         $referer = $request->headers->get('referer');
-        return $this->json(['message' => $message]);
+        return $this->json($data);
 
     }
 

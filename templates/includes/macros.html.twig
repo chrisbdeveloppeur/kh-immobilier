@@ -1,0 +1,28 @@
+{% macro quittance_status_payed_btn(quittance) %}
+    {% if quittance.payed %}
+        {% set status_text = 'Dernier loyer reçus' %}
+        {% set status_badge_class = 'bg-label-success' %}
+        {% set status_icon_class = 'bx bxs-calendar-check' %}
+    {% elseif not quittance.payed %}
+        {% set status_text = 'Dernier loyer non reçus' %}
+        {% set status_badge_class = 'bg-label-warning' %}
+        {% set status_icon_class = 'bx bx-calendar-exclamation' %}
+    {% else %}
+        {% set status_text = '' %}
+        {% set status_badge_class = '' %}
+        {% set status_icon_class = '' %}
+    {% endif %}
+    <span class="d-inline-block"
+          tabindex="0"
+          data-bs-toggle="popover"
+          data-bs-offset="0,14"
+          data-bs-placement="top"
+          data-bs-trigger="hover focus"
+          data-bs-content="{{ status_text }}">
+        <a href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" class="button is-small {{ status_badge_class }} is-rounded ajax-quittance-payed-btn" title="{{ status_text }}">
+            <span class="icon">
+                <i class='{{ status_icon_class }}'></i>
+            </span>
+        </a>
+    </span>
+{% endmacro %}

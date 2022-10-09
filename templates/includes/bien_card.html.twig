@@ -1,12 +1,11 @@
+{% import 'includes/macros.html.twig' as macros %}
 <div class="col-6 col-lg-6 col-sm-12 col-md-12 mb-4">
     <div class="card">
         <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
                 <div class="avatar flex-shrink-0 me-3">
-                    {% if last_quittance and last_quittance.payed %}
-                        <a href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" class="badge bg-label-success rounded ajax-quittance-payed-btn" title="dernier loyer reçus"><i class='bx bxs-calendar-check'></i></a>
-                    {% elseif last_quittance %}
-                        <a href="{{ path('quittances_quittance_payed', {'id': last_quittance.id}) }}" class="badge bg-label-warning rounded ajax-quittance-payed-btn" title="dernier loyer non reçus"><i class='bx bx-calendar-exclamation'></i></a>
+                    {% if last_quittance %}
+                        {{ macros.quittance_status_payed_btn(last_quittance) }}
                     {% elseif bien_immo.locataire %}
 {#                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" title="aucune quittances de loyer trouvées"><i class='bx bxs-file'></i></a>#}
                         <span class="d-inline-block"
@@ -16,7 +15,7 @@
                               data-bs-placement="top"
                               data-bs-trigger="hover focus"
                               data-bs-content="aucune quittances de loyer trouvées">
-                            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" type="button" disabled>
+                            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="button is-small bg-label-danger rounded" type="button" disabled>
                                 <i class='bx bxs-file'></i>
                             </a>
                         </span>
