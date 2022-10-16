@@ -48,6 +48,7 @@
                     {% for bien_immo in biens_immos|slice(0,2) %}
                         {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
                         {{ include('includes/bien_card.html.twig') }}
+                        {{ include('includes/new_bien_card.html.twig') }}
                     {% endfor %}
                 </div>
 
