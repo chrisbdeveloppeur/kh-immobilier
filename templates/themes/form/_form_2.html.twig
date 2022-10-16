@@ -7,65 +7,74 @@
 
         <!-- Basic Layout & Basic with Icons -->
         <div class="row">
-            <!-- Basic Layout -->
-            <div class="col-xxl">
-                <div class="card mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Basic Layout</h5>
-                        <small class="text-muted float-end">Default label</small>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="basic-default-name" placeholder="John Doe" />
+
+            <div class="card accordion-item active">
+                <h2 class="accordion-header" id="headingOne">
+                    <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne" role="tabpanel">
+                        Accordion Item 1
+                    </button>
+                </h2>
+
+                <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="col-xxl">
+                            <div class="card mb-4">
+                                <div class="card-header d-flex align-items-center justify-content-between">
+                                    <h5 class="mb-0">Basic Layout</h5>
+                                    <small class="text-muted float-end">Default label</small>
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-company">Company</label>
-                                <div class="col-sm-10">
-                                    <input
-                                            type="text"
-                                            class="form-control"
-                                            id="basic-default-company"
-                                            placeholder="ACME Inc."
-                                    />
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                                type="text"
-                                                id="basic-default-email"
-                                                class="form-control"
-                                                placeholder="john.doe"
-                                                aria-label="john.doe"
-                                                aria-describedby="basic-default-email2"
-                                        />
-                                        <span class="input-group-text" id="basic-default-email2">@example.com</span>
-                                    </div>
-                                    <div class="form-text">You can use letters, numbers & periods</div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-phone">Phone No</label>
-                                <div class="col-sm-10">
-                                    <input
-                                            type="text"
-                                            id="basic-default-phone"
-                                            class="form-control phone-mask"
-                                            placeholder="658 799 8941"
-                                            aria-label="658 799 8941"
-                                            aria-describedby="basic-default-phone"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-message">Message</label>
-                                <div class="col-sm-10">
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="basic-default-name" placeholder="John Doe" />
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label" for="basic-default-company">Company</label>
+                                            <div class="col-sm-10">
+                                                <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="basic-default-company"
+                                                        placeholder="ACME Inc."
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-merge">
+                                                    <input
+                                                            type="text"
+                                                            id="basic-default-email"
+                                                            class="form-control"
+                                                            placeholder="john.doe"
+                                                            aria-label="john.doe"
+                                                            aria-describedby="basic-default-email2"
+                                                    />
+                                                    <span class="input-group-text" id="basic-default-email2">@example.com</span>
+                                                </div>
+                                                <div class="form-text">You can use letters, numbers & periods</div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label" for="basic-default-phone">Phone No</label>
+                                            <div class="col-sm-10">
+                                                <input
+                                                        type="text"
+                                                        id="basic-default-phone"
+                                                        class="form-control phone-mask"
+                                                        placeholder="658 799 8941"
+                                                        aria-label="658 799 8941"
+                                                        aria-describedby="basic-default-phone"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label" for="basic-default-message">Message</label>
+                                            <div class="col-sm-10">
                             <textarea
                                     id="basic-default-message"
                                     class="form-control"
@@ -73,17 +82,53 @@
                                     aria-label="Hi, Do you have a moment to talk Joe?"
                                     aria-describedby="basic-icon-default-message2"
                             ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-end">
+                                            <div class="col-sm-10">
+                                                <button type="submit" class="btn btn-primary">Send</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="row justify-content-end">
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Send</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="card accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo" role="tabpanel">
+                        Accordion Item 2
+                    </button>
+                </h2>
+                <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée oat cake dragée ice
+                        cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut gummies. Jelly beans candy canes
+                        carrot cake. Fruitcake chocolate chupa chups.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionThree" aria-expanded="false" aria-controls="accordionThree" role="tabpanel">
+                        Accordion Item 3
+                    </button>
+                </h2>
+                <div id="accordionThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon gingerbread
+                        marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake dragée caramels. Ice cream
+                        wafer danish cookie caramels muffin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basic Layout -->
+
             <!-- Basic with Icons -->
             <div class="col-xxl">
                 <div class="card mb-4">
