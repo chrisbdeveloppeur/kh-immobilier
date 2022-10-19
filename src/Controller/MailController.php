@@ -26,7 +26,7 @@ class MailController
     public function sendQuittance($file_path, $locataire)
     {
         $mail = (new \Swift_Message('Quittance de loyer'))
-            ->setFrom('admin@edit-word.com')
+            ->setFrom('admin@kh-immobilier.com')
             ->setTo($locataire->getEmail())
             ->setBody($this->renderer->render('emails/message.html.twig',[]), 'text/html' );
         $mail->attach(\Swift_Attachment::fromPath($file_path));
@@ -36,7 +36,7 @@ class MailController
     public function sendSimpleMail( string $subject, string $adresses, string $message)
     {
         $mail = (new \Swift_Message($subject))
-            ->setFrom('admin@edit-word.com')
+            ->setFrom('admin@kh-immobilier.com')
             ->setTo($adresses)
             ->setBody($message);
         $this->mailer->send($mail);
