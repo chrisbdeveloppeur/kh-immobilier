@@ -1,14 +1,18 @@
 {% import 'includes/macros.html.twig' as macros %}
-<div class="col-4 mb-4">
-    <div class="card text-white bg-primary has-text-centered h-100">
-        <div class="card-body">
-            <h5 class="card-title text-white">
+<div class="col-12 col-lg-4 col-sm-12 col-md-12 mb-4">
+    <div class="card text-white bg-label-primary has-text-centered h-100">
+        <div class="card-body is-flex-direction-column is-flex is-justify-content-space-between">
+            <h5 class="card-title text-primary">
                 Ajouter un nouveau bien
-                <i class='bx bxs-building-house'></i>
             </h5>
+            <span>
+                <i class="tf-icons bx bx-plus bx-md"></i>
+                <i class='bx bxs-building-house bx-lg'></i>
+            </span>
+
             <p class="card-text h-auto">
-                <a href="{{ path('bien_immo_new') }}" type="button" class="btn btn-outline-light me-2">
-                    <span class="tf-icons bx bx-plus"></span> Ajouter
+                <a href="{{ path('bien_immo_new') }}" type="button" class="btn btn-outline-primary">
+                    Ajouter
                 </a>
             </p>
         </div>
