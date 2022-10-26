@@ -1,9 +1,9 @@
 <a{% for attr, value  in options %}
     {% if attr == 'class' %}
         {% if sorted %}
-{{ attr }}="has-text-info"
+{{ attr }}="has-text-warning"
 {% else %}
-    {{ attr }}="has-text-dark"
+    {{ attr }}="has-text-grey"
         {% endif %}
     {% elseif attr == 'title' %}
         {% if value == 'A-Z' %}

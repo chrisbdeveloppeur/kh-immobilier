@@ -31,7 +31,7 @@ class ImmoController extends AbstractController
     /**
      * @Route("/accueil", name="accueil")
      */
-    public function index(Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PaginatorInterface $paginator, LocataireRepository $locataireRepository): Response
+    public function index(Request $request, BienImmoRepository $bienImmoRepository, EntityManagerInterface $em, PaginatorInterface $paginator, LocataireRepository $locataireRepository, QuittanceRepository $quittanceRepository): Response
     {
         $user = $this->getUser();
         if ( in_array('ROLE_SUPER_ADMIN',$user->getRoles())){
@@ -42,9 +42,12 @@ class ImmoController extends AbstractController
             $all_locataires = $locataireRepository->findBy(['user' => $user->getId()]);
         }
 
+        $quittances = $quittanceRepository->findByUser($this->getUser());
+
         return $this->render('accueil.html.twig', [
             "biens_immos" => $all_biens_immos,
             "locataires" => $all_locataires,
+            "quittances" => $quittances,
         ]);
     }
 

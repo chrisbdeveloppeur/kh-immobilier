@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Entity\BienImmo;
+use App\Entity\User;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,12 +28,12 @@ class AdaptByUser extends AbstractController
         $this->locataireRepository = $locataireRepository;
     }
 
-    public function getAllBiensImmos()
+    public function getAllBiensImmos(User $user)
     {
         if ( $this->isGranted('ROLE_SUPER_ADMIN')){
             $all_biens_immos = $this->bienImmoRepository->findAll();
         }else{
-            $all_biens_immos = $this->bienImmoRepository->findBy(['user' => $this->user->getId()]);
+            $all_biens_immos = $this->bienImmoRepository->findBy(['user' => $user->getId()]);
         }
 
         return $all_biens_immos;

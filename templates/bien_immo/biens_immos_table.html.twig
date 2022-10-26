@@ -1,0 +1,241 @@
+{% if biens_immos|length == 0 %}
+    <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
+        <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
+                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                        <span class="icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>
+                            <b>Vous n'avez aucun Biens immobiliers enregistrés</b>
+                        </span>
+                    </span>
+            <a href="{{ path('bien_immo_new') }}#logement" class="button is-small is-info is-light">Ajouter un bien immobilier</a>
+        </div>
+    </div>
+{% else %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-dark">
+            <tr class="has-text-centered">
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
+                </th>
+{#                <th>#}
+{#                    <span>{{ knp_pagination_sortable(biens_immos, 'CP', 'cp') }}</span>#}
+{#                </th>#}
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Ville', 'city') }}</span>
+                </th>
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
+                </th>
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Superficie', 'superficie') }}</span>
+                </th>
+{#                <th>#}
+{#                    <span>{{ knp_pagination_sortable(biens_immos, 'Loyer HC', 'loyer_hc') }}</span>#}
+{#                </th>#}
+{#                <th>#}
+{#                    <span>{{ knp_pagination_sortable(biens_immos, 'Charges', 'charges') }}</span>#}
+{#                </th>#}
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Loyer TTC', 'loyer_ttc') }}</span>
+                </th>
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Echéance', 'echeance') }}</span>
+                </th>
+{#                <th>#}
+{#                    <span>{{ knp_pagination_sortable(biens_immos, 'Solde', 'solde') }}</span>#}
+{#                </th>#}
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Syndic/Syndicat', ['bien_immo.copropriete.name']) }}</span>
+                </th>
+                <th>
+                    <span>{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
+                </th>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <th>
+                        <span>{{ knp_pagination_sortable(biens_immos, 'Gestionnaire', ['user']) }}</span>
+                    </th>
+                {% endif %}
+                <th>
+                    <span>Actions</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set total_loyer_ttc = 0 %}
+            {% set total_loyer_hc = 0 %}
+            {% set total_charges = 0 %}
+            {% set total_solde = 0 %}
+            {% for bien_immo in biens_immos %}
+                {% set total_loyer_ttc =  total_loyer_ttc + (bien_immo.loyerHc + bien_immo.charges) %}
+                {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
+                {% set total_charges =  total_charges + bien_immo.charges %}
+                {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
+                <tr class="has-text-centered">
+                    <td class="has-text-weight-bold show-on-hover">
+                        <span class="text-info-onhover">
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-weight-bold text-info-onhover icon-text" title="{{ bien_immo.street }}">
+                                <span class="text-index-entity">
+                                    {{ bien_immo.street }}
+                                </span>
+                                <span class="icon show-on-hover-target is-hidden-touch">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </a>
+                        </span>
+                    </td>
+{#                    <td title="{{ bien_immo.cp }}">{{ bien_immo.cp }}</td>#}
+                    <td title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
+                    <td title="{{ bien_immo.type }}">
+                        <span class="badge bg-label-info">{{ bien_immo.type }}</span>
+                    </td>
+                    {% if bien_immo.superficie %}
+                        <td title="{{ bien_immo.superficie }}">{{ bien_immo.superficie }} m²</td>
+                    {% else %}
+                        <td>
+                            <span class="badge bg-label-secondary"
+                                  data-bs-toggle="popover"
+                                  data-bs-offset="0,14"
+                                  data-bs-placement="top"
+                                  data-bs-trigger="hover focus"
+                                  data-bs-content="Non communiqué"
+                            >
+                                N/C
+                            </span>
+                        </td>
+                    {% endif %}
+{#                    <td title="{{ bien_immo.loyerHc }} €">{{ bien_immo.loyerHc|default(0) }} €</td>#}
+{#                    <td title="{{ bien_immo.charges }} €">{{ bien_immo.charges|default(0) }} €</td>#}
+                    <td title="{{ bien_immo.loyerTtc }} €">{{ bien_immo.loyerTtc|default(0) }} €</td>
+                    <td title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
+{#                    <td title="{{ bien_immo.solde.malusQuantity }} €">{{ bien_immo.solde.malusQuantity|default(0) }} €</td>#}
+                    <td>
+                        {% if bien_immo.copropriete.name %}
+                            <span title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
+                        {% else %}
+                            <span class="badge bg-label-secondary"
+                                  data-bs-toggle="popover"
+                                  data-bs-offset="0,14"
+                                  data-bs-placement="top"
+                                  data-bs-trigger="hover focus"
+                                  data-bs-content="Non communiqué"
+                            >
+                                N/C
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if bien_immo.locataires is not empty %}
+                            <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': bien_immo.locataires.current.id}) }}" title="Retirer le locataire de ce logement" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement');" onmouseover="this.querySelector('i').classList.replace('fa-user','fa-user-minus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-minus','fa-user')">
+                                <span class="icon has-text-info text-black-onhover is-hidden-touch">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="icon is-hidden-desktop">
+                                    <i class="fas fa-user-minus"></i>
+                                </span>
+                            </a>
+                            <a class="show-on-hover" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
+                                <span class="text-info-onhover">
+                                    <span><b>{{ bien_immo.locataires.current }}</b></span>
+                                    <span class="icon show-on-hover-target is-hidden-touch">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </span>
+                            </a>
+                        {% else %}
+                            <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Ajouter un locataire à ce logement" onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')">
+                                <span class="icon text-info-onhover is-hidden-touch">
+                                    <i class="fas fa-user-slash"></i>
+                                </span>
+                                <span class="icon has-text-info is-hidden-desktop">
+                                    <i class="fas fa-user-plus"></i>
+                                </span>
+                            </a>
+                            <span title="Logement actuellement sans locataire">Sans locataire</span>
+                        {% endif %}
+                    </td>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        {% if bien_immo.user %}
+                            <td title="{{ bien_immo.user }}">{{ bien_immo.user }}</td>
+                        {% else %}
+                            <td>
+                                <span class="badge bg-label-secondary"
+                                      data-bs-toggle="popover"
+                                      data-bs-offset="0,14"
+                                      data-bs-placement="top"
+                                      data-bs-trigger="hover focus"
+                                      data-bs-content="Non communiqué"
+                                >
+                                    N/C
+                                </span>
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                    <td>
+                        <div class="dropstart">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Modifier le logement"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
+                                {% if bien_immo.locataires is not empty %}
+                                    <a class="dropdown-item" href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">Editer une quittance</a>
+                                {% endif %}
+                                <a class="dropdown-item" href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" title="Supprimer le logement" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');"><i class="bx bx-trash me-2"></i>Supprimer</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="15" class="has-text-centered is-size-6">
+                            <span>
+                                <i>Vide...</i>
+                            </span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot class="table-active">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+{#                <th></th>#}
+{#                <th></th>#}
+{#                <th title="Total loyers hors charges">#}
+{#                    <span>{{ total_loyer_hc|number_format(2) }} €</span>#}
+{#                </th>#}
+{#                <th title="Total charges">#}
+{#                    <span>{{ total_charges|number_format(2) }} €</span>#}
+{#                </th>#}
+                <th title="Total loyers" class="has-text-centered has-text-weight-bold">
+                    {{ total_loyer_ttc|number_format(2) }} €
+                </th>
+                <th></th>
+{#                <th title="Total soldes">#}
+{#                    <span>{{ total_solde|number_format(2) }} €</span>#}
+{#                </th>#}
+                <th></th>
+                <th></th>
+                <th></th>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <th></th>
+                {% endif %}
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="column has-text-centered">
+        <a href="{{ path('bien_immo_new') }}#logement" class="button mb-2 is-small is-dark bg-info-onhover">
+                <span class="icon px-3">
+                    <i class="fas fa-lg fa-building"></i>
+                    <i class="fas fa-plus"></i>
+                </span>
+            <span>
+                    Ajouter un bien
+                </span>
+        </a>
+    </div>
+{% endif %}

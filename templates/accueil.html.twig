@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% set total_loyers = 0 %}
-{% for bien_immo in app.user.biensImmos %}
-    {% set total_loyers = total_loyers + bien_immo.loyerTtc %}
+{% set total_loyers_percus = 0 %}
+{% set total_loyers_attentes = 0 %}
+{% for quittance in quittances %}
+    {% set total_loyers = total_loyers + quittance.loyerTtc %}
+    {% if quittance.payed %}
+        {% set total_loyers_percus = total_loyers_percus + quittance.loyerTtc %}
+    {% else %}
+        {% set total_loyers_attentes = total_loyers_attentes + quittance.loyerTtc %}
+    {% endif %}
 {% endfor %}
 
 {% block title %}Accueil{% endblock %}
@@ -48,8 +55,8 @@
                     {% for bien_immo in biens_immos|slice(0,2) %}
                         {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
                         {{ include('includes/bien_card.html.twig') }}
-                        {{ include('includes/new_bien_card.html.twig') }}
                     {% endfor %}
+                    {{ include('includes/new_bien_card.html.twig') }}
                 </div>
 
             </div>
@@ -150,8 +157,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="d-block mb-1">Total des loyers</span>
-                                <h3 class="card-title text-nowrap mb-2">{{ total_loyers|default(0) }}€</h3>
+                                <span class="d-block mb-1 text-muted">Total des loyers / Mois</span>
+                                <h4 class="card-title text-nowrap mb-2">{{ total_loyers|default(0) }}€</h3>
+                                <span class="d-block mb-1 text-muted">Total des loyers perçus</span>
+                                <h5 class="text-nowrap mb-2 text-success">{{ total_loyers_percus|default(0) }}€</h5>
+                                <span class="d-block mb-1 text-muted">Total des loyers en attentes</span>
+                                <h5 class="text-nowrap mb-2 text-danger">{{ total_loyers_attentes|default(0) }}€</h5>
                                 {#
                                 <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
                                 #}

@@ -9,7 +9,7 @@ $warning-light : #FFFCEB;
 .has-text-green{
   color: #27a854 !important;
 }
-$table-head-background-color : whitesmoke;
+//$table-head-background-color : whitesmoke;
 //$table-head-cell-color : white;
 $table-foot-background-color : white;
 //$table-foot-cell-color : white;
@@ -93,13 +93,13 @@ th, td{
   //overflow: hidden;
 }
 
-th>span{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-}
+//th>span{
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  text-align: center;
+//  height: 100%;
+//}
 
 option{
   text-align: center;
@@ -310,10 +310,10 @@ i.fa-search-js{
   left: 0 !important;
 }
 
-table.table.is-narrow{
-  left:0;
-  position: sticky;
-}
+//table.table.is-narrow{
+//  left:0;
+//  position: sticky;
+//}
 
 .table td, .table th{
   vertical-align: middle !important;

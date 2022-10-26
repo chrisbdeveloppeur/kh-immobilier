@@ -23,8 +23,8 @@
         {% if break == true %}
             <div class="card-body overflow-hidden perfect-scrollbar" style="max-height: 350px">
                 <ul class="p-0 m-0">
-                    {% for bien_immo in biens_immos %}
-                        {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
+                    {% for quittance in quittances %}
+                        {% set last_quittance = quittances|sort((a, b) => a.date <=> b.date)|last %}
                         {% include 'includes/biens_row.html.twig' %}
                     {% endfor %}
                 </ul>

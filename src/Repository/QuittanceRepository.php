@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Quittance;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -22,19 +23,20 @@ class QuittanceRepository extends ServiceEntityRepository
     // /**
     //  * @return Quittance[] Returns an array of Quittance objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByUser(User $user)
     {
         return $this->createQueryBuilder('q')
-            ->andWhere('q.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('q.id', 'ASC')
-            ->setMaxResults(10)
+            ->join('q.bien_immo', 'bien_immo')
+            ->andWhere('bien_immo.user = :val')
+            ->setParameter('val', $user)
+//            ->orderBy('q.id', 'ASC')
+//            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Quittance

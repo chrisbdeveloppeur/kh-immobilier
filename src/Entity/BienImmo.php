@@ -45,18 +45,24 @@ class BienImmo
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(
-     *     message="Ce champs est obligatoire"src\Services\AdaptByUser.php
+     *     message="Ce champs est obligatoire"
      * )
      */
     private $city;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $loyer_hc;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $charges;
 

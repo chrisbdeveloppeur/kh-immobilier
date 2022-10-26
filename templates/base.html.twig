@@ -146,6 +146,15 @@
 
 {% block javascripts %}
 
+    <script>
+        function submitForms(){
+            forms = document.querySelectorAll('.form-to-submit');
+            forms.forEach(function (form) {
+                form.submit();
+            });
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
 
@@ -322,8 +331,10 @@
                 }else {
                     endingUrl = '/edit/';
                 }
-                redirectLink.href = entity+id+endingUrl;
-                redirectLink.removeAttribute('disabled', 'disabled');
+                if (redirectLink){
+                    redirectLink.href = entity+id+endingUrl;
+                    redirectLink.removeAttribute('disabled', 'disabled');
+                }
             } else {
                 if (redirectLink){
                     redirectLink.href = '#';
@@ -417,14 +428,18 @@
                 if ( target.parentElement === drop || target === drop){
                     navbarMenu.classList.toggle('is-active');
                 }else {
-                    navbarMenu.classList.remove('is-active');
+                    if (navbarMenu){
+                        navbarMenu.classList.remove('is-active');
+                    }
                     drop.classList.remove('is-active');
                 }
             });
 
             sections.forEach(function (section) {
                 section.addEventListener('click', function () {
-                    navbarMenu.classList.remove('is-active');
+                    if (navbarMenu){
+                        navbarMenu.classList.remove('is-active');
+                    }
                 })
             })
         });
