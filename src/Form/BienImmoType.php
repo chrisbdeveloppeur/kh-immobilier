@@ -90,7 +90,6 @@ class BienImmoType extends AbstractType
                     }else{
                         return ['disabled'=>'disabled'];
                     }
-
                 },
                 'group_by' => function(Locataire $locataire){
                     if (!$locataire->getLogement()){
@@ -104,22 +103,29 @@ class BienImmoType extends AbstractType
             ])
             ->add('street', TextType::class,[
                 'label' => "Nom de la rue*",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => [
+                    'class' => 'input is-small has-text-centered readonly',
+                    'placeholder' => 'Ex: 2 Rue chose'
+                ],
+                'validation_groups' => 'adresse'
             ])
             ->add('building', TextType::class,[
                 'label' => "Complément d'adresse",
                 'attr' => ['class' => 'input is-small has-text-centered readonly'],
                 'help' => 'Bâtiment / Étage / Escalier / Interphone',
                 'required' => false,
+                'validation_groups' => 'adresse'
             ])
             ->add('cp', TextType::class,[
                 'label' => "Code postal*",
                 'invalid_message' => 'Valeur incorrecte',
                 'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'validation_groups' => 'adresse'
             ])
             ->add('city', TextType::class,[
                 'label' => "Ville*",
                 'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'validation_groups' => 'adresse'
             ])
             ->add('type', ChoiceType::class,[
                 'label' => "Type de logement",
@@ -137,19 +143,28 @@ class BienImmoType extends AbstractType
             ])
             ->add('superficie', NumberType::class,[
                 'label' => "Superficie",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => [
+                    'data-units' => 'm²',
+                    'placeholder' => '50'
+                ],
                 'required' => true,
             ])
             ->add('loyer_hc', NumberType::class,[
                 'label' => "Loyer HC",
                 'help' => 'Loyer sans les charges',
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => [
+                    'data-units' => '€',
+                    'placeholder' => '700'
+                ],
             ])
             ->add('charges', NumberType::class,[
                 'label' => "Charges",
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => [
+                    'data-units' => '€',
+                    'placeholder' => '50'
+                ],
             ])
             ->add('echeance', ChoiceType::class,[
                 'label' => "Echéance*",
@@ -163,7 +178,10 @@ class BienImmoType extends AbstractType
                 'mapped' => false,
                 'label' => "Solde",
                 'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => [
+                    'data-units' => '€',
+                    'placeholder' => '750'
+                ],
             ])
 
 

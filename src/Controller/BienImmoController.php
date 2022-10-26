@@ -85,10 +85,6 @@ class BienImmoController extends AbstractController
 
 
         $form = $this->createForm(BienImmoType::class, $bienImmo);
-        $form->get('superficie')->setData(0);
-        $form->get('loyer_hc')->setData(0);
-        $form->get('charges')->setData(0);
-        $form->get('solde')->setData(0);
         $form_prestataire = $this->createForm(PrestataireType::class);
 
         $form->handleRequest($request);

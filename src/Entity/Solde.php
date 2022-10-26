@@ -47,7 +47,7 @@ class Solde
         $this->echeance_pasted = false;
         $this->month_paid = false;
         $this->malus_added = false;
-        $this->malus_quantity = 0;
+        $this->malus_quantity = null;
     }
 
     public function __toString()

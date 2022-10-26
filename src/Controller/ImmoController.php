@@ -48,5 +48,4 @@ class ImmoController extends AbstractController
         ]);
     }
 
-
 }

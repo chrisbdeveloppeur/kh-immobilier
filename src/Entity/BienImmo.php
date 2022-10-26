@@ -6,7 +6,8 @@ use App\Repository\BienImmoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass=BienImmoRepository::class)
@@ -27,26 +28,35 @@ class BienImmo
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $street;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $cp;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"src\Services\AdaptByUser.php
+     * )
      */
     private $city;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="integer")
      */
     private $loyer_hc;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="integer")
      */
     private $charges;
 
@@ -150,7 +160,9 @@ class BienImmo
         $solde = new Solde();
         $solde->setBienImmo($this);
         $this->setEcheance(1);
-        $this->setSuperficie(0);
+        $this->setSuperficie(null);
+        $this->setLoyerHc(null);
+        $this->setCharges(null);
         $this->solde = $solde;
         $this->setFree(true);
         $this->prestataire = new ArrayCollection();
@@ -224,7 +236,7 @@ class BienImmo
         return $this->loyer_hc;
     }
 
-    public function setLoyerHc(string $loyer_hc): self
+    public function setLoyerHc($loyer_hc): self
     {
         $this->loyer_hc = $loyer_hc;
 
@@ -236,7 +248,7 @@ class BienImmo
         return $this->charges;
     }
 
-    public function setCharges(string $charges): self
+    public function setCharges($charges): self
     {
         $this->charges = $charges;
 
@@ -403,10 +415,10 @@ class BienImmo
         return $this;
     }
 
-    public function getLoyerTtc(): ?float
+    public function getLoyerTtc(): ?int
     {
         $loyer_ttc = $this->getCharges() + $this->getLoyerHc();
-        is_float($loyer_ttc);
+        is_int($loyer_ttc);
         return $loyer_ttc;
     }
 
@@ -435,142 +447,142 @@ class BienImmo
     }
     */
 
-public function getType(): ?string
-{
-    return $this->type;
-}
-
-public function setType(?string $type): self
-{
-    $this->type = $type;
-
-    return $this;
-}
-
-public function getSuperficie(): ?float
-{
-    return $this->superficie;
-}
-
-public function setSuperficie(?float $superficie): self
-{
-    $this->superficie = $superficie;
-
-    return $this;
-}
-
-public function getCopropriete(): ?Copropriete
-{
-    return $this->copropriete;
-}
-
-public function setCopropriete(?Copropriete $copropriete): self
-{
-    $this->copropriete = $copropriete;
-
-    return $this;
-}
-
-public function getUser(): ?User
-{
-    return $this->user;
-}
-
-public function setUser(?User $user): self
-{
-    $this->user = $user;
-
-    return $this;
-}
-
-/**
- * @return Collection|Prestataire[]
- */
-public function getPrestataire(): Collection
-{
-    return $this->prestataire;
-}
-
-public function addPrestataire(Prestataire $prestataire): self
-{
-    if (!$this->prestataire->contains($prestataire)) {
-        $this->prestataire[] = $prestataire;
-        $prestataire->setBienImmo($this);
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 
-    return $this;
-}
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
 
-public function removePrestataire(Prestataire $prestataire): self
-{
-    if ($this->prestataire->removeElement($prestataire)) {
-        // set the owning side to null (unless already changed)
-        if ($prestataire->getBienImmo() === $this) {
-            $prestataire->setBienImmo(null);
+        return $this;
+    }
+
+    public function getSuperficie(): ?float
+    {
+        return $this->superficie;
+    }
+
+    public function setSuperficie(?float $superficie): self
+    {
+        $this->superficie = $superficie;
+
+        return $this;
+    }
+
+    public function getCopropriete(): ?Copropriete
+    {
+        return $this->copropriete;
+    }
+
+    public function setCopropriete(?Copropriete $copropriete): self
+    {
+        $this->copropriete = $copropriete;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Prestataire[]
+     */
+    public function getPrestataire(): Collection
+    {
+        return $this->prestataire;
+    }
+
+    public function addPrestataire(Prestataire $prestataire): self
+    {
+        if (!$this->prestataire->contains($prestataire)) {
+            $this->prestataire[] = $prestataire;
+            $prestataire->setBienImmo($this);
         }
+
+        return $this;
     }
 
-    return $this;
-}
-
-/**
- * @return Collection|Documents[]
- */
-public function getDocuments(): Collection
-{
-    return $this->documents;
-}
-
-public function addDocument(Documents $document): self
-{
-    if (!$this->documents->contains($document)) {
-        $this->documents[] = $document;
-        $document->setBienImmo($this);
-    }
-
-    return $this;
-}
-
-public function removeDocument(Documents $document): self
-{
-    if ($this->documents->removeElement($document)) {
-        // set the owning side to null (unless already changed)
-        if ($document->getBienImmo() === $this) {
-            $document->setBienImmo(null);
+    public function removePrestataire(Prestataire $prestataire): self
+    {
+        if ($this->prestataire->removeElement($prestataire)) {
+            // set the owning side to null (unless already changed)
+            if ($prestataire->getBienImmo() === $this) {
+                $prestataire->setBienImmo(null);
+            }
         }
+
+        return $this;
     }
 
-    return $this;
-}
-
-public function getFinancement(): ?Financement
-{
-    return $this->financement;
-}
-
-public function setFinancement(Financement $financement): self
-{
-    // set the owning side of the relation if necessary
-    if ($financement->getBienImmo() !== $this) {
-        $financement->setBienImmo($this);
+    /**
+     * @return Collection|Documents[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
     }
 
-    $this->financement = $financement;
+    public function addDocument(Documents $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setBienImmo($this);
+        }
 
-    return $this;
-}
+        return $this;
+    }
 
-public function getEtatDesLieux(): ?EtatDesLieux
-{
-    return $this->etatDesLieux;
-}
+    public function removeDocument(Documents $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getBienImmo() === $this) {
+                $document->setBienImmo(null);
+            }
+        }
 
-public function setEtatDesLieux(?EtatDesLieux $etatDesLieux): self
-{
-    $this->etatDesLieux = $etatDesLieux;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getFinancement(): ?Financement
+    {
+        return $this->financement;
+    }
+
+    public function setFinancement(Financement $financement): self
+    {
+        // set the owning side of the relation if necessary
+        if ($financement->getBienImmo() !== $this) {
+            $financement->setBienImmo($this);
+        }
+
+        $this->financement = $financement;
+
+        return $this;
+    }
+
+    public function getEtatDesLieux(): ?EtatDesLieux
+    {
+        return $this->etatDesLieux;
+    }
+
+    public function setEtatDesLieux(?EtatDesLieux $etatDesLieux): self
+    {
+        $this->etatDesLieux = $etatDesLieux;
+
+        return $this;
+    }
 
 
     public function getAdresse()
@@ -579,4 +591,21 @@ public function setEtatDesLieux(?EtatDesLieux $etatDesLieux): self
         return $adresse;
     }
 
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        // somehow you have an array of "fake names"
+//        $fakeNames = [/* ... */];
+
+        // check if the name is actually a fake name
+//        if (in_array($this->getFirstName(), $fakeNames)) {
+//            $context->buildViolation('This name sounds totally fake!')
+//                ->atPath('firstName')
+//                ->addViolation();
+//        }
+    }
+
 }
+

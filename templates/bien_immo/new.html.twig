@@ -9,3 +9,16 @@
     {{ include('themes/form/_form_2.html.twig') }}
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        function submitForms(){
+            forms = document.querySelectorAll('.form-to-submit');
+            forms.forEach(function (form) {
+                form.submit();
+            });
+        }
+    </script>
+{% endblock %}

@@ -54,6 +54,11 @@ $button-static-color: white;
   text-transform: uppercase;
 }
 
+ul{
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
+}
+
 .tab{
   background: hsl(0, 0%, 96%);
 }

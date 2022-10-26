@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="fr"
-      class="light-style layout-menu-fixed"
+      class="dark-style layout-menu-fixed"
       dir="ltr"
       data-theme="theme-default"
       data-assets-path="../assets/"
@@ -162,7 +162,6 @@
             const url = this.href;
             element.classList.add('is-loading');
             axios.get(url).then(function (response) {
-                console.log(response['data']);
                 if (element.classList.contains('bg-label-warning')){
                     element.classList.replace('bg-label-warning', 'bg-label-success');
                     element.title = "Dernier loyer reçus";
@@ -178,7 +177,6 @@
                     element.title = "Dernier loyer non reçus";
                     element.querySelector('i').classList.replace('bxs-calendar-check', 'bx-calendar-exclamation')
                 }
-                console.log(element.title);
                 if (element.parentElement){element.parentElement.setAttribute('data-bs-content',element.title)}
                 element.classList.remove('is-loading');
             });
@@ -327,8 +325,10 @@
                 redirectLink.href = entity+id+endingUrl;
                 redirectLink.removeAttribute('disabled', 'disabled');
             } else {
-                redirectLink.href = '#';
-                redirectLink.setAttribute('disabled', 'disabled');
+                if (redirectLink){
+                    redirectLink.href = '#';
+                    redirectLink.setAttribute('disabled', 'disabled');
+                }
             }
         }
 
@@ -369,7 +369,6 @@
             let form = btn.closest('form');
             let inputs = form.querySelectorAll('.readonly');
             inputs.forEach(function (elem) {
-                // console.log(elem);
                 elem.toggleAttribute('readonly');
                 if (elem.hasAttribute('readonly')){
                     elem.style.background = '#dbdbdb';

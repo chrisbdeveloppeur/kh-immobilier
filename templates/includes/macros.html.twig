@@ -26,3 +26,84 @@
         </a>
     </span>
 {% endmacro %}
+
+
+{% macro form_template(form) %}
+    {{ form_start(form, {'attr':{'class':'form-to-submit'}}) }}
+        {% for field in form %}
+
+            {% if field.vars.block_prefixes.1 is defined %}
+                {% set field_type_1 = field.vars.block_prefixes.1 %}
+            {% endif %}
+            {% if field.vars.block_prefixes.2 is defined %}
+                {% set field_type_2 = field.vars.block_prefixes.2 %}
+            {% endif %}
+
+            {% if field.vars.placeholder is defined %}
+                {% set placeholder = field.vars.placeholder %}
+            {% elseif field.vars.attr.placeholder is defined %}
+                {% set placeholder = field.vars.attr.placeholder %}
+            {% else %}
+                {% set placeholder = 'Tapez ici...' %}
+            {% endif %}
+
+            {% if field.vars.attr['data-units'] is defined %}
+                {% set unit = field.vars.attr['data-units'] %}
+            {% endif %}
+
+            <div class="mb-3">
+                {% if form_errors(field) %}
+                    <span class="badge bg-label-danger">Erreur</span>
+                    <span class="help">
+                        {{ form_errors(field) }}
+                    </span>
+                    {% set field_error_class = ' is-invalid' %}
+                {% else %}
+                    {% set field_error_class = '' %}
+                {% endif %}
+                {% if field_type_1 == 'text' %}
+                    {% if field_type_2 == 'textarea' %}
+                        <div class="input-group">
+                            <span class="input-group-text">{{ form_label(field) }}</span>
+                            {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-label':form_label(field), 'rows':5}} ) }}
+                        </div>
+{#                    {% elseif field_type_2 == 'email' %}#}
+{#                    {% elseif field_type_2 == 'tel' %}#}
+{#                    {% elseif field_type_2 == 'password' %}#}
+                    {% else %}
+                        <div class="form-floating {{ form.vars.name }} {{ field.vars.name }}">
+                            {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-describedby':'floatingInputHelp_'~field.vars.name}} ) }}
+                            <label for="{{ field.vars.full_name }}">{{ form_label(field) }}</label>
+                            {% if field.vars.help is defined %}
+                                <div id="floatingInputHelp_{{ field.vars.name }}" class="form-text">{{ field.vars.help }}</div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% elseif field_type_1 == 'number' %}
+                    <div class="input-group input-group-merge">
+                        <span class="input-group-text">{{ form_label(field) }}</span>
+                        {{ form_widget(field, {'attr':{'class':'form-control has-text-centered'~field_error_class, 'placeholder':placeholder, 'type':'number'}} ) }}
+                        {% if unit is defined %}
+                            <span class="input-group-text">{{ unit }}</span>
+                        {% endif %}
+                    </div>
+                {% elseif field_type_1 == 'choice' %}
+                    {% if field_type_2 == 'entity' %}
+                        <div class="input-group">
+                            {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
+                            <a href="{{ path('locataire_new') }}" class="btn btn-outline-primary" type="button">Ajouter</a>
+                        </div>
+                    {% else %}
+                        <div class="select-group">
+                            <label for="{{ field.vars.full_name }}" class="form-label">{{ form_label(field) }}</label>
+                            {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
+                        </div>
+                    {% endif %}
+
+                {% else %}
+                    {{ form_widget(field, {'attr':{'class':''~field_error_class}}) }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    {{ form_end(form) }}
+{% endmacro %}
