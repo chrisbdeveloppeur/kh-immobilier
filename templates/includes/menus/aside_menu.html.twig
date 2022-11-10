@@ -30,6 +30,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Biens immobiliers</span>
         </li>
+
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-building-house'></i>
@@ -48,6 +49,7 @@
                 </li>
             </ul>
         </li>
+
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-bookmark-alt'></i>
@@ -66,12 +68,26 @@
                 </li>
             </ul>
         </li>
+
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-box'></i>
                 <div data-i18n="Misc">Documents</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ path('quittances_index') }}" class="menu-link">
+                        <div data-i18n="Basic">Quittances</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="" class="menu-link">
+                        <div data-i18n="Basic">Autres documents</div>
+                    </a>
+                </li>
+            </ul>
         </li>
+
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Locataires</span></li>
         <!-- Cards -->

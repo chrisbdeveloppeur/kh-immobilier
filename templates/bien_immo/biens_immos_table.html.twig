@@ -1,7 +1,7 @@
 {% if biens_immos|length == 0 %}
     <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
         <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
-                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
+                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center " style="line-height: normal">
                         <span class="icon">
                             <i class="fas fa-info-circle"></i>
                         </span>
@@ -16,7 +16,7 @@
     <div class="table-responsive">
         <table class="table table-hover">
             <thead class="table-dark">
-            <tr class="has-text-centered">
+            <tr class="">
                 <th>
                     <span>{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
                 </th>
@@ -73,7 +73,7 @@
                 {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                 {% set total_charges =  total_charges + bien_immo.charges %}
                 {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}
-                <tr class="has-text-centered">
+                <tr class="">
                     <td class="has-text-weight-bold show-on-hover">
                         <span class="text-info-onhover">
                             <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-weight-bold text-info-onhover icon-text" title="{{ bien_immo.street }}">
@@ -188,7 +188,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="15" class="has-text-centered is-size-6">
+                    <td colspan="15" class=" is-size-6">
                             <span>
                                 <i>Vide...</i>
                             </span>
@@ -210,7 +210,7 @@
 {#                <th title="Total charges">#}
 {#                    <span>{{ total_charges|number_format(2) }} €</span>#}
 {#                </th>#}
-                <th title="Total loyers" class="has-text-centered has-text-weight-bold">
+                <th title="Total loyers" class=" has-text-weight-bold">
                     {{ total_loyer_ttc|number_format(2) }} €
                 </th>
                 <th></th>
@@ -227,15 +227,15 @@
             </tfoot>
         </table>
     </div>
-    <div class="column has-text-centered">
-        <a href="{{ path('bien_immo_new') }}#logement" class="button mb-2 is-small is-dark bg-info-onhover">
+    <div class="column ">
+        <a href="{{ path('bien_immo_new') }}#logement" class="btn mb-2 btn-sm btn-outline-primary">
                 <span class="icon px-3">
                     <i class="fas fa-lg fa-building"></i>
                     <i class="fas fa-plus"></i>
                 </span>
             <span>
-                    Ajouter un bien
-                </span>
+                Ajouter un bien
+            </span>
         </a>
     </div>
 {% endif %}

@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Quittance;
 use App\Form\QuittancesType;
+use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
 use App\Repository\QuittanceRepository;
 use App\Traits\QuittancesTrait;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +32,42 @@ class QuittancesController extends AbstractController
     {
         $this->createFileController = $createFileController;
 //        $this->pdfController = $pdfController;
+    }
+
+    /**
+     * @Route("/index/{bien_id<\d+>?}", name="index")
+     */
+    public function index($bien_id, QuittanceRepository $quittanceRepository, BienImmoRepository $bienImmoRepository, PaginatorInterface $paginator, Request $request){
+        if ($bien_id){
+            $bien_immo = $bienImmoRepository->find($bien_id);
+            $locataire = $bien_immo->getLocataire();
+            $quittances = $quittanceRepository->findBy(['bien_immo'=>$bien_id]);
+        }else{
+            $quittances = $quittanceRepository->findBy(['locataire'=>$this->getUser()->getId()]);
+        }
+        $quittances = $paginator->paginate(
+            $quittances,
+            $request->query->getInt('page',1),
+            $request->query->getInt('numItemsPerPage',20),
+            array(
+                'defaultSortFieldName' => 'created_date',
+                'defaultSortDirection' => 'desc',
+            )
+        );
+
+        if ($bien_id){
+            $data = [
+                'quittances' => $quittances,
+                'bien_immo' => $bien_immo,
+                'locataire' => $locataire,
+            ];
+        }else{
+            $data = [
+                'quittances' => $quittances,
+            ];
+        }
+
+        return $this->render('quittances/index.html.twig', $data);
     }
 
 

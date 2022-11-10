@@ -7,7 +7,6 @@
                     {% if last_quittance %}
                         {{ macros.quittance_status_payed_btn(last_quittance) }}
                     {% elseif bien_immo.locataire %}
-{#                        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" title="aucune quittances de loyer trouvées"><i class='bx bxs-file'></i></a>#}
                         <span class="d-inline-block"
                               tabindex="0"
                               data-bs-toggle="popover"
@@ -33,7 +32,7 @@
                         <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                        <a class="dropdown-item" href="javascript:void(0);">Voir les quittances</a>
+                        <a class="dropdown-item" href="{{ path('quittances_index', {'bien_id': bien_immo.id}) }}">Voir les quittances</a>
                         <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Détails</a>
                     </div>
                 </div>

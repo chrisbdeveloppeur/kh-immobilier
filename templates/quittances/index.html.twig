@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quittances de loyers{% endblock %}
+
+{% block title_main %}Liste des <b>Quittances de loyers</b>{% endblock %}
+
+{% block body %}
+
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            {% if bien_immo is defined %}
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / Quittances / </span>{% if bien_immo.id %}{{ bien_immo.adresse }}{% endif %}</h4>
+            {% else %}
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / </span>Quittances</h4>
+            {% endif %}
+            <div class="row">
+
+                <div class="accordion" id="biensAccordion">
+                    {% for bien_immo in app.user.biensimmos %}
+                        {% set quittances = bien_immo.quittances %}
+                        {% set locataire = bien_immo.locataire %}
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="heading{{ bien_immo.id }}">
+                                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordion{{ bien_immo.id }}" aria-expanded="true" aria-controls="accordion{{ bien_immo.id }}" role="tabpanel">
+                                    {{ bien_immo }}
+                                </button>
+                            </h2>
+
+                            <div id="accordion{{ bien_immo.id }}" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    {% include('quittances/quittances_table.html.twig') %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

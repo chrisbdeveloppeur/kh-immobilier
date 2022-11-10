@@ -1,0 +1,112 @@
+{% if quittances|length == 0 %}
+    <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
+        <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
+                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center " style="line-height: normal">
+                        <span class="icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>
+                            <b>Vous n'avez aucun quittances enregistrés</b>
+                        </span>
+                    </span>
+            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="button is-small is-info is-light">Editer une quittance dès maintenant</a>
+        </div>
+    </div>
+{% else %}
+    <div class="">
+        <table class="table table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>
+                    <span>
+{#                        {{ knp_pagination_sortable(quittances, 'Date d\'édition', 'created_date') }}#}
+                        Date d'édition
+                    </span>
+                </th>
+                <th>
+                    <span>
+{#                        {{ knp_pagination_sortable(quittances, 'Mois', 'month') }}#}
+                        Mois
+                    </span>
+                </th>
+                <th>
+                    <span>
+{#                        {{ knp_pagination_sortable(quittances, 'Année', 'year') }}#}
+                        Année
+                    </span>
+                </th>
+                <th>
+                    <span>
+{#                        {{ knp_pagination_sortable(quittances, 'Statut', 'payed') }}#}
+                        Statut
+                    </span>
+                </th>
+                <th>
+                    <span>Actions</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for quittance in quittances %}
+                <tr>
+
+                    <td>
+                        {{ quittance.createddate|format_date('short') }}
+                    </td>
+
+                    <td>
+                        {{ quittance.month }}
+                    </td>
+
+                    <td>
+                        {{ quittance.year }}
+                    </td>
+
+                    <td>
+                        {% if quittance.payed %}
+                            <span class="badge bg-success">Payée</span>
+                        {% else %}
+                            <span class="badge bg-warning">En attente</span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <div class="dropstart">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Modifier le logement"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
+                                {% if bien_immo.locataires is not empty %}
+                                    <a class="dropdown-item" href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">Editer une quittance</a>
+                                {% endif %}
+                                <a class="dropdown-item" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" title="Supprimer la quittance" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"><i class="bx bx-trash me-2"></i>Supprimer</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="15" class=" is-size-6">
+                            <span>
+                                <i>Vide...</i>
+                            </span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot class="table-active">
+
+            </tfoot>
+        </table>
+    </div>
+    <div class="column ">
+        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="btn mb-2 btn-sm btn-outline-primary">
+            <span class="icon px-3">
+                <i class="fas fa-lg fa-building"></i>
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>
+                Editer une quittance
+            </span>
+        </a>
+    </div>
+{% endif %}

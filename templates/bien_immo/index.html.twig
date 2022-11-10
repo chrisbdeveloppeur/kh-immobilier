@@ -6,23 +6,29 @@
 
 {% block body %}
 
-    <section class="m-3">
-        {{ include('bien_immo/biens_immos_table.html.twig') }}
-    </section>
-
-<section class="container">
-
-    <div class="is-flex is-flex-direction-column is-align-items-center">
-        <div class="tags has-addons mb-0">
-            <span class="tag has-text-weight-bold">Nombre total de bien immobilier</span>
-            <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier /</span> Mes biens immobiliers</h4>
+            <div class="row">
+                {{ include('bien_immo/biens_immos_table.html.twig') }}
+            </div>
         </div>
-        {{ knp_pagination_render(biens_immos) }}
     </div>
 
-{#  POUR GOOGLE MAPS SEARCH  #}
-{#    <input type="text" id="autocomplete" placeholder="Indiquer une adresse">#}
-{#  ##############  #}
+    <section class="container">
 
-</section>
+        <div class="is-flex is-flex-direction-column is-align-items-center">
+            <div class="tags has-addons mb-0">
+                <span class="tag has-text-weight-bold">Nombre total de bien immobilier</span>
+                <span class="tag is-dark">{{ biens_immos.getTotalItemCount }}</span>
+            </div>
+            {{ knp_pagination_render(biens_immos) }}
+        </div>
+
+        {#  POUR GOOGLE MAPS SEARCH  #}
+        {#    <input type="text" id="autocomplete" placeholder="Indiquer une adresse">#}
+        {#  ##############  #}
+
+    </section>
+
 {% endblock %}
