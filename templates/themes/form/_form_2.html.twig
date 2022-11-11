@@ -1,6 +1,14 @@
+{% if bien_immo.id %}
+    {% set title_txt = bien_immo.adresse %}
+    {% set btn_submit_txt = 'Enregistrer les modifications' %}
+{% else %}
+    {% set title_txt = 'Ajouter un nouveau bien' %}
+    {% set btn_submit_txt = 'Créer le bien' %}
+{% endif %}
+
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / </span>{% if bien_immo.id %}{{ bien_immo.adresse }}{% else %}Ajouter un nouveau bien{% endif %}</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / </span>{{ title_txt }}</h4>
         <div class="row">
             <div class="accordion" id="accordionMain">
 
@@ -9,7 +17,7 @@
                         <a href="{{ path('immo_accueil') }}" class="btn btn-gray text-black">Retour</a>
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-primary" onclick="submitForms()">Créer ce bien</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForms()">{{ btn_submit_txt }}</button>
                     </div>
                 </div>
 
@@ -35,7 +43,7 @@
                         <a href="{{ path('immo_accueil') }}" class="btn btn-gray text-black">Retour</a>
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-primary" onclick="submitForms()">Créer ce bien</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForms()">{{ btn_submit_txt }}</button>
                     </div>
                 </div>
                 

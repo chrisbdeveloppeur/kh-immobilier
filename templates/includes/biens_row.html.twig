@@ -1,38 +1,12 @@
 {% import 'includes/macros.html.twig' as macros %}
 <li class="d-flex mt-4 pb-1">
     <div class="me-2">
-{#        {% if last_quittance and last_quittance.payed %}#}
-{#            <span class="badge bg-label-success rounded" title="dernier loyer reçus"><i class='bx bxs-calendar-check'></i></span>#}
-{#        {% elseif last_quittance %}#}
-{#            <span class="badge bg-label-warning rounded" title="dernier loyer non reçus"><i class='bx bx-calendar-exclamation'></i></span>#}
-{#        {% else %}#}
-{#            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="badge bg-label-danger rounded" title="aucune quittances de loyer trouvées"><i class='bx bxs-file'></i></a>#}
-{#        {% endif %}#}
-        {% if last_quittance %}
-            {{ macros.quittance_status_payed_btn(last_quittance) }}
-        {% elseif bien_immo.locataire %}
-            <span class="d-inline-block"
-                  tabindex="0"
-                  data-bs-toggle="popover"
-                  data-bs-offset="0,14"
-                  data-bs-placement="top"
-                  data-bs-trigger="hover focus"
-                  data-bs-content="aucune quittances de loyer trouvées">
-                <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="button is-small bg-label-danger rounded" type="button" disabled>
-                    <i class='bx bxs-file'></i>
-                </a>
-            </span>
-        {% endif %}
+        {{ macros.quittance_status_payed_btn(last_quittance|default(null)) }}
     </div>
     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
         <div class="me-2">
             <small class="text-muted d-block mb-1" title="{{ bien_immo }}">{{ bien_immo[:20] ~ '...' }}</small>
             <h6 class="mb-0">{{ bien_immo.locataire }}</h6>
-{#            {% if last_quittance and last_quittance.payed %}#}
-{#                <h6 class="mb-0">Reçus</h6>#}
-{#            {% elseif last_quittance %}#}
-{#                <h6 class="mb-0">Non reçus</h6>#}
-{#            {% endif %}#}
         </div>
         <div class="user-progress d-flex align-items-center gap-1">
             <h6 class="mb-0">{{ bien_immo.loyerTtc }}</h6>

@@ -1,43 +1,45 @@
 {% if quittances|length == 0 %}
-    <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
-        <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
-                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center " style="line-height: normal">
-                        <span class="icon">
-                            <i class="fas fa-info-circle"></i>
-                        </span>
-                        <span>
-                            <b>Vous n'avez aucun quittances enregistrés</b>
-                        </span>
-                    </span>
-            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="button is-small is-info is-light">Editer une quittance dès maintenant</a>
+    {% if not locataire %}
+        {% set message_txt = 'Ce bien ne possède pas de locataire<br> vous pouvez en ajouter un depuis la page d\'édition du logement' %}
+        {% set btn_url = path('bien_immo_edit', {'id': bien_immo.id}) %}
+        {% set btn = "<a href='"~btn_url~"' class='btn is-small btn-primary'>Ajouter un locataire</a>" %}
+    {% else %}
+        {% set message_txt = 'Vous n\'avez aucun quittances éditées pour ce logement' %}
+        {% set btn_url = path('quittances_edit_new_quittance', {'loc_id': locataire.id}) %}
+        {% set btn = "<a href='"~btn_url~"' class='btn is-small btn-primary'>Editer une quittance dès maintenant</a>" %}
+    {% endif %}
+    <div class="alert alert-primary" role="alert">
+        <div class="d-flex">
+            <span class="badge badge-center rounded-pill bg-primary border-label-primary p-3 me-2"><i class="bx bx-lg bx-info-circle"></i></span>
+            <h6 class="alert-heading d-flex align-items-center fw-bold mb-1">Pour votre information...</h6>
+        </div>
+        <div class="d-flex flex-column">
+            <p class="has-text-centered">{{ message_txt|raw }}</p>
+            {{ btn|raw }}
         </div>
     </div>
 {% else %}
     <div class="">
         <table class="table table-hover">
-            <thead class="table-dark">
+            <thead class="table-warning">
             <tr>
                 <th>
                     <span>
-{#                        {{ knp_pagination_sortable(quittances, 'Date d\'édition', 'created_date') }}#}
                         Date d'édition
                     </span>
                 </th>
                 <th>
                     <span>
-{#                        {{ knp_pagination_sortable(quittances, 'Mois', 'month') }}#}
                         Mois
                     </span>
                 </th>
                 <th>
                     <span>
-{#                        {{ knp_pagination_sortable(quittances, 'Année', 'year') }}#}
                         Année
                     </span>
                 </th>
                 <th>
                     <span>
-{#                        {{ knp_pagination_sortable(quittances, 'Statut', 'payed') }}#}
                         Statut
                     </span>
                 </th>
@@ -86,9 +88,9 @@
             {% else %}
                 <tr>
                     <td colspan="15" class=" is-size-6">
-                            <span>
-                                <i>Vide...</i>
-                            </span>
+                        <span>
+                            <i>Vide...</i>
+                        </span>
                     </td>
                 </tr>
             {% endfor %}

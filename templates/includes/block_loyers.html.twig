@@ -1,7 +1,6 @@
 
     <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-{#            <h5 class="card-title m-0 me-2">Loyers pour {{ date('now')|format_date(pattern="MM",locale='fr') }}</h5>#}
             <h5 class="card-title m-0 me-2">Loyers pour {{ date('now')|format_date(pattern='MMMM',locale='fr')|capitalize }}</h5>
             <div class="dropdown">
                 <button
@@ -15,9 +14,9 @@
                     <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+                    <a class="dropdown-item" href="javascript:void(0);">Tout les loyers</a>
                     <a class="dropdown-item" href="javascript:void(0);">Payés</a>
                     <a class="dropdown-item" href="javascript:void(0);">En attente de paiement</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Tout les loyers</a>
                 </div>
             </div>
         </div>

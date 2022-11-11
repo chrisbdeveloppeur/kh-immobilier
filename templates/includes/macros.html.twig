@@ -1,18 +1,21 @@
 {% macro quittance_status_payed_btn(quittance) %}
-    {% set quittance_render_url = path('quittances_render_quittance', {'quittance_id': quittance.id}) %}
-    {% if quittance.payed %}
-        {% set status_text = "<small>dernier loyer perçu</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
-        {% set status_badge_class = 'bg-label-success' %}
-        {% set status_icon_class = 'bx bxs-calendar-check' %}
-    {% elseif not quittance.payed %}
-        {% set status_text = "<small>dernier loyer en attente</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
-        {% set status_badge_class = 'bg-label-warning' %}
-        {% set status_icon_class = 'bx bx-calendar-exclamation' %}
+    {% if quittance != null %}
+        {% set quittance_render_url = path('quittances_render_quittance', {'quittance_id': quittance.id}) %}
+        {% if quittance.payed %}
+            {% set status_text = "<small>dernier loyer perçu</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
+            {% set status_badge_class = 'bg-label-success' %}
+            {% set status_icon_class = 'bx bxs-calendar-check' %}
+        {% elseif not quittance.payed %}
+            {% set status_text = "<small>dernier loyer en attente</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
+            {% set status_badge_class = 'bg-label-warning' %}
+            {% set status_icon_class = 'bx bx-calendar-exclamation' %}
+        {% endif %}
     {% else %}
-        {% set status_text = '' %}
-        {% set status_badge_class = '' %}
-        {% set status_icon_class = '' %}
+        {% set status_text = 'Aucune quittances trouvés' %}
+        {% set status_badge_class = 'bg-label-danger' %}
+        {% set status_icon_class = 'bx bxs-file' %}
     {% endif %}
+
     <span class="d-inline-block"
           tabindex="0"
           data-bs-toggle="popover"
@@ -90,7 +93,7 @@
                     {% if field_type_2 == 'entity' %}
                         <div class="input-group">
                             {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
-                            <a href="{{ path('locataire_new') }}" class="btn btn-outline-primary" type="button">Ajouter</a>
+                            <a href="{{ path('locataire_new') }}" class="btn btn-outline-primary" type="button">Créer un nouveau locataire</a>
                         </div>
                     {% else %}
                         <div class="select-group">
