@@ -149,6 +149,10 @@ class BienImmo
      */
     private $etatDesLieux;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $libelle;
 
     public function __construct()
     {
@@ -595,6 +599,24 @@ class BienImmo
     {
         $adresse = $this->getStreet().' '.$this->getCp().' '.$this->getCity().''.$this->getBuilding();
         return $adresse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * @param mixed $libelle
+     * @return BienImmo
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+        return $this;
     }
 
     /**

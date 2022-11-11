@@ -89,14 +89,15 @@ class BienImmoController extends AbstractController
         $form_prestataire = $this->createForm(PrestataireType::class);
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->editCopropriete($bienImmo, $form);
             $em->persist($bienImmo);
-            $solde = $form->get('solde')->getData();
+            $solde = $form->get('comptabilite')['solde']->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
 
-            if ($form->get('locataires')->getData() !== null){
-                $bienImmo->addLocataire($form->get('locataires')->getData());
+            if ($form->get('residents')['locataires']->getData() !== null){
+                $bienImmo->addLocataire($form->get('residents')['locataires']->getData());
             }
 
             $em->flush();
@@ -156,8 +157,8 @@ class BienImmoController extends AbstractController
         if ($this->isGranted('ROLE_SUPER_ADMIN') && $locataire){
             $form->get('user')->setData($locataire->getUser());
         }
-        $form->get('solde')->setData($bienImmo->getSolde()->getMalusQuantity());
-        $form->get('locataires')->setData($locataire);
+        $form->get('comptabilite')['solde']->setData($bienImmo->getSolde()->getMalusQuantity());
+        $form->get('residents')['locataires']->setData($locataire);
 
         $prestataire = new Prestataire();
         $form_prestataire = $this->createForm(PrestataireType::class, $prestataire);
@@ -179,14 +180,14 @@ class BienImmoController extends AbstractController
                 $bienImmo->getLocataires()->first()->setUser($form->get('user')->getData($bienImmo->getUser()));
             }
             $this->editCopropriete($bienImmo,$form);
-            $solde = $form->get('solde')->getData();
+            $solde = $form->get('comptabilite')['solde']->getData();
             $bienImmo->getSolde()->setMalusQuantity($solde);
-            if ($form->get('locataires')->getData() == null){
+            if ($form->get('residents')['locataires']->getData() == null){
                 if ($bienImmo->getLocataires()->first()){
                     $bienImmo->removeLocataire($bienImmo->getLocataires()->first());
                 }
             }else{
-                $bienImmo->addLocataire($form->get('locataires')->getData());
+                $bienImmo->addLocataire($form->get('residents')['locataires']->getData());
             }
 
             $this->getDoctrine()->getManager()->flush();
@@ -426,22 +427,22 @@ class BienImmoController extends AbstractController
 
 
     private function editCopropriete($bienImmo, $form){
-        $bienImmo->getCopropriete()->setName($form->get("coproName")->getData());
-        $bienImmo->getCopropriete()->setEmail($form->get("coproEmail")->getData());
-        $bienImmo->getCopropriete()->setPhone($form->get("coproPhone")->getData());
-        $bienImmo->getCopropriete()->setAdresse($form->get("coproAdresse")->getData());
-        $bienImmo->getCopropriete()->setContact($form->get("coproContact")->getData());
-        $bienImmo->getCopropriete()->setInfos($form->get("coproInfos")->getData());
+        $bienImmo->getCopropriete()->setName($form->get("copro")["coproName"]->getData());
+        $bienImmo->getCopropriete()->setEmail($form->get("copro")["coproEmail"]->getData());
+        $bienImmo->getCopropriete()->setPhone($form->get("copro")["coproPhone"]->getData());
+        $bienImmo->getCopropriete()->setAdresse($form->get("copro")["coproAdresse"]->getData());
+        $bienImmo->getCopropriete()->setContact($form->get("copro")["coproContact"]->getData());
+        $bienImmo->getCopropriete()->setInfos($form->get("copro")["coproInfos"]->getData());
         return $form;
     }
 
     private function initCoproprieteForm($bienImmo, $form){
-        $form->get("coproName")->setData($bienImmo->getCopropriete()->getName());
-        $form->get("coproEmail")->setData($bienImmo->getCopropriete()->getEmail());
-        $form->get("coproAdresse")->setData($bienImmo->getCopropriete()->getAdresse());
-        $form->get("coproContact")->setData($bienImmo->getCopropriete()->getContact());
-        $form->get("coproPhone")->setData($bienImmo->getCopropriete()->getPhone());
-        $form->get("coproInfos")->setData($bienImmo->getCopropriete()->getInfos());
+        $form->get("copro")["coproName"]->setData($bienImmo->getCopropriete()->getName());
+        $form->get("copro")["coproEmail"]->setData($bienImmo->getCopropriete()->getEmail());
+        $form->get("copro")["coproPhone"]->setData($bienImmo->getCopropriete()->getAdresse());
+        $form->get("copro")["coproAdresse"]->setData($bienImmo->getCopropriete()->getContact());
+        $form->get("copro")["coproContact"]->setData($bienImmo->getCopropriete()->getPhone());
+        $form->get("copro")["coproInfos"]->setData($bienImmo->getCopropriete()->getInfos());
         return $form;
     }
 

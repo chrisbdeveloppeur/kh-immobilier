@@ -1,7 +1,8 @@
 
     <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="card-title m-0 me-2">Loyers</h5>
+{#            <h5 class="card-title m-0 me-2">Loyers pour {{ date('now')|format_date(pattern="MM",locale='fr') }}</h5>#}
+            <h5 class="card-title m-0 me-2">Loyers pour {{ date('now')|format_date(pattern='MMMM',locale='fr')|capitalize }}</h5>
             <div class="dropdown">
                 <button
                         class="btn p-0"
@@ -23,9 +24,11 @@
         {% if break == true %}
             <div class="card-body overflow-hidden perfect-scrollbar" style="max-height: 350px">
                 <ul class="p-0 m-0">
-                    {% for quittance in quittances %}
-                        {% set last_quittance = quittances|sort((a, b) => a.date <=> b.date)|last %}
-                        {% include 'includes/biens_row.html.twig' %}
+                    {% for bien_immo in biens_immos %}
+                        {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
+                        {% if bien_immo.locataire %}
+                            {% include 'includes/biens_row.html.twig' %}
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>

@@ -5,7 +5,7 @@
         {% set status_badge_class = 'bg-label-success' %}
         {% set status_icon_class = 'bx bxs-calendar-check' %}
     {% elseif not quittance.payed %}
-        {% set status_text = "<small>dernier loyer non perçu</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
+        {% set status_text = "<small>dernier loyer en attente</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
         {% set status_badge_class = 'bg-label-warning' %}
         {% set status_icon_class = 'bx bx-calendar-exclamation' %}
     {% else %}
@@ -18,7 +18,7 @@
           data-bs-toggle="popover"
           data-bs-offset="0,14"
           data-bs-placement="top"
-          data-bs-trigger="focus"
+          data-bs-trigger="hover focus"
           data-bs-html="true"
           data-bs-content="{{ status_text }}">
         <span class="badge {{ status_badge_class }} rounded">
@@ -29,7 +29,6 @@
 
 
 {% macro form_template(form) %}
-    {{ form_start(form, {'attr':{'class':'form-to-submit'}}) }}
         {% for field in form %}
 
             {% if field.vars.block_prefixes.1 is defined %}
@@ -51,6 +50,12 @@
                 {% set unit = field.vars.attr['data-units'] %}
             {% endif %}
 
+            {% if field.vars.required == true %}
+                {% set is_required = '*' %}
+            {% else %}
+                {% set is_required = '' %}
+            {% endif %}
+
             <div class="mb-3">
                 {% if form_errors(field) %}
                     <span class="badge bg-label-danger">Erreur</span>
@@ -64,24 +69,18 @@
                 {% if field_type_1 == 'text' %}
                     {% if field_type_2 == 'textarea' %}
                         <div class="input-group">
-                            <span class="input-group-text">{{ form_label(field) }}</span>
+                            <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
                             {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-label':form_label(field), 'rows':5}} ) }}
                         </div>
-{#                    {% elseif field_type_2 == 'email' %}#}
-{#                    {% elseif field_type_2 == 'tel' %}#}
-{#                    {% elseif field_type_2 == 'password' %}#}
                     {% else %}
                         <div class="form-floating {{ form.vars.name }} {{ field.vars.name }}">
                             {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-describedby':'floatingInputHelp_'~field.vars.name}} ) }}
-                            <label for="{{ field.vars.full_name }}">{{ form_label(field) }}</label>
-                            {% if field.vars.help is defined %}
-                                <div id="floatingInputHelp_{{ field.vars.name }}" class="form-text">{{ field.vars.help }}</div>
-                            {% endif %}
+                            <label for="{{ field.vars.full_name }}">{{ is_required }}{{ form_label(field) }}</label>
                         </div>
                     {% endif %}
                 {% elseif field_type_1 == 'number' %}
                     <div class="input-group input-group-merge">
-                        <span class="input-group-text">{{ form_label(field) }}</span>
+                        <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
                         {{ form_widget(field, {'attr':{'class':'form-control has-text-centered'~field_error_class, 'placeholder':placeholder, 'type':'number'}} ) }}
                         {% if unit is defined %}
                             <span class="input-group-text">{{ unit }}</span>
@@ -95,7 +94,7 @@
                         </div>
                     {% else %}
                         <div class="select-group">
-                            <label for="{{ field.vars.full_name }}" class="form-label">{{ form_label(field) }}</label>
+                            <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
                             {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
                         </div>
                     {% endif %}
@@ -103,7 +102,9 @@
                 {% else %}
                     {{ form_widget(field, {'attr':{'class':''~field_error_class}}) }}
                 {% endif %}
+                {% if field.vars.help is defined %}
+                    <div id="floatingInputHelp_{{ field.vars.name }}" class="form-text">{{ field.vars.help }}</div>
+                {% endif %}
             </div>
         {% endfor %}
-    {{ form_end(form) }}
 {% endmacro %}

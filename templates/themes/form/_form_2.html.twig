@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier/</span>{% if bien_immo.id %}{{ bien_immo.adresse }}{% else %}Nouveau bien{% endif %}</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / </span>{% if bien_immo.id %}{{ bien_immo.adresse }}{% else %}Ajouter un nouveau bien{% endif %}</h4>
         <div class="row">
             <div class="accordion" id="accordionMain">
 
@@ -13,11 +13,22 @@
                     </div>
                 </div>
 
-                {{ include('themes/form/_immo/informations_base.html.twig') }}
-                {{ include('themes/form/_immo/informations_compta.html.twig') }}
-                {{ include('themes/form/_immo/informations_syndic.html.twig') }}
-                {{ include('themes/form/_immo/documents.html.twig') }}
-                {{ include('themes/form/_immo/parametres_gestion.html.twig') }}
+                {{ form_start(form, {'attr':{'class':'form-to-submit'}}) }}
+                {% for row in form %}
+                    {% if row.vars.name != '_token' %}
+                        {{ include('themes/form/_immo/form_section_generic.html.twig') }}
+                    {% else %}
+                        <div class="is-hidden">
+                            {{ include('themes/form/_immo/form_section_generic.html.twig') }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {{ form_end(form) }}
+
+{#                {{ include('themes/form/_immo/informations_compta.html.twig') }}#}
+{#                {{ include('themes/form/_immo/informations_syndic.html.twig') }}#}
+{#                {{ include('themes/form/_immo/documents.html.twig') }}#}
+{#                {{ include('themes/form/_immo/parametres_gestion.html.twig') }}#}
 
                 <div class="row justify-content-between">
                     <div class="col-auto">

@@ -11,6 +11,7 @@ use Symfony\Component\Cache\Adapter\AbstractAdapter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -76,152 +77,179 @@ class BienImmoType extends AbstractType
         unset($echeance[0]);
 
         $builder
-            ->add('locataires', EntityType::class,[
-                'attr' => ['class' => 'readonly'],
-                'label' => 'Locataire',
-                'class' => Locataire::class,
-                'mapped' => false,
-                'required' => false,
-                'placeholder' => 'Sans locataire',
-                'help' => $this->locataires_housed_msg,
-                'choice_attr' => function (Locataire $locataire){
-                    if (!$locataire->getLogement() || $locataire->getId() == $this->current_bien_immo_id ){
-                        return [''];
-                    }else{
-                        return ['disabled'=>'disabled'];
-                    }
-                },
-                'group_by' => function(Locataire $locataire){
-                    if (!$locataire->getLogement()){
-                        return 'Locataires non logés';
-                    }else{
-                        return 'Locataires logés';
-                    }
-                },
-                'query_builder' => $this->user_context
+            ->add($builder->create('informations_du_bien', FormType::class, ['inherit_data' => true,'label'=>'Informations du bien'])
+                ->add('libelle', TextType::class,[
+                    'mapped' => true,
+                    'label' => "Libelle",
+                    'help' => "Ce champs correspond à l'intitulé du bien afin de pouvoir l'identifier. Il n'est pas obligatoire",
+                    'attr' => [
+                        'class' => 'input is-small has-text-centered readonly',
+                        'placeholder' => 'Ex: Mon premier bien immo'
+                    ],
+                    'required' => false,
+                ])
+                ->add('street', TextType::class,[
+                    'label' => "Nom de la rue",
+                    'attr' => [
+                        'class' => 'input is-small has-text-centered readonly',
+                        'placeholder' => 'Ex: 2 Rue chose'
+                    ],
+                    'required' => true,
+                ])
+                ->add('building', TextType::class,[
+                    'label' => "Complément d'adresse",
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'help' => 'Bâtiment / Étage / Escalier / Interphone',
+                    'required' => false,
+                ])
+                ->add('cp', TextType::class,[
+                    'label' => "Code postal",
+                    'invalid_message' => 'Valeur incorrecte',
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'required' => true,
+                ])
+                ->add('city', TextType::class,[
+                    'label' => "Ville",
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'required' => true,
+                ])
+                ->add('type', ChoiceType::class,[
+                    'label' => "Type de logement",
+                    'choices' => [
+                        'Studio' => 'Studio',
+                        'T1' => 'T1',
+                        'T2' => 'T2',
+                        'T3' => 'T3',
+                        'T4' => 'T4',
+                        'T5' => 'T5',
+                        'T6' => 'T6',
+                    ],
+                    'invalid_message' => 'Valeur incorrecte',
+                    'attr' => ['class' => 'has-text-centered readonly'],
+                    'required' => true,
+                ])
+                ->add('superficie', NumberType::class,[
+                    'label' => "Superficie",
+                    'attr' => [
+                        'data-units' => 'm²',
+                        'placeholder' => '50'
+                    ],
+                    'required' => true,
+                ])
+            )
 
-            ])
-            ->add('street', TextType::class,[
-                'label' => "Nom de la rue*",
-                'attr' => [
-                    'class' => 'input is-small has-text-centered readonly',
-                    'placeholder' => 'Ex: 2 Rue chose'
-                ],
-                'validation_groups' => 'adresse'
-            ])
-            ->add('building', TextType::class,[
-                'label' => "Complément d'adresse",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'help' => 'Bâtiment / Étage / Escalier / Interphone',
-                'required' => false,
-                'validation_groups' => 'adresse'
-            ])
-            ->add('cp', TextType::class,[
-                'label' => "Code postal*",
-                'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'validation_groups' => 'adresse'
-            ])
-            ->add('city', TextType::class,[
-                'label' => "Ville*",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'validation_groups' => 'adresse'
-            ])
-            ->add('type', ChoiceType::class,[
-                'label' => "Type de logement",
-                'choices' => [
-                    'Studio' => 'Studio',
-                    'T1' => 'T1',
-                    'T2' => 'T2',
-                    'T3' => 'T3',
-                    'T4' => 'T4',
-                    'T5' => 'T5',
-                    'T6' => 'T6',
-                ],
-                'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'has-text-centered readonly'],
-            ])
-            ->add('superficie', NumberType::class,[
-                'label' => "Superficie",
-                'attr' => [
-                    'data-units' => 'm²',
-                    'placeholder' => '50'
-                ],
-                'required' => true,
-            ])
-            ->add('loyer_hc', NumberType::class,[
-                'label' => "Loyer HC",
-                'help' => 'Loyer sans les charges',
-                'invalid_message' => 'Valeur incorrecte',
-                'attr' => [
-                    'data-units' => '€',
-                    'placeholder' => '700'
-                ],
-            ])
-            ->add('charges', NumberType::class,[
-                'label' => "Charges",
-                'invalid_message' => 'Valeur incorrecte',
-                'attr' => [
-                    'data-units' => '€',
-                    'placeholder' => '50'
-                ],
-            ])
-            ->add('echeance', ChoiceType::class,[
-                'label' => "Echéance*",
-                'choices' => $echeance,
-                'help' => 'Echéance de paiement',
-                'invalid_message' => 'Valeur incorrecte',
-                'attr' => ['class' => 'has-text-centered readonly'],
-            ])
+            ->add($builder->create('comptabilite', FormType::class, ['inherit_data' => true,'label'=>'Comptabilité'])
+                ->add('loyer_hc', NumberType::class,[
+                    'label' => "Loyer HC",
+                    'help' => 'Loyer sans les charges',
+                    'invalid_message' => 'Valeur incorrecte',
+                    'attr' => [
+                        'data-units' => '€',
+                        'placeholder' => '700'
+                    ],
+                    'required' => true,
+                ])
+                ->add('charges', NumberType::class,[
+                    'label' => "Charges",
+                    'invalid_message' => 'Valeur incorrecte',
+                    'attr' => [
+                        'data-units' => '€',
+                        'placeholder' => '50'
+                    ],
+                    'required' => true,
+                ])
+                ->add('echeance', ChoiceType::class,[
+                    'label' => "Echéance",
+                    'choices' => $echeance,
+                    'help' => 'Echéance de paiement',
+                    'invalid_message' => 'Valeur incorrecte',
+                    'attr' => ['class' => 'has-text-centered readonly'],
+                    'required' => true,
+                ])
 
-            ->add('solde', NumberType::class, [
-                'mapped' => false,
-                'label' => "Solde",
-                'invalid_message' => 'Valeur incorrecte',
-                'attr' => [
-                    'data-units' => '€',
-                    'placeholder' => '750'
-                ],
-            ])
+                ->add('solde', NumberType::class, [
+                    'mapped' => false,
+                    'label' => "Solde",
+                    'invalid_message' => 'Valeur incorrecte',
+                    'help' => 'Si cas échéhant, indiquez le montant restant à la charge du locataire',
+                    'attr' => [
+                        'data-units' => '€',
+                        'placeholder' => '750'
+                    ],
+                    'required' => false,
+                ])
+            )
 
+            ->add($builder->create('residents', FormType::class, ['inherit_data' => true,'label'=>'Informations sur les résidents'])
+                ->add('locataires', EntityType::class,[
+                    'attr' => ['class' => 'readonly'],
+                    'label' => 'Locataire',
+                    'class' => Locataire::class,
+                    'mapped' => false,
+                    'required' => false,
+                    'placeholder' => 'Sans locataire',
+                    'help' => $this->locataires_housed_msg,
+                    'choice_attr' => function (Locataire $locataire){
+                        if (!$locataire->getLogement() || $locataire->getId() == $this->current_bien_immo_id ){
+                            return [''];
+                        }else{
+                            return ['disabled'=>'disabled'];
+                        }
+                    },
+                    'group_by' => function(Locataire $locataire){
+                        if (!$locataire->getLogement()){
+                            return 'Locataires non logés';
+                        }else{
+                            return 'Locataires logés';
+                        }
+                    },
+                    'query_builder' => $this->user_context
+                ])
+            )
 
             // FORM FIELDS FOR COPROPRIETE RELATION ENTITY
-            ->add('coproName', TextType::class,[
-                'mapped' => false,
-                'label' => "Nom du Syndic/Syndicat",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'required' => false,
-            ])
-            ->add('coproContact', TextType::class,[
-                'mapped' => false,
-                'label' => "Contact / Référent",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'required' => false,
-            ])
-            ->add('coproEmail', EmailType::class,[
-                'mapped' => false,
-                'label' => "Adresse Email",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'required' => false,
-            ])
-            ->add('coproPhone', TelType::class,[
-                'mapped' => false,
-                'label' => "Numéro de téléphone",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'required' => false,
-            ])
-            ->add('coproAdresse', TextType::class,[
-                'mapped' => false,
-                'label' => "Adresse postal",
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
-                'required' => false,
-            ])
-            ->add('coproInfos',TextareaType::class,[
-                'mapped' => false,
-                'label' => "Informations complémentaires",
-                'attr' => ['class' => 'textarea is-small has-text-centered readonly'],
-                'required' => false,
-            ]);
+            ->add($builder->create('copro', FormType::class, ['inherit_data' => true,'label'=>'Informations sur la copropriété'])
+                ->add('coproName', TextType::class,[
+                    'mapped' => false,
+                    'label' => "Nom du Syndic/Syndicat",
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'required' => false,
+                ])
+                ->add('coproContact', TextType::class,[
+                    'mapped' => false,
+                    'label' => "Contact / Référent",
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'required' => false,
+                ])
+                ->add('coproEmail', EmailType::class,[
+                    'mapped' => false,
+                    'label' => "Adresse Email",
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'required' => false,
+                ])
+                ->add('coproPhone', TelType::class,[
+                    'mapped' => false,
+                    'label' => "Numéro de téléphone",
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'required' => false,
+                ])
+                ->add('coproAdresse', TextType::class,[
+                    'mapped' => false,
+                    'label' => "Adresse postal",
+                    'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                    'required' => false,
+                ])
+                ->add('coproInfos',TextareaType::class,[
+                    'mapped' => false,
+                    'label' => "Informations complémentaires sur la coprorpiété",
+                    'attr' => ['class' => 'textarea is-small has-text-centered readonly'],
+                    'required' => false,
+                ])
+            );
+
+
+
+
 
         if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
             $builder->add('user', EntityType::class,[
