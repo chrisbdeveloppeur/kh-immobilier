@@ -8,6 +8,7 @@ use App\Entity\BienImmo;
 use App\Entity\User;
 use App\Repository\BienImmoRepository;
 use App\Repository\LocataireRepository;
+use App\Repository\PrestataireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Security;
@@ -17,15 +18,23 @@ class AdaptByUser extends AbstractController
     private $user;
     private $bienImmoRepository;
     private $locataireRepository;
+    private $prestataireRepository;
     protected $request;
 
 
-    public function __construct(RequestStack $requestStack, Security $security, BienImmoRepository $bienImmoRepository, LocataireRepository $locataireRepository)
+    public function __construct(
+        RequestStack $requestStack,
+        Security $security,
+        BienImmoRepository $bienImmoRepository,
+        LocataireRepository $locataireRepository,
+        PrestataireRepository $prestataireRepository
+    )
     {
         $this->request = $requestStack->getCurrentRequest();
         $this->user = $security->getUser();
         $this->bienImmoRepository = $bienImmoRepository;
         $this->locataireRepository = $locataireRepository;
+        $this->prestataireRepository = $prestataireRepository;
     }
 
     public function getAllBiensImmos(User $user)
@@ -46,8 +55,16 @@ class AdaptByUser extends AbstractController
         }else{
             $all_locataires = $this->locataireRepository->findBy(['user' => $this->user->getId()]);
         }
-
         return $all_locataires;
+    }
+
+    public function getAllPrestataires(User $user){
+        if ( $this->isGranted('ROLE_SUPER_ADMIN')){
+            $all_prestataires = $this->prestataireRepository->findAll();
+        }else{
+            $all_prestataires = $this->prestataireRepository->findByUser($user);
+        }
+        return $all_prestataires;
     }
 
     public function redirectIfNotAuth($entity)

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Prestataire;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -36,15 +37,17 @@ class PrestataireRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Prestataire
+
+    public function findByUser(User $user): ?Prestataire
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->where('u = :user')
+            ->join('p.bien_immo','b')
+            ->join('b.user','u')
+            ->setParameter('user', $user)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
+
 }
