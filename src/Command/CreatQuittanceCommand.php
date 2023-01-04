@@ -20,8 +20,8 @@ class CreatQuittanceCommand extends Command
 {
     use QuittancesTrait;
 
-    protected static $defaultName = 'creat:quittance';
-    protected static $defaultDescription = 'Add a short description for your command';
+    protected static $defaultName = 'create:quittances';
+    protected static $defaultDescription = 'Création de quittance automatique - A programmer avec des Crons Jobs';
     private $mailer;
     private $quittancesController;
     private $locataireRepository;
