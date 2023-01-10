@@ -4,14 +4,18 @@
 {% block nav_aside %}{% endblock %}
 {% block body %}
     <!-- Content -->
-  {% if not registrationForm.vars.valid %}
-    <div class="tag is-danger">
-      {{ form_errors(registrationForm) }}
-    </div>
-  {% endif %}
   <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
       <div class="authentication-inner">
+
+        {% if not registrationForm.vars.valid %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              Le formulaire contien des erreurs
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              </button>
+            </div>
+        {% endif %}
+
         <!-- Register Card -->
         <div class="card">
           <div class="card-body">
@@ -32,21 +36,41 @@
               <div class="mb-3">
                 {{ form_label(registrationForm.email) }}
                 {{ form_widget(registrationForm.email) }}
+                {% if registrationForm.email.vars.errors %}
+                  <div class="form-text text-danger">
+                    {{ form_errors(registrationForm.email) }}
+                  </div>
+                {% endif %}
               </div>
 
               <div class="mb-3">
                 {{ form_label(registrationForm.lastName) }}
                 {{ form_widget(registrationForm.lastName) }}
+                {% if registrationForm.lastName.vars.errors %}
+                  <div class="form-text text-danger">
+                    {{ form_errors(registrationForm.lastName) }}
+                  </div>
+                {% endif %}
               </div>
 
               <div class="mb-3">
                 {{ form_label(registrationForm.firstName) }}
                 {{ form_widget(registrationForm.firstName) }}
+                {% if registrationForm.firstName.vars.errors %}
+                  <div class="form-text text-danger">
+                    {{ form_errors(registrationForm.firstName) }}
+                  </div>
+                {% endif %}
               </div>
 
               <div class="mb-3">
                 {{ form_label(registrationForm.phoneNumber) }}
                 {{ form_widget(registrationForm.phoneNumber) }}
+                {% if registrationForm.phoneNumber.vars.errors %}
+                  <div class="form-text text-danger">
+                    {{ form_errors(registrationForm.phoneNumber) }}
+                  </div>
+                {% endif %}
               </div>
 
               <div class="mb-3 form-password-toggle">
@@ -55,14 +79,24 @@
                   {{ form_widget(registrationForm.plainPassword.first) }}
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
+                {% if registrationForm.plainPassword.first.vars.errors %}
+                  <div class="form-text text-danger">
+                    {{ form_errors(registrationForm.plainPassword.first) }}
+                  </div>
+                {% endif %}
               </div>
 
-              <div class="mb-3 form-password-second-toggle">
+              <div class="mb-3 form-password-toggle">
                 {{ form_label(registrationForm.plainPassword.second) }}
                 <div class="input-group input-group-merge">
                   {{ form_widget(registrationForm.plainPassword.second) }}
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
+                {% if registrationForm.plainPassword.second.vars.errors %}
+                  <div class="form-text text-danger">
+                    {{ form_errors(registrationForm.plainPassword.first) }}
+                  </div>
+                {% endif %}
               </div>
 
               <div class="mb-3">

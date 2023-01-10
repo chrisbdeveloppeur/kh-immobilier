@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +16,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
@@ -29,14 +31,10 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordHasherInterface $passwordEncoder, ValidatorInterface $validator, EntityManagerInterface $em): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
-//        $password = bin2hex(random_bytes(3));
-//        dump($password);
-//        $form->get('plainPassword')['first']->setData($password);
-//        $form->get('plainPassword')['second']->setData($password);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -52,9 +50,10 @@ class RegistrationController extends AbstractController
                 $linkMail = "https://mail.google.com/";
             }
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $user->setRoles(["ROLE_PROPRIETAIRE"]);
+
+            $em->persist($user);
+            $em->flush();
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -62,25 +61,25 @@ class RegistrationController extends AbstractController
                     ->from(new Address('admin@kh-immobilier.com', 'admin mail'))
                     ->to($user->getEmail())
                     ->subject('Confirmation de votre Email')
-                    ->htmlTemplate('security/auth-register-basic.html.twig'),
+                    ->htmlTemplate('registration/confirmation_email.html.twig'),
                 $plainPassword
             );
 
             // do anything else you need here, like send an email
             $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="'.$linkMail.'" target="_blank">' . $user->getEmail() . '</a>');
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_login');
 
-            //return $guardHandler->authenticateUserAndHandleSuccess(
-            //    $user,
-            //    $request,
-            //    $authenticator,
-            //    'main' // firewall name in security.yaml
-            //);
+        }
+
+        $errors = $validator->validate($form);
+        if (count($errors) == 0) {
+            $errors = null;
         }
 
         return $this->render('security/auth-register-basic.html.twig', [
             'registrationForm' => $form->createView(),
+            'errors' => $errors
         ]);
     }
 

@@ -335,10 +335,19 @@ form.quittances{
   //clip-path: polygon(250px -10%, 110% 8%, 110% 110%, -10% 110%, -10% -10%)
 }
 
+.flash-msg{
+  position: fixed !important;
+  bottom: 0;
+}
+
 .filter-bw{
   filter : grayscale(100%) !important;
   -webkit-filter: grayscale(100%) !important;
   transition: .5s;
+}
+
+.input-border-danger{
+  border: $danger !important;
 }
 
 .remove-filter-bw-onhover{

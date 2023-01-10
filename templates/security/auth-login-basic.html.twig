@@ -4,12 +4,18 @@
 {% block nav_aside %}{% endblock %}
 {% block body %}
     <!-- Content -->
-  {% if error %}
-    <div class="tag is-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-  {% endif %}
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
+
+          {% if error %}
+            <div class="alert alert-danger alert-dismissible">
+              {{ error.messageKey|trans(error.messageData, 'security') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              </button>
+            </div>
+          {% endif %}
+
           <!-- Register -->
           <div class="card">
             <div class="card-body">
