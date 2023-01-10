@@ -12,8 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
@@ -27,9 +28,8 @@ class RegistrationController extends AbstractController
 
     /**
      * @Route("/register", name="app_register")
-     * @IsGranted("ROLE_SUPER_ADMIN")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -40,13 +40,10 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $form->get('plainPassword')->getData();
+            $plainPassword = $form->get('plainPassword')->getData();
             // encode the plain password
             $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $password
-                )
+                $passwordEncoder->hashPassword($user, $plainPassword)
             );
 
             $mailSociety =  explode('@', $user->getEmail()) ;
@@ -64,10 +61,9 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('admin@kh-immobilier.com', 'admin mail'))
                     ->to($user->getEmail())
-//                    ->to('kenshin91cb@gmail.com')
                     ->subject('Confirmation de votre Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig'),
-                $password
+                    ->htmlTemplate('security/auth-register-basic.html.twig'),
+                $plainPassword
             );
 
             // do anything else you need here, like send an email
@@ -83,7 +79,7 @@ class RegistrationController extends AbstractController
             //);
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('security/auth-register-basic.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

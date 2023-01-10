@@ -28,15 +28,13 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Adresse Email*',
                 'required' => true,
                 'invalid_message' => 'Adresse Email invalide',
+                'attr' => [
+                    'class' => 'form-control',
+                    'autofocus' => 'true',
+                    'placeholder' => 'Entrer votre email'
+                ],
             ])
-            ->add('gender', ChoiceType::class,[
-                'label' => 'Sexe*',
-                'required' => true,
-                'choices' => [
-                    'Monsieur' => 'M.',
-                    'Madame' => 'Mme.'
-                ]
-            ])
+
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom*',
                 'required' => true,
@@ -47,7 +45,11 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => [
+                    'class' => 'form-control',
+                    'autofocus' => 'true',
+                    'placeholder' => 'Entrer votre prénom'
+                ],
             ])
             ->add('lastName', TextType::class,[
                 'label' => 'Nom*',
@@ -59,12 +61,21 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Valeur non autorisée',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered'],
+                'attr' => [
+                    'class' => 'form-control',
+                    'autofocus' => 'true',
+                    'placeholder' => 'Entrer votre nom'
+                ],
             ])
             ->add('phoneNumber', TelType::class,[
-                'label' => 'Tel',
+                'label' => 'N° de Téléphone',
                 'required' => false,
                 'invalid_message' => 'Ce numéro n\'est pas valide',
+                'attr' => [
+                    'class' => 'form-control',
+                    'autofocus' => 'true',
+                    'placeholder' => 'Entrer votre numéro de téléphone'
+                ],
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -72,9 +83,12 @@ class RegistrationFormType extends AbstractType
                 'required' => true,
                 'label' => 'Mot de passe*',
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
                 'first_options'  => [
                     'label' => 'Mot de passe*',
+                    'attr' => [
+                        'autocomplete' => 'new-password',
+                        'class' => 'form-control',
+                    ],
                     'constraints' => [
                         new NotBlank([
                             'message' => 'Veuillez indiquer un mot de passe',
@@ -88,6 +102,10 @@ class RegistrationFormType extends AbstractType
                 ],
                 'second_options' => [
                     'label' => 'Confirmer votre mot de passe*',
+                    'attr' => [
+                        'autocomplete' => 'new-password',
+                        'class' => 'form-control',
+                    ],
                 ],
 
             ])

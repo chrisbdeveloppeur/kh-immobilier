@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Connexion{% endblock %}
 {% block nav_aside %}{% endblock %}
 {% block body %}
     <!-- Content -->
@@ -14,19 +14,16 @@
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
-              <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
+              <div class="is-flex justify-content-center">
+                <a href="/" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
-
+                      <img style="width: 300px" src="{{ asset('images/KH_NOIR_SANS-FOND.png') }}" alt="">
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">King d'Home<br>Immobilier</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <!--
-              <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-              -->
-              <p class="mb-4">Veuillez indiquez vos identifiants de connexion</p>
+
+              <p class="mb-4 has-text-centered">Connectez vous avec vos identifiants</p>
 
               <form class="mb-3" method="POST">
                 <div class="mb-3">
@@ -36,7 +33,7 @@
                           value="{{ last_username }}"
                           name="email"
                           id="inputEmail"
-                          class="form-control input is-small has-text-centered"
+                          class="form-control input has-text-centered"
                           autocomplete="email"
                           required
                           autofocus>
@@ -45,7 +42,7 @@
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Mot de passe</label>
                     <a href="auth-forgot-password-basic.html">
-                      <small>Forgot Password?</small>
+                      <small>Mot de passe oublié ?</small>
                     </a>
                   </div>
                   <div class="input-group input-group-merge">
@@ -53,7 +50,7 @@
                             type="password"
                             name="password"
                             id="inputPassword"
-                            class="form-control input is-small has-text-centered"
+                            class="form-control input has-text-centered"
                             autocomplete="current-password"
                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                             required
@@ -64,7 +61,7 @@
                 <div class="mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember-me" />
-                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                    <label class="form-check-label" for="remember-me"> Se souvenir de moi </label>
                   </div>
                 </div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -74,9 +71,9 @@
               </form>
 
               <p class="text-center">
-                <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
-                  <span>Create an account</span>
+                <span>Vous n'avez pas encore de compte ?</span>
+                <a href="{{ path('app_register') }}">
+                  <span>Créer mon compte</span>
                 </a>
               </p>
             </div>

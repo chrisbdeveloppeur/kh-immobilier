@@ -2,13 +2,6 @@
     <div class="is-flex is-justify-content-space-between">
 
         <div class="tags mb-0 bien-immo logement locataire is-hidden">
-            <span class="tag is-size-6-touch is-dark">
-                {% if locataire.gender == 'Couple' %}
-                    <b>{{ locataire.gender }} {{ locataire.lastName }}</b>
-                               {% else %}
-                    <b>{{ locataire.gender }} {{ locataire }}</b>
-                {% endif %}
-            </span>
 
             <div class="tag is-size-6-touch button hovertext" data-hover="Modifier les informations">
                 <input id="switchExample" type="checkbox" name="switchExample" class="switch is-primary is-small is-rtl form-edit-btn">

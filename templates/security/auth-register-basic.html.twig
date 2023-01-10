@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement{% endblock %}
+{% block nav_aside %}{% endblock %}
+{% block body %}
+    <!-- Content -->
+  {% if not registrationForm.vars.valid %}
+    <div class="tag is-danger">
+      {{ form_errors(registrationForm) }}
+    </div>
+  {% endif %}
+  <div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+      <div class="authentication-inner">
+        <!-- Register Card -->
+        <div class="card">
+          <div class="card-body">
+            <!-- Logo -->
+            <div class="is-flex justify-content-center">
+              <a href="/" class="app-brand-link gap-2">
+                <span class="app-brand-logo demo">
+                    <img style="width: 300px" src="{{ asset('images/KH_NOIR_SANS-FOND.png') }}" alt="">
+                </span>
+              </a>
+            </div>
+            <!-- /Logo -->
+
+            <p class="mb-4 has-text-centered">Création de votre compte kingd'home immobilier</p>
+
+            {{ form_start(registrationForm) }}
+
+              <div class="mb-3">
+                {{ form_label(registrationForm.email) }}
+                {{ form_widget(registrationForm.email) }}
+              </div>
+
+              <div class="mb-3">
+                {{ form_label(registrationForm.lastName) }}
+                {{ form_widget(registrationForm.lastName) }}
+              </div>
+
+              <div class="mb-3">
+                {{ form_label(registrationForm.firstName) }}
+                {{ form_widget(registrationForm.firstName) }}
+              </div>
+
+              <div class="mb-3">
+                {{ form_label(registrationForm.phoneNumber) }}
+                {{ form_widget(registrationForm.phoneNumber) }}
+              </div>
+
+              <div class="mb-3 form-password-toggle">
+                {{ form_label(registrationForm.plainPassword.first) }}
+                <div class="input-group input-group-merge">
+                  {{ form_widget(registrationForm.plainPassword.first) }}
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+              </div>
+
+              <div class="mb-3 form-password-second-toggle">
+                {{ form_label(registrationForm.plainPassword.second) }}
+                <div class="input-group input-group-merge">
+                  {{ form_widget(registrationForm.plainPassword.second) }}
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
+                  <label class="form-check-label" for="terms-conditions">
+                    J'accepte la
+                    <a href="javascript:void(0);">politique de confidentialité et les conditions</a>
+                  </label>
+                </div>
+              </div>
+              <button class="btn btn-primary d-grid w-100">S'inscrire</button>
+
+            {{ form_end(registrationForm) }}
+
+            <p class="text-center">
+              <span>Vous avez déjà un compte ?</span>
+              <a href="{{ path('app_login') }}">
+                <span>Connectez-vous</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <!-- Register Card -->
+      </div>
+    </div>
+  </div>
+
+    <!-- / Content -->
+{% endblock %}

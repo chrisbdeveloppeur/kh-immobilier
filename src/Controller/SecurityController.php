@@ -7,6 +7,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -16,14 +17,14 @@ class SecurityController extends AbstractController
     /**
      * @Route("/", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder): Response
+    public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
         $superAdmin = $userRepository->findBy(['email' => 'admin@kh-immobilier.com']);
         if (!$superAdmin){
             $renewSuperAdmin = new User();
             $renewSuperAdmin->setRoles(['ROLE_SUPER_ADMIN']);
             $renewSuperAdmin->setEmail('admin@kh-immobilier.com');
-            $password = $encoder->encodePassword($renewSuperAdmin,'121090cb.K4gur0');
+            $password = $passwordHasher->hashPassword($renewSuperAdmin,'121090cb.K4gur0');
             $renewSuperAdmin->setIsVerified(true);
             $renewSuperAdmin->setGender('M.');
             $renewSuperAdmin->setLastName('BOUNGOU');

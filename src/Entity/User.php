@@ -56,11 +56,6 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $gender;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $phone_number;
 
     /**
@@ -217,18 +212,6 @@ class User implements UserInterface
     public function setLastName(string $last_name): self
     {
         $this->last_name = strtoupper($last_name) ;
-
-        return $this;
-    }
-
-    public function getGender(): ?string
-    {
-        return $this->gender;
-    }
-
-    public function setGender(?string $gender): self
-    {
-        $this->gender = $gender;
 
         return $this;
     }
