@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\BienImmo;
 use App\Entity\Quittance;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -35,6 +36,20 @@ class QuittanceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function getLastQuittance(BienImmo $bienImmo)
+    {
+        return $this->createQueryBuilder('q')
+//            ->join('q.bien_immo', 'bien_immo')
+            ->andWhere('q.bien_immo = :val')
+            ->setParameter('val', $bienImmo)
+            ->orderBy('q.created_date', 'DESC')
+//            ->groupBy('bien_immo')
+//            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 

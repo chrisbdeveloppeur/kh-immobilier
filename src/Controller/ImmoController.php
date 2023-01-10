@@ -42,12 +42,21 @@ class ImmoController extends AbstractController
             $all_locataires = $locataireRepository->findBy(['user' => $user->getId()]);
         }
 
-        $quittances = $quittanceRepository->findByUser($this->getUser());
+        $quittances = $quittanceRepository->findByUser($user);
+        $lastQuittances = [];
+        foreach ($all_biens_immos as $bien){
+            $lastQuittance = $quittanceRepository->getLastQuittance($bien);
+            if (isset($lastQuittance[0])){
+                $lastQuittances[] = $lastQuittance[0];
+            }
+        }
+//        dd($quittances);
 
         return $this->render('accueil.html.twig', [
             "biens_immos" => $all_biens_immos,
             "locataires" => $all_locataires,
             "quittances" => $quittances,
+            "lastQuittances" => $lastQuittances
         ]);
     }
 

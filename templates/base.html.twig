@@ -693,7 +693,26 @@
         let perfectScrollbarElements = document.querySelectorAll('.perfect-scrollbar');
         perfectScrollbarElements.forEach(function (el) {
             new PerfectScrollbar(el, {
-                wheelPropagation: false
+                wheelPropagation: false,
+                wheelSpeed: .3
+            });
+        });
+
+        let perfectScrollbarVerticalElements = document.querySelectorAll('.perfect-scrollbar-vertical');
+        perfectScrollbarVerticalElements.forEach(function (el) {
+            new PerfectScrollbar(el, {
+                suppressScrollX: true,
+                wheelPropagation: false,
+                wheelSpeed: .3
+            });
+        });
+
+        let perfectScrollbarHorizontalElements = document.querySelectorAll('.perfect-scrollbar-horizontal');
+        perfectScrollbarHorizontalElements.forEach(function (el) {
+            new PerfectScrollbar(el, {
+                suppressScrollY: true,
+                wheelPropagation: false,
+                wheelSpeed: .3
             });
         });
 

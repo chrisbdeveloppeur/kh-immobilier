@@ -67,6 +67,7 @@
             </div>
             <!-- Loyers -->
             <div class="col-12 col-lg-4 order-2 mb-4">
+
                 {% set break = false %}
                 {% for bien_immo in biens_immos %}
                     {% if bien_immo.quittances|length > 0 %}
@@ -74,7 +75,6 @@
                     {% endif %}
                 {% endfor %}
                 {{ include('includes/block_loyers.html.twig') }}
-
 
             </div>
             <!--/ Loyers -->
@@ -173,12 +173,21 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="d-flex flex-column align-items-center gap-1">
                                 <h2 class="mb-2">{{ biens_immos|length }}</h2>
-                                <span>Propriétés</span>
+                                <span>Nb de Propriétés</span>
                             </div>
-                            <div id="statistiqueLoyers"></div>
+                            <div class="is-flex is-flex-direction-column align-items-center">
+                                <div id="statistiqueLoyers"></div>
+                                <div class="mt-1 has-text-centered">
+                                    <a href="{{ path('quittances_index') }}" type="button" class="btn btn-sm btn-outline-primary">
+                                        Voir toute les quittances
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        <p class="h5 mb-3 text-muted">Les dernières quittances</p>
                         <ul class="p-0 m-0">
-                            {% for quittance in quittances %}
+                            {% for quittance in lastQuittances %}
+                                {% if loop.index < 5 %}
                                 <li class="d-flex mb-4 pb-1">
                                     <div class="avatar flex-shrink-0 me-3">
                                         <span class="avatar-initial rounded bg-label-primary">
@@ -188,13 +197,14 @@
                                     <div class="d-flex w-100 align-items-center gap-2">
                                         <div class="me-2 w-50">
                                             <h6 class="mb-0 nowrap-text overflow-ellipsis" title="{{ quittance.bienimmo.adresse }}">{{ quittance.bienimmo.adresse }}</h6>
-                                            <small class="text-muted" title="{{ quittance.date|format_date('short') }}">{{ quittance.date|format_date('short') }}</small>
+                                            <small class="text-muted" title="Quittance éditée le {{ quittance.createddate|format_date('short') }}">Edité le {{ quittance.createddate|format_date('short') }}</small>
                                         </div>
                                         <div class="user-progress w-25">
                                             <small class="fw-semibold">{{ quittance.loyerttc }}€</small>
                                         </div>
                                     </div>
                                 </li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     </div>

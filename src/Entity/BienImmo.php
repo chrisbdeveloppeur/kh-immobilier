@@ -391,6 +391,11 @@ class BienImmo
         return $this;
     }
 
+    public function getLastQuittance(): Quittance
+    {
+        return $this->getQuittances()->first();
+    }
+
     public function getEcheance(): ?int
     {
         return $this->echeance;
@@ -597,7 +602,11 @@ class BienImmo
 
     public function getAdresse()
     {
-        $adresse = $this->getStreet().' '.$this->getCp().' '.$this->getCity().''.$this->getBuilding();
+        if ($this->getLibelle()){
+            $adresse = $this->getLibelle();
+        }else{
+            $adresse = $this->getStreet().', '.$this->getCp().' '.$this->getCity().', '.$this->getBuilding();
+        }
         return $adresse;
     }
 
