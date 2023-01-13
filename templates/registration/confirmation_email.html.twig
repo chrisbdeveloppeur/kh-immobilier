@@ -1,9 +1,29 @@
-<h1>Hello ! Merci de bien vouloir confirmer votre adresse mail</h1>
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        font-family: sans-serif;
+    }
+</style>
+<body>
+
+</body>
+</html>
+
+<h1>Bonjour,</h1>
+
+<h2>Voici votre mail de confirmation</h2>
 
 <p>
-    Veuillez cliquer sur le lien suivant pour confirmer votre Email : <br><br>
+    Veuillez cliquer sur le lien suivant pour confirmer votre Adresse Email : <br><br>
     Votre identifiant : <b>{{ user.email }}</b> <br>
-{#    Votre mot de passe temporaire : <b>{{ password }}</b><br>#}
     <a href="{{ signedUrl }}">Confirmer mon adresse mail</a>.<br>
     Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
 </p>

@@ -10,7 +10,17 @@
 
           {% if error %}
             <div class="alert alert-danger alert-dismissible">
-              {{ error.messageKey|trans(error.messageData, 'security') }}
+              <span>{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+              <p>
+                  <small>
+                    Vous rencontrez des problème pour recevoir votre mail de confirmation ?
+                  </small>
+                {% if error.code == constant('App\\Constant\\CodeErreurConstant::EMAIL_NO_CONFIRMED') %}
+                    <small>
+                      vérifiez vos SPAM ou <a href="{{ path('app_send_mail_confirm') }}">recevez à nouveau le mail de confirmation</a>
+                    </small>
+                {% endif %}
+              </p>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
               </button>
             </div>

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mail de confirmation{% endblock %}
+{% block nav_aside %}{% endblock %}
+{% block body %}
+    <!-- Content -->
+    <div class="container-xxl zindex-0" style="z-index: 0 !important;">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+
+          {% if error is defined and error%}
+            <div class="alert alert-danger alert-dismissible">
+              <span>{{ error.message }}</span>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+        {% endif %}
+
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="is-flex justify-content-center">
+                <a href="/" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+                      <img style="width: 300px" src="{{ asset('images/KH_NOIR_SANS-FOND.png') }}" alt="">
+                  </span>
+                </a>
+              </div>
+              <!-- /Logo -->
+
+              <p class="mb-4 has-text-centered">Envoyer un mail de confirmation</p>
+
+              {{ form_start(form) }}
+
+              {{ form_row(form.email) }}
+
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+              <div class="mb-3">
+                <button class="btn btn-primary d-grid w-100" type="submit">Envoyer</button>
+              </div>
+
+              {{ form_end(form) }}
+
+              <p class="text-center mt-3">
+                <span>Vous avez déjà un compte ?</span>
+                <a href="{{ path('app_login') }}">
+                  <span>Connectez-vous</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          <!-- /Register -->
+        </div>
+      </div>
+    </div>
+
+    <!-- / Content -->
+{% endblock %}

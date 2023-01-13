@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Constant\CodeErreurConstant;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -81,7 +82,7 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
     public function checkCredentials($credentials, UserInterface $user)
     {
         if (!$user->isVerified()) {
-            throw new CustomUserMessageAuthenticationException('Veuillez valider votre inscription via le mail de confirmation avant de pouvoir vous connecter');
+            throw new CustomUserMessageAuthenticationException('Veuillez valider votre inscription via le mail de confirmation avant de pouvoir vous connecter',[],CodeErreurConstant::EMAIL_NO_CONFIRMED);
         }
         if (!$this->passwordEncoder->isPasswordValid($user,$credentials['password'])){
             throw new CustomUserMessageAuthenticationException('Mot de passe incorrecte');

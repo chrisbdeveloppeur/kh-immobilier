@@ -10,7 +10,7 @@
 
         {% if not registrationForm.vars.valid %}
             <div class="alert alert-danger alert-dismissible" role="alert">
-              Le formulaire contien des erreurs
+              Le formulaire contient des erreurs
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
               </button>
             </div>
@@ -101,8 +101,9 @@
 
               <div class="mb-3">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                  <label class="form-check-label" for="terms-conditions">
+{#                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />#}
+                  {{ form_widget(registrationForm.termes) }}
+                  <label class="form-check-label" for="registration_form_termes">
                     J'accepte la
                     <a href="javascript:void(0);">politique de confidentialité et les conditions</a>
                   </label>
@@ -112,7 +113,7 @@
 
             {{ form_end(registrationForm) }}
 
-            <p class="text-center">
+            <p class="text-center mt-3">
               <span>Vous avez déjà un compte ?</span>
               <a href="{{ path('app_login') }}">
                 <span>Connectez-vous</span>

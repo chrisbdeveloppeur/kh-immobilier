@@ -26,6 +26,9 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class,[
                 'label' => 'Adresse Email*',
+                'label_attr' => [
+                    'class' => 'form-label'
+                ],
                 'required' => true,
                 'invalid_message' => 'Adresse Email invalide',
                 'attr' => [
@@ -37,6 +40,9 @@ class RegistrationFormType extends AbstractType
 
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom*',
+                'label_attr' => [
+                    'class' => 'form-label'
+                ],
                 'required' => true,
                 'constraints' => [
                     new Regex([
@@ -53,6 +59,9 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('lastName', TextType::class,[
                 'label' => 'Nom*',
+                'label_attr' => [
+                    'class' => 'form-label'
+                ],
                 'required' => true,
                 'constraints' => [
                     new Regex([
@@ -69,6 +78,9 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('phoneNumber', TelType::class,[
                 'label' => 'N° de Téléphone',
+                'label_attr' => [
+                    'class' => 'form-label'
+                ],
                 'required' => false,
                 'invalid_message' => 'Ce numéro n\'est pas valide',
                 'attr' => [
@@ -85,6 +97,9 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'first_options'  => [
                     'label' => 'Mot de passe*',
+                    'label_attr' => [
+                        'class' => 'form-label'
+                    ],
                     'attr' => [
                         'autocomplete' => 'new-password',
                         'class' => 'form-control',
@@ -102,12 +117,25 @@ class RegistrationFormType extends AbstractType
                 ],
                 'second_options' => [
                     'label' => 'Confirmer votre mot de passe*',
+                    'label_attr' => [
+                        'class' => 'form-label'
+                    ],
                     'attr' => [
                         'autocomplete' => 'new-password',
                         'class' => 'form-control',
                     ],
                 ],
 
+            ])
+
+            ->add('termes', CheckboxType::class,[
+                'label' => false,
+                'required' => true,
+                'mapped' => false,
+                'invalid_message' => 'Vous devez accepter les termes',
+                'attr' => [
+                    'class' => 'form-check-input',
+                ],
             ])
         ;
     }
