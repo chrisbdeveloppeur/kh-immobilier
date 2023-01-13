@@ -85,7 +85,7 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
             throw new CustomUserMessageAuthenticationException('Veuillez valider votre inscription via le mail de confirmation avant de pouvoir vous connecter',[],CodeErreurConstant::EMAIL_NO_CONFIRMED);
         }
         if (!$this->passwordEncoder->isPasswordValid($user,$credentials['password'])){
-            throw new CustomUserMessageAuthenticationException('Mot de passe incorrecte');
+            throw new CustomUserMessageAuthenticationException('Mot de passe incorrecte', [],CodeErreurConstant::INCORRECT_PASSWORD);
         }
 
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
@@ -105,7 +105,6 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
             return new RedirectResponse($targetPath);
         }
 
-//        dd($this->in_array_any(['ROLE_USER','ROLE_SUPER_ADMIN'],$this->userLogged->getRoles()));
         if (in_array('ROLE_SUPER_ADMIN',$this->userLogged->getRoles())){
             $redirect = $this->urlGenerator->generate('immo_accueil');
         }elseif (in_array('ROLE_PROPRIETAIRE',$this->userLogged->getRoles())){

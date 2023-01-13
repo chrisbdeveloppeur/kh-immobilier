@@ -11,16 +11,26 @@
           {% if error %}
             <div class="alert alert-danger alert-dismissible">
               <span>{{ error.messageKey|trans(error.messageData, 'security') }}</span>
-              <p>
+                {% if error.code == constant('App\\Constant\\CodeErreurConstant::EMAIL_NO_CONFIRMED') %}
+                <div class="mt-3">
                   <small>
                     Vous rencontrez des problème pour recevoir votre mail de confirmation ?
                   </small>
-                {% if error.code == constant('App\\Constant\\CodeErreurConstant::EMAIL_NO_CONFIRMED') %}
+                  <small>
+                    vérifiez vos SPAM ou <a href="{{ path('app_send_mail', {'code_situation': error.code}) }}">recevez à nouveau le mail de confirmation</a>
+                  </small>
+                </div>
+                {% elseif error.code == constant('App\\Constant\\CodeErreurConstant::INCORRECT_PASSWORD') %}
+                  <div class="mt-3">
                     <small>
-                      vérifiez vos SPAM ou <a href="{{ path('app_send_mail_confirm') }}">recevez à nouveau le mail de confirmation</a>
+                      Vous rencontrez des problème pour vous connecter ?
                     </small>
+                    <small>
+                        <a href="{{ path('app_send_mail', {'code_situation': error.code}) }}">Réinitialiser mon mot de passe</a>
+                    </small>
+                  </div>
                 {% endif %}
-              </p>
+
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
               </button>
             </div>
@@ -57,9 +67,9 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Mot de passe</label>
-                    <a href="auth-forgot-password-basic.html">
-                      <small>Mot de passe oublié ?</small>
-                    </a>
+{#                    <a href="{{ path('app_send_mail', {'code_situation': constant('App\\Constant\\CodeErreurConstant::INCORRECT_PASSWORD') }) }}">#}
+{#                      <small>Mot de passe oublié ?</small>#}
+{#                    </a>#}
                   </div>
                   <div class="input-group input-group-merge">
                     <input

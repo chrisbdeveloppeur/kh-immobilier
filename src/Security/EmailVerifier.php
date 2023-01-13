@@ -44,6 +44,17 @@ class EmailVerifier
         $this->mailer->send($email);
     }
 
+
+    public function sendEmailResetPassword(UserInterface $user, TemplatedEmail $email): void
+    {
+        $context = $email->getContext();
+        $context['user'] = $user;
+
+        $email->context($context);
+
+        $this->mailer->send($email);
+    }
+
     /**
      * @throws VerifyEmailExceptionInterface
      */

@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
@@ -125,7 +126,7 @@ class UserController extends AbstractController
     /**
      * @Route("/change-password/{id}", name="change_password")
      */
-    public function changePassword($id, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em): Response
+    public function changePassword($id, Request $request, UserRepository $userRepository, UserPasswordHasherInterface $encoder, EntityManagerInterface $em): Response
     {
         $user = $userRepository->find($id);
         $form = $this->createForm(ChangePasswordUserType::class, $user);
@@ -139,7 +140,50 @@ class UserController extends AbstractController
             if ($encoder->isPasswordValid($user, $oldPassword) && $oldPassword !== $newPassword) {
 
                 $user->setPassword(
-                    $encoder->encodePassword(
+                    $encoder->hashPassword(
+                        $user,
+                        $newPassword
+                    )
+                );
+
+                $em->persist($user);
+                $em->flush();
+                $this->addFlash('success', 'Votre mot de passe a bien été modifié');
+            }elseif (!$encoder->isPasswordValid($user, $oldPassword)){
+                $this->addFlash('danger', '<b>Echec</b> : l\'ancien mot de passe est incorrect');
+            }elseif ($oldPassword === $newPassword){
+                $this->addFlash('danger', '<b>Echec</b> : le nouveau mot de passe doit être différent de l\'ancien');
+            }
+
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
+        }
+
+        return $this->render('user/change_password.html.twig',[
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+    }
+
+
+    /**
+     * @Route("/reset-password/{id}", name="reset_password")
+     */
+    public function resetPassword($id, $token, Request $request, UserRepository $userRepository, UserPasswordHasherInterface $encoder, EntityManagerInterface $em): Response
+    {
+        $user = $userRepository->find($id);
+        $form = $this->createForm(ChangePasswordUserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $oldPassword = $request->request->get('change_password_user')['password'];
+            $newPassword = $form->get('plainPassword')->getData();
+
+            if ($encoder->isPasswordValid($user, $oldPassword) && $oldPassword !== $newPassword) {
+
+                $user->setPassword(
+                    $encoder->hashPassword(
                         $user,
                         $newPassword
                     )

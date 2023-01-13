@@ -3,6 +3,13 @@
 {% block title %}Mail de confirmation{% endblock %}
 {% block nav_aside %}{% endblock %}
 {% block body %}
+  {% if code_error is defined %}
+    {% if code_error == constant('App\\Constant\\CodeErreurConstant::INCORRECT_PASSWORD') %}
+      {% set title = 'Envoyer un mail pour réinitialiser votre mot de passe' %}
+    {% elseif code_error == constant('App\\Constant\\CodeErreurConstant::EMAIL_NO_CONFIRMED') %}
+      {% set title = 'Envoyer un mail de confirmation' %}
+    {% endif %}
+  {% endif %}
     <!-- Content -->
     <div class="container-xxl zindex-0" style="z-index: 0 !important;">
       <div class="authentication-wrapper authentication-basic container-p-y">
@@ -16,7 +23,6 @@
         </div>
         {% endif %}
 
-          <!-- Register -->
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
@@ -29,7 +35,7 @@
               </div>
               <!-- /Logo -->
 
-              <p class="mb-4 has-text-centered">Envoyer un mail de confirmation</p>
+              <p class="mb-4 has-text-centered">{{ title|default('') }}</p>
 
               {{ form_start(form) }}
 
@@ -51,7 +57,7 @@
               </p>
             </div>
           </div>
-          <!-- /Register -->
+
         </div>
       </div>
     </div>
