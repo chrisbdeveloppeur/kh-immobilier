@@ -46,17 +46,14 @@ class MailSecurityManager extends AbstractController
         $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="#">' . $user->getEmail() . '</a>');
     }
 
-    public function sendResetPassword(User $user, $token = null)
+    public function sendResetPassword(User $user)
     {
         $this->emailVerifier->sendEmailResetPassword($user,
             (new TemplatedEmail())
                 ->from(new Address('admin@kh-immobilier.com', 'Kingd\'home Immobilier'))
                 ->to($user->getEmail())
                 ->subject('Réinitialisation de votre mot de passe')
-                ->htmlTemplate('security/forgot_password_email.html.twig')
-                ->context([
-                    'token' => $token
-                ])
+                ->htmlTemplate('security/forgot_password_email.html.twig'),
         );
         $this->addFlash('success', 'Un mail de réinitialisation de mot de passe vient d\'être envoyé à l\'adresse : <a href="#" >' . $user->getEmail() . '</a>');
     }

@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mail de confirmation{% endblock %}
-{% block nav_aside %}{% endblock %}
-{% block body %}
   {% if code_error is defined %}
     {% if code_error == constant('App\\Constant\\CodeErreurConstant::INCORRECT_PASSWORD') %}
-      {% set title = 'Envoyer un mail pour réinitialiser votre mot de passe' %}
+      {% set msg_indication = 'Envoyer un mail pour réinitialiser votre mot de passe' %}
+      {% set title = 'Réinitialiser votre mot de passe' %}
     {% elseif code_error == constant('App\\Constant\\CodeErreurConstant::EMAIL_NO_CONFIRMED') %}
-      {% set title = 'Envoyer un mail de confirmation' %}
+      {% set msg_indication = 'Envoyer un mail de confirmation' %}
+      {% set title = 'Confirmer votre adresse Email' %}
     {% endif %}
   {% endif %}
+
+{% block title %}{{ title|default('') }}{% endblock %}
+{% block nav_aside %}{% endblock %}
+{% block body %}
+
     <!-- Content -->
     <div class="container-xxl zindex-0" style="z-index: 0 !important;">
       <div class="authentication-wrapper authentication-basic container-p-y">
@@ -35,7 +39,7 @@
               </div>
               <!-- /Logo -->
 
-              <p class="mb-4 has-text-centered">{{ title|default('') }}</p>
+              <p class="mb-4 has-text-centered">{{ msg_indication|default('') }}</p>
 
               {{ form_start(form) }}
 
@@ -49,12 +53,12 @@
 
               {{ form_end(form) }}
 
-              <p class="text-center mt-3">
-                <span>Vous avez déjà un compte ?</span>
-                <a href="{{ path('app_login') }}">
-                  <span>Connectez-vous</span>
-                </a>
-              </p>
+{#              <p class="text-center mt-3">#}
+{#                <span>Vous avez déjà un compte ?</span>#}
+{#                <a href="{{ path('app_login') }}">#}
+{#                  <span>Connectez-vous</span>#}
+{#                </a>#}
+{#              </p>#}
             </div>
           </div>
 

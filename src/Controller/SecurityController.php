@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Constant\CodeErreurConstant;
 use App\Entity\User;
+use App\Form\ChangePasswordUserType;
+use App\Form\ResetUserPasswordType;
 use App\Form\SendMailType;
 use App\Manager\MailSecurityManager;
 use App\Repository\UserRepository;
@@ -77,44 +79,33 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('app_login');
             }
         }
-        return $this->render('security/send-mail.html.twig',[
+        return $this->render('security/send_mail_form.html.twig',[
             'form' => $form->createView(),
             'error' => $error,
             'code_error' => $code_situation,
         ]);
     }
 
-//    /**
-//     * @Route("/forgot-password", name="app_forgot_password")
-//     */
-//    public function forgotPassword(Request $request, UserRepository $userRepository, EmailVerifier $emailVerifier)
-//    {
-//        $form = $this->createForm(SendMailType::class);
-//        $form->handleRequest($request);
-//        $error = null;
-//        if ($form->isSubmitted() && $form->isValid()){
-//            $email = $form->get('email')->getData();
-//            $user = $userRepository->findOneBy(['email' => $email]);
-//            if ($user === null)
-//            {
-//                $error = new ErrorMappingException('Cette email n\'existe pas dans notre base',CodeErreurConstant::EMAIL_NOT_FOUND);
-//            }else{
-//                $emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-//                    (new TemplatedEmail())
-//                        ->from(new Address('admin@kh-immobilier.com', 'Kingd\'home Immobilier'))
-//                        ->to($email)
-//                        ->subject('Confirmation de votre Email')
-//                        ->htmlTemplate('registration/forgot_password_email.html.twig'),
-//                    $user->getPassword()
-//                );
-//                $this->addFlash('success', 'Un mail de réinitialisation de mot de passe vient d\'être envoyé à l\'adresse : <a href="#" target="_blank">' . $user->getEmail() . '</a>');
-//                return $this->redirectToRoute('app_login');
-//            }
-//        }
-//        return $this->render('security/send-mail.html.twig',[
-//            'form' => $form->createView(),
-//            'error' => $error,
-//        ]);
-//    }
+
+    /**
+     * @Route("/reset-password/{id}", name="reset_password")
+     */
+    public function resetPassword($id, Request $request, UserRepository $userRepository, UserPasswordHasherInterface $encoder, EntityManagerInterface $em): Response
+    {
+        $user = $userRepository->find($id);
+        $form = $this->createForm(ResetUserPasswordType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+//            $referer = $request->headers->get('referer');
+//            return $this->redirect($referer);
+        }
+
+        return $this->render('security/reset_password_form.html.twig',[
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+    }
 
 }
