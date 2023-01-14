@@ -7,11 +7,14 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 class EmailVerifier
 {
+    use ResetPasswordControllerTrait;
+
     private $verifyEmailHelper;
     private $mailer;
     private $entityManager;
@@ -45,10 +48,11 @@ class EmailVerifier
     }
 
 
-    public function sendEmailResetPassword(UserInterface $user, TemplatedEmail $email): void
+    public function sendEmailResetPassword(UserInterface $user, TemplatedEmail $email, $token): void
     {
         $context = $email->getContext();
         $context['user'] = $user;
+        $context['resetToken'] = $token;
 
         $email->context($context);
 

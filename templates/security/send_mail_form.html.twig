@@ -30,13 +30,7 @@
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
-              <div class="is-flex justify-content-center">
-                <a href="/" class="app-brand-link gap-2">
-                  <span class="app-brand-logo demo">
-                      <img style="width: 300px" src="{{ asset('images/KH_NOIR_SANS-FOND.png') }}" alt="">
-                  </span>
-                </a>
-              </div>
+              {% include 'includes/logo_home.html.twig' %}
               <!-- /Logo -->
 
               <p class="mb-4 has-text-centered">{{ msg_indication|default('') }}</p>
@@ -45,7 +39,7 @@
 
               {{ form_row(form.email) }}
 
-              <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token('forgot_password') }}">
 
               <div class="mb-3">
                 <button class="btn btn-primary d-grid w-100" type="submit">Envoyer</button>

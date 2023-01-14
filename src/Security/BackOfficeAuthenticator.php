@@ -5,6 +5,7 @@ namespace App\Security;
 use App\Constant\CodeErreurConstant;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use function PHPUnit\Framework\isEmpty;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -70,8 +71,11 @@ class BackOfficeAuthenticator extends AbstractFormLoginAuthenticator implements 
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
-        if (!$user) {
+        $email = $credentials['email'];
+        $mailValidated = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
+        if (!$user || !$mailValidated) {
             throw new CustomUserMessageAuthenticationException('Email incorrecte ou non enregistrée');
         }
 

@@ -36,26 +36,19 @@
             </div>
           {% endif %}
 
-          <!-- Register -->
+          <!-- Login -->
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
-              <div class="is-flex justify-content-center">
-                <a href="/" class="app-brand-link gap-2">
-                  <span class="app-brand-logo demo">
-                      <img style="width: 300px" src="{{ asset('images/KH_NOIR_SANS-FOND.png') }}" alt="">
-                  </span>
-                </a>
-              </div>
+              {% include 'includes/logo_home.html.twig' %}
               <!-- /Logo -->
 
               <p class="mb-4 has-text-centered">Connectez vous avec vos identifiants</p>
 
               <form class="mb-3" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="inputEmail" class="form-label">Email</label>
                   <input
-                          type="email"
                           value="{{ last_username }}"
                           name="email"
                           id="inputEmail"
@@ -67,9 +60,9 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Mot de passe</label>
-{#                    <a href="{{ path('app_send_mail', {'code_situation': constant('App\\Constant\\CodeErreurConstant::INCORRECT_PASSWORD') }) }}">#}
-{#                      <small>Mot de passe oublié ?</small>#}
-{#                    </a>#}
+                    <a role="link" href="{{ path('app_send_mail', {'code_situation': constant('App\\Constant\\CodeErreurConstant::INCORRECT_PASSWORD') }) }}">
+                      <small>Mot de passe oublié ?</small>
+                    </a>
                   </div>
                   <div class="input-group input-group-merge">
                     <input
@@ -107,7 +100,7 @@
               </p>
             </div>
           </div>
-          <!-- /Register -->
+          <!-- /Login -->
         </div>
       </div>
     </div>

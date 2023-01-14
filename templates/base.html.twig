@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="fr"
       class="dark-style layout-menu-fixed"
@@ -69,6 +71,9 @@
 {% set route = app.request.get('_route') %}
 
 <body>
+
+{{ include('includes/flash_message.html.twig') }}
+
     <div {% if app.request.get('_route') not in routes_exclude_for_aside %}class="layout-wrapper layout-content-navbar"{% endif %}>
         <div {% if app.request.get('_route') not in routes_exclude_for_aside %}class="layout-container"{% endif %}>
 
@@ -127,7 +132,6 @@
     <!-- / Layout wrapper -->
 </body>
 
-    {{ include('includes/flash_message.html.twig') }}
 
 
 <!-- Core JS -->

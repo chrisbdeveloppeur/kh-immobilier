@@ -23,12 +23,12 @@ class MailSecurityManager extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    public function manage(User $user, int $code_error = null)
+    public function manage(User $user, int $code_error = null, $token = null)
     {
         if ($code_error == CodeErreurConstant::EMAIL_NO_CONFIRMED){
             $this->sendConfirmationMail($user);
         }elseif ($code_error == CodeErreurConstant::INCORRECT_PASSWORD){
-            $this->sendResetPassword($user);
+            $this->sendResetPassword($user, $token);
         }
 
     }
@@ -43,10 +43,10 @@ class MailSecurityManager extends AbstractController
                 ->htmlTemplate('registration/confirmation_email.html.twig'),
             $user->getPassword()
         );
-        $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="#">' . $user->getEmail() . '</a>');
+        $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="">' . $user->getEmail() . '</a>');
     }
 
-    public function sendResetPassword(User $user)
+    public function sendResetPassword(User $user, $token = null)
     {
         $this->emailVerifier->sendEmailResetPassword($user,
             (new TemplatedEmail())
@@ -54,8 +54,9 @@ class MailSecurityManager extends AbstractController
                 ->to($user->getEmail())
                 ->subject('Réinitialisation de votre mot de passe')
                 ->htmlTemplate('security/forgot_password_email.html.twig'),
+            $token
         );
-        $this->addFlash('success', 'Un mail de réinitialisation de mot de passe vient d\'être envoyé à l\'adresse : <a href="#" >' . $user->getEmail() . '</a>');
+        $this->addFlash('success', 'Un mail de réinitialisation de mot de passe vient d\'être envoyé à l\'adresse : <a href="" >' . $user->getEmail() . '</a>');
     }
 
 }
