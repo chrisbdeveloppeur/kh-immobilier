@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\ResetUserPasswordType;
 use App\Form\SendMailType;
 use App\Manager\MailSecurityManager;
+use App\Repository\ResetPasswordRequestRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,10 +29,12 @@ class SecurityController extends AbstractController
     use ResetPasswordControllerTrait;
 
     private $resetPasswordHelper;
+    private $em;
 
-    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper)
+    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper, EntityManagerInterface $em)
     {
         $this->resetPasswordHelper = $resetPasswordHelper;
+        $this->em = $em;
     }
 
 //    private $tokenManager;
@@ -44,7 +47,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
+    public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
         $superAdmin = $userRepository->findBy(['email' => 'admin@kh-immobilier.com']);
         if (!$superAdmin){
@@ -57,8 +60,8 @@ class SecurityController extends AbstractController
             $renewSuperAdmin->setLastName('BOUNGOU');
             $renewSuperAdmin->setFirstName('Christian');
             $renewSuperAdmin->setPassword($password);
-            $em->persist($renewSuperAdmin);
-            $em->flush();
+            $this->em->persist($renewSuperAdmin);
+            $this->em->flush();
         }
 
         // get the login error if there is one
@@ -81,7 +84,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/send-mail/{code_situation}", name="app_send_mail")
      */
-    public function sendMail(Request $request, UserRepository $userRepository, $code_situation, MailSecurityManager $mailSecurityManager)
+    public function sendMail(Request $request, UserRepository $userRepository, $code_situation, MailSecurityManager $mailSecurityManager, ResetPasswordRequestRepository $resetPasswordRequestRepository)
     {
         $error = null;
         $codesConstants = CodeErreurConstant::getConstants();
@@ -100,6 +103,11 @@ class SecurityController extends AbstractController
             {
                 $error = new ErrorMappingException('Cette email n\'existe pas dans notre base',CodeErreurConstant::EMAIL_NOT_FOUND);
             }else{
+                $existingRequests = $resetPasswordRequestRepository->findBy(['user'=>$user->getId()]);
+                foreach ($existingRequests as $existingRequest){
+                    $this->em->remove($existingRequest);
+                    $this->em->flush();
+                }
                 try {
                     $token = $this->resetPasswordHelper->generateResetToken($user);
                 } catch (ResetPasswordExceptionInterface $e) {
@@ -121,20 +129,11 @@ class SecurityController extends AbstractController
     /**
      * @Route("/reset-password/{token}", name="reset_password")
      */
-    public function resetPassword(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em, string $token = null): Response
+    public function resetPassword(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em, string $token = null): Response
     {
-        $tokenFromSession = $this->getTokenFromSession();
-//        if ($token) {
-            // We store the token in session and remove it from the URL, to avoid the URL being
-            // loaded in a browser and potentially leaking the token to 3rd party JavaScript.
-//            $this->storeTokenInSession($token);
+//        $tokenFromSession = $this->getTokenFromSession();
 
-//            return $this->redirectToRoute('reset_password');
-//        }
-//        dump($tokenFromSession);
-
-//        dd($token);
-        if (null === $token || null === $tokenFromSession) {
+        if (null === $token) {
             throw $this->createNotFoundException('No reset password token found in the URL or in the session.');
         }
 
@@ -144,11 +143,6 @@ class SecurityController extends AbstractController
             $this->addFlash('warning', 'Echec de modification de mot de passe');
             return $this->redirectToRoute('app_login');
         }
-
-
-//        $token = $this->tokenManager->getToken($token)
-//        dd($this->tokenManager->isTokenValid($token));
-//        $user = $userRepository->find($id);
 
         $form = $this->createForm(ResetUserPasswordType::class);
         $form->handleRequest($request);
@@ -169,14 +163,13 @@ class SecurityController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
-            $this->addFlash('warning', 'Echec de modification de mot de passe');
+            $this->addFlash('success', 'Votre mot de passe à bien été modifié');
 
             return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/reset_password_form.html.twig',[
             'form' => $form->createView(),
-//            'user' => $user,
         ]);
     }
 
