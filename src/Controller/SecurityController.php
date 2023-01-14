@@ -83,9 +83,16 @@ class SecurityController extends AbstractController
      */
     public function sendMail(Request $request, UserRepository $userRepository, $code_situation, MailSecurityManager $mailSecurityManager)
     {
+        $error = null;
+        $codesConstants = CodeErreurConstant::getConstants();
+        $code_situation_exist = in_array($code_situation, $codesConstants);
+        if (!$code_situation_exist){
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(SendMailType::class);
         $form->handleRequest($request);
-        $error = null;
+
         if ($form->isSubmitted() && $form->isValid()){
             $email = $form->get('email')->getData();
             $user = $userRepository->findOneBy(['email' => $email]);
@@ -127,26 +134,22 @@ class SecurityController extends AbstractController
 //        dump($tokenFromSession);
 
 //        dd($token);
-        if (null === $token) {
+        if (null === $token || null === $tokenFromSession) {
             throw $this->createNotFoundException('No reset password token found in the URL or in the session.');
         }
 
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
-            $this->addFlash('reset_password_error', sprintf(
-                '%s - %s',
-                $translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_VALIDATE, [], 'ResetPasswordBundle'),
-                $translator->trans($e->getReason(), [], 'ResetPasswordBundle')
-            ));
-
-            return $this->redirectToRoute('app_forgot_password_request');
+            $this->addFlash('warning', 'Echec de modification de mot de passe');
+            return $this->redirectToRoute('app_login');
         }
 
 
 //        $token = $this->tokenManager->getToken($token)
 //        dd($this->tokenManager->isTokenValid($token));
 //        $user = $userRepository->find($id);
+
         $form = $this->createForm(ResetUserPasswordType::class);
         $form->handleRequest($request);
 
@@ -166,14 +169,10 @@ class SecurityController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
+            $this->addFlash('warning', 'Echec de modification de mot de passe');
+
             return $this->redirectToRoute('app_login');
         }
-
-//        if ($form->isSubmitted() && $form->isValid()){
-
-//            $referer = $request->headers->get('referer');
-//            return $this->redirect($referer);
-//        }
 
         return $this->render('security/reset_password_form.html.twig',[
             'form' => $form->createView(),
