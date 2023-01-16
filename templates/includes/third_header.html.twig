@@ -1,56 +1,31 @@
 
-<div class="buttons my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
+<div class="d-grid gap-2 col-10 m-auto">
 
-    <a class="button is-small show-on-hover" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#files" title="Voir les quittances du logement {{ locataire.logement }}">
-        <span class="icon">
-            <i class="fas fa-lg fa-copy"></i>
-        </span>
-
-        <span><b>Voir toutes les quittances</b></span>
-
-        <span class="icon show-on-hover-target">
-            <i class="fas fa-lg fa-search"></i>
-        </span>
+    <a type="button" class="btn btn-primary me-2" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#files" title="Voir les quittances du logement {{ locataire.logement }}">
+        <span class="tf-icons bx bx-pie-chart-alt me-1"></span> Voir toutes les quittances
     </a>
 
-    <a class="button is-small show-on-hover" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir {{ locataire.logement }}">
-        <span class="icon">
-            <i class="fas fa-lg fa-building"></i>
-        </span>
-
-        <span><b>{{ locataire.logement }}</b></span>
-
-        <span class="icon show-on-hover-target">
-            <i class="fas fa-lg fa-search"></i>
-        </span>
+    <a type="button" class="btn btn-primary me-2" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir {{ locataire.logement }}">
+        <span class="tf-icons bx bx-pie-chart-alt me-1"></span> {{ locataire.logement }}
     </a>
 
-    <a class="button is-small show-on-hover" href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Voir {{ locataire }}">
-        <span class="icon">
-            <i class="fas fa-lg fa-user"></i>
-        </span>
-
-        <span><b>{{ locataire }}</b></span>
-
-        <span class="icon show-on-hover-target">
-            <i class="fas fa-lg fa-search"></i>
-        </span>
+    <a type="button" class="btn btn-primary me-2" href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Voir {{ locataire }}">
+        <span class="tf-icons bx bx-pie-chart-alt me-1"></span> {{ locataire }}
     </a>
 
     {% if 'render' in app.request.get('_route') %}
-        <a class="button is-small is-dark bg-info-onhover text-white-onhover" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
-            <span class="icon px-3">
-                <i class="fas fa-lg fa-file-invoice"></i>
-                <i class="fas fa-plus"></i>
-            </span>
-            <span>Editer à nouveau</span>
+        <a type="button" class="btn btn-primary me-2" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
+            <span class="tf-icons bx bx-pie-chart-alt me-1"></span> Editer à nouveau
         </a>
 
-        <a class="button is-small is-dark bg-info-onhover text-white-onhover" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
-            <span class="icon">
-                <i class="fas fa-lg fa-paper-plane"></i>
-            </span>
-            <span>Envoyer la quittance</span>
+        <a type="button" class="btn btn-primary me-2" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+            <span class="tf-icons bx bx-pie-chart-alt me-1"></span> Envoyer la quittance
+        </a>
+    {% endif %}
+
+    {% if pdf_exist %}
+        <a type="button" class="btn btn-primary me-2" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+            <span class="tf-icons bx bx-pie-chart-alt me-1"></span> Télécharger au format .pdf
         </a>
     {% endif %}
 

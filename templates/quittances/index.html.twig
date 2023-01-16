@@ -19,7 +19,7 @@
                     {% for bien_immo in app.user.biensimmos %}
                         {% set quittances = bien_immo.quittances %}
                         {% set locataire = bien_immo.locataire %}
-                        <div class="card accordion-item">
+                        <div id="bienImmo{{ bien_immo.id }}" class="card accordion-item">
                             <h2 class="accordion-header" id="heading{{ bien_immo.id }}">
                                 <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordion{{ bien_immo.id }}" aria-expanded="true" aria-controls="accordion{{ bien_immo.id }}" role="tabpanel">
                                     {{ bien_immo }}

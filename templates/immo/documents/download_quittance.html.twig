@@ -5,54 +5,141 @@
 
 {% block body %}
 
-    {{ include('includes/third_header.html.twig') }}
+    <div class="is-flex-desktop">
 
-    {% if pdf_exist %}
-        <div class="column is-flex is-justify-content-center is-align-items-center">
-           <iframe src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" width="650" height="900" align="middle" class="iframe-pdf"></iframe>
+        <div class="column is-three-fifths-desktop">
+            <div class="table-responsive">
+                <table class="table">
+                    <caption class="ms-4">Tableau d'actions</caption>
+                    <tbody>
+
+                        {% if pdf_exist %}
+                        <tr>
+                            <td>
+                                Quittance
+                            </td>
+                            <td>
+                                Télécharger au format .pdf
+                            </td>
+                            <td>
+                                <a type="button" class="btn btn-icon btn-primary me-2" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+                                    <span class="tf-icons bx bx-pie-chart-alt"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endif %}
+
+                        {% if 'render' in app.request.get('_route') %}
+                            <tr>
+                                <td>
+                                    Quittance
+                                </td>
+                                <td>
+                                    Editer à nouveau
+                                </td>
+                                <td>
+                                    <a type="button" class="btn btn-icon btn-primary me-2" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
+                                        <span class="tf-icons bx bx-pie-chart-alt"></span>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Quittance
+                                </td>
+                                <td>
+                                    Envoyer la quittance
+                                </td>
+                                <td>
+                                    <a type="button" class="btn btn-icon btn-primary me-2" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+                                        <span class="tf-icons bx bx-pie-chart-alt"></span>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        {% endif %}
+
+                        <tr>
+                            <td>
+                                Quittances
+                            </td>
+                            <td>
+                                Voir toutes les quittances de loyers
+                            </td>
+                            <td>
+                                <a type="button" class="btn btn-icon btn-primary me-2" href="{{ path('bien_immo_index', {'bien_id':locataire.logement.id})  }}" title="Voir les quittances du logement {{ locataire.logement }}">
+                                    <span class="tf-icons bx bx-pie-chart-alt"></span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Logement
+                            </td>
+                            <td>
+                                {{ locataire.logement }}
+                            </td>
+                            <td>
+                                <a type="button" class="btn btn-icon btn-primary me-2" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir {{ locataire.logement }}">
+                                    <span class="tf-icons bx bx-pie-chart-alt"></span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Locataire
+                            </td>
+                            <td>
+                                {{ locataire }}
+                            </td>
+                            <td>
+                                <a type="button" class="btn btn-icon btn-primary me-2" href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Voir {{ locataire }}">
+                                    <span class="tf-icons bx bx-pie-chart-alt"></span>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+{#            {{ include('includes/third_header.html.twig') }}#}
         </div>
-    {% endif %}
-
-    <div class="column is-flex-desktop is-justify-content-center">
-
-{#        <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">#}
-{#            <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.docx">#}
-{#                <label class="file-label">#}
-{#                    <span class="file-input"></span>#}
-{#                    <span class="file-cta">#}
-{#                            <span class="file-icon">#}
-{#                                <span class="icon">#}
-{#                                    <i class="fas fa-2x fa-file-word"></i>#}
-{#                                </span>#}
-{#                            </span>#}
-{#                        </span>#}
-{#                    <span class="file-name has-text-dark has-background-white">#}
-{#                        Télécharger au format Words (.docx)#}
-{#                        </span>#}
-{#                </label>#}
-{#            </a>#}
-{#        </div>#}
 
         {% if pdf_exist %}
-            <div class="my-2 mx-2 is-flex is-justify-content-center is-align-items-center">
-                <a class="file has-name is-boxed" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
-                    <label class="file-label">
-                        <span class="file-input"></span>
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <span class="icon">
-                                    <i class="fas fa-2x fa-file-pdf"></i>
-                                </span>
-                            </span>
-                        </span>
-                        <span class="file-name has-text-dark has-background-white">
-                        Télécharger au format .pdf
-                        </span>
-                    </label>
-                </a>
+            <div class="column is-flex is-justify-content-center is-align-items-center">
+
+                <button type="button" class="btn btn-xl btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
+                    Voir la quittance
+                    <span class="tf-icons bx bx-pie-chart-alt"></span>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="modalScrollable" tabindex="-1" aria-labelledby="modalScrollableTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content" style="height: 90vh;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalScrollableTitle">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body" style="overflow: hidden">
+                                <embed src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" height="100%" width="100%" class="perfect-scrollbar">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         {% endif %}
+
     </div>
+
 
 
 {% endblock %}
