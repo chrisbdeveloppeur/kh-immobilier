@@ -31,7 +31,7 @@ class CreatQuittanceCommand extends Command
     private $createFileController;
     private $pdfController;
 
-    public function __construct(string $name = null, MailController $mailer, QuittancesController $quittancesController, QuittanceRepository $quittanceRepository,LocataireRepository $locataireRepository, EntityManagerInterface $em, CreateFileController $createFileController, PdfController $pdfController)
+    public function __construct(MailController $mailer, QuittancesController $quittancesController, QuittanceRepository $quittanceRepository,LocataireRepository $locataireRepository, EntityManagerInterface $em, CreateFileController $createFileController, PdfController $pdfController, $name = null)
     {
         parent::__construct($name);
         $this->mailer = $mailer;
