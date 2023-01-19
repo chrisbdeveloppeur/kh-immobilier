@@ -52,24 +52,27 @@ class RegistrationController extends AbstractController
 
             $user->setRoles(["ROLE_PROPRIETAIRE"]);
 
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('admin@kh-immobilier.com', 'Kingd\'home Immobilier'))
-                    ->to($user->getEmail())
-                    ->subject('Confirmation de votre Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig'),
-                $plainPassword
-            );
-
             $em->persist($user);
             $em->flush();
-
-            // do anything else you need here, like send an email
-            $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="'.$linkMail.'" target="_blank">' . $user->getEmail() . '</a>');
-
-            return $this->redirectToRoute('app_login');
-
+            // generate a signed url and email it to the user
+            try{
+                $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                    (new TemplatedEmail())
+                        ->from(new Address('admin@kh-immobilier.com', 'Kingd\'home Immobilier'))
+                        ->to($user->getEmail())
+                        ->subject('Confirmation de votre Email')
+                        ->htmlTemplate('registration/confirmation_email.html.twig'),
+                    $plainPassword
+                );
+                $this->addFlash('success', 'Un mail de confirmation vient d\'être envoyé à l\'adresse : <a href="'.$linkMail.'" target="_blank">' . $user->getEmail() . '</a>');
+                return $this->redirectToRoute('app_login');
+            }catch (\Exception $exception)
+            {
+                $em->remove($user);
+                $em->flush();
+                $this->addFlash('danger','Une erreur est survenue, le compte n\'a pas été créé');
+                return $this->redirectToRoute('app_register');
+            }
         }
 
         $errors = $validator->validate($form);
