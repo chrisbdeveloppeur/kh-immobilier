@@ -2,8 +2,9 @@
 
 
 ####**Faire la création de fichiers HTML pour l'interprétation des test Unitaire PhpUnits :**
-vendor/bin/phpunit --coverage-html public/test-coverage
-
+`vendor/bin/phpunit --coverage-html public/test-coverage`
+#####pour ne tester qu'une seule méthode à la fois :
+`vendor/bin/phpunit --filter=testDefault`
 
 #### .env.local :
  In all environments, the following files are loaded if they exist,
