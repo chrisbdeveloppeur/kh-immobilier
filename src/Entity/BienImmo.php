@@ -59,14 +59,6 @@ class BienImmo
     private $loyer_hc;
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(
-     *     message="Ce champs est obligatoire"
-     * )
-     */
-    private $charges;
-
-    /**
      * @ORM\OneToMany(targetEntity=Locataire::class, mappedBy="logement")
      */
     private $locataires;
@@ -95,11 +87,6 @@ class BienImmo
      * @ORM\Column(type="integer", nullable=true)
      */
     private $echeance;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Solde::class, mappedBy="BienImmo", cascade={"persist", "remove"})
-     */
-    private $solde;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -154,6 +141,21 @@ class BienImmo
      */
     private $libelle;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Solde::class, mappedBy="BienImmo", orphanRemoval=true)
+     */
+    private $soldes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Charge::class, mappedBy="BienImmo", orphanRemoval=true)
+     */
+    private $charges;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="BienImmos")
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->locataires = new ArrayCollection();
@@ -167,16 +169,15 @@ class BienImmo
         $this->month = strftime("%B");
         $this->last_day = \Date('t');
         $this->quittances = new ArrayCollection();
-        $solde = new Solde();
-        $solde->setBienImmo($this);
         $this->setEcheance(1);
         $this->setSuperficie(null);
         $this->setLoyerHc(null);
-        $this->setCharges(null);
-        $this->solde = $solde;
         $this->setFree(true);
         $this->prestataire = new ArrayCollection();
         $this->documents = new ArrayCollection();
+        $this->soldes = new ArrayCollection();
+        $this->charges = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function __toString()
@@ -252,19 +253,6 @@ class BienImmo
 
         return $this;
     }
-
-    public function getCharges(): ?string
-    {
-        return $this->charges;
-    }
-
-    public function setCharges($charges): self
-    {
-        $this->charges = $charges;
-
-        return $this;
-    }
-
 
     /**
      * @return Collection|Locataire[]
@@ -408,31 +396,9 @@ class BienImmo
         return $this;
     }
 
-    public function getSolde(): ?Solde
-    {
-        return $this->solde;
-    }
-
-    public function setSolde(?Solde $solde): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($solde === null && $this->solde !== null) {
-            $this->solde->setBienImmo(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($solde !== null && $solde->getBienImmo() !== $this) {
-            $solde->setBienImmo($this);
-        }
-
-        $this->solde = $solde;
-
-        return $this;
-    }
-
     public function getLoyerTtc(): ?int
     {
-        $loyer_ttc = $this->getCharges() + $this->getLoyerHc();
+        $loyer_ttc = $this->getLoyerHc();
         is_int($loyer_ttc);
         return $loyer_ttc;
     }
@@ -445,11 +411,7 @@ class BienImmo
 
     public function setFree($value): self
     {
-//        if ($this->locataires->first()){
-//            $this->free = $value;
-//        }else{
-            $this->free = $value;
-//        }
+        $this->free = $value;
         return $this;
     }
 
@@ -642,6 +604,93 @@ class BienImmo
 //                ->atPath('firstName')
 //                ->addViolation();
 //        }
+    }
+
+    /**
+     * @return Collection<int, Solde>
+     */
+    public function getSoldes(): Collection
+    {
+        return $this->soldes;
+    }
+
+    public function addSolde(Solde $solde): self
+    {
+        if (!$this->soldes->contains($solde)) {
+            $this->soldes[] = $solde;
+            $solde->setBienImmo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSolde(Solde $solde): self
+    {
+        if ($this->soldes->removeElement($solde)) {
+            // set the owning side to null (unless already changed)
+            if ($solde->getBienImmo() === $this) {
+                $solde->setBienImmo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Charge>
+     */
+    public function getCharges(): Collection
+    {
+        return $this->charges;
+    }
+
+    public function addCharge(Charge $charge): self
+    {
+        if (!$this->charges->contains($charge)) {
+            $this->charges[] = $charge;
+            $charge->setBienImmo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharge(Charge $charge): self
+    {
+        if ($this->charges->removeElement($charge)) {
+            // set the owning side to null (unless already changed)
+            if ($charge->getBienImmo() === $this) {
+                $charge->setBienImmo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->addBienImmo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->removeElement($tag)) {
+            $tag->removeBienImmo($this);
+        }
+
+        return $this;
     }
 
 }

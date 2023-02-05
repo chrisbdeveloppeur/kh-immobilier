@@ -149,15 +149,15 @@ class BienImmoType extends AbstractType
                     ],
                     'required' => true,
                 ])
-                ->add('charges', NumberType::class,[
-                    'label' => "Charges",
-                    'invalid_message' => 'Valeur incorrecte',
-                    'attr' => [
-                        'data-units' => '€',
-                        'placeholder' => '50'
-                    ],
-                    'required' => true,
-                ])
+//                ->add('charges', NumberType::class,[
+//                    'label' => "Charges",
+//                    'invalid_message' => 'Valeur incorrecte',
+//                    'attr' => [
+//                        'data-units' => '€',
+//                        'placeholder' => '50'
+//                    ],
+//                    'required' => true,
+//                ])
                 ->add('echeance', ChoiceType::class,[
                     'label' => "Echéance",
                     'choices' => $echeance,
@@ -167,9 +167,9 @@ class BienImmoType extends AbstractType
                     'required' => true,
                 ])
 
-                ->add('solde', NumberType::class, [
+                ->add('soldes', NumberType::class, [
                     'mapped' => false,
-                    'label' => "Solde",
+                    'label' => "Total des soldes",
                     'invalid_message' => 'Valeur incorrecte',
                     'help' => 'Si cas échéhant, indiquez le montant restant à la charge du locataire',
                     'attr' => [

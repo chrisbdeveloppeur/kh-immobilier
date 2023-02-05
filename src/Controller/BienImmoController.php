@@ -157,7 +157,7 @@ class BienImmoController extends AbstractController
         if ($this->isGranted('ROLE_SUPER_ADMIN') && $locataire){
             $form->get('user')->setData($locataire->getUser());
         }
-        $form->get('comptabilite')['solde']->setData($bienImmo->getSolde()->getMalusQuantity());
+//        $form->get('comptabilite')['solde']->setData($bienImmo->getSoldes());
         $form->get('residents')['locataires']->setData($locataire);
 
         $prestataire = new Prestataire();

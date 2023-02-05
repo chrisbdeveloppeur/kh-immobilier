@@ -18,41 +18,29 @@ class Solde
     private $id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $month_paid;
+    private $quantity;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $echeance_pasted;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $malus_added;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $malus_quantity;
-
-    /**
-     * @ORM\OneToOne(targetEntity=BienImmo::class, inversedBy="solde", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="soldes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $BienImmo;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $payed;
+
     public function __construct()
     {
-        $this->echeance_pasted = false;
-        $this->month_paid = false;
-        $this->malus_added = false;
-        $this->malus_quantity = null;
+        $this->payed = false;
     }
 
     public function __toString()
     {
-        return (string)$this->getMalusQuantity();
+        return (string)$this->getQuantity();
     }
 
     public function getId(): ?int
@@ -60,50 +48,14 @@ class Solde
         return $this->id;
     }
 
-    public function getMonthPaid(): ?bool
+    public function getQuantity(): ?int
     {
-        return $this->month_paid;
+        return $this->quantity;
     }
 
-    public function setMonthPaid(bool $month_paid): self
+    public function setQuantity(?int $quantity): self
     {
-        $this->month_paid = $month_paid;
-
-        return $this;
-    }
-
-    public function getEcheancePasted(): ?bool
-    {
-        return $this->echeance_pasted;
-    }
-
-    public function setEcheancePasted(bool $echeance_pasted): self
-    {
-        $this->echeance_pasted = $echeance_pasted;
-
-        return $this;
-    }
-
-    public function getMalusAdded(): ?bool
-    {
-        return $this->malus_added;
-    }
-
-    public function setMalusAdded(bool $malus_added): self
-    {
-        $this->malus_added = $malus_added;
-
-        return $this;
-    }
-
-    public function getMalusQuantity(): ?float
-    {
-        return $this->malus_quantity;
-    }
-
-    public function setMalusQuantity(?float $malus_quantity): self
-    {
-        $this->malus_quantity = $malus_quantity;
+        $this->quantity = $quantity;
 
         return $this;
     }
@@ -116,6 +68,18 @@ class Solde
     public function setBienImmo(?BienImmo $BienImmo): self
     {
         $this->BienImmo = $BienImmo;
+
+        return $this;
+    }
+
+    public function isPayed(): ?bool
+    {
+        return $this->payed;
+    }
+
+    public function setPayed(bool $payed): self
+    {
+        $this->payed = $payed;
 
         return $this;
     }

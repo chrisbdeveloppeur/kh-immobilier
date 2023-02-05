@@ -109,7 +109,7 @@ class AppFixtures extends Fixture
             $bien->setCp($faker->postcode);
             $bien->setCity($faker->city);
             $bien->setLoyerHc($faker->numberBetween(300,1200));
-            $bien->setCharges($faker->numberBetween(50,300));
+//            $bien->setCharges($faker->numberBetween(50,300));
             $bien->setEcheance($faker->randomElement([5,10,15]));
 
             $copropriete = new Copropriete();
@@ -172,7 +172,7 @@ class AppFixtures extends Fixture
         $bien->setCp($cp);
         $bien->setCity($city);
         $bien->setLoyerHc($loyer_hc);
-        $bien->setCharges($charges);
+//        $bien->setCharges($charges);
         $bien->setEcheance($echeance);
         $bien->setType($type);
         $bien->setSuperficie($superficie);

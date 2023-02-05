@@ -59,56 +59,67 @@
                 {% set is_required = '' %}
             {% endif %}
 
-            <div class="mb-3">
-                {% if form_errors(field) %}
-                    <span class="badge bg-label-danger">Erreur</span>
-                    <span class="help">
-                        {{ form_errors(field) }}
-                    </span>
-                    {% set field_error_class = ' is-invalid' %}
-                {% else %}
-                    {% set field_error_class = '' %}
-                {% endif %}
-
-                {% if field_type_1 == 'text' %}
-                    {% if field_type_2 == 'textarea' %}
-                        <div class="input-group">
-                            <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
-                            {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-label':form_label(field), 'rows':5}} ) }}
-                        </div>
+            {% if field.vars.name == 'soldes' %}
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <!-- Modal -->
+                    {% include('includes/modal.html.twig') with {'modal_id':'soldes_modal'} %}
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#soldes_modal">
+                        Voir les soldes
+                    </button>
+                </div>
+            {% else %}
+                <div class="mb-3">
+                    {% if form_errors(field) %}
+                        <span class="badge bg-label-danger">Erreur</span>
+                        <span class="help">
+                            {{ form_errors(field) }}
+                        </span>
+                        {% set field_error_class = ' is-invalid' %}
                     {% else %}
-                        <div class="form-floating {{ form.vars.name }} {{ field.vars.name }}">
-                            {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-describedby':'floatingInputHelp_'~field.vars.name}} ) }}
-                            <label for="{{ field.vars.full_name }}">{{ is_required }}{{ form_label(field) }}</label>
-                        </div>
+                        {% set field_error_class = '' %}
                     {% endif %}
-                {% elseif field_type_1 == 'number' %}
-                    <div class="input-group input-group-merge">
-                        <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
-                        {{ form_widget(field, {'attr':{'class':'form-control has-text-centered'~field_error_class, 'placeholder':placeholder, 'type':'number'}} ) }}
-                        {% if unit is defined %}
-                            <span class="input-group-text">{{ unit }}</span>
+
+                    {% if field_type_1 == 'text' %}
+                        {% if field_type_2 == 'textarea' %}
+                            <div class="input-group">
+                                <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
+                                {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-label':form_label(field), 'rows':5}} ) }}
+                            </div>
+                        {% else %}
+                            <div class="form-floating {{ form.vars.name }} {{ field.vars.name }}">
+                                {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-describedby':'floatingInputHelp_'~field.vars.name}} ) }}
+                                <label for="{{ field.vars.full_name }}">{{ is_required }}{{ form_label(field) }}</label>
+                            </div>
                         {% endif %}
-                    </div>
-                {% elseif field_type_1 == 'choice' %}
-                    {% if field_type_2 == 'entity' %}
-                        <div class="input-group">
-                            {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
-                            <a href="{{ path('locataire_new') }}" class="btn btn-outline-primary" type="button">Créer un nouveau locataire</a>
+                    {% elseif field_type_1 == 'number' %}
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
+                            {{ form_widget(field, {'attr':{'class':'form-control has-text-centered'~field_error_class, 'placeholder':placeholder, 'type':'number'}} ) }}
+                            {% if unit is defined %}
+                                <span class="input-group-text">{{ unit }}</span>
+                            {% endif %}
                         </div>
-                    {% else %}
-                        <div class="select-group">
-                            <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
-                            {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
-                        </div>
-                    {% endif %}
+                    {% elseif field_type_1 == 'choice' %}
+                        {% if field_type_2 == 'entity' %}
+                            <div class="input-group">
+                                {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
+                                <a href="{{ path('locataire_new') }}" class="btn btn-outline-primary" type="button">Créer un nouveau locataire</a>
+                            </div>
+                        {% else %}
+                            <div class="select-group">
+                                <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
+                                {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
+                            </div>
+                        {% endif %}
 
-                {% else %}
-                    {{ form_widget(field, {'attr':{'class':''~field_error_class}}) }}
-                {% endif %}
-                {% if field.vars.help is defined %}
-                    <div id="floatingInputHelp_{{ field.vars.name }}" class="form-text">{{ field.vars.help }}</div>
-                {% endif %}
-            </div>
+                    {% else %}
+                        {{ form_widget(field, {'attr':{'class':''~field_error_class}}) }}
+                    {% endif %}
+                    {% if field.vars.help is defined %}
+                        <div id="floatingInputHelp_{{ field.vars.name }}" class="form-text">{{ field.vars.help }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
         {% endfor %}
 {% endmacro %}
