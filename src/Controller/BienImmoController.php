@@ -93,11 +93,11 @@ class BienImmoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->editCopropriete($bienImmo, $form);
             $em->persist($bienImmo);
-            $solde = $form->get('comptabilite')['solde']->getData();
-            $bienImmo->getSolde()->setMalusQuantity($solde);
+//            $solde = $form->get('comptabilite')['soldes']->getData();
+//            $soldeTotal = $bienImmo->getSoldesTotal();
 
-            if ($form->get('residents')['locataires']->getData() !== null){
-                $bienImmo->addLocataire($form->get('residents')['locataires']->getData());
+            if ($form->get('residents')['locataire']->getData() !== null){
+                $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
             }
 
             $em->flush();
@@ -158,7 +158,10 @@ class BienImmoController extends AbstractController
             $form->get('user')->setData($locataire->getUser());
         }
 //        $form->get('comptabilite')['solde']->setData($bienImmo->getSoldes());
-        $form->get('residents')['locataires']->setData($locataire);
+
+        if ($locataire){
+            $form->get('residents')['locataire']->setData($locataire);
+        };
 
         $prestataire = new Prestataire();
         $form_prestataire = $this->createForm(PrestataireType::class, $prestataire);

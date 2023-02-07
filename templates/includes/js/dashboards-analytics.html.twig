@@ -425,13 +425,13 @@
         const statistiqueLoyers = document.querySelector('#statistiqueLoyers'),
             orderChartConfig = {
                 chart: {
-                    height: 165,
-                    width: 130,
+                    height: 185,
+                    width: 150,
                     type: 'donut'
                 },
-                labels: ['Payées','En attente', 'Partielles'],
-                series: [{{ nb_quittances_payed }}, {{ nb_quittances_not_payed }}, {{ nb_quittances_partial }}],
-                colors: [config.colors.success, config.colors.danger, config.colors.warning ],
+                labels: ['Loyers','Charges'],
+                series: [{{ total_loyers }}, {{ total_charges }}],
+                colors: [config.colors.yellow, config.colors.info ],
                 stroke: {
                     width: 5,
                     colors: cardColor
@@ -455,7 +455,7 @@
                 plotOptions: {
                     pie: {
                         donut: {
-                            size: '75%',
+                            size: '80%',
                             labels: {
                                 show: true,
                                 value: {
@@ -475,9 +475,9 @@
                                     show: true,
                                     fontSize: '0.8125rem',
                                     color: axisColor,
-                                    label: 'Quittances',
+                                    label: 'Revenus total',
                                     formatter: function (w) {
-                                        return {{ quittances|length }};
+                                        return {{ total_revenu_ttc }};
                                     }
                                 }
                             }

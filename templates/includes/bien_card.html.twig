@@ -4,21 +4,7 @@
         <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
                 <div class="avatar flex-shrink-0 me-3">
-{#                    {% if last_quittance %}#}
-                        {{ macros.quittance_status_payed_btn(last_quittance|default(null)) }}
-{#                    {% elseif bien_immo.locataire %}#}
-{#                        <span class="d-inline-block"#}
-{#                              tabindex="0"#}
-{#                              data-bs-toggle="popover"#}
-{#                              data-bs-offset="0,14"#}
-{#                              data-bs-placement="top"#}
-{#                              data-bs-trigger="hover focus"#}
-{#                              data-bs-content="Aucune quittances de loyer trouvées">#}
-{#                            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}" class="button is-small bg-label-danger rounded" type="button" disabled>#}
-{#                                <i class='bx bxs-file'></i>#}
-{#                            </a>#}
-{#                        </span>#}
-{#                    {% endif %}#}
+                    {{ macros.quittance_status_payed_btn(last_quittance|default(null)) }}
                 </div>
                 <div class="dropdown">
                     <button

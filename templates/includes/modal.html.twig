@@ -1,33 +1,47 @@
 <!-- Modal -->
 <div class="modal modal-top fade" id="{{ modal_id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameBasic" class="form-label">Name</label>
-                        <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name">
-                    </div>
+    {% if form is defined and field is defined%}
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Soldes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="row g-2">
-                    <div class="col mb-0">
-                        <label for="emailBasic" class="form-label">Email</label>
-                        <input type="email" id="emailBasic" class="form-control" placeholder="xxxx@xxx.xx">
+                <div class="modal-body">
+                    <div class="row" id="{{ modal_id }}_collection" data-prototype="{{ form_widget(field.vars.prototype)|e('html_attr') }}">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="select-group">
+                                {{ form_start(form.soldes) }}
+                                    {{ form_row(form.soldes) }}
+                                {{ form_end(form.soldes) }}
+{#                                <label for="{{ field.vars.prototype.full_name }}" class="form-label">{{ is_required }}{{ form_label(field.vars.prototype) }}</label>#}
+{#                                {{ form_row(field.vars.prototype, {'attr':{'class':'form-select'~field_error_class}}) }}#}
+                            </div>
+                            {% for solde in form.soldes %}
+                                {{ form_widget(solde) }}
+                            {%  endfor %}
+                        </div>
                     </div>
-                    <div class="col mb-0">
-                        <label for="dobBasic" class="form-label">DOB</label>
-                        <input type="date" id="dobBasic" class="form-control" placeholder="DD / MM / YY">
-                    </div>
+{#                    <div class="row">#}
+{#                        <div class="select-group">#}
+{#                            <label for="{{ child.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(child) }}</label>#}
+{#                            {{ form_widget(child, {'attr':{'class':'form-select'~field_error_class}}) }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    {% for child in field.children %}#}
+{#                        <div class="row">#}
+{#                            <div class="select-group">#}
+{#                                <label for="{{ child.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(child) }}</label>#}
+{#                                {{ form_widget(child, {'attr':{'class':'form-select'~field_error_class}}) }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Ajouter un solde</button>
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 </div>

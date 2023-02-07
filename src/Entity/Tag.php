@@ -30,9 +30,9 @@ class Tag
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Charge::class, inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity=Frais::class, inversedBy="tags")
      */
-    private $Charges;
+    private $Frais;
 
     /**
      * @ORM\ManyToMany(targetEntity=BienImmo::class, inversedBy="tags")
@@ -41,7 +41,7 @@ class Tag
 
     public function __construct()
     {
-        $this->Charges = new ArrayCollection();
+        $this->Frais = new ArrayCollection();
         $this->BienImmos = new ArrayCollection();
     }
 
@@ -80,25 +80,25 @@ class Tag
     }
 
     /**
-     * @return Collection<int, Charge>
+     * @return Collection<int, Frais>
      */
-    public function getCharges(): Collection
+    public function getFrais(): Collection
     {
-        return $this->Charges;
+        return $this->Frais;
     }
 
-    public function addCharge(Charge $charge): self
+    public function addFrais(Frais $frais): self
     {
-        if (!$this->Charges->contains($charge)) {
-            $this->Charges[] = $charge;
+        if (!$this->Frais->contains($frais)) {
+            $this->Frais[] = $frais;
         }
 
         return $this;
     }
 
-    public function removeCharge(Charge $charge): self
+    public function removeFrais(Frais $frais): self
     {
-        $this->Charges->removeElement($charge);
+        $this->Frais->removeElement($frais);
 
         return $this;
     }

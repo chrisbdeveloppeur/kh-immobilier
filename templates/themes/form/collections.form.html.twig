@@ -1,0 +1,20 @@
+
+{% block _bienImmo_soldes_entry_widget %}
+    {{ form_row(form.quantity, {'attr': {}}) }}
+    <button class="btn btn-danger btn-xs remove-from-collection"><i class="fa fa-close"></i></button>
+{% endblock %}
+
+{#{% block form_errors -%}#}
+{#    {% apply spaceless %}#}
+{#        {% if errors|length > 0 -%}#}
+{#            <div class="has-error">#}
+{#                {%- for error in errors -%}#}
+{#                    <div class="col-sm-12">#}
+{#                        <label class="control-label has-error" for="inputError"><i class="fa fa-times-circle"></i> {{ error.message }}</label>#}
+{#                    </div>#}
+{#                {%- endfor -%}#}
+
+{#            </div>#}
+{#        {%- endif -%}#}
+{#    {% endapply %}#}
+{#{%- endblock form_errors %}#}

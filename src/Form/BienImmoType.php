@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Cache\Adapter\AbstractAdapter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -149,15 +150,16 @@ class BienImmoType extends AbstractType
                     ],
                     'required' => true,
                 ])
-//                ->add('charges', NumberType::class,[
-//                    'label' => "Charges",
-//                    'invalid_message' => 'Valeur incorrecte',
-//                    'attr' => [
-//                        'data-units' => '€',
-//                        'placeholder' => '50'
-//                    ],
-//                    'required' => true,
-//                ])
+                ->add('charges', NumberType::class,[
+                    'label' => "Charges",
+                    'invalid_message' => 'Valeur incorrecte',
+                    'help' => 'Charges imputées au locataire',
+                    'attr' => [
+                        'data-units' => '€',
+                        'placeholder' => '50'
+                    ],
+                    'required' => true,
+                ])
                 ->add('echeance', ChoiceType::class,[
                     'label' => "Echéance",
                     'choices' => $echeance,
@@ -167,21 +169,15 @@ class BienImmoType extends AbstractType
                     'required' => true,
                 ])
 
-                ->add('soldes', NumberType::class, [
-                    'mapped' => false,
-                    'label' => "Total des soldes",
-                    'invalid_message' => 'Valeur incorrecte',
-                    'help' => 'Si cas échéhant, indiquez le montant restant à la charge du locataire',
-                    'attr' => [
-                        'data-units' => '€',
-                        'placeholder' => '750'
-                    ],
-                    'required' => false,
-                ])
+//                ->add('soldes', CollectionType::class, [
+//                    'entry_type' => SoldeType::class,
+//                    'allow_add' => true,
+//                    'required' => false
+//                ])
             )
 
             ->add($builder->create('residents', FormType::class, ['inherit_data' => true,'label'=>'Informations sur les résidents'])
-                ->add('locataires', EntityType::class,[
+                ->add('locataire', EntityType::class,[
                     'attr' => ['class' => 'readonly'],
                     'label' => 'Locataire',
                     'class' => Locataire::class,
@@ -250,16 +246,18 @@ class BienImmoType extends AbstractType
 
 
 
-
         if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
-            $builder->add('user', EntityType::class,[
-                'label' => 'Gestionaire',
-                'class' => User::class,
-                'mapped' => true,
-                'required' => false,
-                'placeholder' => 'Sans gestionnaire',
-                'attr' => ['class' => 'readonly'],
-            ]);
+            $builder->add(
+                $builder->create('Gestionnaire', FormType::class, ['inherit_data' => true,'label'=>'Gestionaire'])
+                    ->add('user', EntityType::class,[
+                        'label' => 'Gestionaire',
+                        'class' => User::class,
+                        'mapped' => true,
+                        'required' => false,
+                        'placeholder' => 'Sans gestionnaire',
+                        'attr' => ['class' => 'readonly'],
+                    ])
+            );
         }
 
         ;

@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ChargeRepository;
+use App\Repository\FraisRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ChargeRepository::class)
+ * @ORM\Entity(repositoryClass=FraisRepository::class)
  */
-class Charge
+class Frais
 {
     /**
      * @ORM\Id
@@ -30,13 +30,13 @@ class Charge
     private $quantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="charges")
+     * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="frais")
      * @ORM\JoinColumn(nullable=false)
      */
     private $BienImmo;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="Charges")
+     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="Frais")
      */
     private $tags;
 
@@ -98,7 +98,7 @@ class Charge
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
-            $tag->addCharge($this);
+            $tag->addFrais($this);
         }
 
         return $this;
@@ -107,7 +107,7 @@ class Charge
     public function removeTag(Tag $tag): self
     {
         if ($this->tags->removeElement($tag)) {
-            $tag->removeCharge($this);
+            $tag->removeFrais($this);
         }
 
         return $this;

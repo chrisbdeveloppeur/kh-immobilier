@@ -1,3 +1,5 @@
+{% form_theme form 'themes/form/collections.form.html.twig' %}
+
 {% macro quittance_status_payed_btn(quittance) %}
     {% if quittance != null %}
         {% set quittance_render_url = path('quittances_render_quittance', {'quittance_id': quittance.id}) %}
@@ -60,14 +62,16 @@
             {% endif %}
 
             {% if field.vars.name == 'soldes' %}
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <!-- Modal -->
-                    {% include('includes/modal.html.twig') with {'modal_id':'soldes_modal'} %}
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#soldes_modal">
-                        Voir les soldes
-                    </button>
-                </div>
+{#                <label class="form-label">{{ form_label(field) }}</label>#}
+{#                <div class="input-group mb-3">#}
+{#                    <span class="input-group-text">Total des soldes</span>#}
+{#                    <span class="input-group-text is-expanded">{{ form.soldes|length }}€</span>#}
+{#                    <!-- Modal -->#}
+{#                    {% include('includes/modal.html.twig') with {'modal_id':'soldes_modal'} %}#}
+{#                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#soldes_modal">#}
+{#                        Voir les soldes#}
+{#                    </button>#}
+{#                </div>#}
             {% else %}
                 <div class="mb-3">
                     {% if form_errors(field) %}
@@ -82,8 +86,8 @@
 
                     {% if field_type_1 == 'text' %}
                         {% if field_type_2 == 'textarea' %}
-                            <div class="input-group">
-                                <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
+                            <div>
+                                <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
                                 {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-label':form_label(field), 'rows':5}} ) }}
                             </div>
                         {% else %}
@@ -102,9 +106,12 @@
                         </div>
                     {% elseif field_type_1 == 'choice' %}
                         {% if field_type_2 == 'entity' %}
+                            <label for="{{ field.vars.full_name }}" class="form-label">Selectionner un {{ field.vars.label }}</label>
                             <div class="input-group">
                                 {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
-                                <a href="{{ path('locataire_new') }}" class="btn btn-outline-primary" type="button">Créer un nouveau locataire</a>
+                                <a href="{{ path(field.vars.name~'_new') }}" class="btn btn-outline-primary" type="button" tabindex="0" data-bs-toggle="popover" data-bs-offset="0,14" data-bs-trigger="hover focus" data-bs-content="Créer un nouveau {{ field.vars.label }}">
+                                    <span class="tf-icons bx bx-plus"></span>
+                                </a>
                             </div>
                         {% else %}
                             <div class="select-group">

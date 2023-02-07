@@ -1,13 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% set total_loyers = 0 %}
+{% set total_charges = 0 %}
+{% set total_revenu_ttc = 0 %}
 {% set total_loyers_percus = 0 %}
 {% set total_loyers_attentes = 0 %}
 {% set nb_quittances_payed = 0  %}
 {% set nb_quittances_not_payed = 0  %}
 {% set nb_quittances_partial = 0  %}
+
+{% for bien_immo in biens_immos %}
+    {% set total_loyers = total_loyers + bien_immo.loyerHc %}
+    {% set total_charges = total_charges + bien_immo.charges %}
+{% endfor %}
+{% set total_revenu_ttc = total_loyers + total_charges %}
+
 {% for quittance in quittances %}
-    {% set total_loyers = total_loyers + quittance.loyerTtc %}
+{#    {% set total_loyers = total_loyers + quittance.loyerTtc %}#}
     {% if quittance.payed %}
         {% set total_loyers_percus = total_loyers_percus + quittance.loyerTtc %}
         {% set nb_quittances_payed = nb_quittances_payed + 1 %}
@@ -16,6 +25,8 @@
         {% set nb_quittances_not_payed = nb_quittances_not_payed + 1 %}
     {% endif %}
 {% endfor %}
+
+
 
 {% block title %}Accueil{% endblock %}
 

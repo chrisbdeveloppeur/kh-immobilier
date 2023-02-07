@@ -147,14 +147,19 @@ class BienImmo
     private $soldes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Charge::class, mappedBy="BienImmo", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Frais::class, mappedBy="BienImmo", orphanRemoval=true)
      */
-    private $charges;
+    private $frais;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="BienImmos")
      */
     private $tags;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $charges;
 
     public function __construct()
     {
@@ -176,7 +181,7 @@ class BienImmo
         $this->prestataire = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->soldes = new ArrayCollection();
-        $this->charges = new ArrayCollection();
+        $this->frais = new ArrayCollection();
         $this->tags = new ArrayCollection();
     }
 
@@ -398,7 +403,7 @@ class BienImmo
 
     public function getLoyerTtc(): ?int
     {
-        $loyer_ttc = $this->getLoyerHc();
+        $loyer_ttc = $this->getLoyerHc()+$this->getCharges();
         is_int($loyer_ttc);
         return $loyer_ttc;
     }
@@ -614,6 +619,16 @@ class BienImmo
         return $this->soldes;
     }
 
+    public function getSoldesTotal(): int
+    {
+        $soldes = $this->getSoldes();
+        $total = 0;
+        foreach ($soldes as $solde){
+            $total .= $solde->getQuantity();
+        }
+        return $total;
+    }
+
     public function addSolde(Solde $solde): self
     {
         if (!$this->soldes->contains($solde)) {
@@ -637,29 +652,29 @@ class BienImmo
     }
 
     /**
-     * @return Collection<int, Charge>
+     * @return Collection<int, Frais>
      */
-    public function getCharges(): Collection
+    public function getFrais(): Collection
     {
-        return $this->charges;
+        return $this->frais;
     }
 
-    public function addCharge(Charge $charge): self
+    public function addFrais(Frais $frais): self
     {
-        if (!$this->charges->contains($charge)) {
-            $this->charges[] = $charge;
-            $charge->setBienImmo($this);
+        if (!$this->frais->contains($frais)) {
+            $this->frais[] = $frais;
+            $frais->setBienImmo($this);
         }
 
         return $this;
     }
 
-    public function removeCharge(Charge $charge): self
+    public function removeFrais(Frais $frais): self
     {
-        if ($this->charges->removeElement($charge)) {
+        if ($this->frais->removeElement($frais)) {
             // set the owning side to null (unless already changed)
-            if ($charge->getBienImmo() === $this) {
-                $charge->setBienImmo(null);
+            if ($frais->getBienImmo() === $this) {
+                $frais->setBienImmo(null);
             }
         }
 
@@ -689,6 +704,18 @@ class BienImmo
         if ($this->tags->removeElement($tag)) {
             $tag->removeBienImmo($this);
         }
+
+        return $this;
+    }
+
+    public function getCharges(): ?int
+    {
+        return $this->charges;
+    }
+
+    public function setCharges(?int $charges): self
+    {
+        $this->charges = $charges;
 
         return $this;
     }

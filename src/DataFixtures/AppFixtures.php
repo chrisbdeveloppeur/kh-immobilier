@@ -56,24 +56,14 @@ class AppFixtures extends Fixture
 
         //make standard $users
         for ($i = 1; $i <= 5; $i++){
-            $user = new User();
-            $user->setEmail('user'.$i.'@gmail.com');
-            $user->setGender($faker->randomElement(['M.','Mme.']));
-            $user->setRoles(['ROLE_USER']);
-            $user->setIsVerified(1);
-            $password = $this->encoder->encodePassword($user, '123456');
-            $user->setPassword($password);
-            $user->setFirstName('user'.$i.' name');
-            $user->setLastName('user'.$i.' last name');
 
-            $manager->persist($user);
         }
 
         //make privilege $users
         for ($i = 1; $i <= 2; $i++){
             $user = new User();
             $user->setEmail('admin'.$i.'@gmail.com');
-            $user->setGender($faker->randomElement(['M.','Mme.']));
+//            $user->setGender($faker->randomElement(['M.','Mme.']));
             $user->setRoles(['ROLE_ADMIN']);
             $user->setIsVerified(1);
             $password = $this->encoder->encodePassword($user, '123456');
@@ -109,7 +99,7 @@ class AppFixtures extends Fixture
             $bien->setCp($faker->postcode);
             $bien->setCity($faker->city);
             $bien->setLoyerHc($faker->numberBetween(300,1200));
-//            $bien->setCharges($faker->numberBetween(50,300));
+            $bien->setCharges($faker->numberBetween(50,300));
             $bien->setEcheance($faker->randomElement([5,10,15]));
 
             $copropriete = new Copropriete();
@@ -119,7 +109,8 @@ class AppFixtures extends Fixture
             $copropriete->setAdresse($faker->address);
             $copropriete->setContact(strtoupper($faker->lastName) .' '. $faker->firstName);
             $bien->setCopropriete($faker->randomElement([$copropriete,null]));
-
+            $user = $this->setUser($i);
+            $bien->setUser($user);
             //$solde = new Solde();
             //$solde->setBienImmo($bien);
             //$solde->setMalusQuantity($faker->randomElement([0,50,100,300,500]));
@@ -127,33 +118,35 @@ class AppFixtures extends Fixture
             $locataire->setLogement($bien);
 
             //$manager->persist($solde);
+            $manager->persist($user);
             $manager->persist($bien);
             $manager->persist($locataire);
         }
 
-        for ($j = 0; $j<=2 ; $j++){
-            $entreprise = new Entreprise();
-            $name = '';
-            switch ($j){
-                case 0:
-                    $name = 'chrisBdev';
-                    break;
-                case 1:
-                    $name = 'Steadiness';
-                    break;
-                case 2:
-                    $name = 'Kingdom Immobilier';
-                    break;
-            }
-            $entreprise->setName($name);
-            $manager->persist($entreprise);
-        }
+//        for ($j = 0; $j<=2 ; $j++){
+//            $entreprise = new Entreprise();
+//            $name = '';
+//            switch ($j){
+//                case 0:
+//                    $name = 'chrisBdev';
+//                    break;
+//                case 1:
+//                    $name = 'Steadiness';
+//                    break;
+//                case 2:
+//                    $name = 'Kingdom Immobilier';
+//                    break;
+//            }
+//            $entreprise->setName($name);
+//            $manager->persist($entreprise);
+//        }
 
         $manager->flush();
     }
 
 
-    private function setLocataire($sexe, $first_name, $last_name, $mail, $mode){
+    private function setLocataire($sexe, $first_name, $last_name, $mail, $mode): Locataire
+    {
         $locataire = new Locataire();
 
         $locataire->setFirstName($first_name);
@@ -164,7 +157,8 @@ class AppFixtures extends Fixture
         return $locataire;
     }
 
-    private function setBien($locataire, $street, $cp, $city, $loyer_hc, $charges, $echeance, $type, $copropriete, $superficie){
+    private function setBien($locataire, $street, $cp, $city, $loyer_hc, $charges, $echeance, $type, $copropriete, $superficie): BienImmo
+    {
 
         $bien = new BienImmo();
 
@@ -172,13 +166,28 @@ class AppFixtures extends Fixture
         $bien->setCp($cp);
         $bien->setCity($city);
         $bien->setLoyerHc($loyer_hc);
-//        $bien->setCharges($charges);
+        $bien->setCharges($charges);
         $bien->setEcheance($echeance);
         $bien->setType($type);
         $bien->setSuperficie($superficie);
         $bien->getCopropriete()->setName($copropriete);
         $locataire->setLogement($bien);
         return $bien;
+    }
+
+    private function setUser($i): User
+    {
+        $user = new User();
+        $user->setEmail('user'.$i.'@gmail.com');
+//            $user->setGender($faker->randomElement(['M.','Mme.']));
+        $user->setRoles(['ROLE_PROPRIETAIRE']);
+        $user->setIsVerified(1);
+        $password = $this->encoder->encodePassword($user, '123456');
+        $user->setPassword($password);
+        $user->setFirstName('user'.$i.' name');
+        $user->setLastName('user'.$i.' last name');
+
+        return $user;
     }
 
 }
