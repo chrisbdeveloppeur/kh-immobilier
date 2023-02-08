@@ -134,7 +134,7 @@
                 <tr style="height:65pt">
                     <td style="width:212pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;text-align: center;">
-                            {{ proprietaire.firstName }} {{ proprietaire.lastName }}
+                            {{ proprietaire.firstName|default('...................') }} {{ proprietaire.lastName|default('...................') }}
                         </p>
                         <p class="s2"
                            style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">
@@ -245,8 +245,8 @@
             </p>
             <br>
             <p class="s4" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Solde à payer :<span class="s2">
-                    {% if logement.solde is not null %}
-                        <b>{{ logement.solde }} €</b>
+                    {% if logement.soldesTotal is not null %}
+                        <b>{{ logement.soldesTotal }} €</b>
                     {% elseif not quittance.payed %}
                         <b>{{ quittance.loyerGlobale }} €</b>
                     {% endif %}

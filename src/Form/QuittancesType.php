@@ -84,14 +84,14 @@ class QuittancesType extends AbstractType
                 'label' => 'Loyer (HC)',
                 'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])
-//            ->add('charges', NumberType::class,[
-//                'label' => 'Charges',
-//                'attr' => ['class'=>'readonly has-text-centered input is-small']
-//            ])
-            ->add('solde', TextType::class,[
-                'label' => 'Solde',
+            ->add('charges', NumberType::class,[
+                'label' => 'Charges',
                 'attr' => ['class'=>'readonly has-text-centered input is-small']
             ])
+//            ->add('solde', TextType::class,[
+//                'label' => 'Solde',
+//                'attr' => ['class'=>'readonly has-text-centered input is-small']
+//            ])
             ->add('first_day', ChoiceType::class,[
                 'label' => 'Période',
                 'attr' => ['class'=>'readonly has-text-centered input is-small'],

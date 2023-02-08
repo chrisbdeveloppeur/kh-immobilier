@@ -1,7 +1,7 @@
 {% if quittances|length == 0 %}
     {% if not locataire %}
         {% set message_txt = 'Ce bien ne possède pas de locataire<br> vous pouvez en ajouter un depuis la page d\'édition du logement' %}
-        {% set btn_url = path('bien_immo_edit', {'id': bien_immo.id}) %}
+        {% set btn_url = path('bien_immo_edit', {'id': bienImmo.id}) %}
         {% set btn = "<a href='"~btn_url~"' class='btn is-small btn-primary'>Ajouter un locataire</a>" %}
     {% else %}
         {% set message_txt = 'Vous n\'avez aucun quittances éditées pour ce logement' %}
@@ -25,11 +25,6 @@
             <tr>
                 <th>
                     <span>
-                        Date d'édition
-                    </span>
-                </th>
-                <th>
-                    <span>
                         Mois
                     </span>
                 </th>
@@ -44,6 +39,11 @@
                     </span>
                 </th>
                 <th>
+                    <span>
+                        Date d'édition
+                    </span>
+                </th>
+                <th>
                     <span>Actions</span>
                 </th>
             </tr>
@@ -51,10 +51,6 @@
             <tbody>
             {% for quittance in quittances %}
                 <tr>
-
-                    <td>
-                        {{ quittance.createddate|format_date('short') }}
-                    </td>
 
                     <td>
                         {{ quittance.month }}
@@ -73,12 +69,16 @@
                     </td>
 
                     <td>
+                        {{ quittance.createddate|format_date('short') }}
+                    </td>
+
+                    <td>
                         <div class="dropstart">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" title="Modifier le logement"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
-                                {% if bien_immo.locataires is not empty %}
-                                    <a class="dropdown-item" href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}" title="Editer une quittance de loyer">Editer une quittance</a>
+                                <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bienImmo.id}) }}#logement" title="Modifier le logement"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
+                                {% if bienImmo.locataires is not empty %}
+                                    <a class="dropdown-item" href="{{ path('quittances_edit_new_quittance', {'loc_id': bienImmo.locataires.current.id }) }}" title="Editer une quittance de loyer">Editer une quittance</a>
                                 {% endif %}
                                 <a class="dropdown-item" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" title="Supprimer la quittance" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"><i class="bx bx-trash me-2"></i>Supprimer</a>
                             </div>

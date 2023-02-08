@@ -1,7 +1,7 @@
 
 <div class="d-grid gap-2 col-10 m-auto">
 
-    <a type="button" class="btn btn-primary me-2" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#files" title="Voir les quittances du logement {{ locataire.logement }}">
+    <a type="button" class="btn btn-primary me-2" href="{{ path('quittances_index', {'bien_id': locataire.logement.id}) }}#files" title="Voir les quittances du logement {{ locataire.logement }}">
         <span class="tf-icons bx bx-pie-chart-alt me-1"></span> Voir toutes les quittances
     </a>
 
@@ -23,7 +23,7 @@
         </a>
     {% endif %}
 
-    {% if pdf_exist %}
+    {% if pdf_exist is defined and pdf_exist %}
         <a type="button" class="btn btn-primary me-2" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
             <span class="tf-icons bx bx-pie-chart-alt me-1"></span> Télécharger au format .pdf
         </a>

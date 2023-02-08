@@ -183,14 +183,14 @@ class BienImmoController extends AbstractController
                 $bienImmo->getLocataires()->first()->setUser($form->get('user')->getData($bienImmo->getUser()));
             }
             $this->editCopropriete($bienImmo,$form);
-            $solde = $form->get('comptabilite')['solde']->getData();
-            $bienImmo->getSolde()->setMalusQuantity($solde);
-            if ($form->get('residents')['locataires']->getData() == null){
+//            $solde = $form->get('comptabilite')['solde']->getData();
+            $bienImmo->getSoldesTotal();
+            if ($form->get('residents')['locataire']->getData() == null){
                 if ($bienImmo->getLocataires()->first()){
                     $bienImmo->removeLocataire($bienImmo->getLocataires()->first());
                 }
             }else{
-                $bienImmo->addLocataire($form->get('residents')['locataires']->getData());
+                $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
             }
 
             $this->getDoctrine()->getManager()->flush();

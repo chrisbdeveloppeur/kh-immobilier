@@ -92,7 +92,7 @@ class QuittancesController extends AbstractController
         $form->get('loyer_hc')->setData($logement->getLoyerHc());
         $form->get('charges')->setData($logement->getCharges());
         $form->get('mode')->setData($locataire->getMode());
-        $form->get('solde')->setData($logement->getSolde());
+//        $form->get('solde')->setData($logement->getSolde());
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

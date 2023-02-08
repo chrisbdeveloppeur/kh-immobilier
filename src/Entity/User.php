@@ -86,6 +86,11 @@ class User implements UserInterface
      */
     private $adresse;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $gender;
+
     public function __construct()
     {
         $this->biens_immos = new ArrayCollection();
@@ -324,5 +329,18 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
 
 }
