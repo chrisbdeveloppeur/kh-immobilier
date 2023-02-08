@@ -168,7 +168,7 @@
                 <tr style="height:65pt">
                     <td style="width:219pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                         <p class="s2" style="padding-left: 32pt;padding-right: 32pt;text-indent: 0pt;line-height: 16pt;text-align: center;">
-                            {{ locataire.gender }} {{ locataire.firstName }} {{  locataire.lastName }}
+                            {{ locataire.gender|default('') }} {{ locataire.firstName }} {{  locataire.lastName }}
                         </p>
                         <p class="s2"
                            style="padding-left: 9pt;padding-right: 9pt;text-indent: 0pt;line-height: 15pt;text-align: center;">

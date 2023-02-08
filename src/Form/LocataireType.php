@@ -132,7 +132,7 @@ class LocataireType extends AbstractType
             ->add('gender', ChoiceType::class,[
                 'label' => 'Genre',
                 'choices' => [
-                    'Non défini' => '',
+                    'Non défini' => null,
                     'Homme' => 'M.',
                     'Femme' => 'Mme.'
                 ],
