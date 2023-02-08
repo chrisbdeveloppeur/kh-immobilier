@@ -67,6 +67,7 @@ class LocataireType extends AbstractType
             ->add('logement', EntityType::class,[
                 'class' => BienImmo::class,
                 'mapped' => false,
+                'label' => 'Logement',
                 'required' => false,
                 'placeholder' => 'Sans logement',
                 'help' => $this->logement_fulled_msg,
@@ -86,11 +87,11 @@ class LocataireType extends AbstractType
                     }
                 },
                 'query_builder' => $this->user_context,
-                'attr' => ['class' => 'readonly'],
+                'attr' => ['class' => 'input is-small has-text-centered','route_entity'=>'bien_immo'],
 
             ])
             ->add('first_name', TextType::class,[
-                'label' => 'Prénom*',
+                'label' => 'Prénom',
                 'constraints' => [
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",
@@ -98,10 +99,10 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur incorrecte',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => ['class' => 'input is-small has-text-centered '],
             ])
             ->add('last_name', TextType::class,[
-                'label' => 'Nom*',
+                'label' => 'Nom',
                 'constraints' => [
                     new Regex([
                         'pattern' => "/[&;:<>{}\/0-9]/",
@@ -109,12 +110,12 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur incorrecte',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => ['class' => 'input is-small has-text-centered '],
             ])
             ->add('email', EmailType::class,[
                 'label' => 'Email',
                 'required' => false,
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => ['class' => 'input is-small has-text-centered '],
             ])
             ->add('phone', TelType::class,[
                 'label' => 'Numéro de téléphone',
@@ -126,16 +127,17 @@ class LocataireType extends AbstractType
                         'message' => 'Valeur incorrecte',
                     ]),
                 ],
-                'attr' => ['class' => 'input is-small has-text-centered readonly'],
+                'attr' => ['class' => 'input is-small has-text-centered '],
             ])
             ->add('gender', ChoiceType::class,[
-                'label' => 'Sexe',
+                'label' => 'Genre',
                 'choices' => [
+                    'Non défini' => '',
                     'Homme' => 'M.',
-                    'Femme' => 'Mme.',
-                    'Couple' => 'Couple'
+                    'Femme' => 'Mme.'
                 ],
-                'attr' => ['class' => 'readonly'],
+                'empty_data' => 'Non défini',
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('mode', ChoiceType::class,[
                 'label' => 'Moyen de paiement',
@@ -144,7 +146,7 @@ class LocataireType extends AbstractType
                     'Espèces' => 'Espèces',
                     'Chèque' => 'Chèque',
                 ],
-                'attr' => ['class' => 'readonly'],
+                'attr' => ['class' => 'input is-small has-text-centered'],
             ]);
 
             if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
@@ -154,7 +156,7 @@ class LocataireType extends AbstractType
                     'mapped' => true,
                     'required' => false,
                     'placeholder' => 'Sans gestionnaire',
-                    'attr' => ['class' => 'readonly'],
+                    'attr' => ['class' => 'input is-small has-text-centered'],
                 ]);
             }
 

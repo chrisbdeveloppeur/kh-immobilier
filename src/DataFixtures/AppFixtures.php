@@ -116,6 +116,7 @@ class AppFixtures extends Fixture
             //$solde->setMalusQuantity($faker->randomElement([0,50,100,300,500]));
 
             $locataire->setLogement($bien);
+            $locataire->setUser($user);
 
             //$manager->persist($solde);
             $manager->persist($user);

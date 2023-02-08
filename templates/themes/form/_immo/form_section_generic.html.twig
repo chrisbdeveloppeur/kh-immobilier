@@ -1,16 +1,16 @@
 {% import 'includes/macros.html.twig' as macros %}
+
 <div class="card accordion-item active mb-3">
     <h2 class="accordion-header" id="heading-{{ row.vars.name }}">
         <button type="button" class="accordion-button is-size-5 has-text-weight-bold" data-bs-toggle="collapse" data-bs-target="#accordion-{{ row.vars.name }}" aria-expanded="true" aria-controls="accordion-{{ row.vars.name }}" role="tabpanel">
             {{ form_label(row) }}
         </button>
     </h2>
-
     <div id="accordion-{{ row.vars.name }}" class="accordion-collapse collapse show" data-bs-parent="#accordionMain">
         <div class="accordion-body">
             <div class="col-xxl">
                 {% if row is defined %}
-                    {{ macros.form_template(row) }}
+                    {{ macros.form_section_template(row) }}
                 {% endif %}
             </div>
         </div>

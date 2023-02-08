@@ -1,0 +1,5 @@
+{% import 'includes/macros.html.twig' as macros %}
+
+{% if row is defined %}
+    {{ macros.form_template(row) }}
+{% endif %}

@@ -1,9 +1,15 @@
-{% if bien_immo.id %}
+{% if route == 'locataire_new' %}
+    {% set title_txt = 'Création un locataire' %}
+    {% set btn_submit_txt = 'Valider' %}
+{% elseif route == 'locataire_edit' %}
+    {% set title_txt = locataire %}
+    {% set btn_submit_txt = 'Enregistrer les modifications' %}
+{% elseif route == 'bien_immo_new' %}
+    {% set title_txt = 'Création d\'un bien immobilier' %}
+    {% set btn_submit_txt = 'Valider' %}
+{% elseif route == 'bien_immo_edit' %}
     {% set title_txt = bien_immo.adresse %}
     {% set btn_submit_txt = 'Enregistrer les modifications' %}
-{% else %}
-    {% set title_txt = 'Ajouter un nouveau bien' %}
-    {% set btn_submit_txt = 'Créer le bien' %}
 {% endif %}
 
 <div class="content-wrapper">
@@ -23,12 +29,22 @@
 
                 {{ form_start(form, {'attr':{'class':'form-to-submit'}}) }}
                 {% for row in form %}
-                    {% if row.vars.name != '_token' %}
-                        {{ include('themes/form/_immo/form_section_generic.html.twig') }}
-                    {% else %}
-                        <div class="is-hidden">
+                    {% if row.vars.compound is defined and row.vars.compound %}
+                        {% if row.vars.name != '_token' %}
                             {{ include('themes/form/_immo/form_section_generic.html.twig') }}
-                        </div>
+                        {% else %}
+                            <div class="is-hidden">
+                                {{ include('themes/form/_immo/form_section_generic.html.twig') }}
+                            </div>
+                        {% endif %}
+                    {% elseif row.vars.compound is defined and not row.vars.compound %}
+                        {% if row.vars.name != '_token' %}
+                            {{ include('themes/form/_immo/form_generic.html.twig') }}
+                        {% else %}
+                            <div class="is-hidden">
+                                {{ include('themes/form/_immo/form_generic.html.twig') }}
+                            </div>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
                 {{ form_end(form) }}

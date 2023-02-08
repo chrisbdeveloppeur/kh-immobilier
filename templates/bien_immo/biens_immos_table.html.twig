@@ -65,14 +65,11 @@
 {#                {% set total_charges =  total_charges + bien_immo.charges %}#}
 {#                {% set total_solde = total_solde + bien_immo.solde.malusQuantity %}#}
                 <tr class="">
-                    <td class="has-text-weight-bold show-on-hover">
+                    <td class="has-text-weight-bold">
                         <span class="text-info-onhover">
                             <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement" class="has-text-weight-bold text-info-onhover icon-text" title="{{ bien_immo.street }}">
                                 <span class="text-index-entity">
                                     {{ bien_immo.street }}
-                                </span>
-                                <span class="icon show-on-hover-target is-hidden-touch">
-                                    <i class="fas fa-search"></i>
                                 </span>
                             </a>
                         </span>
@@ -126,12 +123,9 @@
                                     <i class="fas fa-user-minus"></i>
                                 </span>
                             </a>
-                            <a class="show-on-hover" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
+                            <a class="" href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire" title="Voir les détails du locataire {{ bien_immo.locataires.current }}">
                                 <span class="text-info-onhover">
                                     <span><b>{{ bien_immo.locataires.current }}</b></span>
-                                    <span class="icon show-on-hover-target is-hidden-touch">
-                                        <i class="fas fa-search"></i>
-                                    </span>
                                 </span>
                             </a>
                         {% else %}
