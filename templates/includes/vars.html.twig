@@ -1,0 +1,29 @@
+{# Exclusion des route #}
+{% set routes_exclude_for_aside = ['app_login','app_register','app_send_mail','reset_password'] %}
+
+{# Active routes for aside nav #}
+{% set route = app.request.get('_route') %}
+
+{#     Définission de la variable section en fonction de ce que contient le nom de la route dans laquel on se trouve     #}
+{% set section = '' %}
+{% if route in ['immo','locataire','quittance','loyer','prestataire'] %}
+    {% set section = 'immobilier' %}
+{% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
+    {% set section = 'entreprenariat' %}
+{% elseif 'user' in app.request.get('_route') or 'register' in app.request.get('_route') or 'login' in app.request.get('_route') or 'change_password' in app.request.get('_route')  %}
+    {% set section = 'gestionnaire' %}
+{% endif %}
+
+{% if route == 'locataire_new' %}
+    {% set title_txt = 'Création un locataire' %}
+    {% set btn_submit_txt = 'Valider' %}
+{% elseif route == 'locataire_edit' %}
+    {% set title_txt = locataire %}
+    {% set btn_submit_txt = 'Enregistrer les modifications' %}
+{% elseif route == 'bien_immo_new' %}
+    {% set title_txt = 'Création d\'un bien immobilier' %}
+    {% set btn_submit_txt = 'Valider' %}
+{% elseif route == 'bien_immo_edit' %}
+    {% set title_txt = bien_immo.adresse %}
+    {% set btn_submit_txt = 'Enregistrer les modifications' %}
+{% endif %}

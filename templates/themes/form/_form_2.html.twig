@@ -1,20 +1,7 @@
-{% if route == 'locataire_new' %}
-    {% set title_txt = 'Création un locataire' %}
-    {% set btn_submit_txt = 'Valider' %}
-{% elseif route == 'locataire_edit' %}
-    {% set title_txt = locataire %}
-    {% set btn_submit_txt = 'Enregistrer les modifications' %}
-{% elseif route == 'bien_immo_new' %}
-    {% set title_txt = 'Création d\'un bien immobilier' %}
-    {% set btn_submit_txt = 'Valider' %}
-{% elseif route == 'bien_immo_edit' %}
-    {% set title_txt = bien_immo.adresse %}
-    {% set btn_submit_txt = 'Enregistrer les modifications' %}
-{% endif %}
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / </span>{{ title_txt }}</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ section_title|default('Section') }} / </span>{{ title_txt|default('') }}</h4>
         <div class="row">
             <div class="accordion" id="accordionMain">
 
