@@ -139,7 +139,7 @@ class SecurityController extends AbstractController
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
-            $this->addFlash('warning', 'Echec de modification de mot de passe');
+            $this->addFlash('warning', 'Le lien de réinitialisation de mot de passe n\'est pas valide');
             return $this->redirectToRoute('app_login');
         }
 
