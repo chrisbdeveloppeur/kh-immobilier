@@ -85,6 +85,9 @@ class BienImmo
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $echeance;
 
@@ -95,11 +98,17 @@ class BienImmo
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $type;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $superficie;
 
@@ -158,6 +167,9 @@ class BienImmo
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(
+     *     message="Ce champs est obligatoire"
+     * )
      */
     private $charges;
 

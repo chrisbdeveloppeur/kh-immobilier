@@ -74,7 +74,10 @@
 {#                    </button>#}
 {#                </div>#}
             {% else %}
-                <div class="mb-3">
+                {% if form.vars.name == 'comptabilite' %}
+                    {% set class_2 = 'col-lg-4' %}
+                {% endif %}
+                <div class="mb-3 {{ class_2|default('') }}">
                     {% if form_errors(field) %}
                         <span class="badge bg-label-danger">Erreur</span>
                         <span class="help">
@@ -98,8 +101,8 @@
                             </div>
                         {% endif %}
                     {% elseif field_type_1 == 'number' %}
+                        <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
                         <div class="input-group input-group-merge">
-                            <span class="input-group-text">{{ is_required }}{{ form_label(field) }}</span>
                             {{ form_widget(field, {'attr':{'class':'form-control has-text-centered'~field_error_class, 'placeholder':placeholder, 'type':'number'}} ) }}
                             {% if unit is defined %}
                                 <span class="input-group-text">{{ unit }}</span>
