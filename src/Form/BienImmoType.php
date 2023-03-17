@@ -78,7 +78,7 @@ class BienImmoType extends AbstractType
         unset($echeance[0]);
 
         $builder
-            ->add($builder->create('informations_du_bien', FormType::class, ['inherit_data' => true,'label'=>'Informations du bien'])
+            ->add($builder->create('informations_du_bien', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Informations du bien'])
                 ->add('libelle', TextType::class,[
                     'mapped' => true,
                     'label' => "Libelle",
@@ -139,7 +139,7 @@ class BienImmoType extends AbstractType
                 ])
             )
 
-            ->add($builder->create('comptabilite', FormType::class, ['inherit_data' => true,'label'=>'Comptabilité'])
+            ->add($builder->create('comptabilite', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Comptabilité'])
                 ->add('loyer_hc', NumberType::class,[
                     'label' => "Loyer HC",
                     'help' => 'Loyer sans les charges',
@@ -176,7 +176,7 @@ class BienImmoType extends AbstractType
 //                ])
             )
 
-            ->add($builder->create('residents', FormType::class, ['inherit_data' => true,'label'=>'Informations sur les résidents'])
+            ->add($builder->create('residents', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Informations sur les résidents'])
                 ->add('locataire', EntityType::class,[
                     'attr' => ['class' => '','route_entity'=>'locataire'],
                     'label' => 'Locataire',
@@ -204,7 +204,7 @@ class BienImmoType extends AbstractType
             )
 
             // FORM FIELDS FOR COPROPRIETE RELATION ENTITY
-            ->add($builder->create('copro', FormType::class, ['inherit_data' => true,'label'=>'Informations sur la copropriété'])
+            ->add($builder->create('copro', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Informations sur la copropriété'])
                 ->add('coproName', TextType::class,[
                     'mapped' => false,
                     'label' => "Nom du Syndic/Syndicat",
@@ -248,14 +248,15 @@ class BienImmoType extends AbstractType
 
         if (in_array('ROLE_SUPER_ADMIN', $this->security->getUser()->getRoles())){
             $builder->add(
-                $builder->create('Gestionnaire', FormType::class, ['inherit_data' => true,'label'=>'Gestionaire'])
+                $builder->create('Gestionnaire', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Gestionaire'])
                     ->add('user', EntityType::class,[
+
                         'label' => 'Gestionaire',
                         'class' => User::class,
                         'mapped' => true,
                         'required' => false,
                         'placeholder' => 'Sans gestionnaire',
-                        'attr' => ['class' => ''],
+                        'attr' => ['class' => '','route_entity'=>'user'],
                     ])
             );
         }

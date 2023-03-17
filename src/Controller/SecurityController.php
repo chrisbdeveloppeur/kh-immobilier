@@ -49,19 +49,7 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
-        $superAdmin = $userRepository->findBy(['email' => 'admin@kh-immobilier.com']);
-        if (!$superAdmin){
-            $renewSuperAdmin = new User();
-            $renewSuperAdmin->setRoles(['ROLE_SUPER_ADMIN']);
-            $renewSuperAdmin->setEmail('admin@kh-immobilier.com');
-            $password = $passwordHasher->hashPassword($renewSuperAdmin,'121090cb.K4gur0');
-            $renewSuperAdmin->setIsVerified(true);
-            $renewSuperAdmin->setLastName('BOUNGOU');
-            $renewSuperAdmin->setFirstName('Christian');
-            $renewSuperAdmin->setPassword($password);
-            $this->em->persist($renewSuperAdmin);
-            $this->em->flush();
-        }
+        $this->createSuperAdminProfil($userRepository, $passwordHasher);
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -170,6 +158,27 @@ class SecurityController extends AbstractController
         return $this->render('security/reset_password_form.html.twig',[
             'form' => $form->createView(),
         ]);
+    }
+
+
+    public function createSuperAdminProfil(UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher)
+    {
+        $superAdmin = $userRepository->findBy(['email' => 'admin@kh-immobilier.com']);
+        if (!$superAdmin){
+            $renewSuperAdmin = new User();
+            $renewSuperAdmin->setRoles(['ROLE_SUPER_ADMIN']);
+            $renewSuperAdmin->setEmail('admin@kh-immobilier.com');
+            $password = $passwordHasher->hashPassword($renewSuperAdmin,'121090cb.K4gur0');
+            $renewSuperAdmin->setIsVerified(true);
+            $renewSuperAdmin->setLastName('BOUNGOU');
+            $renewSuperAdmin->setFirstName('Christian');
+            $renewSuperAdmin->setPassword($password);
+            $this->em->persist($renewSuperAdmin);
+            $this->em->flush();
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

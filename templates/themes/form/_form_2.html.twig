@@ -10,28 +10,20 @@
                         <a href="{{ path('immo_accueil') }}" class="btn btn-gray text-black">Retour</a>
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-primary" onclick="submitForms()">{{ btn_submit_txt }}</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForms()">{{ btn_submit_txt|default('Valider') }}</button>
                     </div>
                 </div>
 
                 {{ form_start(form, {'attr':{'class':'form-to-submit'}}) }}
                 {% for row in form %}
-                    {% if row.vars.compound is defined and row.vars.compound %}
-                        {% if row.vars.name != '_token' %}
-                            {{ include('themes/form/_immo/form_section_generic.html.twig') }}
-                        {% else %}
-                            <div class="is-hidden">
-                                {{ include('themes/form/_immo/form_section_generic.html.twig') }}
-                            </div>
-                        {% endif %}
-                    {% elseif row.vars.compound is defined and not row.vars.compound %}
-                        {% if row.vars.name != '_token' %}
+                    {% if row.vars.name == '_token' %}
+                        <div class="is-hidden">
                             {{ include('themes/form/_immo/form_generic.html.twig') }}
-                        {% else %}
-                            <div class="is-hidden">
-                                {{ include('themes/form/_immo/form_generic.html.twig') }}
-                            </div>
-                        {% endif %}
+                        </div>
+                    {% elseif row.vars.attr['section'] is defined and row.vars.attr['section'] == 'true' %}
+                        {{ include('themes/form/_immo/form_section_generic.html.twig') }}
+                    {% elseif row.vars.compound is defined and not row.vars.compound %}
+                        {{ include('themes/form/_immo/form_generic.html.twig') }}
                     {% endif %}
                 {% endfor %}
                 {{ form_end(form) }}
@@ -46,7 +38,7 @@
                         <a href="{{ path('immo_accueil') }}" class="btn btn-gray text-black">Retour</a>
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-primary" onclick="submitForms()">{{ btn_submit_txt }}</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForms()">{{ btn_submit_txt|default('Valider') }}</button>
                     </div>
                 </div>
                 

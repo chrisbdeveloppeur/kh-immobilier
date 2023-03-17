@@ -32,13 +32,13 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class,[
-                'label' => 'Adresse Email*',
+                'label' => 'Adresse Email',
                 'required' => true,
                 'invalid_message' => 'Adresse Email invalide',
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('firstName', TextType::class,[
-                'label' => 'Prénom*',
+                'label' => 'Prénom',
                 'required' => true,
                 'constraints' => [
                     new Regex([
@@ -50,7 +50,7 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('lastName', TextType::class,[
-                'label' => 'Nom*',
+                'label' => 'Nom',
                 'required' => true,
                 'constraints' => [
                     new Regex([

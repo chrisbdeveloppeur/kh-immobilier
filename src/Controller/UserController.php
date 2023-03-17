@@ -72,25 +72,25 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user, Security $security): Response
+    public function edit(Request $request, User $user, Security $security, EntityManagerInterface $em)
     {
         $form = $this->createForm(UserType::class, $user);
         $currentRole = $user->getRoles();
-        if ($security->isGranted('ROLE_SUPER_ADMIN')){
+        if ($security->isGranted('ROLE_SUPER_ADMIN') && $form->has('roles')){
             $form->get('roles')->setData($currentRole);
         }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($security->isGranted('ROLE_SUPER_ADMIN')){
-                $role = $form->get('roles')->getData();
-                $user->setRoles($role);
+                $roles = $form->get('roles')->getData();
+                $user->setRoles($roles);
             }
-            $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
-            return $this->redirectToRoute('user_edit',[
-                'id' => $user->getId(),
-            ]);
+//            return $this->redirectToRoute('user_edit',[
+//                'id' => $user->getId(),
+//            ]);
             //return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
 
