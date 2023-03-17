@@ -105,7 +105,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Type de compte',
-                'mapped' => false,
+//                'mapped' => false,
                 'required' => false,
                 'placeholder' => false,
             ]);

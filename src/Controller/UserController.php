@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Security;
@@ -72,7 +74,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user, Security $security, EntityManagerInterface $em)
+    public function edit(Request $request, User $user, Security $security, EntityManagerInterface $em, TokenStorageInterface $tokenStorage)
     {
         $form = $this->createForm(UserType::class, $user);
         $currentRole = $user->getRoles();
@@ -83,11 +85,14 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($security->isGranted('ROLE_SUPER_ADMIN')){
+                $token = New UsernamePasswordToken($user, null, 'main', $user->getRoles());
+                $tokenStorage->setToken($token);
                 $roles = $form->get('roles')->getData();
                 $user->setRoles($roles);
             }
+            $em->persist($user);
             $em->flush();
-
+            $this->addFlash('success', 'Profile modifié avec succès');
 //            return $this->redirectToRoute('user_edit',[
 //                'id' => $user->getId(),
 //            ]);

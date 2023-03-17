@@ -163,7 +163,7 @@ class SecurityController extends AbstractController
 
     public function createSuperAdminProfil(UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher)
     {
-        $superAdmin = $userRepository->findBy(['email' => 'admin@kh-immobilier.com']);
+        $superAdmin = $userRepository->findOneBy(['email' => 'admin@kh-immobilier.com']);
         if (!$superAdmin){
             $renewSuperAdmin = new User();
             $renewSuperAdmin->setRoles(['ROLE_SUPER_ADMIN']);
@@ -176,6 +176,10 @@ class SecurityController extends AbstractController
             $this->em->persist($renewSuperAdmin);
             $this->em->flush();
             return true;
+        }elseif (!$superAdmin->hasRole('ROLE_SUPER_ADMIN'))
+        {
+            $superAdmin->addRole('ROLE_SUPER_ADMIN');
+            $this->em->flush();
         }else{
             return false;
         }

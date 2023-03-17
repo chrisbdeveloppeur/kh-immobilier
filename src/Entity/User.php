@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\Authorization\Voter\RoleVoter;
+use Symfony\Component\Security\Core\Role\RoleHierarchy;
+use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -141,6 +144,23 @@ class User implements UserInterface
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
+    }
+
+    public function hasRole(?string $role)
+    {
+        if (in_array($role, $this->roles, true))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function addRole(?string $role)
+    {
+        if (!in_array($role,$this->roles)){
+            array_push($this->roles, $role);
+        }
     }
 
     public function setRoles(array $roles): self
