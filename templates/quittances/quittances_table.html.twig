@@ -35,12 +35,12 @@
                 <tr>
                     <th>
                         <span>
-                            Mois
+                            Année
                         </span>
                     </th>
                     <th>
                         <span>
-                            Année
+                            Mois
                         </span>
                     </th>
                     <th>
@@ -63,11 +63,11 @@
                     <tr>
 
                         <td>
-                            {{ quittance.month }}
+                            {{ quittance.year }}
                         </td>
 
                         <td>
-                            {{ quittance.year }}
+                            {{ quittance.month }}
                         </td>
 
                         <td>
@@ -86,13 +86,25 @@
                             <div class="dropstart">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bienImmo.id}) }}#logement" title="Modifier le logement"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
-                                    {% if bienImmo.locataires is not empty %}
-                                        <a class="dropdown-item" href="{{ path('quittances_edit_new_quittance', {'loc_id': bienImmo.locataires.current.id }) }}" title="Editer une quittance de loyer">Editer une quittance</a>
-                                    {% endif %}
-                                    <a class="dropdown-item" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" title="Supprimer la quittance" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"><i class="bx bx-trash me-2"></i>Supprimer</a>
+                                    <a href="{{ asset('documents/quittances/') }}{{ quittance.filename }}.pdf" class="dropdown-item" download="{{ quittance.month }}_{{ quittance.year }}.pdf" title="télécharger la quittance {{ quittance.month }} {{ quittance.year }}">
+                                        <span class="tf-icons bx bx-download me-1"></span>
+                                        Télécharger la quittance
+                                    </a>
+                                    <a href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" class="dropdown-item">
+                                        <span class="tf-icons bx bx-money-withdraw me-1"></span>
+                                        Changer le statut de la quittance
+                                    </a>
+                                    <a class="dropdown-item" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" title="Supprimer la quittance" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');">
+                                        <i class="bx bx-trash me-2"></i>
+                                        Supprimer
+                                    </a>
                                 </div>
                             </div>
+{#                            <a class="dropdown-item" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" title="Supprimer la quittance" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"><i class="bx bx-trash me-2"></i>Supprimer</a>#}
+{#                            <a href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" class="btn mb-2 btn-outline-primary">#}
+{#                                <span class="tf-icons bx bx-sm bx-money-withdraw me-1"></span>#}
+{#                                Changer le statut de la quittance#}
+{#                            </a>#}
                         </td>
                     </tr>
                 {% endfor %}
@@ -106,11 +118,8 @@
 
     {% if locataire is defined and locataire %}
     <div class="column ">
-        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="btn mb-2 btn-sm btn-outline-primary">
-            <span class="icon px-3">
-                <i class="fas fa-lg fa-building"></i>
-                <i class="fas fa-plus"></i>
-            </span>
+        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="btn mb-2 btn-outline-primary">
+            <span class="tf-icons bx bx-sm bxs-file-plus me-1"></span>
             <span>
                 Editer une quittance
             </span>

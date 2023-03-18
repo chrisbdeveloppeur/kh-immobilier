@@ -50,10 +50,14 @@ class QuittancesController extends AbstractController
             $request->query->getInt('page',1),
             $request->query->getInt('numItemsPerPage',20),
             array(
-                'defaultSortFieldName' => 'created_date',
+                'defaultSortFieldName' => 'date',
                 'defaultSortDirection' => 'desc',
             )
         );
+//        foreach ($quittances as $quittance){
+//            dump($quittance->getDate());
+//        }
+//        die();
 
         if ($bien_id){
             $data = [
@@ -241,7 +245,8 @@ class QuittancesController extends AbstractController
             'statusQuittancePayed' => $quittance->getPayed(),
         ];
         $referer = $request->headers->get('referer');
-        return $this->json($data);
+//        return $this->json($data);
+        return $this->redirect($referer);
 
     }
 

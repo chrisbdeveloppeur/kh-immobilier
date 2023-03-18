@@ -1,0 +1,130 @@
+{% if locataires|length == 0 %}
+    <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
+        <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
+                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center " style="line-height: normal">
+                        <span class="icon">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <span>
+                            <b>Vous n'avez aucun locataire enregistrés</b>
+                        </span>
+                    </span>
+            <a href="{{ path('locataire_new') }}#logement" class="button is-small is-info is-light">Ajouter un locataire</a>
+        </div>
+    </div>
+{% else %}
+    <div class="overflow-scroll perfect-scrollbar">
+        <table class="table table-hover">
+            <thead class="table-warning">
+                <tr class="">
+                    <th>
+                        <span>{{ knp_pagination_sortable(locataires, 'Genre', 'gender') }}</span>
+                    </th>
+                    <th>
+                        <span>{{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}</span>
+                    </th>
+                    <th>
+                        <span>{{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}</span>
+                    </th>
+                    <th>
+                        <span>{{ knp_pagination_sortable(locataires, 'Email', 'email') }}</span>
+                    </th>
+                    <th>
+                        <span>{{ knp_pagination_sortable(locataires, 'Tel', 'phone') }}</span>
+                    </th>
+                    <th>
+                        <span>{{ knp_pagination_sortable(locataires, 'Logement', 'logement') }}</span>
+                    </th>
+                    <th>
+                        <span>Actions</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for locataire in locataires %}
+                <tr class="">
+                    <td class="has-text-weight-bold">
+                        <span class="text-info-onhover">
+                            <span class="text-index-entity">
+                                {{ locataire.gender }}
+                            </span>
+                        </span>
+                    </td>
+                    <td class="has-text-weight-bold">
+                        <span class="text-info-onhover">
+                            <span class="text-index-entity">
+                                {{ locataire.lastname }}
+                            </span>
+                        </span>
+                    </td>
+                    <td class="has-text-weight-bold">
+                        <span class="text-info-onhover">
+                            <span class="text-index-entity">
+                                {{ locataire.firstname }}
+                            </span>
+                        </span>
+                    </td>
+                    <td class="has-text-weight-bold">
+                        <span class="text-info-onhover">
+                            <span class="text-index-entity">
+                                {{ locataire.email }}
+                            </span>
+                        </span>
+                    </td>
+                    <td class="has-text-weight-bold">
+                        <span class="text-info-onhover">
+                            <span class="text-index-entity">
+                                {{ locataire.phone }}
+                            </span>
+                        </span>
+                    </td>
+                    <td class="has-text-weight-bold">
+                        <span class="text-info-onhover">
+                            <span class="text-index-entity">
+                                {{ locataire.logement }}
+                            </span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="dropstart">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier le locataire"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
+                                <a class="dropdown-item" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" title="Éditer une quittance"><i class="bx bx-edit-alt me-2"></i>Éditer une quittance</a>
+                                <a class="dropdown-item" href="{{ path('locataire_delete', {'id': locataire.id}) }}" title="Supprimer le locataire" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');"><i class="bx bx-trash me-2"></i>Supprimer</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="15" class=" is-size-6">
+                            <span>
+                                <i>Vide...</i>
+                            </span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot class="table-active">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="column ">
+        <a href="{{ path('locataire_new') }}" class="btn mb-2 btn-outline-primary">
+            <span class="tf-icons bx bx-sm bxs-user-plus me-1"></span>
+            <span>
+                Ajouter un locataire
+            </span>
+        </a>
+    </div>
+{% endif %}

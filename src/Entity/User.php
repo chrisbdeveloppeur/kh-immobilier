@@ -160,6 +160,9 @@ class User implements UserInterface
     {
         if (!in_array($role,$this->roles)){
             array_push($this->roles, $role);
+            return true;
+        }else{
+            return false;
         }
     }
 

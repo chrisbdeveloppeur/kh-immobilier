@@ -17,7 +17,6 @@
 
                 <div class="accordion" id="biensAccordion">
                     {% for bienImmo in app.user.biensimmos %}
-                        {% set quittances = bienImmo.quittances %}
                         {% set locataire = bienImmo.locataire %}
                         {% set bienImmoTarget = false %}
                         {% if bien_immo is defined and bienImmo.id == bien_immo.id %}

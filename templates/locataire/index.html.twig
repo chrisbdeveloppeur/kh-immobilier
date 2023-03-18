@@ -2,195 +2,31 @@
 
 {% block title %}Liste des Locataires{% endblock %}
 
-{% block title_main %}Liste des Locataires{% endblock %}
+{% block title_main %}Liste des <b>Locataires</b>{% endblock %}
 
 {% block body %}
-<section class="section is-flex is-flex-direction-column is-align-items-center">
-
-    <div class="is-flex is-flex-direction-column is-align-items-center">
-        <div class="tags has-addons mb-0">
-            <span class="tag has-text-weight-bold">Nombre total de locataires</span>
-            <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
-        </div>
-        {{ knp_pagination_render(locataires) }}
-    </div>
-
-    {% if locataires|length == 0 %}
-        <div class="is-flex-desktop is-flex-direction-column is-align-items-center">
-            <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column box-shadow-bulma has-background-info border-radius-2px">
-                    <span class="icon-text px-3 py-2 has-text-light is-flex is-justify-content-center is-align-items-center has-text-centered" style="line-height: normal">
-                        <span class="icon">
-                            <i class="fas fa-info-circle"></i>
-                        </span>
-                        <span>
-                            <b>Aucun locataires enregistrés</b>
-                        </span>
-                    </span>
-                <a href="{{ path('locataire_new') }}#locataire" class="button is-small is-info is-light">Ajouter un locataire</a>
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier /</span> Mes locataires</h4>
+            <div class="row">
+                {{ include('locataire/_table.html.twig') }}
             </div>
         </div>
-    {% else %}
-        <div class="table-container">
-            <table class="table is-narrow">
-                <thead>
-                <tr class="has-text-centered">
-                    <th><span class="is-size-7">Actions</span></th>
-                    <th class="sticky-left px-0 py-0">
-                        <span class="is-size-7 has-background-light child-sticky-left px-2">
-                            {{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}
-                        </span>
-                        {#                        <span>#}
-                        {#                            {{ knp_pagination_filter(locataires, {'mode': 'lastname'}) }}#}
-                        {#                        </span>#}
-                    </th>
-                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}</span></th>
-                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Email', 'email') }}</span></th>
-                    <th><span class="is-size-7">Téléphone</span></th>
-                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Sexe', 'gender') }}</span></th>
-                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Moyent de paiement', 'mode') }}</span></th>
-                    <th><span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Logement', 'logement.building') }}</span></th>
-                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        <th>
-                            <span class="is-size-7">{{ knp_pagination_sortable(locataires, 'Gestionnaire', ['user']) }}</span>
-                        </th>
-                    {% endif %}
-                </tr>
-                </thead>
-                <tbody>
-                {% for locataire in locataires %}
-                    <tr class="has-text-centered">
-                        <td class="is-size-7">
+    </div>
 
-                            <a href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Modifier les informations du locataire">
-                            <span class="icon text-info-onhover">
-                                <i class="fas fa-lg fa-user-edit"></i>
-                            </span>
-                            </a>
+    <section class="container">
 
-                            {% if locataire.logement %}
-                                <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" title="Editer une quittance de loyer">
-                                <span class="icon text-info-onhover">
-                                    <i class="fas fa-lg fa-file-signature"></i>
-                                </span>
-                                </a>
-                            {% endif %}
-
-                            <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" title="Supprimer le locataire" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');">
-                            <span class="icon has-text-danger">
-                                <i class="fas fa-lg fa-trash-alt"></i>
-                            </span>
-                            </a>
-
-                        </td>
-
-                        <td class="is-size-7 show-on-hover sticky-left px-0 py-0">
-                        <span title="Voir les détails du locataire">
-                            <span class="text-info-onhover has-text-dark">
-                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" class="has-text-weight-bold text-info-onhover icon-text has-background-white child-sticky-left nowrap px-2">
-                                    <span class="text-index-entity">
-                                        {{ locataire.lastName }}
-                                    </span>
-                                    <span class="icon show-on-hover-target is-hidden-touch">
-                                        <i class="fas fa-search"></i>
-                                    </span>
-                                </a>
-                            </span>
-                        </span>
-                        </td>
-                        <td class="is-size-7 show-on-hover">
-                        <span title="Voir les détails du locataire">
-                            <span class="text-info-onhover has-text-dark">
-                                <a href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" class="has-text-weight-bold text-info-onhover icon-text nowrap">
-                                    <span>
-                                        {{ locataire.firstName }}
-                                    </span>
-                                    <span class="icon show-on-hover-target is-hidden-touch">
-                                        <i class="fas fa-search"></i>
-                                    </span>
-                                </a>
-                            </span>
-                        </span>
-                        </td>
-                        <td class="is-size-7 show-on-hover">
-                            {% if locataire.email %}
-                                <a href="mailto:{{ locataire.email }}" title="Envoyer un message">
-                                <span class="text-info-onhover has-text-dark">
-                                    <span>{{ locataire.email }}</span>
-                                    <span class="icon show-on-hover-target is-hidden-touch">
-                                        <i class="fas fa-envelope"></i>
-                                    </span>
-                                </span>
-                                </a>
-                            {% else %}
-                                <span>
-                                <i class="non-renseigne">N/A</i>
-                            </span>
-                            {% endif %}
-                        </td>
-                        <td class="is-size-7 show-on-hover">
-                            {% if locataire.phone %}
-                                <a href="tel:{{ locataire.phone }}" title="Contacter">
-                                <span class="text-info-onhover has-text-dark">
-                                    <span>{{ locataire.phone }}</span>
-                                    <span class="icon show-on-hover-target is-hidden-touch">
-                                        <i class="fas fa-phone"></i>
-                                    </span>
-                                </span>
-                                </a>
-                            {% else %}
-                                <span>
-                                <i class="non-renseigne">N/A</i>
-                            </span>
-                            {% endif %}
-                        </td>
-                        <td class="is-size-7">{{ locataire.gender }}</td>
-                        <td class="is-size-7">{{ locataire.mode }}</td>
-                        <td class="is-size-7 show-on-hover">
-                            {% if locataire.logement %}
-                                <a href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir les détails du logement">
-                                <span class="text-info-onhover has-text-dark">
-                                    <span>{{ locataire.logement }}</span>
-                                    <span class="icon show-on-hover-target is-hidden-touch">
-                                        <i class="fas fa-search"></i>
-                                    </span>
-                                </span>
-                                </a>
-                            {% else %}
-                                <i class="non-renseigne">N/A</i>
-                            {% endif %}
-                        </td>
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            {% if locataire.user %}
-                                <td class="is-size-7" title="{{ locataire.user }}">{{ locataire.user }}</td>
-                            {% else %}
-                                <td class="is-size-7" title="Non renseignée"><i class="non-renseigne">N/A</i></td>
-                            {% endif %}
-                        {% endif %}
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="15" class="has-text-centered is-size-6">
-                        <span>
-                            <i>Vide...</i>
-                        </span>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+        <div class="is-flex is-flex-direction-column is-align-items-center">
+            <div class="tags has-addons mb-0">
+                <span class="tag has-text-weight-bold">Nombre total de locataires</span>
+                <span class="tag is-dark">{{ locataires.getTotalItemCount }}</span>
+            </div>
+            {{ knp_pagination_render(locataires) }}
         </div>
 
-        <div class="column has-text-centered">
-            <a href="{{ path('locataire_new') }}#locataire" class="button mb-2 is-small is-dark bg-info-onhover">
-                <span class="icon">
-                    <i class="fas fa-lg fa-user-plus"></i>
-                </span>
-                <span>
-                    Ajouter un locataire
-                </span>
-            </a>
-        </div>
-    {% endif %}
+        {#  POUR GOOGLE MAPS SEARCH  #}
+        {#    <input type="text" id="autocomplete" placeholder="Indiquer une adresse">#}
+        {#  ##############  #}
 
-</section>
+    </section>
 {% endblock %}

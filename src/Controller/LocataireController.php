@@ -26,13 +26,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class LocataireController extends AbstractController
 {
 
-    private $all_locataires;
+    private $locatairesByUser;
     private $adaptByUser;
 
     public function __construct(AdaptByUser $adaptByUser)
     {
         $this->adaptByUser = $adaptByUser;
-        $this->all_locataires = $adaptByUser->getAllLocataires();
+        $this->locatairesByUser = $adaptByUser->getAllLocataires();
     }
 
     /**
@@ -41,7 +41,7 @@ class LocataireController extends AbstractController
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $locataires = $paginator->paginate(
-            $this->all_locataires,
+            $this->locatairesByUser,
             $request->query->getInt('page',1),
             $request->query->getInt('numItemsPerPage',20),
             array(
