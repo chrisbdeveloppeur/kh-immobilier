@@ -30,7 +30,6 @@ class MailSecurityManager extends AbstractController
         }elseif ($code_error == CodeErreurConstant::INCORRECT_PASSWORD){
             $this->sendResetPassword($user, $token);
         }
-
     }
 
     public function sendConfirmationMail(User $user)

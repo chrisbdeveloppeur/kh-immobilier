@@ -167,16 +167,16 @@
     {% endif %}
 
     {% if field.vars.name == 'soldes' %}
-                        <label class="form-label">{{ form_label(field) }}</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Total des soldes</span>
-                            <span class="input-group-text is-expanded">{{ form.soldes|length }}€</span>
-                            <!-- Modal -->
-                            {% include('includes/modal.html.twig') with {'modal_id':'soldes_modal'} %}
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#soldes_modal">
-                                Voir les soldes
-                            </button>
-                        </div>
+        <label class="form-label">{{ form_label(field) }}</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Total des soldes</span>
+            <span class="input-group-text is-expanded">{{ form.soldes|length }}€</span>
+            <!-- Modal -->
+            {% include('includes/modal.html.twig') with {'modal_id':'soldes_modal'} %}
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#soldes_modal">
+                Voir les soldes
+            </button>
+        </div>
     {% else %}
         <div class="mb-3">
             {% if form_errors(field) %}
@@ -194,6 +194,12 @@
                     <div>
                         <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
                         {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-label':form_label(field), 'rows':5}} ) }}
+                    </div>
+                {% elseif form.vars.name == 'password' %}
+                    <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
+                    <div class="input-group input-group-merge form-password-toggle">
+                        {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class, 'placeholder':placeholder, 'aria-describedby':'floatingInputHelp_'~field.vars.name}} ) }}
+                        <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                     </div>
                 {% else %}
                     <div class="form-floating {{ form.vars.name }} {{ field.vars.name }}">

@@ -19,8 +19,9 @@ class ChangePasswordUserType extends AbstractType
             ->add('password', PasswordType::class,[
                 'label' => 'Mon ancien mot de passe',
                 'error_bubbling' => true,
+                'required' => true,
                 'attr' => [
-                    'class' => 'input is-small has-text-centered',
+                    'class' => 'form-control input has-text-centered',
                     'placeholder' => 'Entrer mon ancien mot de passe',
                     ],
                 'mapped' => false,
@@ -33,19 +34,21 @@ class ChangePasswordUserType extends AbstractType
                 'attr' => ['class' => 'field'],
 //                'row_attr' => ['class' => 'field'],
                 'first_options'  => [
-                    'label' => false,
+                    'label' => 'Mon nouveau mot de passe',
                     'error_bubbling' => true,
+                    'required' => true,
                     'attr' => [
-                        'class' => 'input is-small has-text-centered mb-2',
+                        'class' => 'form-control mb-2',
                         'placeholder' => 'Entrer mon nouveau mot de passe',
                     ]
                 ],
                 'second_options' => [
                     'label' => false,
                     'error_bubbling' => false,
+                    'required' => true,
                     'attr' => [
-                        'class' => 'input is-small has-text-centered',
-                        'placeholder' => 'Confirmer mon nouveau mot de passe',
+                        'class' => 'form-control',
+                        'placeholder' => 'Entrer une nouvelle foi mon nouveau mot de passe',
                     ]
                 ],
                 'mapped' => false,
