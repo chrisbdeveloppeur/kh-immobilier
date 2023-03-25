@@ -1,3 +1,4 @@
+{% set quittances = bienImmo.quittances %}
 {% if quittances|length == 0 and locataire %}
         {% set message_txt = 'Vous n\'avez aucun quittances éditées pour ce logement' %}
         {% set btn_url = path('quittances_edit_new_quittance', {'loc_id': locataire.id}) %}

@@ -62,7 +62,7 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
             ->add('phoneNumber', TelType::class,[
-                'label' => 'Tel',
+                'label' => 'Numéro de téléphone',
                 'required' => false,
                 'invalid_message' => 'Ce numéro n\'est pas valide',
                 'attr' => ['class' => 'input is-small has-text-centered'],
