@@ -74,8 +74,17 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user, Security $security, EntityManagerInterface $em, TokenStorageInterface $tokenStorage)
+    public function edit(Request $request, User $user, Security $security, EntityManagerInterface $em, TokenStorageInterface $tokenStorage, $id)
     {
+        if (
+            !($id == $this->getUser()->getId()) &&
+            !($this->isGranted('ROLE_SUPER_ADMIN'))
+        ){
+            $this->addFlash('warning', 'Vous n\'avez pas l\'autorisation de faire cette action');
+            return $this->redirectToRoute('user_edit',[
+                'id' => $this->getUser()->getId(),
+            ]);
+        };
         $form = $this->createForm(UserType::class, $user);
         $currentRole = $user->getRoles();
         if ($security->isGranted('ROLE_SUPER_ADMIN') && $form->has('roles')){
@@ -108,12 +117,20 @@ class UserController extends AbstractController
     /**
      * @Route("/del/{id}", name="user_del", methods={"GET","POST"})
      */
-    public function delete(Request $request, User $user, EntityManagerInterface $em): Response
+    public function delete(Request $request, User $user, EntityManagerInterface $em, $id): Response
     {
 //        dump('delete'.$user->getId());
 //        dump($request->request->get('_token'));
 //        dd($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token')));
-
+        if (
+            !($id == $this->getUser()->getId()) &&
+            !($this->isGranted('ROLE_SUPER_ADMIN'))
+        ){
+            $this->addFlash('warning', 'Vous n\'avez pas l\'autorisation de faire cette action');
+            return $this->redirectToRoute('user_edit',[
+                'id' => $this->getUser()->getId(),
+            ]);
+        };
         if (in_array('ROLE_SUPER_ADMIN', $user->getRoles()) )
         {
             $this->addFlash('danger', 'Vous ne pouvez pas supprimer le compte super administrateur');
@@ -133,6 +150,15 @@ class UserController extends AbstractController
      */
     public function changePassword($id, Request $request, UserRepository $userRepository, UserPasswordHasherInterface $encoder, EntityManagerInterface $em): Response
     {
+        if (
+            !($id == $this->getUser()->getId()) &&
+            !($this->isGranted('ROLE_SUPER_ADMIN'))
+        ){
+            $this->addFlash('warning', 'Vous n\'avez pas l\'autorisation de faire cette action');
+            return $this->redirectToRoute('change_password',[
+                'id' => $this->getUser()->getId(),
+            ]);
+        };
         $user = $userRepository->find($id);
         $form = $this->createForm(ChangePasswordUserType::class, $user);
         $form->handleRequest($request);

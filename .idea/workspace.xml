@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="DESKTOP préparation pour ajout gestion etat des lieux v1.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bien_immo/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bien_immo/_table.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,76 +51,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/SecurityController.php">
+        <entry file="file://$PROJECT_DIR$/.env.local">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="102" column="41" selection-start-line="102" selection-start-column="41" selection-end-line="102" selection-end-column="41" />
-              <folding>
-                <element signature="e#34#70#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="646">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Manager/MailSecurityManager.php">
+        <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/custom_filtration.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="65" column="36" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/includes/menus/aside_menu.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3230">
-              <caret line="190" column="66" selection-start-line="190" selection-start-column="66" selection-end-line="190" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/immo/documents/edit_quittance.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/quittances/quittances_table.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="42" selection-start-column="42" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/quittances/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
+            <state relative-caret-position="275">
+              <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/bien_immo/_table.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3281">
-              <caret line="205" column="14" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
+            <state relative-caret-position="306">
+              <caret line="159" column="15" selection-start-line="159" selection-start-column="15" selection-end-line="159" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/RegistrationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Security/EmailVerifier.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -128,8 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bien_immo</find>
-      <find>sear</find>
       <find>show-on-hover-target</find>
       <find>show-on-hover</find>
       <find>Loca</find>
@@ -158,6 +127,8 @@
       <find>ChangePasswordFormType</find>
       <find>hover</find>
       <find>mb-3</find>
+      <find>edi</find>
+      <find>edit</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\K4gur0\PhpstormProjects\edit_word\dashboard\sneat-1.0.0\html</dir>
@@ -220,7 +191,6 @@
         <option value="$PROJECT_DIR$/templates/themes/form/_immo/form_section_generic.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/BienImmo.php" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/templates/bien_immo/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/LocataireController.php" />
@@ -244,6 +214,7 @@
         <option value="$PROJECT_DIR$/templates/quittances/quittances_table.html.twig" />
         <option value="$PROJECT_DIR$/templates/quittances/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/bien_immo/_table.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
       </list>
     </option>
   </component>
@@ -409,7 +380,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-428" />
+    <option name="x" value="-430" />
     <option name="y" value="-20" />
     <option name="width" value="1940" />
     <option name="height" value="1060" />
@@ -422,6 +393,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -433,7 +405,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -443,7 +414,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -451,19 +422,19 @@
     <property name="ts.external.directory.path" value="D:\JetBrains\PhpStorm 2019.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
-      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier" />
-      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier\templates\locataire" />
-      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier\templates\themes\form\_immo" />
-      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier\templates\themes\form" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\includes" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\public" />
       <recent name="D:\JetBrains\PhpstormProjects\edit_word\templates\immo" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\assets\files\templates\chrisbdev" />
       <recent name="C:\Users\K4gur0\PhpstormProjects\edit_word\assets\files\templates\CHRISBDEV" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\K4gur0\PhpstormProjects\kh-immobilier\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
+      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier\vendor\knplabs\knp-paginator-bundle\templates\Pagination" />
+      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier" />
+      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier\templates\locataire" />
+      <recent name="D:\JetBrains\PhpstormProjects\kh-immobilier\templates\themes\form\_immo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -791,6 +762,9 @@
       <workItem from="1679603483150" duration="1190000" />
       <workItem from="1679775033845" duration="3352000" />
       <workItem from="1679857446798" duration="1554000" />
+      <workItem from="1683343041612" duration="52000" />
+      <workItem from="1683646528731" duration="606000" />
+      <workItem from="1685573432359" duration="3210000" />
     </task>
     <task id="LOCAL-00001" summary="DESKTOP maj major , add dompdf =&gt; OK, creat controller for dompdf quittance and initialize twig template for quittances">
       <created>1650163579558</created>
@@ -836,7 +810,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1583628000" />
+    <option name="totallyTimeSpent" value="1587919000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -848,9 +822,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32036248" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3342282" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -865,7 +840,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5060403" side_tool="true" weight="0.23512748" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49395972" visible="true" weight="0.30552545" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49395972" visible="true" weight="0.305949" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32827735" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="bottom" id="TypeScript" order="14" />
@@ -971,13 +946,6 @@
           <folding>
             <element signature="e#34#58#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/RegistrationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
         </state>
       </provider>
     </entry>
@@ -1157,13 +1125,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="145" selection-start-line="145" selection-end-line="145" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/BienImmoType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
@@ -1182,13 +1143,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Security/EmailVerifier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
         </state>
       </provider>
     </entry>
@@ -1227,20 +1181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env.local">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/custom_filtration.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1307,6 +1247,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3281">
           <caret line="205" column="14" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.local">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Security/EmailVerifier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/templates/Pagination/custom_filtration.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="159" column="15" selection-start-line="159" selection-start-column="15" selection-end-line="159" selection-end-column="15" />
         </state>
       </provider>
     </entry>
