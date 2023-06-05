@@ -7,9 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\Authorization\Voter\RoleVoter;
-use Symfony\Component\Security\Core\Role\RoleHierarchy;
-use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -93,6 +91,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $gender;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Image::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $signature;
 
     public function __construct()
     {
@@ -361,6 +364,19 @@ class User implements UserInterface
     public function setGender(?string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getSignature(): ?Image
+    {
+        return $this->signature;
+    }
+
+    public function setSignature(?Image $signature): self
+    {
+        $this->signature = $signature;
+        $this->signature->setType('signature');
 
         return $this;
     }

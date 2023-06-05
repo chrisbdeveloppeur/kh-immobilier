@@ -2,14 +2,14 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="MariaDB - @localhost" uuid="6960480c-d9d6-4e9f-97e7-92221b832955">
-      <database-info product="MySQL" version="8.0.21" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.4.1" dbms="MYSQL" exact-version="8.0.21" exact-driver-version="2.4">
+      <database-info product="MariaDB" version="10.4.10-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.4.10" exact-driver-version="2.6">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:edit_word</introspection-schemas>
+      <introspection-schemas>*:kh-immobilier</introspection-schemas>
     </data-source>
   </component>
 </project>
