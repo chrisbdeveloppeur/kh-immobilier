@@ -7,16 +7,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('file', FileType::class,[
+            ->add('imageFile', VichFileType::class,[
                 'label' => 'Fichier',
                 'attr' => ['class' => ''],
-                'required' => false,
+                'allow_delete' => true,
+                'download_link' => true,
             ])
         ;
     }

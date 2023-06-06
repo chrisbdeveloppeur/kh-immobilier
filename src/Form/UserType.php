@@ -62,7 +62,7 @@ class UserType extends AbstractType
                 'invalid_message' => 'Ce numéro n\'est pas valide',
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
-            ->add('signature', ImageType::class,[
+            ->add('image', ImageType::class,[
                 'label' => 'Signature',
                 'attr' => ['class' => 'file-input has-text-centered'],
                 'required' => false,

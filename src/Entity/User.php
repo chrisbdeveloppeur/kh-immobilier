@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -93,9 +94,10 @@ class User implements UserInterface
     private $gender;
 
     /**
-     * @ORM\OneToOne(targetEntity=Image::class, inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
-    private $signature;
+    private $image;
 
     public function __construct()
     {
@@ -368,18 +370,15 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getSignature(): ?Image
+    public function getImage()
     {
-        return $this->signature;
+        return $this->image;
     }
 
-    public function setSignature(?Image $signature): self
+    public function setImage($image)
     {
-        $this->signature = $signature;
-        $this->signature->setType('signature');
-
+        $this->image = $image;
         return $this;
     }
-
 
 }

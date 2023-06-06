@@ -9,6 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
+ * @ORM\Table(name="image")
  * @Vich\Uploadable()
  */
 class Image
@@ -19,6 +20,15 @@ class Image
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="images", fileNameProperty="fileName")
+     *
+     * @var File|null
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -36,16 +46,7 @@ class Image
     private $created_date;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="images", fileNameProperty="fileName")
-     *
-     * @var File|null
-     */
-    private $file;
-
-    /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="signature", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="image", cascade={"persist", "remove"})
      */
     private $user;
 
@@ -81,11 +82,11 @@ class Image
         return $this;
     }
 
-    public function setFile(?File $file = null): void
+    public function setImageFile(?File $imageFile = null): void
     {
-        $this->file = $file;
+        $this->imageFile = $imageFile;
 
-        if (null !== $file) {
+        if (null !== $imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
@@ -102,9 +103,9 @@ class Image
         return $this->fileName;
     }
 
-    public function getFile(): ?string
+    public function getImageFile(): ?string
     {
-        return $this->file;
+        return $this->imageFile;
     }
 
     public function getUser(): ?User
@@ -116,12 +117,12 @@ class Image
     {
         // unset the owning side of the relation if necessary
         if ($user === null && $this->user !== null) {
-            $this->user->setSignature(null);
+            $this->user->setImage(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($user !== null && $user->getSignature() !== $this) {
-            $user->setSignature($this);
+        if ($user !== null && $user->getImage() !== $this) {
+            $user->setImage($this);
         }
 
         $this->user = $user;
