@@ -7,6 +7,7 @@ use App\Repository\QuittanceRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,11 +32,17 @@ class PdfController extends AbstractController
         $logement = $locataire->getLogement();
         $proprietaire = $locataire->getUser();
         // instantiate and use the dompdf class
+        $path = $this->projectRoot.'/public/users/signatures/'.$proprietaire->getSignatureFileName();
+        $signature = new File($path);
+        $type = pathinfo($signature, PATHINFO_EXTENSION);
+        $data = file_get_contents($signature);
+        $base64Signature = 'data:image/' . $type . ';base64,' . base64_encode($data);
         $html = $this->renderView('pdf/quittance_1.html.twig',[
             'quittance' => $quittance,
             'locataire' => $locataire,
             'logement' => $logement,
             'proprietaire' => $proprietaire,
+            'signature' => $base64Signature,
         ]);
         $option = new Options();
         $option->setIsHtml5ParserEnabled(true);
