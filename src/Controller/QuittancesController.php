@@ -133,11 +133,18 @@ class QuittancesController extends AbstractController
             $pdf_exist = false;
         }
 
+        if (file_exists('../public/documents/quittances/' . $file . '.docx')){
+            $docx_exist = true;
+        }else{
+            $docx_exist = false;
+        }
+
         return $this->render('immo/documents/download_quittance.html.twig',[
             "file_name" => $file,
             "locataire" => $locataire,
             "quittance" => $quittance,
             "pdf_exist" => $pdf_exist,
+            "docx_exist" => $docx_exist,
         ]);
     }
 
@@ -201,10 +208,12 @@ class QuittancesController extends AbstractController
             };
         }
 
-        if ($quittance->getPdfExist()){
+        if (file_exists('../public/documents/quittances/' . $quittance->getFileName() . '.pdf')){
             $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.pdf';
         }else{
-            $quittance_file_path = '../public/documents/quittances/' . $quittance->getFileName() . '.docx';
+            $this->addFlash('error', 'La qiuttance n\'a pu être envoyée');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer.'#files');
         }
         $mailController->sendQuittance($quittance_file_path, $locataire);
         $this->addFlash('success', 'La quittance de loyer à bien été envoyer pour : ' . $mail );

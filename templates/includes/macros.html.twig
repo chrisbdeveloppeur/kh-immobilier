@@ -233,12 +233,14 @@
 
             {% elseif field_type_1 == 'vich_file' %}
                 <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
+                <div class="p-2 mb-2 is-flex justify-content-center align-items-center" style="border: dotted 2px rgba(0,0,0,.2);border-radius: .5rem;min-height: 100px">
+                    {% if field.vars.object is defined and field.vars.object.signatureFileName %}
+                        <figure class="figure" style="position: relative;margin-bottom: 0;width: 150px">
+                            <img class="img-thumb-projet" src="{{ vich_uploader_asset(field.vars.object, 'signatureFile') }}" alt="{{ field.vars.object.signatureFileName }}">
+                        </figure>
+                    {% endif %}
+                </div>
                 {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}
-                {% if field.vars.object is defined and field.vars.object.signatureFileName %}
-                    <figure class="figure" style="position: relative;margin-bottom: .75rem;width: 150px">
-                        <img class="img-thumb-projet" src="{{ vich_uploader_asset(field.vars.object, 'signatureFile') }}" alt="{{ field.vars.object.signatureFileName }}">
-                    </figure>
-                {% endif %}
             {% else %}
                 <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
                 {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}
