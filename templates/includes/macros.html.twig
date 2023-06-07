@@ -182,8 +182,8 @@
             {% if form_errors(field) %}
                 <span class="badge bg-label-danger">Erreur</span>
                 <span class="help">
-                            {{ form_errors(field) }}
-                        </span>
+                    {{ form_errors(field) }}
+                </span>
                 {% set field_error_class = ' is-invalid' %}
             {% else %}
                 {% set field_error_class = '' %}
@@ -216,7 +216,7 @@
                     {% endif %}
                 </div>
             {% elseif field_type_1 == 'choice' %}
-                {% if field_type_2 == 'entity' %}
+                {% if field_type_2 == 'entity' and field.vars.attr.route_entity %}
                     <label for="{{ field.vars.full_name }}" class="form-label">Selectionner un {{ field.vars.label }}</label>
                     <div class="input-group">
                         {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
@@ -231,7 +231,16 @@
                     </div>
                 {% endif %}
 
+            {% elseif field_type_1 == 'vich_file' %}
+                <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
+                {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}
+                {% if field.vars.object is defined and field.vars.object.signatureFileName %}
+                    <figure class="figure" style="position: relative;margin-bottom: .75rem;width: 150px">
+                        <img class="img-thumb-projet" src="{{ vich_uploader_asset(field.vars.object, 'signatureFile') }}" alt="{{ field.vars.object.signatureFileName }}">
+                    </figure>
+                {% endif %}
             {% else %}
+                <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
                 {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}
             {% endif %}
             {% if field.vars.help is defined %}

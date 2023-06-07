@@ -93,7 +93,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //dd($form->get('signature')->getData());
+            //dd($form->get('signatureFile')->getData());
             if ($security->isGranted('ROLE_SUPER_ADMIN')){
                 $token = New UsernamePasswordToken($user, null, 'main', $user->getRoles());
                 $tokenStorage->setToken($token);

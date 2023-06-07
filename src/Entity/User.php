@@ -10,12 +10,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="Ce compte existe déjà...")
+ * @Vich\Uploadable()
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -98,6 +100,28 @@ class User implements UserInterface
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     private $image;
+
+    /**
+     *
+     * @Vich\UploadableField(mapping="users_signatures", fileNameProperty="signatureFileName")
+     *
+     * @var File|null
+     * @Assert\Image(
+     *     maxSize="8Mi",
+     *     mimeTypes={"image/jpeg", "image/png", "image/svg+xml", "application/pdf", "application/x-pdf"},
+     *     mimeTypesMessage = "Seul les fichier pdf/jpg/jpeg/png/svg sont acceptés")
+     */
+    private $signatureFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $signatureFileName;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -379,6 +403,84 @@ class User implements UserInterface
     {
         $this->image = $image;
         return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getSignatureFile(): ?File
+    {
+        return $this->signatureFile;
+    }
+
+    /**
+     * @param File|null $img
+     * @return User
+     */
+    public function setSignatureFile(?File $signatureFile): User
+    {
+        $this->signatureFile = $signatureFile;
+        if ($signatureFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignatureFileName(): ?string
+    {
+        return $this->signatureFileName;
+    }
+
+    /**
+     * @param mixed $signatureFileName
+     * @return User
+     */
+    public function setSignatureFileName($signatureFileName): User
+    {
+        $this->signatureFileName = $signatureFileName;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     * @return User
+     */
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->email,
+            $this->password,
+            ) = unserialize($serialized);
     }
 
 }

@@ -67,7 +67,7 @@ class Image
 
     public function __toString()
     {
-        return $this->getFileName();
+        return $this->getFileName()?: '';
     }
 
     public function getCreatedDate(): ?\DateTimeInterface

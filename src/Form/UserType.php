@@ -3,15 +3,18 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\Regex;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 
 class UserType extends AbstractType
@@ -62,10 +65,12 @@ class UserType extends AbstractType
                 'invalid_message' => 'Ce numéro n\'est pas valide',
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
-            ->add('image', ImageType::class,[
+            ->add('signatureFile', VichFileType::class,[
                 'label' => 'Signature',
                 'attr' => ['class' => 'file-input has-text-centered'],
                 'required' => false,
+                'allow_delete' => true,
+                'download_link' => true,
             ]);
 //            ->add('plainPassword', RepeatedType::class, [
 //                'type' => PasswordType::class,
