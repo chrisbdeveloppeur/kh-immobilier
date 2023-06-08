@@ -6,14 +6,9 @@
 
 {% block body %}
 
-    {{ include('includes/third_header.html.twig') }}
-
-{#    {% if is_granted('ROLE_ADMIN') %}#}
-{#        <div class="column has-text-centered">#}
-{#            <a href="{{ path('pdf_quittance', {'id': 2}) }}" class="button">PDF</a>#}
-{#        </div>#}
-{#    {% endif %}#}
 
     {{ include('themes/form/_form_2.html.twig') }}
+
+    {{ include('includes/third_header.html.twig') }}
 
 {% endblock %}

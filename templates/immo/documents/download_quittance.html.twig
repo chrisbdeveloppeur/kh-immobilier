@@ -9,38 +9,38 @@
         <div class="row">
             <div class="col-xl-6 col-md-4 col-12 is-flex is-flex-direction-column justify-content-center align-items-center">
 
-                    <a type="button" class="btn btn-primary me-2 mb-2 col-12 col-xl-8 {% if not pdf_exist %}disabled{% endif %}" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8 {% if not pdf_exist %}disabled{% endif %}" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
                         <span class="tf-icons bx bxs-download"></span>
                         Télécharger le fichier PDF
                         <span class="tf-icons bx bx-md bxs-file-pdf"></span>
                     </a>
-                    <a type="button" class="btn btn-primary me-2 mb-2 col-12 col-xl-8 {% if not docx_exist %}disabled{% endif %}" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8 {% if not docx_exist %}disabled{% endif %}" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
                         <span class="tf-icons bx bxs-download"></span>
                         Télécharger le fichier Word
                         <span class="tf-icons bx bx-md bxs-file-doc"></span>
                     </a>
                 {% if 'render' in app.request.get('_route') %}
-                    <a type="button" class="btn btn-primary me-2 mb-2 col-12 col-xl-8" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
+                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
                         <span class="tf-icons bx bx-redo"></span>
                         Editer à nouveau
                     </a>
-                    <a type="button" class="btn btn-primary me-2 mb-2 col-12 col-xl-8 {% if not quittance.locataire.email %}disabled{% endif %}" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8 {% if not quittance.locataire.email %}disabled{% endif %}" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
                         <span class="tf-icons bx bxs-paper-plane"></span>
                         Envoyer la quittance
                     </a>
                 {% endif %}
 
-                <a type="button" class="btn btn-primary me-2 mb-2 col-12 col-xl-8" href="{{ path('quittances_index', {'bien_id':locataire.logement.id})  }}" title="Voir les quittances du logement {{ locataire.logement }}">
+                <a type="button" class="btn btn-outline-dark mb-2 col-12 col-xl-8" href="{{ path('quittances_index', {'bien_id':locataire.logement.id})  }}" title="Voir les quittances du logement {{ locataire.logement }}">
                     <span class="tf-icons bx bxs-archive"></span>
                     Voir toutes les quittances de loyers
                 </a>
 
-                <a type="button" class="btn btn-primary me-2 mb-2 col-12 col-xl-8" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir {{ locataire.logement }}">
+                <a type="button" class="btn btn-outline-dark mb-2 col-12 col-xl-8" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir {{ locataire.logement }}">
                     <span class="tf-icons bx bxs-building-house"></span>
                     {{ locataire.logement }}
                 </a>
 
-                <a type="button" class="btn btn-primary me-2 mb-2 col-12 col-xl-8" href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Voir {{ locataire }}">
+                <a type="button" class="btn btn-outline-dark mb-2 col-12 col-xl-8" href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Voir {{ locataire }}">
                     <span class="tf-icons bx bxs-user"></span>
                     {{ locataire }}
                 </a>

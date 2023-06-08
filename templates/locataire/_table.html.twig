@@ -90,7 +90,8 @@
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier le locataire"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
-                                <a class="dropdown-item" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" title="Éditer une quittance"><i class="bx bx-edit-alt me-2"></i>Éditer une quittance</a>
+                                {% if not locataire.logement %}<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-offset="0,14" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-html="true" data-bs-content="<small>Le locataire n'a pas de logement attribué</small>">{% endif %}
+                                <a class="dropdown-item {% if not locataire.logement %}disabled{% endif %}" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" title="Éditer une quittance"><i class="bx bx-edit-alt me-2"></i>Éditer une quittance</a>
                                 <a class="dropdown-item" href="{{ path('locataire_delete', {'id': locataire.id}) }}" title="Supprimer le locataire" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');"><i class="bx bx-trash me-2"></i>Supprimer</a>
                             </div>
                         </div>
