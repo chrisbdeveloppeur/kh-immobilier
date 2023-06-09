@@ -13,72 +13,102 @@
         </div>
     </div>
 {% else %}
-    <div class="overflow-scroll perfect-scrollbar">
-        <table class="table table-hover">
-            <thead class="table-warning">
-                <tr class="">
+    <div class="overflow-scroll perfect-scrollbar table-responsive">
+        <table class="table table-hover table-sm">
+            <thead>
+                <tr>
                     <th>
-                        <span>{{ knp_pagination_sortable(locataires, 'Genre', 'gender') }}</span>
+                        {{ knp_pagination_sortable(locataires, 'Genre', 'gender') }}
                     </th>
                     <th>
-                        <span>{{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}</span>
+                        {{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}
                     </th>
                     <th>
-                        <span>{{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}</span>
+                        {{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}
                     </th>
                     <th>
-                        <span>{{ knp_pagination_sortable(locataires, 'Email', 'email') }}</span>
+                        {{ knp_pagination_sortable(locataires, 'Email', 'email') }}
                     </th>
                     <th>
-                        <span>{{ knp_pagination_sortable(locataires, 'Tel', 'phone') }}</span>
+                        {{ knp_pagination_sortable(locataires, 'Tel', 'phone') }}
                     </th>
                     <th>
-                        <span>{{ knp_pagination_sortable(locataires, 'Logement', 'logement') }}</span>
+                        {{ knp_pagination_sortable(locataires, 'Logement', 'logement') }}
                     </th>
                     <th>
-                        <span>Actions</span>
+                        Actions
                     </th>
                 </tr>
             </thead>
             <tbody>
             {% for locataire in locataires %}
-                <tr class="">
-                    <td class="has-text-weight-bold">
+                <tr>
+                    <td>
                         <span class="text-info-onhover">
                             <span class="text-index-entity">
-                                {{ locataire.gender }}
+                                {% if locataire.gender is defined and locataire.gender == 'M.' %}
+                                    <span class="badge rounded-pill bg-warning"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-offset="0,4"
+                                          data-bs-placement="top"
+                                          data-bs-html="true"
+                                          title="<small>Masculin</small>"
+                                    >
+                                        <i class='bx bx-xs bx-male-sign'></i>
+                                    </span>
+                                {% elseif locataire.gender == 'Mme.' %}
+                                    <span class="badge rounded-pill bg-info"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-offset="0,4"
+                                          data-bs-placement="top"
+                                          data-bs-html="true"
+                                          title="<small>Féminin</small>"
+                                    >
+                                        <i class='bx bx-xs bx-female-sign'></i>
+                                    </span>
+                                {% else %}
+                                    <span class="badge rounded-pill bg-label-secondary"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-offset="0,4"
+                                          data-bs-placement="top"
+                                          data-bs-html="true"
+                                          title="<small>Non cummuniqué</small>"
+                                    >
+                                        <i class='bx bx-xs bx-question-mark'></i>
+                                    </span>
+                                {% endif %}
                             </span>
                         </span>
                     </td>
-                    <td class="has-text-weight-bold">
+                    <td class="">
                         <span class="text-info-onhover">
                             <span class="text-index-entity">
                                 {{ locataire.lastname }}
                             </span>
                         </span>
                     </td>
-                    <td class="has-text-weight-bold">
+                    <td class="">
                         <span class="text-info-onhover">
                             <span class="text-index-entity">
                                 {{ locataire.firstname }}
                             </span>
                         </span>
                     </td>
-                    <td class="has-text-weight-bold">
+                    <td class="">
                         <span class="text-info-onhover">
                             <span class="text-index-entity">
                                 {{ locataire.email }}
                             </span>
                         </span>
                     </td>
-                    <td class="has-text-weight-bold">
+                    <td class="">
                         <span class="text-info-onhover">
                             <span class="text-index-entity">
                                 {{ locataire.phone }}
                             </span>
                         </span>
                     </td>
-                    <td class="has-text-weight-bold">
+                    <td class="">
                         <span class="text-info-onhover">
                             <span class="text-index-entity">
                                 {{ locataire.logement }}
@@ -86,14 +116,47 @@
                         </span>
                     </td>
                     <td>
-                        <div class="dropstart">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier le locataire"><i class="bx bx-edit-alt me-2"></i>Modifier</a>
-                                {% if not locataire.logement %}<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-offset="0,14" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-html="true" data-bs-content="<small>Le locataire n'a pas de logement attribué</small>">{% endif %}
-                                <a class="dropdown-item {% if not locataire.logement %}disabled{% endif %}" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" title="Éditer une quittance"><i class="bx bx-edit-alt me-2"></i>Éditer une quittance</a>
-                                <a class="dropdown-item" href="{{ path('locataire_delete', {'id': locataire.id}) }}" title="Supprimer le locataire" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');"><i class="bx bx-trash me-2"></i>Supprimer</a>
-                            </div>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
+                            <a type="button" class="btn btn-light" href="{{ path('locataire_edit', {'id': locataire.id}) }}"
+                               data-bs-toggle="tooltip"
+                               data-bs-offset="0,4"
+                               data-bs-placement="top"
+                               data-bs-html="true"
+                               title="<small>Modifier le locataire</small>"
+                            >
+                                <i class='bx bx-xs bxs-edit-alt'></i>
+                            </a>
+
+                            {% if not locataire.logement %}
+                                <span class="d-inline-block"
+                                      tabindex="0"
+                                      data-bs-toggle="popover"
+                                      data-bs-offset="0,14"
+                                      data-bs-trigger="hover focus"
+                                      data-bs-placement="top"
+                                      data-bs-html="true"
+                                      data-bs-content="<small>Le locataire n'a pas de logement attribué</small>"
+                                ></span>
+                            {% endif %}
+                            <a type="button" class="btn btn-light {% if not locataire.logement %}disabled{% endif %}" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}"
+                               data-bs-toggle="tooltip"
+                               data-bs-offset="0,4"
+                               data-bs-placement="top"
+                               data-bs-html="true"
+                               title="<small>Éditer une quittance</small>"
+                            >
+                                <i class='bx bx-xs bxs-file'></i>
+                            </a>
+
+                            <a type="button" class="btn btn-danger" href="{{ path('locataire_delete', {'id': locataire.id}) }}" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');"
+                               data-bs-toggle="tooltip"
+                               data-bs-offset="0,4"
+                               data-bs-placement="top"
+                               data-bs-html="true"
+                               title="<small>Supprimer le locataire</small>"
+                            >
+                                <i class='bx bx-xs bxs-trash'></i>
+                            </a>
                         </div>
                     </td>
                 </tr>
@@ -107,17 +170,6 @@
                 </tr>
             {% endfor %}
             </tbody>
-            <tfoot class="table-active">
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </tfoot>
         </table>
     </div>
     <div class="column ">
