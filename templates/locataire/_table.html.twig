@@ -144,7 +144,8 @@
                                       data-bs-content="<small>Le locataire n'a pas de logement attribué</small>"
                                 ></span>
                             {% endif %}
-                            <a type="button" class="btn btn-light {% if not locataire.logement %}disabled{% endif %}" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}"
+                            <a type="button" class="btn btn-light {% if not locataire.logement %}disabled{% endif %}"
+                               href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}"
                                data-bs-toggle="tooltip"
                                data-bs-offset="0,4"
                                data-bs-placement="top"
@@ -154,7 +155,8 @@
                                 <i class='bx bx-xs bxs-file'></i>
                             </a>
 
-                            <a type="button" class="btn btn-danger" href="{{ path('locataire_delete', {'id': locataire.id}) }}" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');"
+                            <a type="button" class="btn btn-danger" href="{{ path('locataire_delete', {'id': locataire.id}) }}"
+                               onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');"
                                data-bs-toggle="tooltip"
                                data-bs-offset="0,4"
                                data-bs-placement="top"

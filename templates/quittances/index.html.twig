@@ -9,9 +9,24 @@
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
             {% if bien_immo is defined %}
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / Quittances / </span>{% if bien_immo.id %}{{ bien_immo.adresse }}{% endif %}</h4>
+                <h4 class="fw-bold py-3 mb-4">
+                    <span class="text-muted fw-light">Biens Immobiliers / Quittances / </span>
+                    {% if bien_immo.id %}
+                        {{ bien_immo.adresse }}
+                        <a class=""
+                           href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}"
+                           data-bs-toggle="tooltip"
+                           data-bs-offset="0,4"
+                           data-bs-placement="bottom"
+                           data-bs-html="true"
+                           title="<small>Modifier le logement</small>"
+                        >
+                            <i class="bx bx-sm bxs-edit-alt"></i>
+                        </a>
+                    {% endif %}
+                </h4>
             {% else %}
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Immobilier / </span>Quittances</h4>
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Biens Immobiliers / </span>Quittances</h4>
             {% endif %}
             <div class="row">
 
@@ -27,6 +42,30 @@
                             <h2 class="accordion-header" id="heading{{ bienImmo.id }}">
                                 <button type="button" class="accordion-button {% if not bienImmoTarget %}collapsed{% endif %}" data-bs-toggle="collapse" data-bs-target="#accordion{{ bienImmo.id }}" aria-expanded="{% if bienImmoTarget %}true{% else %}false{% endif %}" aria-controls="accordion{{ bienImmo.id }}" role="tabpanel">
                                     {{ bienImmo }}
+                                    <div class="btn-group btn-group-xs mx-2">
+                                        <a href="{{ path('bien_immo_edit', {'id': bienImmo.id}) }}"
+                                           class="btn btn-sm"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-offset="0,4"
+                                           data-bs-placement="top"
+                                           data-bs-html="true"
+                                           title="<small>Modifier ce logement</small>"
+                                        >
+                                            <span class="tf-icons bx bxs-edit-alt"></span>
+                                        </a>
+                                        {% if locataire is defined and locataire %}
+                                            <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}"
+                                               class="btn btn-sm"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-offset="0,4"
+                                               data-bs-placement="top"
+                                               data-bs-html="true"
+                                               title="<small>Editer une nouvelle quittance</small>"
+                                            >
+                                                <span class="tf-icons bx bxs-file"></span>
+                                            </a>
+                                        {% endif %}
+                                    </div>
                                 </button>
                             </h2>
 

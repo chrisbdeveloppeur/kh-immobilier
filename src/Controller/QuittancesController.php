@@ -113,7 +113,7 @@ class QuittancesController extends AbstractController
         return $this->render("immo/documents/edit_quittance.html.twig",[
             'form' => $form->createView(),
             'locataire' => $locataire,
-            'title_txt' => 'Édition d\'une quittance'
+            'title_txt' => 'Édition d\'une quittance',
         ]);
 
     }
@@ -182,13 +182,18 @@ class QuittancesController extends AbstractController
         if (file_exists($file_pdf)){
             unlink($file_pdf);
         }
+        $routeName = $request->get('_route');
         $em->remove($quittance);
         $em->flush();
 
-        $this->addFlash('danger', 'La quittance de loyer : <b>' . $quittance->getFileName() . '</b> a bien été suprimmée définitivement');
+        $this->addFlash('danger', 'La quittance de loyer : <b>' . $quittance->getFullNameFile() . '</b> a été suprimmée définitivement');
 
-        $referer = $request->headers->get('referer');
-        return $this->redirect($referer.'#files');
+        if ($routeName == 'quittances_delete_quittance'){
+            return $this->redirectToRoute('quittances_index',['bien_id'=>$bien_immo_id]);
+        }else{
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer.'#files');
+        }
     }
 
 

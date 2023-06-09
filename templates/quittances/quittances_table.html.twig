@@ -31,17 +31,6 @@
         </div>
     {% else %}
 
-        {% if locataire is defined and locataire %}
-            <div class="mb-2 is-flex is-justify-content-end">
-                <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="btn btn-sm btn-outline-primary">
-                    <span class="tf-icons bx bx-sm bxs-file me-1"></span>
-                    <span>
-                        Editer une quittance
-                    </span>
-                </a>
-            </div>
-        {% endif %}
-
         <div class="overflow-scroll perfect-scrollbar table-responsive">
             <table class="table table-hover table-sm">
                 <caption>
@@ -105,7 +94,9 @@
                         </td>
 
                         <td>
-                            {{ quittance.createddate|format_date('short') }}
+                            <small>
+                                {{ quittance.createddate|format_datetime('short','short') }} (Heure de Paris)
+                            </small>
                         </td>
 
                         <td>

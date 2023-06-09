@@ -5,7 +5,7 @@
 
 {% block body %}
 
-    {{ include('themes/form/_form_2.html.twig', {'button_label': 'Valider'}) }}
+    {{ include('themes/form/_form_2.html.twig', {'button_label': 'Valider', 'section_title':'Mon compte'}) }}
 
     {% if is_granted('ROLE_SUPER_ADMIN') %}
         {{ include('user/_delete_form.html.twig') }}

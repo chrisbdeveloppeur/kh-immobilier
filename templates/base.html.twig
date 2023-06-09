@@ -64,11 +64,11 @@
     {#     Définission de la variable section en fonction de ce que contient le nom de la route dans laquel on se trouve     #}
     {% set section = '' %}
     {% if route in ['immo','locataire','quittance','loyer','prestataire'] %}
-        {% set section = 'immobilier' %}
+        {% set section = 'Immobilier' %}
     {% elseif 'entreprenariat'in app.request.get('_route') or 'entreprise' in app.request.get('_route') or 'devis' in app.request.get('_route') or 'facture' in app.request.get('_route')  %}
-        {% set section = 'entreprenariat' %}
+        {% set section = 'Entreprenariat' %}
     {% elseif 'user' in app.request.get('_route') or 'register' in app.request.get('_route') or 'login' in app.request.get('_route') or 'change_password' in app.request.get('_route')  %}
-        {% set section = 'gestionnaire' %}
+        {% set section = 'Gestionnaire' %}
     {% endif %}
 
     {% if route == 'locataire_new' %}

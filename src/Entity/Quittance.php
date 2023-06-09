@@ -117,8 +117,9 @@ class Quittance
 
     public function setCreatedDate(\DateTimeInterface $created_date): self
     {
-        $this->created_date = $created_date;
-
+        //$this->created_date = $created_date;
+        $now = new \DateTime();
+        $this->created_date = $now;
         return $this;
     }
 
@@ -291,5 +292,11 @@ class Quittance
         $this->mode = $mode;
 
         return $this;
+    }
+
+    public function getFullNameFile(): string
+    {
+        $fullNameFile = 'Quittance - '.$this->locataire.' - '.$this->month.' '.$this->year;
+        return $fullNameFile;
     }
 }

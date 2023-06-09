@@ -1,31 +1,55 @@
 
-<div class="container-xxl flex-grow-1 container-p-y bg-primary">
+<div class="container-xxl flex-grow-1 container-p-y bg-label-primary">
 
     <div class="is-flex-tablet justify-content-center align-items-center">
-        <a type="button" class="btn btn-outline-light me-2 mb-md-0 mb-2 col-12 col-md-auto" href="{{ path('quittances_index', {'bien_id': locataire.logement.id}) }}#files" title="Voir les quittances du logement {{ locataire.logement }}">
+        <a type="button"
+           class="btn btn-sm btn-primary me-2 mb-md-0 mb-2 col-12 col-md-auto"
+           href="{{ path('quittances_index', {'bien_id': locataire.logement.id}) }}#files"
+           title="Voir les quittances du logement {{ locataire.logement }}"
+        >
             <span class="tf-icons bx bxs-archive me-1"></span> Voir toutes les quittances
         </a>
 
-        <a type="button" class="btn btn-outline-light me-2 mb-md-0 mb-2 col-12 col-md-auto" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir {{ locataire.logement }}">
+        <a type="button"
+           class="btn btn-sm btn-primary me-2 mb-md-0 mb-2 col-12 col-md-auto"
+           href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement"
+           title="Voir {{ locataire.logement }}"
+        >
             <span class="tf-icons bx bxs-building-house me-1"></span> {{ locataire.logement }}
         </a>
 
-        <a type="button" class="btn btn-outline-light me-2 mb-md-0 mb-2 col-12 col-md-auto" href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Voir {{ locataire }}">
+        <a type="button"
+           class="btn btn-sm btn-primary me-2 mb-md-0 mb-2 col-12 col-md-auto"
+           href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire"
+           title="Voir {{ locataire }}"
+        >
             <span class="tf-icons bx bxs-user me-1"></span> {{ locataire }}
         </a>
 
         {% if 'render' in app.request.get('_route') %}
-            <a type="button" class="btn btn-outline-light me-2 mb-md-0 mb-2 col-12 col-md-auto" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
+            <a type="button" class="btn btn-sm btn-primary me-2 mb-md-0 mb-2 col-12 col-md-auto"
+               href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}"
+               title="Editer à nouveau une quittance pour {{ locataire }}"
+            >
                 <span class="tf-icons bx bx-redo me-1"></span> Editer à nouveau
             </a>
 
-            <a type="button" class="btn btn-outline-light me-2 mb-md-0 mb-2 col-12 col-md-auto" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+            <a type="button"
+               class="btn btn-sm btn-primary me-2 mb-md-0 mb-2 col-12 col-md-auto"
+               href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}"
+               title="Envoyer la quittance a {{ locataire.email }}"
+               onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');"
+            >
                 <span class="tf-icons bx bxs-paper-plane me-1"></span> Envoyer la quittance
             </a>
         {% endif %}
 
         {% if pdf_exist is defined and pdf_exist %}
-            <a type="button" class="btn btn-outline-light me-2 mb-md-0 mb-2 col-12 col-md-auto" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+            <a type="button" class="btn btn-sm btn-primary me-2 mb-md-0 mb-2 col-12 col-md-auto"
+               href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf"
+               download="{{ file_name }}"
+               title="télécharger {{ file_name }}.pdf"
+            >
                 <span class="tf-icons bx bxs-download me-1"></span> Télécharger au format .pdf
             </a>
         {% endif %}

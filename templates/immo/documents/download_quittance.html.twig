@@ -7,45 +7,142 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-xl-6 col-md-4 col-12 is-flex is-flex-direction-column justify-content-center align-items-center">
+            <div class="col-xl-6 col-md-4 col-12 is-flex is-flex-direction-column justify-content-start align-items-center">
 
-                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8 {% if not pdf_exist %}disabled{% endif %}" href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+                <div class="card mb-2 col-12 col-xl-8">
+                    <div class="card-header bg-label-primary">
+                        <b>{{ quittance.fullNameFile }}</b>
+                    </div>
+                        <div class="card-content">
+                            <small>
+                                La quittance à bien étée créer.
+                            </small>
+                            <small>
+                                Vous pouvez la retrouver sur la page
+                                <a type="button"
+                                   class="btn btn-xs btn-primary"
+                                   href="{{ path('quittances_index', {'bien_id':locataire.logement.id})  }}"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Se rendre sur la page quittances</small>"
+                                >
+                                    <span class="tf-icons bx bxs-archive"></span>
+                                    Quittances
+                                </a>
+                            </small>
+                        </div>
+                </div>
+
+                <div class="btn-group btn-group-sm mb-2 col-12 col-xl-8 " role="group" aria-label="Basic checkbox toggle button group">
+
+                    <a type="button"
+                       class="btn btn-outline-primary {% if not pdf_exist %}disabled{% endif %}"
+                       href="{{ asset('documents/quittances/') }}{{ file_name }}.pdf"
+                       download="Quittance - {{ quittance.month }} {{ quittance.year }} - {{ quittance.locataire }}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Télécharger la quittance au format pdf</small>"
+                    >
                         <span class="tf-icons bx bxs-download"></span>
-                        Télécharger le fichier PDF
+                        Télécharger
                         <span class="tf-icons bx bx-md bxs-file-pdf"></span>
                     </a>
-                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8 {% if not docx_exist %}disabled{% endif %}" href="{{ asset('documents/quittances/') }}{{ file_name }}.docx" download="{{ file_name }}" title="télécharger {{ file_name }}.pdf">
+
+                    <a type="button"
+                       class="btn btn-outline-primary {% if not docx_exist %}disabled{% endif %}"
+                       href="{{ asset('documents/quittances/') }}{{ file_name }}.docx"
+                       download="Quittance - {{ quittance.locataire }} - {{ quittance.month }} {{ quittance.year }}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Télécharger la quittance au format word</small>"
+                    >
                         <span class="tf-icons bx bxs-download"></span>
-                        Télécharger le fichier Word
+                        Télécharger
                         <span class="tf-icons bx bx-md bxs-file-doc"></span>
                     </a>
+
+                </div>
+
                 {% if 'render' in app.request.get('_route') %}
-                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8" href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" title="Editer à nouveau une quittance pour {{ locataire }}">
+                    <a type="button"
+                       class="btn btn-primary mb-2 col-12 col-xl-8"
+                       href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Editer une autre quittance</small>"
+                    >
                         <span class="tf-icons bx bx-redo"></span>
+                        <span class="tf-icons bx bx-file"></span>
                         Editer à nouveau
                     </a>
-                    <a type="button" class="btn btn-primary mb-2 col-12 col-xl-8 {% if not quittance.locataire.email %}disabled{% endif %}" href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}" title="Envoyer la quittance a {{ locataire.email }}" onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');">
+                    <a type="button"
+                       class="btn btn-primary mb-2 col-12 col-xl-8 {% if not quittance.locataire.email %}disabled{% endif %}"
+                       href="{{ path('quittances_send_quittance', {'id': quittance.id}) }}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Envoyer la quittance à {{ locataire.email }}</small>"
+                       onclick="return confirm('Etes-vous sur de vouloir envoyer cette quittance au locataire?');"
+                    >
                         <span class="tf-icons bx bxs-paper-plane"></span>
                         Envoyer la quittance
                     </a>
                 {% endif %}
 
-                <a type="button" class="btn btn-outline-dark mb-2 col-12 col-xl-8" href="{{ path('quittances_index', {'bien_id':locataire.logement.id})  }}" title="Voir les quittances du logement {{ locataire.logement }}">
-                    <span class="tf-icons bx bxs-archive"></span>
-                    Voir toutes les quittances de loyers
-                </a>
+                <div class="btn-group mb-2 col-12 col-xl-8 " role="group" aria-label="Basic checkbox toggle button group">
 
-                <a type="button" class="btn btn-outline-dark mb-2 col-12 col-xl-8" href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement" title="Voir {{ locataire.logement }}">
-                    <span class="tf-icons bx bxs-building-house"></span>
-                    {{ locataire.logement }}
-                </a>
+                    <a type="button"
+                       class="btn btn-primary"
+                       href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Voir {{ locataire.logement }}</small>"
+                    >
+                        <span class="tf-icons bx bxs-building-house"></span>
+                        Logement
+                    </a>
 
-                <a type="button" class="btn btn-outline-dark mb-2 col-12 col-xl-8" href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire" title="Voir {{ locataire }}">
-                    <span class="tf-icons bx bxs-user"></span>
-                    {{ locataire }}
+                    <a type="button"
+                       class="btn btn-primary"
+                       href="{{ path('locataire_edit', {'id': locataire.id}) }}#locataire"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Voir {{ locataire }}</small>"
+                    >
+                        <span class="tf-icons bx bxs-user"></span>
+                        locataire
+                    </a>
+
+                </div>
+
+                <a type="button"
+                   class="btn btn-danger mb-2 col-12 col-xl-8"
+                   href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}"
+                   data-bs-toggle="tooltip"
+                   data-bs-offset="0,4"
+                   data-bs-placement="top"
+                   data-bs-html="true"
+                   onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"
+                   title="<small>Supprimer la quittance</small>"
+                >
+                    <span class="tf-icons bx bxs-trash"></span>
+                    Supprimer
                 </a>
             </div>
-            <div class="col-xl-6 col-md-8 col-12">
+            <div class="card p-2 col-xl-6 col-md-8 col-12">
                 <embed src="{{ asset('documents/quittances/') }}{{ file_name }}.pdf" height="680" width="100%" class="perfect-scrollbar">
             </div>
 
