@@ -13,8 +13,24 @@
         </div>
     </div>
 {% else %}
-    <div class="overflow-scroll perfect-scrollbar table-responsive">
+    <div class="mb-2 is-flex is-justify-content-end">
+        <a href="{{ path('locataire_new') }}" class="btn btn-sm btn-outline-primary">
+            <span class="tf-icons bx bx-sm bxs-user-plus me-1"></span>
+            <span>
+                Ajouter un locataire
+            </span>
+        </a>
+    </div>
+    <div class="card px-3 pt-2 overflow-scroll perfect-scrollbar table-responsive">
         <table class="table table-hover table-sm">
+
+            <caption>
+                <small>
+                    Vous avez un total de {{ locataires.getTotalItemCount }} locataires enregistrés
+                </small>
+                {{ knp_pagination_render(locataires) }}
+            </caption>
+
             <thead>
                 <tr>
                     <th>
@@ -40,7 +56,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-border-bottom-0">
             {% for locataire in locataires %}
                 <tr>
                     <td>
@@ -81,41 +97,31 @@
                         </span>
                     </td>
                     <td class="">
-                        <span class="text-info-onhover">
-                            <span class="text-index-entity">
-                                {{ locataire.lastname }}
-                            </span>
+                        <span class="text-index-entity">
+                            {{ locataire.lastname }}
                         </span>
                     </td>
                     <td class="">
-                        <span class="text-info-onhover">
-                            <span class="text-index-entity">
-                                {{ locataire.firstname }}
-                            </span>
+                        <span class="text-index-entity">
+                            {{ locataire.firstname }}
                         </span>
                     </td>
                     <td class="">
-                        <span class="text-info-onhover">
-                            <span class="text-index-entity">
-                                {{ locataire.email }}
-                            </span>
+                        <span class="text-index-entity">
+                            {{ locataire.email }}
                         </span>
                     </td>
                     <td class="">
-                        <span class="text-info-onhover">
-                            <span class="text-index-entity">
-                                {{ locataire.phone }}
-                            </span>
+                        <span class="text-index-entity">
+                            {{ locataire.phone }}
                         </span>
                     </td>
                     <td class="">
-                        <span class="text-info-onhover">
-                            <span class="text-index-entity">
-                                {{ locataire.logement }}
-                            </span>
+                        <span class="text-index-entity">
+                            {{ locataire.logement }}
                         </span>
                     </td>
-                    <td>
+                    <td class="">
                         <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
                             <a type="button" class="btn btn-light" href="{{ path('locataire_edit', {'id': locataire.id}) }}"
                                data-bs-toggle="tooltip"
@@ -171,13 +177,5 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
-    <div class="column ">
-        <a href="{{ path('locataire_new') }}" class="btn mb-2 btn-outline-primary">
-            <span class="tf-icons bx bx-sm bxs-user-plus me-1"></span>
-            <span>
-                Ajouter un locataire
-            </span>
-        </a>
     </div>
 {% endif %}
