@@ -30,9 +30,26 @@
             </div>
         </div>
     {% else %}
-        <div class="">
-            <table class="table table-hover">
-                <thead class="table-warning">
+
+        {% if locataire is defined and locataire %}
+            <div class="mb-2 is-flex is-justify-content-end">
+                <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="btn btn-sm btn-outline-primary">
+                    <span class="tf-icons bx bx-sm bxs-file me-1"></span>
+                    <span>
+                        Editer une quittance
+                    </span>
+                </a>
+            </div>
+        {% endif %}
+
+        <div class="overflow-scroll perfect-scrollbar table-responsive">
+            <table class="table table-hover table-sm">
+                <caption>
+                    <small>
+                        Vous avez un total de {{ quittances.count }} quittances enregistrées pour ce logement
+                    </small>
+                </caption>
+                <thead>
                 <tr>
                     <th>
                         <span>
@@ -73,9 +90,17 @@
 
                         <td>
                             {% if quittance.payed %}
-                                <span class="badge bg-success">Payée</span>
+                                <span class="badge bg-success">
+                                    <small>
+                                       Payée
+                                    </small>
+                                </span>
                             {% else %}
-                                <span class="badge bg-warning">En attente</span>
+                                <span class="badge bg-warning">
+                                    <small>
+                                        En attente
+                                    </small>
+                                </span>
                             {% endif %}
                         </td>
 
@@ -84,28 +109,41 @@
                         </td>
 
                         <td>
-                            <div class="dropstart">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                    <a href="{{ asset('documents/quittances/') }}{{ quittance.filename }}.pdf" class="dropdown-item" download="{{ quittance.month }}_{{ quittance.year }}.pdf" title="télécharger la quittance {{ quittance.month }} {{ quittance.year }}">
-                                        <span class="tf-icons bx bx-download me-1"></span>
-                                        Télécharger la quittance
-                                    </a>
-                                    <a href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" class="dropdown-item">
-                                        <span class="tf-icons bx bx-money-withdraw me-1"></span>
-                                        Changer le statut de la quittance
-                                    </a>
-                                    <a class="dropdown-item" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" title="Supprimer la quittance" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');">
-                                        <i class="bx bx-trash me-2"></i>
-                                        Supprimer
-                                    </a>
-                                </div>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
+
+                                <a type="button" class="btn btn-light" href="{{ asset('documents/quittances/') }}{{ quittance.filename }}.pdf"
+                                   download="{{ quittance.month }}_{{ quittance.year }}.pdf"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>télécharger la quittance {{ quittance.month }} {{ quittance.year }}</small>"
+                                >
+                                    <i class='bx bx-xs bxs-download'></i>
+                                </a>
+
+                                <a type="button" class="btn btn-light" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Changer le statut de la quittance</small>"
+                                >
+                                    <i class='bx bx-xs bx-refresh'></i>
+                                </a>
+
+                                <a type="button" class="btn btn-danger" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}"
+                                   onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Supprimer la quittance</small>"
+                                >
+                                    <i class='bx bx-xs bxs-trash'></i>
+                                </a>
+
                             </div>
-{#                            <a class="dropdown-item" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}" title="Supprimer la quittance" onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"><i class="bx bx-trash me-2"></i>Supprimer</a>#}
-{#                            <a href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}" class="btn mb-2 btn-outline-primary">#}
-{#                                <span class="tf-icons bx bx-sm bx-money-withdraw me-1"></span>#}
-{#                                Changer le statut de la quittance#}
-{#                            </a>#}
                         </td>
                     </tr>
                 {% endfor %}
@@ -115,17 +153,6 @@
                 </tfoot>
             </table>
         </div>
-    {% endif %}
-
-    {% if locataire is defined and locataire %}
-    <div class="column ">
-        <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}" class="btn mb-2 btn-outline-primary">
-            <span class="tf-icons bx bx-sm bxs-file-plus me-1"></span>
-            <span>
-                Editer une quittance
-            </span>
-        </a>
-    </div>
     {% endif %}
 
 {% endif %}
