@@ -93,8 +93,8 @@ class BienImmoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->editCopropriete($bienImmo, $form);
             $em->persist($bienImmo);
-//            $solde = $form->get('comptabilite')['soldes']->getData();
-//            $soldeTotal = $bienImmo->getSoldesTotal();
+
+            dd($form->getData());
 
             if ($form->get('residents')['locataire']->getData() !== null){
                 $bienImmo->addLocataire($form->get('residents')['locataire']->getData());

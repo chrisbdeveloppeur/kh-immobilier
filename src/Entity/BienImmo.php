@@ -581,8 +581,12 @@ class BienImmo
 
     public function getAdresse()
     {
-        $adresse = $this->getStreet().', '.$this->getCp().' '.$this->getCity().', '.$this->getBuilding();
-        return $adresse;
+        if (!$this->getStreet() && !$this->getCp() && !$this->getCity() && !$this->getBuilding()){
+            return false;
+        }else{
+            $adresse = $this->getStreet().', '.$this->getCp().' '.$this->getCity().', '.$this->getBuilding();
+            return $adresse;
+        }
     }
 
     /**
@@ -592,8 +596,10 @@ class BienImmo
     {
         if ($this->libelle){
             $libelle = $this->libelle;
+        }elseif ($this->getAdresse()){
+            $libelle = $this->getAdresse();
         }else{
-            $libelle = $this->getStreet().', '.$this->getCp().' '.$this->getCity().', '.$this->getBuilding();
+            $libelle = '';
         }
         return $libelle;
     }

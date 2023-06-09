@@ -18,27 +18,27 @@ class Financement
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable="true")
      */
     private $type;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable="true")
      */
     private $date_investissement;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable="true")
      */
     private $montant;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable="true")
      */
     private $taux;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable="true")
      */
     private $mensualites;
 
@@ -65,12 +65,12 @@ class Financement
         return $this;
     }
 
-    public function getDateInvestissement(): ?\DateTimeInterface
+    public function getDateInvestissement()
     {
         return $this->date_investissement;
     }
 
-    public function setDateInvestissement(\DateTimeInterface $date_investissement): self
+    public function setDateInvestissement($date_investissement): self
     {
         $this->date_investissement = $date_investissement;
 

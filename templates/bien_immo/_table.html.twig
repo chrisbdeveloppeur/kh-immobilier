@@ -51,13 +51,7 @@
                         <th>
                             <span>{{ knp_pagination_sortable(biens_immos, 'Loyer TTC', 'loyer_ttc') }}</span>
                         </th>
-                        <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Echéance', 'echeance') }}</span>
-                        </th>
 
-                        <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Syndic/Syndicat', ['bien_immo.copropriete.name']) }}</span>
-                        </th>
                         <th>
                             <span>{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
                         </th>
@@ -114,23 +108,7 @@
                             {% endif %}
 
                             <td title="{{ bien_immo.loyerTtc }} €">{{ bien_immo.loyerTtc|default(0) }} €</td>
-                            <td title="{{ bien_immo.echeance }} €">{{ bien_immo.echeance }} du mois</td>
 
-                            <td>
-                                {% if bien_immo.copropriete and bien_immo.copropriete.name %}
-                                    <span title="{{ bien_immo.copropriete.name }}">{{ bien_immo.copropriete.name }}</span>
-                                {% else %}
-                                    <span class="badge bg-label-secondary"
-                                          data-bs-toggle="tooltip"
-                                          data-bs-offset="0,14"
-                                          data-bs-placement="top"
-                                          data-bs-trigger="hover focus"
-                                          title="Non communiqué"
-                                    >
-                                N/C
-                            </span>
-                                {% endif %}
-                            </td>
                             <td>
                                 {% if bien_immo.locataires is not empty %}
                                     <a class="icon-text"

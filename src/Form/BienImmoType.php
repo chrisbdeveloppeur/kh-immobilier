@@ -168,12 +168,16 @@ class BienImmoType extends AbstractType
                     'attr' => ['class' => 'has-text-centered '],
                     'required' => true,
                 ])
+            )
 
-//                ->add('soldes', CollectionType::class, [
-//                    'entry_type' => SoldeType::class,
-//                    'allow_add' => true,
-//                    'required' => false
-//                ])
+            ->add($builder->create('financement', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Financement'])
+                ->add('financement', FinancementType::class,[
+                    'label' => "Financement",
+                    'help' => 'Financement de votre bien immobilier',
+                    'invalid_message' => 'Valeur incorrecte',
+                    'attr' => ['class' => 'has-text-centered '],
+                    'required' => true,
+                ])
             )
 
             ->add($builder->create('residents', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Informations sur les résidents'])
