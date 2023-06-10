@@ -18,6 +18,52 @@
 
     <ul class="menu-inner py-1">
 
+        <!-- MON COMPTE -->
+        <li class="menu-item {% if route in ['user_edit','change_password'] %}active open{% endif %}">
+            <a href=""
+               class="menu-link menu-toggle"
+               data-bs-toggle="tooltip"
+               data-bs-offset="0,4"
+               data-bs-display=""
+               data-bs-placement="bottom"
+               data-bs-html="true"
+               title=""
+            >
+                <button type="button"
+                        class="btn btn-sm rounded-pill btn-icon btn-warning text-black me-2"
+                        data-bs-toggle="tooltip"
+                        data-bs-offset="0,4"
+                        data-bs-html="true"
+                        title="{{ app.user }}"
+                >
+                    {{ app.user.firstname|upper|first }}{{ app.user.lastname|first }}
+                </button>
+                Mon compte
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {% if route in ['user_edit'] %}active{% endif %}">
+                    <a href="{{ path('user_edit', {'id': app.user.id}) }}" class="menu-link">
+                        <i class="mr-2 bx bxs-user-rectangle"></i>
+                        Mon profil
+                    </a>
+                </li>
+
+                <li class="menu-item {% if route in ['change_password'] %}active{% endif %}">
+                    <a href="{{ path('change_password', {'id': app.user.id}) }}" class="menu-link">
+                        <i class="mr-2 bx bx-shield-quarter"></i>
+                        Sécurité
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="{{ path('app_logout') }}" class="menu-link" title="Se déconnecter">
+                        <i class="mr-2 bx bx-log-out-circle"></i>
+                        Se déconnécter
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <!-- Dashboard -->
         <li class="menu-item {% if route == 'immo_accueil' %}active{% endif %}">
             <a href="{{ path('immo_accueil') }}" class="menu-link">
@@ -176,37 +222,6 @@
                 </li>
             </ul>
         </li>
-
-
-        <!-- MON COMPTE -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Mon compte</span></li>
-        <li class="menu-item {% if route in ['user_edit','change_password'] %}active open{% endif %}">
-            <a href="" class="menu-link menu-toggle">
-                <i class='menu-icon tf-icons bx bxs-id-card'></i>
-                {{ app.user }}
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item {% if route in ['user_edit'] %}active{% endif %}">
-                    <a href="{{ path('user_edit', {'id': app.user.id}) }}" class="menu-link">
-                        <i class="mr-2 bx bxs-user-rectangle"></i>
-                        Mon profil
-                    </a>
-                </li>
-                <li class="menu-item {% if route in ['change_password'] %}active{% endif %}">
-                    <a href="{{ path('change_password', {'id': app.user.id}) }}" class="menu-link">
-                        <i class="mr-2 bx bx-shield-quarter"></i>
-                        Sécurité
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="{{ path('app_logout') }}" class="menu-link bg-label-danger bx-fade-left-hover " title="Se déconnecter">
-                <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
-                Se déconnécter
-            </a>
-        </li>
-
     </ul>
 
 
