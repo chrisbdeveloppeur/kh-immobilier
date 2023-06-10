@@ -8,12 +8,17 @@
 {% set nb_quittances_payed = 0  %}
 {% set nb_quittances_not_payed = 0  %}
 {% set nb_quittances_partial = 0  %}
+{% set total_credit = 0 %}
+{% set benefices = 0 %}
 
 {% for bien_immo in biens_immos %}
-    {% set total_loyers = total_loyers + bien_immo.loyerHc %}
-    {% set total_charges = total_charges + bien_immo.charges %}
+    {% set total_loyers = total_loyers + bien_immo.loyerTtc %}
+    {% if bien_immo.financement %}
+        {% set total_credit = total_credit + bien_immo.financement.mensualites %}
+    {% endif %}
 {% endfor %}
 {% set total_revenu_ttc = total_loyers + total_charges %}
+{% set benefices = total_loyers - total_credit %}
 
 {% for quittance in quittances %}
 {#    {% set total_loyers = total_loyers + quittance.loyerTtc %}#}

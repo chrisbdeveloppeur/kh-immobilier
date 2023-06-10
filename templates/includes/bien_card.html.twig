@@ -18,8 +18,9 @@
                         <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                        <a class="dropdown-item {% if not last_quittance %}disabled{% endif %}" {% if last_quittance %}href="{{ path('quittances_render_quittance', {'quittance_id': last_quittance.id}) }}"{% endif %}>Voir la dernière quittance</a>
                         <a class="dropdown-item" href="{{ path('quittances_index', {'bien_id': bien_immo.id}) }}">Voir les quittances</a>
-                        <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Détails</a>
+                        <a class="dropdown-item" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Détails du bien</a>
                     </div>
                 </div>
             </div>
