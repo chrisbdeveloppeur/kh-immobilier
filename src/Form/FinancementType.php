@@ -14,7 +14,6 @@ class FinancementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            //->add('type')
             ->add('date_investissement', DateType::class,[
                 'label' => 'Date de signature',
                 'help' => 'Date de signature du contrat de financement ou état daté',
@@ -22,7 +21,7 @@ class FinancementType extends AbstractType
                 'attr' => ['class'=>'has-text-centered input is-small', 'type' => 'date'],
             ])
             ->add('montant', NumberType::class,[
-                'label' => "Motant",
+                'label' => "Montant",
                 'invalid_message' => 'Valeur incorrecte',
                 'help' => 'Montant total du financement',
                 'attr' => [
@@ -42,9 +41,9 @@ class FinancementType extends AbstractType
                 'required' => false,
             ])
             ->add('mensualites',NumberType::class,[
-                'label' => "Motant",
+                'label' => "Mensualités",
                 'invalid_message' => 'Valeur incorrecte',
-                'help' => 'Montant total du financement',
+                'help' => 'Montant des mensualités de remboursement',
                 'attr' => [
                     'data-units' => '€',
                     'placeholder' => '650'

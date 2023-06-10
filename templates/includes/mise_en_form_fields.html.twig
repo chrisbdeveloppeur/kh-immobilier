@@ -70,6 +70,7 @@
                         {% endif %}
 
                     {% else %}
+                        <label for="{{ field.vars.full_name }}" class="form-label">{{ field.vars.label }}</label>
                         {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}
                     {% endif %}
                     {% if field.vars.help is defined %}

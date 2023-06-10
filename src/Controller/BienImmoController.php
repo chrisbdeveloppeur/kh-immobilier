@@ -90,21 +90,23 @@ class BienImmoController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->editCopropriete($bienImmo, $form);
-            $em->persist($bienImmo);
+        if ($form->isSubmitted()) {
+            if ($form->isValid()){
+                $this->editCopropriete($bienImmo, $form);
+                $em->persist($bienImmo);
 
-            dd($form->getData());
+                if ($form->get('residents')['locataire']->getData() !== null){
+                    $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
+                }
 
-            if ($form->get('residents')['locataire']->getData() !== null){
-                $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
+                $em->flush();
+
+                $this->addFlash('success', 'Le logement <b>'.$bienImmo->getStreet().'</b> a été créé avec succès');
+
+                return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
+            }else{
+                $this->addFlash('danger', 'Echec d\'enregistrement<br><small>Vérifiez les données du formulaire</small>');
             }
-
-            $em->flush();
-
-            $this->addFlash('success', 'Le logement <b>'.$bienImmo->getStreet().'</b> a été créé avec succès');
-
-            return $this->redirectToRoute('bien_immo_index', [], Response::HTTP_SEE_OTHER);
         }
 
         $form_prestataire->handleRequest($request);
@@ -178,27 +180,30 @@ class BienImmoController extends AbstractController
         }
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            if ($bienImmo->getLocataires()->count() > 0 && $this->isGranted('ROLE_SUPER_ADMIN')){
-                $bienImmo->getLocataires()->first()->setUser($form->get('user')->getData($bienImmo->getUser()));
-            }
-            $this->editCopropriete($bienImmo,$form);
-//            $solde = $form->get('comptabilite')['solde']->getData();
-            $bienImmo->getSoldesTotal();
-            if ($form->get('residents')['locataire']->getData() == null){
-                if ($bienImmo->getLocataires()->first()){
-                    $bienImmo->removeLocataire($bienImmo->getLocataires()->first());
+        if ($form->isSubmitted()) {
+            if ($form->isValid()){
+                if ($bienImmo->getLocataires()->count() > 0 && $this->isGranted('ROLE_SUPER_ADMIN')){
+                    $bienImmo->getLocataires()->first()->setUser($form->get('user')->getData($bienImmo->getUser()));
                 }
+                $this->editCopropriete($bienImmo,$form);
+                $bienImmo->getSoldesTotal();
+                if ($form->get('residents')['locataire']->getData() == null){
+                    if ($bienImmo->getLocataires()->first()){
+                        $bienImmo->removeLocataire($bienImmo->getLocataires()->first());
+                    }
+                }else{
+                    $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
+                }
+
+                $this->getDoctrine()->getManager()->flush();
+
+                $this->addFlash('success', 'Les modifications ont bien étés appliquées');
+
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
             }else{
-                $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
+                $this->addFlash('danger', 'Echec d\'enregistrement<br><small>Vérifiez les données du formulaire</small>');
             }
-
-            $this->getDoctrine()->getManager()->flush();
-
-            $this->addFlash('success', 'Les modifications ont bien étés appliquées');
-
-            $referer = $request->headers->get('referer');
-            return $this->redirect($referer);
         }
 
         $form_prestataire->handleRequest($request);
