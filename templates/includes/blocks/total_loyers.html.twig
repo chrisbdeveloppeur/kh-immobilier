@@ -1,0 +1,33 @@
+<div class="col-12 mb-4">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+                <span class="badge bg-label-success rounded">
+                    <i class='bx bxs-coin-stack'></i>
+                </span>
+                <div class="dropdown">
+                    <button
+                            class="btn p-0"
+                            type="button"
+                            id="cardOpt4"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <span class="d-block mb-1 text-muted">Total des loyers / Mois</span>
+            <h4 class="card-title text-nowrap mb-2">{{ total_loyers|default(0) }}€</h4>
+            <span class="d-block mb-1 text-muted">Total des loyers perçus</span>
+            <h5 class="text-nowrap mb-2 text-success">{{ total_loyers_percus|default(0) }}€</h5>
+            <span class="d-block mb-1 text-muted">Total des loyers en attentes</span>
+            <h5 class="text-nowrap mb-2 text-danger">{{ total_loyers_attentes|default(0) }}€</h5>
+        </div>
+    </div>
+</div>

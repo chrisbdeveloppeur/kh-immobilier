@@ -1,0 +1,68 @@
+<!-- Statistique des loyers -->
+<div class="col-md-6 col-lg-4 col-xl-4 order-4 mb-4">
+    <div class="card h-100">
+        <div class="card-header d-flex align-items-center justify-content-between pb-0">
+            <div class="card-title mb-0">
+                <h5 class="m-0 me-2">Mes frais</h5>
+                <small class="text-muted">Totale des loyers perçus : {{ total_loyers_percus }}€</small>
+            </div>
+            <div class="dropdown">
+                <button
+                        class="btn p-0"
+                        type="button"
+                        id="orederStatistics"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                >
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+                    <a class="dropdown-item" href="javascript:void(0);">Select All</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Share</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex flex-column align-items-center gap-1">
+                    <h2 class="mb-2">{{ biens_immos|length }}</h2>
+                    <span>Nb de Propriétés</span>
+                </div>
+                <div class="is-flex is-flex-direction-column align-items-center">
+                    <div id="statistiqueLoyers"></div>
+                    <div class="mt-1 has-text-centered">
+                        <a href="{{ path('quittances_index') }}" type="button" class="btn btn-sm btn-outline-primary">
+                            Voir toute les quittances
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p class="h5 mb-3 text-muted">Les dernières quittances</p>
+            <ul class="p-0 m-0">
+                {% for quittance in lastQuittances %}
+                    {% if loop.index < 5 %}
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                        <span class="avatar-initial rounded bg-label-primary">
+                                            <i class="bx bx-mobile-alt"></i>
+                                        </span>
+                            </div>
+                            <div class="d-flex w-100 align-items-center gap-2">
+                                <div class="me-2 w-50">
+                                    <h6 class="mb-0 nowrap-text overflow-ellipsis" title="{{ quittance.bienimmo.adresse }}">{{ quittance.bienimmo.libelle }} ({{ quittance.month }})</h6>
+                                    <small class="text-muted" title="Quittance éditée le {{ quittance.createddate|format_date('short') }}">Edité le {{ quittance.createddate|format_date('short') }}</small>
+                                </div>
+                                <div class="user-progress w-25">
+                                    <small class="fw-semibold">{{ quittance.loyerttc }}€</small>
+                                </div>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!--/ Order Statistics -->
