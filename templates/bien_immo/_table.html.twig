@@ -35,6 +35,9 @@
                     <thead>
                     <tr class="">
                         <th>
+                            <span>Actions</span>
+                        </th>
+                        <th>
                             <span>{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
                         </th>
 
@@ -60,9 +63,6 @@
                                 <span>{{ knp_pagination_sortable(biens_immos, 'Gestionnaire', ['user']) }}</span>
                             </th>
                         {% endif %}
-                        <th>
-                            <span>Actions</span>
-                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -73,6 +73,52 @@
                     {% for bien_immo in biens_immos %}
                         {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                         <tr class="">
+                            <td>
+                                <div class="btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                                    <a type="button" class="btn btn-outline-primary" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Modifier le logement</small>"
+                                    >
+                                        <i class='bx bx-xs bxs-edit-alt'></i>
+                                    </a>
+
+                                    {% if bien_immo.locataires is empty %}
+                                        <span class="d-inline-block"
+                                              tabindex="0"
+                                              data-bs-toggle="popover"
+                                              data-bs-offset="0,14"
+                                              data-bs-trigger="hover focus"
+                                              data-bs-placement="top"
+                                              data-bs-html="true"
+                                              data-bs-content="<small>Aucun locataire n'occupe ce logement</small>"
+                                        ></span>
+                                    {% endif %}
+                                    <a type="button" class="btn btn-outline-primary {% if bien_immo.locataires is empty %}disabled{% endif %}"
+                                       href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Éditer une quittance</small>"
+                                    >
+                                        <i class='bx bx-xs bxs-file'></i>
+                                    </a>
+
+                                    <a type="button" class="btn btn-danger" href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}"
+                                       onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Supprimer le logement</small>"
+                                    >
+                                        <i class='bx bx-xs bxs-trash'></i>
+                                    </a>
+                                </div>
+                            </td>
                             <td>
                                 <span class="text-info-onhover">
                                     <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
@@ -138,64 +184,18 @@
                                     <td title="{{ bien_immo.user }}">{{ bien_immo.user }}</td>
                                 {% else %}
                                     <td>
-                                <span class="badge bg-label-secondary"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-offset="0,14"
-                                      data-bs-placement="top"
-                                      data-bs-trigger="hover focus"
-                                      title="Non communiqué"
-                                >
-                                    N/C
-                                </span>
+                                        <span class="badge bg-label-secondary"
+                                              data-bs-toggle="tooltip"
+                                              data-bs-offset="0,14"
+                                              data-bs-placement="top"
+                                              data-bs-trigger="hover focus"
+                                              title="Non communiqué"
+                                        >
+                                            N/C
+                                        </span>
                                     </td>
                                 {% endif %}
                             {% endif %}
-                            <td>
-                                <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
-                                    <a type="button" class="btn btn-light" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>Modifier le logement</small>"
-                                    >
-                                        <i class='bx bx-xs bxs-edit-alt'></i>
-                                    </a>
-
-                                    {% if bien_immo.locataires is empty %}
-                                        <span class="d-inline-block"
-                                              tabindex="0"
-                                              data-bs-toggle="popover"
-                                              data-bs-offset="0,14"
-                                              data-bs-trigger="hover focus"
-                                              data-bs-placement="top"
-                                              data-bs-html="true"
-                                              data-bs-content="<small>Aucun locataire n'occupe ce logement</small>"
-                                        ></span>
-                                    {% endif %}
-                                    <a type="button" class="btn btn-light {% if bien_immo.locataires is empty %}disabled{% endif %}"
-                                       href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>Éditer une quittance</small>"
-                                    >
-                                        <i class='bx bx-xs bxs-file'></i>
-                                    </a>
-
-                                    <a type="button" class="btn btn-danger" href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}"
-                                       onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>Supprimer le logement</small>"
-                                    >
-                                        <i class='bx bx-xs bxs-trash'></i>
-                                    </a>
-                                </div>
-                            </td>
                         </tr>
                     {% else %}
                         <tr>

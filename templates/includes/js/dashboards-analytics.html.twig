@@ -19,12 +19,108 @@
             totalRevenueChartOptions = {
                 series: [
                     {
-                        name: '2021',
-                        data: [18, 7, 15, 29, 18, 12, 9]
+                        name: 'Loyers',
+                        data: [
+                            {% set janvier = 0 %}
+                            {% for quittance in quittances_payed %}
+                                {% if quittance.date|date('n') == 1 and quittance.year == 'now'|date('Y') %}
+                                    {% set janvier = janvier + quittance.loyerttc %}
+                                {% endif %}
+                            {% endfor %}
+                            {{ janvier }},
+
+                            {% set fev = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 2 and quittance.year == 'now'|date('Y') %}
+                            {% set fev = fev + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ fev }},
+
+                            {% set mars = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 3 and quittance.year == 'now'|date('Y') %}
+                            {% set mars = mars + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ mars }},
+
+                            {% set avril = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 4 and quittance.year == 'now'|date('Y') %}
+                            {% set avril = avril + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ avril }},
+
+                            {% set mai = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 5 and quittance.year == 'now'|date('Y') %}
+                            {% set mai = mai + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ mai }},
+
+                            {% set juin = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 6 and quittance.year == 'now'|date('Y') %}
+                            {% set juin = juin + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ juin }},
+
+                            {% set juil = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 7 and quittance.year == 'now'|date('Y') %}
+                            {% set juil = juil + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ juil }},
+
+                            {% set aout = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 8 and quittance.year == 'now'|date('Y') %}
+                            {% set aout = aout + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ aout }},
+
+                            {% set sept = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 9 and quittance.year == 'now'|date('Y') %}
+                            {% set sept = sept + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ sept }},
+
+                            {% set oct = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 10 and quittance.year == 'now'|date('Y') %}
+                            {% set oct = oct + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ oct }},
+
+                            {% set nov = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 11 and quittance.year == 'now'|date('Y') %}
+                            {% set nov = nov + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ nov }},
+
+                            {% set dec = 0 %}
+                            {% for quittance in quittances_payed %}
+                            {% if quittance.date|date('n') == 12 and quittance.year == 'now'|date('Y') %}
+                            {% set dec = dec + quittance.loyerttc %}
+                            {% endif %}
+                            {% endfor %}
+                            {{ dec }}
+                        ]
                     },
                     {
-                        name: '2020',
-                        data: [-13, -18, -9, -14, -5, -17, -15]
+                        name: 'Frais',
+                        data: [-13, -18, -9, -14, -5, -17, -15, -1, -2, -3, -5, -12]
                     }
                 ],
                 chart: {
@@ -48,7 +144,7 @@
                 },
                 stroke: {
                     curve: 'smooth',
-                    width: 6,
+                    width: 1,
                     lineCap: 'round',
                     colors: [cardColor]
                 },
@@ -79,7 +175,7 @@
                     }
                 },
                 xaxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    categories: ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'],
                     labels: {
                         style: {
                             fontSize: '13px',

@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="DESKTOP préparation pour ajout gestion etat des lieux v1.1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/accueil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accueil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bien_immo/_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bien_immo/_table.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/immo/documents/download_quittance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/immo/documents/download_quittance.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/js/dashboards-analytics.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/js/dashboards-analytics.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quittances/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quittances/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quittances/quittances_table.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quittances/quittances_table.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,20 +53,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="99" column="47" selection-start-line="99" selection-start-column="47" selection-end-line="99" selection-end-column="47" />
+            <state relative-caret-position="374">
+              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+              <folding>
+                <element signature="e#19463#19505#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_frais.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/kh-immobilier/table/quittance">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="aacc4361-d1f8-4707-950d-c5fc40616428">
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
@@ -70,8 +79,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_revenue.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+            <state relative-caret-position="51">
+              <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/includes/js/dashboards-analytics.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -147,8 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Form/ImageType.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Image.php" />
         <option value="$PROJECT_DIR$/config/packages/vich_uploader.yaml" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/templates/pdf/quittance_1.html.twig" />
@@ -159,9 +175,7 @@
         <option value="$PROJECT_DIR$/assets/styles/app.scss" />
         <option value="$PROJECT_DIR$/src/Controller/PdfController.php" />
         <option value="$PROJECT_DIR$/templates/locataire/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/immo/documents/download_quittance.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Quittance.php" />
-        <option value="$PROJECT_DIR$/templates/quittances/quittances_table.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/third_header.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/QuittancesController.php" />
         <option value="$PROJECT_DIR$/templates/user/change_password.html.twig" />
@@ -171,7 +185,6 @@
         <option value="$PROJECT_DIR$/templates/bien_immo/new.html.twig" />
         <option value="$PROJECT_DIR$/templates/immo/documents/edit_quittance.html.twig" />
         <option value="$PROJECT_DIR$/templates/bien_immo/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/quittances/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/locataire/index.html.twig" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/.htaccess" />
@@ -182,8 +195,6 @@
         <option value="$PROJECT_DIR$/templates/includes/macros.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Financement.php" />
         <option value="$PROJECT_DIR$/templates/bien_immo/edit.html.twig" />
-        <option value="$PROJECT_DIR$/templates/bien_immo/_table.html.twig" />
-        <option value="$PROJECT_DIR$/templates/includes/js/dashboards-analytics.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/bien_card.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/FinancementType.php" />
         <option value="$PROJECT_DIR$/templates/includes/mise_en_form_fields.html.twig" />
@@ -197,7 +208,14 @@
         <option value="$PROJECT_DIR$/templates/includes/blocks/total_charges.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/blocks/total_frais.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/blocks/total_balance.html.twig" />
+        <option value="$PROJECT_DIR$/templates/immo/documents/download_quittance.html.twig" />
         <option value="$PROJECT_DIR$/templates/accueil.html.twig" />
+        <option value="$PROJECT_DIR$/templates/quittances/quittances_table.html.twig" />
+        <option value="$PROJECT_DIR$/templates/quittances/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/bien_immo/_table.html.twig" />
+        <option value="$PROJECT_DIR$/templates/includes/blocks/total_revenue.html.twig" />
+        <option value="$PROJECT_DIR$/templates/includes/js/dashboards-analytics.html.twig" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
       </list>
     </option>
   </component>
@@ -393,6 +411,19 @@
               <item name="kh-immobilier" type="b2602c69:ProjectViewProjectNode" />
               <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="immo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kh-immobilier" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="immo" type="462c0819:PsiDirectoryNode" />
+              <item name="documents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kh-immobilier" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="includes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -401,6 +432,13 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="includes" type="462c0819:PsiDirectoryNode" />
               <item name="blocks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kh-immobilier" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -769,7 +807,7 @@
       <workItem from="1686339073636" duration="17135000" />
       <workItem from="1686610337607" duration="28000" />
       <workItem from="1686610518328" duration="1903000" />
-      <workItem from="1686686585244" duration="932000" />
+      <workItem from="1686686585244" duration="8569000" />
     </task>
     <task id="LOCAL-00001" summary="DESKTOP maj major , add dompdf =&gt; OK, creat controller for dompdf quittance and initialize twig template for quittances">
       <created>1650163579558</created>
@@ -815,7 +853,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1666474000" />
+    <option name="totallyTimeSpent" value="1674111000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -827,9 +865,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16778524" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32719547" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22751896" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5060403" side_tool="true" weight="0.23512748" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49395972" weight="0.3101983" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" order="13" />
+      <window_info anchor="bottom" id="TypeScript" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.21409395" />
+      <window_info anchor="right" id="Word Book" order="4" side_tool="true" />
+      <window_info anchor="right" id="Translation Assistant" order="5" weight="0.3295302" />
+      <window_info anchor="right" id="Coverage" order="6" side_tool="true" />
+    </layout>
+    <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2033557" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
@@ -856,7 +922,7 @@
       <window_info anchor="right" id="Word Book" order="4" side_tool="true" />
       <window_info anchor="right" id="Translation Assistant" order="5" weight="0.3295302" />
       <window_info anchor="right" id="Coverage" order="6" side_tool="true" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -918,20 +984,6 @@
     <SUITE FILE_PATH="coverage/kh_immobilier$BienImmoTest.xml" NAME="BienImmoTest Coverage Results" MODIFIED="1674160121829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Entity/Quittance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="119" column="10" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/QuittancesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="115" column="54" selection-start-line="115" selection-start-column="54" selection-end-line="115" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/includes/third_header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -987,13 +1039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/quittances/quittances_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="99" column="29" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/immo/documents/quittances_list_html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1006,16 +1051,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/immo/documents/home_page.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/quittances/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="97" selection-start-line="28" selection-start-column="97" selection-end-line="28" selection-end-column="97" />
-          <folding>
-            <element signature="e#619#633#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/bien_immo/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -1087,23 +1122,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/bien_immo/_table.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#7241#7255#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/includes/js/dashboards-analytics.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="477" column="57" selection-start-line="477" selection-start-column="57" selection-end-line="477" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -1273,17 +1291,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/immo/documents/download_quittance.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/bien_immo/_table.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+          <folding>
+            <element signature="e#5454#5483#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/quittances/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="61" column="66" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+          <folding>
+            <element signature="e#3213#3242#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/quittances/quittances_table.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_revenue.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        <state relative-caret-position="51">
+          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="99" column="47" selection-start-line="99" selection-start-column="47" selection-end-line="99" selection-end-column="47" />
+        <state relative-caret-position="374">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding>
+            <element signature="e#19463#19505#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/includes/js/dashboards-analytics.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6960480c-d9d6-4e9f-97e7-92221b832955/schema/kh-immobilier/table/quittance">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="aacc4361-d1f8-4707-950d-c5fc40616428">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>

@@ -42,9 +42,9 @@
                             <h2 class="accordion-header" id="heading{{ bienImmo.id }}">
                                 <button type="button" class="accordion-button {% if not bienImmoTarget %}collapsed{% endif %}" data-bs-toggle="collapse" data-bs-target="#accordion{{ bienImmo.id }}" aria-expanded="{% if bienImmoTarget %}true{% else %}false{% endif %}" aria-controls="accordion{{ bienImmo.id }}" role="tabpanel">
                                     {{ bienImmo }}
-                                    <div class="btn-group btn-group-xs mx-2">
+                                    <div class="mx-2 btn-group-sm">
                                         <a href="{{ path('bien_immo_edit', {'id': bienImmo.id}) }}"
-                                           class="btn btn-sm"
+                                           class="btn btn-outline-primary"
                                            data-bs-toggle="tooltip"
                                            data-bs-offset="0,4"
                                            data-bs-placement="top"
@@ -55,7 +55,7 @@
                                         </a>
                                         {% if locataire is defined and locataire %}
                                             <a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}"
-                                               class="btn btn-sm"
+                                               class="btn btn-outline-primary"
                                                data-bs-toggle="tooltip"
                                                data-bs-offset="0,4"
                                                data-bs-placement="top"

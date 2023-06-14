@@ -41,6 +41,9 @@
                 <thead>
                 <tr>
                     <th>
+                        <span>Actions</span>
+                    </th>
+                    <th>
                         <span>
                             Année
                         </span>
@@ -60,14 +63,49 @@
                             Date d'édition
                         </span>
                     </th>
-                    <th>
-                        <span>Actions</span>
-                    </th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for quittance in quittances %}
                     <tr>
+
+                        <td>
+                            <div class="btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+
+                                <a type="button" class="btn btn-outline-primary" href="{{ asset('documents/quittances/') }}{{ quittance.filename }}.pdf"
+                                   download="{{ quittance.month }}_{{ quittance.year }}.pdf"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>télécharger la quittance {{ quittance.month }} {{ quittance.year }}</small>"
+                                >
+                                    <i class='bx bx-xs bxs-download'></i>
+                                </a>
+
+                                <a type="button" class="btn btn-outline-primary" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Changer le statut de la quittance</small>"
+                                >
+                                    <i class='bx bx-xs bx-refresh'></i>
+                                </a>
+
+                                <a type="button" class="btn btn-danger" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}"
+                                   onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Supprimer la quittance</small>"
+                                >
+                                    <i class='bx bx-xs bxs-trash'></i>
+                                </a>
+
+                            </div>
+                        </td>
 
                         <td>
                             {{ quittance.year }}
@@ -99,43 +137,6 @@
                             </small>
                         </td>
 
-                        <td>
-                            <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
-
-                                <a type="button" class="btn btn-light" href="{{ asset('documents/quittances/') }}{{ quittance.filename }}.pdf"
-                                   download="{{ quittance.month }}_{{ quittance.year }}.pdf"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-offset="0,4"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<small>télécharger la quittance {{ quittance.month }} {{ quittance.year }}</small>"
-                                >
-                                    <i class='bx bx-xs bxs-download'></i>
-                                </a>
-
-                                <a type="button" class="btn btn-light" href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-offset="0,4"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<small>Changer le statut de la quittance</small>"
-                                >
-                                    <i class='bx bx-xs bx-refresh'></i>
-                                </a>
-
-                                <a type="button" class="btn btn-danger" href="{{ path('quittances_delete_quittance', {'quittance_id': quittance.id}) }}"
-                                   onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement cette quittance?');"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-offset="0,4"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<small>Supprimer la quittance</small>"
-                                >
-                                    <i class='bx bx-xs bxs-trash'></i>
-                                </a>
-
-                            </div>
-                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -11,6 +11,18 @@
 {% set total_credit = 0 %}
 {% set benefices = 0 %}
 
+                {% set months = [1,2,3,4,5,6,7,8,9,10,11,12] %}
+                {% set quittances_payed = [] %}
+                {% set quittances_waiting = [] %}
+                {% set quittances_by_month = [] %}
+                {% for quittance in quittances %}
+                    {% if quittance.payed %}
+                        {% set quittances_payed = quittances_payed|merge([quittance]) %}
+                    {% else %}
+                        {% set quittances_waiting = quittances_waiting|merge([quittance]) %}
+                    {% endif %}
+                {% endfor %}
+
 {% for bien_immo in biens_immos %}
     {% set total_loyers = total_loyers + bien_immo.loyerTtc %}
     {% if bien_immo.financement %}
