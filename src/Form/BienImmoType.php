@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\BienImmo;
+use App\Entity\Frais;
 use App\Entity\Locataire;
 use App\Entity\User;
 use App\Repository\LocataireRepository;
@@ -177,6 +178,19 @@ class BienImmoType extends AbstractType
                     'invalid_message' => 'Valeur incorrecte',
                     'attr' => ['class' => 'has-text-centered '],
                     'required' => true,
+                ])
+            )
+
+            ->add($builder->create('Frais', FormType::class, ['attr' => ['section'=>true],'inherit_data' => true,'label'=>'Frais divers'])
+                ->add('Frais', CollectionType::class,[
+                    'entry_type' => FraisType::class,
+                    'entry_options' => [
+                        'label' => false,
+                    ],
+                    'help' => 'Indiquez les dépenses divers (mensuels) liés à votre bien immobilier',
+                    'invalid_message' => 'Valeur incorrecte',
+                    'allow_add' => true,
+                    'allow_delete' => true,
                 ])
             )
 

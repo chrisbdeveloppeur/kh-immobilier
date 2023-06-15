@@ -156,11 +156,6 @@ class BienImmo
     private $soldes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Frais::class, mappedBy="BienImmo", orphanRemoval=true)
-     */
-    private $frais;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="BienImmos")
      */
     private $tags;
@@ -172,6 +167,11 @@ class BienImmo
      * )
      */
     private $charges;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Frais::class, cascade={"persist", "remove"})
+     */
+    private $Frais;
 
     public function __construct()
     {
@@ -193,8 +193,8 @@ class BienImmo
         $this->prestataire = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->soldes = new ArrayCollection();
-        $this->frais = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->Frais = new ArrayCollection();
     }
 
     public function __toString()
@@ -671,36 +671,6 @@ class BienImmo
     }
 
     /**
-     * @return Collection<int, Frais>
-     */
-    public function getFrais(): Collection
-    {
-        return $this->frais;
-    }
-
-    public function addFrais(Frais $frais): self
-    {
-        if (!$this->frais->contains($frais)) {
-            $this->frais[] = $frais;
-            $frais->setBienImmo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFrais(Frais $frais): self
-    {
-        if ($this->frais->removeElement($frais)) {
-            // set the owning side to null (unless already changed)
-            if ($frais->getBienImmo() === $this) {
-                $frais->setBienImmo(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Tag>
      */
     public function getTags(): Collection
@@ -735,6 +705,30 @@ class BienImmo
     public function setCharges(?int $charges): self
     {
         $this->charges = $charges;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Frais>
+     */
+    public function getFrais(): Collection
+    {
+        return $this->Frais;
+    }
+
+    public function addFrai(Frais $frai): self
+    {
+        if (!$this->Frais->contains($frai)) {
+            $this->Frais[] = $frai;
+        }
+
+        return $this;
+    }
+
+    public function removeFrai(Frais $frai): self
+    {
+        $this->Frais->removeElement($frai);
 
         return $this;
     }

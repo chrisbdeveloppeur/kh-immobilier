@@ -3,9 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FraisRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FraisRepository::class)
@@ -20,95 +19,65 @@ class Frais
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=0)
+     * @Assert\NotBlank(message="Ce champs ne peut rester vide")
      */
     private $quantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity=BienImmo::class, inversedBy="frais")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Tag::class)
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $BienImmo;
+    private $tag;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="Frais")
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champs ne peut rester vide")
      */
-    private $tags;
-
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
+    private $name;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function __toString()
     {
-        return $this->title;
+        return $this->getName();
     }
 
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getQuantity(): ?int
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
 
-    public function setQuantity(?int $quantity): self
+    public function setQuantity(?string $quantity): self
     {
         $this->quantity = $quantity;
 
         return $this;
     }
 
-    public function getBienImmo(): ?BienImmo
+    public function getTag(): ?Tag
     {
-        return $this->BienImmo;
+        return $this->tag;
     }
 
-    public function setBienImmo(?BienImmo $BienImmo): self
+    public function setTag(?Tag $tag): self
     {
-        $this->BienImmo = $BienImmo;
+        $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Tag>
-     */
-    public function getTags(): Collection
+    public function getName(): ?string
     {
-        return $this->tags;
+        return $this->name;
     }
 
-    public function addTag(Tag $tag): self
+    public function setName(string $name): self
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addFrais($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTag(Tag $tag): self
-    {
-        if ($this->tags->removeElement($tag)) {
-            $tag->removeFrais($this);
-        }
+        $this->name = $name;
 
         return $this;
     }

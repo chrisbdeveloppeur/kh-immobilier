@@ -30,18 +30,12 @@ class Tag
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Frais::class, inversedBy="tags")
-     */
-    private $Frais;
-
-    /**
      * @ORM\ManyToMany(targetEntity=BienImmo::class, inversedBy="tags")
      */
     private $BienImmos;
 
     public function __construct()
     {
-        $this->Frais = new ArrayCollection();
         $this->BienImmos = new ArrayCollection();
     }
 
@@ -75,30 +69,6 @@ class Tag
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Frais>
-     */
-    public function getFrais(): Collection
-    {
-        return $this->Frais;
-    }
-
-    public function addFrais(Frais $frais): self
-    {
-        if (!$this->Frais->contains($frais)) {
-            $this->Frais[] = $frais;
-        }
-
-        return $this;
-    }
-
-    public function removeFrais(Frais $frais): self
-    {
-        $this->Frais->removeElement($frais);
 
         return $this;
     }

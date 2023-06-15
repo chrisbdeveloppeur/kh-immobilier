@@ -181,6 +181,7 @@ class BienImmoController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
+            //dd($form->get('Frais')->getData());
             if ($form->isValid()){
                 if ($bienImmo->getLocataires()->count() > 0 && $this->isGranted('ROLE_SUPER_ADMIN')){
                     $bienImmo->getLocataires()->first()->setUser($form->get('user')->getData($bienImmo->getUser()));

@@ -68,7 +68,16 @@
                                 {{ form_widget(field, {'attr':{'class':'form-select'~field_error_class}}) }}
                             </div>
                         {% endif %}
-
+                    {% elseif field_type_1 == 'collection' %}
+                            <ul class="Frais"
+                                data-index="{{ form.Frais|length > 0 ? form.Frais|last.vars.name + 1 : 0 }}"
+                                data-prototype="{{ form_widget(form.Frais.vars.prototype)|e('html_attr') }}"
+                            ></ul>
+                        <label for="{{ field.vars.full_name }}" class="form-label">{{ field.vars.label }}</label>
+                        {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}
+                        <button type="button" class="add_item_link btn btn-primary btn-sm" data-collection-holder-class="Frais">
+                            Ajouter
+                        </button>
                     {% else %}
                         <label for="{{ field.vars.full_name }}" class="form-label">{{ field.vars.label }}</label>
                         {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}

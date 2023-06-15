@@ -711,7 +711,57 @@
         });
 
 
-        // POUR PERFECT SCROLLBAR
+        // ADD FORM COLLECTION
+        const addFormToCollection = (e) => {
+            const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+            const item = document.createElement('li');
+
+            item.innerHTML = collectionHolder
+                .dataset
+                .prototype
+                .replace(
+                    /__name__/g,
+                    collectionHolder.dataset.index
+                );
+
+            collectionHolder.appendChild(item);
+            collectionHolder.dataset.index++;
+            addFraisFormDeleteLink(item);
+        };
+
+        document.querySelectorAll('.add_item_link').forEach(btn => {
+                btn.addEventListener("click", addFormToCollection)
+            });
+
+        document.querySelectorAll('ul.Frais li').forEach((Frais) => {
+                addFraisFormDeleteLink(Frais)
+            });
+
+        const addFraisFormDeleteLink = (item) => {
+            const removeFormButton = document.createElement('button');
+            removeFormButton.classList.add('btn','btn-sm','btn-danger');
+            removeFormButton.innerText = 'Retirer';
+
+            item.append(removeFormButton);
+
+            removeFormButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                // remove the li for the tag form
+                item.remove();
+            });
+        };
+
+
+        // Year FOOTER
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+
+    </script>
+
+
+    <script>
+
+        // POUR PERFECT SCROLLBAR SNEAT
         let perfectScrollbarElements = document.querySelectorAll('.perfect-scrollbar');
         perfectScrollbarElements.forEach(function (el) {
             new PerfectScrollbar(el, {
@@ -738,8 +788,7 @@
             });
         });
 
-
-    //    POPOVER SNEAT
+        //    POPOVER SNEAT
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
