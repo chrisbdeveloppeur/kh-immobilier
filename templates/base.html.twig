@@ -741,9 +741,9 @@
         const addFraisFormDeleteLink = (item) => {
             const removeFormButton = document.createElement('button');
             removeFormButton.classList.add('btn','btn-sm','btn-danger');
-            removeFormButton.innerText = 'Retirer';
+            removeFormButton.innerHTML = '<i class=\'bx bx-trash\'></i>';
 
-            item.append(removeFormButton);
+            item.firstChild.firstChild.append(removeFormButton);
 
             removeFormButton.addEventListener('click', (e) => {
                 e.preventDefault();
