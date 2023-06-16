@@ -56,6 +56,14 @@
                         </th>
 
                         <th>
+                            <span>{{ knp_pagination_sortable(biens_immos, 'Frais', 'frais') }}</span>
+                        </th>
+
+                        <th>
+                            <span>Bénéf Net</span>
+                        </th>
+
+                        <th>
                             <span>{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
                         </th>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
@@ -154,6 +162,14 @@
                             {% endif %}
 
                             <td title="{{ bien_immo.loyerTtc }} €">{{ bien_immo.loyerTtc|default(0) }} €</td>
+
+                            {% set total_frais = 0 %}
+                            {% for frais in bien_immo.frais %}
+                                {% set total_frais = total_frais + frais.quantity %}
+                            {% endfor %}
+                            <td title="- {{ total_frais }} €">- {{ total_frais|default(0) }} €</td>
+
+                            <td title="{{ bien_immo.beneficenet }} €">{{ bien_immo.beneficenet }} €</td>
 
                             <td>
                                 {% if bien_immo.locataires is not empty %}

@@ -16,11 +16,11 @@ class FraisType extends AbstractType
     {
         $builder
             ->add('name',TextType::class,[
-                'label' => "Indicatif",
+                'label' => "Intitulé",
                 'label_attr' => [
                     'class' => 'form-label',
                 ],
-                'help' => 'Nommer le frais',
+                'help' => 'Intitulé du frais',
                 'help_attr' => [
                     'class' => 'form-text'
                 ],

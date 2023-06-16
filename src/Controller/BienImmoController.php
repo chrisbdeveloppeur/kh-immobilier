@@ -15,6 +15,7 @@ use App\Form\PrestataireType;
 use App\Repository\BienImmoRepository;
 use App\Repository\DocumentsRepository;
 use App\Repository\EtatDesLieuxRepository;
+use App\Repository\FraisRepository;
 use App\Repository\LocataireRepository;
 use App\Repository\PrestataireRepository;
 use App\Repository\QuittanceRepository;
@@ -453,6 +454,20 @@ class BienImmoController extends AbstractController
         $form->get("copro")["coproContact"]->setData($bienImmo->getCopropriete()->getPhone());
         $form->get("copro")["coproInfos"]->setData($bienImmo->getCopropriete()->getInfos());
         return $form;
+    }
+
+
+    /**
+     * @Route("/frais/del/{id}", name="frais_delete", methods={"GET","POST"})
+     */
+    public function deleteFrais($id, FraisRepository $fraisRepository, EntityManagerInterface $em)
+    {
+        $frais = $fraisRepository->find($id);
+        $em->persist($frais);
+        $em->remove($frais);
+        $em->flush($frais);
+
+        return $this->json('Frais id = '.$id.' Supprimé !');
     }
 
 

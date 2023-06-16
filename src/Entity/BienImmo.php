@@ -733,5 +733,15 @@ class BienImmo
         return $this;
     }
 
+    public function getBeneficeNet()
+    {
+        $allFraisQuantity = 0;
+        foreach ($this->getFrais() as $frai){
+            $allFraisQuantity += $frai->getQuantity();
+        }
+        $beneficeNet = $this->getLoyerTtc() - $allFraisQuantity;
+        return $beneficeNet;
+    }
+
 }
 

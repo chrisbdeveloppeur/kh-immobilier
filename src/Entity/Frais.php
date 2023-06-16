@@ -19,7 +19,7 @@ class Frais
     private $id;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=0)
+     * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Ce champs ne peut rester vide")
      */
     private $quantity;

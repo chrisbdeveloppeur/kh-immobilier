@@ -214,6 +214,21 @@
             });
         }
 
+
+        let ajaxDeleteFraisBtn = document.querySelectorAll('.ajax-del-frais');
+        ajaxDeleteFraisBtn.forEach(function (btn) {
+            btn.addEventListener('click',ajaxDeleteFrais)
+        });
+        function ajaxDeleteFrais(event){
+            let element = this;
+            event.preventDefault();
+            const url = this.href;
+            element.parentElement.remove();
+            axios.get(url).then(function (response) {
+
+            });
+        }
+
         {#     ##############################################     #}
 
 
@@ -734,16 +749,16 @@
                 btn.addEventListener("click", addFormToCollection)
             });
 
-        document.querySelectorAll('ul.Frais li').forEach((Frais) => {
-                addFraisFormDeleteLink(Frais)
-            });
+        //document.querySelectorAll('ul.Frais li').forEach((Frais) => {
+        //        addFraisFormDeleteLink(Frais)
+        //    });
 
         const addFraisFormDeleteLink = (item) => {
             const removeFormButton = document.createElement('button');
             removeFormButton.classList.add('btn','btn-sm','btn-danger','btn-icon','rounded-pill','col-auto','is-absolute','bottom-0','end-0','me-3');
             removeFormButton.innerHTML = '<i class=\'bx bx-minus\'></i>';
 
-            item.firstChild.firstChild.append(removeFormButton);
+            item.firstChild.append(removeFormButton);
 
             removeFormButton.addEventListener('click', (e) => {
                 e.preventDefault();
