@@ -36,7 +36,7 @@ class FraisType extends AbstractType
                     ]),
                 ],
                 'row_attr' => [
-                    'class' => 'me-2'
+                    'class' => 'col-6'
                 ]
             ])
             ->add('quantity', NumberType::class, [
@@ -61,7 +61,7 @@ class FraisType extends AbstractType
                     ]),
                 ],
                 'row_attr' => [
-                    'class' => 'me-2'
+                    'class' => 'col-6'
                 ]
             ] )
         ;
