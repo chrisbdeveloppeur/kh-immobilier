@@ -739,7 +739,11 @@ class BienImmo
         foreach ($this->getFrais() as $frai){
             $allFraisQuantity += $frai->getQuantity();
         }
-        $beneficeNet = $this->getLoyerTtc() - $allFraisQuantity;
+        $mensualiteFinancement = 0;
+        if ($this->getFinancement()){
+            $mensualiteFinancement = $this->getFinancement()->getMensualites();
+        }
+        $beneficeNet = $this->getLoyerTtc() - $allFraisQuantity - $mensualiteFinancement;
         return $beneficeNet;
     }
 

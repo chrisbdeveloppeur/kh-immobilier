@@ -458,16 +458,19 @@ class BienImmoController extends AbstractController
 
 
     /**
-     * @Route("/frais/del/{id}", name="frais_delete", methods={"GET","POST"})
+     * @Route("/frais/del/{id<\d+>?1}", name="frais_delete", methods={"GET","POST"})
      */
     public function deleteFrais($id, FraisRepository $fraisRepository, EntityManagerInterface $em)
     {
         $frais = $fraisRepository->find($id);
-        $em->persist($frais);
-        $em->remove($frais);
-        $em->flush($frais);
-
-        return $this->json('Frais id = '.$id.' Supprimé !');
+        if ($frais){
+            $em->persist($frais);
+            $em->remove($frais);
+            $em->flush($frais);
+            return $this->json('Frais id = '.$id.' Supprimé !');
+        }else {
+            return $this->json('Echec de suppression -> Frais id = '.$id);
+        }
     }
 
 
