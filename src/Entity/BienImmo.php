@@ -199,7 +199,11 @@ class BienImmo
 
     public function __toString()
     {
-        return $this->getLibelle();
+        if ($this->getLibelle()){
+            return $this->getLibelle();
+        }else{
+            return $this->getStreet();
+        }
     }
 
     public function __clone()
@@ -596,10 +600,8 @@ class BienImmo
     {
         if ($this->libelle){
             $libelle = $this->libelle;
-        }elseif ($this->getAdresse()){
-            $libelle = $this->getAdresse();
         }else{
-            $libelle = '';
+            $libelle = null;
         }
         return $libelle;
     }

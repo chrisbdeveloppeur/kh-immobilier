@@ -35,8 +35,13 @@
                     <thead>
                     <tr class="">
                         <th>
+                            <span>{{ knp_pagination_sortable(biens_immos, 'Libelle', 'libelle') }}</span>
+                        </th>
+
+                        <th>
                             <span>Actions</span>
                         </th>
+
                         <th>
                             <span>{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
                         </th>
@@ -81,8 +86,26 @@
                     {% for bien_immo in biens_immos %}
                         {% set total_loyer_hc =  total_loyer_hc + bien_immo.loyerHc %}
                         <tr class="">
+
+                            <td title="{{ bien_immo.libelle }}">
+                                {% if bien_immo.libelle %}
+                                    {{ bien_immo.libelle }}
+                                {% else %}
+                                    <span class="badge bg-label-secondary"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-offset="0,14"
+                                          data-bs-placement="top"
+                                          data-bs-trigger="hover focus"
+                                          data-bs-html="true"
+                                          title="<small>Non communiqué</small>"
+                                    >
+                                    N/C
+                                    </span>
+                                {% endif %}
+                            </td>
+
                             <td>
-                                <div class="btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
                                     <a type="button" class="btn btn-outline-primary" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
                                        data-bs-toggle="tooltip"
                                        data-bs-offset="0,4"
@@ -104,6 +127,19 @@
                                               data-bs-content="<small>Aucun locataire n'occupe ce logement</small>"
                                         ></span>
                                     {% endif %}
+
+                                    <a type="button" class="btn btn-outline-primary {% if not bien_immo.adresse %}disabled{% endif %}"
+                                       href="https://www.google.com/maps/place/{{ bien_immo.adresse }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Localiser le bien</small>"
+                                       onclick="window.open(this.href, '_blank', 'width=500,height=500'); return false;"
+                                    >
+                                        <i class='bx bx-xs bxs-map'></i>
+                                    </a>
+
                                     <a type="button" class="btn btn-outline-primary {% if bien_immo.locataires is empty %}disabled{% endif %}"
                                        href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}"
                                        data-bs-toggle="tooltip"
@@ -127,20 +163,18 @@
                                     </a>
                                 </div>
                             </td>
+
                             <td>
-                                <span class="text-info-onhover">
-                                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
-                                       class="icon-text"
-                                       title="{{ bien_immo.street }}"
-                                    >
-                                        <span class="text-index-entity">
-                                            {{ bien_immo.street }}
-                                        </span>
-                                    </a>
+                                <span class="text-index-entity">
+                                    <small>{{ bien_immo.street }}</small>
                                 </span>
                             </td>
 
-                            <td title="{{ bien_immo.city }}">{{ bien_immo.city }}</td>
+                            <td title="{{ bien_immo.city }}">
+                                <small class="nowrap-text">
+                                    {{ bien_immo.city }}
+                                </small>
+                            </td>
                             <td title="{{ bien_immo.type }}">
                                 <span class="badge bg-label-info">{{ bien_immo.type }}</span>
                             </td>
@@ -173,9 +207,14 @@
 
                             <td>
                                 {% if bien_immo.locataires is not empty %}
-                                    <a class="icon-text"
+                                    <a class="btn btn-sm btn-outline-primary"
                                        href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire"
-                                       title="Voir les détails du locataire {{ bien_immo.locataires.current }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,14"
+                                       data-bs-placement="top"
+                                       data-bs-trigger="hover focus"
+                                       data-bs-html="true"
+                                       title="<small>Voir les détails du locataire {{ bien_immo.locataires.current }}</small>"
                                     >
                                         <span>{{ bien_immo.locataires.current }}</span>
                                     </a>

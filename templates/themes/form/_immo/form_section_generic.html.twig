@@ -7,7 +7,7 @@
 {% endif %}
 <div class="card accordion-item {% if loop.index == 1 %}active{% endif %} mb-3">
     <h2 class="accordion-header" id="heading-{{ row.vars.name }}">
-        <button type="button" class="accordion-button is-size-5 has-text-weight-bold" data-bs-toggle="collapse" data-bs-target="#accordion-{{ row.vars.name }}" aria-expanded="true" aria-controls="accordion-{{ row.vars.name }}" role="tabpanel">
+        <button type="button" class="accordion-button is-size-5 has-text-weight-bold {% if loop.index != 1 %}collapsed{% endif %}" data-bs-toggle="collapse" data-bs-target="#accordion-{{ row.vars.name }}" {% if loop.index == 1 %}aria-expanded="true"{% endif %} aria-controls="accordion-{{ row.vars.name }}" role="tabpanel">
             {{ form_label(row) }}
         </button>
     </h2>

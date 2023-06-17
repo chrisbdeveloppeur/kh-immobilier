@@ -2,18 +2,17 @@
 {% for type, message_list in app.flashes %}
     {% for message in message_list %}
 
-        <div class="column flash-msg" style="z-index: 9999">
+        <div class="position-absolute end-0 p-3 flash-msg is-flex justify-content-end" style="z-index: 9999">
 
-            <div class="bs-toast toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <span class="badge badge-center rounded-pill bg-{{ type }} border-label-{{ type }} p-3 me-2">
-                        <i class="bx bx-md bx-info-circle bx-burst"></i>
-                    </span>
-                    <div class="me-auto fw-semibold">Informations</div>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    {{ message|raw }}
+            <div class="toast show bs-toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <span class="badge badge-center rounded-pill bg-{{ type }} m-auto ms-2 me-2">
+                            <i class="bx bx-sm bx-info-circle bx-tada"></i>
+                        </span>
+                    <div class="toast-body">
+                        {{ message|raw }}
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
             </div>
         </div>
