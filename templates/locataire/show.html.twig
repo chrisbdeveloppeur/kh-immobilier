@@ -1,83 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ locataire }}{% endblock %}
+{% block title %}Locataires{% endblock %}
 
-{% block title_main %}Locataire : {{ locataire }}{% endblock %}
+{% block title_main %} {{ locataire|default('#'~locataire.id) }} {% endblock %}
 
 {% block body %}
-<section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
-    <div class="my-3 mx-3">
-        <div class="buttons are-small">
-            <a href="{{ path('locataire_index') }}" class="button is-light">Retour à la liste des locataires</a>
-            <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" class="button is-light">Modifier ce locataire</a>
+
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Locataires /</span> {{ locataire }}</h4>
+            <div class="col-12">
+                <div class="col-12 col-md-6">
+                    {{ include('locataire/_card.html.twig') }}
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="table-container">
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ locataire.id }}</td>
-            </tr>
-            <tr>
-                <th>Prénom</th>
-                <td>{{ locataire.firstName }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ locataire.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>
-                    {% if locataire.email %}
-                        <a href="mailto:{{ locataire.email }}">{{ locataire.email }}</a>
-                    {% else %}
-                        <i>Non renseigné</i>
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ locataire.gender }}</td>
-            </tr>
-            <tr>
-                <th>Mode de paiement</th>
-                <td>{{ locataire.mode }}</td>
-            </tr>
-            <tr>
-                <th>Logement</th>
-                <td>
-                    {% if locataire.logement %}
-                        <a class="fa-search-js" href="{{ path('bien_immo_show', {'id': locataire.id }) }}">
-                            <span class="icon-text has-text-info">
-                                <span>{{ locataire.logement }}</span>
-                                <span class="icon">
-                                    <i class="fas fa-search fa-search-js"></i>
-                                </span>
-                            </span>
-                        </a>
-                    {% else %}
-                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Ajouter un logement à ce locataire" onmouseover="this.querySelector('i.add-loc').classList.replace('fa-user-slash','fa-user-plus')" onmouseleave="this.querySelector('i.add-loc').classList.replace('fa-user-plus','fa-user-slash')">
-                            <span class="tag is-warning" onmouseover="this.classList.replace('is-warning','is-info')" onmouseleave="this.classList.replace('is-info','is-warning')">
-                                <i class="fas fa-user-slash add-loc"></i>
-                                <span class="icon">
-                                    <i class="fas fa-home"></i>
-                                </span>
-                            </span>
-                        </a>
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <td><a href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id }) }}" class="tag is-dark">Editer une quittance</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    {{ include('locataire/_delete_form.html.twig') }}
-</section>
-
 
 {% endblock %}

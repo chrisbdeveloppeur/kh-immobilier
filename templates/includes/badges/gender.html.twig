@@ -1,0 +1,11 @@
+{% if locataire is defined and locataire.gender %}
+    {% if locataire.gender == 'M.' %}
+        {{ include('includes/badges/gender_m.html.twig') }}
+    {% elseif locataire.gender == 'Mme.' %}
+        {{ include('includes/badges/gender_mme.html.twig') }}
+    {% else %}
+        {{ include('includes/badges/inconnue.html.twig') }}
+    {% endif %}
+{% else %}
+{% endif %}
+

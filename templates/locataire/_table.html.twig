@@ -62,37 +62,7 @@
                     <td>
                         <span class="text-info-onhover">
                             <span class="text-index-entity">
-                                {% if locataire.gender is defined and locataire.gender == 'M.' %}
-                                    <span class="badge rounded-pill bg-warning"
-                                          data-bs-toggle="tooltip"
-                                          data-bs-offset="0,4"
-                                          data-bs-placement="top"
-                                          data-bs-html="true"
-                                          title="<small>Masculin</small>"
-                                    >
-                                        <i class='bx bx-xs bx-male-sign'></i>
-                                    </span>
-                                {% elseif locataire.gender == 'Mme.' %}
-                                    <span class="badge rounded-pill bg-info"
-                                          data-bs-toggle="tooltip"
-                                          data-bs-offset="0,4"
-                                          data-bs-placement="top"
-                                          data-bs-html="true"
-                                          title="<small>Féminin</small>"
-                                    >
-                                        <i class='bx bx-xs bx-female-sign'></i>
-                                    </span>
-                                {% else %}
-                                    <span class="badge rounded-pill bg-label-secondary"
-                                          data-bs-toggle="tooltip"
-                                          data-bs-offset="0,4"
-                                          data-bs-placement="top"
-                                          data-bs-html="true"
-                                          title="<small>Non cummuniqué</small>"
-                                    >
-                                        <i class='bx bx-xs bx-question-mark'></i>
-                                    </span>
-                                {% endif %}
+                                {{ include('includes/badges/gender.html.twig') }}
                             </span>
                         </span>
                     </td>
@@ -108,22 +78,60 @@
                     </td>
                     <td class="">
                         <span class="text-index-entity">
-                            {{ locataire.email }}
+                            {% if locataire.email %}
+                                <a href="mailto:{{ locataire.email }}"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Contacter par email</small>"
+                                >
+                                    {{ locataire.email }}
+                                </a>
+                            {% else %}
+                                {{ include('includes/badges/non_communique.html.twig') }}
+                            {% endif %}
                         </span>
                     </td>
                     <td class="">
                         <span class="text-index-entity">
-                            {{ locataire.phone }}
+                            {% if locataire.phone %}
+                                <a href="tel:{{ locataire.phone }}"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Contacter par téléphone</small>"
+                                >
+                                    {{ locataire.phone }}
+                                </a>
+                            {% else %}
+                                {{ include('includes/badges/non_communique.html.twig') }}
+                            {% endif %}
                         </span>
                     </td>
                     <td class="">
                         <span class="text-index-entity">
-                            {{ locataire.logement }}
+                            {% if locataire.logement %}
+                                {{ locataire.logement }}
+                            {% else %}
+                                {{ include('includes/badges/non_communique.html.twig') }}
+                            {% endif %}
                         </span>
                     </td>
                     <td class="">
-                        <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
-                            <a type="button" class="btn btn-light" href="{{ path('locataire_edit', {'id': locataire.id}) }}"
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                            <a type="button" class="btn btn-outline-primary" href="{{ path('locataire_show', {'id': locataire.id}) }}"
+                               data-bs-toggle="tooltip"
+                               data-bs-offset="0,4"
+                               data-bs-placement="top"
+                               data-bs-html="true"
+                               title="<small>Voir le locataire</small>"
+                            >
+                                <i class='bx bx-xs bx-show-alt'></i>
+                            </a>
+
+                            <a type="button" class="btn btn-outline-primary" href="{{ path('locataire_edit', {'id': locataire.id}) }}"
                                data-bs-toggle="tooltip"
                                data-bs-offset="0,4"
                                data-bs-placement="top"
@@ -144,7 +152,7 @@
                                       data-bs-content="<small>Le locataire n'a pas de logement attribué</small>"
                                 ></span>
                             {% endif %}
-                            <a type="button" class="btn btn-light {% if not locataire.logement %}disabled{% endif %}"
+                            <a type="button" class="btn btn-outline-primary {% if not locataire.logement %}disabled{% endif %}"
                                href="{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}"
                                data-bs-toggle="tooltip"
                                data-bs-offset="0,4"

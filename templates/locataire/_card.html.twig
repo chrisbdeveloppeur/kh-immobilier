@@ -1,0 +1,170 @@
+        <div class="card">
+            {#
+            <img src="" class="card-img-top" alt="...">
+            #}
+            <div class="card-body">
+                <h5 class="card-title">
+                    Informations du locataire #{{ locataire.id }}
+                </h5>
+                {#
+                <p class="card-text">
+
+                </p>
+                #}
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Sexe du locataire</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bx-male-female'></i>
+                    </span>
+                    {{ locataire.gender }}
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Nom du locataire</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-user-badge'></i>
+                    </span>
+                    {{ locataire.lastName }}
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Prénom du locataire</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-user'></i>
+                    </span>
+                    {{ locataire.firstName }}
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Adresse email</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bx-mail-send'></i>
+                    </span>
+                    {% if locataire.email %}
+                        <a href="mailto:{{ locataire.email }}"
+                           data-bs-toggle="tooltip"
+                           data-bs-offset="0,4"
+                           data-bs-placement="top"
+                           data-bs-html="true"
+                           title="<small>Contacter par email</small>"
+                        >
+                            {{ locataire.email }}
+                        </a>
+                    {% else %}
+                        {{ include('includes/badges/non_communique.html.twig') }}
+                    {% endif %}
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Numéro de téléphone</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-phone'></i>
+                    </span>
+                    {% if locataire.phone %}
+                        <a href="mailto:{{ locataire.phone }}"
+                           data-bs-toggle="tooltip"
+                           data-bs-offset="0,4"
+                           data-bs-placement="top"
+                           data-bs-html="true"
+                           title="<small>Contacter par téléphone</small>"
+                        >
+                            {{ locataire.phone }}
+                        </a>
+                    {% else %}
+                        {{ include('includes/badges/non_communique.html.twig') }}
+                    {% endif %}
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Préférence du moyen de paiement</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-wallet'></i>
+                    </span>
+                    {{ locataire.mode }}
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Nom du bailleur</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-user-badge'></i>
+                    </span>
+                    {{ locataire.user }}
+                </li>
+
+            </ul>
+            <div class="card-body">
+                <div class="is-flex is-justify-content-space-between">
+                    <a href="{% if locataire.logement %}{{ path('quittances_edit_new_quittance', {'loc_id': locataire.id}) }}{% endif %}"
+                       class="col-4 btn btn-icon rounded-pill btn-outline-primary is-flex align-items-center justify-content-center {% if not locataire.logement %}disabled{% endif %}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Editer une quittance</small>"
+                    >
+                        <i class='bx bxs-file-plus'></i>
+                    </a>
+
+                    <a href="{{ path('locataire_edit', {'id': locataire.id}) }}"
+                       class="col-4 btn btn-icon rounded-pill btn-outline-primary is-flex align-items-center justify-content-center"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Modifier le locataire</small>"
+                    >
+                        <i class='bx bxs-edit-alt'></i>
+                    </a>
+
+                    <a href="{{ path('locataire_delete', {'id': locataire.id}) }}" class="col-4 btn btn-icon rounded-pill btn-danger is-flex align-items-center justify-content-center"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Supprimer le locataire</small>"
+                       onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce locataire?');"
+                    >
+                        <i class='bx bxs-trash'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+

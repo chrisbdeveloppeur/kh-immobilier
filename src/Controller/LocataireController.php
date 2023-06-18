@@ -97,15 +97,15 @@ class LocataireController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{id}", name="locataire_show", methods={"GET"})
-//     */
-//    public function show(Locataire $locataire): Response
-//    {
-//        return $this->render('locataire/show.html.twig', [
-//            'locataire' => $locataire,
-//        ]);
-//    }
+    /**
+     * @Route("/{id}/show", name="locataire_show", methods={"GET"})
+     */
+    public function show(Locataire $locataire): Response
+    {
+        return $this->render('locataire/show.html.twig', [
+            'locataire' => $locataire,
+        ]);
+    }
 
     /**
      * @Route("/{id}/edit", name="locataire_edit", methods={"GET","POST"})
