@@ -299,6 +299,25 @@ class BienImmoController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/{id}/show", name="bien_immo_show")
+     */
+    public function show(BienImmo $bienImmo, LocataireRepository $locataireRepository): Response
+    {
+//        Vérification de l'utilisateur actuellement connecté
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($bienImmo);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à être ici');
+            return $this->redirectToRoute('bien_immo_index');
+        }
+
+        return $this->render('bien_immo/show.html.twig', [
+            'bien_immo' => $bienImmo,
+        ]);
+    }
+
+
     /**
      * @Route("/{id_immo}/etat-des-lieux", name="bien_immo_etat_des_lieux", methods={"GET","POST"})
      */

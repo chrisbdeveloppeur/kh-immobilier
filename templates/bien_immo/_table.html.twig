@@ -128,20 +128,8 @@
                                         ></span>
                                     {% endif %}
 
-                                    <a type="button" class="btn btn-outline-primary {% if not bien_immo.adresse %}disabled{% endif %}"
-                                       href="https://www.google.com/maps/place/{{ bien_immo.adresse }}"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>Localiser le bien</small>"
-                                       onclick="window.open(this.href, '_blank', 'width=500,height=500'); return false;"
-                                    >
-                                        <i class='bx bx-xs bxs-map'></i>
-                                    </a>
-
                                     <a type="button" class="btn btn-outline-primary {% if bien_immo.locataires is empty %}disabled{% endif %}"
-                                       href="{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataires.current.id }) }}"
+                                       href="{% if bien_immo.locataire %}{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}{% endif %}"
                                        data-bs-toggle="tooltip"
                                        data-bs-offset="0,4"
                                        data-bs-placement="top"

@@ -126,6 +126,7 @@ class QuittancesController extends AbstractController
 
         $quittance = $quittanceRepository->find($quittance_id);
         $locataire = $quittance->getLocataire();
+        $bienImmo = $quittance->getBienImmo();
         $file = $quittance->getFileName();
 
         if (file_exists('../public/documents/quittances/' . $file . '.pdf')){
@@ -143,6 +144,7 @@ class QuittancesController extends AbstractController
         return $this->render('immo/documents/download_quittance.html.twig',[
             "file_name" => $file,
             "locataire" => $locataire,
+            "bien_immo" => $bienImmo,
             "quittance" => $quittance,
             "pdf_exist" => $pdf_exist,
             "docx_exist" => $docx_exist,

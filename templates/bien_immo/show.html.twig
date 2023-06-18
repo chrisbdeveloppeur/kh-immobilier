@@ -1,107 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ bien_immo }}{% endblock %}
+{% block title %}Biens immobiliers{% endblock %}
 
-{% block title_main %}Votre bien : {{ bien_immo }}{% endblock %}
+{% block title_main %} {{ bien_immo|default('#'~bien_immo.id) }} {% endblock %}
 
 {% block body %}
-<section class="section is-flex-desktop is-flex-direction-column is-align-items-center">
-    <div class="column">
-        <div class="buttons are-small is-justify-content-space-between has-text-centered">
-            <a class="button is-light" href="{{ path('bien_immo_index') }}">Retour à la liste des Biens immobiliers</a>
-            <a class="button is-light" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}">Modifier ce bien</a>
+
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Biens Immobiliers /</span> {{ bien_immo }}</h4>
+            <div class="col-12">
+                <div class="col-12 col-md-6">
+                    {{ include('bien_immo/_card.html.twig') }}
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="field" style="max-width: 100vw;overflow-y: auto">
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Rue</th>
-                <td>{{ bien_immo.street }}</td>
-            </tr>
-            <tr>
-                <th>Complément d'adresse</th>
-                <td>{{ bien_immo.building }}</td>
-            </tr>
-            <tr>
-                <th>CP</th>
-                <td>{{ bien_immo.cp }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ bien_immo.city }}</td>
-            </tr>
-            <tr>
-                <th>Loyer HC</th>
-                <td>{{ bien_immo.loyerHc }} €</td>
-            </tr>
-            <tr>
-                <th>Charges</th>
-                <td>{{ bien_immo.charges }} €</td>
-            </tr>
-            <tr>
-                <th>Loyer TTC</th>
-                <td>{{ bien_immo.loyerTtc }} €</td>
-            </tr>
-            <tr>
-                <th>Solde</th>
-                <td>{{ bien_immo.solde }} €</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h2 class="title has-text-centered">Locataire(s)</h2>
-
-    <div class="field" style="max-width: 100vw;overflow-y: auto">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Sexe</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Moyen de paiement</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for locataire in locataires %}
-                <tr>
-                    <td>{{ locataire.gender }}</td>
-                    <td>{{ locataire.firstName }}</td>
-                    <td>{{ locataire.lastName }}</td>
-                    <td>{{ locataire.mode }}</td>
-                    <td>
-                        <a href="{{ path('locataire_show', {'id': locataire.id}) }}" title="Voir les détails">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-search"></i>
-                            </span>
-                        </a>
-
-                        <a href="{{ path('locataire_edit', {'id': locataire.id}) }}" title="Modifier les informations du locataire">
-                            <span class="icon">
-                                <i class="fas fa-lg fa-pen-square"></i>
-                            </span>
-                        </a>
-
-                        <a href="{{ path('remove_loctataire', {'id': bien_immo.id, 'loc_id': locataire.id}) }}" title="Retirer le locataire" onclick="return confirm('Etes-vous sur de vouloir retirer le locataire du logement?')">
-                            <span class="icon">
-                                <i class="fas fa-user-minus"></i>
-                            </span>
-                        </a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="11">Aucun locataire n'est attribué à ce logement</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    {{ include('bien_immo/_delete_form.html.twig') }}
-</section>
 
 {% endblock %}

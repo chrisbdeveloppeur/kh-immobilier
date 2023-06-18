@@ -18,7 +18,7 @@
                                 Vous pouvez retrouver cette quittance également sur la page
                                 <a type="button"
                                    class="btn btn-xs btn-primary"
-                                   href="{{ path('quittances_index', {'bien_id':locataire.logement.id})  }}"
+                                   href="{{ path('quittances_index', {'bien_id':bien_immo.id})  }}"
                                    data-bs-toggle="tooltip"
                                    data-bs-offset="0,4"
                                    data-bs-placement="top"
@@ -99,12 +99,12 @@
 
                     <a type="button"
                        class="btn btn-primary"
-                       href="{{ path('bien_immo_edit', {'id': locataire.logement.id}) }}#logement"
+                       href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
                        data-bs-toggle="tooltip"
                        data-bs-offset="0,4"
                        data-bs-placement="top"
                        data-bs-html="true"
-                       title="<small>Voir {{ locataire.logement }}</small>"
+                       title="<small>Voir {{ bien_immo }}</small>"
                     >
                         <span class="tf-icons bx bxs-building-house"></span>
                         Logement
