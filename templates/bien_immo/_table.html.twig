@@ -106,6 +106,18 @@
 
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+
+                                    <a type="button" class="btn btn-outline-primary"
+                                       href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Voir les détails de ce bien</small>"
+                                    >
+                                        <i class='bx bx-xs bx-show-alt'></i>
+                                    </a>
+
                                     <a type="button" class="btn btn-outline-primary" href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
                                        data-bs-toggle="tooltip"
                                        data-bs-offset="0,4"
@@ -115,18 +127,6 @@
                                     >
                                         <i class='bx bx-xs bxs-edit-alt'></i>
                                     </a>
-
-                                    {% if bien_immo.locataires is empty %}
-                                        <span class="d-inline-block"
-                                              tabindex="0"
-                                              data-bs-toggle="popover"
-                                              data-bs-offset="0,14"
-                                              data-bs-trigger="hover focus"
-                                              data-bs-placement="top"
-                                              data-bs-html="true"
-                                              data-bs-content="<small>Aucun locataire n'occupe ce logement</small>"
-                                        ></span>
-                                    {% endif %}
 
                                     <a type="button" class="btn btn-outline-primary {% if bien_immo.locataires is empty %}disabled{% endif %}"
                                        href="{% if bien_immo.locataire %}{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id }) }}{% endif %}"
