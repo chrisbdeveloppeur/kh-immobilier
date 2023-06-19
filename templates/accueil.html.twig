@@ -100,23 +100,12 @@
                 </div>
 
             </div>
-            <!-- Loyers -->
-            <div class="col-12 col-lg-4 order-2 mb-4">
 
-                {% set break = false %}
-                {% for bien_immo in biens_immos %}
-                    {% if bien_immo.quittances|length > 0 %}
-                        {% set break = true %}
-                    {% endif %}
-                {% endfor %}
-                {{ include('includes/block_loyers.html.twig') }}
-
-            </div>
-            <!--/ Loyers -->
+            {{ include('includes/blocks/total_frais.html.twig') }}
 
             {{ include('includes/blocks/total_revenue.html.twig') }}
 
-            {{ include('includes/blocks/total_frais.html.twig') }}
+            {{ include('includes/block_locataires.html.twig') }}
 
         </div>
 

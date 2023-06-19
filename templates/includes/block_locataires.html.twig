@@ -1,14 +1,8 @@
-{% set break = false %}
-{% for bien_immo in biens_immos %}
-    {% if bien_immo.quittances|length > 0 %}
-        {% set break = true %}
-    {% endif %}
-{% endfor %}
 <div class="col-md-6 col-lg-4 col-xl-4 order-4 mb-4">
 
     <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="card-title m-0 me-2">Loyers pour {{ date('now')|format_date(pattern='MMMM',locale='fr')|capitalize }}</h5>
+            <h5 class="card-title m-0 me-2">Mes locataires</h5>
             <div class="dropdown">
                 <button
                         class="btn p-0"
@@ -21,27 +15,22 @@
                     <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                    <a class="dropdown-item" href="javascript:void(0);">Tout les loyers</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Payés</a>
-                    <a class="dropdown-item" href="javascript:void(0);">En attente de paiement</a>
+                    <a class="dropdown-item" href="{{ path('locataire_index') }}">Liste des locataires</a>
                 </div>
             </div>
         </div>
-        {% if break == true %}
+        {% if locataires|length > 0 %}
             <div class="card-body overflow-hidden perfect-scrollbar" style="max-height: 350px">
                 <ul class="p-0 m-0">
-                    {% for bien_immo in biens_immos %}
-                        {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
-                        {% if bien_immo.locataire %}
-                            {% include 'includes/biens_row.html.twig' %}
-                        {% endif %}
+                    {% for locataire in locataires %}
+                        {% include 'includes/locataire_row.html.twig' %}
                     {% endfor %}
                 </ul>
             </div>
         {% else %}
                 <div class="card-body is-flex is-flex-direction-column justify-content-evenly">
-                    <p class="card-text text-center">Vous n'avez aucun loyers éditées</p>
-                    <a href="#" class="btn btn-primary">Editer une quittance de loyer</a>
+                    <p class="card-text text-center">Vous n'avez aucun locataires enregistrés</p>
+                    <a href="{{ path('locataire_new') }}" class="btn btn-primary">Enregistrer un locataire</a>
                 </div>
         {% endif %}
     </div>
