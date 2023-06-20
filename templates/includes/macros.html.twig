@@ -5,11 +5,11 @@
         {% set quittance_render_url = path('quittances_render_quittance', {'quittance_id': quittance.id}) %}
         {% if quittance.payed %}
             {% set status_text = "<small>dernier loyer perçu</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
-            {% set status_badge_class = 'bg-label-success' %}
+            {% set status_badge_class = 'bg-primary' %}
             {% set status_icon_class = 'bx bxs-calendar-check' %}
         {% elseif not quittance.payed %}
             {% set status_text = "<small>dernier loyer en attente</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
-            {% set status_badge_class = 'bg-label-warning' %}
+            {% set status_badge_class = 'bg-primary' %}
             {% set status_icon_class = 'bx bx-calendar-exclamation' %}
         {% endif %}
     {% else %}
@@ -26,7 +26,7 @@
           data-bs-trigger="hover focus"
           data-bs-html="true"
           data-bs-content="{{ status_text }}">
-        <span class="badge {{ status_badge_class }} rounded">
+        <span class="badge {{ status_badge_class }} rounded-pill">
             <i class='{{ status_icon_class }}'></i>
         </span>
     </span>

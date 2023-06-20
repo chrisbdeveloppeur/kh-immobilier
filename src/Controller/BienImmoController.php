@@ -202,7 +202,9 @@ class BienImmoController extends AbstractController
                 $this->addFlash('success', 'Les modifications ont bien étés appliquées');
 
                 $referer = $request->headers->get('referer');
-                return $this->redirect($referer);
+                return $this->redirectToRoute('bien_immo_show',[
+                    'id' => $bienImmo->getId()
+                ]);
             }else{
                 $this->addFlash('danger', 'Echec d\'enregistrement<br><small>Vérifiez les données du formulaire</small>');
             }

@@ -1,6 +1,6 @@
 {% import 'includes/macros.html.twig' as macros %}
 <div class="col-12 col-lg-4 col-sm-12 col-md-12 mb-4">
-    <div class="card h-100">
+    <div class="card bg-label-primary h-100">
         <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
                 <div class="avatar flex-shrink-0 me-3">
@@ -24,10 +24,30 @@
                     </div>
                 </div>
             </div>
-            <span class="d-block mb-1">{{ bien_immo }}</span>
-            <h3 class="card-title text-nowrap mb-2">€{{ bien_immo.loyerTtc }}</h3>
-            <small class="text-info fw-semibold"
-                   title="Payement du loyer prévus tout les {{ bien_immo.echeance }} du mois"
+            <span class="d-block mb-1"
+                  data-bs-toggle="tooltip"
+                  data-bs-offset="0,4"
+                  data-bs-placement="left"
+                  data-bs-html="true"
+                  title="<small>Libellé du bien</small>"
+            >
+                {{ bien_immo }}
+            </span>
+            <h3 class="card-title text-nowrap mb-2"
+                data-bs-toggle="tooltip"
+                data-bs-offset="0,4"
+                data-bs-placement="left"
+                data-bs-html="true"
+                title="<small>Loyer (cc)</small>"
+            >
+                €{{ bien_immo.loyerTtc }}
+            </h3>
+            <small class="fw-semibold"
+                   data-bs-toggle="tooltip"
+                   data-bs-offset="0,4"
+                   data-bs-placement="left"
+                   data-bs-html="true"
+                   title="<small>Échéance de payement</small>"
             >
                 <i class="bx bx-calendar"></i>{{ bien_immo.echeance|format_number({min_integer_digit: 2}) }} {{ 'now'|format_date(pattern='MMMM', locale='fr') }}
             </small>

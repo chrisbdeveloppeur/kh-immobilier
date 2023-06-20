@@ -585,10 +585,10 @@ class BienImmo
 
     public function getAdresse()
     {
-        if (!$this->getStreet() && !$this->getCp() && !$this->getCity() && !$this->getBuilding()){
+        if (!$this->getStreet() && !$this->getCp() && !$this->getCity()){
             return false;
         }else{
-            $adresse = $this->getStreet().', '.$this->getCp().' '.$this->getCity().', '.$this->getBuilding();
+            $adresse = $this->getStreet().', '.$this->getCp().', '.$this->getCity();
             return $adresse;
         }
     }

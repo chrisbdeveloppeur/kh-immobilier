@@ -118,6 +118,7 @@ class BienImmoType extends AbstractType
                 ->add('type', ChoiceType::class,[
                     'label' => "Type de logement",
                     'choices' => [
+                        'Chambre' => 'Chambre',
                         'Studio' => 'Studio',
                         'T1' => 'T1',
                         'T2' => 'T2',

@@ -7,8 +7,27 @@
                     Informations du bien #{{ bien_immo.id }}
                 </h5>
                 <p class="card-text">
-                    <span class="badge bg-label-info">{{ bien_immo.type }}</span>
-                    <span class="badge bg-label-info">{{ bien_immo.superficie }}m²</span>
+
+                    <span class="badge bg-label-info"
+                          data-bs-toggle="tooltip"
+                          data-bs-offset="0,4"
+                          data-bs-placement="top"
+                          data-bs-html="true"
+                          title="<small>Type de logement</small>"
+                    >
+                        {{ bien_immo.type }}
+                    </span>
+
+                    <span class="badge bg-label-info"
+                          data-bs-toggle="tooltip"
+                          data-bs-offset="0,4"
+                          data-bs-placement="top"
+                          data-bs-html="true"
+                          title="<small>Superficie habitable</small>"
+                    >
+                        {{ bien_immo.superficie }}m²
+                    </span>
+
                 </p>
             </div>
             <ul class="list-group list-group-flush">
@@ -39,6 +58,23 @@
                         </span>
                         {{ bien_immo.adresse }}
                     </a>
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Complément d'adresse</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-building'></i>
+                    </span>
+                    {% if bien_immo.building %}
+                        {{ bien_immo.building }}
+                    {% else %}
+                        {{ include('includes/badges/non_communique.html.twig') }}
+                    {% endif %}
                 </li>
 
                 <li class="list-group-item"

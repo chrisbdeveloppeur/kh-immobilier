@@ -1,23 +1,23 @@
 {% import 'includes/macros.html.twig' as macros %}
 <li class="d-flex mt-4 pb-1 border-bottom">
-    <a href="{{ path('locataire_show', {'id': locataire.id}) }}"
-       class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2"
-       data-bs-toggle="tooltip"
-       data-bs-offset="0,4"
-       data-bs-placement="top"
-       data-bs-html="true"
-       title="<small>Voir le locataire</small>"
-    >
-        <div class="me-2">
+    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+        <a href="{{ path('locataire_show', {'id': locataire.id}) }}"
+           class="me-2"
+           data-bs-toggle="tooltip"
+           data-bs-offset="0,4"
+           data-bs-placement="top"
+           data-bs-html="true"
+           title="<small>Voir le locataire</small>"
+        >
             {#
             <small class="text-muted d-block mb-1" title="{{ locataire }}">{{ locataire[:20] ~ '...' }}</small>
             #}
             <h6 class="d-block mb-1" title="{{ locataire }}">{{ locataire }}</h6>
-        </div>
+        </a>
         <div class="user-progress d-flex align-items-center gap-1">
 
             {% if locataire.mode == 'Espèces' %}
-                <span class="badge badge-center bg-label-info"
+                <span class="badge bg-label-info p-2"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -27,7 +27,7 @@
                     <i class='bx bxs-coin-stack'></i>
                 </span>
             {% elseif locataire.mode == 'Chèque' %}
-                <span class="badge badge-center bg-label-info"
+                <span class="badge bg-label-info p-2"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -37,7 +37,7 @@
                     <i class='bx bxs-wallet'></i>
                 </span>
             {% elseif locataire.mode == 'Virement bancaire' %}
-                <span class="badge badge-center bg-label-info"
+                <span class="badge bg-label-info p-2"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -49,7 +49,7 @@
             {% endif %}
 
             {% if locataire.logement %}
-                <span class="badge badge-center bg-label-success"
+                <span class="badge bg-label-success p-2"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -59,7 +59,7 @@
                     <i class='bx bxs-home'></i>
                 </span>
             {% else %}
-                <span class="badge badge-center bg-label-danger"
+                <span class="badge bg-label-danger p-2"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -70,5 +70,5 @@
                 </span>
             {% endif %}
         </div>
-    </a>
+    </div>
 </li>
