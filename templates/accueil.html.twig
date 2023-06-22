@@ -27,19 +27,25 @@
                 {% endfor %}
 
 {% for bien_immo in biens_immos %}
-    {% set total_loyers = total_loyers + bien_immo.loyerTtc %}
-    {% if bien_immo.financement %}
-        {% set total_credit = total_credit + bien_immo.financement.mensualites %}
-    {% endif %}
     {% if bien_immo.locataire %}
-        {% set total_biens_loges = total_biens_loges + 1 %}
-    {% else %}
-        {% set total_biens_vide = total_biens_vide + 1 %}
+        {% set total_loyers = total_loyers + bien_immo.loyerTtc %}
+
+        {% if bien_immo.financement %}
+            {% set total_credit = total_credit + bien_immo.financement.mensualites %}
+        {% endif %}
+
+        {% if bien_immo.locataire %}
+            {% set total_biens_loges = total_biens_loges + 1 %}
+        {% else %}
+            {% set total_biens_vide = total_biens_vide + 1 %}
+        {% endif %}
+
+        {% for frai in bien_immo.frais %}
+            {% set total_frais = total_frais + frai.quantity %}
+        {% endfor %}
+
+        {% set benefices = benefices + bien_immo.beneficeNet %}
     {% endif %}
-    {% for frai in bien_immo.frais %}
-        {% set total_frais = total_frais + frai.quantity %}
-    {% endfor %}
-    {% set benefices = benefices + bien_immo.beneficeNet %}
 {% endfor %}
 {% set total_revenu_ttc = total_loyers + total_charges %}
 
