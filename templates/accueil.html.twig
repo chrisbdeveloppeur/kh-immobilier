@@ -10,6 +10,9 @@
 {% set nb_quittances_partial = 0  %}
 {% set total_credit = 0 %}
 {% set benefices = 0 %}
+{% set total_frais = 0 %}
+{% set total_biens_loges = 0 %}
+{% set total_biens_vides = 0 %}
 
                 {% set months = [1,2,3,4,5,6,7,8,9,10,11,12] %}
                 {% set quittances_payed = [] %}
@@ -28,9 +31,18 @@
     {% if bien_immo.financement %}
         {% set total_credit = total_credit + bien_immo.financement.mensualites %}
     {% endif %}
+    {% if bien_immo.locataire %}
+        {% set total_biens_loges = total_biens_loges + 1 %}
+    {% else %}
+        {% set total_biens_vide = total_biens_vide + 1 %}
+    {% endif %}
+    {% for frai in bien_immo.frais %}
+        {% set total_frais = total_frais + frai.quantity %}
+    {% endfor %}
+    {% set benefices = benefices + bien_immo.beneficeNet %}
 {% endfor %}
 {% set total_revenu_ttc = total_loyers + total_charges %}
-{% set benefices = total_loyers - total_credit %}
+
 
 {% for quittance in quittances %}
 {#    {% set total_loyers = total_loyers + quittance.loyerTtc %}#}

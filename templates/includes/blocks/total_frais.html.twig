@@ -2,10 +2,13 @@
 <div class="col-12 col-lg-4 order-2 mb-4">
     <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between pb-0">
-            <div class="card-title mb-0">
-                <h5 class="m-0 me-2">Mes frais</h5>
+            <div class="card-title">
+                <h5 class=me-2">Synthèse</h5>
+                {#
                 <small class="text-muted">Totale des loyers perçus : {{ total_loyers_percus }}€</small>
+                #}
             </div>
+            {#
             <div class="dropdown">
                 <button
                         class="btn p-0"
@@ -23,18 +26,29 @@
                     <a class="dropdown-item" href="javascript:void(0);">Share</a>
                 </div>
             </div>
+            #}
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-3">
+                {#
                 <div class="d-flex flex-column align-items-center gap-1">
                     <h2 class="mb-2">{{ biens_immos|length }}</h2>
-                    <span>Nb de Propriétés</span>
+                    <span>Nb de Biens</span>
+                </div>
+                #}
+                <div class="is-flex is-flex-direction-column align-items-center">
+                    <div id="statistiqueBiensImmos"></div>
+                    <div class="mt-1 p-2 has-text-centered">
+                        <a href="{{ path('bien_immo_index') }}" type="button" class="btn btn-sm btn-outline-primary">
+                            Mes logements
+                        </a>
+                    </div>
                 </div>
                 <div class="is-flex is-flex-direction-column align-items-center">
                     <div id="statistiqueLoyers"></div>
-                    <div class="mt-1 has-text-centered">
+                    <div class="mt-1 p-2 has-text-centered">
                         <a href="{{ path('quittances_index') }}" type="button" class="btn btn-sm btn-outline-primary">
-                            Voir toute les quittances
+                            Mes quittances
                         </a>
                     </div>
                 </div>
@@ -43,21 +57,46 @@
             <ul class="p-0 m-0">
                 {% for quittance in lastQuittances %}
                     {% if loop.index < 5 %}
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                        <span class="avatar-initial rounded bg-label-primary">
-                                            <i class="bx bx-mobile-alt"></i>
+                        <li class="mb-4 pb-1 border-bottom">
+                            <a href="{{ path('quittances_render_quittance', {'quittance_id': quittance.id}) }}"
+                               class="d-flex"
+                               data-bs-toggle="tooltip"
+                               data-bs-offset="0,4"
+                               data-bs-placement="top"
+                               data-bs-html="true"
+                               title="<small>Voir la quittance du bien : {{ quittance.bienImmo }}</small>"
+                            >
+                                <div class="avatar flex-shrink-0 me-3">
+                                    {% if quittance.payed %}
+                                        <span class="avatar-initial rounded bg-label-success">
+                                            <i class="bx bx-check"></i>
                                         </span>
-                            </div>
-                            <div class="d-flex w-100 align-items-center gap-2">
-                                <div class="me-2 w-50">
-                                    <h6 class="mb-0 nowrap-text overflow-ellipsis" title="{{ quittance.bienimmo.adresse }}">{{ quittance.bienimmo.libelle }} ({{ quittance.month }})</h6>
-                                    <small class="text-muted" title="Quittance éditée le {{ quittance.createddate|format_date('short') }}">Edité le {{ quittance.createddate|format_date('short') }}</small>
+                                    {% else %}
+                                        <span class="avatar-initial rounded bg-label-secondary">
+                                            <i class="bx bx-crosshair"></i>
+                                        </span>
+                                    {% endif %}
                                 </div>
-                                <div class="user-progress w-25">
-                                    <small class="fw-semibold">{{ quittance.loyerttc }}€</small>
+                                <div class="d-flex w-100 align-items-center gap-2">
+                                    <div class="">
+                                        <h6 class="mb-0 nowrap-text overflow-ellipsis" title="Quittance de {{ quittance.month }}"> Quittance de {{ quittance.month }}</h6>
+
+                                        <small class="text-muted" >
+                                            <span class="badge my-1 badge-center rounded-pill bg-secondary">
+                                                <i class='bx bx-home'></i>
+                                            </span>
+                                            {{ quittance.bienImmo|u.truncate(30, '...') }}
+                                        </small>
+
+                                        <small class="text-muted">
+                                            <span class="badge my-1 badge-center rounded-pill bg-secondary">
+                                                <i class='bx bx-user'></i>
+                                            </span>
+                                            {{ quittance.locataire|u.truncate(30, '...') }}
+                                        </small>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </li>
                     {% endif %}
                 {% endfor %}

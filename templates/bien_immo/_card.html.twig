@@ -4,7 +4,7 @@
             #}
             <div class="card-body">
                 <h5 class="card-title">
-                    Informations du bien #{{ bien_immo.id }}
+                    Détails du bien
                 </h5>
                 <p class="card-text">
 
@@ -27,6 +27,28 @@
                     >
                         {{ bien_immo.superficie }}m²
                     </span>
+
+                    {% if bien_immo.locataire %}
+                        <span class="badge bg-label-success"
+                              data-bs-toggle="tooltip"
+                              data-bs-offset="0,4"
+                              data-bs-placement="top"
+                              data-bs-html="true"
+                              title="<small>Actuellement loué par {{ bien_immo.locataire }}</small>"
+                        >
+                            Loué
+                        </span>
+                    {% else %}
+                        <span class="badge bg-label-warning"
+                              data-bs-toggle="tooltip"
+                              data-bs-offset="0,4"
+                              data-bs-placement="top"
+                              data-bs-html="true"
+                              title="<small>Logement actuellement sans locataire</small>"
+                        >
+                            Non loué
+                        </span>
+                    {% endif %}
 
                 </p>
             </div>

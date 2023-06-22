@@ -1,12 +1,12 @@
 {% form_theme form 'themes/form/collections.form.html.twig' %}
 
 {% macro quittance_status_payed_btn(quittance) %}
-    {% if quittance != null %}
+    {% if quittance != null and quittance.bienimmo.locataire %}
         {% set quittance_render_url = path('quittances_render_quittance', {'quittance_id': quittance.id}) %}
         {% if quittance.payed %}
             {% set status_text = "<small>dernier loyer perçu</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
             {% set status_badge_class = 'bg-primary' %}
-            {% set status_icon_class = 'bx bxs-calendar-check' %}
+            {% set status_icon_class = 'bx bxs-file' %}
         {% elseif not quittance.payed %}
             {% set status_text = "<small>dernier loyer en attente</small><div class='d-flex justify-content-center'><a href='"~quittance_render_url~"' class='btn btn-xs btn-outline-primary'>Voir la quittance</a></div>" %}
             {% set status_badge_class = 'bg-primary' %}
@@ -14,8 +14,8 @@
         {% endif %}
     {% else %}
         {% set status_text = 'Aucune quittances trouvés' %}
-        {% set status_badge_class = 'bg-label-danger' %}
-        {% set status_icon_class = 'bx bxs-file' %}
+        {% set status_badge_class = 'bg-primary' %}
+        {% set status_icon_class = 'bx bxs-info-circle' %}
     {% endif %}
 
     <span class="d-inline-block"

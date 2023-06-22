@@ -521,15 +521,15 @@
         const statistiqueLoyers = document.querySelector('#statistiqueLoyers'),
             orderChartConfig = {
                 chart: {
-                    height: 185,
-                    width: 150,
+                    height: 150,
+                    width: 120,
                     type: 'donut'
                 },
-                labels: ['Loyers','Crédits'],
-                series: [{{ total_loyers }}, {{ total_credit }}],
-                colors: [config.colors.yellow, config.colors.info ],
+                labels: ['Loyers','Crédits','Frais'],
+                series: [{{ total_loyers }}, {{ total_credit }}, {{ total_frais }}],
+                colors: [config.colors.yellow, config.colors.danger, config.colors.danger ],
                 stroke: {
-                    width: 5,
+                    width: 3,
                     colors: cardColor
                 },
                 dataLabels: {
@@ -585,6 +585,77 @@
             const statisticsChart = new ApexCharts(statistiqueLoyers, orderChartConfig);
             statisticsChart.render();
         }
+
+
+// Stats Biens Immos
+        const statistiqueBiensImmos = document.querySelector('#statistiqueBiensImmos'),
+            donutStatsBiensImmos = {
+                chart: {
+                    height: 150,
+                    width: 120,
+                    type: 'donut'
+                },
+                labels: ['Logés','Vide'],
+                series: [{{ total_biens_loges }}, {{ total_biens_vides }}],
+                colors: [config.colors.success, config.colors.secondary ],
+                stroke: {
+                    width: 3,
+                    colors: cardColor
+                },
+                dataLabels: {
+                    enabled: false,
+                    formatter: function (val, opt) {
+                        return parseInt(val);
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                grid: {
+                    padding: {
+                        top: 0,
+                        bottom: 0,
+                        right: 15
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '80%',
+                            labels: {
+                                show: true,
+                                value: {
+                                    fontSize: '1.5rem',
+                                    fontFamily: 'Public Sans',
+                                    color: headingColor,
+                                    offsetY: -15,
+                                    formatter: function (val) {
+                                        return parseInt(val);
+                                    }
+                                },
+                                name: {
+                                    offsetY: 20,
+                                    fontFamily: 'Public Sans'
+                                },
+                                total: {
+                                    show: true,
+                                    fontSize: '0.8125rem',
+                                    color: axisColor,
+                                    label: 'Nb de biens',
+                                    formatter: function (w) {
+                                        return {{ biens_immos|length }};
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        if (typeof statistiqueBiensImmos !== undefined && statistiqueBiensImmos !== null) {
+            const statisticsChart = new ApexCharts(statistiqueBiensImmos, donutStatsBiensImmos);
+            statisticsChart.render();
+        }
+
 
         // Income Chart - Area chart
         // --------------------------------------------------------------------
