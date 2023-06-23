@@ -2,7 +2,10 @@
 
     <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="card-title m-0 me-2">Mes locataires</h5>
+            <div>
+                <h5 class="m-0 me-2">Mes locataires</h5>
+                <small class="text-muted">Vous avez un total de {{ locataires|length }} locataires enregistrés</small>
+            </div>
             <div class="dropdown">
                 <button
                         class="btn p-0"
