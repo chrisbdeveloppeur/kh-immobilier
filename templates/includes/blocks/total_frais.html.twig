@@ -28,7 +28,7 @@
             #}
         </div>
         <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-around align-items-center mb-3">
                 {#
                 <div class="d-flex flex-column align-items-center gap-1">
                     <h2 class="mb-2">{{ biens_immos|length }}</h2>
@@ -53,14 +53,14 @@
                 </div>
             </div>
             <p class="h5 mb-3 text-muted">Les dernières quittances</p>
-            <ul class="p-0 m-0">
+            <ul class="p-0 m-0 overflow-hidden perfect-scrollbar ps ps--active-y" style="max-height: 85px">
                 {% for quittance in lastQuittances %}
                     {% if loop.index < 5 %}
                         <li class="mb-4 pb-1 border-bottom">
                             <div class="d-flex">
                                 <div class="avatar flex-shrink-0 me-3">
                                     {% if quittance.payed %}
-                                        <span class="avatar-initial rounded bg-label-success"
+                                        <span class="badge-center badge bg-label-success"
                                               data-bs-toggle="tooltip"
                                               data-bs-offset="0,4"
                                               data-bs-placement="top"
@@ -70,7 +70,7 @@
                                             <i class="bx bx-check"></i>
                                         </span>
                                     {% else %}
-                                        <span class="avatar-initial rounded bg-label-secondary"
+                                        <span class="badge-center badge bg-label-secondary"
                                               data-bs-toggle="tooltip"
                                               data-bs-offset="0,4"
                                               data-bs-placement="top"
@@ -91,18 +91,20 @@
                                 >
                                     <h6 class="mb-0 nowrap-text overflow-ellipsis" title="Quittance de {{ quittance.month }}"> Quittance de {{ quittance.month }}</h6>
 
+                                    {#
                                     <small class="text-muted" >
                                         <span class="badge my-1 badge-center rounded-pill bg-secondary">
                                             <i class='bx bx-home'></i>
                                         </span>
                                         {{ quittance.bienImmo|u.truncate(30, '...') }}
                                     </small>
+                                    #}
 
                                     <small class="text-muted">
                                         <span class="badge my-1 badge-center rounded-pill bg-secondary">
                                             <i class='bx bx-user'></i>
                                         </span>
-                                        {{ quittance.locataire|u.truncate(30, '...') }}
+                                        {{ quittance.locataire|u.truncate(20, '...') }}
                                     </small>
                                 </a>
                             </a>

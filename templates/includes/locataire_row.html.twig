@@ -9,15 +9,17 @@
            data-bs-html="true"
            title="<small>Voir le locataire</small>"
         >
+
+            <h6 class="text-muted d-block mb-1" title="{{ locataire.lastName|upper }} {{ locataire.firstName|capitalize }}">{{ locataire.lastName|upper }} {{ locataire.firstName|capitalize }}</h6>
+
             {#
-            <small class="text-muted d-block mb-1" title="{{ locataire }}">{{ locataire[:20] ~ '...' }}</small>
-            #}
             <h6 class="d-block mb-1" title="{{ locataire }}">{{ locataire }}</h6>
+            #}
         </a>
         <div class="user-progress d-flex align-items-center gap-1">
 
             {% if locataire.mode == 'Espèces' %}
-                <span class="badge bg-label-info p-2"
+                <span class="badge bg-label-info p-2 badge-center"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -27,7 +29,7 @@
                     <i class='bx bxs-coin-stack'></i>
                 </span>
             {% elseif locataire.mode == 'Chèque' %}
-                <span class="badge bg-label-info p-2"
+                <span class="badge bg-label-info p-2 badge-center"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -37,7 +39,7 @@
                     <i class='bx bxs-wallet'></i>
                 </span>
             {% elseif locataire.mode == 'Virement bancaire' %}
-                <span class="badge bg-label-info p-2"
+                <span class="badge bg-label-info p-2 badge-center"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -49,7 +51,7 @@
             {% endif %}
 
             {% if locataire.logement %}
-                <span class="badge bg-label-success p-2"
+                <span class="badge bg-label-success p-2 badge-center"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
@@ -59,7 +61,7 @@
                     <i class='bx bxs-home'></i>
                 </span>
             {% else %}
-                <span class="badge bg-label-secondary p-2"
+                <span class="badge bg-label-secondary p-2 badge-center"
                       data-bs-toggle="tooltip"
                       data-bs-offset="0,4"
                       data-bs-placement="top"
