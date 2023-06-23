@@ -35,6 +35,16 @@ class UserType extends AbstractType
                 'invalid_message' => 'Adresse Email invalide',
                 'attr' => ['class' => 'input is-small has-text-centered'],
             ])
+            ->add('gender', ChoiceType::class,[
+                'label' => 'Genre',
+                'choices' => [
+                    'Non défini' => null,
+                    'Homme' => 'M.',
+                    'Femme' => 'Mme.'
+                ],
+                'empty_data' => 'Non défini',
+                'attr' => ['class' => 'input is-small has-text-centered'],
+            ])
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom',
                 'required' => true,
