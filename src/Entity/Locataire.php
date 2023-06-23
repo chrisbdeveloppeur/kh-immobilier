@@ -87,7 +87,7 @@ class Locataire
 
     public function __toString()
     {
-        $name = $this->getLastName() ." ". $this->getFirstName();
+        $name = strtoupper($this->getLastName()) ." ". ucfirst($this->getFirstName());
         return $name;
     }
 

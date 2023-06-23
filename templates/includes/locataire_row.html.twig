@@ -1,16 +1,17 @@
 {% import 'includes/macros.html.twig' as macros %}
 <li class="d-flex mt-4 pb-1 border-bottom">
-    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+    <div class="d-flex w-100 align-items-center justify-content-between gap-2">
         <a href="{{ path('locataire_show', {'id': locataire.id}) }}"
-           class="me-2"
+           class="me-1"
            data-bs-toggle="tooltip"
            data-bs-offset="0,4"
            data-bs-placement="top"
            data-bs-html="true"
            title="<small>Voir le locataire</small>"
+           style="max-width: 65%"
         >
 
-            <h6 class="text-muted d-block mb-1" title="{{ locataire.lastName|upper }} {{ locataire.firstName|capitalize }}">{{ locataire.lastName|upper }} {{ locataire.firstName|capitalize }}</h6>
+            <h6 class="text-muted d-block mb-1 overflow-ellipsis nowrap-text" title="{{ locataire }}">{{ locataire }}</h6>
 
             {#
             <h6 class="d-block mb-1" title="{{ locataire }}">{{ locataire }}</h6>
