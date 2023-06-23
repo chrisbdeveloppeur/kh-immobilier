@@ -4,6 +4,7 @@
 {% set total_charges = 0 %}
 {% set total_revenu_ttc = 0 %}
 {% set total_loyers_percus = 0 %}
+{% set total_loyers_percus_current_month = 0 %}
 {% set total_loyers_attentes = 0 %}
 {% set nb_quittances_payed = 0  %}
 {% set nb_quittances_not_payed = 0  %}
@@ -23,6 +24,9 @@
                         {% set quittances_payed = quittances_payed|merge([quittance]) %}
                     {% else %}
                         {% set quittances_waiting = quittances_waiting|merge([quittance]) %}
+                    {% endif %}
+                    {% if quittance.month|lower == 'now'|format_datetime(pattern='MMMM', locale='fr') and quittance.year == 'now'|format_datetime(pattern='r', locale='fr') and quittance.payed %}
+                        {% set total_loyers_percus_current_month = total_loyers_percus_current_month + quittance.loyerttc %}
                     {% endif %}
                 {% endfor %}
 
@@ -119,19 +123,30 @@
 
             {{ include('includes/blocks/total_frais.html.twig') }}
 
-            {{ include('includes/blocks/total_revenue.html.twig') }}
+            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                <div class="row h-100">
+                    {{ include('includes/blocks/total_loyers_current_month.html.twig') }}
+                </div>
+            </div>
 
-            {{ include('includes/block_locataires.html.twig') }}
+            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                <div class="row h-100">
+                    {{ include('includes/blocks/total_biens_immos.html.twig') }}
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                <div class="row h-100">
+                    {{ include('includes/blocks/total_locataires.html.twig') }}
+                </div>
+            </div>
 
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-                <div class="row h-100">
-                    {{ include('includes/blocks/total_loyers.html.twig') }}
-                    {#{{ include('includes/blocks/profile_report.html.twig') }}#}
-                </div>
-            </div>
+            {{ include('includes/blocks/total_revenue.html.twig') }}
+
+            {{ include('includes/block_locataires.html.twig') }}
         </div>
 
     </div>
