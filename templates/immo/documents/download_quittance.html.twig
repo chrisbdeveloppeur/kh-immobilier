@@ -66,6 +66,46 @@
 
                 </div>
 
+                <div class="btn-group mb-2 col-12 col-xl-8 " role="group" aria-label="Basic checkbox toggle button group">
+
+                    <a type="button"
+                       class="btn btn-light disabled col-auto"
+                    >
+                        Statut
+                    </a>
+
+                    <a type="button"
+                       class="btn text-dark {% if quittance.payed %}btn-success{% else %}btn-warning{% endif %} disabled col-10"
+                    >
+                        {% if quittance.payed %}
+                            <span class="tf-icons bx bx-calendar-check"></span>
+                            Payé
+                        {% else %}
+                            <span class="tf-icons bx bx-calendar-exclamation"></span>
+                            Non payé
+                        {% endif %}
+                    </a>
+
+                    <a type="button"
+                       class="btn btn-primary col-auto"
+                       href="{{ path('quittances_quittance_payed', {'id': quittance.id}) }}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>
+                        {% if quittance.payed %}
+                            Changer en loyer non payé
+                        {% else %}
+                            Changer en loyer payé
+                        {% endif %}
+                        </small>"
+                    >
+                        <span class="tf-icons bx bx-refresh"></span>
+                    </a>
+
+                </div>
+
                 {% if 'render' in app.request.get('_route') %}
                     <a type="button"
                        class="btn btn-primary mb-2 col-12 col-xl-8"
