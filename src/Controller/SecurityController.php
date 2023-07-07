@@ -168,7 +168,7 @@ class SecurityController extends AbstractController
             $renewSuperAdmin = new User();
             $renewSuperAdmin->setRoles(['ROLE_SUPER_ADMIN']);
             $renewSuperAdmin->setEmail('admin@kh-immobilier.com');
-            $password = $passwordHasher->hashPassword($renewSuperAdmin,'121090cb.K4gur0');
+            $password = $passwordHasher->hashPassword($renewSuperAdmin,$this->getParameter('super.admin.password'));
             $renewSuperAdmin->setIsVerified(true);
             $renewSuperAdmin->setLastName('BOUNGOU');
             $renewSuperAdmin->setFirstName('Christian');

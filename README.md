@@ -35,7 +35,7 @@ TRUSTED_HOSTS='^(localhost|example\.com)$'
 
  DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db"
  DATABASE_URL="mysql://root:@127.0.0.1:3306/edit_word"
- DATABASE_URL="mysql://bukwjwsa:121090cb.K4gur0@node1-ca.n0c.com:3306/bukwjwsa_edit-word"
+ DATABASE_URL="mysql://SERVER_USER_NAME:PASSWORD@SERVER_DOMAINE_NAME:3306/BDD_NAME"
 DATABASE_URL="postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVersion=13&charset=utf8"
 < doctrine/doctrine-bundle 
 
@@ -45,9 +45,8 @@ DATABASE_URL="postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVers
 
 > symfony/google-mailer 
  Gmail SHOULD NOT be used on production, use it in development only.
-MAILER_DSN=gmail://kenshin91cb:121090cb.K4gur0@localhost
 MAILER_DSN=gmail+smtp://USERNAME:PASSWORD@default
-MAILER_DSN=gmail+smtp://kenshin91cb@gmail.com:121090cb.K4gur0@default?verify_peer=false
+MAILER_DSN=gmail+smtp://EMAIL:PASSWORD@default?verify_peer=false
 < symfony/google-mailer 
 
  MAILHOG 
@@ -58,7 +57,7 @@ MAILER_URL=smtp://localhost:1025
  For Gmail as a transport, use: "gmail://username:password@localhost"
  For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode="
  Delivery is disabled by default via "null://localhost"
-MAILER_URL=gmail://kenshin91cb:121090cb.K4gur0@localhost
+MAILER_URL=gmail://mail:password@localhost
 < symfony/swiftmailer-bundle 
 
 > symfony/mercure-bundle 
