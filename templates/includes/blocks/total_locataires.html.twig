@@ -15,5 +15,17 @@
             </div>
             <h1 class="display-1 card-title text-nowrap mb-2 has-text-centered text-primary">{{ locataires|default(0) }}</h1>
         </div>
+        <div class="card-footer is-justify-content-end">
+            <a href="{{ path('locataire_index') }}"
+               class="button btn-primary btn-sm"
+               data-bs-toggle="tooltip"
+               data-bs-offset="0,4"
+               data-bs-placement="top"
+               data-bs-html="true"
+               title="<small>Voir la liste des locataires</small>"
+            >
+                <i class='bx bx-list-ul'></i>
+            </a>
+        </div>
     </div>
 </div>

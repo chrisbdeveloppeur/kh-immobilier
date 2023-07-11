@@ -37,23 +37,27 @@
                 #}
                 <div class="is-flex is-flex-direction-column align-items-center">
                     <div id="statistiqueBiensImmos"></div>
+                    {#
                     <div class="mt-1 p-2 has-text-centered">
                         <a href="{{ path('bien_immo_index') }}" type="button" class="btn btn-sm btn-outline-primary">
                             Mes logements
                         </a>
                     </div>
+                    #}
                 </div>
                 <div class="is-flex is-flex-direction-column align-items-center">
                     <div id="statistiqueLoyers"></div>
+                    {#
                     <div class="mt-1 p-2 has-text-centered">
                         <a href="{{ path('quittances_index') }}" type="button" class="btn btn-sm btn-outline-primary">
                             Mes quittances
                         </a>
                     </div>
+                    #}
                 </div>
             </div>
             <p class="h5 mb-3 text-muted">Les dernières quittances</p>
-            <ul class="p-0 m-0 overflow-hidden perfect-scrollbar ps ps--active-y" style="max-height: 85px">
+            <ul class="p-0 m-0 overflow-hidden perfect-scrollbar ps ps--active-y" style="max-height: 200px">
                 {% for quittance in lastQuittances %}
                     {% if loop.index < 5 %}
                         <li class="mb-4 pb-1 border-bottom">
