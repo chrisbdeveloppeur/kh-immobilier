@@ -10,7 +10,7 @@
                     <span>{{ 'now'|format_datetime(pattern='MMMM', locale='fr')|upper }}</span>
                 </div>
             </div>
-            <h1 class="display-1 card-title text-nowrap mb-2 has-text-centered text-primary">{{ total_loyers_percus_current_month|default(0) }}€</h1>
+            <h1 class="display-1 card-title text-nowrap mb-2 has-text-centered text-primary">{{ total_loyers_percus_current_month|number_format(0,',','')|default(0) }}€</h1>
         </div>
         <div class="card-footer is-justify-content-end">
             <a href="{{ path('quittances_index') }}"

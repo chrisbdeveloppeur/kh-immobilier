@@ -43,6 +43,10 @@ $button-static-color: white;
   background: $warning-light;
 }
 
+.table thead th{
+  border-width: 0 !important;
+}
+
 .title-main{
   letter-spacing: .1em;
   font-size: 0.75em;
