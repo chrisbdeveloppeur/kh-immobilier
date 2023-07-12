@@ -21,7 +21,7 @@
         </div>
         <div class="tab-content">
             <div class="table-responsive text-start overflow-hidden perfect-scrollbar ps">
-                <table class="table table-sm table-borderless">
+                <table class="table table-sm table-borderless table-hover">
                     <thead>
                         <tr>
                             <th>Bien immo</th>
@@ -35,39 +35,42 @@
                     <tbody>
                         {% for bien in biens_immos %}
                             <tr>
-                                <td>
-                                    <span data-bs-toggle="tooltip"
-                                          data-bs-offset="0,4"
-                                          data-bs-placement="top"
-                                          data-bs-html="true"
-                                          title="<small>{{ bien }}</small>"
+                                <td class="nowrap-text">
+                                    <a href="{{ path('bien_immo_show', {'id': bien.id}) }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>{{ bien }}</small>"
                                     >
                                         {{ bien|u.truncate(10, '...') }}
-                                    </span>
+                                    </a>
                                 </td>
                                 {% for month in months %}
                                     <td class="has-text-centered">
                                         {% for quittance in bien.quittances %}
-                                            {% if quittance.month == month and quittance.year == 'now'|format_date(pattern='Y') and quittance.payed %}
-                                                <span class="badge badge-center rounded-pill is-badge-small bg-success"
-                                                      data-bs-toggle="tooltip"
-                                                      data-bs-offset="0,4"
-                                                      data-bs-placement="top"
-                                                      data-bs-html="true"
-                                                      title="<small>Loyer payé</small>"
-                                                >
-                                                    <i class='bx bx-check'></i>
-                                                </span>
-                                            {% else %}
-                                                <span class="badge badge-center rounded-pill bg-label-secondary"
-                                                      data-bs-toggle="tooltip"
-                                                      data-bs-offset="0,4"
-                                                      data-bs-placement="top"
-                                                      data-bs-html="true"
-                                                      title="<small>Loyer en attente</small>"
-                                                >
-                                                    <i class='bx bx-x'></i>
-                                                </span>
+                                            {% if quittance.month == month and quittance.year == 'now'|format_date(pattern='Y') %}
+                                                {% if quittance.payed %}
+                                                    <span class="badge badge-center rounded-pill is-badge-small bg-success"
+                                                          data-bs-toggle="tooltip"
+                                                          data-bs-offset="0,4"
+                                                          data-bs-placement="top"
+                                                          data-bs-html="true"
+                                                          title="<small>Loyer payé</small>"
+                                                    >
+                                                        <i class='bx bx-check'></i>
+                                                    </span>
+                                                {% else %}
+                                                    <span class="badge badge-center rounded-pill bg-label-secondary"
+                                                          data-bs-toggle="tooltip"
+                                                          data-bs-offset="0,4"
+                                                          data-bs-placement="top"
+                                                          data-bs-html="true"
+                                                          title="<small>Loyer en attente</small>"
+                                                    >
+                                                        <i class='bx bx-x'></i>
+                                                    </span>
+                                                {% endif %}
                                             {% endif %}
                                         {% endfor %}
                                     </td>
