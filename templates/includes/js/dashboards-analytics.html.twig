@@ -526,7 +526,7 @@
                     type: 'donut'
                 },
                 labels: ['Loyers','Crédits','Frais'],
-                series: [{{ total_loyers }}, {{ total_credit }}, {{ total_frais }}],
+                series: [{{ total_loyers|number_format(0,',','') }}, {{ total_credit|number_format(0,',','') }}, {{ total_frais|number_format(0,',','') }}],
                 colors: [config.colors.yellow, config.colors.danger, config.colors.danger ],
                 stroke: {
                     width: 3,

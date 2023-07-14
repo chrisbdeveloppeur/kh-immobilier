@@ -20,7 +20,7 @@
             Status des loyer {{ 'now'|format_date(pattern='Y') }}
         </div>
         <div class="tab-content">
-            <div class="table-responsive text-start overflow-hidden perfect-scrollbar ps">
+            <div class="table-responsive text-start overflow-hidden perfect-scrollbar ps" style="max-height: 300px">
                 <table class="table table-sm table-borderless table-hover">
                     <thead>
                         <tr>
@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for bien in biens_immos %}
+                        {% for bien in biens_immos|filter(bien => bien.locataire ) %}
                             <tr>
                                 <td class="nowrap-text">
                                     <a href="{{ path('bien_immo_show', {'id': bien.id}) }}"
@@ -43,35 +43,36 @@
                                        data-bs-html="true"
                                        title="<small>{{ bien }}</small>"
                                     >
-                                        {{ bien|u.truncate(10, '...') }}
+                                        <small class="badge bg-label-primary">
+                                            {{ bien|u.truncate(20, '...') }}
+                                        </small>
                                     </a>
                                 </td>
                                 {% for month in months %}
                                     <td class="has-text-centered">
-                                        {% for quittance in bien.quittances %}
-                                            {% if quittance.month == month and quittance.year == 'now'|format_date(pattern='Y') %}
-                                                {% if quittance.payed %}
-                                                    <span class="badge badge-center rounded-pill is-badge-small bg-success"
-                                                          data-bs-toggle="tooltip"
-                                                          data-bs-offset="0,4"
-                                                          data-bs-placement="top"
-                                                          data-bs-html="true"
-                                                          title="<small>Loyer payé</small>"
-                                                    >
-                                                        <i class='bx bx-check'></i>
-                                                    </span>
-                                                {% else %}
-                                                    <span class="badge badge-center rounded-pill bg-label-secondary"
-                                                          data-bs-toggle="tooltip"
-                                                          data-bs-offset="0,4"
-                                                          data-bs-placement="top"
-                                                          data-bs-html="true"
-                                                          title="<small>Loyer en attente</small>"
-                                                    >
-                                                        <i class='bx bx-x'></i>
-                                                    </span>
-                                                {% endif %}
+                                        {% for quittance in bien.quittances|filter(quittance => quittance.month == month and quittance.year == 'now'|format_date(pattern='Y') and quittance.payed ) %}
+                                            {% if loop.index == 1 %}
+                                                <a href="{{ path('quittances_render_quittance', {'quittance_id': quittance.id}) }}"
+                                                   class="badge badge-center is-badge-small bg-success"
+                                                   data-bs-toggle="tooltip"
+                                                   data-bs-offset="0,4"
+                                                   data-bs-placement="top"
+                                                   data-bs-html="true"
+                                                   title="<small>Loyer payé</small>"
+                                                >
+                                                    <i class='bx bx-check'></i>
+                                                </a>
                                             {% endif %}
+                                        {% else %}
+                                            <span class="badge badge-center bg-label-secondary"
+                                                  data-bs-toggle="tooltip"
+                                                  data-bs-offset="0,4"
+                                                  data-bs-placement="top"
+                                                  data-bs-html="true"
+                                                  title="<small>Loyer non payé</small>"
+                                            >
+                                                    <i class='bx bx-x'></i>
+                                                </span>
                                         {% endfor %}
                                     </td>
                                 {% endfor %}

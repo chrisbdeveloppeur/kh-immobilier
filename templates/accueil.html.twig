@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="row">
-                    {% for bien_immo in biens_immos|slice(0,2) %}
+                    {% for bien_immo in biens_immos|slice(0,2)|filter(bien_immo => bien_immo.locataire) %}
                         {% set last_quittance = bien_immo.quittances|sort((a, b) => a.date <=> b.date)|last %}
                         {{ include('includes/bien_card.html.twig') }}
                     {% endfor %}
