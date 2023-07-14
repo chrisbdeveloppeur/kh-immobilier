@@ -22,9 +22,13 @@
         <div class="tab-content">
             <div class="table-responsive text-start overflow-hidden perfect-scrollbar ps" style="max-height: 300px">
                 <table class="table table-sm table-borderless table-hover">
-                    <thead>
+                    <thead class="bg-white"
+                           style="position: sticky;top: 0;z-index: 1"
+                    >
                         <tr>
-                            <th>Bien immo</th>
+                            <th class="bg-white" style="position: sticky;left: 0;">
+                                Bien immo
+                            </th>
                             {% for month in months %}
                                 <th class="has-text-centered">
                                     {{ month }}
@@ -35,7 +39,9 @@
                     <tbody>
                         {% for bien in biens_immos|filter(bien => bien.locataire ) %}
                             <tr>
-                                <td class="nowrap-text">
+                                <td class="nowrap-text bg-white"
+                                    style="position: sticky;left: 0;"
+                                >
                                     <a href="{{ path('bien_immo_show', {'id': bien.id}) }}"
                                        data-bs-toggle="tooltip"
                                        data-bs-offset="0,4"
