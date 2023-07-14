@@ -30,8 +30,9 @@ class CreatQuittanceCommand extends Command
     private $request;
     private $createFileController;
     private $pdfController;
+    private $projectRoot;
 
-    public function __construct(MailController $mailer, QuittancesController $quittancesController, QuittanceRepository $quittanceRepository,LocataireRepository $locataireRepository, EntityManagerInterface $em, CreateFileController $createFileController, PdfController $pdfController, $name = null)
+    public function __construct(MailController $mailer, QuittancesController $quittancesController, QuittanceRepository $quittanceRepository,LocataireRepository $locataireRepository, EntityManagerInterface $em, CreateFileController $createFileController, PdfController $pdfController, $name = null, string $projectRoot)
     {
         parent::__construct($name);
         $this->mailer = $mailer;
@@ -41,6 +42,7 @@ class CreatQuittanceCommand extends Command
         $this->em = $em;
         $this->createFileController = $createFileController;
         $this->pdfController = $pdfController;
+        $this->projectRoot = $projectRoot;
     }
 
     protected function configure(): void

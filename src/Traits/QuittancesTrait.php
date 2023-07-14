@@ -95,7 +95,7 @@ trait QuittancesTrait
 
         $date = new \DateTime();
         $date->setTimezone(new \DateTimeZone("Europe/Paris"));
-        $template = new \PhpOffice\PhpWord\TemplateProcessor("../assets/files/templates/QUITTANCE_TEMPLATE.docx");
+        $template = new \PhpOffice\PhpWord\TemplateProcessor($this->projectRoot."/assets/files/templates/QUITTANCE_TEMPLATE.docx");
         $template->setValue('p_gender', $user->getGender());
         $template->setValue('p_lastname', $user->getLastname());
         $template->setValue('p_firstname', $user->getFirstname());

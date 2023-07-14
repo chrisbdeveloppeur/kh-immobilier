@@ -26,12 +26,12 @@ class QuittancesController extends AbstractController
     use QuittancesTrait;
 
     private $createFileController;
-//    private $pdfController;
+    private $projectRoot;
 
-    public function __construct(CreateFileController $createFileController)
+    public function __construct(CreateFileController $createFileController, string $projectRoot)
     {
         $this->createFileController = $createFileController;
-//        $this->pdfController = $pdfController;
+        $this->projectRoot = $projectRoot;
     }
 
     /**
