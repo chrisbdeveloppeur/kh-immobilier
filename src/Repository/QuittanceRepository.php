@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\BienImmo;
+use App\Entity\Locataire;
 use App\Entity\Quittance;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -38,6 +39,36 @@ class QuittanceRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findByLocataire(Locataire $locataire)
+    {
+        return $this->createQueryBuilder('q')
+            ->andWhere('q.locataire = :val')
+            ->setParameter('val', $locataire)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByMonth(string $month)
+    {
+        return $this->createQueryBuilder('q')
+            ->andWhere('q.month = :val')
+            ->setParameter('val', $month)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByYear(int $year)
+    {
+        return $this->createQueryBuilder('q')
+            ->andWhere('q.year = :val')
+            ->setParameter('val', $year)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function getLastQuittance(BienImmo $bienImmo)
     {
         return $this->createQueryBuilder('q')
@@ -47,6 +78,20 @@ class QuittanceRepository extends ServiceEntityRepository
             ->orderBy('q.created_date', 'DESC')
 //            ->groupBy('bien_immo')
 //            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findIfAlreadyExist(int $year, string $month, Locataire $locataire)
+    {
+        return $this->createQueryBuilder('q')
+            ->andWhere('q.year = :year')
+            ->andWhere('q.month = :month')
+            ->andWhere('q.locataire = :loc')
+            ->setParameter('year', $year)
+            ->setParameter('month', $month)
+            ->setParameter('loc', $locataire)
             ->getQuery()
             ->getResult()
             ;

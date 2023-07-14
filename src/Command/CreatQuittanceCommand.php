@@ -73,12 +73,18 @@ class CreatQuittanceCommand extends Command
 //        Compteur
         $counter = 0;
         foreach ($locataires as $locataire){
-            if ($locataire->getUser()){
+            setlocale(LC_TIME, 'fr_FR.utf8','fra');
+            $year = date("Y");
+            $month = ucfirst(strftime('%B'));
+            $quittanceAlreadyExist = $this->quittanceRepository->findIfAlreadyExist($year,$month,$locataire);
+            if ($locataire->getUser() && count($quittanceAlreadyExist) == 0){
                 $this->createQuittance($this->pdfController,$this->em,$locataire, $this->quittanceRepository, $this->createFileController);
+                $counter++;
             }
         }
 
         $io->success('Les quittances ont été éditées !');
+        $io->info($counter.' quittances ont été ajoutées !');
 
 
 
