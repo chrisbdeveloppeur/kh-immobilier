@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="335451e9-6da3-445d-b63d-54a1d70c2bb5" name="Default Changelist" comment="DESKTOP préparation pour ajout gestion etat des lieux v1.1">
-      <change beforePath="$PROJECT_DIR$/templates/includes/blocks/status_loyer_annuel.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/blocks/status_loyer_annuel.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/blocks/total_loyers_current_month.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/blocks/total_loyers_current_month.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Locataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Locataire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +52,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="133" column="58" selection-start-line="133" selection-start-column="58" selection-end-line="133" selection-end-column="58" />
+            <state relative-caret-position="282">
+              <caret line="158" column="46" selection-start-line="158" selection-start-column="46" selection-end-line="158" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/includes/block_locataires.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/includes/locataire_row.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="90" column="21" lean-forward="true" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="130" column="5" lean-forward="true" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -97,31 +133,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/BienImmo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="744" column="37" selection-start-line="744" selection-start-column="37" selection-end-line="744" selection-end-column="37" />
-              <folding>
-                <element signature="e#30#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/app.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="90" column="29" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_loyers_current_month.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="167" selection-start-line="8" selection-start-column="167" selection-end-line="8" selection-end-column="167" />
+              <caret line="8" column="95" selection-start-line="8" selection-start-column="95" selection-end-line="8" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -139,8 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>down</find>
-      <find>logement</find>
       <find>action</find>
       <find>mail</find>
       <find>non</find>
@@ -169,6 +182,8 @@
       <find>$copropriete</find>
       <find>$superficie</find>
       <find>bg-li</find>
+      <find>__to</find>
+      <find>__toString</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\K4gur0\PhpstormProjects\edit_word\dashboard\sneat-1.0.0\html</dir>
@@ -187,6 +202,7 @@
       <dir>C:\Users\K4gur0\PhpstormProjects\kh-immobilier\src\Form</dir>
       <dir>C:\Users\K4gur0\PhpstormProjects\kh-immobilier\templates</dir>
       <dir>C:\Users\K4gur0\PhpstormProjects\kh-immobilier</dir>
+      <dir>C:\Users\K4gur0\PhpstormProjects\kh-immobilier\src\Entity</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -207,7 +223,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Entity/Frais.php" />
-        <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/templates/includes/mise_en_form_fields.html.twig" />
         <option value="$PROJECT_DIR$/templates/themes/form/_form_2.html.twig" />
         <option value="$PROJECT_DIR$/templates/themes/form/_immo/form_generic.html.twig" />
@@ -232,8 +247,6 @@
         <option value="$PROJECT_DIR$/templates/bien_immo/_card.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/blocks/total_loyers.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/UserType.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
-        <option value="$PROJECT_DIR$/templates/includes/locataire_row.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/bien_card.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/macros.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/all_biens_card.html.twig" />
@@ -257,6 +270,9 @@
         <option value="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" />
         <option value="$PROJECT_DIR$/templates/includes/blocks/status_loyer_annuel.html.twig" />
         <option value="$PROJECT_DIR$/templates/includes/blocks/total_loyers_current_month.html.twig" />
+        <option value="$PROJECT_DIR$/templates/includes/locataire_row.html.twig" />
+        <option value="$PROJECT_DIR$/src/Entity/Locataire.php" />
+        <option value="$PROJECT_DIR$/src/Entity/User.php" />
       </list>
     </option>
   </component>
@@ -459,24 +475,6 @@
               <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kh-immobilier" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kh-immobilier" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kh-immobilier" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kh-immobilier" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-              <item name="blocks" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -865,7 +863,7 @@
       <workItem from="1688764458661" duration="16000" />
       <workItem from="1689111161934" duration="1842000" />
       <workItem from="1689172046736" duration="8745000" />
-      <workItem from="1689297644358" duration="7135000" />
+      <workItem from="1689297644358" duration="7853000" />
     </task>
     <task id="LOCAL-00001" summary="DESKTOP maj major , add dompdf =&gt; OK, creat controller for dompdf quittance and initialize twig template for quittances">
       <created>1650163579558</created>
@@ -911,7 +909,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1775914000" />
+    <option name="totallyTimeSpent" value="1776632000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -923,8 +921,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16644295" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1134,13 +1131,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_loyers.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/LocataireType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -1153,13 +1143,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/img/illustrations/undraw_house_searching_re_stk8.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1289,37 +1272,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_locataires.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="24" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_biens_immos.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" selection-start-line="12" selection-end-line="21" selection-end-column="16" />
           <folding>
             <element signature="e#608#623#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/includes/locataire_row.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="37" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/includes/block_locataires.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-          <folding>
-            <element signature="e#1328#1360#0#Twig" expanded="true" />
-            <element signature="e#1900#1915#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1427,17 +1385,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="133" column="58" selection-start-line="133" selection-start-column="58" selection-end-line="133" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_loyers_current_month.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="167" selection-start-line="8" selection-start-column="167" selection-end-line="8" selection-end-column="167" />
+          <caret line="8" column="95" selection-start-line="8" selection-start-column="95" selection-end-line="8" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/includes/blocks/total_locataires.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="24" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="158" column="46" selection-start-line="158" selection-start-column="46" selection-end-line="158" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/includes/block_locataires.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/includes/locataire_row.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Locataire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="90" column="21" lean-forward="true" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="130" column="5" lean-forward="true" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
         </state>
       </provider>
     </entry>

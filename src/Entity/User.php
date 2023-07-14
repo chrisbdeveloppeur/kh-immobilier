@@ -132,7 +132,7 @@ class User implements UserInterface, \Serializable
 
     public function __toString()
     {
-        $name = $this->getFirstName() .' '. $this->getLastName();
+        $name = mb_strtoupper($this->getFirstName()) .' '. ucfirst($this->getLastName());
         return $name;
     }
 
