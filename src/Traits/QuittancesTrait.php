@@ -136,13 +136,13 @@ trait QuittancesTrait
         //if (!file_exists('../assets/files/quittances/')) {
         //    mkdir('../assets/files/quittances/', 0777, true);
         //}
-        if (!file_exists('../public/documents/quittances/')) {
-            mkdir('../public/documents/quittances/', 0777, true);
+        if (!file_exists($this->projectRoot.'/public/documents/quittances/')) {
+            mkdir($this->projectRoot.'/public/documents/quittances/', 0777, true);
         }
 
-        $template->saveAs("../public/documents/quittances/" . $file . ".docx");
-        $word = new \PhpOffice\PhpWord\TemplateProcessor("../public/documents/quittances/".$file.".docx");
-        $word->saveAs("../public/documents/quittances/" . $file . ".docx");
+        $template->saveAs($this->projectRoot."/public/documents/quittances/" . $file . ".docx");
+        $word = new \PhpOffice\PhpWord\TemplateProcessor($this->projectRoot."/public/documents/quittances/".$file.".docx");
+        $word->saveAs($this->projectRoot."/public/documents/quittances/" . $file . ".docx");
 
 //        $response_pdf_exist = $this->convertWordToPdf($file . ".docx", $locataire->getId(), $request);
 //        return $response_pdf_exist;

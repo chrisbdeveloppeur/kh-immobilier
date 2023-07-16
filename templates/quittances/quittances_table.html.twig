@@ -70,7 +70,17 @@
                     <tr>
 
                         <td>
-                            <div class="btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                            <div class="btn-group-xs text-nowrap" role="group" aria-label="Basic radio toggle button group">
+
+                                <a type="button" class="btn btn-outline-primary" href="{{ path('quittances_render_quittance', {'quittance_id': quittance.id}) }}"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Voir la quittance {{ quittance.month }} {{ quittance.year }}</small>"
+                                >
+                                    <i class='bx bx-xs bxs-show'></i>
+                                </a>
 
                                 <a type="button" class="btn btn-outline-primary" href="{{ asset('documents/quittances/') }}{{ quittance.filename }}.pdf"
                                    download="{{ quittance.month }}_{{ quittance.year }}.pdf"
