@@ -72,12 +72,9 @@ class QuittanceRepository extends ServiceEntityRepository
     public function getLastQuittance(BienImmo $bienImmo)
     {
         return $this->createQueryBuilder('q')
-//            ->join('q.bien_immo', 'bien_immo')
             ->andWhere('q.bien_immo = :val')
             ->setParameter('val', $bienImmo)
-            ->orderBy('q.created_date', 'DESC')
-//            ->groupBy('bien_immo')
-//            ->setMaxResults(10)
+            ->orderBy('q.date', 'DESC')
             ->getQuery()
             ->getResult()
             ;

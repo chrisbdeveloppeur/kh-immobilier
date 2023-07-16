@@ -27,11 +27,31 @@
                     >
                         <tr>
                             <th class="bg-white" style="position: sticky;left: 0;">
-                                Bien immo
+                               <h6 class="mb-0">
+                                   <span class="badge text-secondary bg-light">
+                                        Bien immo
+                                   </span>
+                               </h6>
                             </th>
                             {% for month in months %}
                                 <th class="has-text-centered">
-                                    {{ month }}
+                                    <h6 class="mb-0">
+                                        {% if 'now'|format_datetime(pattern='MMMM', locale='fr')|capitalize == month %}
+                                            <span class="badge bg-label-primary"
+                                                  data-bs-toggle="tooltip"
+                                                  data-bs-offset="0,4"
+                                                  data-bs-placement="top"
+                                                  data-bs-html="true"
+                                                  title="<small>Mois en cours</small>"
+                                            >
+                                                {{ month }}
+                                            </span>
+                                        {% else %}
+                                            <span class="badge text-secondary bg-light">
+                                                {{ month }}
+                                            </span>
+                                        {% endif %}
+                                    </h6>
                                 </th>
                             {% endfor %}
                         </tr>
@@ -42,17 +62,16 @@
                                 <td class="nowrap-text bg-white"
                                     style="position: sticky;left: 0;"
                                 >
-                                    <a href="{{ path('bien_immo_show', {'id': bien.id}) }}"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>{{ bien }}</small>"
+                                    <div data-bs-toggle="tooltip"
+                                         data-bs-offset="0,4"
+                                         data-bs-placement="top"
+                                         data-bs-html="true"
+                                         title="<small>{{ bien }}</small>"
                                     >
                                         <small class="badge bg-label-primary">
-                                            {{ bien|u.truncate(20, '...') }}
+                                            {{ bien|u.truncate(10, '...') }}
                                         </small>
-                                    </a>
+                                    </div>
                                 </td>
                                 {% for month in months %}
                                     <td class="has-text-centered">

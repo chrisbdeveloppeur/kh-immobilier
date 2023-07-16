@@ -1,0 +1,77 @@
+<!-- Statistique des loyers -->
+<div class="col-12 order-2 mb-4">
+    <div class="card h-100">
+        <div class="card-header d-flex align-items-center justify-content-between pb-0">
+            <div class="card-title">
+                <h5 class=me-2">Dernières quittances</h5>
+                <small class="text-muted">Liste des 3 dernières quittances éditées</small>
+            </div>
+        </div>
+        <div class="tab-content">
+            <ul class="">
+                {% for quittance in lastQuittances|sort((a, b) => b.date <=> a.date) %}
+                    {% if loop.index < 4 %}
+                        <li class="pb-1">
+                            <div class="d-flex">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    {% if quittance.payed %}
+                                        <span class="badge-center badge bg-label-success"
+                                              data-bs-toggle="tooltip"
+                                              data-bs-offset="0,4"
+                                              data-bs-placement="top"
+                                              data-bs-html="true"
+                                              title="Paiement reçu"
+                                        >
+                                            <i class="bx bx-check"></i>
+                                        </span>
+                                    {% else %}
+                                        <span class="badge-center badge bg-label-secondary"
+                                              data-bs-toggle="tooltip"
+                                              data-bs-offset="0,4"
+                                              data-bs-placement="top"
+                                              data-bs-html="true"
+                                              title="<small>Paiement en attente</small>"
+                                        >
+                                            <i class="bx bx-sm bxs-calendar-exclamation"></i>
+                                        </span>
+                                    {% endif %}
+                                </div>
+                                <a class="d-flex is-flex-direction-row w-100"
+                                   href="{{ path('quittances_render_quittance', {'quittance_id': quittance.id}) }}"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-offset="0,4"
+                                   data-bs-placement="top"
+                                   data-bs-html="true"
+                                   title="<small>Voir la quittance du bien : {{ quittance.bienImmo }}</small>"
+                                >
+                                    <h6 class="mb-0 nowrap-text overflow-ellipsis" title="Quittance de {{ quittance.month }}"> Quittance de {{ quittance.month }}</h6>
+
+                                    <small class="text-muted">
+                                        <span class="badge my-1 badge-center rounded-pill bg-secondary">
+                                            <i class='bx bx-user'></i>
+                                        </span>
+                                        {{ quittance.locataire|u.truncate(20, '...') }}
+                                    </small>
+                                </a>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card-footer is-justify-content-end">
+            <a href="{{ path('quittances_index') }}"
+               class="button btn-primary btn-sm"
+               data-bs-toggle="tooltip"
+               data-bs-offset="0,4"
+               data-bs-placement="top"
+               data-bs-html="true"
+               title="<small>Voir la liste des quittances de loyers</small>"
+            >
+                <i class='bx bx-list-ul'></i>
+            </a>
+        </div>
+    </div>
+</div>
+<!--/ Order Statistics -->

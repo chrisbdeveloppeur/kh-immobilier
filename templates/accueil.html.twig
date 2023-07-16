@@ -72,6 +72,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
+
         <div class="row">
             <div class="col-lg-8 order-0">
                 <div class="col-12 mb-4">
@@ -92,17 +93,17 @@
                             <div class="col-sm-5 text-center text-sm-left">
                                 <div class="card-body pb-0 px-0 px-md-4">
                                     <img
-                                        {% if app.user.gender == 'M.' %}
-                                            src="{{ asset('img/illustrations/undraw_windy_day_x-63-l.svg') }}"
-                                        {% elseif app.user.gender == 'Mme.' %}
-                                            src="{{ asset('img/illustrations/undraw_businesswoman_re_5n6b.svg') }}"
-                                        {% else %}
-                                            src="{{ asset('img/illustrations/undraw_house_searching_re_stk8.svg') }}"
-                                        {% endif %}
-                                        height="140"
-                                        alt="View Badge User"
-                                        data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                                        data-app-light-img="illustrations/man-with-laptop-light.png"
+                                            {% if app.user.gender == 'M.' %}
+                                                src="{{ asset('img/illustrations/undraw_windy_day_x-63-l.svg') }}"
+                                            {% elseif app.user.gender == 'Mme.' %}
+                                                src="{{ asset('img/illustrations/undraw_businesswoman_re_5n6b.svg') }}"
+                                            {% else %}
+                                                src="{{ asset('img/illustrations/undraw_house_searching_re_stk8.svg') }}"
+                                            {% endif %}
+                                            height="140"
+                                            alt="View Badge User"
+                                            data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                            data-app-light-img="illustrations/man-with-laptop-light.png"
                                     />
                                 </div>
                             </div>
@@ -127,7 +128,18 @@
 
             </div>
 
-            {{ include('includes/blocks/total_frais.html.twig') }}
+            <div class="col-lg-4">
+                {{ include('includes/blocks/synthese_mensuelle.html.twig') }}
+            </div>
+        </div>
+
+        {#
+        <div class="row">
+            {{ include('includes/blocks/dernieres_quittances.html.twig') }}
+        </div>
+        #}
+
+        <div class="row">
 
             <div class="col-12 col-lg-4 order-3 order-md-2">
                 <div class="row h-100">

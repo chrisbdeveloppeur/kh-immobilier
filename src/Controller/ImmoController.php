@@ -50,7 +50,6 @@ class ImmoController extends AbstractController
                 $lastQuittances[] = $lastQuittance[0];
             }
         }
-//        dd($quittances);
 
         return $this->render('accueil.html.twig', [
             "biens_immos" => $all_biens_immos,

@@ -1,0 +1,42 @@
+<!-- Statistique des loyers -->
+<div class="col-12 order-2 mb-4">
+    <div class="card h-100">
+        <div class="card-header d-flex align-items-center justify-content-between pb-0">
+            <div class="card-title">
+                <h5 class=me-2">Synthèse mensuelle</h5>
+
+                <small class="text-muted">Estimation des bénéfices net / mois</small>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="d-flex justify-content-around align-items-center is-flex-direction-column">
+
+                <div class="is-flex is-flex-direction-column align-items-center">
+                    <div id="statistiqueLoyers"></div>
+                </div>
+
+                <div class="is-flex is-flex-direction-column align-items-center">
+                    <div id="statistiqueBiensImmos"></div>
+                </div>
+
+            </div>
+        </div>
+
+        {#
+        <div class="card-footer is-justify-content-end">
+            <a href="{{ path('quittances_index') }}"
+               class="button btn-primary btn-sm"
+               data-bs-toggle="tooltip"
+               data-bs-offset="0,4"
+               data-bs-placement="top"
+               data-bs-html="true"
+               title="<small>Voir la liste des quittances de loyers</small>"
+            >
+                <i class='bx bx-list-ul'></i>
+            </a>
+        </div>
+        #}
+
+    </div>
+</div>
+<!--/ Order Statistics -->

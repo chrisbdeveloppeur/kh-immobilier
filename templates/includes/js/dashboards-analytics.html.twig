@@ -521,8 +521,8 @@
         const statistiqueLoyers = document.querySelector('#statistiqueLoyers'),
             orderChartConfig = {
                 chart: {
-                    height: 150,
-                    width: 120,
+                    height: 165,
+                    width: 150,
                     type: 'donut'
                 },
                 labels: ['Loyers','Crédits','Frais'],
@@ -551,11 +551,11 @@
                 plotOptions: {
                     pie: {
                         donut: {
-                            size: '80%',
+                            size: '70%',
                             labels: {
                                 show: true,
                                 value: {
-                                    fontSize: '1.5rem',
+                                    fontSize: '2rem',
                                     fontFamily: 'Public Sans',
                                     color: headingColor,
                                     offsetY: -15,
@@ -569,7 +569,7 @@
                                 },
                                 total: {
                                     show: true,
-                                    fontSize: '0.8125rem',
+                                    fontSize: '1rem',
                                     color: axisColor,
                                     label: 'Bénéfices net',
                                     formatter: function (w) {
@@ -591,13 +591,13 @@
         const statistiqueBiensImmos = document.querySelector('#statistiqueBiensImmos'),
             donutStatsBiensImmos = {
                 chart: {
-                    height: 150,
-                    width: 120,
+                    height: 165,
+                    width: 150,
                     type: 'donut'
                 },
                 labels: ['Loués','Non loués'],
                 series: [{{ total_biens_loges }}, {{ total_biens_vides }}],
-                colors: [config.colors.success, config.colors.danger ],
+                colors: [config.colors.primary, config.colors.secondary ],
                 stroke: {
                     width: 3,
                     colors: cardColor
@@ -621,11 +621,11 @@
                 plotOptions: {
                     pie: {
                         donut: {
-                            size: '80%',
+                            size: '70%',
                             labels: {
                                 show: true,
                                 value: {
-                                    fontSize: '1.5rem',
+                                    fontSize: '2rem',
                                     fontFamily: 'Public Sans',
                                     color: headingColor,
                                     offsetY: -15,
@@ -639,7 +639,7 @@
                                 },
                                 total: {
                                     show: true,
-                                    fontSize: '0.8125rem',
+                                    fontSize: '1rem',
                                     color: axisColor,
                                     label: 'Nb de biens',
                                     formatter: function (w) {
