@@ -182,9 +182,8 @@
             </ul>
         </li>
 
-        <!-- Components -->
+        <!-- LOCATAIRES -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Locataires</span></li>
-        <!-- Cards -->
         <li class="menu-item {% if route in ['locataire_index','locataire_new'] %}active open{% endif %}">
             <a href="cards-basic.html" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-group'></i>
@@ -193,7 +192,7 @@
             <ul class="menu-sub">
                 <li class="menu-item {% if route in ['locataire_index'] %}active open{% endif %}">
                     <a href="{{ path('locataire_index') }}" class="menu-link">
-                        <div data-i18n="Accordion">Ma lise de locataires</div>
+                        <div data-i18n="Accordion">Ma liste de locataires</div>
                     </a>
                 </li>
                 <li class="menu-item {% if route in ['locataire_new'] %}active open{% endif %}">
@@ -222,6 +221,28 @@
                 </li>
             </ul>
         </li>
+
+        <!-- COMPTA -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Finance</span></li>
+        <li class="menu-item {% if route in ['quittance_index'] %}active open{% endif %}">
+            <a href="cards-basic.html" class="menu-link menu-toggle">
+                <i class='menu-icon tf-icons bx bxs-group'></i>
+                <div data-i18n="Basic">Mes frais</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {% if route in ['frais_index'] %}active open{% endif %}">
+                    <a href="{{ path('frais_index') }}" class="menu-link">
+                        <div data-i18n="Accordion">Ma liste de frais</div>
+                    </a>
+                </li>
+                <li class="menu-item {% if route in ['frais_new'] %}active open{% endif %}">
+                    <a href="{{ path('frais_new') }}" class="menu-link">
+                        <div data-i18n="Alerts">Ajouter un frais</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
     </ul>
 
 

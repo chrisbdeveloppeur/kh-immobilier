@@ -36,9 +36,30 @@ class Frais
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $mensuel;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $benefice;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __construct()
+    {
+        $this->benefice = 0;
+        $this->mensuel = 0;
     }
 
     public function __toString()
@@ -78,6 +99,42 @@ class Frais
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function isMensuel(): ?bool
+    {
+        return $this->mensuel;
+    }
+
+    public function setMensuel(bool $mensuel): self
+    {
+        $this->mensuel = $mensuel;
+
+        return $this;
+    }
+
+    public function isBenefice(): ?bool
+    {
+        return $this->benefice;
+    }
+
+    public function setBenefice(bool $benefice): self
+    {
+        $this->benefice = $benefice;
 
         return $this;
     }

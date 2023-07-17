@@ -127,13 +127,25 @@
 
                         <td>
                             {% if quittance.payed %}
-                                <span class="badge bg-success">
+                                <span class="badge bg-success"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-offset="0,4"
+                                      data-bs-placement="top"
+                                      data-bs-html="true"
+                                      title="<small>Ce loyer a été payé</small>"
+                                >
                                     <small>
                                        Payée
                                     </small>
                                 </span>
                             {% else %}
-                                <span class="badge bg-warning">
+                                <span class="badge bg-warning"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-offset="0,4"
+                                      data-bs-placement="top"
+                                      data-bs-html="true"
+                                      title="<small>Ce loyer est en attente de payement</small>"
+                                >
                                     <small>
                                         En attente
                                     </small>

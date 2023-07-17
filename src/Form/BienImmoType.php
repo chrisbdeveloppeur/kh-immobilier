@@ -187,6 +187,7 @@ class BienImmoType extends AbstractType
                     'entry_type' => FraisType::class,
                     'entry_options' => [
                         'label' => false,
+                        'validation_groups' => 'fraisBienImmoField',
                     ],
                     'help' => 'Indiquez les dépenses divers (mensuels) liés à votre bien immobilier',
                     'invalid_message' => 'Valeur incorrecte',
