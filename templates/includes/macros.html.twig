@@ -59,7 +59,11 @@
     {% set field = form %}
 
     {% if field.vars.block_prefixes.1 is defined %}
-        {% set field_type_1 = field.vars.block_prefixes.1 %}
+        {% if field.vars.block_prefixes.1 == 'choice' and field.vars.multiple == 0 and field.vars.expanded == 1 %}
+            {% set field_type_1 = 'radio' %}
+        {% else %}
+            {% set field_type_1 = field.vars.block_prefixes.1 %}
+        {% endif %}
     {% endif %}
     {% if field.vars.block_prefixes.2 is defined %}
         {% set field_type_2 = field.vars.block_prefixes.2 %}
@@ -158,6 +162,14 @@
                     {% endif %}
                 </div>
                 {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}
+            {% elseif field_type_1 == 'radio' %}
+                <label for="{{ field.vars.full_name }}" class="form-check-label">{{ is_required }}{{ form_label(field) }}</label>
+                <div>
+                    {% for choice in field.children %}
+                        {{ form_widget(choice, {'attr':{'name':choice.vars.id,'class':'form-check-input'~field_error_class}}) }}
+                        <label for="{{ choice.vars.id }}" class="form-check-label">{{ is_required }}{{ choice.vars.label }}</label>
+                    {% endfor %}
+                </div>
             {% else %}
                 <label for="{{ field.vars.full_name }}" class="form-label">{{ is_required }}{{ form_label(field) }}</label>
                 {{ form_widget(field, {'attr':{'class':'form-control'~field_error_class}}) }}

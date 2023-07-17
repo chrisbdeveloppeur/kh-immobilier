@@ -5,10 +5,12 @@ namespace App\Form;
 use App\Entity\Frais;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -56,8 +58,8 @@ class FraisType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control me-2',
-                    'data-units' => '€/Mois',
-                    'placeholder' => 'ex : 50'
+                    'data-units' => null,
+                    'placeholder' => null
                 ],
                 'invalid_message' => 'Valeur incorrecte',
                 'required' => true,
@@ -89,16 +91,46 @@ class FraisType extends AbstractType
                     ],
                     'invalid_message' => 'Valeur incorrecte',
                     'required' => false,
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'Ce champs doit être remplis'
-                        ]),
-                    ],
                 ))
 
-                ->add('mensuel', CheckboxType::class, array(
-                    'label' => 'Mensualité',
-                    'help' => 'Frais mensuel?',
+                ->add('mensuel', ChoiceType::class, array(
+                    'choices' => [
+                        'Non' => 0,
+                        'Oui' => 1,
+                    ],
+                    'choice_attr' => [
+                        'Oui' => ['class' => 'form-check-input'],
+                        'Non' => ['class' => 'form-check-input'],
+                    ],
+                    'placeholder' => false,
+                    'multiple' => false,
+                    'expanded' => true,
+                    'label' => 'Mensualisation',
+                    'help' => 'Est-ce une mensualisation?',
+                    'label_attr' => [
+                        'class' => 'form-label',
+                    ],
+                    'help_attr' => [
+                        'class' => 'form-text'
+                    ],
+                    'invalid_message' => 'Valeur incorrecte',
+                    'required' => false,
+                ))
+
+                ->add('benefice', ChoiceType::class, array(
+                    'choices' => [
+                        'Déficit' => 0,
+                        'Bénéfice' => 1,
+                    ],
+                    'choice_attr' => [
+                        'Déficit' => ['class' => 'form-check-input'],
+                        'Bénéfice' => ['class' => 'form-check-input'],
+                    ],
+                    'placeholder' => false,
+                    'multiple' => false,
+                    'expanded' => true,
+                    'label' => 'Bénéfice/Déficit',
+                    'help' => 'Est-ce un Bénéfice ou un Déficit?',
                     'label_attr' => [
                         'class' => 'form-label',
                     ],
@@ -110,32 +142,6 @@ class FraisType extends AbstractType
                     ],
                     'invalid_message' => 'Valeur incorrecte',
                     'required' => false,
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'Ce champs doit être remplis'
-                        ]),
-                    ],
-                ))
-
-                ->add('benefice', CheckboxType::class, array(
-                    'label' => 'Bénéfice',
-                    'help' => 'Bénéfice ou deficit?',
-                    'label_attr' => [
-                        'class' => 'form-label',
-                    ],
-                    'help_attr' => [
-                        'class' => 'form-text'
-                    ],
-                    'attr' => [
-                        'class' => 'form-check-input',
-                    ],
-                    'invalid_message' => 'Valeur incorrecte',
-                    'required' => false,
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'Ce champs doit être remplis'
-                        ]),
-                    ],
                 ));
         };
 

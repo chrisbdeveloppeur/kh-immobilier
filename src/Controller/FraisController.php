@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Frais;
 use App\Form\FraisType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +27,7 @@ class FraisController extends AbstractController
     /**
      * @Route("/new", name="_new")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $frais = new Frais();
         $form = $this->createForm(FraisType::class, $frais);
@@ -34,7 +35,11 @@ class FraisController extends AbstractController
 
         if ($form->isSubmitted()){
             if ($form->isValid()){
-
+                $em->persist($frais);
+                $em->flush();
+                $this->addFlash('success', 'Le Frais : '.$frais->getName().' à été créé');
+            }else{
+                $this->addFlash('danger', 'Une erreur s\'est produite. Le Frais n\'a pas été créé');
             }
         }
 
