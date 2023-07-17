@@ -47,30 +47,15 @@ class FraisType extends AbstractType
                     'class' => 'col-6'
                 ]
             ])
-            ->add('quantity', NumberType::class, [
+            ->add('quantity', NumberType::class,[
                 'label' => "Montant",
-                'label_attr' => [
-                    'class' => 'form-label',
-                ],
-                'help' => 'Montant du frais',
-                'help_attr' => [
-                    'class' => 'form-text'
-                ],
-                'attr' => [
-                    'class' => 'form-control me-2',
-                    'data-units' => null,
-                    'placeholder' => null
-                ],
                 'invalid_message' => 'Valeur incorrecte',
-                'required' => true,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Ce champs doit être remplis'
-                    ]),
+                'help' => 'Montant du frais',
+                'attr' => [
+                    'data-units' => '€',
+                    'placeholder' => '50'
                 ],
-                'row_attr' => [
-                    'class' => 'col-6'
-                ]
+                'required' => false,
             ])
         ;
 
