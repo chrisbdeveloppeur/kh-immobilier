@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Entity\BienImmo;
 use App\Entity\User;
 use App\Repository\BienImmoRepository;
+use App\Repository\FraisRepository;
 use App\Repository\LocataireRepository;
 use App\Repository\PrestataireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +20,7 @@ class AdaptByUser extends AbstractController
     private $bienImmoRepository;
     private $locataireRepository;
     private $prestataireRepository;
+    private $fraisRepository;
     protected $request;
 
 
@@ -27,7 +29,8 @@ class AdaptByUser extends AbstractController
         Security $security,
         BienImmoRepository $bienImmoRepository,
         LocataireRepository $locataireRepository,
-        PrestataireRepository $prestataireRepository
+        PrestataireRepository $prestataireRepository,
+        FraisRepository $fraisRepository
     )
     {
         $this->request = $requestStack->getCurrentRequest();
@@ -35,6 +38,7 @@ class AdaptByUser extends AbstractController
         $this->bienImmoRepository = $bienImmoRepository;
         $this->locataireRepository = $locataireRepository;
         $this->prestataireRepository = $prestataireRepository;
+        $this->fraisRepository = $fraisRepository;
     }
 
     public function getAllBiensImmos(User $user)
@@ -65,6 +69,15 @@ class AdaptByUser extends AbstractController
             $all_prestataires = $this->prestataireRepository->findByUser($user);
         }
         return $all_prestataires;
+    }
+
+    public function getAllFrais(User $user){
+        if ( $this->isGranted('ROLE_SUPER_ADMIN')){
+            $all_frais = $this->fraisRepository->findAll();
+        }else{
+            $all_frais = $this->fraisRepository->findByUser($user);
+        }
+        return $all_frais;
     }
 
     public function redirectIfNotAuth($entity)

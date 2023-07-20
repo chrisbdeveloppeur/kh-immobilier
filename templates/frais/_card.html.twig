@@ -1,0 +1,195 @@
+        <div class="card">
+            {#
+            <img src="" class="card-img-top" alt="...">
+            #}
+            <div class="card-body">
+                <h5 class="card-title">
+                    Détails du Frais
+                </h5>
+                <p class="card-text">
+
+                    <span class="badge bg-label-info"
+                          data-bs-toggle="tooltip"
+                          data-bs-offset="0,4"
+                          data-bs-placement="top"
+                          data-bs-html="true"
+                          title="<small>Type de logement</small>"
+                    >
+                        {{ bien_immo.type }}
+                    </span>
+
+                    <span class="badge bg-label-info"
+                          data-bs-toggle="tooltip"
+                          data-bs-offset="0,4"
+                          data-bs-placement="top"
+                          data-bs-html="true"
+                          title="<small>Superficie habitable</small>"
+                    >
+                        {{ bien_immo.superficie }}m²
+                    </span>
+
+                    {% if bien_immo.locataire %}
+                        <span class="badge bg-label-success"
+                              data-bs-toggle="tooltip"
+                              data-bs-offset="0,4"
+                              data-bs-placement="top"
+                              data-bs-html="true"
+                              title="<small>Actuellement loué par {{ bien_immo.locataire }}</small>"
+                        >
+                            Loué
+                        </span>
+                    {% else %}
+                        <span class="badge bg-label-warning"
+                              data-bs-toggle="tooltip"
+                              data-bs-offset="0,4"
+                              data-bs-placement="top"
+                              data-bs-html="true"
+                              title="<small>Logement actuellement sans locataire</small>"
+                        >
+                            Non loué
+                        </span>
+                    {% endif %}
+
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Ville de résidence</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-city'></i>
+                    </span>
+                    {{ bien_immo.city }}
+                </li>
+
+                <li class="list-group-item">
+                    <a href="https://maps.google.com/?q={{ bien_immo.adresse }}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Adresse, cliquer pour voir sur Google Maps</small>"
+                       onclick="window.open(this.href, '_blank', 'width=500,height=500'); return false;"
+                    >
+                        <span class="badge badge-center rounded-pill bg-secondary me-2">
+                            <i class='bx bxs-map'></i>
+                        </span>
+                        {{ bien_immo.adresse }}
+                    </a>
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Complément d'adresse</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-building'></i>
+                    </span>
+                    {% if bien_immo.building %}
+                        {{ bien_immo.building }}
+                    {% else %}
+                        {{ include('includes/badges/non_communique.html.twig') }}
+                    {% endif %}
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Montant du loyer définie</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bx-money'></i>
+                    </span>
+                    {{ bien_immo.loyerTtc }}€
+                    <small class="text-muted">(Charges inclus)</small>
+                </li>
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Montant des charges inclus</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bx-home-circle'></i>
+                    </span>
+                    {{ bien_immo.charges }}€
+                </li>
+
+                {% if bien_immo.financement and bien_immo.financement.montant %}
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Prix d'achat</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-badge-dollar'></i>
+                    </span>
+                    {{ bien_immo.financement.montant|number_format(0, '.', ',') }}€
+                </li>
+                {% endif %}
+
+                <li class="list-group-item"
+                    data-bs-toggle="tooltip"
+                    data-bs-offset="0,4"
+                    data-bs-placement="top"
+                    data-bs-html="true"
+                    title="<small>Nom du propriétaire</small>"
+                >
+                    <span class="badge badge-center rounded-pill bg-secondary me-2">
+                        <i class='bx bxs-user-badge'></i>
+                    </span>
+                    {{ bien_immo.user }}
+                </li>
+
+            </ul>
+            <div class="card-body">
+                <div class="is-flex is-justify-content-space-between">
+                    <a href="{% if bien_immo.locataire %}{{ path('quittances_edit_new_quittance', {'loc_id': bien_immo.locataire.id}) }}{% endif %}"
+                       class="col-4 btn btn-icon rounded-pill btn-outline-primary is-flex align-items-center justify-content-center {% if not bien_immo.locataire %}disabled{% endif %}"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Editer une quittance</small>"
+                    >
+                        <i class='bx bxs-file-plus'></i>
+                    </a>
+
+                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}"
+                       class="col-4 btn btn-icon rounded-pill btn-outline-primary is-flex align-items-center justify-content-center"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Modifier le bien</small>"
+                    >
+                        <i class='bx bxs-edit-alt'></i>
+                    </a>
+
+                    <a href="{{ path('bien_immo_delete', {'id': bien_immo.id}) }}" class="col-4 btn btn-icon rounded-pill btn-danger is-flex align-items-center justify-content-center"
+                       data-bs-toggle="tooltip"
+                       data-bs-offset="0,4"
+                       data-bs-placement="top"
+                       data-bs-html="true"
+                       title="<small>Supprimer le bien</small>"
+                       onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce logement?');"
+                    >
+                        <i class='bx bxs-trash'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+

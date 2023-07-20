@@ -4,21 +4,33 @@ namespace App\Controller;
 
 use App\Entity\Frais;
 use App\Form\FraisType;
+use App\Repository\FraisRepository;
+use App\Services\AdaptByUser;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/frais", name="frais")
  */
 class FraisController extends AbstractController
 {
+    private $adaptByUser;
+    private $allFrais;
+
+    public function __construct(AdaptByUser $adaptByUser, Security $security)
+    {
+        $this->adaptByUser = $adaptByUser;
+        $this->allFrais = $this->adaptByUser->getAllFrais($security->getUser());
+    }
+
     /**
      * @Route("/index", name="_index")
      */
-    public function index(): Response
+    public function index(FraisRepository $fraisRepository): Response
     {
         return $this->render('frais/index.html.twig', []);
     }
@@ -49,10 +61,53 @@ class FraisController extends AbstractController
     }
 
     /**
-     * @Route("/edit", name="_edit")
+     * @Route("{id}/edit", name="_edit")
      */
-    public function edit(): Response
+    public function edit(EntityManagerInterface $em, Request $request, Frais $frais): Response
     {
-        return $this->render('frais/edit.html.twig', []);
+        //        Vérification de l'utilisateur actuellement connecté
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($frais);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à être ici');
+            return $this->redirectToRoute('bien_immo_index');
+        }
+
+        $form = $this->createForm(FraisType::class, $frais);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()){
+            if ($form->isValid()){
+                $em->persist($frais);
+                $em->flush();
+                $this->addFlash('success', 'Les modifications ont bien étés appliquées');
+                return $this->redirectToRoute('frais_show',[
+                    'frais' => $frais
+                ]);
+            }else{
+                $this->addFlash('danger', 'Echec d\'enregistrement<br><small>Vérifiez les données du formulaire</small>');
+            }
+        }
+
+        return $this->render('frais/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
+
+    /**
+     * @Route("/{id}/show", name="bien_immo_show")
+     */
+    public function show(Frais $frais, FraisRepository $fraisRepository): Response
+    {
+//        Vérification de l'utilisateur actuellement connecté
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($frais);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à être ici');
+            return $this->redirectToRoute('bien_immo_index');
+        }
+
+        return $this->render('bien_immo/show.html.twig', [
+            'frais' => $frais,
+        ]);
+    }
+
 }
