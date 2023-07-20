@@ -137,8 +137,16 @@ a.navbar-item:focus, a.navbar-item:focus-within{
   cursor: pointer;
 }
 
+.is-size-super{
+  font-size: 5rem !important;
+}
+
 .is-size-mega{
   font-size: 7rem !important;
+}
+
+.is-size-giga{
+  font-size: 10rem !important;
 }
 
 .zoom-mouse-hover:hover{

@@ -8,7 +8,7 @@
                 <span class="d-block text-muted">Nombre de biens immobiliers</span>
             </div>
             <div class="has-text-centered align-items-center justify-content-center is-flex is-flex-direction-column">
-                <h1 class="display-1 card-title text-nowrap mb-2 has-text-centered text-primary">{{ biens_immos|length|default(0) }}</h1>
+                <h1 class="display-1 card-title text-nowrap mb-2 has-text-centered text-primary is-size-super">{{ biens_immos|length|default(0) }}</h1>
                 {% if total_biens_vides > 0 %}
                     <small class="text-muted">
                         Dont {{ total_biens_vides }} {% if total_biens_vides == 1 %}logement libre{% else %}logements libres{% endif %}

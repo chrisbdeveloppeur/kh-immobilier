@@ -9,7 +9,7 @@
                     <span class="d-block text-muted">Total des loyers perçus pour ce mois : <b class="text-black">{{ 'now'|format_datetime(pattern='MMMM', locale='fr')|capitalize }}</b></span>
                 </div>
             </div>
-            <h1 class="display-1 card-title text-nowrap mb-2 has-text-centered text-primary">{{ total_loyers_percus_current_month|number_format(0,',','')|default(0) }}€</h1>
+            <h1 class="display-1 card-title text-nowrap mb-2 has-text-centered text-primary {% if total_loyers_percus_current_month|number_format(0,',','')|length <= 4 %}is-size-super{% endif %}">{{ total_loyers_percus_current_month|number_format(0,',','')|default(0) }}€</h1>
         </div>
         <div class="card-footer is-justify-content-end">
             <a href="{{ path('quittances_index') }}"

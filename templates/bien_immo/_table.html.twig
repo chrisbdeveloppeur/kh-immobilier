@@ -105,7 +105,7 @@
                             </td>
 
                             <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                                <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
 
                                     <a type="button" class="btn btn-outline-primary"
                                        href="{{ path('bien_immo_show', {'id': bien_immo.id}) }}"
@@ -153,8 +153,14 @@
                             </td>
 
                             <td>
-                                <span class="text-index-entity">
-                                    <small>{{ bien_immo.street }}</small>
+                                <span class="text-index-entity nowrap-text"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-offset="0,4"
+                                      data-bs-placement="top"
+                                      data-bs-html="true"
+                                      title="<small>{{ bien_immo.street }}</small>"
+                                >
+                                    <small>{{ bien_immo.street|u.truncate(20,'...') }}</small>
                                 </span>
                             </td>
 
@@ -195,31 +201,31 @@
 
                             <td>
                                 {% if bien_immo.locataires is not empty %}
-                                    <a class="btn btn-sm btn-outline-primary"
-                                       href="{{ path('locataire_edit', {'id': bien_immo.locataires.current.id}) }}#locataire"
+                                    <a class="btn btn-sm btn-outline-primary  rounded-pill btn-icon"
+                                       href="{{ path('locataire_edit', {'id': bien_immo.locataire.id}) }}#locataire"
                                        data-bs-toggle="tooltip"
                                        data-bs-offset="0,14"
                                        data-bs-placement="top"
                                        data-bs-trigger="hover focus"
                                        data-bs-html="true"
-                                       title="<small>Voir les détails du locataire {{ bien_immo.locataires.current }}</small>"
+                                       title="<small>Voir les détails du locataire {{ bien_immo.locataire }}</small>"
                                     >
-                                        <span>{{ bien_immo.locataires.current }}</span>
+                                        <span><b>{{ bien_immo.locataire.firstname|first|upper }} {{ bien_immo.locataire.lastname|first|upper }}</b></span>
                                     </a>
                                 {% else %}
-                                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}#logement"
-                                       title="Ajouter un locataire à ce logement"
-                                       onmouseover="this.querySelector('i').classList.replace('fa-user-slash','fa-user-plus')"
-                                       onmouseleave="this.querySelector('i').classList.replace('fa-user-plus','fa-user-slash')"
+                                    <a href="{{ path('bien_immo_edit', {'id': bien_immo.id}) }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,14"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       data-bs-trigger="hover focus"
+                                       title="Sans locataire <br><small class='text-muted'>cliquez pour ajouter un locataire</small>"
+                                       class="btn btn-sm btn-outline-primary rounded-pill btn-icon"
                                     >
-                                        <span class="icon is-hidden-touch">
-                                            <i class="fas fa-user-slash"></i>
-                                        </span>
-                                        <span class="icon has-text-info is-hidden-desktop">
-                                            <i class="fas fa-user-plus"></i>
+                                        <span class="icon">
+                                            <i class="fas fa-1x fa-user-plus"></i>
                                         </span>
                                     </a>
-                                    <span title="Logement actuellement sans locataire">Sans locataire</span>
                                 {% endif %}
                             </td>
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
