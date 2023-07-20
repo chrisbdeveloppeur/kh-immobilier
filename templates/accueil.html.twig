@@ -62,8 +62,6 @@
     {% endif %}
 {% endfor %}
 
-{% set benefices_net = benefices + benefices_ex - total_frais %}
-
 {% for quittance in quittances %}
 {#    {% set total_loyers = total_loyers + quittance.loyerTtc %}#}
     {% if quittance.payed %}

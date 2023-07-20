@@ -210,6 +210,11 @@ class BienImmoController extends AbstractController
                     $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
                 }
 
+                foreach ($form->get('Frais')['Frais']->getData() as $frais){
+                    $frais->setBienImmo($bienImmo);
+                    $em->persist($frais);
+                }
+
                 $this->getDoctrine()->getManager()->flush();
 
                 $this->addFlash('success', 'Les modifications ont bien étés appliquées');

@@ -104,7 +104,8 @@ class FraisController extends AbstractController
                 $em->flush();
                 $this->addFlash('success', 'Les modifications ont bien étés appliquées');
                 return $this->redirectToRoute('frais_show',[
-                    'frais' => $frais
+                    'frais' => $frais,
+                    'id' => $frais->getId(),
                 ]);
             }else{
                 $this->addFlash('danger', 'Echec d\'enregistrement<br><small>Vérifiez les données du formulaire</small>');
