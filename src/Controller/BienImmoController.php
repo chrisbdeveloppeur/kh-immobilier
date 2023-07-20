@@ -100,6 +100,11 @@ class BienImmoController extends AbstractController
                     $bienImmo->addLocataire($form->get('residents')['locataire']->getData());
                 }
 
+                foreach ($form->get('Frais')['Frais']->getData() as $frais){
+                    $frais->setBienImmo($bienImmo);
+                    $em->persist($frais);
+                }
+
                 $em->flush();
 
                 $this->addFlash('success', 'Le logement <b>'.$bienImmo->getStreet().'</b> a été créé avec succès');
@@ -141,6 +146,14 @@ class BienImmoController extends AbstractController
         if (!$authorizedToBeHere){
             $this->addFlash('warning', 'Vous n\'êtes pas autorisé à être ici');
             return $this->redirectToRoute('bien_immo_index');
+        }
+
+        foreach ($bienImmo->getFrais() as $frais){
+            if (!$frais->getBienImmo()){
+                $frais->setBienImmo($bienImmo);
+                $em->persist($frais);
+                $em->flush();
+            }
         }
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')){
@@ -479,7 +492,7 @@ class BienImmoController extends AbstractController
 
 
     /**
-     * @Route("/frais/del/{id<\d+>?1}", name="frais_delete", methods={"GET","POST"})
+     * @Route("/frais/del/{id<\d+>?1}", name="bien_immo_frais_delete", methods={"GET","POST"})
      */
     public function deleteFrais($id, FraisRepository $fraisRepository, EntityManagerInterface $em)
     {

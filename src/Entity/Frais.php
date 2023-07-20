@@ -51,6 +51,16 @@ class Frais
      */
     private $benefice;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=BienImmo::class)
+     */
+    private $BienImmo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="frais")
+     */
+    private $User;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +145,30 @@ class Frais
     public function setBenefice(bool $benefice): self
     {
         $this->benefice = $benefice;
+
+        return $this;
+    }
+
+    public function getBienImmo(): ?BienImmo
+    {
+        return $this->BienImmo;
+    }
+
+    public function setBienImmo(?BienImmo $BienImmo): self
+    {
+        $this->BienImmo = $BienImmo;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }

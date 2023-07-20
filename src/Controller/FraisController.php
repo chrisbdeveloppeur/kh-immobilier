@@ -7,6 +7,7 @@ use App\Form\FraisType;
 use App\Repository\FraisRepository;
 use App\Services\AdaptByUser;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,7 @@ class FraisController extends AbstractController
 {
     private $adaptByUser;
     private $allFrais;
+    private $allBiensImmos;
 
     public function __construct(AdaptByUser $adaptByUser, Security $security)
     {
@@ -30,9 +32,21 @@ class FraisController extends AbstractController
     /**
      * @Route("/index", name="_index")
      */
-    public function index(FraisRepository $fraisRepository): Response
+    public function index(FraisRepository $fraisRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('frais/index.html.twig', []);
+        $all_frais = $paginator->paginate(
+            $this->allFrais,
+            $request->query->getInt('page',1),
+            $request->query->getInt('numItemsPerPage',20),
+            array(
+                'defaultSortFieldName' => 'locataires.current',
+                'defaultSortDirection' => 'asc',
+            )
+        );
+
+        return $this->render('frais/index.html.twig', [
+            'all_frais' => $all_frais,
+        ]);
     }
 
 
@@ -45,11 +59,16 @@ class FraisController extends AbstractController
         $form = $this->createForm(FraisType::class, $frais);
         $form->handleRequest($request);
 
+        $frais->setUser($this->getUser());
+
         if ($form->isSubmitted()){
             if ($form->isValid()){
                 $em->persist($frais);
                 $em->flush();
                 $this->addFlash('success', 'Le Frais : '.$frais->getName().' à été créé');
+                return $this->redirectToRoute('frais_show',[
+                    'id' => $frais->getId()
+                ]);
             }else{
                 $this->addFlash('danger', 'Une erreur s\'est produite. Le Frais n\'a pas été créé');
             }
@@ -72,6 +91,10 @@ class FraisController extends AbstractController
             return $this->redirectToRoute('bien_immo_index');
         }
 
+        if (!$frais->getUser()){
+            $frais->setUser($this->getUser());
+        }
+
         $form = $this->createForm(FraisType::class, $frais);
         $form->handleRequest($request);
 
@@ -89,12 +112,13 @@ class FraisController extends AbstractController
         }
 
         return $this->render('frais/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'title_txt' => $frais->getName(),
         ]);
     }
 
     /**
-     * @Route("/{id}/show", name="bien_immo_show")
+     * @Route("/{id}/show", name="_show")
      */
     public function show(Frais $frais, FraisRepository $fraisRepository): Response
     {
@@ -105,9 +129,31 @@ class FraisController extends AbstractController
             return $this->redirectToRoute('bien_immo_index');
         }
 
-        return $this->render('bien_immo/show.html.twig', [
+        return $this->render('frais/show.html.twig', [
             'frais' => $frais,
         ]);
+    }
+
+
+    /**
+     * @Route("/{id}/delete", name="_delete", methods={"GET","POST"})
+     */
+    public function delete(Request $request, Frais $frais, EntityManagerInterface $em): Response
+    {
+        //        Vérification de l'utilisateur actuellement connecté
+        $authorizedToBeHere = $this->adaptByUser->redirectIfNotAuth($frais);
+        if (!$authorizedToBeHere){
+            $this->addFlash('warning', 'Vous n\'êtes pas autorisé à faire cette action');
+            return $this->redirectToRoute('bien_immo_index');
+        }
+
+        $fraisName = $frais->getName();
+        $em->remove($frais);
+        $em->flush();
+
+        $this->addFlash('danger', 'Le Frais <b>' . $fraisName . '</b> à été supprimé définitivement');
+
+        return $this->redirectToRoute('frais_index', [], Response::HTTP_SEE_OTHER);
     }
 
 }

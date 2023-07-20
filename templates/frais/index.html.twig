@@ -1,20 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FraisController!{% endblock %}
+{% block title %}Frais{% endblock %}
+
+{% block title_main %}Liste de mes <b>Frais</b>{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Frais /</span> Mes Frais</h4>
+            {{ include('frais/_table.html.twig') }}
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/K4gur0/PhpstormProjects/kh-immobilier/src/Controller/FraisController.php'|file_link(0) }}">src/Controller/FraisController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/K4gur0/PhpstormProjects/kh-immobilier/templates/frais/index.html.twig'|file_link(0) }}">templates/frais/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
+

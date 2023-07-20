@@ -123,11 +123,17 @@ class User implements UserInterface, \Serializable
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Frais::class, mappedBy="User")
+     */
+    private $frais;
+
     public function __construct()
     {
         $this->biens_immos = new ArrayCollection();
         $this->locataires = new ArrayCollection();
         $this->etatDesLieuxes = new ArrayCollection();
+        $this->frais = new ArrayCollection();
     }
 
     public function __toString()
@@ -481,6 +487,36 @@ class User implements UserInterface, \Serializable
             $this->email,
             $this->password,
             ) = unserialize($serialized);
+    }
+
+    /**
+     * @return Collection<int, Frais>
+     */
+    public function getFrais(): Collection
+    {
+        return $this->frais;
+    }
+
+    public function addFrai(Frais $frai): self
+    {
+        if (!$this->frais->contains($frai)) {
+            $this->frais[] = $frai;
+            $frai->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFrai(Frais $frai): self
+    {
+        if ($this->frais->removeElement($frai)) {
+            // set the owning side to null (unless already changed)
+            if ($frai->getUser() === $this) {
+                $frai->setUser(null);
+            }
+        }
+
+        return $this;
     }
 
 }

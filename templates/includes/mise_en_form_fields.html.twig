@@ -77,7 +77,7 @@
                                 {% for child in field.children %}
                                     <li class="is-relative">
                                         {{ form_widget(child, {'attr':{'class':'row justify-content-center position-relative'~field_error_class}}) }}
-                                        <a type="button" href="{{ path('frais_delete', {'id': child.vars.value.id}) }}" class="'btn btn-sm btn-danger btn-icon rounded-pill col-auto is-absolute bottom-0 end-0 me-3 ajax-del-frais">
+                                        <a type="button" href="{{ path('bien_immo_frais_delete', {'id': child.vars.value.id}) }}" class="'btn btn-sm btn-danger btn-icon rounded-pill col-auto is-absolute bottom-0 end-0 me-3 ajax-del-frais">
                                             <i class='bx bx-minus'></i>
                                         </a>
                                     </li>

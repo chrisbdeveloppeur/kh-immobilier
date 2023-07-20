@@ -53,9 +53,19 @@ class FraisType extends AbstractType
                 'help' => 'Montant du frais',
                 'attr' => [
                     'data-units' => '€',
-                    'placeholder' => '50'
+                    'placeholder' => '50',
+                    'class' => 'form-control me-2',
                 ],
                 'required' => false,
+                'row_attr' => [
+                    'class' => 'col-6'
+                ],
+                'help_attr' => [
+                    'class' => 'form-text'
+                ],
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
             ])
         ;
 

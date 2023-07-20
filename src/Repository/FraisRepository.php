@@ -40,11 +40,13 @@ class FraisRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByUser(User $user): ?Frais
+    public function findByUser(User $user)
     {
         return $this->createQueryBuilder('f')
-            ->where('f.user = :user')
+            ->where('f.User = :user')
+            //->orWhere('f.BienImmo IN (:biens_immos)')
             ->setParameter('user', $user)
+            //->setParameter('biens_immos', $user->getBiensImmos())
             ->getQuery()
             ->getResult()
             ;

@@ -2,7 +2,7 @@
 
 {% block title %}Modification du frais{% endblock %}
 
-{% block title_main %}Modification du frais <b></b>{% endblock %}
+{% block title_main %}Modification du frais <b>{{ frais|default('Frais #'~frais.id) }}</b>{% endblock %}
 
 {% block body %}
 
