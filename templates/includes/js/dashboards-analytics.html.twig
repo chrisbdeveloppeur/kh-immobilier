@@ -521,13 +521,13 @@
         const statistiqueLoyers = document.querySelector('#statistiqueLoyers'),
             orderChartConfig = {
                 chart: {
-                    height: 165,
-                    width: 150,
+                    height: 220,
+                    width: 220,
                     type: 'donut'
                 },
-                labels: ['Loyers','Crédits','Frais'],
-                series: [{{ total_loyers|number_format(0,',','') }}, {{ total_credit|number_format(0,',','') }}, {{ total_frais|number_format(0,',','') }}],
-                colors: [config.colors.yellow, config.colors.danger, config.colors.danger ],
+                labels: ['Loyers','Bénéfices anexes','Crédits','Frais'],
+                series: [{{ total_loyers|number_format(0,',','') }}, {{ benefices_ex|number_format(0,',','') }}, {{ total_credit|number_format(0,',','') }}, {{ total_frais|number_format(0,',','') }}],
+                colors: [config.colors.yellow, config.colors.success, config.colors.danger, config.colors.danger ],
                 stroke: {
                     width: 3,
                     colors: cardColor

@@ -55,7 +55,8 @@ class ImmoController extends AbstractController
             "biens_immos" => $all_biens_immos,
             "locataires" => $all_locataires,
             "quittances" => $quittances,
-            "lastQuittances" => $lastQuittances
+            "lastQuittances" => $lastQuittances,
+            "user" => $user,
         ]);
     }
 

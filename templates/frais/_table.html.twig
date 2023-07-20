@@ -9,16 +9,16 @@
                             <b>Vous n'avez aucun Frais enregistrés</b>
                         </span>
                     </span>
-            <a href="{{ path('frais_new') }}#logement" class="button is-small is-info is-light">Ajouter un frais</a>
+            <a href="{{ path('frais_new') }}" class="button is-small is-info is-light">Ajouter un frais</a>
         </div>
     </div>
 {% else %}
     <div class="mb-2 is-flex is-justify-content-end">
-        <a href="{{ path('frais_new') }}#logement" class="btn btn-sm btn-outline-primary">
-                <span class="icon">
-                    <i class="fas fa-lg fa-building"></i>
-                    <i class="fas fa-plus"></i>
-                </span>
+        <a href="{{ path('frais_new') }}" class="btn btn-sm btn-outline-primary is-flex align-items-center">
+            <span class="icon me-1">
+                <i class="fas fa-lg fa-money-bill-wave"></i>
+                <i class="fas fa-sm fa-plus"></i>
+            </span>
             <span>
                 Ajouter un frais
             </span>
@@ -69,8 +69,34 @@
                     {% for frais in all_frais %}
                         <tr class="">
 
+                            <td title="{{ frais.name }}" class="nowrap-text">
+                                {% if frais.name %}
+                                    <span class="badge bg-label-primary"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-offset="0,14"
+                                          data-bs-placement="top"
+                                          data-bs-trigger="hover focus"
+                                          data-bs-html="true"
+                                          title="<small>{{ frais.name }}</small>"
+                                    >
+                                        {{ frais.name|u.truncate(15, '...') }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-label-secondary"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-offset="0,14"
+                                          data-bs-placement="top"
+                                          data-bs-trigger="hover focus"
+                                          data-bs-html="true"
+                                          title="<small>Non communiqué</small>"
+                                    >
+                                    N/C
+                                    </span>
+                                {% endif %}
+                            </td>
+
                             <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                                <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
 
                                     <a type="button" class="btn btn-outline-primary"
                                        href="{{ path('frais_show', {'id': frais.id}) }}"
@@ -99,28 +125,11 @@
                                        data-bs-offset="0,4"
                                        data-bs-placement="top"
                                        data-bs-html="true"
-                                       title="<small>Supprimer le logement</small>"
+                                       title="<small>Supprimer le frais</small>"
                                     >
                                         <i class='bx bx-xs bxs-trash'></i>
                                     </a>
                                 </div>
-                            </td>
-
-                            <td title="{{ frais.name }}">
-                                {% if frais.name %}
-                                    {{ frais.name }}
-                                {% else %}
-                                    <span class="badge bg-label-secondary"
-                                          data-bs-toggle="tooltip"
-                                          data-bs-offset="0,14"
-                                          data-bs-placement="top"
-                                          data-bs-trigger="hover focus"
-                                          data-bs-html="true"
-                                          title="<small>Non communiqué</small>"
-                                    >
-                                    N/C
-                                    </span>
-                                {% endif %}
                             </td>
 
                             <td title="{{ frais.quantity }}">

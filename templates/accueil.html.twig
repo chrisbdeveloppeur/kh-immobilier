@@ -11,6 +11,7 @@
 {% set nb_quittances_partial = 0  %}
 {% set total_credit = 0 %}
 {% set benefices = 0 %}
+{% set benefices_ex = 0 %}
 {% set total_frais = 0 %}
 {% set total_biens_loges = 0 %}
 {% set total_biens_vides = 0 %}
@@ -44,13 +45,24 @@
             {% set total_frais = total_frais + frai.quantity %}
         {% endfor %}
 
-        {% set benefices = benefices + bien_immo.beneficeNet %}
+        {% set benefices = benefices + bien_immo.beneficeNet - total_frais %}
     {% else %}
         {% set total_biens_vides = total_biens_vides + 1 %}
     {% endif %}
 {% endfor %}
 {% set total_revenu_ttc = total_loyers + total_charges %}
 
+{% for frai_ex in user.frais %}
+    {% if frai_ex.mensuel %}
+        {% if frai_ex.benefice %}
+            {% set benefices_ex = benefices_ex + frai_ex.quantity %}
+        {% else %}
+            {% set total_frais = total_frais + frai_ex.quantity %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{% set benefices = benefices + benefices_ex %}
 
 {% for quittance in quittances %}
 {#    {% set total_loyers = total_loyers + quittance.loyerTtc %}#}
