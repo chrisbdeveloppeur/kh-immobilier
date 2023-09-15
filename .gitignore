@@ -34,3 +34,6 @@ yarn-error.log
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 .idea/*
+.idea/
+.idea/php.xml
+.idea/edit_word.iml
