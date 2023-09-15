@@ -10,3 +10,9 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+
+import './datatables';
+import DataTable from 'datatables.net-dt';
+
+
+import $ from "jquery";

@@ -24,18 +24,18 @@
             </span>
         </a>
     </div>
-            <div class="card px-3 pt-2 overflow-scroll perfect-scrollbar table-responsive">
-                <table class="table table-sm table-hover">
+
+            <div class="card px-3 overflow-scroll perfect-scrollbar table-responsive">
+                <table class="table table-sm table-hover datatable" id="datatable">
                     <caption>
                         <small>
                             Vous avez un total de {{ biens_immos.getTotalItemCount }} Biens immobiliés enregistrés
                         </small>
-                        {{ knp_pagination_render(biens_immos) }}
                     </caption>
                     <thead>
                     <tr class="">
                         <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Libelle', 'libelle') }}</span>
+                            <span>Libelle</span>
                         </th>
 
                         <th>
@@ -43,25 +43,25 @@
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Rue', 'street') }}</span>
+                            <span>Rue</span>
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Ville', 'city') }}</span>
+                            <span>Ville</span>
                         </th>
                         <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Type', 'type') }}</span>
+                            <span>Type</span>
                         </th>
                         <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Superficie', 'superficie') }}</span>
-                        </th>
-
-                        <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Loyer TTC', 'loyer_ttc') }}</span>
+                            <span>Superficie</span>
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Frais', 'frais') }}</span>
+                            <span>Loyer TTC</span>
+                        </th>
+
+                        <th>
+                            <span>Frais</span>
                         </th>
 
                         <th>
@@ -69,11 +69,11 @@
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(biens_immos, 'Locataire', ['locataires.current.lastname']) }}</span>
+                            <span>Locataire</span>
                         </th>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
                             <th>
-                                <span>{{ knp_pagination_sortable(biens_immos, 'Gestionnaire', ['user']) }}</span>
+                                <span>Gestionnaire</span>
                             </th>
                         {% endif %}
                     </tr>
@@ -259,3 +259,4 @@
                 </table>
             </div>
 {% endif %}
+

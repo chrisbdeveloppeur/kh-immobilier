@@ -48,6 +48,10 @@
         <!-- Page -->
         <link rel="stylesheet" href="{{ asset('vendor/css/pages/page-auth.css') }}" />
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- DATATABLE STYLESHEET -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
     {% endblock %}
 
 {#    {% block javascripts %}#}
@@ -170,6 +174,10 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 {% block javascripts %}
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script>
         function submitForms(){
