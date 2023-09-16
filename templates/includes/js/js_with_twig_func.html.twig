@@ -1,0 +1,15 @@
+<script>
+    ////// SCRIPT REMOVE READONLY ON NEW ENTITY FORMS
+    {% if 'new' in app.request.get('_route') %}
+    let forms = document.querySelectorAll('form');
+    forms.forEach(function (form) {
+        let formInputs = form.querySelectorAll('.readonly');
+        formInputs.forEach(function (input) {
+            input.classList.remove('readonly');
+            input.removeAttribute('readonly');
+            input.style.background = '#ffffff';
+            input.classList.remove('remove-mouse-events');
+        })
+    });
+    {% endif %}
+</script>

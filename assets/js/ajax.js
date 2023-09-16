@@ -1,0 +1,49 @@
+//{#       SCRIPT AJAX       #}
+
+let ajaxQuittancePayedBtns = document.querySelectorAll('.ajax-quittance-payed-btn');
+ajaxQuittancePayedBtns.forEach(function (btn) {
+    btn.addEventListener('click',ajaxQuittancePayed)
+});
+function ajaxQuittancePayed(event){
+    let element = this;
+    let txt = element.querySelector('.txt');
+    event.preventDefault();
+    const url = this.href;
+    element.classList.add('is-loading');
+    axios.get(url).then(function (response) {
+        if (element.classList.contains('bg-label-warning')){
+            element.classList.replace('bg-label-warning', 'bg-label-success');
+            element.title = "Dernier loyer reçus";
+            if (txt){
+                txt.innerHTML = 'Payée';
+            }
+            element.querySelector('i').classList.replace('bx-calendar-exclamation', 'bxs-calendar-check');
+        }else{
+            element.classList.replace('bg-label-success', 'bg-label-warning');
+            if (txt){
+                txt.innerHTML = 'Non payée';
+            }
+            element.title = "Dernier loyer non reçus";
+            element.querySelector('i').classList.replace('bxs-calendar-check', 'bx-calendar-exclamation')
+        }
+        if (element.parentElement){element.parentElement.setAttribute('data-bs-content',element.title)}
+        element.classList.remove('is-loading');
+    });
+}
+
+
+let ajaxDeleteFraisBtn = document.querySelectorAll('.ajax-del-frais');
+ajaxDeleteFraisBtn.forEach(function (btn) {
+    btn.addEventListener('click',ajaxDeleteFrais)
+});
+function ajaxDeleteFrais(event){
+    let element = this;
+    event.preventDefault();
+    const url = this.href;
+    element.parentElement.remove();
+    axios.get(url).then(function (response) {
+
+    });
+}
+
+//{#     ##############################################     #}
