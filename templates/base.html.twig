@@ -49,8 +49,11 @@
         <link rel="stylesheet" href="{{ asset('vendor/css/pages/page-auth.css') }}" />
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+        <!--    STYLSHEETS BULMA   -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
         <!-- DATATABLE STYLESHEET -->
-        <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.2/fh-3.4.0/r-2.5.0/sb-1.5.0/sp-2.2.0/sl-1.7.0/datatables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-1.13.6/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-print-2.4.2/fh-3.4.0/r-2.5.0/sb-1.5.0/sp-2.2.0/sl-1.7.0/sr-1.3.0/datatables.min.css" rel="stylesheet">
 
     {% endblock %}
 
@@ -177,18 +180,40 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 {#   CDN DATATABLES   #}
-<script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.2/fh-3.4.0/r-2.5.0/sb-1.5.0/sp-2.2.0/sl-1.7.0/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-1.13.6/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-print-2.4.2/fh-3.4.0/r-2.5.0/sb-1.5.0/sp-2.2.0/sl-1.7.0/sr-1.3.0/datatables.min.js"></script>
 
 {#   CDN AXIOS AJAX   #}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 {% block javascripts %}
 
-    <script>
-        let datatables = $('.datatable').DataTable();
-    </script>
-
+    {{ include('includes/js/ajax.html.twig') }}
+    {{ include('includes/js/general.html.twig') }}
+    {{ include('includes/js/sneat.html.twig') }}
     {{ include('includes/js/js_with_twig_func.html.twig') }}
+
+    <script>
+        let datatables = $('.dataTable').DataTable({
+            select: false,
+            responsive: false,
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json',
+            },
+        });
+
+        let biensImmosDatatable = $('#biensImmosDatatable').DataTable({
+            select: true,
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/fr-FR.json',
+            },
+        })
+    </script>
 
     <script>
         function submitForms(){

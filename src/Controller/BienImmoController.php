@@ -50,17 +50,9 @@ class BienImmoController extends AbstractController
     /**
      * @Route("/", name="bien_immo_index", methods={"GET"})
      */
-    public function index(PaginatorInterface $paginator, Request $request): Response
+    public function index(): Response
     {
-        $biens_immos = $paginator->paginate(
-            $this->all_biens_immos,
-            $request->query->getInt('page',1),
-            $request->query->getInt('numItemsPerPage',20),
-            array(
-                'defaultSortFieldName' => 'locataires.current',
-                'defaultSortDirection' => 'asc',
-            )
-        );
+        $biens_immos = $this->all_biens_immos;
 
         return $this->render('bien_immo/index.html.twig', [
             'biens_immos' => $biens_immos,

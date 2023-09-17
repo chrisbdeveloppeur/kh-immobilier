@@ -32,17 +32,9 @@ class FraisController extends AbstractController
     /**
      * @Route("/index", name="_index")
      */
-    public function index(FraisRepository $fraisRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(): Response
     {
-        $all_frais = $paginator->paginate(
-            $this->allFrais,
-            $request->query->getInt('page',1),
-            $request->query->getInt('numItemsPerPage',20),
-            array(
-                'defaultSortFieldName' => 'locataires.current',
-                'defaultSortDirection' => 'asc',
-            )
-        );
+        $all_frais = $this->allFrais;
 
         return $this->render('frais/index.html.twig', [
             'all_frais' => $all_frais,

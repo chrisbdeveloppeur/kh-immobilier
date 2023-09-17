@@ -4,82 +4,51 @@ namespace App\DataFixtures;
 
 use App\Entity\BienImmo;
 use App\Entity\Copropriete;
+use App\Entity\Frais;
 use App\Entity\Locataire;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 class AppFixtures extends Fixture
 {
     private $encoder;
+    private $faker;
 
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
+        $this->faker = Faker\Factory::create('fr_FR');
     }
 
     public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create('fr_FR');
 
-/*
-        $locataire = $this->setLocataire('Couple','Axel et Laurine','MAKAGNON','axel.makagnon@gmail.com','Espèces');
-        $bien = $this->setBien($locataire,'4 Place Vaillant couturier','91100','Corbeil-Essonnes','800','200','7','T4','FONCIA','80');
-        $manager->persist($locataire);
-        $manager->persist($bien);
-
-        $locataire2 = $this->setLocataire('M.','Maël','DASSE','','Virement bancaire');
-        $bien2 = $this->setBien($locataire2,'41 Rue Victor Hugo','10700','Rosières-près-Troys','400','40','2','Studio','','0');
-        $manager->persist($locataire2);
-        $manager->persist($bien2);
-
-        $locataire3 = $this->setLocataire('Mme.','Raymond','KANGA','','Virement bancaire');
-        $bien3 = $this->setBien($locataire3,'21 Avenue des Sablon','91350','Grigny','410','90','2','T2','','0');
-        $manager->persist($locataire3);
-        $manager->persist($bien3);
-
-        $locataire4 = $this->setLocataire('M.','Germain','MPANA','','Virement bancaire');
-        $bien4 = $this->setBien($locataire4,'6 Avenue des Sablon','91350','Grigny','500','160','15','T3','','0');
-        $manager->persist($locataire4);
-        $manager->persist($bien4);
-
-        $locataire5 = $this->setLocataire('Mme.','Alice','PICARD','','Virement bancaire');
-        $bien5 = $this->setBien($locataire5,'26 rue Jean piestre','91100','Corbeil-Essonnes','700','50','10','Studio','MATERA','35');
-        $manager->persist($locataire5);
-        $manager->persist($bien5);
-
-*/
-
-        //make privilege $users
-        /*
-        for ($i = 1; $i <= 2; $i++){
-            $user = new User();
-            $user->setEmail('admin'.$i.'@gmail.com');
-//            $user->setGender($faker->randomElement(['M.','Mme.']));
-            $user->setRoles(['ROLE_ADMIN']);
-            $user->setIsVerified(1);
-            $password = $this->encoder->encodePassword($user, '123456');
-            $user->setPassword($password);
-            $user->setFirstName('admin'.$i.' name');
-            $user->setLastName('admin'.$i.' last name');
-
-            $manager->persist($user);
-        }
-        */
-//*/
-
-        for ($i = 0; $i<= 15; $i++) {
+        // Création des User
+        for ($i = 0; $i<= 10; $i++) {
             $user = $this->setUser($i);
 
-            for ($j = 0; $j <= 5; $j++)
+            // Création des logements pour chaque User
+            for ($j = 0; $j <= 150; $j++)
             {
+                // Création d'un locataire
                 $locataire = $this->setLocataire();
                 $bien = $this->setBien();
                 $bien->addLocataire($locataire);
                 $user->addLocataire($locataire);
                 $user->addBiensImmo($bien);
+            }
+
+            // Création des frais
+            for ($k = 0; $k <= 119; $k++)
+            {
+                // Création d'un locataire
+                $frais = $this->addFrais($user);
+                $user->addFrai($frais);
+                $manager->persist($frais);
             }
 
             $manager->persist($locataire);
@@ -88,6 +57,20 @@ class AppFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+
+    private function addFrais(User $user, BienImmo $bienImmo = null){
+        $frais = new Frais();
+        $frais->setName($this->faker->text(10));
+        $frais->setQuantity($this->faker->numberBetween(5,2000));
+        $frais->setDate($this->faker->dateTimeBetween('-3 months','now'));
+        $frais->setBenefice(0);
+        $frais->setMensuel($this->faker->boolean);
+        $frais->setUser($user);
+        $frais->setBienImmo($bienImmo);
+
+        return $frais;
     }
 
 

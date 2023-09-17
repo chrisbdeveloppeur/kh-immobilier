@@ -38,17 +38,9 @@ class LocataireController extends AbstractController
     /**
      * @Route("/", name="locataire_index", methods={"GET"})
      */
-    public function index(Request $request, PaginatorInterface $paginator): Response
+    public function index(): Response
     {
-        $locataires = $paginator->paginate(
-            $this->locatairesByUser,
-            $request->query->getInt('page',1),
-            $request->query->getInt('numItemsPerPage',20),
-            array(
-                'defaultSortFieldName' => 'sanslogement',
-                'defaultSortDirection' => 'desc',
-            )
-        );
+        $locataires = $this->locatairesByUser;
         return $this->render('locataire/index.html.twig', [
             'locataires' => $locataires,
         ]);

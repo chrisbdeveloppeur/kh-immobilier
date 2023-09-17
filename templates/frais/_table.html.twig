@@ -15,51 +15,46 @@
 {% else %}
     <div class="mb-2 is-flex is-justify-content-end">
         <a href="{{ path('frais_new') }}" class="btn btn-sm btn-outline-primary is-flex align-items-center">
-            <span class="icon me-1">
-                <i class="fas fa-lg fa-money-bill-wave"></i>
-                <i class="fas fa-sm fa-plus"></i>
-            </span>
             <span>
                 Ajouter un frais
             </span>
         </a>
     </div>
-            <div class="card px-3 pt-2 overflow-scroll perfect-scrollbar table-responsive">
-                <table class="table table-sm table-hover">
+            <div class="card p-3 perfect-scrollbar table-responsive">
+                <table class="table table-sm table-hover dataTable">
                     <caption>
                         <small>
-                            Vous avez un total de {{ all_frais.getTotalItemCount }} Frais enregistrés
+                            Vous avez un total de {{ all_frais|length }} Frais enregistrés
                         </small>
-                        {{ knp_pagination_render(all_frais) }}
                     </caption>
                     <thead>
                     <tr class="">
                         <th>
-                            <span>{{ knp_pagination_sortable(all_frais, 'Libelle', 'name') }}</span>
+                            Libelle
                         </th>
 
                         <th>
-                            <span>Actions</span>
+                            Montant
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(all_frais, 'Montant', 'quantity') }}</span>
+                            Date
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(all_frais, 'Date', 'date') }}</span>
+                            Mensualisation
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(all_frais, 'Mensualisation', 'mensuel') }}</span>
+                            Bénéfice/Déficit
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(all_frais, 'Bénéfice/Déficit', 'benefice') }}</span>
+                            Bien immo
                         </th>
 
                         <th>
-                            <span>{{ knp_pagination_sortable(all_frais, 'Bien immo', 'bien_immo') }}</span>
+                            Actions
                         </th>
 
                     </tr>
@@ -93,43 +88,6 @@
                                     N/C
                                     </span>
                                 {% endif %}
-                            </td>
-
-                            <td>
-                                <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
-
-                                    <a type="button" class="btn btn-outline-primary"
-                                       href="{{ path('frais_show', {'id': frais.id}) }}"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>Voir les détails de ce Frais</small>"
-                                    >
-                                        <i class='bx bx-xs bx-show-alt'></i>
-                                    </a>
-
-                                    <a type="button" class="btn btn-outline-primary" href="{{ path('frais_edit', {'id': frais.id}) }}"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>Modifier le Frais</small>"
-                                    >
-                                        <i class='bx bx-xs bxs-edit-alt'></i>
-                                    </a>
-
-                                    <a type="button" class="btn btn-danger" href="{{ path('frais_delete', {'id': frais.id}) }}"
-                                       onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce frais?');"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-offset="0,4"
-                                       data-bs-placement="top"
-                                       data-bs-html="true"
-                                       title="<small>Supprimer le frais</small>"
-                                    >
-                                        <i class='bx bx-xs bxs-trash'></i>
-                                    </a>
-                                </div>
                             </td>
 
                             <td title="{{ frais.quantity }}">
@@ -236,6 +194,43 @@
                                     Non affilié
                                     </span>
                                 {% endif %}
+                            </td>
+
+                            <td>
+                                <div class="btn-group btn-group-xs" role="group" aria-label="Basic radio toggle button group">
+
+                                    <a type="button" class="btn btn-outline-primary"
+                                       href="{{ path('frais_show', {'id': frais.id}) }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Voir les détails de ce Frais</small>"
+                                    >
+                                        <i class='bx bx-xs bx-show-alt'></i>
+                                    </a>
+
+                                    <a type="button" class="btn btn-outline-primary" href="{{ path('frais_edit', {'id': frais.id}) }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Modifier le Frais</small>"
+                                    >
+                                        <i class='bx bx-xs bxs-edit-alt'></i>
+                                    </a>
+
+                                    <a type="button" class="btn btn-danger" href="{{ path('frais_delete', {'id': frais.id}) }}"
+                                       onclick="return confirm('Etes-vous sur de vouloir supprimer définitivement ce frais?');"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Supprimer le frais</small>"
+                                    >
+                                        <i class='bx bx-xs bxs-trash'></i>
+                                    </a>
+                                </div>
                             </td>
 
                         </tr>

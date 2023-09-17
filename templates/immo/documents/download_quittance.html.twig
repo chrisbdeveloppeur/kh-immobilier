@@ -14,21 +14,23 @@
                         <b>{{ quittance.fullNameFile }}</b>
                     </div>
                         <div class="card-content">
-                            <small>
-                                Vous pouvez retrouver cette quittance également sur la page
-                                <a type="button"
-                                   class="btn btn-xs btn-primary"
-                                   href="{{ path('quittances_index', {'bien_id':bien_immo.id})  }}"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-offset="0,4"
-                                   data-bs-placement="top"
-                                   data-bs-html="true"
-                                   title="<small>Se rendre sur la page quittances</small>"
-                                >
-                                    <span class="tf-icons bx bxs-archive"></span>
-                                    Quittances
-                                </a>
-                            </small>
+                            <div class="content">
+                                <small>
+                                    Vous pouvez retrouver cette quittance également sur la page
+                                    <a type="button"
+                                       class="btn btn-xs btn-primary"
+                                       href="{{ path('quittances_index', {'bien_id':bien_immo.id})  }}"
+                                       data-bs-toggle="tooltip"
+                                       data-bs-offset="0,4"
+                                       data-bs-placement="top"
+                                       data-bs-html="true"
+                                       title="<small>Se rendre sur la page quittances</small>"
+                                    >
+                                        <span class="tf-icons bx bxs-archive"></span>
+                                        Quittances
+                                    </a>
+                                </small>
+                            </div>
                         </div>
                 </div>
 

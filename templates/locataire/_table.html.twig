@@ -21,35 +21,34 @@
             </span>
         </a>
     </div>
-    <div class="card px-3 pt-2 overflow-scroll perfect-scrollbar table-responsive">
-        <table class="table table-hover table-sm">
+    <div class="card p-3 perfect-scrollbar table-responsive">
+        <table class="table table-hover table-sm dataTable">
 
             <caption>
                 <small>
-                    Vous avez un total de {{ locataires.getTotalItemCount }} locataires enregistrés
+                    Vous avez un total de {{ locataires|length }} locataires enregistrés
                 </small>
-                {{ knp_pagination_render(locataires) }}
             </caption>
 
             <thead>
                 <tr>
                     <th>
-                        {{ knp_pagination_sortable(locataires, 'Genre', 'gender') }}
+                        Genre
                     </th>
                     <th>
-                        {{ knp_pagination_sortable(locataires, 'Nom', 'last_name') }}
+                        Nom
                     </th>
                     <th>
-                        {{ knp_pagination_sortable(locataires, 'Prénom', 'first_name') }}
+                        Prénom
                     </th>
                     <th>
-                        {{ knp_pagination_sortable(locataires, 'Email', 'email') }}
+                        Email
                     </th>
                     <th>
-                        {{ knp_pagination_sortable(locataires, 'Tel', 'phone') }}
+                        Tel
                     </th>
                     <th>
-                        {{ knp_pagination_sortable(locataires, 'Logement', 'logement') }}
+                        Logement
                     </th>
                     <th>
                         Actions

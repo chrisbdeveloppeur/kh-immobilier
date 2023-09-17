@@ -8,18 +8,25 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 
-import './js/ajax';
-import './js/sneat';
-import './js/general';
+//import './js/ajax';
+//import './js/sneat';
+//import './js/general';
 
 // start the Stimulus application
 import './bootstrap';
 import $ from "jquery";
-import DataTable from 'datatables.net-bs5';
-import 'datatables.net-buttons-bs5';
-import 'datatables.net-fixedheader-bs5';
-import 'datatables.net-responsive-bs5';
-import 'datatables.net-searchbuilder-bs5';
-import 'datatables.net-searchpanes-bs5';
-import 'datatables.net-select-bs5';
+import jQuery from "jquery";
+import DataTable from 'datatables.net-dt';
+import 'datatables.net-autofill-dt';
+import 'datatables.net-buttons-dt';
+import 'datatables.net-buttons/js/buttons.colVis.mjs';
+import 'datatables.net-buttons/js/buttons.print.mjs';
+import 'datatables.net-fixedheader-dt';
+import 'datatables.net-responsive-dt';
+import 'datatables.net-searchbuilder-dt';
+import 'datatables.net-searchpanes-dt';
+import 'datatables.net-select-dt';
+import 'datatables.net-staterestore-dt';
+
+//import './js/datatable/traducteur'
 

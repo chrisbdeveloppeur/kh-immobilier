@@ -1,0 +1,521 @@
+<script>
+    {#       SHOW ON HOVER       #}
+
+    let onHoverElements = document.querySelectorAll('.show-on-hover');
+    onHoverElements.forEach(function(elem) {
+            let targetToShow = elem.querySelector('.show-on-hover-target');
+            if (targetToShow){
+                const width = (targetToShow.scrollWidth) + "px";
+                elem.addEventListener('mouseover', function () {
+                    targetToShow.classList.add('show-on-hover-target-active');
+                    targetToShow.style.width = width;
+                });
+                elem.addEventListener('mouseleave', function () {
+                    targetToShow.classList.remove('show-on-hover-target-active');
+                    targetToShow.style.width = '0';
+                });
+            }
+        }
+    );
+
+    {#     ##############################################     #}
+
+
+    //      REMOVE TIMER
+
+    function removeAfterTimer(element, time) {
+        setTimeout(function () {
+            element.style.transition = '5s';
+            element.style.opacity = '0';
+            setTimeout(function () {
+                element.classList.add('is-hidden')
+            },5000);
+        },time + '000');
+    }
+
+    {#     ##############################################     #}
+
+
+    {#     REMOVE FLASH MSG BASE     #}
+
+    let objectToRemove = document.querySelectorAll('.remove-timer-5s');
+    objectToRemove.forEach(elem => removeAfterTimer(elem, 10));
+
+    {#     ##############################################     #}
+
+
+
+    {#     SCRIPTS POUR AJOUT INFORMATION PRESTATIONS DEVIS     #}
+
+    function addInfosPresta(elem) {
+        let infosPrestaForms = document.getElementById('infos-prestations');
+
+        for (i=0 ; i < infosPrestaForms.children.length ; i++){
+            let child = infosPrestaForms.children[i];
+
+            if (child.classList.contains('is-hidden')){
+                if (i === infosPrestaForms.children.length - 1){
+                    elem.classList.add('is-hidden')
+                } else {
+                    elem.classList.remove('is-hidden')
+                }
+                if (i > 0){
+                    elem.nextElementSibling.classList.remove('is-hidden')
+                } else {
+                    elem.nextElementSibling.classList.add('is-hidden')
+                }
+                child.classList.toggle('is-hidden');
+                break
+            }
+        }
+
+    }
+
+    function removeInfosPresta(elem) {
+        let infosPrestaForms = document.getElementById('infos-prestations');
+
+        for ( j=1 ; j <= infosPrestaForms.children.length ; j++){
+
+            if (!infosPrestaForms.children[j].classList.contains('is-hidden')){
+
+                if (j === infosPrestaForms.children.length - 1){
+                    elem.classList.add('is-hidden');
+                } else {
+                    elem.classList.remove('is-hidden');
+                }
+                if (j >= 0){
+                    elem.previousElementSibling.classList.remove('is-hidden');
+                } else {
+                    elem.previousElementSibling.classList.add('is-hidden');
+                }
+
+                infosPrestaForms.children[j].classList.toggle('is-hidden');
+                break
+            }
+        }
+    }
+
+    {#     ##############################################     #}
+
+
+
+    {#      CHANGE REDIRECTION FOR EDIT LOCATAIRE ON SELECT      #}
+
+    let selectLocataires = document.getElementById('bien_immo_locataires');
+    let selectLogement = document.getElementById('locataire_logement');
+    let redirectLink = document.getElementById('redirect-adapt-link');
+
+    if (selectLocataires) {
+        selectLocataires.addEventListener('change',event => adaptRedirectLink(event, '/locataire/'));
+        let id = selectLocataires.value;
+        window.onload = modifRedirectLink(id, '/locataire/');
+    }
+    if (selectLogement) {
+        selectLogement.addEventListener('change',event => adaptRedirectLink(event, '/bien/immo/'));
+        let id = selectLogement.value;
+        window.onload = modifRedirectLink(id, '/bien/immo/');
+    }
+
+
+    function adaptRedirectLink(event, entity) {
+        let id = event.target.value;
+        modifRedirectLink(id, entity);
+    }
+
+
+    function modifRedirectLink(id, entity) {
+        if (id){
+            let endingUrl = '';
+            if (entity === '/bien/immo/') {
+                endingUrl = '/edit/#logement';
+            } else if (entity === '/locataire/') {
+                endingUrl = '/edit/#locataire';
+            }else {
+                endingUrl = '/edit/';
+            }
+            if (redirectLink){
+                redirectLink.href = entity+id+endingUrl;
+                redirectLink.removeAttribute('disabled', 'disabled');
+            }
+        } else {
+            if (redirectLink){
+                redirectLink.href = '#';
+                redirectLink.setAttribute('disabled', 'disabled');
+            }
+        }
+    }
+
+    {#     ##############################################     #}
+
+
+
+
+    {#    TOOGLE DISABLED      #}
+
+    let disabledClass = document.querySelectorAll('.disabled');
+    disabledClass.forEach(function (elem) {
+        elem.setAttribute('disabled','disabled');
+    });
+
+    function toogleDisabledClass() {
+        disabledClass.forEach(function (elem) {
+            elem.toggleAttribute('disabled');
+        });
+    }
+
+
+    {#    TOOTLGE READ-ONLY      #}
+
+    let readonlyClass = document.querySelectorAll('.readonly');
+    readonlyClass.forEach(function (elem) {
+        elem.setAttribute('readonly','readonly');
+        if (elem.hasAttribute('readonly')){
+            elem.style.background = '#dbdbdb';
+            elem.classList.add('remove-mouse-events');
+        }else {
+            elem.style.background = '#ffffff';
+            elem.classList.remove('remove-mouse-events');
+        }
+    });
+
+    function toogleReadonlyClass(btn) {
+        let form = btn.closest('form');
+        let inputs = form.querySelectorAll('.readonly');
+        inputs.forEach(function (elem) {
+            elem.toggleAttribute('readonly');
+            if (elem.hasAttribute('readonly')){
+                elem.style.background = '#dbdbdb';
+                elem.classList.add('remove-mouse-events');
+            }else {
+                elem.style.background = '#ffffff';
+                elem.classList.remove('remove-mouse-events');
+            }
+        });
+    }
+
+    {#     ##############################################     #}
+
+
+
+    {#     IS-LOADING     #}
+
+    function isLoading(el) {
+        let btn = el.getElementsByClassName('btn-submit');
+        if (btn[0]) {
+            btn[0].classList.add('is-loading');
+        }
+    }
+
+    {#     ##############################################     #}
+
+
+    {#     NAVBAR-DROPDOWN     #}
+
+    document.addEventListener('click', function (event) {
+        let navbarDropdown = document.querySelectorAll('div.navbar-item.has-dropdown, div.navbar-item.has-dropdown > *, div.navbar-item.has-dropdown > * > *, .custom-dropdown');
+        let navbarBurger = document.querySelectorAll('.navbar-burger');
+        let sections = document.querySelectorAll('section');
+        let navbarMenu = document.getElementById('navbarMenu');
+        let target = event.target;
+
+        // navbarDropdown.forEach(function (drop) {
+        //     if (Array.from(navbarDropdown).find(node => node === target)) {
+        //         drop.classList.toggle('is-active');
+        //     }else {
+        //         drop.classList.remove('is-active');
+        //     }
+        // });
+
+        navbarBurger.forEach(function (drop) {
+            if ( target.parentElement === drop || target === drop){
+                navbarMenu.classList.toggle('is-active');
+            }else {
+                if (navbarMenu){
+                    navbarMenu.classList.remove('is-active');
+                }
+                drop.classList.remove('is-active');
+            }
+        });
+
+        sections.forEach(function (section) {
+            section.addEventListener('click', function () {
+                if (navbarMenu){
+                    navbarMenu.classList.remove('is-active');
+                }
+            })
+        })
+    });
+
+    {#     ##############################################     #}
+
+
+
+    {#     ############   SCRIPT FOR TABS BIEN_IMMO   #############     #}
+
+    let tabs = document.querySelectorAll('.tabs').forEach(function (elem) {
+        let lis = elem.querySelectorAll('li');
+        lis.forEach(function (li) {
+            li.addEventListener('click', function () {
+                let id = li.previousElementSibling.id;
+                if (id){
+                    window.location = '#' + id;
+                    let fields = document.querySelectorAll('.'+id);
+                    let notfields = document.querySelectorAll('.bien-immo');
+                    lis.forEach(function (el) {
+                        el.classList.remove('is-active');
+                        el.querySelector('a').classList.remove('has-text-white','has-text-weight-bold');
+                    });
+                    li.classList.add('is-active');
+                    li.querySelector('a').classList.add('has-text-white','has-text-weight-bold');
+
+                    if ( id === 'files' ){
+                        document.querySelectorAll('.file').forEach(el => el.classList.remove('is-hidden'));
+                        document.querySelector('div#files-liste').classList.remove('is-hidden');
+                    }else {
+                        document.querySelectorAll('.file').forEach(el => el.classList.add('is-hidden'));
+                        document.querySelector('div#files-liste').classList.add('is-hidden');
+                    }
+
+                    if ( id === 'copropriete' ){
+                        // btnToHide.forEach(el => el.classList.add('is-hidden'));
+                    }else {
+                        // btnToHide.forEach(el => el.classList.remove('is-hidden'));
+                    }
+
+                    if ( id === 'prestataire' ){
+                        document.querySelectorAll('.prestataire').forEach(function (el) {
+                            if (el.previousElementSibling && el.previousElementSibling.querySelector('i').classList.contains('fa-angle-down')){
+                                el.classList.add('is-hidden');
+                            }
+                        });
+                    }else {
+                        document.querySelectorAll('.prestataire').forEach(el => el.classList.add('is-hidden'));
+                        if (document.querySelector('div#prestataires-liste')){
+                            document.querySelector('div#prestataires-liste').classList.add('is-hidden');
+                        }
+                    }
+
+                    notfields.forEach(notfield => notfield.classList.add('is-hidden'));
+                    fields.forEach(field => field.classList.remove('is-hidden'));
+                }
+            })
+        })
+    });
+    {#     ##############################################     #}
+
+
+
+
+    {#     ############  SCRIPT FOR EDIT QUITTANCE   #############     #}
+    let btn = document.querySelectorAll('.form-edit-btn');
+    if (btn) {
+        btn.forEach(function (ancrage) {
+
+            ancrage.addEventListener('click', function () {
+                toogleReadonlyClass(ancrage);
+                let text = this.querySelector('span.text');
+                // ancrage.classList.toggle('is-white');
+                // ancrage.classList.toggle('is-info');
+                ancrage.classList.toggle('is-focused');
+                if (!ancrage.classList.contains('is-focused')) {
+                    // ancrage.setAttribute('title', 'Modifier les informations');
+                    // ancrage.querySelector('i').classList.toggle('fa-edit');
+                    // ancrage.querySelector('i').classList.toggle('fa-lock');
+                    if (text){
+                        text.innerText ='Modifier';
+                    }
+                }else {
+                    // ancrage.querySelector('i').classList.toggle('fa-edit');
+                    // ancrage.querySelector('i').classList.toggle('fa-lock');
+                    // ancrage.setAttribute('title', 'Vérouiller les informations');
+                    if (text){
+                        text.innerText ='Vérouiller';
+                    }
+                }
+                //ancrage.querySelector('i').classList.toggle('fa-unlock');
+                //ancrage.querySelector('i').classList.toggle('fa-lock');
+            });
+
+        });
+    }
+    {#     ######################################################     #}
+
+
+    {#     ############  REDIRECT TO ANCRAGE   #############     #}
+    let header = document.documentURI;
+    header = header.split('#');
+    header = header[header.length - 1];
+    if (header){
+        let ancrage = document.getElementById(header);
+        if (ancrage){
+            if (ancrage.nextElementSibling){
+                ancrage.nextElementSibling.click();
+            }
+        }
+    }
+    {#     ######################################################     #}
+
+
+    {#     ############  CHANGE MAIL:TO LINK   #############     #}
+    let mailInput = document.querySelectorAll('input[type=email]');
+    mailInput.forEach(function (input) {
+        window.onload = changeMailHref();
+        input.addEventListener('change', changeMailHref );
+
+        function changeMailHref() {
+            if (input && input.parentElement && input.parentElement.nextElementSibling){
+                let ancrage = input.parentElement.nextElementSibling.querySelector('a');
+                if (ancrage){
+                    if (!input.value){
+                        ancrage.setAttribute('disabled', true);
+                    }else {
+                        ancrage.removeAttribute('disabled');
+                    }
+                    ancrage.href = 'mailto:'+input.value;
+                }
+            }
+        }
+    });
+    {#     ######################################################     #}
+
+
+    {#     ############  CHANGE NUM:TO LINK   #############     #}
+    let phoneInput = document.querySelectorAll('input[type=tel]');
+    phoneInput.forEach(function (input) {
+        window.onload = changePhoneHref();
+        input.addEventListener('change', changePhoneHref );
+
+        function changePhoneHref() {
+            if (input.parentElement){
+                if (input.parentElement.nextElementSibling){
+                    let ancrage = input.parentElement.nextElementSibling.querySelector('a');
+                    if (ancrage){
+                        if (!input.value){
+                            ancrage.setAttribute('disabled', true);
+                        }else {
+                            ancrage.removeAttribute('disabled');
+                        }
+                        ancrage.href = 'tel:'+input.value;
+                    }
+                }
+            }
+
+        }
+    });
+    {#     ######################################################     #}
+
+
+
+
+    {#     ############  CHANGE NUM:TO LINK   #############     #}
+    let cardHeaders = document.querySelectorAll('.card-header.is-extendable');
+    cardHeaders.forEach(function (cardHeader) {
+        cardHeader.addEventListener('click', function () {
+            let cardFooter = cardHeader.parentElement.querySelector('.card-footer');
+            let cardContent = cardHeader.parentElement.querySelector('.card-content');
+            let arrow = cardHeader.querySelector('button i');
+            if(cardFooter){
+                cardFooter.classList.toggle('is-hidden')
+            }
+            if(cardContent){
+                cardContent.classList.toggle('is-hidden')
+            }
+            if (arrow && arrow.classList.contains('fa-angle-down')){
+                arrow.classList.replace('fa-angle-down', 'fa-angle-up');
+            } else if(arrow && arrow.classList.contains('fa-angle-up')) {
+                arrow.classList.replace('fa-angle-up', 'fa-angle-down');
+            }
+
+        })
+    });
+    {#     ######################################################     #}
+
+
+    // SCRIPT CHANGE FILENAME
+    let fileUpload = document.getElementById('documents_file');
+    let inputFile = document.getElementById('documents_title');
+    if (fileUpload){
+        fileUpload.onchange = function () {
+            inputFile.value = fileUpload.files[0].name;
+        };
+    }
+
+
+    // SCRIPT OPEN MODAL
+    let buttonsModal = document.querySelectorAll('.button-modal');
+    buttonsModal.forEach(function (btn) {
+        btn.addEventListener('click',function () {
+            if (btn.nextElementSibling && btn.nextElementSibling.classList.contains('modal')){
+                btn.nextElementSibling.classList.toggle('is-active');
+            }
+        })
+    });
+
+    // SCRIPT CLOSE MODAL
+    let modalClose = document.querySelectorAll('.modal-close, .modal-background');
+    modalClose.forEach(function (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            closeBtn.parentElement.classList.remove('is-active')
+        })
+    });
+
+
+    ////// SCRIPT MAKE HOVERTEXT DATA (TEXT) ON GOOD POSITION FROM WIDTHSCREEN REFERENCE
+    let widthScreenHalf = window.innerWidth / 2;
+    let hovertexts = document.querySelectorAll('.hovertext');
+    hovertexts.forEach(function(hovertext){
+        let hovertextXPos = hovertext.getBoundingClientRect().x;
+        if (hovertextXPos >= widthScreenHalf){
+            hovertext.classList.add('hovertext-right');
+        }else {
+            hovertext.classList.add('hovertext-left');
+        }
+    });
+
+
+    // ADD FORM COLLECTION
+    const addFormToCollection = (e) => {
+        const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+        const item = document.createElement('li');
+
+        item.innerHTML = collectionHolder
+            .dataset
+            .prototype
+            .replace(
+                /__name__/g,
+                collectionHolder.dataset.index
+            );
+
+        collectionHolder.appendChild(item);
+        collectionHolder.dataset.index++;
+        addFraisFormDeleteLink(item);
+    };
+
+    document.querySelectorAll('.add_item_link').forEach(btn => {
+        btn.addEventListener("click", addFormToCollection)
+    });
+
+    //document.querySelectorAll('ul.Frais li').forEach((Frais) => {
+    //        addFraisFormDeleteLink(Frais)
+    //    });
+
+    const addFraisFormDeleteLink = (item) => {
+        const removeFormButton = document.createElement('button');
+        removeFormButton.classList.add('btn','btn-sm','btn-danger','btn-icon','rounded-pill','col-auto','is-absolute','bottom-0','end-0','me-3');
+        removeFormButton.innerHTML = '<i class=\'bx bx-minus\'></i>';
+
+        item.firstChild.append(removeFormButton);
+
+        removeFormButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            // remove the li for the tag form
+            item.remove();
+        });
+    };
+
+
+    // Year FOOTER
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+
+</script>
